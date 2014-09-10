@@ -3,8 +3,6 @@ package com.deemsys.lmsmooc;
 
 
 import java.util.ArrayList;
-
-import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -12,14 +10,9 @@ import android.app.ProgressDialog;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
-
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
-import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -60,8 +53,20 @@ public class ProfileActivity extends Activity {
 		
 	     
 		System.out.println("whole avatar url value"+avatar_whole_url);
-		navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
-    
+		navMenuTitles = new String[20];
+		//navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
+		navMenuTitles[0] =LoginActivity.firstname; 
+		navMenuTitles[1] = "Profile";
+		navMenuTitles[2] = "Inbox";
+		navMenuTitles[3] = "My Courses";
+		navMenuTitles[4] = "My Favorites";
+		navMenuTitles[5] = "My Categories";
+		navMenuTitles[6] = "My Authors";
+		navMenuTitles[7] = "Billing";
+		navMenuTitles[8] = "Logout";
+		
+		
+		
 		navMenuIcons = getResources()
 				.obtainTypedArray(R.array.nav_drawer_icons);
 
@@ -70,34 +75,35 @@ public class ProfileActivity extends Activity {
 
 		navDrawerItems = new ArrayList<NavigationDrawerItem>();
 
-		navDrawerItems.add(new NavigationDrawerItem(LoginActivity.firstname, 0 ));
+		navDrawerItems.add(new NavigationDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1) ));
 		
-		navDrawerItems.add(new NavigationDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
+		navDrawerItems.add(new NavigationDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(0, -1)));
 		
-		navDrawerItems.add(new NavigationDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
+		navDrawerItems.add(new NavigationDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(1, -1)));
 		
-		navDrawerItems.add(new NavigationDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
+		navDrawerItems.add(new NavigationDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(2, -1)));
 		
-		navDrawerItems.add(new NavigationDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
+		navDrawerItems.add(new NavigationDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(3, -1)));
 		
-		navDrawerItems.add(new NavigationDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
+		navDrawerItems.add(new NavigationDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(4, -1)));
 		
-        navDrawerItems.add(new NavigationDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
+        navDrawerItems.add(new NavigationDrawerItem(navMenuTitles[6], navMenuIcons.getResourceId(5, -1)));
 		
-		navDrawerItems.add(new NavigationDrawerItem(navMenuTitles[6], navMenuIcons.getResourceId(6, -1)));
+		navDrawerItems.add(new NavigationDrawerItem(navMenuTitles[7], navMenuIcons.getResourceId(6, -1)));
 		
-		navDrawerItems.add(new NavigationDrawerItem(navMenuTitles[7], navMenuIcons.getResourceId(7, -1)));
+		navDrawerItems.add(new NavigationDrawerItem(navMenuTitles[8], navMenuIcons.getResourceId(7, -1)));
 		
-
+System.out.println("size of nav drwers:::::::::"+navDrawerItems.size());
 		
 		navMenuIcons.recycle();
 
-		mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
-
-		
 		adapter = new Navigationlistadapter(getApplicationContext(),
 				navDrawerItems);
 		mDrawerList.setAdapter(adapter);
+		mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
+
+		
+		
 
 		
 		getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -202,7 +208,7 @@ public class ProfileActivity extends Activity {
 			mDrawerLayout.closeDrawer(mDrawerList);
 		} else {
 			// error in creating fragment
-			Log.e("MainActivity", "Error in creating fragment");
+			Log.e("ProfileActivity", "Error in creating fragment");
 		}
 	}
 
@@ -210,10 +216,10 @@ public class ProfileActivity extends Activity {
 	public void setTitle(CharSequence title) {
 		mTitle = title;
 		
-        getActionBar().setDisplayHomeAsUpEnabled(true);
-		getActionBar().setTitle(mTitle);
-		 getActionBar().setTitle(Html.fromHtml("<font color='#000000'>Profile</font>"));
-	        getActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
+//        getActionBar().setDisplayHomeAsUpEnabled(true);
+//		getActionBar().setTitle(mTitle);
+//		 getActionBar().setTitle(Html.fromHtml("<font color='#000000'>Profile</font>"));
+//	        getActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
 		
 	}
 

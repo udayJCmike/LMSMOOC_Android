@@ -57,47 +57,73 @@ public final class R {
         public static final int unchecked=0x7f020014;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a0019;
-        public static final int avatarimage=0x7f0a000f;
-        public static final int browsecourse=0x7f0a0018;
-        public static final int btn1=0x7f0a0017;
-        public static final int checkBox1=0x7f0a000a;
-        public static final int counter=0x7f0a0004;
-        public static final int drawer_layout=0x7f0a000c;
-        public static final int e1=0x7f0a0011;
-        public static final int e2=0x7f0a0012;
-        public static final int e3=0x7f0a0013;
-        public static final int e4=0x7f0a0014;
-        public static final int e5=0x7f0a0015;
-        public static final int e6=0x7f0a0016;
-        public static final int forgetpasword=0x7f0a000b;
-        public static final int frame_container=0x7f0a000d;
-        public static final int icon=0x7f0a0002;
-        public static final int layoutt=0x7f0a0010;
-        public static final int list_slidermenu=0x7f0a000e;
-        public static final int loginlayout=0x7f0a0007;
+        public static final int ImageButton1=0x7f0a0002;
+        public static final int ImageButton10=0x7f0a000b;
+        public static final int ImageButton11=0x7f0a000c;
+        public static final int ImageButton12=0x7f0a000d;
+        public static final int ImageButton13=0x7f0a000e;
+        public static final int ImageButton14=0x7f0a000f;
+        public static final int ImageButton2=0x7f0a0003;
+        public static final int ImageButton3=0x7f0a0004;
+        public static final int ImageButton4=0x7f0a0005;
+        public static final int ImageButton5=0x7f0a0006;
+        public static final int ImageButton6=0x7f0a0007;
+        public static final int ImageButton7=0x7f0a0008;
+        public static final int ImageButton8=0x7f0a0009;
+        public static final int ImageButton9=0x7f0a000a;
+        public static final int action_settings=0x7f0a0032;
+        public static final int avatarimage=0x7f0a0028;
+        public static final int browsecourse=0x7f0a0031;
+        public static final int btn1=0x7f0a0030;
+        public static final int checkBox1=0x7f0a0018;
+        public static final int counter=0x7f0a0012;
+        public static final int drawer_layout=0x7f0a001a;
+        public static final int e1=0x7f0a002a;
+        public static final int e2=0x7f0a002b;
+        public static final int e3=0x7f0a002c;
+        public static final int e4=0x7f0a002d;
+        public static final int e5=0x7f0a002e;
+        public static final int e6=0x7f0a002f;
+        public static final int email=0x7f0a0021;
+        public static final int firstname=0x7f0a001e;
+        public static final int forgetpasword=0x7f0a0019;
+        public static final int frame_container=0x7f0a001b;
+        public static final int icon=0x7f0a0010;
+        public static final int imageView1=0x7f0a0026;
+        public static final int lastname=0x7f0a001f;
+        public static final int layoutt=0x7f0a0029;
+        public static final int list_slidermenu=0x7f0a001c;
+        public static final int loginlayout=0x7f0a0015;
         public static final int pager=0x7f0a0000;
-        public static final int pswd=0x7f0a0009;
-        public static final int register=0x7f0a0006;
-        public static final int signin=0x7f0a0005;
+        public static final int password=0x7f0a0022;
+        public static final int proffrag=0x7f0a001d;
+        public static final int pswd=0x7f0a0017;
+        public static final int register=0x7f0a0014;
+        public static final int savechagnes=0x7f0a0027;
+        public static final int signin=0x7f0a0013;
+        public static final int spinner1=0x7f0a0023;
+        public static final int spinner2=0x7f0a0024;
+        public static final int text=0x7f0a0025;
         public static final int textView1=0x7f0a0001;
-        public static final int title=0x7f0a0003;
-        public static final int uname=0x7f0a0008;
+        public static final int title=0x7f0a0011;
+        public static final int uname=0x7f0a0016;
+        public static final int username=0x7f0a0020;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
-        public static final int browsecourse=0x7f030001;
-        public static final int drawerlist=0x7f030002;
-        public static final int firstpage=0x7f030003;
-        public static final int fourthpage=0x7f030004;
-        public static final int inboxfragment=0x7f030005;
-        public static final int login=0x7f030006;
-        public static final int profile=0x7f030007;
-        public static final int profilefrag=0x7f030008;
-        public static final int secondpage=0x7f030009;
-        public static final int student_profile=0x7f03000a;
-        public static final int student_signup=0x7f03000b;
-        public static final int thirdpage=0x7f03000c;
+        public static final int avatar_selection=0x7f030001;
+        public static final int browsecourse=0x7f030002;
+        public static final int drawerlist=0x7f030003;
+        public static final int firstpage=0x7f030004;
+        public static final int fourthpage=0x7f030005;
+        public static final int inboxfragment=0x7f030006;
+        public static final int login=0x7f030007;
+        public static final int profile=0x7f030008;
+        public static final int profilefrag=0x7f030009;
+        public static final int secondpage=0x7f03000a;
+        public static final int student_profile=0x7f03000b;
+        public static final int student_signup=0x7f03000c;
+        public static final int thirdpage=0x7f03000d;
     }
     public static final class menu {
         public static final int browsecourse=0x7f090000;
@@ -106,11 +132,20 @@ public final class R {
     public static final class string {
         public static final int action_settings=0x7f060002;
         public static final int app_name=0x7f060000;
+        public static final int avatar=0x7f06000e;
         public static final int browsecourse=0x7f060003;
+        public static final int email=0x7f06000a;
+        public static final int firstname=0x7f060007;
         public static final int forgetpass=0x7f060004;
+        public static final int gender=0x7f06000d;
         public static final int hello_world=0x7f060001;
+        public static final int interstedin=0x7f06000c;
+        public static final int lastname=0x7f060008;
+        public static final int password=0x7f06000b;
         public static final int register=0x7f060006;
+        public static final int savechanges=0x7f06000f;
         public static final int signin=0x7f060005;
+        public static final int username=0x7f060009;
     }
     public static final class style {
         /** 
@@ -139,9 +174,5 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f080001;
-        public static final int CustomActionBarTheme=0x7f080002;
-        /**  ActionBar styles 
-         */
-        public static final int MyActionBar=0x7f080003;
     }
 }

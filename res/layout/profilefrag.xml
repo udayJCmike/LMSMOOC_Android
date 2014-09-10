@@ -2,7 +2,148 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:id="@+id/proffrag"
     android:orientation="vertical" >
-    
+<LinearLayout 
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingLeft="30dip"
+      android:paddingTop="10dip"
+      android:paddingRight="30dip">
 
+    <EditText
+        android:id="@+id/firstname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_edittext"
+        android:ems="10"
+        android:hint="@string/firstname" >
+ 
+        <requestFocus />
+    </EditText>
+<View
+  android:layout_width="fill_parent"
+  android:layout_height="10dip"
+ />
+
+    <EditText
+        android:id="@+id/lastname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_edittext"
+        android:ems="10"
+        android:hint="@string/lastname"
+        android:inputType="textPersonName" />
+
+<View
+  android:layout_width="fill_parent"
+  android:layout_height="10dip"
+ />
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_edittext"
+        android:ems="10"
+        android:hint="@string/username" />
+
+<View
+  android:layout_width="fill_parent"
+  android:layout_height="10dip"
+ />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_edittext"
+        android:ems="10"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress" />
+
+<View
+  android:layout_width="fill_parent"
+  android:layout_height="10dip"
+ />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_edittext"
+        android:ems="10"
+        android:hint="@string/password"
+        android:inputType="textPassword" />
+
+<View
+  android:layout_width="fill_parent"
+  android:layout_height="10dip"
+ />
+
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="match_parent"
+        android:layout_height="30dip"
+        android:background="@drawable/rounded_edittext"
+        android:prompt="@string/interstedin" />
+
+<View
+  android:layout_width="fill_parent"
+  android:layout_height="10dip"
+ />
+
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="match_parent"
+        android:layout_height="30dip"
+        android:background="@drawable/rounded_edittext"
+        android:prompt="@string/gender" />
+
+</LinearLayout>
+
+<View
+    android:layout_width="fill_parent"
+    android:layout_height="10dip" />
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="40dip"
+      android:paddingRight="40dip"
+    android:layout_gravity="center_horizontal"
+    android:orientation="horizontal" >
+<TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       android:text="@string/avatar"
+     
+        />
+
+<ImageView
+    android:id="@+id/imageView1"
+    android:layout_width="wrap_content"
+    android:layout_height="100dip"
+    android:scaleType="fitXY"
+    android:src="@drawable/ban1" />
+
+</LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
+ 
+    android:gravity="center_horizontal"
+    android:orientation="horizontal" >
+    <Button
+        android:id="@+id/savechagnes"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/savechanges" />
+
+</LinearLayout>
 </LinearLayout>

@@ -9,6 +9,7 @@
     <string name="signin">Signin</string>
     <string name="register">Register</string>
     <string-array name="nav_drawer_items">
+        
         <item >Profile</item>
         <item >Inbox</item>
         <item >My Courses</item>
@@ -27,5 +28,17 @@
         <item>@drawable/ic_launcher</item>
         <item>@drawable/ic_launcher</item>
         <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
     </array>
+    
+  <string name="firstname">First Name</string>
+  <string name="lastname">Last Name</string>
+  <string name="username">Username</string>
+  <string name="email">Email ID</string>
+  <string name="password">Password</string>
+  <string name="interstedin">Interested in</string>
+  <string name="gender">Select Gender</string>
+  <string name="avatar">Select Avatar</string>
+  <string name="savechanges">Save Changes</string>
+ 
 </resources>

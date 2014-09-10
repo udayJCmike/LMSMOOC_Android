@@ -16,15 +16,19 @@ import org.json.JSONObject;
 
 import com.deemsys.lmsmooc.JsonParser;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.Html;
 import android.text.InputFilter;
 import android.text.Spanned;
 import android.text.TextWatcher;
@@ -96,11 +100,14 @@ public class StudentSignup extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		 getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
-		    getActionBar().hide();
+		 
 		setContentView(R.layout.student_signup);
 		
 		LinearLayout layout = (LinearLayout) findViewById(R.id.layoutt);
+		 ActionBar actions = getActionBar();
+	        actions.setTitle(Html.fromHtml("<font color='#000000'>Login</font>"));
+	        actions.setDisplayHomeAsUpEnabled(true);
+	        actions.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
         ConnectionDetector cd = new ConnectionDetector(getApplicationContext());
         isInternetPresent= cd.isConnectingToInternet();
 //      
