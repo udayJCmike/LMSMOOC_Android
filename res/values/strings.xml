@@ -3,6 +3,29 @@
 
     <string name="app_name">LMSMOOC</string>
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-
+    <string name="action_settings">Get Started</string>
+    <string name="browsecourse">Browse Course</string>
+    <string name="forgetpass">Forgot Password</string>
+    <string name="signin">Signin</string>
+    <string name="register">Register</string>
+    <string-array name="nav_drawer_items">
+        <item >Profile</item>
+        <item >Inbox</item>
+        <item >My Courses</item>
+        <item >My Favorites</item>
+        <item >My Categories</item>
+        <item >My Authors</item>
+        <item >Billing</item>
+         <item >Logout</item>
+    </string-array>
+  <array name="nav_drawer_icons">
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+    </array>
 </resources>
