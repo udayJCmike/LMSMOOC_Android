@@ -1,8 +1,10 @@
 package com.deemsys.lmsmooc;
 
 
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -41,6 +43,11 @@ public class Firstpage  extends Fragment {
         super.onCreateOptionsMenu(menu, inflater);
         menu.clear();
         inflater.inflate(R.menu.main, menu);
+//        int positionOfMenuItem = 0; 
+//        MenuItem item = menu.getItem(positionOfMenuItem);
+//        SpannableString s = new SpannableString("My red MenuItem");
+//        s.setSpan(new ForegroundColorSpan(Color.RED), 0, s.length(), 0);
+//        item.setTitle(s);
     } 
     
    
@@ -51,8 +58,8 @@ public class Firstpage  extends Fragment {
         case R.id.action_settings:
             // search action
         	System.out.println("settings clicked");
-        	MainActivity.pager.setCurrentItem(4, true);
-        	Fourthpage.newInstance("Fourth, Instance 1");;
+        	MainActivity.pager.setCurrentItem(5, true);
+        	Fifthpage.newInstance("Fifth, Instance 1");
             return true;
        
         default:

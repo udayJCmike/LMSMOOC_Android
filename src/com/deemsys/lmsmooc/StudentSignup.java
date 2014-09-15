@@ -9,7 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.http.NameValuePair;
-import org.apache.http.auth.AuthenticationException;
+
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,25 +29,20 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.Html;
-import android.text.InputFilter;
-import android.text.Spanned;
 import android.text.TextWatcher;
-import android.util.Log;
+
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
 import android.view.View.OnTouchListener;
-import android.view.Window;
-import android.view.View.OnClickListener;
+
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
+
 
 public class StudentSignup extends Activity {
     
@@ -83,13 +78,13 @@ public class StudentSignup extends Activity {
 	    
 	    
 	    private static final String TAG_SUCCESS1 = "success";
-		private static final String TAG_USERNAME = "username";
-		private static final String TAG_PASSWORD = "password";
-		private static final String TAG_EMAIL = "email";
-		private static final String TAG_ROLE = "role";
-		private static final String TAG_ENABLED= "enabled";
+//		private static final String TAG_USERNAME = "username";
+//		private static final String TAG_PASSWORD = "password";
+//		private static final String TAG_EMAIL = "email";
+//		private static final String TAG_ROLE = "role";
+//		private static final String TAG_ENABLED= "enabled";
 		private static final String TAG_SRESL= "serviceresponse";
-		private static final String TAG_USERID= "user_id";
+		//private static final String TAG_USERID= "user_id";
 
 
 		private static String selecturl1 = "http://192.168.1.158:8888/LmsmoocAndroid/Services/Studentsignup.php?service=selectloginusername";
@@ -105,7 +100,7 @@ public class StudentSignup extends Activity {
 		
 		LinearLayout layout = (LinearLayout) findViewById(R.id.layoutt);
 		 ActionBar actions = getActionBar();
-	        actions.setTitle(Html.fromHtml("<font color='#000000'>Login</font>"));
+	        actions.setTitle(Html.fromHtml("<font color='#000000'>Registration</font>"));
 	        actions.setDisplayHomeAsUpEnabled(true);
 	        actions.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
         ConnectionDetector cd = new ConnectionDetector(getApplicationContext());
@@ -139,8 +134,8 @@ public class StudentSignup extends Activity {
 		fstname.addTextChangedListener(new TextWatcher() {
 
 		    public void onTextChanged(CharSequence s, int start, int before, int count) {
-		    	CharSequence ss = s;
-		    	 String mStr = fstname.getText().toString();
+//		    	CharSequence ss = s;
+//		    	 String mStr = fstname.getText().toString();
 		    	 String str = s.toString();
 		            if(str.length() > 0 && str.startsWith(" ")){
 		                
@@ -800,7 +795,9 @@ public class StudentSignup extends Activity {
 	 public boolean onOptionsItemSelected(MenuItem item) {
 	     switch (item.getItemId()) {
 	         case android.R.id.home:
-	            finish();
+	        	 
+	        	 Intent intentSignUP=new Intent(getApplicationContext(),MainActivity.class);
+	        		startActivity(intentSignUP);
 	      }
 	     return true;
 	 }
@@ -1183,7 +1180,7 @@ public class StudentSignup extends Activity {
 		}
 class SelectUsername extends AsyncTask<String,String,String>{
 
- private ProgressDialog userDialog;
+
 	
 	@Override
      protected void onPreExecute() {
@@ -1343,7 +1340,7 @@ alertDialog.setCancelable(false);
 class SelectEmail extends AsyncTask<String,String,String>{
 
 
-	 private ProgressDialog emailDialog;
+	 
 	
 	
 	@Override
@@ -1672,6 +1669,10 @@ protected void hideKeyboard(View view)
 {
     InputMethodManager in = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
     in.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+}
+@Override
+public void onBackPressed() 
+{
 }
 }
           

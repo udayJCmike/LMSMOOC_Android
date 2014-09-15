@@ -67,13 +67,14 @@ public class MainActivity extends FragmentActivity  {
             case 1: return Secondpage.newInstance("SecondFragment, Instance 1");
             case 2:return Thirdpage.newInstance("ThirdFragment, Instance 1");
             case 3: return Fourthpage.newInstance("Fourth, Instance 1");
+            case 4: return Fifthpage.newInstance("Fifth, Instance 1");
             default: return Firstpage.newInstance("ThirdFragment, Default");
             }
         }
        
         @Override
         public int getCount() {
-            return 4;
+            return 5;
         }
      
      

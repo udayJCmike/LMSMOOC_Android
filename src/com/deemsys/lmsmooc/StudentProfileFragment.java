@@ -18,7 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.ImageView;
-import android.widget.Toast;
+
 
 public class StudentProfileFragment extends Fragment {
 	static ImageView img;
@@ -32,7 +32,7 @@ public class StudentProfileFragment extends Fragment {
  
         View rootView = inflater.inflate(R.layout.student_profile, container, false);
          img=(ImageView)rootView.findViewById(R.id.avatarimage);
-         new LoadImage().execute(ProfileActivity.avatar_whole_url);
+        // new LoadImage().execute(ProfileActivity.avatar_whole_url);
         return rootView;
     }
 	private class LoadImage extends AsyncTask<String, String, Bitmap> {
@@ -56,7 +56,7 @@ public class StudentProfileFragment extends Fragment {
 	          
 	         }else{
 	          
-	           Toast.makeText(getActivity(), "Image Does Not exist or Network Error", Toast.LENGTH_SHORT).show();
+	         //  Toast.makeText(getActivity(), "Image Does Not exist or Network Error", Toast.LENGTH_SHORT).show();
 	         }
 	       }
 	   }

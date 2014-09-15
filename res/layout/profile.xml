@@ -14,6 +14,7 @@
 
        
     </FrameLayout>
+    
 
     <!-- Listview to display slider menu -->
     <ListView

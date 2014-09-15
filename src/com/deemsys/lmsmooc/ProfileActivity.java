@@ -3,16 +3,22 @@ package com.deemsys.lmsmooc;
 
 
 import java.util.ArrayList;
+
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
+import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -45,25 +51,31 @@ public class ProfileActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.profile);
-	
-       
+		ActionBar actions = getActionBar();
 		mTitle = mDrawerTitle = getTitle();
+		getActionBar().setTitle(Html.fromHtml("<font color=\"black\">" + mDrawerTitle + "</font>"));
+		
+	
+        actions.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
        
-		avatar_whole_url=LoginActivity.avatar_url+LoginActivity.avatar;
+		
+     
+		avatar_whole_url=LoginActivity.avatar_url+Config.avatar;
 		
 	     
 		System.out.println("whole avatar url value"+avatar_whole_url);
 		navMenuTitles = new String[20];
 		//navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
-		navMenuTitles[0] =LoginActivity.firstname; 
+		navMenuTitles[0] =Config.firstname; 
 		navMenuTitles[1] = "Profile";
-		navMenuTitles[2] = "Inbox";
-		navMenuTitles[3] = "My Courses";
-		navMenuTitles[4] = "My Favorites";
-		navMenuTitles[5] = "My Categories";
-		navMenuTitles[6] = "My Authors";
-		navMenuTitles[7] = "Billing";
-		navMenuTitles[8] = "Logout";
+		navMenuTitles[2] = "Change Password";
+		navMenuTitles[3] = "Inbox";
+		navMenuTitles[4] = "My Courses";
+		navMenuTitles[5] = "My Favorites";
+		navMenuTitles[6] = "My Categories";
+		navMenuTitles[7] = "My Authors";
+		navMenuTitles[8] = "Billing";
+		navMenuTitles[9] = "Logout";
 		
 		
 		
@@ -93,6 +105,8 @@ public class ProfileActivity extends Activity {
 		
 		navDrawerItems.add(new NavigationDrawerItem(navMenuTitles[8], navMenuIcons.getResourceId(7, -1)));
 		
+		navDrawerItems.add(new NavigationDrawerItem(navMenuTitles[9], navMenuIcons.getResourceId(7, -1)));
+		
 System.out.println("size of nav drwers:::::::::"+navDrawerItems.size());
 		
 		navMenuIcons.recycle();
@@ -116,13 +130,15 @@ System.out.println("size of nav drwers:::::::::"+navDrawerItems.size());
 		) {
 			public void onDrawerClosed(View view) {
 				getActionBar().setTitle(mTitle);
-				
+			
 				invalidateOptionsMenu();
 			}
 
 			public void onDrawerOpened(View drawerView) {
-				getActionBar().setTitle(mDrawerTitle);
-				
+			
+			//	getActionBar().setTitle(mDrawerTitle);
+				getActionBar().setTitle(Html.fromHtml("<font color=\"black\">" + mDrawerTitle + "</font>"));
+			//	getActionBar().setTitle(Html.fromHtml("<font color='#000000'>title</font>"));
 				invalidateOptionsMenu();
 			}
 		};
@@ -155,7 +171,9 @@ System.out.println("size of nav drwers:::::::::"+navDrawerItems.size());
 		}
 		
 		switch (item.getItemId()) {
-		
+		 case android.R.id.home:
+	        	
+	   		finish();
 		default:
 			return super.onOptionsItemSelected(item);
 		}
@@ -165,7 +183,7 @@ System.out.println("size of nav drwers:::::::::"+navDrawerItems.size());
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		
-		boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
+		//boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
 	
 		return super.onPrepareOptionsMenu(menu);
 	}
@@ -176,17 +194,18 @@ System.out.println("size of nav drwers:::::::::"+navDrawerItems.size());
 		Fragment fragment = null;
 		switch (position) {
 		case 0:
-			fragment = new StudentProfileFragment();
+			fragment = new CoursesFragment();
 			break;
 		case 1:
-			fragment = new ProfileFragment();
-			break;
-		case 2:
-			fragment = new InboxFragment();
-			break;
-//		case 3:
-//			fragment = new BagShoes();
+//			fragment = new ProfileFragment();
 //			break;
+		case 2:
+//			fragment = new ChangePasswordFragment();
+//			break;
+		case 9:
+			   Intent intentSignUP=new Intent(getApplicationContext(),LoginActivity.class);
+				startActivity(intentSignUP);
+			break;
 //		case 4:
 //			fragment = new BakeryItems();
 //			break;
@@ -204,7 +223,15 @@ System.out.println("size of nav drwers:::::::::"+navDrawerItems.size());
 			// update selected item and title, then close the drawer
 			mDrawerList.setItemChecked(position, true);
 			mDrawerList.setSelection(position);
-			setTitle(navMenuTitles[position]);
+			if(position==0)
+			{
+				setTitle(Html.fromHtml("<font color=\"black\">" + "LMSMOOC" + "</font>"));
+			}
+			else
+			{
+				setTitle(Html.fromHtml("<font color=\"black\">" + navMenuTitles[position] + "</font>"));
+			//setTitle(navMenuTitles[position]);
+			}
 			mDrawerLayout.closeDrawer(mDrawerList);
 		} else {
 			// error in creating fragment
@@ -215,6 +242,7 @@ System.out.println("size of nav drwers:::::::::"+navDrawerItems.size());
 	@Override
 	public void setTitle(CharSequence title) {
 		mTitle = title;
+	
 		
 //        getActionBar().setDisplayHomeAsUpEnabled(true);
 //		getActionBar().setTitle(mTitle);
@@ -236,6 +264,14 @@ System.out.println("size of nav drwers:::::::::"+navDrawerItems.size());
 		
 		mDrawerToggle.onConfigurationChanged(newConfig);
 	}
-	
-	
+	 @Override
+	 public void onBackPressed() {
+		 
+	 }
+//	 @Override
+//	 public void onDestroy() {
+//	     getActionBar().removeAllTabs();
+//	     getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+//	     super.onDestroy();
+//	 }
 }

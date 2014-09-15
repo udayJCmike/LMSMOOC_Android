@@ -8,10 +8,6 @@ import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-
-
-
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -19,6 +15,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -31,6 +29,7 @@ import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
@@ -61,16 +60,26 @@ public class LoginActivity extends Activity  {
 	 private static final String TAG_LOGINS= "logins";
 	 private static final String TAG_GENCODE= "gencode";
 	 private static final String TAG_AVATAR_URL= "avatar_url";
-	 String username,password,role,enabled,serviceresponse,student_id;
+	 public static final String MyPREFERENCES = "MyPrefs0" ;
+	   public static final String UserName = "unnameKey"; 
+	    public static final String Password = "passKey"; 
+	 static String username;
+	static String password;
+	String role;
+	String enabled;
+	String serviceresponse;
+	static String student_id;
 	static String avatar_url;
 	static String firstname;
-	String lastname;
-	String email;
-	String interested_in;
-	String gender;
+	static String lastname;
+	static String email;
+	static String interested_in;
+	static  String gender;
 	static String avatar;
-	String logins;
+	static  String logins;
 	String gencode;	
+	CheckBox check1;
+    SharedPreferences sharedpreferences;
 	 @Override
 	    protected void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
@@ -78,6 +87,8 @@ public class LoginActivity extends Activity  {
 	        LinearLayout layout = (LinearLayout) findViewById(R.id.loginlayout);
 	        loginurl=Config.ServerUrl+"Login.php?service=login";
 	        avatarurl=Config.ServerUrl+"Login.php?service=avatar";
+	        check1=(CheckBox)findViewById(R.id.checkBox1);
+	        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 	        cd = new ConnectionDetector(getApplicationContext());
 	        usname= (EditText) findViewById(R.id.uname);
 	        paswd = (EditText) findViewById(R.id.pswd);
@@ -85,7 +96,7 @@ public class LoginActivity extends Activity  {
 	        forgetpass = (Button) findViewById(R.id.forgetpasword);
 	        ActionBar actions = getActionBar();
 	        actions.setTitle(Html.fromHtml("<font color='#000000'>Login</font>"));
-	        actions.setDisplayHomeAsUpEnabled(true);
+	    
 	        actions.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
 	        layout.setOnTouchListener(new OnTouchListener()
  	        {
@@ -255,7 +266,7 @@ public class LoginActivity extends Activity  {
 
 			});
 	 }
-	 
+	
 	 class Avatarfetch extends AsyncTask<String, String, String> {
 	    	@Override
 	        protected void onPreExecute() {
@@ -269,6 +280,7 @@ public class LoginActivity extends Activity  {
 	             
 	            
 	             params1.add(new BasicNameValuePair("id", "1"));
+	             params1.add(new BasicNameValuePair("student_id", student_id));
 	    		JsonParser jLogin = new JsonParser();
 	             System.out.println(usname.getText().toString());
 	             System.out.println( paswd.getText().toString());
@@ -285,6 +297,7 @@ public class LoginActivity extends Activity  {
 	                	 JSONObject jUser = json.getJSONObject(TAG_SRESL);
 	                	 successL = jUser.getString(TAG_SUCCESS);
 	                	 avatar_url = jUser.getString(TAG_AVATAR_URL );
+	                	 Config.common_url=jUser.getString(TAG_AVATAR_URL);;
 	                	 System.out.println("avatar url in second async"+avatar_url);
 	                	 }
 		                	
@@ -306,8 +319,7 @@ public class LoginActivity extends Activity  {
 			 protected void onPostExecute(String file_url) {
 		    	   super.onPostExecute(file_url);
 		    pDialog.dismiss();	
-		    Intent intentSignUP=new Intent(getApplicationContext(),ProfileActivity.class);
-			startActivity(intentSignUP);
+		   calld();
 	    	}
 	 }
 
@@ -346,19 +358,19 @@ public class LoginActivity extends Activity  {
 	                	
 	                	 JSONObject jUser = json.getJSONObject(TAG_SRESL);
 	                	 successL = jUser.getString(TAG_SUCCESS);
-	                	 username = jUser.getString(TAG_USERNAME );
-	                	 password = jUser.getString(TAG_PASSWORD);
-	                	 firstname= jUser.getString(TAG_FIRSTNAME);
-	                	 lastname= jUser.getString(TAG_LASTNAME);
-	                	 email=jUser.getString(TAG_EMAIL);
-	                	 interested_in= jUser.getString(TAG_INTERESTED_IN);
-	                	 gender = jUser.getString(TAG_GENDER );
-	                	 avatar = jUser.getString(TAG_AVATAR);
-	                	 logins = jUser.getString(TAG_LOGINS );
-	                	 gencode = jUser.getString(TAG_GENCODE);
-	                	 role=jUser.getString(TAG_ROLE);
-	                	 enabled=jUser.getString(TAG_ENABLED);
-	                	 student_id=jUser.getString(TAG_STUDENT_ID);
+	                	 Config.username = jUser.getString(TAG_USERNAME );
+	                	 Config.password = jUser.getString(TAG_PASSWORD);
+	                	 Config.firstname= jUser.getString(TAG_FIRSTNAME);
+	                	 Config.lastname= jUser.getString(TAG_LASTNAME);
+	                	 Config.email=jUser.getString(TAG_EMAIL);
+	                	 Config.interested_in= jUser.getString(TAG_INTERESTED_IN);
+	                	 Config. gender = jUser.getString(TAG_GENDER );
+	                	 Config.avatar = jUser.getString(TAG_AVATAR);
+	                	 Config.logins = jUser.getString(TAG_LOGINS );
+	                	 Config.gencode = jUser.getString(TAG_GENCODE);
+	                	 Config.role=jUser.getString(TAG_ROLE);
+	                	 Config.enabled=jUser.getString(TAG_ENABLED);
+	                	 Config.student_id=jUser.getString(TAG_STUDENT_ID);
 	                	 System.out.println("username value:::"+username);
 	                	 System.out.println("password value::"+password);
 	                	 System.out.println("role value"+role);
@@ -463,10 +475,73 @@ public class LoginActivity extends Activity  {
 			 }
 
 	 }
+	 @Override
+	    protected void onResume() {
+	    	super.onResume();
+	    	  System.out.println("Outsside shared pref");
+	        if (sharedpreferences.contains(UserName))
+	        {
+	        	  System.out.println("Inside shared pref");
+	      usname.setText(sharedpreferences.getString(UserName, ""));
+	      check1.setChecked(true);
+	        }
+	        if (sharedpreferences.contains(Password))
+	        {
+	        paswd.setText(sharedpreferences.getString(Password, ""));
+          check1.setChecked(true);
+	        }
+	      
+	    }
 	 protected void hideKeyboard(View view)
 	 {
 	     InputMethodManager in = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 	     in.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 	 }
-	 
+//	  @Override
+//	    public boolean onOptionsItemSelected(MenuItem item) {
+//	        switch (item.getItemId()) {
+//	        case android.R.id.home:
+//	        	System.out.println("on back pressed");
+//	   		finish();
+//	            return true;
+//	        default:
+//	            return super.onOptionsItemSelected(item);
+//	        }
+//	    }
+	 @Override
+	 public void onBackPressed() {
+
+		 
+		 Intent intentSignUP=new Intent(getApplicationContext(),MainActivity.class);
+			startActivity(intentSignUP);
+//	     int count = getFragmentManager().getBackStackEntryCount();
+//System.out.println("count value::::"+count);
+//	     if (count == 0) {
+//	         super.onBackPressed();
+//	         //additional code
+//	     } else {
+//	         getFragmentManager().popBackStack();
+//	     }
+
+	 }
+	 private void calld(){
+	    	if(check1.isChecked()==true){
+	    	 String n  = usname.getText().toString();
+	         System.out.println("In run method::"+n);
+	         String u = paswd.getText().toString();
+	         System.out.println("In run method::"+u);
+	         Editor editor = sharedpreferences.edit();
+	         editor.putString(UserName, n);
+	         editor.putString(Password, u);
+	         editor.commit();
+	    	}
+	    	else{
+	    		 SharedPreferences settings = context.getSharedPreferences("MyPrefs0", Context.MODE_PRIVATE);
+	        		settings.edit().clear().commit();
+	    	}
+	    	 Intent intentSignUP=new Intent(getApplicationContext(),NewMainActivity.class);
+				startActivity(intentSignUP);
+	             finish();
+	     }
+	    
 }

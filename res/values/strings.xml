@@ -40,5 +40,7 @@
   <string name="gender">Select Gender</string>
   <string name="avatar">Select Avatar</string>
   <string name="savechanges">Save Changes</string>
+  <string name="getpassword">Get Password</string>
+  <string name="category">Categories</string>
  
 </resources>

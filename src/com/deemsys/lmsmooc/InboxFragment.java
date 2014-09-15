@@ -22,4 +22,10 @@ public class InboxFragment extends Fragment {
          
         return rootView;
     }
+	 @Override
+	 public void onDestroy() {
+	     getActivity().getActionBar().removeAllTabs();
+	  //  getActivity().getActionBar().setNavigationMode(ActionBar.);
+	     super.onDestroy();
+	 }
 }

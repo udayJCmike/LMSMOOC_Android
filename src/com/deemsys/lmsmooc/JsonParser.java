@@ -129,24 +129,24 @@ public class JsonParser {
       
         try {
         	
-        //	Log.i("tagconvertstr1", "["+json+"]");
+        	Log.i("tagconvertstr1", "["+json+"]");
         	
         	if((json!=null)&&(json!=""))
         	{
         		jss= "not empty";
         		System.out.println("json is not equal to null");
         	jsonObject = new JSONObject(json);
-        	//  System.out.println("json object parse finished");
+        	  System.out.println("json object parse finished");
         	
-        	//Log.i("tagconvertstr2","["+json+"]");
+        	Log.i("tagconvertstr2","["+json+"]");
         	    	
         	}
         	
         	else
         	{
-        	//	System.out.println(" it is null value ");
+        		System.out.println(" it is null value ");
         		jss= "empty";
-        	//	System.out.println("jss value is" +jss);
+        		System.out.println("jss value is" +jss);
         		
         	}
             
@@ -156,7 +156,7 @@ public class JsonParser {
         }
         
         
-     //   System.out.println("jsson object is" + json);
+        System.out.println("jsson object is" + json);
        
         return jsonObject;
  
@@ -198,19 +198,19 @@ public JSONObject getJSONFromUrl(String url) {
 		        }
 		    
 		        try {
-		        //	Log.i("tagconvertstr", "["+json+"]");
+		        	Log.i("tagconvertstr", "["+json+"]");
 		        	
 		        	
 		        	if((json!=null)&&(json!=""))
 		        	{
 		        		jss1="not empty";
 		        	jsonObject = new JSONObject(json);
-		        //	Log.i("tagconvertstr", "["+json+"]");
+		        	Log.i("tagconvertstr", "["+json+"]");
 		        	
 		        	}
 		        	else
 		        	{
-		        	//	System.out.println(" it is null value ");
+		        		System.out.println(" it is null value ");
 		        		jss1= "empty";
 		        		//System.out.println("jss1 value is" +jss1);
 		        		
@@ -219,7 +219,7 @@ public JSONObject getJSONFromUrl(String url) {
 		            Log.e("JSON Parser", "Error parsing data " + e.toString());
 		        }
 		 
-		   //  System.out.println("json object is");
+		     System.out.println("json object is");
 		        return jsonObject;  
 		
 	}

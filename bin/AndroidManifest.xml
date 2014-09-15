@@ -39,6 +39,14 @@
               android:screenOrientation="portrait" />
            <activity android:name=".StudentSignup"
               android:screenOrientation="portrait" />
+             <activity android:name=".sample"
+              android:screenOrientation="portrait" />
+             <activity android:name=".NewMainActivity"
+              android:screenOrientation="portrait" />
+             <activity android:name=".CategorySelectionActivity"
+              android:screenOrientation="portrait" />
+             <activity android:name=".CategoryCourses"
+              android:screenOrientation="portrait" />
     </application>
 
 </manifest>

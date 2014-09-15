@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="6dip" >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/cover"
+            android:layout_width="200dp"
+            android:layout_height="70dp"
+            android:layout_marginLeft="124dp"
+            android:scaleType="fitXY"
+             android:focusable="false"
+        android:clickable="false"
+            android:src="@drawable/ban3" />
+
+        <TextView
+            android:id="@+id/coursename"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:text="thendral"
+            style="@style/custom"
+             android:focusable="false"
+        android:clickable="false"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/author"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="thendral"
+          style="@style/custom"
+             android:focusable="false"
+        android:clickable="false"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+       
+    </RelativeLayout>
+
+ <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+    
+    </RelativeLayout>
+
+ <TextView
+     android:id="@+id/cost"
+     style="@style/custom"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_marginLeft="14dp"
+     android:clickable="false"
+     android:focusable="false"
+     android:text="TextView" />
+
+</LinearLayout>
