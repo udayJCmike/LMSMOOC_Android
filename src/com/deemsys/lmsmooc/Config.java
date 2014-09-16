@@ -10,6 +10,7 @@ public class Config
 	static String purchasenumberselection="ViewCourses.php?service=countnumber";
 	static String categoryurl="Category.php?service=allcategory";
 	static String categoryselectionurl="Category.php?service=viewcategorycourse";
+	static String searchselecturl="SearchCourse.php?service=viewsearchcourse";
 	static String student_id;
 	static String avatar_url;
 	static String username;

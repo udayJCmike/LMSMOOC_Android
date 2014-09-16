@@ -8,11 +8,12 @@
         android:showAsAction="never"
 
         android:title="@string/category"/>
-     <item
-        android:id="@+id/search"
-        android:title="Search"
-        android:icon="@drawable/ic_launcher"
-        android:showAsAction="always"
-        android:actionViewClass="com.actionbarsherlock.widget.SearchView" />
+      <item
+        android:id="@+id/menu_search"
+        android:actionLayout="@layout/search"
+        android:icon="@drawable/ban5"
+        android:orderInCategory="0"
+        android:showAsAction="never"
+        android:title="Search"/>
 
 </menu>

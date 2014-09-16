@@ -22,7 +22,9 @@ import org.apache.http.params.HttpParams;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import com.google.gson.Gson;
+import com.squareup.picasso.Picasso;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -46,16 +48,19 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AbsListView.OnScrollListener;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 public class CategoryCourses  extends Activity {
 	public ProgressDialog cDialog,pDialog;
+	public static ArrayList<String> imagelist= new ArrayList<String>();
 	public static ArrayList<String> coursetotallist= new ArrayList<String>();
 	ArrayList<Course> courselist;
 	Boolean isInternetPresent = false;
@@ -69,7 +74,8 @@ public class CategoryCourses  extends Activity {
 	 View loadMoreView;
 	 JSONArray user = null;
 	 static ListView listView ;
-	 String course_name,authorname,student_enrolled,ratingcouont,cost,course_id,instructorid,numofrows,category_name;
+	 Bitmap bitmap;
+	 String course_name,authorname,student_enrolled,ratingcouont,cost,course_id,instructorid,numofrows,category_name,course_cover_image;
 	 private static final String TAG_SRESL= "serviceresponse";
 	    private static final String TAG_Course_ARRAY = "CourseList";
 		private static final String TAG_SRES= "serviceresponse";
@@ -136,8 +142,8 @@ public class CategoryCourses  extends Activity {
         	   int lastInScreen = firstVisibleItem + visibleItemCount;    
         	   if((lastInScreen == totalItemCount) && !(loadingMore)){     
         	  
-        		   System.out.println(Config.ServerUrl+Config.allcourseurl);
-        	    grabURL(Config.ServerUrl+Config.allcourseurl); 
+        		   System.out.println(Config.ServerUrl+Config.categoryselectionurl);
+        	    grabURL(Config.ServerUrl+Config.categoryselectionurl); 
         	   }
         	   }
         	  });
@@ -214,36 +220,47 @@ public class CategoryCourses  extends Activity {
 				   }
 				   else {
 				    for (int i=0; i<countryListObj.length(); i++){
-				    start++;
-				    System.out.println("forloop1");
-		    		JSONObject c1 = user.getJSONObject(i);
-		    		JSONObject c2 = c1.getJSONObject(TAG_SRES);
-		    	    authorname = c2.getString(TAG_COURSE_AUTHOR);
-		    		instructorid=c2.getString(TAG_INSTRUCTOR_ID);
-		    		course_id=c2.getString(TAG_COURSE_ID);
-		            course_name = c2.getString(TAG_COURSE_NAME);
-		          
-		        	cost= c2.getString(TAG_COURSE_COST);
-		        	coursetotallist.add(authorname);
-		        	coursetotallist.add(course_name);
-		        	 Course cnt = new Course(authorname,course_name,cost,course_id,instructorid);
-		        	 cnt.setName(authorname);
-		        	 cnt.setCode(course_name);
-					  cnt.setins_id(instructorid);
-					  cnt.setcourseid(course_id);
-		       String countryInfo = countryListObj.getJSONObject(i).toString();
+				    	 start++;
+						    System.out.println("countryListObj length"+countryListObj.length());
+				    		JSONObject c1 = user.getJSONObject(i);
+				    		JSONObject c2 = c1.getJSONObject(TAG_SRES);
+				    	    authorname = c2.getString(TAG_COURSE_AUTHOR);
+				    		instructorid=c2.getString(TAG_INSTRUCTOR_ID);
+				    		course_id=c2.getString(TAG_COURSE_ID);
+				            course_name = c2.getString(TAG_COURSE_NAME);
+				          //  course_cover_image="http://208.109.248.89/lmsvideos/28/coverImage.jpg";
+				            course_cover_image=c2.getString(TAG_course_cover_image);
+				        	cost= c2.getString(TAG_COURSE_COST);
+				        	ratingcouont=c2.getString(TAG_COURSE_RATINGS);
+				        	coursetotallist.add(authorname);
+				        	coursetotallist.add(course_name);
+				        	coursetotallist.add(ratingcouont);
+				        	imagelist.add(course_cover_image);
+
+
+				        	 Course cnt = new Course(authorname,course_name,cost,course_id,instructorid,course_cover_image,ratingcouont);
+				        	 cnt.setName(authorname);
+				        	 cnt.setCode(course_name);
+							  cnt.setins_id(instructorid);
+							  cnt.setcourseid(course_id);
+							  cnt.setrating(ratingcouont);
+				           cnt.setstringurl(course_cover_image);
+						    courselist.add(cnt);
+						 
+						    System.out.println("size fo country list"+courselist.size());
+						    System.out.println("value fo country list"+courselist);
+						    dataAdapter.add(cnt);
+				        	 System.out.println("bitmap"+bitmap);
+				       System.out.println("i value"+i);
+				       if(i==9)
+				       {
+							 
+				       }
+							   }
+							  
+							   dataAdapter.notifyDataSetChanged();
+							    loadingMore = false;
 				  
-				    System.out.println("country in fo"+countryInfo);
-				  	// Course country = gson.fromJson(countryInfo,Course.class);
-				   
-				    courselist.add(cnt);
-				    System.out.println("size fo country list"+courselist.size());
-				    System.out.println("value fo country list"+courselist);
-				    dataAdapter.add(cnt);
-				    }
-				 
-				    dataAdapter.notifyDataSetChanged();
-				    loadingMore = false;
 				   }
 				 
 				  } catch (JSONException e) {
@@ -329,8 +346,10 @@ public class CategoryCourses  extends Activity {
     	  private class ViewHolder {
     	   TextView code;
     	   TextView name;
-    	   TextView continent;
+    	   
     	   TextView cost;
+    	   ImageView cover;
+    	   ImageView ratingshow;
     	  }
     	 
     	  public void add(Course country){
@@ -341,35 +360,65 @@ public class CategoryCourses  extends Activity {
     	  @Override
     	  public View getView(int position, View convertView, ViewGroup parent) {
     	 
-    	   ViewHolder holder = null;
-    	   Log.v("ConvertView", String.valueOf(position));
-    	   if (convertView == null) {
-    	 
-    	 
-    	   
-    	   LayoutInflater inflater = (LayoutInflater) getApplicationContext()
-					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		
-    	   convertView = inflater.inflate(R.layout.course_overview,parent, false);
-    	   holder = new ViewHolder();
-    	   holder.code = (TextView) convertView.findViewById(R.id.coursename);
-    	   holder.name = (TextView) convertView.findViewById(R.id.author);
-    	   holder.cost = (TextView) convertView.findViewById(R.id.cost);
-    	//   holder.cost = (TextView) convertView.findViewById(R.id.enroll);
-    	 
-    	   convertView.setTag(holder);
-    	 
-    	   } else {
-    	    holder = (ViewHolder) convertView.getTag();
-    	   }
-    	 
-    	   Course country = this.countryList.get(position);
-    	   holder.code.setText(country.getCode());
-    	   holder.name.setText(country.getName());
-    	   holder.cost.setText("$ "+country.getRegion());
-    	//   holder.region.setText(country.getRegion());
-    	 
-    	   return convertView;
+    		  ViewHolder holder = null;
+       	   Log.v("ConvertView", String.valueOf(position));
+       	   if (convertView == null) {
+       	 
+       	   LayoutInflater vi = (LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+       	   convertView = vi.inflate(R.layout.course_overview, null);
+       	 
+       	   holder = new ViewHolder();
+       	   holder.code = (TextView) convertView.findViewById(R.id.coursename);
+       	   holder.name = (TextView) convertView.findViewById(R.id.author);
+       	   holder.cost = (TextView) convertView.findViewById(R.id.cost);
+          holder.cover = (ImageView) convertView.findViewById(R.id.cover);
+         holder.ratingshow= (ImageView) convertView.findViewById(R.id.ratingimage);
+       	   convertView.setTag(holder);
+       	 
+       	   } else {
+       	    holder = (ViewHolder) convertView.getTag();
+       	   }
+       	 
+       	   Course country = this.countryList.get(position);
+       	   holder.code.setText(country.getCode());
+       	   holder.name.setText(country.getName());
+       	   holder.cost.setText("$ "+country.getRegion());
+       	   holder.cover.setImageBitmap(country.getBitmap());
+//       	   aQuery = new AQuery(getActivity());
+//       	    aQuery.id(R.id.cover).image(country.getstringurl(),true,true);
+       	    Picasso.with(CategoryCourses.this).load(country.getstringurl()).into(holder.cover);
+       	  
+//       	   new DownloadTask((ImageView) convertView.findViewById(R.id.cover))
+//              .execute((String) country.getstringurl());
+       	   if(country.getrating().equalsIgnoreCase("0"))
+       	   {
+       		   holder.ratingshow.setImageResource(R.drawable.zero);  
+       	   }
+       	   else  if(country.getrating().equalsIgnoreCase("1"))
+       	   {
+       		   holder.ratingshow.setImageResource(R.drawable.one);  
+       	   }
+       	   else  if(country.getrating().equalsIgnoreCase("2"))
+       	   {
+       		   holder.ratingshow.setImageResource(R.drawable.two);  
+       	   }
+       	   else  if(country.getrating().equalsIgnoreCase("3"))
+       	   {
+       		   holder.ratingshow.setImageResource(R.drawable.three);  
+       	   }
+       	   else  if(country.getrating().equalsIgnoreCase("4"))
+       	   {
+       		   holder.ratingshow.setImageResource(R.drawable.four);  
+       	   }
+       	   else  if(country.getrating().equalsIgnoreCase("5"))
+       	   {
+       		   holder.ratingshow.setImageResource(R.drawable.five);  
+       	   }
+       	   else 
+       	   {
+       		   holder.ratingshow.setImageResource(R.drawable.zero);  
+       	   }
+       	   return convertView;
     	 
     	  }
     	 

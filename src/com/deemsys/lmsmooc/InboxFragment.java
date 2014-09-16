@@ -19,7 +19,7 @@ public class InboxFragment extends Fragment {
             Bundle savedInstanceState) {
  
         View rootView = inflater.inflate(R.layout.inboxfragment, container, false);
-         
+        NewMainActivity.sampletestvale="sentahamil";
         return rootView;
     }
 	 @Override

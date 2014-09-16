@@ -41,7 +41,7 @@ public class NewMainActivity extends SherlockFragmentActivity {
     Fragment fragment8 = new Secondpage();
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
- 
+ static String sampletestvale="8";
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +54,7 @@ public class NewMainActivity extends SherlockFragmentActivity {
     	
         getActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
         // Generate title
-        title = new String[] {Config.firstname , "Profile","Change Password","Inbox","My Courses","My Favorites","My Categories","My Authors","Billing","Logout"};
+        title = new String[] {Config.firstname , "Profile","Change Password","Inbox","My Courses","My Favorites","My Categories"+sampletestvale,"My Authors","Billing","Logout"};
  
         // Generate subtitle
         subtitle = new String[] { "Subtitle Fragment 1", "Subtitle Fragment 2" };

@@ -4,7 +4,7 @@ package com.deemsys.lmsmooc;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.HttpURLConnection;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -27,7 +27,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.google.gson.Gson;
+import com.androidquery.AQuery;
+import com.squareup.picasso.Picasso;
+
+
 
 
 
@@ -42,10 +45,10 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
+
 
 import android.util.Log;
-import android.view.Gravity;
+
 import android.view.LayoutInflater;
 
 import android.view.View;
@@ -55,16 +58,17 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
+
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
+
 import android.widget.AbsListView.OnScrollListener;
 
 public class AllCourses  extends Fragment {
 	Bitmap bitmap;
+	private AQuery aQuery;
 	public ProgressDialog cDialog,pDialog;
 	public static ArrayList<String> coursetotallist= new ArrayList<String>();
 	public static ArrayList<String> imagelist= new ArrayList<String>();
@@ -186,10 +190,10 @@ public class AllCourses  extends Fragment {
 		   
 				 super.onPostExecute(file_url);
 				
-				 cDialog.dismiss();
+				
 				  
 				    displayCourseList(content);
-				   
+				    cDialog.dismiss();
 				  
 				  }
 
@@ -232,16 +236,19 @@ public class AllCourses  extends Fragment {
 		          //  course_cover_image="http://208.109.248.89/lmsvideos/28/coverImage.jpg";
 		            course_cover_image=c2.getString(TAG_course_cover_image);
 		        	cost= c2.getString(TAG_COURSE_COST);
+		        	ratingcouont=c2.getString(TAG_COURSE_RATINGS);
 		        	coursetotallist.add(authorname);
 		        	coursetotallist.add(course_name);
+		        	coursetotallist.add(ratingcouont);
 		        	imagelist.add(course_cover_image);
 
 
-		        	 Course cnt = new Course(authorname,course_name,cost,course_id,instructorid,course_cover_image);
+		        	 Course cnt = new Course(authorname,course_name,cost,course_id,instructorid,course_cover_image,ratingcouont);
 		        	 cnt.setName(authorname);
 		        	 cnt.setCode(course_name);
 					  cnt.setins_id(instructorid);
 					  cnt.setcourseid(course_id);
+					  cnt.setrating(ratingcouont);
 		           cnt.setstringurl(course_cover_image);
 				    courselist.add(cnt);
 				 
@@ -360,10 +367,11 @@ public class AllCourses  extends Fragment {
     	   TextView name;
     	   ImageView cover;
     	   TextView cost;
+    	   ImageView ratingshow;
     	  }
     	 
     	  public void add(Course country){
-    	  // Log.v("AddView", country.getCode());
+    	
     	   this.countryList.add(country);
     	  }
     	 
@@ -382,7 +390,7 @@ public class AllCourses  extends Fragment {
     	   holder.name = (TextView) convertView.findViewById(R.id.author);
     	   holder.cost = (TextView) convertView.findViewById(R.id.cost);
        holder.cover = (ImageView) convertView.findViewById(R.id.cover);
-      
+      holder.ratingshow= (ImageView) convertView.findViewById(R.id.ratingimage);
     	   convertView.setTag(holder);
     	 
     	   } else {
@@ -394,10 +402,40 @@ public class AllCourses  extends Fragment {
     	   holder.name.setText(country.getName());
     	   holder.cost.setText("$ "+country.getRegion());
     	   holder.cover.setImageBitmap(country.getBitmap());
-    	   new DownloadTask((ImageView) convertView.findViewById(R.id.cover))
-           .execute((String) country.getstringurl());
-           //new LoadImage().execute();
-    	 
+//    	   aQuery = new AQuery(getActivity());
+//    	    aQuery.id(R.id.cover).image(country.getstringurl(),true,true);
+    	    Picasso.with(getActivity()).load(country.getstringurl()).into(holder.cover);
+    	  
+//    	   new DownloadTask((ImageView) convertView.findViewById(R.id.cover))
+//           .execute((String) country.getstringurl());
+    	   if(country.getrating().equalsIgnoreCase("0"))
+    	   {
+    		   holder.ratingshow.setImageResource(R.drawable.zero);  
+    	   }
+    	   else  if(country.getrating().equalsIgnoreCase("1"))
+    	   {
+    		   holder.ratingshow.setImageResource(R.drawable.one);  
+    	   }
+    	   else  if(country.getrating().equalsIgnoreCase("2"))
+    	   {
+    		   holder.ratingshow.setImageResource(R.drawable.two);  
+    	   }
+    	   else  if(country.getrating().equalsIgnoreCase("3"))
+    	   {
+    		   holder.ratingshow.setImageResource(R.drawable.three);  
+    	   }
+    	   else  if(country.getrating().equalsIgnoreCase("4"))
+    	   {
+    		   holder.ratingshow.setImageResource(R.drawable.four);  
+    	   }
+    	   else  if(country.getrating().equalsIgnoreCase("5"))
+    	   {
+    		   holder.ratingshow.setImageResource(R.drawable.five);  
+    	   }
+    	   else 
+    	   {
+    		   holder.ratingshow.setImageResource(R.drawable.zero);  
+    	   }
     	   return convertView;
     	 
     	  }
@@ -424,6 +462,7 @@ public class AllCourses  extends Fragment {
             // TODO Auto-generated method stub
             super.onPostExecute(result);
             v.setImageBitmap(bm);
+            cDialog.dismiss();
         }
 
         public Bitmap loadBitmap(String url) {

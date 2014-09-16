@@ -15,6 +15,7 @@ public class Course {
  Double surfaceArea = null;
  int population = 0;
  Bitmap bit;
+ String rating;
 //  
  public Course(String authorname, String course_name,String costw, String course_id2, String instructorid, Bitmap bitmap) {
 	// TODO Auto-generated constructor stub
@@ -34,7 +35,7 @@ public class Course {
 	 cost=costw;
 	
 }
- public Course(String authorname, String course_name,String costw, String course_id2, String instructorid, String bitmap) {
+ public Course(String authorname, String course_name,String costw, String course_id2, String instructorid, String bitmap,String rat) {
 		// TODO Auto-generated constructor stub
 		 course_id=course_id2;
 		 instructor_id=instructorid;
@@ -42,6 +43,7 @@ public class Course {
 		 name=authorname;
 		 cost=costw;
 		 bittu=bitmap;
+		 rating=rat;
 	}
 public String getcourseid() {
 	  return course_id;
@@ -79,11 +81,11 @@ public String getCode() {
  public void setRegion(String cost) {
   this.cost = cost;
  }
- public Double getLifeExpectancy() {
-  return lifeExpectancy;
+ public String getrating() {
+  return rating;
  }
- public void setLifeExpectancy(Double lifeExpectancy) {
-  this.lifeExpectancy = lifeExpectancy;
+ public void setrating(String rating) {
+  this.rating = rating;
  }
  public Double getGnp() {
   return gnp;

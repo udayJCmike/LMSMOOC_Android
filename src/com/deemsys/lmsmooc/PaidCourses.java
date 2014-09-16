@@ -3,6 +3,10 @@ package com.deemsys.lmsmooc;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,43 +26,36 @@ import org.apache.http.params.HttpParams;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import com.deemsys.lmsmooc.AllCourses.fetchpurnumber;
-import com.google.gson.Gson;
-
-
-
-
+import com.squareup.picasso.Picasso;
 import android.support.v4.app.Fragment;
-
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
-
 import android.view.View;
-
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AbsListView.OnScrollListener;
 
 public class PaidCourses  extends Fragment {
+	Bitmap bitmap;
+
 	public ProgressDialog cDialog,pDialog;
 	public static ArrayList<String> coursetotallist= new ArrayList<String>();
+	public static ArrayList<String> imagelist= new ArrayList<String>();
 	ArrayList<Course> courselist;
 	Boolean isInternetPresent = false;
 	ConnectionDetector cd;
@@ -71,9 +68,9 @@ public class PaidCourses  extends Fragment {
 	 View loadMoreView;
 	 JSONArray user = null;
 	 static ListView listView ;
-	 String course_name,authorname,student_enrolled,ratingcouont,cost,course_id,instructorid,numofrows;
+	 String course_name,authorname,student_enrolled,ratingcouont,cost,course_id,instructorid,numofrows,course_cover_image;
+	 private static final String TAG_SRESL= "serviceresponse";
 	    private static final String TAG_Course_ARRAY = "CourseList";
-	    private static final String TAG_NUMBER_OF_ROWS = "number_of_rows";
 		private static final String TAG_SRES= "serviceresponse";
 		private static final String TAG_COURSE_NAME= "course_name";
 		private static final String TAG_COURSE_AUTHOR= "course_author";
@@ -84,14 +81,13 @@ public class PaidCourses  extends Fragment {
 		private static final String TAG_route_no= "route_no";
 		private static final String TAG_driver_status= "device_status";
 		private static final String TAG_status_date= "status_date";
-		private static final String TAG_ADDRS= "address";
-		private static final String TAG_SPEED= "speed";
 		private static final String TAG_INSTRUCTOR_ID= "instructor_id";
 		private static final String TAG_COURSE_ID= "course_id";
-		String courseidurl,instructoridurl,pur_url;
+		private static final String TAG_SUCCESS = "success";
+		private static final String TAG_NUMBER_OF_ROWS = "number_of_rows";
+	 String courseidurl,instructoridurl,pur_url;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-    	
         View v = inflater.inflate(R.layout.allcourses, container, false);
         setHasOptionsMenu(true);
        
@@ -103,6 +99,60 @@ public class PaidCourses  extends Fragment {
         listView.addFooterView(loadMoreView);
 
         return v;
+
+      
+    }
+    boolean _areLecturesLoaded = false;
+
+    @Override
+     public void setUserVisibleHint(boolean isVisibleToUser) {
+         super.setUserVisibleHint(isVisibleToUser);
+         if (isVisibleToUser && !_areLecturesLoaded ) {
+          loaddatas(); 
+          _areLecturesLoaded = true;
+         }
+     }
+    public void loaddatas()
+    {
+    	
+         courselist = new ArrayList<Course>();
+         System.out.println("courselist size::"+courselist.size());
+         dataAdapter = new MyCustomAdapter(getActivity(),
+           R.layout.course_overview, courselist);
+         listView.setAdapter(dataAdapter);
+         listView.setTextFilterEnabled(true);
+         listView.setOnItemClickListener(new OnItemClickListener() {
+         	   public void onItemClick(AdapterView<?> parent, View view,
+         	     int position, long id) {
+         	   System.out.println("position value in loaddatas"+position);
+         	   if(position<courselist.size()){
+         		  Course country = (Course) parent.getItemAtPosition(position);
+         		
+          	    courseidurl=country.getcourseid();
+          	    instructoridurl=country.getinsid();
+          	    new fetchpurnumber().execute();
+          	    Toast.makeText(getActivity(),
+          	      country.getcourseid(), Toast.LENGTH_SHORT).show();
+         	   }
+         	   }
+         	  });
+         	 
+         	  listView.setOnScrollListener(new OnScrollListener(){
+         	 
+         	   @Override
+         	   public void onScrollStateChanged(AbsListView view, int scrollState) {}
+         	 
+         	   @Override
+         	   public void onScroll(AbsListView view, int firstVisibleItem,int visibleItemCount, int totalItemCount) {
+         	 
+         	   int lastInScreen = firstVisibleItem + visibleItemCount;    
+         	   if((lastInScreen == totalItemCount) && !(loadingMore)){     
+         	  
+         		   System.out.println(Config.ServerUrl+Config.paidcourseurl);
+         	    grabURL(Config.ServerUrl+Config.paidcourseurl); 
+         	   }
+         	   }
+         	  });
     }
     public void grabURL(String url) {
     	  Log.v("Android Spinner JSON Data Activity", url);
@@ -132,7 +182,7 @@ public class PaidCourses  extends Fragment {
 			  cDialog = new ProgressDialog(getActivity());
 	          cDialog.setMessage("Please wait...");
 	          cDialog.setIndeterminate(false);
-	          cDialog.setCancelable(false);
+	          cDialog.setCancelable(true);
 	          cDialog.show();
 		}
 			
@@ -141,25 +191,20 @@ public class PaidCourses  extends Fragment {
 		   
 				 super.onPostExecute(file_url);
 				
-				 cDialog.dismiss();
-				   Toast toast;
-				   if (error) {
-				    toast = Toast.makeText(getActivity(), 
-				      content, Toast.LENGTH_LONG);
-				    toast.setGravity(Gravity.TOP, 25, 400);
-				    toast.show();
-				   } else {
-				    displayCountryList(content);
-				   }
+				
+				  
+				    displayCourseList(content);
+				    cDialog.dismiss();
+				  
 				  }
 
-			private void displayCountryList(String response){
+			private void displayCourseList(String response){
 				 
 				  JSONObject responseObj = null; 
 				 
 				  try {
 					  
-				   Gson gson = new Gson();
+				
 				   JSONObject c = jArray.getJSONObject(TAG_SRES);
 			    	Log.i("tagconvertstr", "["+c+"]");
 			 
@@ -168,42 +213,63 @@ public class PaidCourses  extends Fragment {
 				
 				   JSONArray countryListObj = c.getJSONArray(TAG_Course_ARRAY);
 				 
-				   if(countryListObj.length() == 0){
+				   if(countryListObj.length() == 0)
+				   
+				   {
 			
 				    AllCourses.listView.removeFooterView(loadMoreView);
 				   }
-				   else {
-				    for (int i=0; i<countryListObj.length(); i++){
+				   else 
+				   
+				   {
+				   
+					   for (int i=0; i<countryListObj.length(); i++)
+					   
+					   {
 				    start++;
-				    System.out.println("forloop1");
+				    System.out.println("countryListObj length"+countryListObj.length());
 		    		JSONObject c1 = user.getJSONObject(i);
 		    		JSONObject c2 = c1.getJSONObject(TAG_SRES);
-		    		 authorname = c2.getString(TAG_COURSE_AUTHOR);
-			    		instructorid=c2.getString(TAG_INSTRUCTOR_ID);
-			    		course_id=c2.getString(TAG_COURSE_ID);
-			            course_name = c2.getString(TAG_COURSE_NAME);
-			          
-			        	cost= c2.getString(TAG_COURSE_COST);
-			        	coursetotallist.add(authorname);
-			        	coursetotallist.add(course_name);
-			        	 Course cnt = new Course(authorname,course_name,cost,course_id,instructorid);
-			        	 cnt.setName(authorname);
-			        	 cnt.setCode(course_name);
-						  cnt.setins_id(instructorid);
-						  cnt.setcourseid(course_id);
-		       String countryInfo = countryListObj.getJSONObject(i).toString();
-				  
-				    System.out.println("country in fo"+countryInfo);
-				  	// Course country = gson.fromJson(countryInfo,Course.class);
-				   
+		    	    authorname = c2.getString(TAG_COURSE_AUTHOR);
+		    		instructorid=c2.getString(TAG_INSTRUCTOR_ID);
+		    		course_id=c2.getString(TAG_COURSE_ID);
+		            course_name = c2.getString(TAG_COURSE_NAME);
+		          //  course_cover_image="http://208.109.248.89/lmsvideos/28/coverImage.jpg";
+		            course_cover_image=c2.getString(TAG_course_cover_image);
+		        	cost= c2.getString(TAG_COURSE_COST);
+		        	ratingcouont=c2.getString(TAG_COURSE_RATINGS);
+		        	coursetotallist.add(authorname);
+		        	coursetotallist.add(course_name);
+		        	coursetotallist.add(ratingcouont);
+		        	imagelist.add(course_cover_image);
+
+
+		        	 Course cnt = new Course(authorname,course_name,cost,course_id,instructorid,course_cover_image,ratingcouont);
+		        	 cnt.setName(authorname);
+		        	 cnt.setCode(course_name);
+					  cnt.setins_id(instructorid);
+					  cnt.setcourseid(course_id);
+					  cnt.setrating(ratingcouont);
+		           cnt.setstringurl(course_cover_image);
 				    courselist.add(cnt);
+				 
 				    System.out.println("size fo country list"+courselist.size());
 				    System.out.println("value fo country list"+courselist);
 				    dataAdapter.add(cnt);
-				    }
-				 
-				    dataAdapter.notifyDataSetChanged();
-				    loadingMore = false;
+		        	 System.out.println("bitmap"+bitmap);
+		       System.out.println("i value"+i);
+		       if(i==9)
+		       {
+					 
+		       }
+					   }
+					  
+					   dataAdapter.notifyDataSetChanged();
+					    loadingMore = false;
+		  
+					   
+					   
+				   
 				   }
 				 
 				  } catch (JSONException e) {
@@ -238,26 +304,7 @@ public class PaidCourses  extends Fragment {
 		    	Log.i("tagconvertstr", "["+c+"]");
 		    	user = c.getJSONArray(TAG_Course_ARRAY);
 		    	Log.i("tagconvertstr1", "["+user+"]");
-//			    System.out.println("jarray"+jArray);
-//			    try
-//			    {
-//			    	if(jArray != null)
-//			    	{
-//			    	
-//			    	JSONObject c = jArray.getJSONObject(TAG_SRES);
-//			    	Log.i("tagconvertstr", "["+c+"]");
-//			    JSONArray user = c.getJSONArray(TAG_Course_ARRAY);
-//			    	Log.i("tagconvertstr1", "["+user+"]");
-//			    	
-//			    	for(int i=0;i<user.length();i++)
-//			    	{
-//			    		System.out.println("forloop1");
-//			    		JSONObject c1 = user.getJSONObject(i);
-//			    		JSONObject c2 = c1.getJSONObject(TAG_SRES);
-//			    	String ins     = c2.getString("instructor_id");
-//			    	System.out.println("instructor"+ins);
-//			    	}
-//			    	}
+
 			    
 			    httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs)); 
 			    response = httpclient.execute(httpPost);
@@ -319,12 +366,13 @@ public class PaidCourses  extends Fragment {
     	  private class ViewHolder {
     	   TextView code;
     	   TextView name;
-    	   TextView continent;
+    	   ImageView cover;
     	   TextView cost;
+    	   ImageView ratingshow;
     	  }
     	 
     	  public void add(Course country){
-    	  // Log.v("AddView", country.getCode());
+    	
     	   this.countryList.add(country);
     	  }
     	 
@@ -336,14 +384,14 @@ public class PaidCourses  extends Fragment {
     	   if (convertView == null) {
     	 
     	   LayoutInflater vi = (LayoutInflater)getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    	   convertView = vi.inflate(R.layout.course_overview, null);
+    	   convertView = vi.inflate(R.layout.paid_course_overview, null);
     	 
     	   holder = new ViewHolder();
     	   holder.code = (TextView) convertView.findViewById(R.id.coursename);
     	   holder.name = (TextView) convertView.findViewById(R.id.author);
     	   holder.cost = (TextView) convertView.findViewById(R.id.cost);
-    	//   holder.cost = (TextView) convertView.findViewById(R.id.enroll);
-    	 
+       holder.cover = (ImageView) convertView.findViewById(R.id.cover);
+      holder.ratingshow= (ImageView) convertView.findViewById(R.id.ratingimage);
     	   convertView.setTag(holder);
     	 
     	   } else {
@@ -354,61 +402,85 @@ public class PaidCourses  extends Fragment {
     	   holder.code.setText(country.getCode());
     	   holder.name.setText(country.getName());
     	   holder.cost.setText("$ "+country.getRegion());
-    	//   holder.region.setText(country.getRegion());
-    	 
+    	   holder.cover.setImageBitmap(country.getBitmap());
+//    	   aQuery = new AQuery(getActivity());
+//    	    aQuery.id(R.id.cover).image(country.getstringurl(),true,true);
+    	    Picasso.with(getActivity()).load(country.getstringurl()).into(holder.cover);
+    	  
+//    	   new DownloadTask((ImageView) convertView.findViewById(R.id.cover))
+//           .execute((String) country.getstringurl());
+    	   if(country.getrating().equalsIgnoreCase("0"))
+    	   {
+    		   holder.ratingshow.setImageResource(R.drawable.zero);  
+    	   }
+    	   else  if(country.getrating().equalsIgnoreCase("1"))
+    	   {
+    		   holder.ratingshow.setImageResource(R.drawable.one);  
+    	   }
+    	   else  if(country.getrating().equalsIgnoreCase("2"))
+    	   {
+    		   holder.ratingshow.setImageResource(R.drawable.two);  
+    	   }
+    	   else  if(country.getrating().equalsIgnoreCase("3"))
+    	   {
+    		   holder.ratingshow.setImageResource(R.drawable.three);  
+    	   }
+    	   else  if(country.getrating().equalsIgnoreCase("4"))
+    	   {
+    		   holder.ratingshow.setImageResource(R.drawable.four);  
+    	   }
+    	   else  if(country.getrating().equalsIgnoreCase("5"))
+    	   {
+    		   holder.ratingshow.setImageResource(R.drawable.five);  
+    	   }
+    	   else 
+    	   {
+    		   holder.ratingshow.setImageResource(R.drawable.zero);  
+    	   }
     	   return convertView;
     	 
     	  }
     	 
     }
-    boolean _areLecturesLoaded = false;
+    public class DownloadTask extends AsyncTask<String, Void, Boolean> {
+        ImageView v;
+        String url;
+        Bitmap bm;
 
-    @Override
-     public void setUserVisibleHint(boolean isVisibleToUser) {
-         super.setUserVisibleHint(isVisibleToUser);
-         if (isVisibleToUser && !_areLecturesLoaded ) {
-          loaddatas(); 
-          _areLecturesLoaded = true;
-         }
-     }
-    public void loaddatas()
-    {
-    	
-         courselist = new ArrayList<Course>();
-         dataAdapter = new MyCustomAdapter(getActivity(),
-           R.layout.course_overview, courselist);
-         listView.setAdapter(dataAdapter);
-         listView.setTextFilterEnabled(true);
-         listView.setOnItemClickListener(new OnItemClickListener() {
-         	   public void onItemClick(AdapterView<?> parent, View view,
-         	     int position, long id) {
-         		  if(position<courselist.size()){
-         		  Course country = (Course) parent.getItemAtPosition(position);
-          	    courseidurl=country.getcourseid();
-          	    instructoridurl=country.getinsid();
-          	    new fetchpurnumber().execute();
-          	    Toast.makeText(getActivity(),
-          	      country.getcourseid(), Toast.LENGTH_SHORT).show();
-         	   }
-         	   }
-         	  });
-         	 
-         	  listView.setOnScrollListener(new OnScrollListener(){
-         	 
-         	   @Override
-         	   public void onScrollStateChanged(AbsListView view, int scrollState) {}
-         	 
-         	   @Override
-         	   public void onScroll(AbsListView view, int firstVisibleItem,int visibleItemCount, int totalItemCount) {
-         	 
-         	   int lastInScreen = firstVisibleItem + visibleItemCount;    
-         	   if((lastInScreen == totalItemCount) && !(loadingMore)){     
-         	  
-         		   System.out.println(Config.ServerUrl+Config.allcourseurl);
-         	    grabURL(Config.ServerUrl+Config.allcourseurl); 
-         	   }
-         	   }
-         	  });
+        public DownloadTask(ImageView v) {
+            this.v = v;
+        }
+
+        @Override
+        protected Boolean doInBackground(String... params) {
+            url = params[0];
+            bm = loadBitmap(url);
+            return true;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+            // TODO Auto-generated method stub
+            super.onPostExecute(result);
+            v.setImageBitmap(bm);
+            cDialog.dismiss();
+        }
+
+        public Bitmap loadBitmap(String url) {
+            try {
+                URL newurl = new URL(url);
+                Bitmap b = BitmapFactory.decodeStream(newurl.openConnection()
+                        .getInputStream());
+                return b;
+            } catch (MalformedURLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            return null;
+        }
     }
     class fetchpurnumber extends AsyncTask<String, String, String> {
     	@Override
@@ -417,7 +489,7 @@ public class PaidCourses  extends Fragment {
             pDialog = new ProgressDialog(getActivity());
             pDialog.setMessage("Please wait...");
             pDialog.setIndeterminate(false);
-            pDialog.setCancelable(false);
+            pDialog.setCancelable(true);
             pDialog.show();
 
         }
@@ -442,7 +514,7 @@ public class PaidCourses  extends Fragment {
                 	 {
                 	 System.out.println("json value::"+json);
                 	
-                	 JSONObject jUser = json.getJSONObject(TAG_SRES);
+                	 JSONObject jUser = json.getJSONObject(TAG_SRESL);
                 	
                 	 numofrows=  jUser.getString(TAG_NUMBER_OF_ROWS);
                 	 System.out.println("number of rows value:::"+numofrows);
@@ -486,4 +558,28 @@ public class PaidCourses  extends Fragment {
 		 }
 
  }
+    
+    private class LoadImage extends AsyncTask<String, String, String> {
+	    @Override
+	        protected void onPreExecute() {
+	            super.onPreExecute();
+
+	    }
+	       protected String doInBackground(String... args) {
+	         try {
+	        	 System.out.println("test");
+	        
+	               bitmap = BitmapFactory.decodeStream((InputStream)new URL(args[0]).getContent());
+	        } catch (Exception e) {
+	              e.printStackTrace();
+	        }
+	      return null;
+	       }
+	       protected void onPostExecute(String image) {
+	         if(image != null){
+	        	
+	         }
+	        
+	       }
+	   }
 }
