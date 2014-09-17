@@ -28,6 +28,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
@@ -36,17 +37,22 @@ import com.actionbarsherlock.view.MenuItem.OnActionExpandListener;
 import com.squareup.picasso.Picasso;
 
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
 
+import android.text.Html;
 import android.util.Log;
 
 import android.view.KeyEvent;
@@ -114,7 +120,12 @@ public class SearchActivity  extends SherlockActivity {
 	        setContentView(R.layout.searchcourse); 
          listView = (ListView)findViewById(R.id.listView1);
         
-			
+         ActionBar ab = getSupportActionBar();
+	      ab.setDisplayHomeAsUpEnabled(true);
+	      getSupportActionBar().setHomeButtonEnabled(true);
+	      ab.setTitle(Html.fromHtml("<font color='#000000'>Search</font>"));
+		    
+	        ab.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
 		loadMoreView = ((LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE))
           .inflate(R.layout.loadmore, null, false);
         listView.addFooterView(loadMoreView);
@@ -171,6 +182,20 @@ public class SearchActivity  extends SherlockActivity {
     
     }
     @Override
+    public boolean onOptionsItemSelected(com.actionbarsherlock.view.MenuItem item) {
+        switch (item.getItemId()) {
+
+        case android.R.id.home:
+             finish();
+             break;
+
+        default:
+            return super.onOptionsItemSelected(item);
+        }
+        return false;
+    }
+	
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
       
 		
@@ -196,7 +221,11 @@ public class SearchActivity  extends SherlockActivity {
         	                      .toLowerCase(Locale.getDefault());
         	        	System.out.println("size of courselist:::"+courselist.size());
         	        	
-   
+        	        	InputMethodManager inputManager = (InputMethodManager)
+                                getSystemService(Context.INPUT_METHOD_SERVICE); 
+
+inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                                   InputMethodManager.RESULT_UNCHANGED_SHOWN);
 
         	              new GrabURL().execute(Config.ServerUrl+Config.searchselecturl);
         	           return true; 
@@ -281,10 +310,36 @@ public class SearchActivity  extends SherlockActivity {
 				   if(countryListObj.length() == 0)
 				   
 				   {
-			
-				    AllCourses.listView.removeFooterView(loadMoreView);
+					   AlertDialog alertDialog = new AlertDialog.Builder(
+	    						SearchActivity.this).create();
+
+	    				// Setting Dialog Title
+	    				alertDialog.setTitle("INFO!");
+
+	    				// Setting Dialog Message
+	    				alertDialog.setMessage("No results found.");
+
+	    				// Setting Icon to Dialog
+	    				alertDialog.setIcon(R.drawable.delete);
+	    				
+
+	    				// Setting OK Button
+	    				alertDialog.setButton("OK",	new DialogInterface.OnClickListener() {
+
+	    							public void onClick(final DialogInterface dialog,
+	    									final int which) {
+	    								// Write your code here to execute after dialog
+	    								// closed
+	    								
+	    	                                dialog.dismiss();
+	    							}
+	    						});
+
+	    				// Showing Alert Message
+	    				alertDialog.show();
+				   listView.removeFooterView(loadMoreView);
 				   }
-				   else 
+				   else  
 				   
 				   {
 				   
@@ -376,7 +431,7 @@ public class SearchActivity  extends SherlockActivity {
 			     StatusLine statusLine = response.getStatusLine();
 			     if(statusLine.getStatusCode() == HttpStatus.SC_OK){
 			      ByteArrayOutputStream out = new ByteArrayOutputStream();
-		      response.getEntity().writeTo(out);
+		           response.getEntity().writeTo(out);
 			      out.close();
 			      content = out.toString();
 			     } else{
@@ -647,4 +702,9 @@ public class SearchActivity  extends SherlockActivity {
 	        
 	       }
 	   }
+    @Override
+	 public void onBackPressed() 
+ {
+
+ }
 }

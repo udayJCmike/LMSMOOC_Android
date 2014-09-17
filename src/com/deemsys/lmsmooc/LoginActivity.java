@@ -373,7 +373,7 @@ public class LoginActivity extends Activity  {
 	                	 Config.student_id=jUser.getString(TAG_STUDENT_ID);
 	                	 System.out.println("username value:::"+username);
 	                	 System.out.println("password value::"+password);
-	                	 System.out.println("role value"+role);
+	                	 System.out.println("student id value"+Config.student_id);
 	                	
 	                	 }
 	                	

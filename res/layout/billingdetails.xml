@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+  
+    <TextView
+        android:id="@+id/authornameans"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="false"
+        android:layout_marginLeft="170dp"
+        android:layout_marginTop="40dp"
+        android:text="toans1" />
+
+    <TextView
+        android:id="@+id/coursenameans"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginLeft="170dp"
+        android:layout_marginTop="2dp"
+        android:text="fromans1" />
+
+    
+
+    <TextView
+        android:id="@+id/dateans"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="false"
+        android:layout_marginLeft="170dp"
+        android:layout_marginTop="82dp"
+        android:text="dateans1" />
+    
+    
+    
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="2dp"
+        android:text="Course Name" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignWithParentIfMissing="false"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="40dp"
+        android:text="Author Name" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="82dp"
+        android:text="Date of Purchase"
+        />
+    
+    
+   <!--  <Button
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Back" /> -->
+
+     <TextView
+         android:id="@+id/textView4"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignRight="@+id/textView1"
+         android:layout_below="@+id/textView3"
+         android:layout_marginTop="38dp"
+         android:text="Price of course" />
+
+     <TextView
+         android:id="@+id/textView5"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignLeft="@+id/textView3"
+         android:layout_below="@+id/textView4"
+         android:layout_marginTop="26dp"
+         android:text="Promocode" />
+
+     <TextView
+         android:id="@+id/textView6"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignLeft="@+id/textView5"
+         android:layout_below="@+id/textView5"
+         android:layout_marginTop="34dp"
+         android:text="Reduction" />
+
+     <TextView
+         android:id="@+id/textView7"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignLeft="@+id/textView4"
+         android:layout_below="@+id/textView6"
+         android:layout_marginTop="41dp"
+         android:text="Amount of paid" />
+ 
+     
+      <TextView
+         android:id="@+id/textView8"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignLeft="@+id/textView4"
+         android:layout_below="@+id/textView7"
+         android:layout_marginTop="41dp"
+         android:text="Transaction Date" />
+ 
+     
+       <TextView
+         android:id="@+id/textView9"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignLeft="@+id/textView4"
+         android:layout_below="@+id/textView8"
+         android:layout_marginTop="41dp"
+         android:text="Transaction Id" />
+
+       <TextView
+           android:id="@+id/priceans"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_above="@+id/textView5"
+           android:layout_alignLeft="@+id/authornameans"
+           android:text="dateans1" />
+
+        <TextView
+            android:id="@+id/promoans"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textView6"
+            android:layout_alignRight="@+id/coursenameans"
+            android:text="dateans1" />
+
+        <TextView
+            android:id="@+id/reducans"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textView7"
+            android:layout_alignLeft="@+id/priceans"
+            android:text="dateans1" />
+
+        <TextView
+            android:id="@+id/amountans"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textView8"
+            android:layout_alignLeft="@+id/reducans"
+            android:text="dateans1" />
+
+        <TextView
+            android:id="@+id/trdateans"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textView9"
+            android:layout_alignLeft="@+id/amountans"
+            android:text="dateans1" />
+
+        <TextView
+            android:id="@+id/tridans"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView9"
+            android:layout_alignBottom="@+id/textView9"
+            android:layout_alignLeft="@+id/trdateans"
+            android:text="dateans1" />
+
+</RelativeLayout>

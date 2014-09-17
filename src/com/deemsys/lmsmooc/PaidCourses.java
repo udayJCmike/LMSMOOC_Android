@@ -131,8 +131,8 @@ public class PaidCourses  extends Fragment {
           	    courseidurl=country.getcourseid();
           	    instructoridurl=country.getinsid();
           	    new fetchpurnumber().execute();
-          	    Toast.makeText(getActivity(),
-          	      country.getcourseid(), Toast.LENGTH_SHORT).show();
+//          	    Toast.makeText(getActivity(),
+//          	      country.getcourseid(), Toast.LENGTH_SHORT).show();
          	   }
          	   }
          	  });
@@ -217,7 +217,7 @@ public class PaidCourses  extends Fragment {
 				   
 				   {
 			
-				    AllCourses.listView.removeFooterView(loadMoreView);
+				    listView.removeFooterView(loadMoreView);
 				   }
 				   else 
 				   

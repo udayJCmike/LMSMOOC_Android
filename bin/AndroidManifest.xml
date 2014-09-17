@@ -49,6 +49,25 @@
               android:screenOrientation="portrait" />
               <activity android:name=".SearchActivity"
               android:screenOrientation="portrait" />
+              <activity android:name=".AuthorCourses"
+              android:screenOrientation="portrait" />
+              <activity android:name=".MyFavoriteCategoryCourses"
+              android:screenOrientation="portrait" />
+              
+              <activity android:name=".InboxFragment"
+              android:screenOrientation="portrait" />
+            <activity android:name=".InboxDetails"
+              android:screenOrientation="portrait" />
+             <activity android:name=".InboxArrayAdapter"
+              android:screenOrientation="portrait" />
+             
+             
+              <activity android:name=".BillingFragment"
+              android:screenOrientation="portrait" />
+            <activity android:name=".BillingDetails"
+              android:screenOrientation="portrait" />
+             <activity android:name=".BillingArrayAdapter"
+              android:screenOrientation="portrait" />
     </application>
 
 </manifest>

@@ -135,7 +135,7 @@ System.out.println("size of nav drwers:::::::::"+navDrawerItems.size());
 			}
 
 			public void onDrawerOpened(View drawerView) {
-			
+			                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
 			//	getActionBar().setTitle(mDrawerTitle);
 				getActionBar().setTitle(Html.fromHtml("<font color=\"black\">" + mDrawerTitle + "</font>"));
 			//	getActionBar().setTitle(Html.fromHtml("<font color='#000000'>title</font>"));

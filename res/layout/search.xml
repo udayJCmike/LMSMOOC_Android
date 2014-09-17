@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     android:cursorVisible="true"
     android:hint="Search"
-    android:imeOptions="actionDone"
+    android:textColor="#000000"
+    android:imeOptions="actionSearch" 
     android:inputType="text" >
  
 </EditText>

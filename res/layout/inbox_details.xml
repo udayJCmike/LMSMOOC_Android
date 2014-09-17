@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+  
+    <TextView
+        android:id="@+id/toans"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="false"
+        android:layout_marginLeft="170dp"
+        android:layout_marginTop="40dp"
+        android:text="toans1" />
+
+    <TextView
+        android:id="@+id/fromans"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginLeft="170dp"
+        android:layout_marginTop="2dp"
+        android:text="fromans1" />
+
+    <!-- <TextView
+        android:id="@+id/addrstext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignWithParentIfMissing="false"
+        android:layout_marginLeft="170dp"
+        android:layout_marginTop="310dp"
+        android:text="DEEMSYSINC" /> -->
+
+    <TextView
+        android:id="@+id/dateans"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="false"
+        android:layout_marginLeft="170dp"
+        android:layout_marginTop="82dp"
+        android:text="dateans1" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="2dp"
+        android:text="FROM" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignWithParentIfMissing="false"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="40dp"
+        android:text="TO" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="82dp"
+        android:text="Date"
+        />
+
+    <!-- <Button
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Back" /> -->
+
+    <TextView
+        android:id="@+id/msgans"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_below="@+id/textView4"
+        android:layout_marginTop="42dp"
+        android:text="messageqwer" />
+
+    <Button
+        android:id="@+id/redbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/toans"
+        android:layout_alignTop="@+id/fromans"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@+id/fromans"
+        android:background="@drawable/unimportant" />
+
+    <Button
+        android:id="@+id/greenbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/msgans"
+        android:layout_alignLeft="@+id/redbtn"
+        android:background="@drawable/important" />
+ 
+</RelativeLayout>

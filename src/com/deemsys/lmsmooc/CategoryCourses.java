@@ -23,10 +23,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
+import com.deemsys.lmsmooc.AuthorCourses.unfollow;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
-import android.app.ActionBar;
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -58,7 +63,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-public class CategoryCourses  extends Activity {
+public class CategoryCourses  extends SherlockFragmentActivity {
 	public ProgressDialog cDialog,pDialog;
 	public static ArrayList<String> imagelist= new ArrayList<String>();
 	public static ArrayList<String> coursetotallist= new ArrayList<String>();
@@ -102,10 +107,11 @@ public class CategoryCourses  extends Activity {
         Intent i = getIntent();
      category_name = i.getExtras().getString("category_name","");
    
-     ActionBar actions = getActionBar();
-    
+     ActionBar ab = getSupportActionBar();
+     ab.setDisplayHomeAsUpEnabled(true);
+     getSupportActionBar().setHomeButtonEnabled(true);
      setTitle(Html.fromHtml("<font color=\"black\">" + category_name + "</font>"));
-     actions.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
+     ab.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
          listView = (ListView)findViewById(R.id.listView1);
         
          
@@ -216,7 +222,7 @@ public class CategoryCourses  extends Activity {
 				 
 				   if(countryListObj.length() == 0){
 			
-				    AllCourses.listView.removeFooterView(loadMoreView);
+				   listView.removeFooterView(loadMoreView);
 				   }
 				   else {
 				    for (int i=0; i<countryListObj.length(); i++){
@@ -479,7 +485,7 @@ public class CategoryCourses  extends Activity {
     			
     			return null;
     		}
-		@SuppressWarnings("deprecation")
+	
 		@Override
 		 protected void onPostExecute(String file_url) {
 	    	   super.onPostExecute(file_url);
@@ -497,6 +503,97 @@ public class CategoryCourses  extends Activity {
 
 		
 		 }
+
+ }
+   
+  
+    @Override
+    public boolean onOptionsItemSelected(com.actionbarsherlock.view.MenuItem item) {
+        switch (item.getItemId()) {
+
+        case android.R.id.home:
+             finish();
+             break;
+
+        default:
+            return super.onOptionsItemSelected(item);
+        }
+        return false;
+    }
+    
+    
+  class unfollow extends AsyncTask<String, String, String> {
+	  	@Override
+	      protected void onPreExecute() {
+	          super.onPreExecute();
+//	          pDialog = new ProgressDialog(getApplicationContext());
+//	          pDialog.setMessage("Please wait...");
+//	          pDialog.setIndeterminate(false);
+//	          pDialog.setCancelable(true);
+//	          pDialog.show();
+
+	      }
+
+			@Override
+			protected String doInBackground(String... params) {
+				
+				 List<NameValuePair> params1 = new ArrayList<NameValuePair>();
+	           
+	           params1.add(new BasicNameValuePair("category_name", category_name));
+	           params1.add(new BasicNameValuePair("student_id", Config.student_id));
+
+	           JsonParser jLogin = new JsonParser();
+	           
+	           JSONObject json = jLogin.makeHttpRequest(Config.ServerUrl+Config.removefrommycategoryurl,"POST", params1);
+	           System.out.println("value for json::"+json);
+	           if(json!=null)
+	           {
+	               try
+	               {
+	              	 if(json != null)
+	              	 {
+	              	 System.out.println("json value::"+json);
+	              	
+	              	 JSONObject jUser = json.getJSONObject(TAG_SRESL);
+	              	
+	              	 numofrows=  jUser.getString(TAG_SUCCESS);
+	              	 System.out.println("number of rows value:::"+numofrows);
+	              	 
+	              	
+	              	 }
+	              	
+	              }
+	               
+	               catch(JSONException e)
+	               {
+	              	 e.printStackTrace();
+	              	 
+	               }
+	            }
+	           else{
+	              	 
+	           }
+	              	
+	               
+	  			
+	  			return null;
+	  		}
+			
+			@Override
+			 protected void onPostExecute(String file_url) {
+		    	   super.onPostExecute(file_url);
+		        System.out.println("in post execute");
+		    	//   pDialog.dismiss();
+		    	   
+		    	
+
+			
+			 }
+
+	}
+  @Override
+	 public void onBackPressed() 
+ {
 
  }
 }

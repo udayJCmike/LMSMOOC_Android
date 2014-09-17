@@ -128,8 +128,8 @@ public class AllCourses  extends Fragment {
         	    courseidurl=country.getcourseid();
         	    instructoridurl=country.getinsid();
         	    new fetchpurnumber().execute();
-        	    Toast.makeText(getActivity(),
-        	      country.getcourseid(), Toast.LENGTH_SHORT).show();
+//        	    Toast.makeText(getActivity(),
+//        	      country.getcourseid(), Toast.LENGTH_SHORT).show();
         	    }
         	   }
         	  });

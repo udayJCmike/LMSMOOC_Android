@@ -55,28 +55,7 @@ public class Fragmetns2 extends SherlockFragment implements SearchView.OnQueryTe
         inflater.inflate(R.menu.chosecategory, menu);
 
         
-//        SearchView searchView = (SearchView) menu.findItem(R.id.search).getActionView();
-//        searchView.setQueryHint("Search for countries…");
-//        searchView.setOnQueryTextListener(this);
-//      //  SearchView searchView = (SearchView) menu.findItem(R.id.search).getActionView();
-//      //  searchView.setQueryHint("Search");
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                if(!TextUtils.isEmpty(newText)) {
-//                    // Call filter here
-//                    return true;
-//                }
-//
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//                // Do something
-//                return true;
-//            }
-//        });
+
     }
   public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection

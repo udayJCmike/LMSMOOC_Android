@@ -10,9 +10,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.app.SherlockActivity;
 
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -27,7 +28,7 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-public class CategorySelectionActivity extends Activity {
+public class CategorySelectionActivity extends SherlockActivity {
 	String category_name;
 	public ProgressDialog cDialog;
 	Boolean isInternetPresent = false;
@@ -50,10 +51,12 @@ public class CategorySelectionActivity extends Activity {
 			 getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
 			  
 			setContentView(R.layout.categories);
-			  ActionBar actions = getActionBar();
-		        actions.setTitle(Html.fromHtml("<font color='#000000'>Categories</font>"));
-		    
-		        actions.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
+			ActionBar ab = getSupportActionBar();
+		      ab.setDisplayHomeAsUpEnabled(true);
+		      getSupportActionBar().setHomeButtonEnabled(true);
+		      ab.setTitle(Html.fromHtml("<font color='#000000'>Categories</font>"));
+			    
+		        ab.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
 			 cd = new ConnectionDetector(getApplicationContext());
 			 isInternetPresent = cd.isConnectingToInternet();
 			 if (isInternetPresent) {
@@ -152,4 +155,25 @@ public class CategorySelectionActivity extends Activity {
 				
 				
 			}
+		   @Override
+			 public void onBackPressed() 
+		 {
+
+		 }
+
+		   @Override
+		    public boolean onOptionsItemSelected(com.actionbarsherlock.view.MenuItem item) {
+		        switch (item.getItemId()) {
+
+		        case android.R.id.home:
+		             finish();
+		             break;
+
+		        default:
+		            return super.onOptionsItemSelected(item);
+		        }
+		        return false;
+		    }
+			
+
 }

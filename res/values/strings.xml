@@ -42,5 +42,9 @@
   <string name="savechanges">Save Changes</string>
   <string name="getpassword">Get Password</string>
   <string name="category">Categories</string>
+  <string name="author_name">Author Name</string>
+  <string name="no_of_courses">Number Of Courses</string>
+  <string name="unfollow">Unfollow</string>
+   <string name="removecategory">Remove Category</string>
  
 </resources>

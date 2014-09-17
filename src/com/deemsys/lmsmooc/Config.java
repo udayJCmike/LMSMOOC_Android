@@ -3,6 +3,7 @@ package com.deemsys.lmsmooc;
 public class Config
 {
 	static String ServerUrl = "http://192.168.1.71:8080/LmsmoocAndroid/Services/";
+	
 	static String AvatarUrl = "http://208.109.248.89:8085/OnlineCourse/resources/images/users/";
 	static String allcourseurl="ViewCourses.php?service=viewallcourse";
 	static String freecourseurl="ViewCourses.php?service=viewfreecourse";
@@ -11,6 +12,22 @@ public class Config
 	static String categoryurl="Category.php?service=allcategory";
 	static String categoryselectionurl="Category.php?service=viewcategorycourse";
 	static String searchselecturl="SearchCourse.php?service=viewsearchcourse";
+	static String mycourseurl="MyCourses.php?service=mycourse";
+	static String myfavoritecourseurl="MyFavoriteCourse.php?service=myfavoritecourse";
+	static String myfavoritecategoryurl="MyFavoriteCategory.php?service=favoritecategory";
+	static String myfavoriteauthorurl="MyFavoriteAuthor.php?service=favoriteauthor";
+	static String myfavoriteauthorcourseurl="MyFavoriteAuthor.php?service=viewyourauthorcourse";
+	
+	static  String billingdetailsurl = "Student_billing.php?service=selectbilling";
+	static  String inboxdetailsurl = "Inbox.php?service=selectinbox";
+
+    static final String inboxreadstatus = "Inbox.php?service=readstatusupdateone";
+
+    static final String importatntstatuszero = "Inbox.php?service=importantstatusupdatezero";
+    static final String importantstatusone = "Inbox.php?service=importantstatusupdateone";
+    static  String unfollowauthorurl = "MyFavoriteAuthor.php?service=unfollowauthor";
+    static String removefrommycategoryurl="MyFavoriteCategory.php?service=removecategory";
+	
 	static String student_id;
 	static String avatar_url;
 	static String username;
