@@ -26,8 +26,12 @@ public class Config
     static final String importatntstatuszero = "Inbox.php?service=importantstatusupdatezero";
     static final String importantstatusone = "Inbox.php?service=importantstatusupdateone";
     static  String unfollowauthorurl = "MyFavoriteAuthor.php?service=unfollowauthor";
+    
+    static  String followauthorurl = "MyFavoriteAuthor.php?service=followauthor";
     static String removefrommycategoryurl="MyFavoriteCategory.php?service=removecategory";
 	
+	static String coursedetailsurl="CourseDetails.php?service=authordetails";
+    
 	static String student_id;
 	static String avatar_url;
 	static String username;

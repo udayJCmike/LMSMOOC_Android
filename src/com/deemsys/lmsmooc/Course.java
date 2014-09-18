@@ -16,25 +16,26 @@ public class Course {
  int population = 0;
  Bitmap bit;
  String rating;
+ String course_description;
 //  
- public Course(String authorname, String course_name,String costw, String course_id2, String instructorid, Bitmap bitmap) {
-	// TODO Auto-generated constructor stub
-	 course_id=course_id2;
-	 instructor_id=instructorid;
-	 course=course_name;
-	 name=authorname;
-	 cost=costw;
-	 bit=bitmap;
-}
- public Course(String authorname, String course_name,String costw, String course_id2, String instructorid) {
-	// TODO Auto-generated constructor stub
-	 course_id=course_id2;
-	 instructor_id=instructorid;
-	 course=course_name;
-	 name=authorname;
-	 cost=costw;
-	
-}
+// public Course(String authorname, String course_name,String costw, String course_id2, String instructorid, Bitmap bitmap) {
+//	// TODO Auto-generated constructor stub
+//	 course_id=course_id2;
+//	 instructor_id=instructorid;
+//	 course=course_name;
+//	 name=authorname;
+//	 cost=costw;
+//	 bit=bitmap;
+//}
+// public Course(String authorname, String course_name,String costw, String course_id2, String instructorid) {
+//	// TODO Auto-generated constructor stub
+//	 course_id=course_id2;
+//	 instructor_id=instructorid;
+//	 course=course_name;
+//	 name=authorname;
+//	 cost=costw;
+//	
+//}
  public Course(String authorname, String course_name,String costw, String course_id2, String instructorid, String bitmap,String rat) {
 		// TODO Auto-generated constructor stub
 		 course_id=course_id2;
@@ -44,6 +45,18 @@ public class Course {
 		 cost=costw;
 		 bittu=bitmap;
 		 rating=rat;
+		 
+	}
+ public Course(String authorname, String course_name,String costw, String course_id2, String instructorid, String bitmap,String rat,String coures_desp) {
+		// TODO Auto-generated constructor stub
+		 course_id=course_id2;
+		 instructor_id=instructorid;
+		 course=course_name;
+		 name=authorname;
+		 cost=costw;
+		 bittu=bitmap;
+		 rating=rat;
+		 course_description=coures_desp;
 	}
 public String getcourseid() {
 	  return course_id;
@@ -99,11 +112,11 @@ public String getCode() {
  public void setSurfaceArea(Double surfaceArea) {
   this.surfaceArea = surfaceArea;
  }
- public int getPopulation() {
-  return population;
+ public String getdescription() {
+  return course_description;
  }
- public void setPopulation(int population) {
-  this.population = population;
+ public void setdescription(String descp) {
+  this.course_description = descp;
  }
  public Bitmap getBitmap() {
 		return bit;

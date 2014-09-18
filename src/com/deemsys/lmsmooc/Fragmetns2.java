@@ -25,7 +25,7 @@ public class Fragmetns2 extends SherlockFragment implements SearchView.OnQueryTe
     	 
         View view = inflater.inflate(R.layout.viewpager_main, container, false);
         setHasOptionsMenu(true);
-        NewMainActivity.sampletestvale="thendral";
+      
         ViewPager mViewPager = (ViewPager) view.findViewById(R.id.viewPager);
        
      

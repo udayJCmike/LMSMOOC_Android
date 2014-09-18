@@ -45,6 +45,17 @@
   <string name="author_name">Author Name</string>
   <string name="no_of_courses">Number Of Courses</string>
   <string name="unfollow">Unfollow</string>
-   <string name="removecategory">Remove Category</string>
+  <string name="removecategory">Remove Category</string>
+  
+  <string name="course_name">Course Name</string>
+  <string name="promo_Video">Promo Video</string>
+  
+  <string name="author_name">Author Name</string>
+  <string name="Avatar">Avatar</string>
+  <string name="author_edu">Education</string>
+   <string name="aboutauth">About Me</string>
+  <string name="follow">Follow Author</string>
+  <string name="unfollow">Unfollow Author</string>
+  
  
 </resources>
