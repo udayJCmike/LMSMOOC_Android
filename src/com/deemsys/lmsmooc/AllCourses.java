@@ -68,7 +68,7 @@ import android.widget.AbsListView.OnScrollListener;
 
 public class AllCourses  extends Fragment {
 	Bitmap bitmap;
-	private AQuery aQuery;
+	
 	public ProgressDialog cDialog,pDialog;
 	public static ArrayList<String> coursetotallist= new ArrayList<String>();
 	public static ArrayList<String> imagelist= new ArrayList<String>();
@@ -94,9 +94,7 @@ public class AllCourses  extends Fragment {
 		private static final String TAG_COURSE_COST= "course_price";
 		private static final String TAG_COURSE_RATINGS= "user_ratings";
 		private static final String TAG_course_cover_image= "course_cover_image";
-		private static final String TAG_route_no= "route_no";
-		private static final String TAG_driver_status= "device_status";
-		private static final String TAG_status_date= "status_date";
+		
 		private static final String TAG_INSTRUCTOR_ID= "instructor_id";
 		private static final String TAG_COURSE_ID= "course_id";
 		private static final String TAG_SUCCESS = "success";
@@ -205,9 +203,17 @@ public class AllCourses  extends Fragment {
 					  
 				
 				   JSONObject c = jArray.getJSONObject(TAG_SRES);
-			    	Log.i("tagconvertstr", "["+c+"]");
+				   JSONArray jarray=c.names();
 			 
-			    	Log.i("tagconvertstr1", "["+user+"]");
+			    	Log.i("jarray values", "["+jarray+"]");
+			    	String arrayname="array";
+			    	
+			    	for(int i=0;i<jarray.length();i++){
+			    		arrayname=arrayname+Integer.toString(i);
+			    		arrayname=jarray.getString(i);
+			    	      Log.e("parenttag",arrayname);
+
+			    	   }
 				   responseObj = new JSONObject(response); 
 				
 				   JSONArray countryListObj = c.getJSONArray(TAG_Course_ARRAY);

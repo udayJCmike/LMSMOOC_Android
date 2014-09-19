@@ -17,6 +17,7 @@ public class Course {
  Bitmap bit;
  String rating;
  String course_description;
+ String students_enrolled;
 //  
 // public Course(String authorname, String course_name,String costw, String course_id2, String instructorid, Bitmap bitmap) {
 //	// TODO Auto-generated constructor stub
@@ -118,10 +119,17 @@ public String getCode() {
  public void setdescription(String descp) {
   this.course_description = descp;
  }
+ public String getstudentsenrolled() {
+	  return students_enrolled;
+	 }
+	 public void setstudentsenrolled(String enroll) {
+	  this.students_enrolled = enroll;
+	 }
  public Bitmap getBitmap() {
 		return bit;
 					}
  public void setBitmap(Bitmap bitmap) {
 		this.bit= bitmap;
-					}
+	
+ }
 }

@@ -31,6 +31,9 @@ public class Config
     static String removefrommycategoryurl="MyFavoriteCategory.php?service=removecategory";
 	
 	static String coursedetailsurl="CourseDetails.php?service=authordetails";
+	
+	static String sampleurl="Sample.php?service=sample";
+	static String courseurl="Courses.php";
     
 	static String student_id;
 	static String avatar_url;

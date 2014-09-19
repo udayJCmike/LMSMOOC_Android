@@ -3,7 +3,6 @@ package com.deemsys.lmsmooc;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -76,7 +75,7 @@ public class MyCourses  extends Fragment {
 	 View loadMoreView;
 	 JSONArray user = null;
 	 static ListView listView ;
-	 String course_id_topass,course_name_to_pass,course_descript_to_pass;
+	 String course_id_topass,course_name_to_pass,course_descript_to_pass,course_enrolled;
 	 String course_name,authorname,student_enrolled,ratingcouont,cost,course_id,instructorid,numofrows,course_cover_image,course_description;
 	 private static final String TAG_SRESL= "serviceresponse";
 	    private static final String TAG_Course_ARRAY = "CourseList";
@@ -90,9 +89,10 @@ public class MyCourses  extends Fragment {
 		private static final String TAG_COURSE_DESCRIPTION= "course_description";
 		private static final String TAG_INSTRUCTOR_ID= "instructor_id";
 		private static final String TAG_COURSE_ID= "course_id";
+		private static final String TAG_ENROLLED_STUDENT= "course_enrolled";
 		
 		private static final String TAG_NUMBER_OF_ROWS = "number_of_rows";
-	 String courseidurl,instructoridurl,pur_url;
+	 String courseidurl,instructoridurl,pur_url,course_enrolled_passing;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.allcourses, container, false);
@@ -120,55 +120,13 @@ public class MyCourses  extends Fragment {
     	    courseidurl=country.getcourseid();
     	    instructoridurl=country.getinsid();
     	    course_name_to_pass=country.getCode();
+    	    course_enrolled_passing=country.getstudentsenrolled();
     	    new fetchpurnumber().execute();
     	   
     	    }
     	   }
     	  });
        
-//        getActivity();
-//		loadMoreView = ((LayoutInflater)getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE))
-//          .inflate(R.layout.loadmore, null, false);
-//        listView.addFooterView(loadMoreView);
-//        courselist = new ArrayList<Course>();
-//        dataAdapter = new MyCustomAdapter(getActivity(),
-//          R.layout.course_overview, courselist);
-//        listView.setAdapter(dataAdapter);
-//        listView.setTextFilterEnabled(true);
-//        System.out.println("count my view");
-//        grabURL(Config.ServerUrl+Config.mycourseurl); 
-//        listView.setOnItemClickListener(new OnItemClickListener() {
-//        	   public void onItemClick(AdapterView<?> parent, View view,
-//        	     int position, long id) {
-//        	   
-//        	    Course country = (Course) parent.getItemAtPosition(position);
-//        	    if(position<courselist.size())
-//        	    {
-//        	    courseidurl=country.getcourseid();
-//        	    instructoridurl=country.getinsid();
-//        	    new fetchpurnumber().execute();
-//        	    Toast.makeText(getActivity(),
-//        	      country.getcourseid(), Toast.LENGTH_SHORT).show();
-//        	    }
-//        	   }
-//        	  });
-//        	 
-//        	  listView.setOnScrollListener(new OnScrollListener(){
-//        	 
-//        	   @Override
-//        	   public void onScrollStateChanged(AbsListView view, int scrollState) {}
-//        	 
-//        	   @Override
-//        	   public void onScroll(AbsListView view, int firstVisibleItem,int visibleItemCount, int totalItemCount) {
-//        	 
-//        	   int lastInScreen = firstVisibleItem + visibleItemCount;    
-//        	   if((lastInScreen == totalItemCount) && !(loadingMore)){     
-//        	  
-//        		   System.out.println(Config.ServerUrl+Config.mycourseurl);
-//        	    grabURL(Config.ServerUrl+Config.mycourseurl); 
-//        	   }
-//        	   }
-//        	  });
 
         return v;
     }
@@ -247,10 +205,12 @@ public class MyCourses  extends Fragment {
 		            course_cover_image=c2.getString(TAG_course_cover_image);
 		        	cost= c2.getString(TAG_COURSE_COST);
 		        	ratingcouont=c2.getString(TAG_COURSE_RATINGS);
+		        	course_enrolled=c2.getString(TAG_ENROLLED_STUDENT);
 		        	coursetotallist.add(course_description);
 		        	coursetotallist.add(authorname);
 		        	coursetotallist.add(course_name);
 		        	coursetotallist.add(ratingcouont);
+		        	coursetotallist.add(course_enrolled);
 		        	imagelist.add(course_cover_image);
 
 
@@ -261,6 +221,7 @@ public class MyCourses  extends Fragment {
 					  cnt.setcourseid(course_id);
 					  cnt.setrating(ratingcouont);
 					  cnt.setdescription(course_description);
+					  cnt.setstudentsenrolled(course_enrolled);
 		           cnt.setstringurl(course_cover_image);
 				    courselist.add(cnt);
 				 
@@ -548,6 +509,7 @@ public class MyCourses  extends Fragment {
 	    	   i.putExtra("course_name",   course_name_to_pass);
 	    	   i.putExtra("course_description",   course_descript_to_pass);
 	    	   i.putExtra("instructor_id",   instructoridurl);
+	    	   i.putExtra("enroll_students",   course_enrolled_passing);
 	    	 
 				startActivity(i);
 	            

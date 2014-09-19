@@ -56,6 +56,7 @@
    <string name="aboutauth">About Me</string>
   <string name="follow">Follow Author</string>
   <string name="unfollow">Unfollow Author</string>
+  <string name="enroll">Students Enrolled</string>
   
  
 </resources>
