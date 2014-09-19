@@ -151,7 +151,7 @@ public class SyllabusFragment extends Fragment {
 					vehiclelist.clear();
 					List<NameValuePair> params1 = new ArrayList<NameValuePair>();
 		             
-		             params1.add(new BasicNameValuePair("student_id", Config.student_id));
+		             params1.add(new BasicNameValuePair("course_id", CourseDetails.course_id));
 		           
 		         jArray = jsonParser.makeHttpRequest(Config.ServerUrl+Config.courseurl, "POST", params1);
 				

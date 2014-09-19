@@ -13,7 +13,9 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
 
 public class CourseDetails extends SherlockFragmentActivity{
 	TextView course_nam,enrol;
-	String course_id,course_name,course_enrolls;
+	static String course_id;
+	String course_name;
+	String course_enrolls;
 	static String course_description,instructorid;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
