@@ -18,6 +18,9 @@ public class Course {
  String rating;
  String course_description;
  String students_enrolled;
+ String ifmycourse;
+ 
+ String audiourl;
 //  
 // public Course(String authorname, String course_name,String costw, String course_id2, String instructorid, Bitmap bitmap) {
 //	// TODO Auto-generated constructor stub
@@ -46,9 +49,23 @@ public class Course {
 		 cost=costw;
 		 bittu=bitmap;
 		 rating=rat;
+	
 		 
 	}
- public Course(String authorname, String course_name,String costw, String course_id2, String instructorid, String bitmap,String rat,String coures_desp) {
+ public Course(String authorname, String course_name,String costw, String course_id2, String instructorid, String bitmap,String rat,String ifmycour,String audiorl) {
+		// TODO Auto-generated constructor stub
+		 course_id=course_id2;
+		 instructor_id=instructorid;
+		 course=course_name;
+		 name=authorname;
+		 cost=costw;
+		 bittu=bitmap;
+		 rating=rat;
+		 ifmycourse=ifmycour;
+		 audiourl=audiorl;
+		 
+	}
+ public Course(String authorname, String course_name,String costw, String course_id2, String instructorid, String bitmap,String rat,String coures_desp,String ifmycour,String audio) {
 		// TODO Auto-generated constructor stub
 		 course_id=course_id2;
 		 instructor_id=instructorid;
@@ -58,6 +75,7 @@ public class Course {
 		 bittu=bitmap;
 		 rating=rat;
 		 course_description=coures_desp;
+		 audiourl=audio;
 	}
 public String getcourseid() {
 	  return course_id;
@@ -132,4 +150,19 @@ public String getCode() {
 		this.bit= bitmap;
 	
  }
+ public void setifmycourse(String ifmy) {
+	  this.ifmycourse = ifmy;
+	 }
+	 public String getifmycourse() {
+		  return ifmycourse;
+		 }
+		
+	 
+	 public void setaudiourl(String aud) {
+		  this.audiourl = aud;
+		 }
+		 public String getaudiourl() {
+			  return audiourl;
+			 }
+			
 }

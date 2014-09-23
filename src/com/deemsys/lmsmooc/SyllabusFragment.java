@@ -15,8 +15,8 @@ import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ExpandableListView.OnGroupClickListener;
 import android.widget.ExpandableListView.OnGroupCollapseListener;
 import android.widget.ExpandableListView.OnGroupExpandListener;
-import android.widget.Toast;
 import android.app.ProgressDialog;
+import android.content.Intent;
 
 
 import android.os.AsyncTask;
@@ -77,9 +77,9 @@ public class SyllabusFragment extends Fragment {
 	 
 	            @Override
 	            public void onGroupExpand(int groupPosition) {
-	                Toast.makeText(getActivity(),
-	                        listDataHeader.get(groupPosition) + " Expanded",
-	                        Toast.LENGTH_SHORT).show();
+//	                Toast.makeText(getActivity(),
+//	                        listDataHeader.get(groupPosition) + " Expanded",
+//	                        Toast.LENGTH_SHORT).show();
 	            }
 	        });
 	 
@@ -87,9 +87,9 @@ public class SyllabusFragment extends Fragment {
 	 
 	            @Override
 	            public void onGroupCollapse(int groupPosition) {
-	                Toast.makeText(getActivity(),
-	                        listDataHeader.get(groupPosition) + " Collapsed",
-	                        Toast.LENGTH_SHORT).show();
+//	                Toast.makeText(getActivity(),
+//	                        listDataHeader.get(groupPosition) + " Collapsed",
+//	                        Toast.LENGTH_SHORT).show();
 	 
 	            }
 	        });
@@ -100,17 +100,63 @@ public class SyllabusFragment extends Fragment {
 	            @Override
 	            public boolean onChildClick(ExpandableListView parent, View v,
 	                    int groupPosition, int childPosition, long id) {
-	            	 Child child = new Child();
-	            //	child.getlecttype().toString();
-//	                Toast.makeText(
-//	                		getActivity(),
-//	                        listDataHeader.get(groupPosition)
-//	                                + " : "
-//	                                + listDataChild.get(listDataHeader.get(groupPosition)).get(
-//	                                        childPosition), Toast.LENGTH_SHORT)
-//	                        .show();
+	           if(listDataChild.get(listDataHeader.get(groupPosition)).get(
+                       childPosition).getlecttype().equalsIgnoreCase("Text")){
+	            	 Intent i=new Intent(getActivity(),CourseText.class);
+	  	    	   i.putExtra("lect_type", listDataChild.get(listDataHeader.get(groupPosition)).get(
+                           childPosition).getlecttype());
+	  	    	
+	  	    	   i.putExtra("lect_id",   listDataChild.get(listDataHeader.get(groupPosition)).get(
+                           childPosition).getlectureid());
+	  	    	   i.putExtra("section_id",   listDataChild.get(listDataHeader.get(groupPosition)).get(
+                           childPosition).getsecid());
+	  	    	   i.putExtra("section_name",   listDataChild.get(listDataHeader.get(groupPosition)).get(
+                           childPosition).getsecname());
+	  	    	   i.putExtra("lecture_name", listDataChild.get(listDataHeader.get(groupPosition)).get(
+                           childPosition).getName());
+	  	    	   startActivity(i);
 	                System.out.println("child data"+listDataChild.get(listDataHeader.get(groupPosition)).get(
 	                                        childPosition).getlecttype());
+	           } else  if(listDataChild.get(listDataHeader.get(groupPosition)).get(
+                       childPosition).getlecttype().equalsIgnoreCase("Video"))
+	           {
+	        	   Intent i=new Intent(getActivity(),CourseVideo.class);
+	  	    	   i.putExtra("lect_type", listDataChild.get(listDataHeader.get(groupPosition)).get(
+                           childPosition).getlecttype());
+	  	    	
+	  	    	   i.putExtra("lect_id",   listDataChild.get(listDataHeader.get(groupPosition)).get(
+                           childPosition).getlectureid());
+	  	    	   i.putExtra("section_id",   listDataChild.get(listDataHeader.get(groupPosition)).get(
+                           childPosition).getsecid());
+	  	    	   i.putExtra("section_name",   listDataChild.get(listDataHeader.get(groupPosition)).get(
+                           childPosition).getsecname());
+	  	    	   i.putExtra("lecture_name", listDataChild.get(listDataHeader.get(groupPosition)).get(
+                           childPosition).getName());
+	  	    	   startActivity(i);
+	                System.out.println("child data"+listDataChild.get(listDataHeader.get(groupPosition)).get(
+	                                        childPosition).getlecttype());
+	        	   
+	           }
+	           else  if(listDataChild.get(listDataHeader.get(groupPosition)).get(
+                       childPosition).getlecttype().equalsIgnoreCase("Audio"))
+	           {
+	        	   Intent i=new Intent(getActivity(),CourseAudio.class);
+	  	    	   i.putExtra("lect_type", listDataChild.get(listDataHeader.get(groupPosition)).get(
+                           childPosition).getlecttype());
+	  	    	
+	  	    	   i.putExtra("lect_id",   listDataChild.get(listDataHeader.get(groupPosition)).get(
+                           childPosition).getlectureid());
+	  	    	   i.putExtra("section_id",   listDataChild.get(listDataHeader.get(groupPosition)).get(
+                           childPosition).getsecid());
+	  	    	   i.putExtra("section_name",   listDataChild.get(listDataHeader.get(groupPosition)).get(
+                           childPosition).getsecname());
+	  	    	   i.putExtra("lecture_name", listDataChild.get(listDataHeader.get(groupPosition)).get(
+                           childPosition).getName());
+	  	    	   startActivity(i);
+	                System.out.println("child data"+listDataChild.get(listDataHeader.get(groupPosition)).get(
+	                                        childPosition).getlecttype());
+	        	   
+	           }
 	                return false;
 	            }
 	        });
@@ -124,7 +170,7 @@ public class SyllabusFragment extends Fragment {
 		          cDialog.setMessage("Please wait...");
 		          cDialog.setIndeterminate(false);
 		          cDialog.setCancelable(false);
-		          cDialog.show();
+		        //  cDialog.show();
 			}
 				
 				@Override
@@ -152,7 +198,7 @@ public class SyllabusFragment extends Fragment {
 					List<NameValuePair> params1 = new ArrayList<NameValuePair>();
 		             
 		             params1.add(new BasicNameValuePair("course_id", CourseDetails.course_id));
-		           
+		           System.out.println("course id value"+CourseDetails.course_id);
 		         jArray = jsonParser.makeHttpRequest(Config.ServerUrl+Config.courseurl, "POST", params1);
 				
 				    Log.i("tagconvertstr", "["+jArray+"]");

@@ -14,8 +14,9 @@ import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockActivity;
 
 
-import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -62,6 +63,29 @@ public class CategorySelectionActivity extends SherlockActivity {
 			 if (isInternetPresent) {
 			        new CategoryDetails().execute(); 
 					 }
+			 else
+     		{
+     			AlertDialog alertDialog = new AlertDialog.Builder(
+     					CategorySelectionActivity.this).create();
+
+ 				alertDialog.setTitle("INFO!");
+
+ 				alertDialog.setMessage("No network connection.");
+
+ 				alertDialog.setIcon(R.drawable.delete);
+ 				
+ 				alertDialog.setButton("OK",	new DialogInterface.OnClickListener() {
+
+ 							public void onClick(final DialogInterface dialog,
+ 									final int which) {
+ 								
+ 							}
+ 						});
+
+ 				
+ 				alertDialog.show();
+     			
+     		}
 
 			 list2= (ListView) findViewById(R.id.listView);
 }

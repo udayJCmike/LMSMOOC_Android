@@ -11,10 +11,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.deemsys.lmsmooc.AuthorCourses.unfollow;
 
-import android.app.ProgressDialog;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -25,7 +22,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
-import android.widget.AdapterView;
+
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -115,7 +112,7 @@ public class AuthorFragment  extends Fragment
 					 {
 						 followunfollow.setText("Unfollow Author"); 
 					 }
-					 new LoadImage().execute(LoginActivity.avatar_url+author_avatar_url);
+					// new LoadImage().execute(LoginActivity.avatar_url+"UserImages/"+author_avatar_url);
 				System.out.println("avatar url::"+LoginActivity.avatar_url+author_avatar_url);
 			} 
 
@@ -143,7 +140,7 @@ public class AuthorFragment  extends Fragment
 				    	
 				    	for(int i=0;i<user.length();i++)
 				    	{
-				    		System.out.println("forloop1");
+				    		
 				    		JSONObject c1 = user.getJSONObject(i);
 				    		JSONObject c2 = c1.getJSONObject(TAG_SRESL);
 				    	    author_firstname = c2.getString(TAG_Author_FirstNAME);
@@ -153,8 +150,6 @@ public class AuthorFragment  extends Fragment
 				    	    author_avatar_url = c2.getString(TAG_Author_avatar);
 				    		followcheck= c2.getString(TAG_follow_count);
 				           
-				        	System.out.println("follow check value"+followcheck);
-				        	
 				    		
 				    		
 				    		
@@ -191,20 +186,19 @@ public class AuthorFragment  extends Fragment
 		           JsonParser jLogin = new JsonParser();
 		           
 		           JSONObject json = jLogin.makeHttpRequest(Config.ServerUrl+Config.unfollowauthorurl,"POST", params1);
-		           System.out.println("value for json::"+json);
+		          
 		           if(json!=null)
 		           {
 		               try
 		               {
 		              	 if(json != null)
 		              	 {
-		              	 System.out.println("json value::"+json);
+		              	
 		              	
 		              	 JSONObject jUser = json.getJSONObject(TAG_SRESL);
 		              	
 		              	 numofrows=  jUser.getString(TAG_SUCCESS);
-		              	 System.out.println("number of rows value:::"+numofrows);
-		              	 
+		              	
 		              	
 		              	 }
 		              	

@@ -33,6 +33,7 @@ import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.MenuItem.OnActionExpandListener;
+import com.deemsys.lmsmooc.MyFavoriteCourses.fetchpurnumber;
 
 import com.squareup.picasso.Picasso;
 
@@ -97,20 +98,20 @@ public class SearchActivity  extends SherlockActivity {
 	 View loadMoreView;
 	 JSONArray user = null;
 	 static ListView listView ;
-	 String course_name,authorname,student_enrolled,ratingcouont,cost,course_id,instructorid,numofrows,course_cover_image;
+	 String course_name,authorname,student_enrolled,ratingcouont,cost,course_id,instructorid,numofrows,course_cover_image,ifmycoursepresent,audiourl,audiourlpassing;
 	 private static final String TAG_SRESL= "serviceresponse";
 	    private static final String TAG_Course_ARRAY = "CourseList";
 		private static final String TAG_SRES= "serviceresponse";
 		private static final String TAG_COURSE_NAME= "course_name";
 		private static final String TAG_COURSE_AUTHOR= "course_author";
-	
+		private static final String TAG_Check_= "checkmycourse";
 		private static final String TAG_COURSE_COST= "course_price";
 		private static final String TAG_COURSE_RATINGS= "user_ratings";
 		private static final String TAG_course_cover_image= "course_cover_image";
-		
+		private static final String TAG_COURSE_PROMO_VIDEO= "course_promo_video";
 		private static final String TAG_INSTRUCTOR_ID= "instructor_id";
 		private static final String TAG_COURSE_ID= "course_id";
-	
+		 String course_id_topass,course_name_to_pass,course_descript_to_pass,course_enrolled,course_enrolled_passing,checkstatus;
 		private static final String TAG_NUMBER_OF_ROWS = "number_of_rows";
 	 String courseidurl,instructoridurl,pur_url;
    
@@ -128,7 +129,7 @@ public class SearchActivity  extends SherlockActivity {
 	        ab.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
 		loadMoreView = ((LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE))
           .inflate(R.layout.loadmore, null, false);
-        listView.addFooterView(loadMoreView);
+    //    listView.addFooterView(loadMoreView);
         courselist = new ArrayList<Course>();
        
         listView.setTextFilterEnabled(true);
@@ -139,6 +140,15 @@ public class SearchActivity  extends SherlockActivity {
         	    Course country = (Course) parent.getItemAtPosition(position);
         	    if(position<courselist.size())
         	    {
+        	    	audiourlpassing=country.getaudiourl();
+        	    	course_descript_to_pass=country.getdescription();
+      	    	  course_id_topass=country.getcourseid();
+      	    courseidurl=country.getcourseid();
+      	    instructoridurl=country.getinsid();
+      	    course_name_to_pass=country.getCode();
+      	    course_enrolled_passing=country.getstudentsenrolled();
+        	    	checkstatus=country.getifmycourse();
+        	    	System.out.println("status check"+checkstatus);
         	    courseidurl=country.getcourseid();
         	    instructoridurl=country.getinsid();
         	    new fetchpurnumber().execute();
@@ -147,22 +157,22 @@ public class SearchActivity  extends SherlockActivity {
         	   }
         	  });
         	 
-        	  listView.setOnScrollListener(new OnScrollListener(){
-        	 
-        	   @Override
-        	   public void onScrollStateChanged(AbsListView view, int scrollState) {}
-        	 
-        	   @Override
-        	   public void onScroll(AbsListView view, int firstVisibleItem,int visibleItemCount, int totalItemCount) {
-        	 
-        	   int lastInScreen = firstVisibleItem + visibleItemCount;    
-        	   if((lastInScreen == totalItemCount) && !(loadingMore)){     
-        	  
-        		   System.out.println(Config.ServerUrl+Config.allcourseurl);
-        	 //   grabURL(Config.ServerUrl+Config.allcourseurl); 
-        	   }
-        	   }
-        	  });
+//        	  listView.setOnScrollListener(new OnScrollListener(){
+//        	 
+//        	   @Override
+//        	   public void onScrollStateChanged(AbsListView view, int scrollState) {}
+//        	 
+//        	   @Override
+//        	   public void onScroll(AbsListView view, int firstVisibleItem,int visibleItemCount, int totalItemCount) {
+//        	 
+//        	   int lastInScreen = firstVisibleItem + visibleItemCount;    
+//        	   if((lastInScreen == totalItemCount) && !(loadingMore)){     
+//        	  
+//        		   System.out.println(Config.ServerUrl+Config.allcourseurl);
+//        	 //   grabURL(Config.ServerUrl+Config.allcourseurl); 
+//        	   }
+//        	   }
+//        	  });
 
        
     }
@@ -170,17 +180,7 @@ public class SearchActivity  extends SherlockActivity {
     	  Log.v("Android Spinner JSON Data Activity", url);
     	  new GrabURL().execute(url);
     	 }
-    public static AllCourses newInstance(String text) {
-
-    	AllCourses f = new AllCourses();
-        Bundle b = new Bundle();
-        b.putString("msg", text);
-
-        f.setArguments(b);
-
-        return f;
-    
-    }
+  
     @Override
     public boolean onOptionsItemSelected(com.actionbarsherlock.view.MenuItem item) {
         switch (item.getItemId()) {
@@ -208,7 +208,8 @@ public class SearchActivity  extends SherlockActivity {
       
        editsearch.setOnEditorActionListener(
         	    new EditText.OnEditorActionListener() {
-        	@Override
+        	@SuppressWarnings("deprecation")
+			@Override
         	public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
         	    if (actionId == EditorInfo.IME_ACTION_SEARCH ||
         	            actionId == EditorInfo.IME_ACTION_DONE ||
@@ -226,8 +227,35 @@ public class SearchActivity  extends SherlockActivity {
 
 inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
                                    InputMethodManager.RESULT_UNCHANGED_SHOWN);
-
+cd = new ConnectionDetector(SearchActivity.this);
+isInternetPresent = cd.isConnectingToInternet();
+if (isInternetPresent) 
+{
         	              new GrabURL().execute(Config.ServerUrl+Config.searchselecturl);
+}
+else
+{
+	AlertDialog alertDialog = new AlertDialog.Builder(
+			SearchActivity.this).create();
+
+	alertDialog.setTitle("INFO!");
+
+	alertDialog.setMessage("No network connection.");
+
+	alertDialog.setIcon(R.drawable.delete);
+	
+	alertDialog.setButton("OK",	new DialogInterface.OnClickListener() {
+
+				public void onClick(final DialogInterface dialog,
+						final int which) {
+					
+				}
+			});
+
+	
+	alertDialog.show();
+	
+}
         	           return true; 
         	                       
         	    }
@@ -276,7 +304,7 @@ inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
 		  final HttpParams params = httpclient.getParams();
 		  HttpResponse response;
 		  private String content =  null;
-		  private boolean error = false;
+	//	  private boolean error = false;
 		@Override
 	    protected void onPreExecute() {
 
@@ -294,7 +322,7 @@ inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
 
 			private void displayCourseList(String response){
 				 
-				  JSONObject responseObj = null; 
+				//  JSONObject responseObj = null; 
 				 
 				  try {
 					  courselist.clear();
@@ -303,7 +331,7 @@ inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
 			    	Log.i("tagconvertstr", "["+c+"]");
 			 
 			    	Log.i("tagconvertstr1", "["+user+"]");
-				   responseObj = new JSONObject(response); 
+				//   responseObj = new JSONObject(response); 
 				
 				   JSONArray countryListObj = c.getJSONArray(TAG_Course_ARRAY);
 				 
@@ -350,28 +378,33 @@ inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
 				    System.out.println("countryListObj length"+countryListObj.length());
 		    		JSONObject c1 = user.getJSONObject(i);
 		    		JSONObject c2 = c1.getJSONObject(TAG_SRES);
-		    	    authorname = c2.getString(TAG_COURSE_AUTHOR);
-		    		instructorid=c2.getString(TAG_INSTRUCTOR_ID);
-		    		course_id=c2.getString(TAG_COURSE_ID);
-		            course_name = c2.getString(TAG_COURSE_NAME);
-		         
-		            course_cover_image=c2.getString(TAG_course_cover_image);
-		        	cost= c2.getString(TAG_COURSE_COST);
-		        	ratingcouont=c2.getString(TAG_COURSE_RATINGS);
-		        	coursetotallist.add(authorname);
-		        	coursetotallist.add(course_name);
-		        	coursetotallist.add(ratingcouont);
-		        	imagelist.add(course_cover_image);
+		    		 authorname = c2.getString(TAG_COURSE_AUTHOR);
+			    		instructorid=c2.getString(TAG_INSTRUCTOR_ID);
+			    		course_id=c2.getString(TAG_COURSE_ID);
+			            course_name = c2.getString(TAG_COURSE_NAME);
+			            audiourl=c2.getString(TAG_COURSE_PROMO_VIDEO);
+			            course_cover_image=c2.getString(TAG_course_cover_image);
+			        	cost= c2.getString(TAG_COURSE_COST);
+			        	// ifmycoursepresent= c2.getString(TAG_Check_);
+			        	ratingcouont=c2.getString(TAG_COURSE_RATINGS);
+			        	coursetotallist.add(authorname);
+			        	coursetotallist.add(course_name);
+			        	coursetotallist.add(ratingcouont);
+			        	//coursetotallist.add(ifmycoursepresent);
+			       	coursetotallist.add(audiourl);
+			        	imagelist.add(course_cover_image);
 
-
-		        	 Course cnt = new Course(authorname,course_name,cost,course_id,instructorid,course_cover_image,ratingcouont);
-		        	 cnt.setName(authorname);
-		        	 cnt.setCode(course_name);
-					  cnt.setins_id(instructorid);
-					  cnt.setcourseid(course_id);
-					  cnt.setrating(ratingcouont);
-		           cnt.setstringurl(course_cover_image);
-				    courselist.add(cnt);
+			        	ifmycoursepresent="a";
+			        	 Course cnt = new Course(authorname,course_name,cost,course_id,instructorid,course_cover_image,ratingcouont,ifmycoursepresent,audiourl);
+			        	 cnt.setName(authorname);
+			        	 cnt.setCode(course_name);
+						  cnt.setins_id(instructorid);
+						  cnt.setcourseid(course_id);
+						  cnt.setrating(ratingcouont);
+						//  cnt.setifmycourse(ifmycoursepresent);
+			           cnt.setstringurl(course_cover_image);
+			           cnt.setaudiourl(audiourl);
+					    courselist.add(cnt);
 				 
 				    System.out.println("size fo country list"+courselist.size());
 				    System.out.println("value fo country list"+courselist);
@@ -418,7 +451,7 @@ inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
 			    nameValuePairs.add(new BasicNameValuePair("keyword",String.valueOf(keyword)));
 			    nameValuePairs.add(new BasicNameValuePair("start",String.valueOf(start)));
 			    nameValuePairs.add(new BasicNameValuePair("limit",String.valueOf(limit)));
-			    jArray = jsonParser.makeHttpRequest(Config.ServerUrl+Config.searchselecturl, "POST", nameValuePairs);
+			    jArray = jsonParser.makeHttpRequest(Config.ServerUrl+Config.searchselecturlbrowse, "POST", nameValuePairs);
 			    JSONObject c = jArray.getJSONObject(TAG_SRES);
 		    	Log.i("tagconvertstr", "["+c+"]");
 		    	user = c.getJSONArray(TAG_Course_ARRAY);
@@ -443,17 +476,17 @@ inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
 			    } catch (ClientProtocolException e) {
 			     Log.w("HTTP2:",e );
 			     content = e.getMessage();
-			     error = true;
+			   //  error = true;
 			     cancel(true);
 			    } catch (IOException e) {
 			     Log.w("HTTP3:",e );
 			     content = e.getMessage();
-			     error = true;
+			   //  error = true;
 			     cancel(true);
 			    }catch (Exception e) {
 			     Log.w("HTTP4:",e );
 			     content = e.getMessage();
-			     error = true;
+			     //error = true;
 			     cancel(true);
 			    }
 //			    }catch(JSONException e)
@@ -661,16 +694,32 @@ inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
 		@Override
 		 protected void onPostExecute(String file_url) {
 	    	   super.onPostExecute(file_url);
-	        System.out.println("in post execute");
-//	    	 /  pDialog.dismiss();
+	    	   if(checkstatus.equalsIgnoreCase("1"))
+	    	   {
+	    	   Intent i=new Intent(getApplicationContext(),CourseDetails.class);
+	    	   i.putExtra("courseid", course_id_topass);
+	    	   i.putExtra("course_name",   course_name_to_pass);
+	    	   i.putExtra("course_description",   course_descript_to_pass);
+	    	   i.putExtra("instructor_id",   instructoridurl);
+	    	   i.putExtra("enroll_students",   course_enrolled_passing);
+	    	   i.putExtra("audio_url", audiourlpassing);
+	    	   startActivity(i);
+	    	   }
+	    	 
+				
 	    	   
 	    	//  String url="http://208.109.248.89:8085/OnlineCourse/Student/student_view_Course?course_id=50&authorid=1&pur=0&catcourse=&coursetype=";
+	    	   else{
 	    	   String url = Config.common_url+"/student_view_Course?course_id="+courseidurl+"&authorid="+instructoridurl+"&pur="+numofrows+"&catcourse=&coursetype=";
 				System.out.println("url value"+url);
-	    	   Intent i = new Intent(Intent.ACTION_VIEW);
-				i.setData(Uri.parse(url));
-				i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				getApplicationContext().startActivity(i);
+	    	   Intent ii = new Intent(Intent.ACTION_VIEW);
+				ii.setData(Uri.parse(url));
+				ii.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				getApplicationContext().startActivity(ii);
+	    	   }
+	     
+
+	
 	         
 	     
 

@@ -29,8 +29,10 @@ import org.json.JSONObject;
 import com.squareup.picasso.Picasso;
 
 import android.support.v4.app.Fragment;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -76,13 +78,13 @@ public class MyCourses  extends Fragment {
 	 JSONArray user = null;
 	 static ListView listView ;
 	 String course_id_topass,course_name_to_pass,course_descript_to_pass,course_enrolled;
-	 String course_name,authorname,student_enrolled,ratingcouont,cost,course_id,instructorid,numofrows,course_cover_image,course_description;
+	 String course_name,authorname,student_enrolled,ratingcouont,cost,course_id,instructorid,numofrows,course_cover_image,course_description,audiourl,audiourlpassing;
 	 private static final String TAG_SRESL= "serviceresponse";
 	    private static final String TAG_Course_ARRAY = "CourseList";
 		private static final String TAG_SRES= "serviceresponse";
 		private static final String TAG_COURSE_NAME= "course_name";
 		private static final String TAG_COURSE_AUTHOR= "course_author";
-		
+		private static final String TAG_COURSE_PROMO_VIDEO= "course_promo_video";
 		private static final String TAG_COURSE_COST= "course_price";
 		private static final String TAG_COURSE_RATINGS= "user_ratings";
 		private static final String TAG_course_cover_image= "course_cover_image";
@@ -115,6 +117,7 @@ public class MyCourses  extends Fragment {
     	    Course country = (Course) parent.getItemAtPosition(position);
     	    if(position<courselist.size())
     	    {
+    	    	audiourlpassing=country.getaudiourl();
     	    	course_descript_to_pass=country.getdescription();
     	    	  course_id_topass=country.getcourseid();
     	    courseidurl=country.getcourseid();
@@ -159,15 +162,16 @@ public class MyCourses  extends Fragment {
 				 super.onPostExecute(file_url);
 				
 				
-				  
+				
 				    displayCourseList(content);
+				 
 				    cDialog.dismiss();
 				  
 				  }
 
 			private void displayCourseList(String response){
 				 
-				  JSONObject responseObj = null; 
+				
 				 
 				  try {
 					  
@@ -176,13 +180,43 @@ public class MyCourses  extends Fragment {
 			    	Log.i("tagconvertstr", "["+c+"]");
 			 
 			    	Log.i("tagconvertstr1", "["+user+"]");
-				   responseObj = new JSONObject(response); 
+				 
 				
 				   JSONArray countryListObj = c.getJSONArray(TAG_Course_ARRAY);
 				 
+				   
 				   if(countryListObj.length() == 0)
 				   
 				   {
+					   if(courselist.size() == 0&&start==0)
+						 {
+							 	AlertDialog alertDialog = new AlertDialog.Builder(
+										getActivity()).create();
+
+								// Setting Dialog Title
+								alertDialog.setTitle("INFO!");
+
+								// Setting Dialog Message
+								alertDialog.setMessage("No courses enrolled");
+
+								// Setting Icon to Dialog
+								alertDialog.setIcon(R.drawable.delete);
+								
+
+								// Setting OK Button
+								alertDialog.setButton("OK",	new DialogInterface.OnClickListener() {
+
+											public void onClick(final DialogInterface dialog,
+													final int which) {
+												// Write your code here to execute after dialog
+												// closed
+												
+											}
+										});
+
+								// Showing Alert Message
+								alertDialog.show();
+						 }
 			
 				    listView.removeFooterView(loadMoreView);
 				   }
@@ -206,15 +240,17 @@ public class MyCourses  extends Fragment {
 		        	cost= c2.getString(TAG_COURSE_COST);
 		        	ratingcouont=c2.getString(TAG_COURSE_RATINGS);
 		        	course_enrolled=c2.getString(TAG_ENROLLED_STUDENT);
+		        	audiourl=c2.getString(TAG_COURSE_PROMO_VIDEO);
 		        	coursetotallist.add(course_description);
 		        	coursetotallist.add(authorname);
 		        	coursetotallist.add(course_name);
 		        	coursetotallist.add(ratingcouont);
 		        	coursetotallist.add(course_enrolled);
+		        	coursetotallist.add(audiourl);
 		        	imagelist.add(course_cover_image);
 
 
-		        	 Course cnt = new Course(authorname,course_name,cost,course_id,instructorid,course_cover_image,ratingcouont,course_description);
+		        	 Course cnt = new Course(authorname,course_name,cost,course_id,instructorid,course_cover_image,ratingcouont,course_description,audiourl);
 		        	 cnt.setName(authorname);
 		        	 cnt.setCode(course_name);
 					  cnt.setins_id(instructorid);
@@ -222,7 +258,8 @@ public class MyCourses  extends Fragment {
 					  cnt.setrating(ratingcouont);
 					  cnt.setdescription(course_description);
 					  cnt.setstudentsenrolled(course_enrolled);
-		           cnt.setstringurl(course_cover_image);
+		              cnt.setstringurl(course_cover_image);
+		             cnt.setaudiourl(audiourl);
 				    courselist.add(cnt);
 				 
 				 
@@ -510,7 +547,7 @@ public class MyCourses  extends Fragment {
 	    	   i.putExtra("course_description",   course_descript_to_pass);
 	    	   i.putExtra("instructor_id",   instructoridurl);
 	    	   i.putExtra("enroll_students",   course_enrolled_passing);
-	    	 
+	    	 i.putExtra("audio_url", audiourlpassing);
 				startActivity(i);
 	            
 	    	   

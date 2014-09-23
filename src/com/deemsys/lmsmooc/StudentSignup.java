@@ -65,11 +65,6 @@ public class StudentSignup extends Activity {
 
    
 
-
-
-    
-   
-    
     
 	  final Context context=this;
 	    JSONObject jsonE;
@@ -87,8 +82,8 @@ public class StudentSignup extends Activity {
 		//private static final String TAG_USERID= "user_id";
 
 
-		private static String selecturl1 = "http://192.168.1.158:8888/LmsmoocAndroid/Services/Studentsignup.php?service=selectloginusername";
-		private static String selecturl2 = "http://192.168.1.158:8888/LmsmoocAndroid/Services/Studentsignup.php?service=selectloginemail";
+		private static String selecturl1 =Config.ServerUrl+Config.studentSignup;
+		private static String selecturl2 = Config.ServerUrl+Config.studentSignup1;
 
 	    
 
@@ -312,7 +307,7 @@ public class StudentSignup extends Activity {
 		    }
 		 });
 	
-         signbtn.setOnClickListener(new View.OnClickListener()
+		   signbtn.setOnClickListener(new View.OnClickListener()
            {
              
                   int a;
@@ -351,20 +346,19 @@ public class StudentSignup extends Activity {
 						    	
 								   {
 									   
-									    if (firstname.length()>3 &&isValidName(firstname)) {
+									    if (firstname.length()>3 &&firstname.length()<=15&&isValidName(firstname)) {
 									    	{
-											    if (lastname.length()>3&& isValidName(lastname)) {
+											    if (lastname.length()>3&&lastname.length()<=15&& isValidName(lastname)) {
 											    	{
-													    if (isValidOther(username)) {
+													    if (username.length()>=6&&username.length()<=25&&isValidOther(username)) {
 													    	{
-													    		 if (isValidEmail(email)) {
+													    		 if (email.length()>=10&&email.length()<=40&&isValidEmail(email)) {
 																    	  
 																	    {
-																		    if (isValidOther(password)) {
+																		    if (password.length()>=8&&password.length()<=25&&isValidOther(password)) {
 																		    	  
 																			    {
-																			    	   if (isValidOther(confirmpassword)) {
-																			    		   {
+																			    	   
 																							    if (password.equals(confirmpassword)) {
 																			    		   
 																							    	  {
@@ -448,40 +442,7 @@ public class StudentSignup extends Activity {
 																						}
 																							    
 																							    
-																			    	   else{
-																					    	
-																					    	a=0;
-																					    	AlertDialog alertDialog = new AlertDialog.Builder(
-																									StudentSignup.this).create();
-
-																							// Setting Dialog Title
-																							alertDialog.setTitle("Invalid confirmpassword");
-
-																							// Setting Dialog Message
-																							alertDialog.setMessage("Please enter valid confirmpassword." );
-
-																							// Setting Icon to Dialog
-																							alertDialog.setIcon(R.drawable.delete);
-																							
-
-																							// Setting OK Button
-																							alertDialog.setButton("OK",	new DialogInterface.OnClickListener() {
-
-																										public void onClick(final DialogInterface dialog,
-																												final int which) {
-																											// Write your code here to execute after dialog
-																											// closed
-																											
-																										}
-																									});
-
-																							// Showing Alert Message
-																							alertDialog.show();
-																					    	
-																					    	
-																					    }}
-																					
-																				}
+																			    	   
 																		    else{
 																		    	
 																		    	a=0;
@@ -492,7 +453,7 @@ public class StudentSignup extends Activity {
 																				alertDialog.setTitle("Invalid password");
 
 																				// Setting Dialog Message
-																				alertDialog.setMessage("password should contain only numbers." );
+																				alertDialog.setMessage("Should contain 1 alphabet.Should contain 1 number.Should be 8 to 25 characters.Should contain 1 Special character." );
 
 																				// Setting Icon to Dialog
 																				alertDialog.setIcon(R.drawable.delete);
@@ -526,7 +487,7 @@ public class StudentSignup extends Activity {
 																		alertDialog.setTitle("Invalid Email");
 
 																		// Setting Dialog Message
-																		alertDialog.setMessage("Email should contain alphabets,numbers,@ . _" );
+																		alertDialog.setMessage("Should contain  alphabets.Should contain  numbers.Should be 10 to 40 characters.Should contain 1 Special character." );
 
 																		// Setting Icon to Dialog
 																		alertDialog.setIcon(R.drawable.delete);
@@ -559,7 +520,7 @@ public class StudentSignup extends Activity {
 															alertDialog.setTitle("Invalid username");
 
 															// Setting Dialog Message
-															alertDialog.setMessage("Username should contain alphabets,numbers,@ . _" );
+															alertDialog.setMessage("Should contain alphabets.Should contain numbers.Should be 6 to 25 characters." );
 
 															// Setting Icon to Dialog
 															alertDialog.setIcon(R.drawable.delete);
@@ -592,7 +553,7 @@ public class StudentSignup extends Activity {
 													alertDialog.setTitle("Invalid lastname");
 
 													// Setting Dialog Message
-													alertDialog.setMessage("Lastname should contain only alphabets,numbers,characters." );
+													alertDialog.setMessage("Should contain only alphabets.Should be 3 to 15 characters." );
 
 													// Setting Icon to Dialog
 													alertDialog.setIcon(R.drawable.delete);
@@ -626,7 +587,7 @@ public class StudentSignup extends Activity {
 											alertDialog.setTitle("Invalid Firstname");
 
 											// Setting Dialog Message
-											alertDialog.setMessage("Firstname should contain only alphabets,4-16 characters." );
+											alertDialog.setMessage("Should contain only alphabets.Should be 3 to 15 characters." );
 
 											// Setting Icon to Dialog
 											alertDialog.setIcon(R.drawable.delete);
@@ -1504,8 +1465,8 @@ class Login extends AsyncTask<String,String,String>{
 	//public static final String urlE = "http://192.168.1.158:8888/gpsandroid/service/Contact.php?service=insert";
 	//public static final String urlE = "http://192.168.1.71:8080/gpsandroid/service/Contact.php?service=insert";
 	//public static final String urlE = "http://208.109.248.89:80/gpsandroid/service/Contact.php?service=insert";
-	public static final String urlE = "http://192.168.1.158:8888/LmsmoocAndroid/Services/Studentsignup.php?service=signup";
-	public static final String urlE2 = "http://192.168.1.158:8888/LmsmoocAndroid/Services/Studentsignup.php?service=logininsert";
+	public final String urlE = Config.ServerUrl+Config.signup;
+	public  final String urlE2 = Config.ServerUrl+Config.logininsert;
 
 	  
 	    JSONObject jsonE;
@@ -1676,4 +1637,6 @@ public void onBackPressed()
 }
 }
           
+
+  
 

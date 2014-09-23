@@ -15,31 +15,29 @@ import org.json.JSONObject;
 
 import com.deemsys.lmsmooc.ConnectionDetector;
 import com.deemsys.lmsmooc.JsonParser;
-import com.deemsys.lmsmooc.LoginActivity;
-import com.deemsys.lmsmooc.BillingArrayAdapter;
-import com.deemsys.lmsmooc.ProfileActivity;
-import com.deemsys.lmsmooc.InboxFragment.Details;
 
-import android.app.ActionBar;
+import com.deemsys.lmsmooc.BillingArrayAdapter;
+
+
+
 import android.support.v4.app.Fragment;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.sax.RootElement;
-import android.support.v4.app.FragmentActivity;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
+
 import android.widget.AdapterView;
-import android.widget.Button;
+
 import android.widget.ListView;
 import android.widget.TextView;
-import android.app.Activity;
+
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Typeface;
+
 
 public class BillingFragment extends Fragment {
 	

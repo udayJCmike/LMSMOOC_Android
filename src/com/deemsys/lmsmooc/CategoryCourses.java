@@ -25,14 +25,11 @@ import org.json.JSONObject;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
-import com.deemsys.lmsmooc.AuthorCourses.unfollow;
-import com.google.gson.Gson;
+
+
 import com.squareup.picasso.Picasso;
 
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -52,14 +49,14 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
+
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
+
 import android.widget.AbsListView.OnScrollListener;
-import android.content.Intent;
+
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -80,24 +77,26 @@ public class CategoryCourses  extends SherlockFragmentActivity {
 	 JSONArray user = null;
 	 static ListView listView ;
 	 Bitmap bitmap;
-	 String course_name,authorname,student_enrolled,ratingcouont,cost,course_id,instructorid,numofrows,category_name,course_cover_image;
+	 String course_name,authorname,student_enrolled,ratingcouont,cost,course_id,instructorid,numofrows,category_name,ifmycoursepresent,course_cover_image,audiourl,audiourlpassing;
 	 private static final String TAG_SRESL= "serviceresponse";
 	    private static final String TAG_Course_ARRAY = "CourseList";
 		private static final String TAG_SRES= "serviceresponse";
 		private static final String TAG_COURSE_NAME= "course_name";
 		private static final String TAG_COURSE_AUTHOR= "course_author";
-		private static final String TAG_COURSE_SUBTITLE= "course_sub_title";
+		
 		private static final String TAG_COURSE_COST= "course_price";
 		private static final String TAG_COURSE_RATINGS= "user_ratings";
 		private static final String TAG_course_cover_image= "course_cover_image";
-		private static final String TAG_route_no= "route_no";
-		private static final String TAG_driver_status= "device_status";
-		private static final String TAG_status_date= "status_date";
+		
+		private static final String TAG_Check_= "checkmycourse";
+		
 		private static final String TAG_INSTRUCTOR_ID= "instructor_id";
 		private static final String TAG_COURSE_ID= "course_id";
 		private static final String TAG_SUCCESS = "success";
 		private static final String TAG_NUMBER_OF_ROWS = "number_of_rows";
+		private static final String TAG_COURSE_PROMO_VIDEO= "course_promo_video";
 	 String courseidurl,instructoridurl,pur_url;
+	 String course_id_topass,course_name_to_pass,course_descript_to_pass,course_enrolled,course_enrolled_passing,checkstatus;
 
 		@Override
 		protected void onCreate(Bundle savedInstanceState) {
@@ -129,8 +128,18 @@ public class CategoryCourses  extends SherlockFragmentActivity {
         	    Course country = (Course) parent.getItemAtPosition(position);
         	    if(position<courselist.size())
         	    {
+        	    	audiourlpassing=country.getaudiourl();
+        	    	course_descript_to_pass=country.getdescription();
+        	    	  course_id_topass=country.getcourseid();
         	    courseidurl=country.getcourseid();
         	    instructoridurl=country.getinsid();
+        	    course_name_to_pass=country.getCode();
+        	    course_enrolled_passing=country.getstudentsenrolled();
+          	    	checkstatus=country.getifmycourse();
+          	    	System.out.println("status check"+checkstatus);
+          	    courseidurl=country.getcourseid();
+          	    instructoridurl=country.getinsid();
+          	    
         	    new fetchpurnumber().execute();
         	   
         	    }
@@ -148,7 +157,7 @@ public class CategoryCourses  extends SherlockFragmentActivity {
         	   int lastInScreen = firstVisibleItem + visibleItemCount;    
         	   if((lastInScreen == totalItemCount) && !(loadingMore)){     
         	  
-        		   System.out.println(Config.ServerUrl+Config.categoryselectionurl);
+        		   System.out.println(Config.ServerUrl+Config.categoryselectionurlbrowse);
         	    grabURL(Config.ServerUrl+Config.categoryselectionurl); 
         	   }
         	   }
@@ -207,16 +216,16 @@ public class CategoryCourses  extends SherlockFragmentActivity {
 
 			private void displayCountryList(String response){
 				 
-				  JSONObject responseObj = null; 
+				 // JSONObject responseObj = null; 
 				 
 				  try {
 					  
-				   Gson gson = new Gson();
+				  
 				   JSONObject c = jArray.getJSONObject(TAG_SRES);
 			    	Log.i("tagconvertstr", "["+c+"]");
 			 
 			    	Log.i("tagconvertstr1", "["+user+"]");
-				   responseObj = new JSONObject(response); 
+				 //  responseObj = new JSONObject(response); 
 				
 				   JSONArray countryListObj = c.getJSONArray(TAG_Course_ARRAY);
 				 
@@ -234,23 +243,28 @@ public class CategoryCourses  extends SherlockFragmentActivity {
 				    		instructorid=c2.getString(TAG_INSTRUCTOR_ID);
 				    		course_id=c2.getString(TAG_COURSE_ID);
 				            course_name = c2.getString(TAG_COURSE_NAME);
-				          //  course_cover_image="http://208.109.248.89/lmsvideos/28/coverImage.jpg";
+				        //    ifmycoursepresent= c2.getString(TAG_Check_);
+				            audiourl=c2.getString(TAG_COURSE_PROMO_VIDEO);
 				            course_cover_image=c2.getString(TAG_course_cover_image);
 				        	cost= c2.getString(TAG_COURSE_COST);
 				        	ratingcouont=c2.getString(TAG_COURSE_RATINGS);
 				        	coursetotallist.add(authorname);
 				        	coursetotallist.add(course_name);
 				        	coursetotallist.add(ratingcouont);
+				        	coursetotallist.add(audiourl);
+				        	//coursetotallist.add(ifmycoursepresent);
 				        	imagelist.add(course_cover_image);
 
-
-				        	 Course cnt = new Course(authorname,course_name,cost,course_id,instructorid,course_cover_image,ratingcouont);
+				        	ifmycoursepresent="one";
+				        	 Course cnt = new Course(authorname,course_name,cost,course_id,instructorid,course_cover_image,ratingcouont,ifmycoursepresent,audiourl);
 				        	 cnt.setName(authorname);
 				        	 cnt.setCode(course_name);
 							  cnt.setins_id(instructorid);
 							  cnt.setcourseid(course_id);
 							  cnt.setrating(ratingcouont);
 				           cnt.setstringurl(course_cover_image);
+				        //   cnt.setifmycourse(ifmycoursepresent);
+				           cnt.setaudiourl(audiourl);
 						    courselist.add(cnt);
 						 
 						    System.out.println("size fo country list"+courselist.size());
@@ -297,7 +311,7 @@ public class CategoryCourses  extends SherlockFragmentActivity {
 			    nameValuePairs.add(new BasicNameValuePair("category_name",category_name));
 			    nameValuePairs.add(new BasicNameValuePair("start",String.valueOf(start)));
 			    nameValuePairs.add(new BasicNameValuePair("limit",String.valueOf(limit)));
-			    jArray = jsonParser.makeHttpRequest(Config.ServerUrl+Config.categoryselectionurl, "POST", nameValuePairs);
+			    jArray = jsonParser.makeHttpRequest(Config.ServerUrl+Config.categoryselectionurlbrowse, "POST", nameValuePairs);
 			    JSONObject c = jArray.getJSONObject(TAG_SRES);
 		    	Log.i("tagconvertstr", "["+c+"]");
 		    	user = c.getJSONArray(TAG_Course_ARRAY);
@@ -491,14 +505,29 @@ public class CategoryCourses  extends SherlockFragmentActivity {
 	    	   super.onPostExecute(file_url);
 	        System.out.println("in post execute");
 	    	   pDialog.dismiss();
+	    	   if(checkstatus.equalsIgnoreCase("1"))
+	    	   {
+	    	   Intent i=new Intent(getApplicationContext(),CourseDetails.class);
+	    	   i.putExtra("courseid", course_id_topass);
+	    	   i.putExtra("course_name",   course_name_to_pass);
+	    	   i.putExtra("course_description",   course_descript_to_pass);
+	    	   i.putExtra("instructor_id",   instructoridurl);
+	    	   i.putExtra("enroll_students",   course_enrolled_passing);
+	    	   i.putExtra("audio_url", audiourlpassing);
+	    	   startActivity(i);
+	    	   }
+	    	 
+				
 	    	   
 	    	//  String url="http://208.109.248.89:8085/OnlineCourse/Student/student_view_Course?course_id=50&authorid=1&pur=0&catcourse=&coursetype=";
+	    	   else{
 	    	   String url = Config.common_url+"/student_view_Course?course_id="+courseidurl+"&authorid="+instructoridurl+"&pur="+numofrows+"&catcourse=&coursetype=";
 				System.out.println("url value"+url);
-	    	   Intent i = new Intent(Intent.ACTION_VIEW);
-				i.setData(Uri.parse(url));
-			startActivity(i);
-	         
+	    	   Intent ii = new Intent(Intent.ACTION_VIEW);
+				ii.setData(Uri.parse(url));
+				ii.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				getApplicationContext().startActivity(ii);
+	    	   }
 	     
 
 		

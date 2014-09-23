@@ -61,12 +61,12 @@ public class Fragmetns2 extends SherlockFragment implements SearchView.OnQueryTe
         // Handle item selection
         switch (item.getItemId()) {
         case R.id.category:
-        	Intent intentSignUP=new Intent(getActivity(),CategorySelectionActivity.class);
+        	Intent intentSignUP=new Intent(getActivity(),CategorySelectionStudentBased.class);
 			startActivity(intentSignUP);
           
             return true;
         case R.id.menu_search:
-        	Intent intentsearch=new Intent(getActivity(),SearchActivity.class);
+        	Intent intentsearch=new Intent(getActivity(),SearchStudentBased.class);
 			startActivity(intentsearch);
           
             return true;

@@ -16,7 +16,9 @@ import com.deemsys.lmsmooc.InboxFragment.Details;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -78,6 +80,35 @@ public class MyFavoriteAuthor extends Fragment {
 				protected void onPostExecute(String file_url) {
 			   
 					 super.onPostExecute(file_url);
+					 if(user.length()==0)
+					 {
+						 	AlertDialog alertDialog = new AlertDialog.Builder(
+									getActivity()).create();
+
+							// Setting Dialog Title
+							alertDialog.setTitle("INFO!");
+
+							// Setting Dialog Message
+							alertDialog.setMessage("No Favorite authors available");
+
+							// Setting Icon to Dialog
+							alertDialog.setIcon(R.drawable.delete);
+							
+
+							// Setting OK Button
+							alertDialog.setButton("OK",	new DialogInterface.OnClickListener() {
+
+										public void onClick(final DialogInterface dialog,
+												final int which) {
+											// Write your code here to execute after dialog
+											// closed
+											
+										}
+									});
+
+							// Showing Alert Message
+							alertDialog.show();
+					 }
 					 list2.setAdapter(new AuthorArrayAdapter(getActivity(), auhtor,R.layout.category_each_item));
 					 list2.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener(){
 						 
@@ -164,5 +195,28 @@ public class MyFavoriteAuthor extends Fragment {
 				 if (isInternetPresent) {
 				        new CategoryDetails().execute(); 
 						 }
+					else
+	        		{
+	        			AlertDialog alertDialog = new AlertDialog.Builder(
+	    						getActivity()).create();
+
+	    				alertDialog.setTitle("INFO!");
+
+	    				alertDialog.setMessage("No network connection.");
+
+	    				alertDialog.setIcon(R.drawable.delete);
+	    				
+	    				alertDialog.setButton("OK",	new DialogInterface.OnClickListener() {
+
+	    							public void onClick(final DialogInterface dialog,
+	    									final int which) {
+	    								
+	    							}
+	    						});
+
+	    				
+	    				alertDialog.show();
+	        			
+	        		}
 		}
 }

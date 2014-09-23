@@ -55,6 +55,18 @@
               android:screenOrientation="portrait" />
               <activity android:name=".CourseDetails"
               android:screenOrientation="portrait" />
+               <activity android:name=".CourseText"
+              android:screenOrientation="portrait" />
+               <activity android:name=".CourseAudio"
+              android:screenOrientation="portrait" />
+                <activity android:name=".CourseVideo"
+              android:screenOrientation="landscape" />
+                 <activity android:name=".SearchStudentBased"
+              android:screenOrientation="portrait" />
+                  <activity android:name=".CategoryCoursesStudentBased"
+              android:screenOrientation="portrait" />
+                    <activity android:name=".CategorySelectionStudentBased"
+              android:screenOrientation="portrait" />
               
               <activity android:name=".InboxFragment"
               android:screenOrientation="portrait" />

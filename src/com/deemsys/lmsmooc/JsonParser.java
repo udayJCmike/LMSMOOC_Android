@@ -76,9 +76,9 @@ public class JsonParser {
                 HttpEntity httpEntity = httpResponse.getEntity();
                 is = httpEntity.getContent();
                 
-               // System.out.println(is);
+                System.out.println(is);
                 
-              //  System.out.println("getting the content");
+                System.out.println("getting the content");
  
             }else if(method.equalsIgnoreCase("GET")){
             
@@ -138,7 +138,7 @@ public class JsonParser {
         	jsonObject = new JSONObject(json);
         	  System.out.println("json object parse finished");
         	
-        //	Log.i("tagconvertstr2","["+json+"]");
+        	Log.i("tagconvertstr2","["+json+"]");
         	    	
         	}
         	
@@ -156,7 +156,7 @@ public class JsonParser {
         }
         
         
-       // System.out.println("jsson object is" + json);
+        System.out.println("jsson object is" + json);
        
         return jsonObject;
  
@@ -201,7 +201,7 @@ public JSONObject getJSONFromUrl(String url) {
 		        }
 		    
 		        try {
-		        	//Log.i("tagconvertstr", "["+json+"]");
+		        	Log.i("tagconvertstr", "["+json+"]");
 		        	
 		        	
 		        	if((json!=null)&&(json!=""))
@@ -215,14 +215,14 @@ public JSONObject getJSONFromUrl(String url) {
 		        	{
 		        		System.out.println(" it is null value ");
 		        		jss1= "empty";
-		        		//System.out.println("jss1 value is" +jss1);
+		        		System.out.println("jss1 value is" +jss1);
 		        		
 		        	}
 		        } catch (JSONException e) {
 		            Log.e("JSON Parser", "Error parsing data " + e.toString());
 		        }
 		 
-		 //   System.out.println("json object is");
+		    System.out.println("json object is");
 		        return jsonObject;  
 		
 	}

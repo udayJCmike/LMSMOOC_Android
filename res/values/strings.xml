@@ -58,5 +58,8 @@
   <string name="unfollow">Unfollow Author</string>
   <string name="enroll">Students Enrolled</string>
   
- 
+   <string name="browse">Browse Image</string>
+  <string name="upload">Upload Image</string>
+  
+ <string name="inital_Time">0 min, 0 sec</string>
 </resources>

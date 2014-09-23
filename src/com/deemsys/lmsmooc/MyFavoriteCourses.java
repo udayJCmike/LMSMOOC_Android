@@ -32,8 +32,10 @@ import com.androidquery.AQuery;
 import com.squareup.picasso.Picasso;
 
 import android.support.v4.app.Fragment;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -79,7 +81,7 @@ public class MyFavoriteCourses  extends Fragment {
 	 View loadMoreView;
 	 JSONArray user = null;
 	 static ListView listView ;
-	 String course_name,authorname,student_enrolled,ratingcouont,cost,course_id,instructorid,numofrows,course_cover_image;
+	 String course_name,authorname,student_enrolled,ratingcouont,cost,course_id,instructorid,numofrows,course_cover_image,ifmycoursepresent,audiourl,audiourlpassing;
 	 private static final String TAG_SRESL= "serviceresponse";
 	    private static final String TAG_Course_ARRAY = "CourseList";
 		private static final String TAG_SRES= "serviceresponse";
@@ -91,12 +93,15 @@ public class MyFavoriteCourses  extends Fragment {
 		private static final String TAG_course_cover_image= "course_cover_image";
 		private static final String TAG_route_no= "route_no";
 		private static final String TAG_driver_status= "device_status";
+		private static final String TAG_Check_= "checkmycourse";
 		private static final String TAG_status_date= "status_date";
 		private static final String TAG_INSTRUCTOR_ID= "instructor_id";
 		private static final String TAG_COURSE_ID= "course_id";
 		private static final String TAG_SUCCESS = "success";
 		private static final String TAG_NUMBER_OF_ROWS = "number_of_rows";
-	 String courseidurl,instructoridurl,pur_url;
+		private static final String TAG_COURSE_PROMO_VIDEO= "course_promo_video";
+	 String courseidurl,instructoridurl,pur_url,checkstatus;
+	 String course_id_topass,course_name_to_pass,course_descript_to_pass,course_enrolled,course_enrolled_passing;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.allcourses, container, false);
@@ -120,6 +125,15 @@ public class MyFavoriteCourses  extends Fragment {
     	    Course country = (Course) parent.getItemAtPosition(position);
     	    if(position<courselist.size())
     	    {
+    	    	audiourlpassing=country.getaudiourl();
+    	    	course_descript_to_pass=country.getdescription();
+  	    	  course_id_topass=country.getcourseid();
+  	    courseidurl=country.getcourseid();
+  	    instructoridurl=country.getinsid();
+  	    course_name_to_pass=country.getCode();
+  	    course_enrolled_passing=country.getstudentsenrolled();
+    	    	checkstatus=country.getifmycourse();
+    	    	System.out.println("status check"+checkstatus);
     	    courseidurl=country.getcourseid();
     	    instructoridurl=country.getinsid();
     	    new fetchpurnumber().execute();
@@ -223,6 +237,35 @@ public class MyFavoriteCourses  extends Fragment {
 				   if(countryListObj.length() == 0)
 				   
 				   {
+					   if(courselist.size() == 0&&start==0)
+						 {
+							 	AlertDialog alertDialog = new AlertDialog.Builder(
+										getActivity()).create();
+
+								// Setting Dialog Title
+								alertDialog.setTitle("INFO!");
+
+								// Setting Dialog Message
+								alertDialog.setMessage("No favorite courses selected.");
+
+								// Setting Icon to Dialog
+								alertDialog.setIcon(R.drawable.delete);
+								
+
+								// Setting OK Button
+								alertDialog.setButton("OK",	new DialogInterface.OnClickListener() {
+
+											public void onClick(final DialogInterface dialog,
+													final int which) {
+												// Write your code here to execute after dialog
+												// closed
+												
+											}
+										});
+
+								// Showing Alert Message
+								alertDialog.show();
+						 }
 			
 				    listView.removeFooterView(loadMoreView);
 				   }
@@ -241,23 +284,28 @@ public class MyFavoriteCourses  extends Fragment {
 		    		instructorid=c2.getString(TAG_INSTRUCTOR_ID);
 		    		course_id=c2.getString(TAG_COURSE_ID);
 		            course_name = c2.getString(TAG_COURSE_NAME);
-		          //  course_cover_image="http://208.109.248.89/lmsvideos/28/coverImage.jpg";
+		            audiourl=c2.getString(TAG_COURSE_PROMO_VIDEO);
 		            course_cover_image=c2.getString(TAG_course_cover_image);
 		        	cost= c2.getString(TAG_COURSE_COST);
+		        	 ifmycoursepresent= c2.getString(TAG_Check_);
 		        	ratingcouont=c2.getString(TAG_COURSE_RATINGS);
 		        	coursetotallist.add(authorname);
 		        	coursetotallist.add(course_name);
 		        	coursetotallist.add(ratingcouont);
+		        	coursetotallist.add(ifmycoursepresent);
+		        	coursetotallist.add(audiourl);
 		        	imagelist.add(course_cover_image);
 
 
-		        	 Course cnt = new Course(authorname,course_name,cost,course_id,instructorid,course_cover_image,ratingcouont);
+		        	 Course cnt = new Course(authorname,course_name,cost,course_id,instructorid,course_cover_image,ratingcouont,ifmycoursepresent,audiourl);
 		        	 cnt.setName(authorname);
 		        	 cnt.setCode(course_name);
 					  cnt.setins_id(instructorid);
 					  cnt.setcourseid(course_id);
 					  cnt.setrating(ratingcouont);
+					  cnt.setifmycourse(ifmycoursepresent);
 		           cnt.setstringurl(course_cover_image);
+		           cnt.setaudiourl(audiourl);
 				    courselist.add(cnt);
 				 
 				    System.out.println("size fo country list"+courselist.size());
@@ -543,13 +591,28 @@ public class MyFavoriteCourses  extends Fragment {
 	        System.out.println("in post execute");
 	    	   pDialog.dismiss();
 	    	   
+	    	   if(checkstatus.equalsIgnoreCase("1"))
+	    	   {
+	    	   Intent i=new Intent(getActivity(),CourseDetails.class);
+	    	   i.putExtra("courseid", course_id_topass);
+	    	   i.putExtra("course_name",   course_name_to_pass);
+	    	   i.putExtra("course_description",   course_descript_to_pass);
+	    	   i.putExtra("instructor_id",   instructoridurl);
+	    	   i.putExtra("enroll_students",   course_enrolled_passing);
+	    	   i.putExtra("audio_url", audiourlpassing);
+	    	   startActivity(i);
+	    	   }
+	    	 
+				
+	    	   
 	    	//  String url="http://208.109.248.89:8085/OnlineCourse/Student/student_view_Course?course_id=50&authorid=1&pur=0&catcourse=&coursetype=";
+	    	   else{
 	    	   String url = Config.common_url+"/student_view_Course?course_id="+courseidurl+"&authorid="+instructoridurl+"&pur="+numofrows+"&catcourse=&coursetype=";
 				System.out.println("url value"+url);
-	    	   Intent i = new Intent(Intent.ACTION_VIEW);
-				i.setData(Uri.parse(url));
-				getActivity().startActivity(i);
-	         
+	    	   Intent ii = new Intent(Intent.ACTION_VIEW);
+				ii.setData(Uri.parse(url));
+				getActivity().startActivity(ii);
+	    	   }
 	     
 
 		

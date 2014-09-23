@@ -31,7 +31,7 @@ public class BrowseCourse extends SherlockFragmentActivity {
 	        ViewPager mViewPager = (ViewPager) findViewById(R.id.viewPager);
 	        
 	        
-	        mViewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
+	        mViewPager.setAdapter(new ViewPagerAdapter1(getSupportFragmentManager()));
 	        
 	 }
 	 public boolean onCreateOptionsMenu(Menu menu) {

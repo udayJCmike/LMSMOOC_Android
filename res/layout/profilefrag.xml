@@ -1,151 +1,313 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/proffrag"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:id="@+id/proffrag"
     android:orientation="vertical" >
-<LinearLayout 
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="221dp"
+        android:orientation="vertical"
+        android:paddingLeft="30dip"
+        android:paddingRight="30dip"
+        android:paddingTop="10dip" >
+
+        <EditText
+            android:id="@+id/firstname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_edittext"
+            android:ems="10"
+            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+            android:hint="@string/firstname" >
+
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/lastname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_edittext"
+            android:ems="10"
+ 			android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+             android:hint="@string/lastname"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_edittext"
+            android:ems="10"
+            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_@-."
+            android:hint="@string/username" />
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_edittext"
+            android:ems="10"
+            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_@-.,"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_edittext"
+            android:ems="10"
+            android:hint="@string/password"
+            android:inputType="textPassword" />
+
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="match_parent"
+            android:layout_height="30dip"
+            android:background="@drawable/rounded_edittext"
+            android:prompt="@string/interstedin" />
+
+        <Spinner
+            android:id="@+id/spinner2"
+            android:layout_width="match_parent"
+            android:layout_height="30dip"
+            android:background="@drawable/rounded_edittext"
+            android:prompt="@string/gender" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="10dip" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="10dip" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="10dip" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="10dip" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="10dip" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/proftextgender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="84dp" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="10dip" />
+    </LinearLayout>
+
+    <!--
+     <Button
+    android:id="@+id/browse"
+    style="?android:attr/buttonStyleSmall"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:paddingLeft="30dip"
-      android:paddingTop="10dip"
-      android:paddingRight="30dip">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingLeft="40dip"
-      android:paddingRight="40dip"
-    android:layout_gravity="center_horizontal"
-    android:orientation="horizontal" >
+    android:layout_marginBottom="10dp"
+    android:layout_marginLeft="0dp"
+    android:layout_marginTop="5dp"
+    android:layout_weight="0.03"
+    android:text="@string/browse" />
+    -->
 
-<ImageView
-    android:id="@+id/imageView1"
-    android:layout_width="wrap_content"
-    android:layout_height="70dip"
-    android:scaleType="fitXY"
-   />
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="10dip" />
 
-</LinearLayout>
-    <EditText
-        android:id="@+id/firstname"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_edittext"
-        android:ems="10"
-        android:hint="@string/firstname" >
- 
-        <requestFocus />
-    </EditText>
-<View
-  android:layout_width="fill_parent"
-  android:layout_height="10dip"
- />
+        android:layout_gravity="center_vertical"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" >
 
-    <EditText
-        android:id="@+id/lastname"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rounded_edittext"
-        android:ems="10"
-        android:hint="@string/lastname"
-        android:inputType="textPersonName" />
-
-<View
-  android:layout_width="fill_parent"
-  android:layout_height="10dip"
- />
-
-    <EditText
-        android:id="@+id/username"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rounded_edittext"
-        android:ems="10"
-        android:hint="@string/username" />
-
-<View
-  android:layout_width="fill_parent"
-  android:layout_height="10dip"
- />
-
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rounded_edittext"
-        android:ems="10"
-        android:hint="@string/email"
-        android:inputType="textEmailAddress" />
-
-<View
-  android:layout_width="fill_parent"
-  android:layout_height="10dip"
- />
-
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rounded_edittext"
-        android:ems="10"
-        android:hint="@string/password"
-        android:inputType="textPassword" />
-
-<View
-  android:layout_width="fill_parent"
-  android:layout_height="10dip"
- />
-
-    <Spinner
-        android:id="@+id/spinner1"
-        android:layout_width="match_parent"
-        android:layout_height="30dip"
-        android:background="@drawable/rounded_edittext"
-        android:prompt="@string/interstedin" />
-
-<View
-  android:layout_width="fill_parent"
-  android:layout_height="10dip"
- />
-<RelativeLayout android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    <Spinner
-        android:id="@+id/spinner2"
-        android:layout_width="match_parent"
-        android:layout_height="30dip"
-        android:background="@drawable/rounded_edittext"
-        android:prompt="@string/gender" />
-
-    <TextView
-        android:id="@+id/proftextgender"
+        <!--
+         <TextView
+        android:id="@+id/browseimage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="84dp"
+        android:layout_marginLeft="0dp"
+        android:layout_weight="0.87"
         android:text="" />
+        -->
 
-</RelativeLayout>
-</LinearLayout>
 
-<View
-    android:layout_width="fill_parent"
-    android:layout_height="10dip" />
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center_vertical"
- 
-    android:gravity="center_horizontal"
-    android:orientation="horizontal" >
-    <Button
+       
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" >
+
+        <!--
+         <Button
+        android:id="@+id/browse"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:layout_weight="0.03"
+        android:text="@string/browse" />
+        -->
+
+        <Button
+            android:id="@+id/browse"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="30dp"
+            android:layout_weight="0.03"
+            android:text="@string/browse" />
+
+       <!--  <TextView
+            android:id="@+id/browseimage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:text="browseimages" /> -->
+
+        <!--
+         <ImageView
+        android:id="@+id/imageview"
+        android:layout_width="29dp"
+        android:layout_height="29dp"
+        android:layout_marginLeft="20dp"
+        android:contentDescription="content"
+        android:src="@drawable/ic_launcher" />
+        -->
+    </LinearLayout>
+
+    
+     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" >
+
+        <!--
+         <Button
+        android:id="@+id/browse"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:layout_weight="0.03"
+        android:text="@string/browse" />
+        -->
+
+       
+
+        <TextView
+            android:id="@+id/browseimage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:text="browseimages" />
+
+        <!--
+         <ImageView
+        android:id="@+id/imageview"
+        android:layout_width="29dp"
+        android:layout_height="29dp"
+        android:layout_marginLeft="20dp"
+        android:contentDescription="content"
+        android:src="@drawable/ic_launcher" />
+        -->
+    </LinearLayout>
+    
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" >
+
+        <!--
+         <Button
         android:id="@+id/savechagnes"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_marginRight="200dp"
+        android:layout_weight="0.44"
         android:text="@string/savechanges" />
+        -->
 
-</LinearLayout>
+        <Button
+            android:id="@+id/upload"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_weight="0.03"
+            android:text="@string/upload" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/savechagnes"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="0dp"
+            android:layout_weight="0.44"
+            android:text="@string/savechanges" />
+
+        <!--
+         <Button
+        android:id="@+id/upload"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_marginRight="0dp"
+        android:layout_weight="0.44"
+        android:text="Upload" />
+        -->
+
+    </LinearLayout>
+
 </LinearLayout>

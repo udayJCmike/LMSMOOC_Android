@@ -111,7 +111,8 @@ public class LoginActivity extends Activity  {
  	        });
 	        signin.setOnClickListener(new OnClickListener() {
 	     	   
-				@SuppressWarnings({ "deprecation", "deprecation", "deprecation" })
+				
+				@SuppressWarnings("deprecation")
 				@Override
 				public void onClick(View arg0) {
 					isInternetPresent = cd.isConnectingToInternet();

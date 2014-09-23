@@ -2,16 +2,19 @@ package com.deemsys.lmsmooc;
 
 public class Config
 {
+//static String ServerUrl = "http://100.64.47.158:8080/LmsmoocAndroid/Services/";
 	static String ServerUrl = "http://192.168.1.71:8080/LmsmoocAndroid/Services/";
-	
+//	static String ServerUrl = "http://106.193.19.163:8080/LmsmoocAndroid/Services/";
 	static String AvatarUrl = "http://208.109.248.89:8085/OnlineCourse/resources/images/users/";
 	static String allcourseurl="ViewCourses.php?service=viewallcourse";
 	static String freecourseurl="ViewCourses.php?service=viewfreecourse";
 	static String paidcourseurl="ViewCourses.php?service=viewpaidcourse";
 	static String purchasenumberselection="ViewCourses.php?service=countnumber";
 	static String categoryurl="Category.php?service=allcategory";
-	static String categoryselectionurl="Category.php?service=viewcategorycourse";
-	static String searchselecturl="SearchCourse.php?service=viewsearchcourse";
+	static String categoryselectionurl="SearchAndCategory.php?service=viewcategorycourse";
+	static String categoryselectionurlbrowse="Category.php?service=viewcategorycoursebrowse";
+	static String searchselecturl="SearchAndCategory.php?service=viewsearchcourse";
+	static String searchselecturlbrowse="SearchCourse.php?service=viewsearchcourse";
 	static String mycourseurl="MyCourses.php?service=mycourse";
 	static String myfavoritecourseurl="MyFavoriteCourse.php?service=myfavoritecourse";
 	static String myfavoritecategoryurl="MyFavoriteCategory.php?service=favoritecategory";
@@ -35,6 +38,21 @@ public class Config
 	static String sampleurl="Sample.php?service=sample";
 	static String courseurl="Courses.php";
     
+	static String allcoursebrowseurl="BrowseCourses.php?service=viewallcourse";
+	static String freecoursbrowseeurl="BrowseCourses.php?service=viewfreecourse";
+	static String paidcoursebrowseurl="BrowseCourses.php?service=viewpaidcourse";
+	
+	
+	static String studentSignup="Studentsignup.php?service=selectloginusername";
+	static String studentSignup1="Studentsignup.php?service=selectloginemail";
+	static String signup="Studentsignup.php?service=signup";
+	static String logininsert="Studentsignup.php?service=logininsert";
+	
+	static String coursecontenttext="CourseContent.php?service=coursecontenttext";
+	static String coursecontentvideo="CourseContent.php?service=coursecontenttext";
+	static String coursecontentaudio="CourseContent.php?service=coursecontenttext";
+	
+	
 	static String student_id;
 	static String avatar_url;
 	static String username;
