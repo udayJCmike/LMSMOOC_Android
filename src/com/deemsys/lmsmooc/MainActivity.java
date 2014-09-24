@@ -23,8 +23,8 @@ public class MainActivity extends FragmentActivity  {
         setContentView(R.layout.activity_main);     
         ActionBar actions = getActionBar();
      
-        actions.setTitle(Html.fromHtml("<font color='#000000'>LMS MOOC</font>"));
-        actions.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
+        actions.setTitle(Html.fromHtml("<font color='#ffffff'>LMS MOOC</font>"));
+        actions.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3399FF")));
          pager = (ViewPager) findViewById(R.id.pager);
         pager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
       pager.setOnPageChangeListener(new OnPageChangeListener() {

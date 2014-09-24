@@ -55,7 +55,7 @@ public class CourseVideo extends SherlockFragmentActivity{
 	   	 audio_url=i.getExtras().getString("audio_url","");
 	        course_content=(TextView)findViewById(R.id.course_text);
 	        cd = new ConnectionDetector(getApplicationContext());
-	        getActionBar().setTitle(Html.fromHtml("<font color=\"black\">" + lect_name + "</font>"));
+	        getActionBar().setTitle(Html.fromHtml("<font color=\"white\">" + lect_name + "</font>"));
 	    	isInternetPresent = cd.isConnectingToInternet();
 	    	if(isInternetPresent)
 			{
@@ -89,7 +89,7 @@ public class CourseVideo extends SherlockFragmentActivity{
 			
 		}
 		
-	        getActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
+	        getActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3399FF")));
 	    	
 }
 	  class getCourse extends AsyncTask<String, String, String> {

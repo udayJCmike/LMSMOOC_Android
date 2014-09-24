@@ -124,9 +124,9 @@ public class SearchStudentBased  extends SherlockActivity {
          ActionBar ab = getSupportActionBar();
 	      ab.setDisplayHomeAsUpEnabled(true);
 	      getSupportActionBar().setHomeButtonEnabled(true);
-	      ab.setTitle(Html.fromHtml("<font color='#000000'>Search</font>"));
+	      ab.setTitle(Html.fromHtml("<font color='#ffffff'>Search</font>"));
 		    
-	        ab.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
+	        ab.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3399FF")));
 		loadMoreView = ((LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE))
           .inflate(R.layout.loadmore, null, false);
     //    listView.addFooterView(loadMoreView);

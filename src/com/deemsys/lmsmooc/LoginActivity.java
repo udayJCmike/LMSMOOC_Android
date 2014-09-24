@@ -95,9 +95,9 @@ public class LoginActivity extends Activity  {
 	        signin = (Button) findViewById(R.id.signin);
 	        forgetpass = (Button) findViewById(R.id.forgetpasword);
 	        ActionBar actions = getActionBar();
-	        actions.setTitle(Html.fromHtml("<font color='#000000'>Login</font>"));
+	        actions.setTitle(Html.fromHtml("<font color='#ffffff'>Login</font>"));
 	    
-	        actions.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
+	        actions.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3399FF")));
 	        layout.setOnTouchListener(new OnTouchListener()
  	        {
  	            @Override

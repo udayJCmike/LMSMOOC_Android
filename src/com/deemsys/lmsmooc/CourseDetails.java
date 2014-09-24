@@ -51,8 +51,8 @@ public class CourseDetails extends SherlockFragmentActivity{
 	     ActionBar ab = getSupportActionBar();
 	     ab.setDisplayHomeAsUpEnabled(true);
 	     getSupportActionBar().setHomeButtonEnabled(true);
-	     setTitle(Html.fromHtml("<font color=\"black\">" + course_name + "</font>"));
-	     ab.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
+	     setTitle(Html.fromHtml("<font color=\"white\">" + course_name + "</font>"));
+	     ab.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3399FF")));
 		ViewPager mViewPager = (ViewPager) findViewById(R.id.viewPager);  
         mViewPager.setAdapter(new CourseDetailPageAdapter(getSupportFragmentManager()));
 //        pDialog = new ProgressDialog(CourseDetails.this);

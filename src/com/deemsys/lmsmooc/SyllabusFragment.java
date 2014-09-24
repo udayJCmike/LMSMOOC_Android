@@ -198,7 +198,7 @@ public class SyllabusFragment extends Fragment {
 					List<NameValuePair> params1 = new ArrayList<NameValuePair>();
 		             
 		             params1.add(new BasicNameValuePair("course_id", CourseDetails.course_id));
-		           System.out.println("course id value"+CourseDetails.course_id);
+		           System.out.println("course imnbd value"+CourseDetails.course_id);
 		         jArray = jsonParser.makeHttpRequest(Config.ServerUrl+Config.courseurl, "POST", params1);
 				
 				    Log.i("tagconvertstr", "["+jArray+"]");

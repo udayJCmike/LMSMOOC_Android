@@ -15,23 +15,46 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.text.Html;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 
 public class BrowseCourse extends SherlockFragmentActivity {
+	static Boolean netcheck = false;
+	ConnectionDetector cd;
+	
 	 @Override
 	    protected void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
 	        setContentView(R.layout.browsecourse);  
+	        cd = new ConnectionDetector(getApplicationContext());
+	        netcheck = cd.isConnectingToInternet();
 	        ActionBar ab = getSupportActionBar();
 		      ab.setDisplayHomeAsUpEnabled(true);
 		      getSupportActionBar().setHomeButtonEnabled(true);
-		      ab.setTitle(Html.fromHtml("<font color='#000000'>Browse Course</font>"));
+		      ab.setTitle(Html.fromHtml("<font color='#ffffff'>Browse Course</font>"));
 			    
-		        ab.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
+		        ab.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3399FF")));
 	        ViewPager mViewPager = (ViewPager) findViewById(R.id.viewPager);
 	        
-	        
+	        mViewPager.setOffscreenPageLimit(2);
 	        mViewPager.setAdapter(new ViewPagerAdapter1(getSupportFragmentManager()));
+//	        mViewPager.setOnTouchListener(new OnTouchListener()
+//	        {           
+//	           
+//
+//				@Override
+//				public boolean onTouch(View v, MotionEvent event) {
+//					// TODO Auto-generated method stub
+//					if(netcheck){
+//					return false;
+//					}
+//					else{
+//						return true;
+//					}
+//				}
+//	        });
 	        
 	 }
 	 public boolean onCreateOptionsMenu(Menu menu) {
@@ -63,4 +86,5 @@ public class BrowseCourse extends SherlockFragmentActivity {
 	    public void onBackPressed() {
 	 
 	 }
+	 
 }

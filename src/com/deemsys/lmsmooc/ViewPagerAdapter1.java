@@ -12,7 +12,7 @@ public class ViewPagerAdapter1 extends FragmentPagerAdapter {
     // Declare the number of ViewPager pages
     final int PAGE_COUNT = 3;
     private String titles[] = new String[] { "All Courses", "Free Course","Paid Course"};
- 
+
     public ViewPagerAdapter1(FragmentManager fm) {
         super(fm);
     }
@@ -23,6 +23,7 @@ public class ViewPagerAdapter1 extends FragmentPagerAdapter {
  
             // Open FragmentTab1.java
         case 0:
+        	
             AllCoursesbrowse fragmenttab1 = new AllCoursesbrowse();
             return fragmenttab1;
  

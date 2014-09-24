@@ -55,9 +55,9 @@ public class CategorySelectionStudentBased extends SherlockActivity {
 			ActionBar ab = getSupportActionBar();
 		      ab.setDisplayHomeAsUpEnabled(true);
 		      getSupportActionBar().setHomeButtonEnabled(true);
-		      ab.setTitle(Html.fromHtml("<font color='#000000'>Categories</font>"));
+		      ab.setTitle(Html.fromHtml("<font color='#ffffff'>Categories</font>"));
 			    
-		        ab.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
+		        ab.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3399FF")));
 			 cd = new ConnectionDetector(getApplicationContext());
 			 isInternetPresent = cd.isConnectingToInternet();
 			 if (isInternetPresent) {

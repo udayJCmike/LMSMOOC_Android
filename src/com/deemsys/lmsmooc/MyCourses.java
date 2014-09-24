@@ -106,6 +106,29 @@ public class MyCourses  extends Fragment {
 		 if (isInternetPresent) {
 			 grabURL(Config.ServerUrl+Config.mycourseurl); 
 				 }
+		 else
+ 		{
+ 			AlertDialog alertDialog = new AlertDialog.Builder(
+						getActivity()).create();
+
+				alertDialog.setTitle("INFO!");
+
+				alertDialog.setMessage("No network connection.");
+
+				alertDialog.setIcon(R.drawable.delete);
+				
+				alertDialog.setButton("OK",	new DialogInterface.OnClickListener() {
+
+							public void onClick(final DialogInterface dialog,
+									final int which) {
+								
+							}
+						});
+
+				
+				alertDialog.show();
+ 			
+ 		}
 		 courselist = new ArrayList<Course>();
        dataAdapter = new MyCustomAdapter(getActivity(),
         R.layout.course_overview, courselist);

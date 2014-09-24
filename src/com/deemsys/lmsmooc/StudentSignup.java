@@ -30,6 +30,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
+import android.text.method.LinkMovementMethod;
 
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -42,6 +43,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 
 public class StudentSignup extends Activity {
@@ -52,6 +54,7 @@ public class StudentSignup extends Activity {
     EditText fstname,pass,confirmpass,username1;
     EditText lstname,emailid;
      CheckBox check;
+     TextView checktext;
     static String firstname;
     static String lastname;
     static String email;
@@ -95,9 +98,9 @@ public class StudentSignup extends Activity {
 		
 		LinearLayout layout = (LinearLayout) findViewById(R.id.layoutt);
 		 ActionBar actions = getActionBar();
-	        actions.setTitle(Html.fromHtml("<font color='#000000'>Registration</font>"));
+	        actions.setTitle(Html.fromHtml("<font color='#ffffff'>Registration</font>"));
 	        actions.setDisplayHomeAsUpEnabled(true);
-	        actions.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
+	        actions.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3399FF")));
         ConnectionDetector cd = new ConnectionDetector(getApplicationContext());
         isInternetPresent= cd.isConnectingToInternet();
 //      
@@ -121,7 +124,14 @@ public class StudentSignup extends Activity {
       pass = (EditText)findViewById(R.id.e5);
      confirmpass = (EditText)findViewById(R.id.e6);
      check = (CheckBox)findViewById(R.id.checkBox1);
-   
+  
+     check.setMovementMethod(LinkMovementMethod.getInstance());
+     checktext= (TextView)findViewById(R.id.checktext);
+//     check.setText("");
+//     checktext.setText(Html.fromHtml("I have read and agree to the " +
+//             "<a href='id.web.freelancer.example.TCActivity://Kode'>TERMS AND CONDITIONS</a>"));
+     checktext.setClickable(true);
+     checktext.setMovementMethod(LinkMovementMethod.getInstance());
 		
 		final	Button signbtn=(Button)findViewById(R.id.btn1);
 		

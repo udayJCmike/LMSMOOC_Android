@@ -72,9 +72,9 @@ public class CourseAudio extends SherlockActivity implements OnTouchListener, On
       ActionBar ab = getSupportActionBar();
       ab.setDisplayHomeAsUpEnabled(true);
  ab.setHomeButtonEnabled(true);
-      ab.setTitle(Html.fromHtml("<font color='#000000'>Search</font>"));
+      ab.setTitle(Html.fromHtml("<font color='#ffffff'>Search</font>"));
 	    
-        ab.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
+        ab.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3399FF")));
         Intent i = getIntent();
         lect_id = i.getExtras().getString("lect_id","");
         lect_name = i.getExtras().getString("lecture_name","");
@@ -92,7 +92,7 @@ public class CourseAudio extends SherlockActivity implements OnTouchListener, On
       playButton.setEnabled(false);
       pauseButton.setEnabled(false);
       cd = new ConnectionDetector(getApplicationContext());
-      getActionBar().setTitle(Html.fromHtml("<font color=\"black\">" + lect_name + "</font>"));
+      getActionBar().setTitle(Html.fromHtml("<font color=\"white\">" + lect_name + "</font>"));
   	isInternetPresent = cd.isConnectingToInternet();
   	if(isInternetPresent)
 		{
@@ -126,7 +126,7 @@ public class CourseAudio extends SherlockActivity implements OnTouchListener, On
 		
 	}
 	
-      getActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
+      getActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3399FF")));
     
 
    }

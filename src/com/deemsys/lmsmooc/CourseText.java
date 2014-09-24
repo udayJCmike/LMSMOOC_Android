@@ -53,7 +53,7 @@ public class CourseText extends SherlockFragmentActivity{
 		      ab.setDisplayHomeAsUpEnabled(true);
 		      getSupportActionBar().setHomeButtonEnabled(true);
 		    
-	        ab.setTitle(Html.fromHtml("<font color=\"black\">" + lect_name + "</font>"));
+	        ab.setTitle(Html.fromHtml("<font color=\"white\">" + lect_name + "</font>"));
 	    	isInternetPresent = cd.isConnectingToInternet();
 	    	if(isInternetPresent)
 			{
@@ -87,7 +87,7 @@ public class CourseText extends SherlockFragmentActivity{
 			
 		}
 		
-	        getActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
+	        getActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3399FF")));
 	    	
 }
 	  class getCourse extends AsyncTask<String, String, String> {

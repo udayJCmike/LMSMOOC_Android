@@ -8,6 +8,8 @@
     <string name="forgetpass">Forgot Password</string>
     <string name="signin">Signin</string>
     <string name="register">Register</string>
+       <string name="terms"><a href='http://www.redbus.in/mob/mTerms.aspx' >Terms of Service</a></string>
+    <string name="checkme">I agree to the</string>
     <string-array name="nav_drawer_items">
         
         <item >Profile</item>

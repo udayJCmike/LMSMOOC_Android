@@ -155,7 +155,7 @@ public class FreeCoursesbrowse  extends Fragment {
          	  });
     }
     public void grabURL(String url) {
-    	  Log.v("Android Spinner JSON Data Activity", url);
+    	  Log.v("Android Spinner JSON Data Activity", url);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
     	  new GrabURL().execute(url);
     	 }
     public static FreeCoursesbrowse newInstance(String text) {

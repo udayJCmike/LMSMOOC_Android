@@ -46,15 +46,15 @@ public class NewMainActivity extends SherlockFragmentActivity {
  static String sampletestvale="8";
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+       super.onCreate(savedInstanceState);
         
         setContentView(R.layout.drawer_main);
        
         mTitle = mDrawerTitle = getTitle();
-        getActionBar().setTitle(Html.fromHtml("<font color=\"black\">" + mDrawerTitle + "</font>"));
+        getActionBar().setTitle(Html.fromHtml("<font color=\"white\">" + mDrawerTitle + "</font>"));
 		
     	
-        getActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
+        getActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3399FF")));
       
         title = new String[] {Config.firstname , "Profile","Change Password","Inbox","My Courses","My Favorites","My Categories","My Authors","Billing","Logout"};
  
@@ -92,7 +92,7 @@ public class NewMainActivity extends SherlockFragmentActivity {
  
             public void onDrawerOpened(View drawerView) {
                 
-            	getActionBar().setTitle(Html.fromHtml("<font color=\"black\">" + mDrawerTitle + "</font>"));
+            	getActionBar().setTitle(Html.fromHtml("<font color=\"white\">" + mDrawerTitle + "</font>"));
            
                 super.onDrawerOpened(drawerView);
             }
@@ -136,7 +136,7 @@ public class NewMainActivity extends SherlockFragmentActivity {
       
         switch (position) {
         case 0:
-            ft.replace(R.id.content_frame, fragment1);
+            ft.replace(R.id.content_frame, new Fragmetns2());
             break;
         case 1:
             ft.replace(R.id.content_frame, fragment2);
@@ -172,11 +172,11 @@ public class NewMainActivity extends SherlockFragmentActivity {
 		mDrawerList.setSelection(position);
 		if(position==0)
 		{
-			setTitle(Html.fromHtml("<font color=\"black\">" + "LMSMOOC" + "</font>"));
+			setTitle(Html.fromHtml("<font color=\"white\">" + "LMSMOOC" + "</font>"));
 		}
 		else
 		{
-			setTitle(Html.fromHtml("<font color=\"black\">" + title[position] + "</font>"));
+			setTitle(Html.fromHtml("<font color=\"white\">" + title[position] + "</font>"));
 		
 		}
 		mDrawerLayout.closeDrawer(mDrawerList);

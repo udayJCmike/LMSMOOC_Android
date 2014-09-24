@@ -168,17 +168,7 @@ public class FreeCourses  extends Fragment {
     	  Log.v("Android Spinner JSON Data Activity", url);
     	  new GrabURL().execute(url);
     	 }
-    public static FreeCourses newInstance(String text) {
-
-    	FreeCourses f = new FreeCourses();
-        Bundle b = new Bundle();
-        b.putString("msg", text);
-
-        f.setArguments(b);
-
-        return f;
-    
-    }
+   
     class GrabURL extends AsyncTask<String,Void,String>{
     	private static final int REGISTRATION_TIMEOUT = 3 * 1000;
 		  private static final int WAIT_TIMEOUT = 30 * 1000;

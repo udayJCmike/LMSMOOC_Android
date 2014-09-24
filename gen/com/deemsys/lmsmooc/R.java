@@ -1018,7 +1018,7 @@ containing a value of this type.
         public static final int abs__title=0x7f04001c;
         public static final int abs__up=0x7f04000b;
         public static final int abtauth=0x7f04003e;
-        public static final int action_settings=0x7f0400b7;
+        public static final int action_settings=0x7f0400b8;
         public static final int addrstext=0x7f040091;
         public static final int addrstext1=0x7f04008f;
         public static final int amountans=0x7f04005c;
@@ -1032,13 +1032,14 @@ containing a value of this type.
         public static final int avatarimage=0x7f0400aa;
         public static final int avatarimg=0x7f04003b;
         public static final int browse=0x7f0400a6;
-        public static final int browsecourse=0x7f0400b4;
+        public static final int browsecourse=0x7f0400b5;
         public static final int browseimage=0x7f0400a7;
-        public static final int btn1=0x7f0400b2;
-        public static final int category=0x7f0400b5;
+        public static final int btn1=0x7f0400b3;
+        public static final int category=0x7f0400b6;
         public static final int categoryname=0x7f040068;
         public static final int changepasslayout=0x7f040069;
         public static final int checkBox1=0x7f040099;
+        public static final int checktext=0x7f0400b2;
         public static final int confirmpassword=0x7f04006c;
         public static final int content_frame=0x7f040085;
         public static final int cost=0x7f04007a;
@@ -1087,8 +1088,8 @@ containing a value of this type.
         public static final int list_slidermenu=0x7f04009c;
         public static final int listview_drawer=0x7f040086;
         public static final int loginlayout=0x7f040096;
-        public static final int lvExp=0x7f0400b3;
-        public static final int menu_search=0x7f0400b6;
+        public static final int lvExp=0x7f0400b4;
+        public static final int menu_search=0x7f0400b7;
         public static final int msgans=0x7f04008b;
         public static final int newpassword=0x7f04006b;
         public static final int normal=0x7f040001;
@@ -1135,7 +1136,7 @@ containing a value of this type.
         public static final int trdateans=0x7f04005d;
         public static final int tridans=0x7f04005e;
         public static final int uname=0x7f040097;
-        public static final int unfollow=0x7f0400b8;
+        public static final int unfollow=0x7f0400b9;
         public static final int unfolowfolow=0x7f040040;
         public static final int upload=0x7f0400a8;
         public static final int useLogo=0x7f040004;
@@ -1231,8 +1232,8 @@ containing a value of this type.
         public static final int unfollow=0x7f0c0005;
     }
     public static final class string {
-        public static final int Avatar=0x7f090025;
-        public static final int aboutauth=0x7f090027;
+        public static final int Avatar=0x7f090027;
+        public static final int aboutauth=0x7f090029;
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
          */
         public static final int abs__action_bar_home_description=0x7f090000;
@@ -1274,34 +1275,36 @@ containing a value of this type.
         public static final int abs__shareactionprovider_share_with_application=0x7f090007;
         public static final int action_settings=0x7f09000f;
         public static final int app_name=0x7f09000d;
-        public static final int author_edu=0x7f090026;
-        public static final int author_name=0x7f09001f;
-        public static final int avatar=0x7f09001b;
-        public static final int browse=0x7f09002a;
+        public static final int author_edu=0x7f090028;
+        public static final int author_name=0x7f090021;
+        public static final int avatar=0x7f09001d;
+        public static final int browse=0x7f09002c;
         public static final int browsecourse=0x7f090010;
-        public static final int category=0x7f09001e;
-        public static final int course_name=0x7f090023;
-        public static final int email=0x7f090017;
-        public static final int enroll=0x7f090029;
-        public static final int firstname=0x7f090014;
-        public static final int follow=0x7f090028;
+        public static final int category=0x7f090020;
+        public static final int checkme=0x7f090015;
+        public static final int course_name=0x7f090025;
+        public static final int email=0x7f090019;
+        public static final int enroll=0x7f09002b;
+        public static final int firstname=0x7f090016;
+        public static final int follow=0x7f09002a;
         public static final int forgetpass=0x7f090011;
-        public static final int gender=0x7f09001a;
-        public static final int getpassword=0x7f09001d;
+        public static final int gender=0x7f09001c;
+        public static final int getpassword=0x7f09001f;
         public static final int hello_world=0x7f09000e;
-        public static final int inital_Time=0x7f09002c;
-        public static final int interstedin=0x7f090019;
-        public static final int lastname=0x7f090015;
-        public static final int no_of_courses=0x7f090020;
-        public static final int password=0x7f090018;
-        public static final int promo_Video=0x7f090024;
+        public static final int inital_Time=0x7f09002e;
+        public static final int interstedin=0x7f09001b;
+        public static final int lastname=0x7f090017;
+        public static final int no_of_courses=0x7f090022;
+        public static final int password=0x7f09001a;
+        public static final int promo_Video=0x7f090026;
         public static final int register=0x7f090013;
-        public static final int removecategory=0x7f090022;
-        public static final int savechanges=0x7f09001c;
+        public static final int removecategory=0x7f090024;
+        public static final int savechanges=0x7f09001e;
         public static final int signin=0x7f090012;
-        public static final int unfollow=0x7f090021;
-        public static final int upload=0x7f09002b;
-        public static final int username=0x7f090016;
+        public static final int terms=0x7f090014;
+        public static final int unfollow=0x7f090023;
+        public static final int upload=0x7f09002d;
+        public static final int username=0x7f090018;
     }
     public static final class style {
         /** 

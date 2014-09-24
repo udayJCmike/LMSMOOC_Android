@@ -137,7 +137,7 @@ public class InboxFragment extends Fragment {
 				
 				 ActionBar ab = getActivity().getActionBar();
 
-			        ab.setTitle(Html.fromHtml("<font color=\"black\">" +"Inbox" + "("+ String.valueOf(a)+"/"+allinbox.size() +")"+ "</font>"));
+			        ab.setTitle(Html.fromHtml("<font color=\"white\">" +"Inbox" + "("+ String.valueOf(a)+"/"+allinbox.size() +")"+ "</font>"));
 				
 
 
@@ -356,7 +356,7 @@ public class InboxFragment extends Fragment {
 					System.out.println("unread messages count:"+a);
 					System.out.println("total messages count:"+allinbox.size());
 					 ActionBar ab = getActivity().getActionBar();
-					 ab.setTitle(Html.fromHtml("<font color=\"black\">" +"Inbox" + "("+ String.valueOf(a)+"/"+allinbox.size() +")"+ "</font>"));
+					 ab.setTitle(Html.fromHtml("<font color=\"white\">" +"Inbox" + "("+ String.valueOf(a)+"/"+allinbox.size() +")"+ "</font>"));
 					
 					
 				} 

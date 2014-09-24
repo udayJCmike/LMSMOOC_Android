@@ -117,8 +117,8 @@ public class AuthorCourses  extends SherlockFragmentActivity {
    ActionBar ab = getSupportActionBar();
    ab.setDisplayHomeAsUpEnabled(true);
    getSupportActionBar().setHomeButtonEnabled(true);
-     setTitle(Html.fromHtml("<font color=\"black\">" +author_name + "</font>"));
-     ab.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
+     setTitle(Html.fromHtml("<font color=\"white\">" +author_name + "</font>"));
+     ab.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3399FF")));
          listView = (ListView)findViewById(R.id.listView1);
         
          
