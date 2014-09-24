@@ -61,7 +61,11 @@ public class CategorySelectionStudentBased extends SherlockActivity {
 			 cd = new ConnectionDetector(getApplicationContext());
 			 isInternetPresent = cd.isConnectingToInternet();
 			 if (isInternetPresent) {
+				 runOnUiThread(new Runnable() {
+					 public void run() {
 			        new CategoryDetails().execute(); 
+					 }
+				 });
 					 }
 			 else
      		{
@@ -104,7 +108,10 @@ public class CategorySelectionStudentBased extends SherlockActivity {
 				protected void onPostExecute(String file_url) {
 			   
 					 super.onPostExecute(file_url);
-					 list2.setAdapter(new CategoryArrayAdapter(CategorySelectionStudentBased.this, category,R.layout.category_each_item));
+					
+							 list2.setAdapter(new CategoryArrayAdapter(CategorySelectionStudentBased.this, category,R.layout.category_each_item));
+								
+						
 					 list2.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener(){
 						 
 

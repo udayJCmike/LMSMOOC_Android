@@ -542,7 +542,9 @@ public class CategoryCoursesStudentBased  extends SherlockFragmentActivity {
         switch (item.getItemId()) {
 
         case android.R.id.home:
-             finish();
+        
+        Intent i=new Intent(getApplicationContext(),CategorySelectionStudentBased.class);
+        startActivity(i);
              break;
 
         default:

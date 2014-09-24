@@ -7,6 +7,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.content.Context;
+import android.database.DataSetObserver;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,5 +73,15 @@ public class CategoryArrayAdapter extends ArrayAdapter<Category> {
 		    return row; 
 
 		}
-
+		@Override
+		public void registerDataSetObserver(DataSetObserver arg0) {
+		    // ...stuff
+		    super.registerDataSetObserver(arg0);
+		}
+		 
+		@Override
+		public void unregisterDataSetObserver(DataSetObserver arg0) {
+		    // ...stuff
+		    super.unregisterDataSetObserver(arg0);
+		}
 }
