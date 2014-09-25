@@ -5,6 +5,7 @@ package com.deemsys.lmsmooc;
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 
 import android.app.Activity;
@@ -13,8 +14,11 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.text.Html;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
@@ -34,7 +38,9 @@ public class BrowseCourse extends SherlockFragmentActivity {
 		      ab.setDisplayHomeAsUpEnabled(true);
 		      getSupportActionBar().setHomeButtonEnabled(true);
 		      ab.setTitle(Html.fromHtml("<font color='#ffffff'>Browse Course</font>"));
-			    
+		      PagerTabStrip pagerTabStrip = (PagerTabStrip) findViewById(R.id.pagerTabStrip);
+		        pagerTabStrip.setDrawFullUnderline(true);
+		        pagerTabStrip.setTabIndicatorColor(Color.parseColor("#3399FF"));
 		        ab.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3399FF")));
 	        ViewPager mViewPager = (ViewPager) findViewById(R.id.viewPager);
 	        
@@ -60,6 +66,11 @@ public class BrowseCourse extends SherlockFragmentActivity {
 	 public boolean onCreateOptionsMenu(Menu menu) {
 			// Inflate the menu; this adds items to the action bar if it is present.
 			getSupportMenuInflater().inflate(R.menu.chosecategory, menu);
+//			int positionOfMenuItem = 0; 
+//			MenuItem item = menu.getItem(positionOfMenuItem);
+//		    SpannableString s = new SpannableString("My red MenuItem");
+//		    s.setSpan(new ForegroundColorSpan(Color.RED), 0, s.length(), 0);
+//		    item.setTitle(s);
 			return true;
 		}
 	
@@ -77,8 +88,11 @@ public class BrowseCourse extends SherlockFragmentActivity {
 	        	Intent intentsearch=new Intent(this,SearchActivity.class);
 				startActivity(intentsearch);
 				return true;
+	        case android.R.id.home:
+	        	  finish();
+				
 	       default:
-	           finish();
+	        
 	        }
 	        return false;
 	  }

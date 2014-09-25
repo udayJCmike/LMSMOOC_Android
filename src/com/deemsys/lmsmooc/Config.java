@@ -1,10 +1,10 @@
 package com.deemsys.lmsmooc;
 
 public class Config
-{
+{ 
 //static String ServerUrl = "http://100.64.47.158:8080/LmsmoocAndroid/Services/";
 	static String ServerUrl = "http://192.168.1.71:8080/LmsmoocAndroid/Services/";
-//	static String ServerUrl = "http://106.193.19.163:8080/LmsmoocAndroid/Services/";
+	//static String ServerUrl = "http://169.254.164.230:8080/LmsmoocAndroid/Services/";
 	static String AvatarUrl = "http://208.109.248.89:8085/OnlineCourse/resources/images/users/";
 	static String allcourseurl="ViewCourses.php?service=viewallcourse";
 	static String freecourseurl="ViewCourses.php?service=viewfreecourse";
@@ -49,8 +49,13 @@ public class Config
 	static String logininsert="Studentsignup.php?service=logininsert";
 	
 	static String coursecontenttext="CourseContent.php?service=coursecontenttext";
-	static String coursecontentvideo="CourseContent.php?service=coursecontenttext";
-	static String coursecontentaudio="CourseContent.php?service=coursecontenttext";
+	static String coursecontentvideo="CourseContent.php?service=coursecontentvideo";
+	static String coursecontentaudio="CourseContent.php?service=coursecontentaudio";
+	
+	
+	
+	static String uploadpicone="Uploadpicture.php";
+	static String uploadpictwo="Uploadpicture.php?service=imageinsert";
 	
 	
 	static String student_id;
@@ -68,4 +73,5 @@ public class Config
 	static  String role;
 	static String enabled;	
 	static String common_url;
+	static String browsecommon_url;
 }

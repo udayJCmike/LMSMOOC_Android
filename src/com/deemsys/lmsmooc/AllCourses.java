@@ -102,6 +102,7 @@ public class AllCourses  extends Fragment {
 		
 		private static final String TAG_NUMBER_OF_ROWS = "number_of_rows";
 	 String courseidurl,instructoridurl,pur_url;
+	 String rating_count;
 	 String course_id_topass,course_name_to_pass,course_descript_to_pass,course_enrolled,course_enrolled_passing,checkstatus;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -134,6 +135,7 @@ public class AllCourses  extends Fragment {
         	    courseidurl=country.getcourseid();
         	    instructoridurl=country.getinsid();
         	    course_name_to_pass=country.getCode();
+        	    rating_count=country.getrating();
         	    course_enrolled_passing=country.getstudentsenrolled();
         	    new fetchpurnumber().execute();
         	    }
@@ -600,6 +602,7 @@ public class AllCourses  extends Fragment {
 	    	   i.putExtra("course_description",   course_descript_to_pass);
 	    	   i.putExtra("instructor_id",   instructoridurl);
 	    	   i.putExtra("enroll_students",   course_enrolled_passing);
+	    	   i.putExtra("rating",   rating_count);
 	    	   i.putExtra("audio_url", audiourlpassing);
 	    	   startActivity(i);
 	    	   }

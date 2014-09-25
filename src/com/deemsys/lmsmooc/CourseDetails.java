@@ -7,12 +7,11 @@ import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.text.Html;
 import android.util.Log;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.VideoView;
@@ -30,6 +29,8 @@ public class CourseDetails extends SherlockFragmentActivity{
   VideoView videoview;
     String audio_url;
     String videouri;
+    String ratingsho;
+    ImageView ratingshow;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -44,32 +45,56 @@ public class CourseDetails extends SherlockFragmentActivity{
 		 instructorid=i.getExtras().getString("instructor_id","");
 		 course_enrolls=i.getExtras().getString("enroll_students","");
 		 audio_url=i.getExtras().getString("audio_url","");
+		 ratingsho=i.getExtras().getString("rating","");
 		 System.out.println("instructor id value"+instructorid);
 	     course_nam.setText(course_name);
 	     enrol.setText(course_enrolls);
+	     ratingshow= (ImageView) findViewById(R.id.ratingimage);
 	     videoview=(VideoView)findViewById(R.id.videoView1);
 	     ActionBar ab = getSupportActionBar();
 	     ab.setDisplayHomeAsUpEnabled(true);
 	     getSupportActionBar().setHomeButtonEnabled(true);
 	     setTitle(Html.fromHtml("<font color=\"white\">" + course_name + "</font>"));
 	     ab.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3399FF")));
-		ViewPager mViewPager = (ViewPager) findViewById(R.id.viewPager);  
+		ViewPager mViewPager = (ViewPager) findViewById(R.id.viewPager); 
+		  mViewPager.setBackgroundColor(Color.WHITE);
         mViewPager.setAdapter(new CourseDetailPageAdapter(getSupportFragmentManager()));
-//        pDialog = new ProgressDialog(CourseDetails.this);
-//        // Set progressbar title
-//        pDialog.setTitle("Android Video Streaming Tutorial");
-//        // Set progressbar message
-//        pDialog.setMessage("Buffering...");
-//        pDialog.setIndeterminate(false);
-//        pDialog.setCancelable(true);
-//      
-//        pDialog.show();
-  videouri=LoginActivity.avatar_url+"54"+"/"+audio_url;
+        PagerTabStrip pagerTabStrip = (PagerTabStrip)findViewById(R.id.pagerTabStrip);
+        pagerTabStrip.setDrawFullUnderline(true);
+        pagerTabStrip.setTabIndicatorColor(Color.parseColor("#3399FF"));
+        
+        if(ratingsho.equalsIgnoreCase("0"))
+ 	   {
+ 		ratingshow.setImageResource(R.drawable.zero);  
+ 	   }
+ 	   else  if(ratingsho.equalsIgnoreCase("1"))
+ 	   {
+ 		   ratingshow.setImageResource(R.drawable.one);  
+ 	   }
+ 	   else  if(ratingsho.equalsIgnoreCase("2"))
+ 	   {
+ 		   ratingshow.setImageResource(R.drawable.two);  
+ 	   }
+ 	   else  if(ratingsho.equalsIgnoreCase("3"))
+ 	   {
+ 		   ratingshow.setImageResource(R.drawable.three);  
+ 	   }
+ 	   else  if(ratingsho.equalsIgnoreCase("4"))
+ 	   {
+ 		   ratingshow.setImageResource(R.drawable.four);  
+ 	   }
+ 	   else  if(ratingsho.equalsIgnoreCase("5"))
+ 	   {
+ 		   ratingshow.setImageResource(R.drawable.five);  
+ 	   }
+ 	   else 
+ 	   {
+ 		   ratingshow.setImageResource(R.drawable.zero);  
+ 	   }
+
+      //  videouri= "rtsp://v3.cache8.c.youtube.com/CiILENy73wIaGQmXovF6e-Rf-BMYDSANFEgGUgZ2aWRlb3MM/0/0/0/video.3gp";
+  videouri=LoginActivity.avatar_url+course_id+"/"+audio_url;
  System.out.println("video uri in course details"+videouri);
- videoview.setOnTouchListener(new View.OnTouchListener()
- {
-     @Override
-     public boolean onTouch(View v, MotionEvent event) {
 
     	 try {
 	            // Start the MediaController
@@ -91,17 +116,13 @@ public class CourseDetails extends SherlockFragmentActivity{
 	        videoview.setOnPreparedListener(new OnPreparedListener() {
 	            
 	            public void onPrepared(MediaPlayer mp) {
-	                pDialog.dismiss();
+	       
 	                System.out.println("in video start");
 	                videoview.start();
 	            }
 	        });
 
-         return false;
-     }
 
-	
- });
 
 	}
 	  @Override

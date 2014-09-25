@@ -18,6 +18,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -32,13 +33,15 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 
 
 public class LoginActivity extends Activity  {
 	 EditText usname,paswd;
 	 String successL;
-	 Button signin,forgetpass;
+	 TextView forgetpass;
+	 Button signin,back;
 	 public static String loginurl,avatarurl;
 	 final Context context=this;
 	 Boolean isInternetPresent = false;
@@ -91,9 +94,11 @@ public class LoginActivity extends Activity  {
 	        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 	        cd = new ConnectionDetector(getApplicationContext());
 	        usname= (EditText) findViewById(R.id.uname);
+	      
 	        paswd = (EditText) findViewById(R.id.pswd);
 	        signin = (Button) findViewById(R.id.signin);
-	        forgetpass = (Button) findViewById(R.id.forgetpasword);
+	        back = (Button) findViewById(R.id.back);
+	        forgetpass = (TextView) findViewById(R.id.forgetpasword);
 	        ActionBar actions = getActionBar();
 	        actions.setTitle(Html.fromHtml("<font color='#ffffff'>Login</font>"));
 	    
@@ -109,6 +114,16 @@ public class LoginActivity extends Activity  {
 
  				
  	        });
+ back.setOnClickListener(new OnClickListener() {
+	     	   
+				
+				
+				@Override
+				public void onClick(View arg0) {
+					 Intent intentSignUP=new Intent(getApplicationContext(),MainActivity.class);
+						startActivity(intentSignUP);
+				}
+				});
 	        signin.setOnClickListener(new OnClickListener() {
 	     	   
 				
@@ -513,8 +528,7 @@ public class LoginActivity extends Activity  {
 	 public void onBackPressed() {
 
 		 
-		 Intent intentSignUP=new Intent(getApplicationContext(),MainActivity.class);
-			startActivity(intentSignUP);
+		
 //	     int count = getFragmentManager().getBackStackEntryCount();
 //System.out.println("count value::::"+count);
 //	     if (count == 0) {

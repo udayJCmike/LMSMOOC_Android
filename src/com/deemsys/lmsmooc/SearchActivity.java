@@ -83,6 +83,9 @@ public class SearchActivity  extends SherlockActivity {
 	Bitmap bitmap;
 	EditText editsearch;
 	String keyword;
+	static String avatar_url,successL,avatarurl;
+	 private static final String TAG_AVATAR_URL= "avatar_url";
+	 private static final String TAG_SUCCESS = "success";
 	public ProgressDialog cDialog,pDialog;
 	public static ArrayList<String> coursetotallist= new ArrayList<String>();
 	public static ArrayList<String> imagelist= new ArrayList<String>();
@@ -124,9 +127,9 @@ public class SearchActivity  extends SherlockActivity {
          ActionBar ab = getSupportActionBar();
 	      ab.setDisplayHomeAsUpEnabled(true);
 	      getSupportActionBar().setHomeButtonEnabled(true);
-	      ab.setTitle(Html.fromHtml("<font color='#000000'>Search</font>"));
-		    
-	        ab.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
+	      ab.setTitle(Html.fromHtml("<font color='#ffffff'>Search</font>"));
+	      avatarurl=Config.ServerUrl+"Login.php?service=avatarbrowse";
+	        ab.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3399FF")));
 		loadMoreView = ((LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE))
           .inflate(R.layout.loadmore, null, false);
     //    listView.addFooterView(loadMoreView);
@@ -151,7 +154,7 @@ public class SearchActivity  extends SherlockActivity {
         	    	System.out.println("status check"+checkstatus);
         	    courseidurl=country.getcourseid();
         	    instructoridurl=country.getinsid();
-        	    new fetchpurnumber().execute();
+        	    new Avatarfetch().execute();
         	  
         	    }
         	   }
@@ -710,12 +713,12 @@ else
 	    	   
 	    	//  String url="http://208.109.248.89:8085/OnlineCourse/Student/student_view_Course?course_id=50&authorid=1&pur=0&catcourse=&coursetype=";
 	    	   else{
-	    	   String url = Config.common_url+"/student_view_Course?course_id="+courseidurl+"&authorid="+instructoridurl+"&pur="+numofrows+"&catcourse=&coursetype=";
+	    	   String url = Config.browsecommon_url+"/student_view_Course?course_id="+courseidurl+"&authorid="+instructoridurl+"&pur="+numofrows+"&catcourse=&coursetype=";
 				System.out.println("url value"+url);
 	    	   Intent ii = new Intent(Intent.ACTION_VIEW);
 				ii.setData(Uri.parse(url));
 				ii.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				getApplicationContext().startActivity(ii);
+				startActivity(ii);
 	    	   }
 	     
 
@@ -755,5 +758,59 @@ else
 	 public void onBackPressed() 
  {
 
+ }
+    class Avatarfetch extends AsyncTask<String, String, String> {
+    	@Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+          
+        }
+    	@Override
+		protected String doInBackground(String... params)
+    	{
+    		List<NameValuePair> params1 = new ArrayList<NameValuePair>();
+             
+            
+             params1.add(new BasicNameValuePair("id", "1"));
+           
+    		JsonParser jLogin = new JsonParser();
+            
+             JSONObject json = jLogin.makeHttpRequest(avatarurl,"POST", params1);
+            System.out.println("value for json::"+json);
+             if(json!=null)
+             {
+                 try
+                 {
+                	 if(json != null)
+                	 {
+                	 System.out.println("json value::"+json);
+                	
+                	 JSONObject jUser = json.getJSONObject(TAG_SRESL);
+                	 successL = jUser.getString(TAG_SUCCESS);
+                	 avatar_url = jUser.getString(TAG_AVATAR_URL);
+                	 Config.browsecommon_url=jUser.getString(TAG_AVATAR_URL);;
+                	 System.out.println("avatar url in second async"+avatar_url);
+                	 }
+	                	
+	                }
+	                 
+	                 catch(JSONException e)
+	                 {
+	                	 e.printStackTrace();
+	                	 
+	                 }
+	              }
+	             else{
+	                	 
+	            	 successL ="No"; 
+		    			  }
+			return null; 
+    	}
+    	@Override
+		 protected void onPostExecute(String file_url) {
+	    	   super.onPostExecute(file_url);
+	  //  pDialog.dismiss();	
+	new fetchpurnumber().execute();
+    	}
  }
 }

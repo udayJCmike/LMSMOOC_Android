@@ -26,6 +26,8 @@ import org.apache.http.params.HttpParams;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import com.deemsys.lmsmooc.AllCoursesbrowse.fetchpurnumber;
 import com.squareup.picasso.Picasso;
 import android.support.v4.app.Fragment;
 import android.app.ProgressDialog;
@@ -78,12 +80,10 @@ public class PaidCoursesbrowse  extends Fragment {
 		private static final String TAG_COURSE_COST= "course_price";
 		private static final String TAG_COURSE_RATINGS= "user_ratings";
 		private static final String TAG_course_cover_image= "course_cover_image";
-		private static final String TAG_route_no= "route_no";
-		private static final String TAG_driver_status= "device_status";
-		private static final String TAG_status_date= "status_date";
+		static String avatar_url,successL,avatarurl;
+		 private static final String TAG_AVATAR_URL= "avatar_url";
 		private static final String TAG_INSTRUCTOR_ID= "instructor_id";
 		private static final String TAG_COURSE_ID= "course_id";
-		private static final String TAG_Check_= "checkmycourse";
 		private static final String TAG_SUCCESS = "success";
 		private static final String TAG_NUMBER_OF_ROWS = "number_of_rows";
 	 String courseidurl,instructoridurl,pur_url;
@@ -93,7 +93,7 @@ public class PaidCoursesbrowse  extends Fragment {
         setHasOptionsMenu(true);
        
         listView = (ListView)v.findViewById(R.id.listView1);
-        
+        avatarurl=Config.ServerUrl+"Login.php?service=avatarbrowse";
         getActivity();
 		loadMoreView = ((LayoutInflater)getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE))
           .inflate(R.layout.loadmore, null, false);
@@ -131,7 +131,7 @@ public class PaidCoursesbrowse  extends Fragment {
          		
           	    courseidurl=country.getcourseid();
           	    instructoridurl=country.getinsid();
-          	    new fetchpurnumber().execute();
+          	    new Avatarfetch().execute();
 //          	    Toast.makeText(getActivity(),
 //          	      country.getcourseid(), Toast.LENGTH_SHORT).show();
          	   }
@@ -156,7 +156,7 @@ public class PaidCoursesbrowse  extends Fragment {
          	  });
     }
     public void grabURL(String url) {
-    	  Log.v("Android Spinner JSON Data Activity", url);
+    	  Log.v("Android Spinner JSON Data Activity", url);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
     	  new GrabURL().execute(url);
     	 }
     public static PaidCoursesbrowse newInstance(String text) {
@@ -210,7 +210,7 @@ public class PaidCoursesbrowse  extends Fragment {
 			    	Log.i("tagconvertstr", "["+c+"]");
 			 
 			    	Log.i("tagconvertstr1", "["+user+"]");
-				  // responseObj = new JSONObject(response); 
+				//   responseObj = new JSONObject(response); 
 				
 				   JSONArray countryListObj = c.getJSONArray(TAG_Course_ARRAY);
 				 
@@ -231,11 +231,11 @@ public class PaidCoursesbrowse  extends Fragment {
 				    System.out.println("countryListObj length"+countryListObj.length());
 		    		JSONObject c1 = user.getJSONObject(i);
 		    		JSONObject c2 = c1.getJSONObject(TAG_SRES);
-		    	
 		    	    authorname = c2.getString(TAG_COURSE_AUTHOR);
 		    		instructorid=c2.getString(TAG_INSTRUCTOR_ID);
 		    		course_id=c2.getString(TAG_COURSE_ID);
 		            course_name = c2.getString(TAG_COURSE_NAME);
+		        
 		          //  course_cover_image="http://208.109.248.89/lmsvideos/28/coverImage.jpg";
 		            course_cover_image=c2.getString(TAG_course_cover_image);
 		        	cost= c2.getString(TAG_COURSE_COST);
@@ -243,7 +243,7 @@ public class PaidCoursesbrowse  extends Fragment {
 		        	coursetotallist.add(authorname);
 		        	coursetotallist.add(course_name);
 		        	coursetotallist.add(ratingcouont);
-		        
+		        	
 		        	imagelist.add(course_cover_image);
 
 
@@ -252,9 +252,9 @@ public class PaidCoursesbrowse  extends Fragment {
 		        	 cnt.setCode(course_name);
 					  cnt.setins_id(instructorid);
 					  cnt.setcourseid(course_id);
-					 
 					  cnt.setrating(ratingcouont);
 		           cnt.setstringurl(course_cover_image);
+		        
 				    courselist.add(cnt);
 				 
 				    System.out.println("size fo country list"+courselist.size());
@@ -388,7 +388,7 @@ public class PaidCoursesbrowse  extends Fragment {
     	   if (convertView == null) {
     	 
     	   LayoutInflater vi = (LayoutInflater)getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    	   convertView = vi.inflate(R.layout.paid_course_overview, null);
+    	   convertView = vi.inflate(R.layout.course_overview, null);
     	 
     	   holder = new ViewHolder();
     	   holder.code = (TextView) convertView.findViewById(R.id.coursename);
@@ -494,7 +494,7 @@ public class PaidCoursesbrowse  extends Fragment {
             pDialog.setMessage("Please wait...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
-            pDialog.show();
+          //  pDialog.show();
 
         }
 
@@ -542,7 +542,7 @@ public class PaidCoursesbrowse  extends Fragment {
     			
     			return null;
     		}
-		@SuppressWarnings("deprecation")
+		
 		@Override
 		 protected void onPostExecute(String file_url) {
 	    	   super.onPostExecute(file_url);
@@ -550,7 +550,7 @@ public class PaidCoursesbrowse  extends Fragment {
 	    	   pDialog.dismiss();
 	    	   
 	    	//  String url="http://208.109.248.89:8085/OnlineCourse/Student/student_view_Course?course_id=50&authorid=1&pur=0&catcourse=&coursetype=";
-	    	   String url = Config.common_url+"/student_view_Course?course_id="+courseidurl+"&authorid="+instructoridurl+"&pur="+numofrows+"&catcourse=&coursetype=";
+	    	   String url = Config.browsecommon_url+"/student_view_Course?course_id="+courseidurl+"&authorid="+instructoridurl+"&pur="+numofrows+"&catcourse=&coursetype=";
 				System.out.println("url value"+url);
 	    	   Intent i = new Intent(Intent.ACTION_VIEW);
 				i.setData(Uri.parse(url));
@@ -586,4 +586,58 @@ public class PaidCoursesbrowse  extends Fragment {
 	        
 	       }
 	   }
+    class Avatarfetch extends AsyncTask<String, String, String> {
+    	@Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+          
+        }
+    	@Override
+		protected String doInBackground(String... params)
+    	{
+    		List<NameValuePair> params1 = new ArrayList<NameValuePair>();
+             
+            
+             params1.add(new BasicNameValuePair("id", "1"));
+           
+    		JsonParser jLogin = new JsonParser();
+            
+             JSONObject json = jLogin.makeHttpRequest(avatarurl,"POST", params1);
+            System.out.println("value for json::"+json);
+             if(json!=null)
+             {
+                 try
+                 {
+                	 if(json != null)
+                	 {
+                	 System.out.println("json value::"+json);
+                	
+                	 JSONObject jUser = json.getJSONObject(TAG_SRESL);
+                	 successL = jUser.getString(TAG_SUCCESS);
+                	 avatar_url = jUser.getString(TAG_AVATAR_URL);
+                	 Config.browsecommon_url=jUser.getString(TAG_AVATAR_URL);;
+                	 System.out.println("avatar url in second async"+avatar_url);
+                	 }
+	                	
+	                }
+	                 
+	                 catch(JSONException e)
+	                 {
+	                	 e.printStackTrace();
+	                	 
+	                 }
+	              }
+	             else{
+	                	 
+	            	 successL ="No"; 
+		    			  }
+			return null; 
+    	}
+    	@Override
+		 protected void onPostExecute(String file_url) {
+	    	   super.onPostExecute(file_url);
+	  //  pDialog.dismiss();	
+	new fetchpurnumber().execute();
+    	}
+ }
 }

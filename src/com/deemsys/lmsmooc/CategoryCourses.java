@@ -25,6 +25,7 @@ import org.json.JSONObject;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.deemsys.lmsmooc.AllCoursesbrowse.fetchpurnumber;
 
 
 import com.squareup.picasso.Picasso;
@@ -77,6 +78,9 @@ public class CategoryCourses  extends SherlockFragmentActivity {
 	 JSONArray user = null;
 	 static ListView listView ;
 	 Bitmap bitmap;
+	 static String avatar_url,successL,avatarurl;
+	 private static final String TAG_AVATAR_URL= "avatar_url";
+	 String rating_count;
 	 String course_name,authorname,student_enrolled,ratingcouont,cost,course_id,instructorid,numofrows,category_name,ifmycoursepresent,course_cover_image,audiourl,audiourlpassing;
 	 private static final String TAG_SRESL= "serviceresponse";
 	    private static final String TAG_Course_ARRAY = "CourseList";
@@ -112,7 +116,7 @@ public class CategoryCourses  extends SherlockFragmentActivity {
      setTitle(Html.fromHtml("<font color=\"white\">" + category_name + "</font>"));
      ab.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3399FF")));
          listView = (ListView)findViewById(R.id.listView1);
-        
+         avatarurl=Config.ServerUrl+"Login.php?service=avatarbrowse";
          
 		loadMoreView = ((LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE))
           .inflate(R.layout.loadmore, null, false);
@@ -139,8 +143,8 @@ public class CategoryCourses  extends SherlockFragmentActivity {
           	    	System.out.println("status check"+checkstatus);
           	    courseidurl=country.getcourseid();
           	    instructoridurl=country.getinsid();
-          	    
-        	    new fetchpurnumber().execute();
+          	  rating_count=country.getrating();
+        	    new Avatarfetch().execute();
         	   
         	    }
         	   }
@@ -514,6 +518,7 @@ public class CategoryCourses  extends SherlockFragmentActivity {
 	    	   i.putExtra("instructor_id",   instructoridurl);
 	    	   i.putExtra("enroll_students",   course_enrolled_passing);
 	    	   i.putExtra("audio_url", audiourlpassing);
+	    	   i.putExtra("rating",   rating_count);
 	    	   startActivity(i);
 	    	   }
 	    	 
@@ -521,7 +526,7 @@ public class CategoryCourses  extends SherlockFragmentActivity {
 	    	   
 	    	//  String url="http://208.109.248.89:8085/OnlineCourse/Student/student_view_Course?course_id=50&authorid=1&pur=0&catcourse=&coursetype=";
 	    	   else{
-	    	   String url = Config.common_url+"/student_view_Course?course_id="+courseidurl+"&authorid="+instructoridurl+"&pur="+numofrows+"&catcourse=&coursetype=";
+	    	   String url = Config.browsecommon_url+"/student_view_Course?course_id="+courseidurl+"&authorid="+instructoridurl+"&pur="+numofrows+"&catcourse=&coursetype=";
 				System.out.println("url value"+url);
 	    	   Intent ii = new Intent(Intent.ACTION_VIEW);
 				ii.setData(Uri.parse(url));
@@ -625,4 +630,58 @@ public class CategoryCourses  extends SherlockFragmentActivity {
  {
 
  }
+  class Avatarfetch extends AsyncTask<String, String, String> {
+  	@Override
+      protected void onPreExecute() {
+          super.onPreExecute();
+        
+      }
+  	@Override
+		protected String doInBackground(String... params)
+  	{
+  		List<NameValuePair> params1 = new ArrayList<NameValuePair>();
+           
+          
+           params1.add(new BasicNameValuePair("id", "1"));
+         
+  		JsonParser jLogin = new JsonParser();
+          
+           JSONObject json = jLogin.makeHttpRequest(avatarurl,"POST", params1);
+          System.out.println("value for json::"+json);
+           if(json!=null)
+           {
+               try
+               {
+              	 if(json != null)
+              	 {
+              	 System.out.println("json value::"+json);
+              	
+              	 JSONObject jUser = json.getJSONObject(TAG_SRESL);
+              	 successL = jUser.getString(TAG_SUCCESS);
+              	 avatar_url = jUser.getString(TAG_AVATAR_URL);
+              	 Config.browsecommon_url=jUser.getString(TAG_AVATAR_URL);;
+              	 System.out.println("avatar url in second async"+avatar_url);
+              	 }
+	                	
+	                }
+	                 
+	                 catch(JSONException e)
+	                 {
+	                	 e.printStackTrace();
+	                	 
+	                 }
+	              }
+	             else{
+	                	 
+	            	 successL ="No"; 
+		    			  }
+			return null; 
+  	}
+  	@Override
+		 protected void onPostExecute(String file_url) {
+	    	   super.onPostExecute(file_url);
+	  //  pDialog.dismiss();	
+	new fetchpurnumber().execute();
+  	}
+}
 }

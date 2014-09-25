@@ -9,8 +9,10 @@ import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.widget.SearchView;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 
 import android.view.LayoutInflater;
@@ -25,10 +27,12 @@ public class Fragmetns2 extends SherlockFragment implements SearchView.OnQueryTe
     	 
         View view = inflater.inflate(R.layout.viewpager_main, container, false);
         setHasOptionsMenu(true);
-      
+        PagerTabStrip pagerTabStrip = (PagerTabStrip)view. findViewById(R.id.pagerTabStrip);
+        pagerTabStrip.setDrawFullUnderline(true);
+        pagerTabStrip.setTabIndicatorColor(Color.parseColor("#3399FF"));
         ViewPager mViewPager = (ViewPager) view.findViewById(R.id.viewPager);
        
-     
+        mViewPager.setBackgroundColor(Color.WHITE);
         mViewPager.setAdapter(new ViewPagerAdapter(getChildFragmentManager()));
         return view;
     }

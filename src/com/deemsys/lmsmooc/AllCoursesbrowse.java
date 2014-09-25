@@ -84,13 +84,15 @@ public class AllCoursesbrowse  extends Fragment {
 	 View loadMoreView;
 	 JSONArray user = null;
 	 static ListView listView ;
+		
 	 String course_name,authorname,student_enrolled,ratingcouont,cost,course_id,instructorid,numofrows,course_cover_image,ifmycoursepresent;
 	 private static final String TAG_SRESL= "serviceresponse";
 	    private static final String TAG_Course_ARRAY = "CourseList";
 		private static final String TAG_SRES= "serviceresponse";
 		private static final String TAG_COURSE_NAME= "course_name";
 		private static final String TAG_COURSE_AUTHOR= "course_author";
-		
+		static String avatar_url,successL,avatarurl;
+		 private static final String TAG_AVATAR_URL= "avatar_url";
 		private static final String TAG_COURSE_COST= "course_price";
 		private static final String TAG_COURSE_RATINGS= "user_ratings";
 		private static final String TAG_course_cover_image= "course_cover_image";
@@ -101,6 +103,7 @@ public class AllCoursesbrowse  extends Fragment {
 		private static final String TAG_NUMBER_OF_ROWS = "number_of_rows";
 	 String courseidurl,instructoridurl,pur_url,successstring;
 	 AlertDialog alertDialog;
+	
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.allcourses, container, false);
@@ -111,6 +114,7 @@ public class AllCoursesbrowse  extends Fragment {
       	isInternetPresent = cd.isConnectingToInternet();
       	 alertDialog = new AlertDialog.Builder(
 					getActivity()).create();
+      	  avatarurl=Config.ServerUrl+"Login.php?service=avatarbrowse";
 		loadMoreView = ((LayoutInflater)getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE))
           .inflate(R.layout.loadmore, null, false);
         listView.addFooterView(loadMoreView);
@@ -128,7 +132,7 @@ public class AllCoursesbrowse  extends Fragment {
         	    {
         	    courseidurl=country.getcourseid();
         	    instructoridurl=country.getinsid();
-        	    new fetchpurnumber().execute();
+        	    new Avatarfetch().execute();
 //        	    Toast.makeText(getActivity(),
 //        	      country.getcourseid(), Toast.LENGTH_SHORT).show();
         	    }
@@ -585,7 +589,7 @@ alertDialog = new AlertDialog.Builder(
 	    	   pDialog.dismiss();
 	    	   
 	    	//  String url="http://208.109.248.89:8085/OnlineCourse/Student/student_view_Course?course_id=50&authorid=1&pur=0&catcourse=&coursetype=";
-	    	   String url = Config.common_url+"/student_view_Course?course_id="+courseidurl+"&authorid="+instructoridurl+"&pur="+numofrows+"&catcourse=&coursetype=";
+	    	   String url = Config.browsecommon_url+"/student_view_Course?course_id="+courseidurl+"&authorid="+instructoridurl+"&pur="+numofrows+"&catcourse=&coursetype=";
 				System.out.println("url value"+url);
 	    	   Intent i = new Intent(Intent.ACTION_VIEW);
 				i.setData(Uri.parse(url));
@@ -597,6 +601,59 @@ alertDialog = new AlertDialog.Builder(
 		 }
 
  }
-    
+    class Avatarfetch extends AsyncTask<String, String, String> {
+    	@Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+          
+        }
+    	@Override
+		protected String doInBackground(String... params)
+    	{
+    		List<NameValuePair> params1 = new ArrayList<NameValuePair>();
+             
+            
+             params1.add(new BasicNameValuePair("id", "1"));
+           
+    		JsonParser jLogin = new JsonParser();
+            
+             JSONObject json = jLogin.makeHttpRequest(avatarurl,"POST", params1);
+            System.out.println("value for json::"+json);
+             if(json!=null)
+             {
+                 try
+                 {
+                	 if(json != null)
+                	 {
+                	 System.out.println("json value::"+json);
+                	
+                	 JSONObject jUser = json.getJSONObject(TAG_SRESL);
+                	 successL = jUser.getString(TAG_SUCCESS);
+                	 avatar_url = jUser.getString(TAG_AVATAR_URL);
+                	 Config.browsecommon_url=jUser.getString(TAG_AVATAR_URL);;
+                	 System.out.println("avatar url in second async"+avatar_url);
+                	 }
+	                	
+	                }
+	                 
+	                 catch(JSONException e)
+	                 {
+	                	 e.printStackTrace();
+	                	 
+	                 }
+	              }
+	             else{
+	                	 
+	            	 successL ="No"; 
+		    			  }
+			return null; 
+    	}
+    	@Override
+		 protected void onPostExecute(String file_url) {
+	    	   super.onPostExecute(file_url);
+	  //  pDialog.dismiss();	
+	new fetchpurnumber().execute();
+    	}
+ }
   
 }

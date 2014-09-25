@@ -98,7 +98,7 @@ public class ProfileFragment extends Fragment {
 	    private ProgressDialog dialog = null;
 
 	// String selectedimages=null;;
-String urlServer = "http://192.168.1.158:8888/LmsmoocAndroid/Services/Uploadpicture.php?service=imageinsert";
+String urlServer = Config.ServerUrl+Config.uploadpictwo;
 
 	
 	EditText firstnameedit,lastnameedit,usernameedit,emailedit,avataredit,passwordedit;
@@ -180,7 +180,7 @@ String urlServer = "http://192.168.1.158:8888/LmsmoocAndroid/Services/Uploadpict
        browseimage = (TextView)rootView.findViewById(R.id.browseimage);
       
 
-       upLoadServerUri = "http://192.168.1.158:8888/LmsmoocAndroid/Services/Uploadpicture.php";
+       upLoadServerUri = Config.ServerUrl+Config.uploadpicone;
        
 
 //       image = (ImageView)rootView.findViewById(R.id.imageView1);

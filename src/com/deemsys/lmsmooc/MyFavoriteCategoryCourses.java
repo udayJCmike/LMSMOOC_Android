@@ -81,6 +81,7 @@ public class MyFavoriteCategoryCourses  extends SherlockFragmentActivity {
 	 JSONArray user = null;
 	 static ListView listView ;
 	 Bitmap bitmap;
+	 String rating_count;
 	 String course_name,authorname,student_enrolled,ratingcouont,cost,course_id,instructorid,numofrows,category_name,course_cover_image,ifmycoursepresent,audiourl,audiourlpassing;
 	 private static final String TAG_SRESL= "serviceresponse";
 	    private static final String TAG_Course_ARRAY = "CourseList";
@@ -143,7 +144,7 @@ public class MyFavoriteCategoryCourses  extends SherlockFragmentActivity {
         	    	System.out.println("status check"+checkstatus);
         	    courseidurl=country.getcourseid();
         	    instructoridurl=country.getinsid();
-        	    
+        	    rating_count=country.getrating();
       	    new fetchpurnumber().execute();
         	   
         	    }
@@ -519,6 +520,7 @@ public class MyFavoriteCategoryCourses  extends SherlockFragmentActivity {
 	    	   i.putExtra("instructor_id",   instructoridurl);
 	    	   i.putExtra("enroll_students",   course_enrolled_passing);
 	    	   i.putExtra("audio_url", audiourlpassing);
+	    	   i.putExtra("rating",   rating_count);
 	    	   startActivity(i);
 	    	   }
 	    	 

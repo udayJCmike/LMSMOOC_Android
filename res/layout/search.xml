@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:cursorVisible="true"
     android:hint="Search"
-    android:textColor="#000000"
+    android:textColor="#ffffff"
     android:imeOptions="actionSearch" 
     android:inputType="text" >
  

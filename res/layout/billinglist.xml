@@ -1,6 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
+     android:background="#ffffff"
     android:orientation="vertical" >
 
     <LinearLayout
@@ -12,6 +13,7 @@
 
         <TextView
             android:id="@+id/textView1"
+              style="@style/custom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Course Name" />
@@ -22,6 +24,7 @@
 
         <TextView
             android:id="@+id/coursenameans1"
+              style="@style/custom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="fromans1" />
@@ -37,6 +40,7 @@
 
         <TextView
             android:id="@+id/textView2"
+              style="@style/custom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Purchased Date" />
@@ -47,6 +51,7 @@
 
         <TextView
             android:id="@+id/purdateans1"
+              style="@style/custom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="toans1" />
@@ -62,6 +67,7 @@
 
 <TextView
         android:id="@+id/textView3"
+          style="@style/custom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Promocode" />
@@ -72,6 +78,7 @@
 
     <TextView
         android:id="@+id/promoans1"
+          style="@style/custom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="dateans1" />
@@ -89,7 +96,7 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-   
+     style="@style/custom"
         android:text="Reduction" />
 
     <View
@@ -100,6 +107,7 @@
         android:id="@+id/reductionans1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+          style="@style/custom"
         android:text="dateans1" />
      </LinearLayout>
 
@@ -114,7 +122,7 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-      
+        style="@style/custom"
         android:text="Amount" />
 
  <View
@@ -123,6 +131,7 @@
 
     <TextView
         android:id="@+id/amountans1"
+          style="@style/custom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="dateans1" />

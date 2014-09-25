@@ -3,13 +3,16 @@
 
     <string name="app_name">LMSMOOC</string>
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Get Started</string>
-    <string name="browsecourse">Browse Course</string>
+    <string name="action_settings">Ready to go!!</string>
+    <string name="browsecourse">Explore Courses!!</string>
     <string name="forgetpass">Forgot Password</string>
-    <string name="signin">Signin</string>
-    <string name="register">Register</string>
+     <string name="confirmpass">Confirm Password</string>
+    <string name="signin">Login</string>
+    <string name="register">Signup</string>
+     <string name="back">Back</string>
        <string name="terms"><a href='http://www.redbus.in/mob/mTerms.aspx' >Terms of Service</a></string>
     <string name="checkme">I agree to the</string>
+        <string name="Ratings">Ratings</string>
     <string-array name="nav_drawer_items">
         
         <item >Profile</item>
@@ -32,7 +35,8 @@
         <item>@drawable/ic_launcher</item>
         <item>@drawable/ic_launcher</item>
     </array>
-    
+     <string name="oldpass">Old password</string>
+      <string name="newpass">New password</string>
   <string name="firstname">First Name</string>
   <string name="lastname">Last Name</string>
   <string name="username">Username</string>
@@ -60,8 +64,9 @@
   <string name="unfollow">Unfollow Author</string>
   <string name="enroll">Students Enrolled</string>
   
-   <string name="browse">Browse Image</string>
+   <string name="browse">Browse Profile Picture</string>
   <string name="upload">Upload Image</string>
+   <string name="signintext">Sign in with your username and password!!</string>
   
  <string name="inital_Time">0 min, 0 sec</string>
 </resources>

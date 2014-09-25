@@ -92,7 +92,7 @@ public class MyCourses  extends Fragment {
 		private static final String TAG_INSTRUCTOR_ID= "instructor_id";
 		private static final String TAG_COURSE_ID= "course_id";
 		private static final String TAG_ENROLLED_STUDENT= "course_enrolled";
-		
+		 String rating_count;
 		private static final String TAG_NUMBER_OF_ROWS = "number_of_rows";
 	 String courseidurl,instructoridurl,pur_url,course_enrolled_passing;
     @Override
@@ -146,6 +146,7 @@ public class MyCourses  extends Fragment {
     	    courseidurl=country.getcourseid();
     	    instructoridurl=country.getinsid();
     	    course_name_to_pass=country.getCode();
+    	    rating_count=country.getrating();
     	    course_enrolled_passing=country.getstudentsenrolled();
     	    new fetchpurnumber().execute();
     	   
@@ -570,6 +571,7 @@ public class MyCourses  extends Fragment {
 	    	   i.putExtra("course_description",   course_descript_to_pass);
 	    	   i.putExtra("instructor_id",   instructoridurl);
 	    	   i.putExtra("enroll_students",   course_enrolled_passing);
+	    	   i.putExtra("rating",   rating_count);
 	    	 i.putExtra("audio_url", audiourlpassing);
 				startActivity(i);
 	            

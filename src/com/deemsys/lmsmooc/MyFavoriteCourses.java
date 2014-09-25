@@ -81,6 +81,7 @@ public class MyFavoriteCourses  extends Fragment {
 	 View loadMoreView;
 	 JSONArray user = null;
 	 static ListView listView ;
+	 String rating_count;
 	 String course_name,authorname,student_enrolled,ratingcouont,cost,course_id,instructorid,numofrows,course_cover_image,ifmycoursepresent,audiourl,audiourlpassing;
 	 private static final String TAG_SRESL= "serviceresponse";
 	    private static final String TAG_Course_ARRAY = "CourseList";
@@ -159,6 +160,7 @@ public class MyFavoriteCourses  extends Fragment {
     	    	System.out.println("status check"+checkstatus);
     	    courseidurl=country.getcourseid();
     	    instructoridurl=country.getinsid();
+    	    rating_count=country.getrating();
     	    new fetchpurnumber().execute();
     	    
     	    }
@@ -623,6 +625,7 @@ public class MyFavoriteCourses  extends Fragment {
 	    	   i.putExtra("instructor_id",   instructoridurl);
 	    	   i.putExtra("enroll_students",   course_enrolled_passing);
 	    	   i.putExtra("audio_url", audiourlpassing);
+	    	   i.putExtra("rating",   rating_count);
 	    	   startActivity(i);
 	    	   }
 	    	 

@@ -29,7 +29,7 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
 
 public class CourseVideo extends SherlockFragmentActivity{
 	private static final String TAG_SUCCESS = "success";
-	 private static final String TAG_CONTENT = "content";
+	 private static final String TAG_CONTENT = "video";
 	  String videouri,audio_url;
 	String lect_id,lect_name,lect_type,sect_id,sect_name,course_contents,successL;
 	TextView course_content;
@@ -219,7 +219,8 @@ public class CourseVideo extends SherlockFragmentActivity{
 		           }
 		          else
 		          {
-		        	  videouri=LoginActivity.avatar_url+"54"+"/"+audio_url;
+		        	//  videouri=LoginActivity.avatar_url+"54"+"/"+audio_url;
+		        	  videouri=Config.common_url+CourseDetails.course_id+"/"+sect_id+"/"+lect_id+"/"+course_contents;
 		        	  System.out.println("video uri in course details"+videouri);
 		        	  try {
 				            // Start the MediaController

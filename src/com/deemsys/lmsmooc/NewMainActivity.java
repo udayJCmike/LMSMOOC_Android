@@ -62,7 +62,7 @@ public class NewMainActivity extends SherlockFragmentActivity {
         subtitle = new String[] { "Subtitle Fragment 1", "Subtitle Fragment 2" };
  
       
-        icon = new int[] { R.drawable.ic_launcher, R.drawable.ban1,R.drawable.ic_launcher,R.drawable.ic_launcher,R.drawable.ic_launcher,R.drawable.ic_launcher,R.drawable.ic_launcher,R.drawable.ic_launcher,R.drawable.ic_launcher,R.drawable.ic_launcher,R.drawable.ic_launcher };
+        icon = new int[] { R.drawable.click, R.drawable.ban1,R.drawable.ic_launcher,R.drawable.ic_launcher,R.drawable.ic_launcher,R.drawable.ic_launcher,R.drawable.ic_launcher,R.drawable.ic_launcher,R.drawable.ic_launcher,R.drawable.ic_launcher,R.drawable.ic_launcher };
  
        
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);

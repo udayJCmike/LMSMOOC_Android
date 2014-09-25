@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" >
+    android:layout_width="match_parent"
+     android:background="#ffffff"
+    android:layout_height="match_parent" >
   
     <TextView
         android:id="@+id/toans"
@@ -10,6 +11,7 @@
         android:layout_centerVertical="false"
         android:layout_marginLeft="170dp"
         android:layout_marginTop="40dp"
+         style="@style/custom"
         android:text="toans1" />
 
     <TextView
@@ -18,6 +20,7 @@
         android:layout_height="40dp"
         android:layout_marginLeft="170dp"
         android:layout_marginTop="2dp"
+         style="@style/custom"
         android:text="fromans1" />
 
     <!-- <TextView
@@ -36,6 +39,7 @@
         android:layout_centerHorizontal="false"
         android:layout_marginLeft="170dp"
         android:layout_marginTop="82dp"
+         style="@style/custom"
         android:text="dateans1" />
 
     <TextView
@@ -43,6 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
+         style="@style/custom"
         android:layout_marginTop="2dp"
         android:text="FROM" />
 
@@ -50,6 +55,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+         style="@style/custom"
         android:layout_alignWithParentIfMissing="false"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="40dp"
@@ -57,6 +63,7 @@
 
     <TextView
         android:id="@+id/textView4"
+         style="@style/custom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
@@ -74,6 +81,7 @@
 
     <TextView
         android:id="@+id/msgans"
+         style="@style/custom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView4"

@@ -11,6 +11,7 @@
         android:layout_height="fill_parent"
         android:gravity="center"
         android:padding="5dp"
+         style="@style/custom"
         android:text="Loading more data..."/>
  
 </LinearLayout>

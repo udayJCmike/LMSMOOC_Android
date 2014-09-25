@@ -47,7 +47,7 @@ import android.widget.Toast;
 
 public class CourseAudio extends SherlockActivity implements OnTouchListener, OnCompletionListener, OnBufferingUpdateListener{
 	private static final String TAG_SUCCESS = "success";
-	 private static final String TAG_CONTENT = "content";
+	 private static final String TAG_CONTENT = "audio";
 	  String videouri,audio_url;
 	String lect_id,lect_name,lect_type,sect_id,sect_name,course_contents,successL;
    public TextView startTimeField,endTimeField;
@@ -135,7 +135,9 @@ public class CourseAudio extends SherlockActivity implements OnTouchListener, On
    Toast.makeText(getApplicationContext(), "Playing sound", 
    Toast.LENGTH_SHORT).show();
    try {
-	mediaPlayer.setDataSource("http://users.skynet.be/fa046054/home/P22/track06.mp3");
+	   String datasource=Config.common_url+CourseDetails.course_id+"/"+sect_id+"/"+lect_id+"/"+course_contents;
+	   System.out.println("datasource value"+datasource);
+	mediaPlayer.setDataSource(Config.common_url+CourseDetails.course_id+"/"+sect_id+"/"+lect_id+"/"+course_contents);
 	//
 	mediaPlayer.prepare();
 } catch (IllegalArgumentException e) {
