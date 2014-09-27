@@ -43,7 +43,7 @@
         android:layout_height="30dp"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/rounded_edittext"
-        android:drawableLeft="@drawable/ic_launcher"
+        android:drawableLeft="@drawable/username"
         android:ems="10"
         android:hint="@string/username"
         android:singleLine="true" >
@@ -70,7 +70,7 @@
         android:layout_height="30dp"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/rounded_edittext"
-        android:drawableLeft="@drawable/ic_launcher"
+        android:drawableLeft="@drawable/password"
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"

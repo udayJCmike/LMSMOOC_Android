@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="55dip"
+    android:background="#eeeeee"
+    android:orientation="vertical" >
+ <RelativeLayout   android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         >
+
+    <TextView
+        android:id="@+id/lblListItem"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:paddingBottom="5dp"
+        style="@style/custom"
+        android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
+        android:paddingTop="5dp"
+        android:textSize="17dip" />
+
+      <ImageView
+          android:id="@+id/flag"
+          android:layout_width="70dp"
+          android:layout_height="50dp"
+          android:layout_alignParentRight="true" />
+
+      </RelativeLayout>
+ 
+</LinearLayout>

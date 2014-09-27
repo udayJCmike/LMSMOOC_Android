@@ -99,7 +99,7 @@ public class InboxDetails extends SherlockFragmentActivity   {
 					
 				from.setText(InboxFragment.sender);
 				to.setText(InboxFragment.receiver);
-				message.setText(InboxFragment.msg);
+				message.setText(Html.fromHtml(InboxFragment.msg));
 				date.setText(InboxFragment.date);
 				
 
@@ -109,7 +109,7 @@ public class InboxDetails extends SherlockFragmentActivity   {
 			    	unimportantstatus.setVisibility(View.VISIBLE);
 		        	importantstatus.setVisibility(View.INVISIBLE);
 
-			    	unimportantstatus.setBackgroundResource(R.drawable.unimportant);
+			    	unimportantstatus.setBackgroundColor(Color.parseColor("#F0AD4E"));
 			    	  
 			    
 			    	
@@ -123,7 +123,7 @@ public class InboxDetails extends SherlockFragmentActivity   {
 
 			    	importantstatus.setVisibility(View.VISIBLE);
 		        	unimportantstatus.setVisibility(View.INVISIBLE);
-			    	importantstatus.setBackgroundResource(R.drawable.important);
+			    	importantstatus.setBackgroundColor(Color.parseColor("#5CB85C"));
 			    	  
 			    	
 			    	
@@ -135,7 +135,7 @@ public class InboxDetails extends SherlockFragmentActivity   {
 	    	        public void onClick(final View v) {
 	    	        	importantstatus.setVisibility(View.VISIBLE);
 	    	        	unimportantstatus.setVisibility(View.INVISIBLE);
-	    	        	importantstatus.setBackgroundResource(R.drawable.important);
+	    	        	importantstatus.setBackgroundColor(Color.parseColor("#5CB85C"));
 	    	        	
 	    	        	System.out.println("updating value 1");
 	    	        	
@@ -161,7 +161,7 @@ public class InboxDetails extends SherlockFragmentActivity   {
 	    	        	importantstatus.setVisibility(View.INVISIBLE);
 	    	        	
 
-	    	        	unimportantstatus.setBackgroundResource(R.drawable.unimportant);
+	    	        	unimportantstatus.setBackgroundColor(Color.parseColor("#F0AD4E"));
 	    	        	
 	    	        	System.out.println("updating value 0");
 	    	        	

@@ -62,7 +62,7 @@ public class NewMainActivity extends SherlockFragmentActivity {
         subtitle = new String[] { "Subtitle Fragment 1", "Subtitle Fragment 2" };
  
       
-        icon = new int[] { R.drawable.click, R.drawable.ban1,R.drawable.ic_launcher,R.drawable.ic_launcher,R.drawable.ic_launcher,R.drawable.ic_launcher,R.drawable.ic_launcher,R.drawable.ic_launcher,R.drawable.ic_launcher,R.drawable.ic_launcher,R.drawable.ic_launcher };
+        icon = new int[] { R.drawable.click, R.drawable.profile,R.drawable.changepassword,R.drawable.inbox,R.drawable.courses,R.drawable.favorites,R.drawable.category,R.drawable.author,R.drawable.billing,R.drawable.logout,R.drawable.ic_launcher };
  
        
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -81,15 +81,16 @@ public class NewMainActivity extends SherlockFragmentActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
  
-        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-                R.drawable.nav_drawer, R.string.app_name,
+        mDrawerToggle  = new ActionBarDrawerToggle(this, mDrawerLayout,
+                R.drawable.drawer, R.string.app_name,
                 R.string.app_name) {
- 
+        	
             public void onDrawerClosed(View view) {
                 // TODO Auto-generated method stub
                 super.onDrawerClosed(view);
             }
- 
+            
+            
             public void onDrawerOpened(View drawerView) {
                 
             	getActionBar().setTitle(Html.fromHtml("<font color=\"white\">" + mDrawerTitle + "</font>"));

@@ -259,7 +259,7 @@ public class AllCourses  extends Fragment {
 				   
 				   {
 			
-				    AllCourses.listView.removeFooterView(loadMoreView);
+				    listView.removeFooterView(loadMoreView);
 				   }
 				   else 
 				   
@@ -288,7 +288,7 @@ public class AllCourses  extends Fragment {
 		        	coursetotallist.add(ifmycoursepresent);
 		        	coursetotallist.add(audiourl);
 		        	imagelist.add(course_cover_image);
-
+System.out.println("cover image"+ c2.getString(TAG_course_cover_image));
 		        
 		        	 Course cnt = new Course(authorname,course_name,cost,course_id,instructorid,course_cover_image,ratingcouont,ifmycoursepresent,audiourl);
 		        	 cnt.setName(authorname);

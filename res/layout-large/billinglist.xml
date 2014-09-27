@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="130dp"
+      android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="180dp"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" >
+
+        <LinearLayout
+             android:id="@+id/firtlinear"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView1"
+                style="@style/custom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="Course Name" />
+
+            <TextView
+                android:id="@+id/coursenameans1"
+                style="@style/custom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="fromans1" />
+
+            <TextView
+                android:id="@+id/textView2"
+                style="@style/custom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Purchased Date" />
+
+            <TextView
+                android:id="@+id/textView3"
+                style="@style/custom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Promocode" />
+
+            <TextView
+                android:id="@+id/textView4"
+                style="@style/custom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reduction" />
+        </LinearLayout>
+<View
+    android:id="@+id/view"
+    android:layout_width="80dp"
+    android:layout_height="match_parent"
+ 
+    android:layout_toRightOf="@id/firtlinear" >
+
+</View>
+        <LinearLayout
+            android:id="@+id/secondlinear"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+             android:layout_toRightOf="@id/view" 
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/coursenameans1"
+                style="@style/custom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="fromans1" />
+
+            <TextView
+                android:id="@+id/purdateans1"
+                style="@style/custom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="toans1" />
+
+            <TextView
+                android:id="@+id/promoans1"
+                style="@style/custom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="dateans1" />
+
+            <TextView
+                android:id="@+id/reductionans1"
+                style="@style/custom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="dateans1" />
+
+            <TextView
+                android:id="@+id/amountans1"
+                style="@style/custom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="dateans1" />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</LinearLayout>

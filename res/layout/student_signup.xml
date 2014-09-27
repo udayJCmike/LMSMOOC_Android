@@ -34,7 +34,7 @@
         android:layout_gravity="center|center_vertical"
         android:background="@drawable/rounded_edittext"
         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-        android:drawableLeft="@drawable/ic_launcher"
+        android:drawableLeft="@drawable/username"
         android:ems="10"
         android:hint="@string/firstname" />
 
@@ -59,7 +59,7 @@
         android:layout_gravity="center"
         android:background="@drawable/rounded_edittext"
         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-        android:drawableLeft="@drawable/ic_launcher"
+        android:drawableLeft="@drawable/username"
         android:ems="10"
         android:hint="@string/lastname"
         android:padding="5dip" />
@@ -85,7 +85,7 @@
         android:layout_gravity="center"
         android:background="@drawable/rounded_edittext"
         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_@-."
-        android:drawableLeft="@drawable/ic_launcher"
+        android:drawableLeft="@drawable/username"
         android:ems="10"
         android:hint="@string/username"
         android:padding="5dip" />
@@ -111,7 +111,7 @@
         android:layout_gravity="center"
         android:background="@drawable/rounded_edittext"
         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_@-.,"
-        android:drawableLeft="@drawable/ic_launcher"
+        android:drawableLeft="@drawable/email"
         android:ems="10"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
@@ -137,7 +137,7 @@
         android:layout_height="30dp"
         android:layout_gravity="center"
         android:background="@drawable/rounded_edittext"
-        android:drawableLeft="@drawable/ic_launcher"
+        android:drawableLeft="@drawable/password"
         android:ems="10"
         android:hint="@string/password"
         android:padding="5dip"
@@ -164,7 +164,7 @@
         android:layout_height="30dp"
         android:layout_gravity="center"
         android:background="@drawable/rounded_edittext"
-        android:drawableLeft="@drawable/ic_launcher"
+        android:drawableLeft="@drawable/password"
         android:ems="10"
         android:hint="@string/confirmpass"
         android:padding="5dip"

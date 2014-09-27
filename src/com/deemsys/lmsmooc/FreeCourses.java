@@ -185,7 +185,7 @@ public class FreeCourses  extends Fragment {
 	          cDialog.setMessage("Please wait...");
 	          cDialog.setIndeterminate(false);
 	          cDialog.setCancelable(true);
-	      //    cDialog.show();
+	          cDialog.show();
 		}
 			
 			@Override

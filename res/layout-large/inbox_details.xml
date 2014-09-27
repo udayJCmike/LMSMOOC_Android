@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+      android:background="#ffffff"
+    android:orientation="vertical" >
+    <View
+    android:layout_width="fill_parent"
+    android:layout_height="50dp" >
+
+</View>
+  <RelativeLayout
+      android:layout_width="fill_parent"
+      android:layout_height="122dp"
+      android:orientation="horizontal"
+      android:paddingLeft="10dp"
+      android:paddingRight="10dp" >
+
+      <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="match_parent"
+          android:layout_alignParentLeft="true" 
+           android:layout_weight="1"
+           android:orientation="vertical" >
+   <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       
+         style="@style/custom"
+     
+        android:text="FROM" />
+       <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         style="@style/custom"
+   
+        android:text="TO" />
+       <TextView
+        android:id="@+id/textView4"
+         style="@style/custom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+    
+        android:text="Date"
+        />
+      </LinearLayout>
+      
+
+  <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:layout_centerHorizontal="true"
+      android:layout_weight="1"
+      android:orientation="vertical" >
+
+       <TextView
+        android:id="@+id/fromans"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+      
+         style="@style/custom"
+        android:text="fromans1" />
+       <TextView
+        android:id="@+id/toans"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+   
+         style="@style/custom"
+        android:text="toans1" />
+       <TextView
+        android:id="@+id/dateans"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       
+         style="@style/custom"
+        android:text="dateans1" />
+         </LinearLayout>
+            
+  </RelativeLayout>
+ <View
+    android:layout_width="fill_parent"
+    android:layout_height="30dp" >
+
+</View>
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="234dp"
+       android:paddingLeft="10dp"
+      android:paddingRight="10dp"
+      android:orientation="vertical" >
+
+       <TextView
+        android:id="@+id/msgans"
+         style="@style/custom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+      
+        android:text="messageqwer" />
+       </LinearLayout>
+       <View
+    android:layout_width="fill_parent"
+    android:layout_height="30dp" >
+
+</View>
+       <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+android:layout_gravity="center"
+   android:paddingLeft="15dp"
+     android:paddingRight="15dp" 
+    android:orientation="horizontal"
+    >
+
+ <Button
+     android:id="@+id/greenbtn"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+  
+    android:background="@drawable/green_button"
+    android:text="Remove important"
+          android:textColor="#ffffff"
+     android:paddingLeft="15dp"
+     android:paddingRight="15dp" />
+  <Button
+           android:id="@+id/redbtn"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+          android:text="Mark as important"
+          android:textColor="#ffffff"
+          android:background="@drawable/orangebutton"
+           android:paddingLeft="15dp"
+           android:paddingRight="15dp" />
+
+</RelativeLayout>
+
+      
+</LinearLayout>

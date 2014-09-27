@@ -1,110 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-     android:background="#ffffff"
-    android:layout_height="match_parent" >
-  
-    <TextView
-        android:id="@+id/toans"
-        android:layout_width="210dp"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="false"
-        android:layout_marginLeft="170dp"
-        android:layout_marginTop="40dp"
-         style="@style/custom"
-        android:text="toans1" />
+    android:layout_height="match_parent"
+      android:background="#ffffff"
+    android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/fromans"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginLeft="170dp"
-        android:layout_marginTop="2dp"
-         style="@style/custom"
-        android:text="fromans1" />
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="16dp" >
 
-    <!-- <TextView
-        android:id="@+id/addrstext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignWithParentIfMissing="false"
-        android:layout_marginLeft="170dp"
-        android:layout_marginTop="310dp"
-        android:text="DEEMSYSINC" /> -->
+</View>
+  <RelativeLayout
+      android:layout_width="fill_parent"
+      android:layout_height="122dp"
+      android:orientation="horizontal"
+      android:paddingLeft="10dp"
+      android:paddingRight="10dp" >
 
-    <TextView
-        android:id="@+id/dateans"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="false"
-        android:layout_marginLeft="170dp"
-        android:layout_marginTop="82dp"
-         style="@style/custom"
-        android:text="dateans1" />
-
-    <TextView
+      <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="match_parent"
+          android:layout_alignParentLeft="true" 
+           android:layout_weight="1"
+           android:orientation="vertical" >
+   <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
+       
          style="@style/custom"
-        android:layout_marginTop="2dp"
+     
         android:text="FROM" />
-
-    <TextView
+       <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
          style="@style/custom"
-        android:layout_alignWithParentIfMissing="false"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="40dp"
+   
         android:text="TO" />
-
-    <TextView
+       <TextView
         android:id="@+id/textView4"
          style="@style/custom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="82dp"
+    
         android:text="Date"
         />
+      </LinearLayout>
+      
 
-    <!-- <Button
-        android:id="@+id/back"
+  <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:layout_centerHorizontal="true"
+      android:layout_weight="1"
+      android:orientation="vertical" >
+
+       <TextView
+        android:id="@+id/fromans"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="Back" /> -->
+      
+         style="@style/custom"
+        android:text="fromans1" />
+       <TextView
+        android:id="@+id/toans"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+   
+         style="@style/custom"
+        android:text="toans1" />
+       <TextView
+        android:id="@+id/dateans"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       
+         style="@style/custom"
+        android:text="dateans1" />
+         </LinearLayout>
+            
+  </RelativeLayout>
+ <View
+    android:layout_width="fill_parent"
+    android:layout_height="30dp" >
 
-    <TextView
+</View>
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="111dp"
+      android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+      android:orientation="vertical" >
+
+       <TextView
         android:id="@+id/msgans"
          style="@style/custom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView4"
-        android:layout_below="@+id/textView4"
-        android:layout_marginTop="42dp"
+      
         android:text="messageqwer" />
+       </LinearLayout>
+       <View
+    android:layout_width="fill_parent"
+    android:layout_height="30dp" >
 
-    <Button
-        android:id="@+id/redbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/toans"
-        android:layout_alignTop="@+id/fromans"
-        android:layout_marginLeft="15dp"
-        android:layout_toRightOf="@+id/fromans"
-        android:background="@drawable/unimportant" />
+</View>
+       <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+android:layout_gravity="center"
+   android:paddingLeft="15dp"
+     android:paddingRight="15dp" 
+    android:orientation="horizontal"
+    >
 
-    <Button
-        android:id="@+id/greenbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/msgans"
-        android:layout_alignLeft="@+id/redbtn"
-        android:background="@drawable/important" />
+ <Button
+     android:id="@+id/greenbtn"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+  
+     android:background="@drawable/green_button"
+    android:text="Remove important"
+          android:textColor="#ffffff"
+     android:paddingLeft="15dp"
+     android:paddingRight="15dp" />
+  <Button
+           android:id="@+id/redbtn"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+          android:text="Mark as important"
+          android:textColor="#ffffff"
+           android:background="@drawable/orangebutton"
+           android:paddingLeft="15dp"
+           android:paddingRight="15dp" />
  
+
 </RelativeLayout>
+
+      
+</LinearLayout>

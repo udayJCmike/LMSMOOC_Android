@@ -205,7 +205,7 @@ public class InboxArrayAdapter extends ArrayAdapter<Inbox> {
 		    	
 	    
 		    	holder.importantstatus.setVisibility(View.VISIBLE);
-	        	holder.importantstatus1.setVisibility(View.INVISIBLE);
+	        	holder.importantstatus1.setVisibility(View.GONE);
 
 		    	holder.importantstatus.setBackgroundResource(R.drawable.unimportant);
 		    	  
@@ -223,7 +223,7 @@ public class InboxArrayAdapter extends ArrayAdapter<Inbox> {
 		    
 
 		    	holder.importantstatus1.setVisibility(View.VISIBLE);
-	        	holder.importantstatus.setVisibility(View.INVISIBLE);
+	        	holder.importantstatus.setVisibility(View.GONE);
 		    	holder.importantstatus1.setBackgroundResource(R.drawable.important);
 		    	  
 		    	

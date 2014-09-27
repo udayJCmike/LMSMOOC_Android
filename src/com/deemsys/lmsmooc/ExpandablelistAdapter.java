@@ -62,15 +62,15 @@ public class ExpandablelistAdapter extends BaseExpandableListAdapter {
         System.out.println("value of array part2"+lecttype);
         if(lecttype.equalsIgnoreCase("Text"))
         {
-        	lecturetype.setBackgroundResource(R.drawable.checked);
+        	lecturetype.setBackgroundResource(R.drawable.text);
         }
         else   if(lecttype.equalsIgnoreCase("Audio"))
         {
-        	lecturetype.setBackgroundResource(R.drawable.unchecked);
+        	lecturetype.setBackgroundResource(R.drawable.audio);
         }
         else   if(lecttype.equalsIgnoreCase("Video"))
         {
-        	lecturetype.setBackgroundResource(R.drawable.ban5);
+        	lecturetype.setBackgroundResource(R.drawable.video);
         }
         return convertView;
     }

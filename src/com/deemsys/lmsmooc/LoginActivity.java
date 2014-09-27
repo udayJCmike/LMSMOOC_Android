@@ -8,6 +8,9 @@ import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import com.actionbarsherlock.app.SherlockActivity;
+
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -37,7 +40,7 @@ import android.widget.TextView;
 
 
 
-public class LoginActivity extends Activity  {
+public class LoginActivity extends SherlockActivity  {
 	 EditText usname,paswd;
 	 String successL;
 	 TextView forgetpass;
@@ -151,8 +154,7 @@ public class LoginActivity extends Activity  {
         			}
         		else
         		{
-        			AlertDialog alertDialog = new AlertDialog.Builder(
-    						LoginActivity.this).create();
+        			AlertDialog alertDialog = new AlertDialog.Builder(LoginActivity.this,R.style.MyFragment).create();
 
     				alertDialog.setTitle("INFO!");
 
@@ -176,7 +178,7 @@ public class LoginActivity extends Activity  {
         		else if(!password.equalsIgnoreCase(""))
         		{
         			AlertDialog alertDialog = new AlertDialog.Builder(
-    						LoginActivity.this).create();
+    						LoginActivity.this,R.style.MyFragment).create();
 
     				
     				alertDialog.setTitle("INFO!");
@@ -205,7 +207,7 @@ public class LoginActivity extends Activity  {
         		else if(!username.equalsIgnoreCase(""))
         		{
         			AlertDialog alertDialog = new AlertDialog.Builder(
-    						LoginActivity.this).create();
+    						LoginActivity.this,R.style.MyFragment).create();
 
     				
     				alertDialog.setTitle("INFO!");

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="369dp"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+          android:id="@+id/firstlin"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/author"
+                style="@style/custom_large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/author_name" />
+
+            <TextView
+                android:id="@+id/avat"
+                style="@style/custom_large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Avatar" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="50dp" >
+            </View>
+
+            <TextView
+                android:id="@+id/authed"
+                style="@style/custom_large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/author_edu" />
+
+            <TextView
+                android:id="@+id/abtauth"
+                style="@style/custom_large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/aboutauth" />
+        </LinearLayout>
+<View
+     android:id="@+id/v"
+      android:layout_toRightOf="@id/firstlin"
+                android:layout_width="150dp"
+                android:layout_height="fill_parent" >
+            </View>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_toRightOf="@id/v"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView2"
+                style="@style/custom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+            
+                android:text="TextView" />
+
+            <ImageView
+                android:id="@+id/avatarimg"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+              
+                android:scaleType="fitXY"
+                android:src="@drawable/list_selector" />
+
+            <TextView
+                android:id="@+id/authoredu"
+                style="@style/custom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+              
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/aboutauthor"
+                style="@style/custom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+              
+                android:text="TextView" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp" >
+<Button
+        android:id="@+id/unfolowfolow"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="match_parent"
+        android:textColor="#ffffff"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mycustom_button"
+        android:text="@string/unfollow" />
+    </RelativeLayout>
+
+</LinearLayout>

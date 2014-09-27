@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    
+<LinearLayout android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+         android:orientation="vertical">
+         <LinearLayout android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+         android:orientation="horizontal">
+
+             <TextView
+                 android:id="@+id/textView1"
+                 style="@style/custom"
+                 android:paddingLeft="6dp"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="@string/author_name" />
+
+    <TextView
+        android:id="@+id/authorname"
+          style="@style/custom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="80dp"
+        android:paddingTop="2dp"
+        android:text=""
+        android:textColor="#000000"
+         />
+
+    </LinearLayout>
+    <View
+    android:layout_width="fill_parent"
+    android:layout_height="10dp" />
+  <LinearLayout android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+         android:orientation="horizontal">
+    <TextView
+                 android:id="@+id/textView2"
+                 style="@style/custom"
+                    android:paddingLeft="6dp"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="@string/no_of_courses" />
+    <TextView
+        android:id="@+id/numberofcour"
+          style="@style/custom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       android:paddingLeft="45dp"
+        android:paddingTop="2dp"
+        android:text="" />
+    </LinearLayout>
+
+</LinearLayout>
+  </LinearLayout>
