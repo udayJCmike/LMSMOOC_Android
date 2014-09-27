@@ -24,17 +24,20 @@ public class ExpandablelistAdapter extends BaseExpandableListAdapter {
         this._context = context;
         this._listDataHeader = listDataHeader;
         this._listDataChild = listChildData;
+        System.out.println("list data child value"+_listDataChild.size());
     }
  
     @Override
     public Object getChild(int groupPosition, int childPosititon) {
-    	
+    	 System.out.println("list data child value"+this._listDataChild.get(this._listDataHeader.get(groupPosition))
+                 .get(childPosititon));
         return this._listDataChild.get(this._listDataHeader.get(groupPosition))
                 .get(childPosititon);
     }
  
     @Override
     public long getChildId(int groupPosition, int childPosition) {
+    	System.out.println("child position"+childPosition);
         return childPosition;
     }
  
@@ -42,10 +45,7 @@ public class ExpandablelistAdapter extends BaseExpandableListAdapter {
     public View getChildView(int groupPosition, final int childPosition,
             boolean isLastChild, View convertView, ViewGroup parent) {
     	 Child child = (Child) getChild(groupPosition, childPosition);
-     //   final String childText = (String) getChild(groupPosition, childPosition);
-         // full file name
-       // String[] parts = childText.split("\\^"); // String array, each element is text between dots
-//String lecturename=parts[0];
+   
         String lecttype = child.getlecttype().toString();    // Text before the first dot
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this._context
@@ -77,8 +77,20 @@ public class ExpandablelistAdapter extends BaseExpandableListAdapter {
  
     @Override
     public int getChildrenCount(int groupPosition) {
-        return this._listDataChild.get(this._listDataHeader.get(groupPosition))
-                .size();
+    if(this._listDataChild.size()==0){
+    	return 1;
+    }
+    else{
+    	int childcount=this._listDataChild.get(this._listDataHeader.get(groupPosition)).size();
+    	System.out.println("chilc count value::"+childcount);
+    	if(childcount==0)
+    	{
+    		return 0;
+    	}
+    	else{
+        return childcount;
+    	}
+    }
     }
  
     @Override

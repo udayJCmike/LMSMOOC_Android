@@ -112,8 +112,8 @@ public class AuthorFragment  extends Fragment
 					 {
 						 followunfollow.setText("Unfollow Author"); 
 					 }
-					// new LoadImage().execute(LoginActivity.avatar_url+"UserImages/"+author_avatar_url);
-				System.out.println("avatar url::"+LoginActivity.avatar_url+author_avatar_url);
+					 new LoadImage().execute(LoginActivity.avatar_url+"UserImages/"+author_avatar_url);
+				//System.out.println("avatar url::"+LoginActivity.avatar_url+author_avatar_url);
 			} 
 
 				@Override

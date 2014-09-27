@@ -10,7 +10,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
 
+
+import com.actionbarsherlock.app.SherlockFragment;
 
 
 
@@ -26,14 +31,16 @@ import android.support.v4.app.Fragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+
+
 import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-public class MyFavoriteCategory extends Fragment {
-	String category_name;
+public class MyFavoriteCategory extends SherlockFragment {
+	String category_name,success;
 	public ProgressDialog cDialog;
 	Boolean isInternetPresent = false;
 	ConnectionDetector cd;
@@ -46,7 +53,7 @@ public class MyFavoriteCategory extends Fragment {
 
 	    private static final String TAG_SRESL= "serviceresponse";
 	    private static final String TAG_Category_ARRAY = "Category List";
-		
+		private static final String TAG_SUCCESS = "success";
 		private static final String TAG_Category_NAME= "category_name";
 		
 		@Override
@@ -62,7 +69,27 @@ public class MyFavoriteCategory extends Fragment {
 			 list2= (ListView)v.findViewById(R.id.listView);
 			 return  v;
 }
-		
+		@Override
+	    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+	        super.onCreateOptionsMenu(menu, inflater);
+	        inflater.inflate(R.menu.addmyfavcategory, menu);
+
+	        
+
+	    }
+	  public boolean onOptionsItemSelected(MenuItem item) {
+	        // Handle item selection
+	        switch (item.getItemId()) {
+	        case R.id.addmyfav:
+	        	Intent intentSignUP=new Intent(getActivity(),Categoryunfavlist.class);
+				startActivity(intentSignUP);
+	          
+	            return true;
+	       
+	        }
+	        return false;
+	  }
+		 
 		class CategoryDetails extends AsyncTask<String,String,String>{
 			@Override
 		    protected void onPreExecute() {

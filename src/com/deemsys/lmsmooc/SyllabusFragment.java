@@ -45,12 +45,14 @@ public class SyllabusFragment extends Fragment {
 	String  sectionid,lectureid,sectionname,lecturename,lecturetype;
 	ListView list2;
 	List<Child> ch_list;
+	List<Child> empty_ch_list;
 	 ArrayList<ArrayList<HashMap<String, String>>> Syllabus=new ArrayList<ArrayList<HashMap<String, String>>>();
 
 	public static ArrayList<String> vehiclelist= new ArrayList<String>();
 	public static List<Category> category= new ArrayList<Category>();
     JSONArray user = null;
     List<List<Child>> lists = new ArrayList<List<Child>>();
+    List<List<Child>> empty_lists = new ArrayList<List<Child>>();
   
 	   
 		
@@ -258,7 +260,16 @@ public class SyllabusFragment extends Fragment {
 	    	
 				    	}
 				    	
-				    	}catch (JSONException e) {
+				    	}catch (JSONException e) 
+				    	{
+				    		for(int j=0; j<100; j++)
+					    	{
+				    			  Child ch = new Child();
+				    			  ch.setName("");
+				    			  empty_ch_list= new ArrayList<Child>();
+				    		empty_ch_list.add(ch);
+				    		  listDataChild.put("",empty_ch_list );  
+					    	}
 				        e.printStackTrace();
 				    }
 				    cDialog.dismiss();

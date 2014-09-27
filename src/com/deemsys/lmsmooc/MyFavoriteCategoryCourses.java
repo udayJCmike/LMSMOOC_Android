@@ -553,7 +553,7 @@ public class MyFavoriteCategoryCourses  extends SherlockFragmentActivity {
   public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
-        case R.id.unfollow:
+        case R.id.addmyfav:
         	new unfollow().execute();
         	finish();
             return true;

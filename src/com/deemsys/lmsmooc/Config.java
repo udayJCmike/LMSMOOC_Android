@@ -38,6 +38,9 @@ public class Config
 	static String sampleurl="Sample.php?service=sample";
 	static String courseurl="Courses.php";
     
+	static String unfavoritecategoryurl="MyFavoriteCategory.php?service=unfavcategory";
+	static String addtomyfavoritecategoryurl="MyFavoriteCategory.php?service=addfavcategory";
+	
 	static String allcoursebrowseurl="BrowseCourses.php?service=viewallcourse";
 	static String freecoursbrowseeurl="BrowseCourses.php?service=viewfreecourse";
 	static String paidcoursebrowseurl="BrowseCourses.php?service=viewpaidcourse";

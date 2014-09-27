@@ -67,6 +67,8 @@
               android:screenOrientation="portrait" />
                     <activity android:name=".CategorySelectionStudentBased"
               android:screenOrientation="portrait" />
+                      <activity android:name=".Categoryunfavlist"
+              android:screenOrientation="portrait" />
               
               <activity android:name=".InboxFragment"
               android:screenOrientation="portrait" />

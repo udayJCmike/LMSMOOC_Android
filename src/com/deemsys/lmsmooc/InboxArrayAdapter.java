@@ -13,6 +13,7 @@ import org.json.JSONObject;
 
 import com.deemsys.lmsmooc.InboxFragment.Details;
 
+import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -35,10 +36,12 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+@SuppressLint("ResourceAsColor")
 public class InboxArrayAdapter extends ArrayAdapter<Inbox> {
 	private final Context context;
 	public ProgressDialog cDialog;
@@ -116,7 +119,7 @@ public class InboxArrayAdapter extends ArrayAdapter<Inbox> {
 	class UserHolder {
 	 	    TextView subject,date;
 	 	   ImageView importantstatus,importantstatus1;
-	   ImageView readstatus;
+	   LinearLayout readstatus;
 	   RelativeLayout inbox;
 	
 	   int a=0;
@@ -147,7 +150,7 @@ public class InboxArrayAdapter extends ArrayAdapter<Inbox> {
 			holder.importantstatus=(ImageView) row.findViewById(R.id.redbtn);
 			
 			holder.importantstatus1=(ImageView) row.findViewById(R.id.greenbtn);
-			holder.readstatus=(ImageView) row.findViewById(R.id.readstatus);
+			holder.readstatus=(LinearLayout) row.findViewById(R.id.readstatus);
 			System.out.println("inbox all value::"+holder.subject);
 			System.out.println("inbox all value::"+holder.date);
 			System.out.println("inbox all value::"+holder.importantstatus);
@@ -157,8 +160,7 @@ public class InboxArrayAdapter extends ArrayAdapter<Inbox> {
 			holder = (UserHolder) row.getTag();
 			
 		    }
-		   System.out.println("value of list::"+data);
-		   System.out.println("value of list::"+data.size());
+		 
 		    user = data.get(position);
 		  
 		    
@@ -168,35 +170,25 @@ public class InboxArrayAdapter extends ArrayAdapter<Inbox> {
 		    
 		    
 		    
-		    System.out.println("YOU ARE IN B:::"+InboxArrayAdapter.data.size());
+		 
 
 		    
 		   
-		    System.out.println("value of "+user.getsubject());
-		  //  System.out.println("value in "+holder.getsentdate().getText());
-		    System.out.println("value of ::"+user.getsentdate());
-		    
-		    System.out.println("value of read status:"+ user.getreadstatus());
-		    
-		    String rea=InboxFragment.read;
-		    
-		    System.out.println("value of InboxFragment.read:"+ InboxFragment.read);
+		  
 		    
 		    if(user.getreadstatus().equals("0"))
 		    {
 		    	
 		    	
 		    	
-		   	holder.readstatus.setBackgroundResource(android.R.color.darker_gray);
+		   	holder.readstatus.setBackgroundColor(android.R.color.holo_red_dark);
            
 		    }
 		    else  if(user.getreadstatus().equals("1"))
 		    {
 		    	
-		
-
-		    	System.out.println("HI ONE");
-		    		    	
+		    	
+		       	holder.readstatus.setBackgroundColor(android.R.color.holo_blue_dark);
 		    }
 		    
 		    if(user.getimportantstatus().equals("0"))
