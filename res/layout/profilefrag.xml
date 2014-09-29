@@ -6,7 +6,15 @@
     android:layout_gravity="center"
     android:background="#ffffff"
     android:orientation="vertical" >
-
+  <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        >
+          <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -99,28 +107,98 @@
         <View
             android:layout_width="fill_parent"
             android:layout_height="10dp" />
-
-        <Spinner
-            android:id="@+id/spinner1"
+ <TextView
+            android:id="@+id/selecttopic"
             style="@style/custom"
             android:layout_width="match_parent"
-            android:layout_height="30dip"
-            android:background="@drawable/rounded_edittext"
-            android:drawableLeft="@drawable/ic_launcher"
-            android:prompt="@string/interstedin" />
+            android:layout_height="20dp"
+           
+            android:ems="10"
+           android:text="@string/selecttopic"
+         
+            android:singleLine="true" />
+        <RadioGroup
+        android:id="@+id/radioGroup1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal" >
+ 
+      
+        <RadioButton
+            android:id="@+id/radiosubject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/rbtn_selector"
+            android:button="@null"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="Subject"
+            android:textColor="@drawable/rbtn_textcolor_selector" />
+ 
+        <RadioButton
+            android:id="@+id/radiocourse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/rbtn_selector"
+            android:button="@null"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="Courses"
+            android:textColor="@drawable/rbtn_textcolor_selector" />
+    </RadioGroup>
 
         <View
             android:layout_width="fill_parent"
             android:layout_height="10dp" />
 
-        <Spinner
-            android:id="@+id/spinner2"
+        <TextView
+            android:id="@+id/selectgen"
             style="@style/custom"
             android:layout_width="match_parent"
-            android:layout_height="30dip"
-            android:background="@drawable/rounded_edittext"
-            android:drawableLeft="@drawable/ic_launcher"
-            android:prompt="@string/gender" />
+            android:layout_height="20dp"
+           
+            android:ems="10"
+           android:text="@string/selectgen"
+         
+            android:singleLine="true" />
+<RadioGroup
+        android:id="@+id/radioGroup2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal" >
+ 
+      
+        <RadioButton
+            android:id="@+id/radiomale"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/rbtn_selector"
+            android:button="@null"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="@string/selectmale"
+            android:textColor="@drawable/rbtn_textcolor_selector" />
+ 
+        <RadioButton
+            android:id="@+id/radiofemale"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/rbtn_selector"
+            android:button="@null"
+            android:gravity="center"
+            android:padding="5dp"
+        
+                android:text="@string/selectfemale"
+            android:textColor="@drawable/rbtn_textcolor_selector" />
+    </RadioGroup>
 
         <View
             android:layout_width="fill_parent"
@@ -236,5 +314,6 @@
             android:text="@string/savechanges"
             android:textColor="#ffffff" />
     </LinearLayout>
-
+    </LinearLayout>
+</ScrollView>
 </LinearLayout>

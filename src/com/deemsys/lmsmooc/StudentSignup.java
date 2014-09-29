@@ -786,7 +786,7 @@ public class StudentSignup extends Activity {
 			      userDialog.setMessage("Please wait...");
 			      
 			      userDialog.setIndeterminate(false);
-			      userDialog.setCancelable(true);
+			      userDialog.setCancelable(false);
 			      userDialog.show();
 			      
 		     } 
@@ -982,7 +982,7 @@ public class StudentSignup extends Activity {
 			 emailDialog.setMessage("Please wait...");
 		      
 			 emailDialog.setIndeterminate(false);
-			 emailDialog.setCancelable(true);
+			 emailDialog.setCancelable(false);
 			 emailDialog.show();
 	     } 
 		    
@@ -1491,7 +1491,7 @@ class Login extends AsyncTask<String,String,String>{
       pDialog.setMessage("Please wait...");
       
       pDialog.setIndeterminate(false);
-      pDialog.setCancelable(true);
+      pDialog.setCancelable(false);
       pDialog.show();
       
   } 

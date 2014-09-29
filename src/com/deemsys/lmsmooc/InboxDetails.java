@@ -3,51 +3,39 @@ package com.deemsys.lmsmooc;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.security.auth.Subject;
+
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONArray;
-import org.json.JSONException;
+
 import org.json.JSONObject;
 
-import com.deemsys.lmsmooc.InboxFragment.Details;
 import com.deemsys.lmsmooc.InboxFragment;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+
 import android.app.ProgressDialog;
-import android.app.ActionBar.OnNavigationListener;
-import android.content.Context;
+
+
 import android.content.DialogInterface;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.sax.RootElement;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.NavUtils;
-import android.support.v4.app.TaskStackBuilder;
+
 import android.text.Html;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.MenuItem;
+
+
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.SpinnerAdapter;
+
 import android.widget.TextView;
 
 public class InboxDetails extends SherlockFragmentActivity   {
@@ -217,7 +205,7 @@ public class InboxDetails extends SherlockFragmentActivity   {
 	
 				class UpdateOne extends AsyncTask<String,String,String>{
 
-					   private ProgressDialog pDialog;
+					
 					  
 					
 					
@@ -312,7 +300,6 @@ public class InboxDetails extends SherlockFragmentActivity   {
 				
 				class UpdateZero extends AsyncTask<String,String,String>{
 
-					   private ProgressDialog pDialog;
 					
 					
 					  
@@ -407,9 +394,7 @@ public class InboxDetails extends SherlockFragmentActivity   {
 			
 				class ReadUpdateOne extends AsyncTask<String,String,String>{
 
-					   private ProgressDialog pDialog;
-					  
-					
+				
 					
 				 
 					    JSONObject jsonE;

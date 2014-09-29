@@ -13,6 +13,10 @@
        <string name="terms"><a href='http://www.redbus.in/mob/mTerms.aspx' >Terms of Service</a></string>
     <string name="checkme">I agree to the</string>
         <string name="Ratings">Ratings</string>
+             <string name="selecttopic">Select your interested topics</string>
+                 <string name="selectgen">Select Gender</string>
+                    <string name="selectmale">Male</string>
+                       <string name="selectfemale">Female</string>
     <string-array name="nav_drawer_items">
         
         <item >Profile</item>

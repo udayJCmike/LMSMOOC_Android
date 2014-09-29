@@ -48,10 +48,10 @@
        <item name="android:actionBarStyle">@style/ActionBar</item>
        <item name="actionDropDownStyle">@style/Widget.Sherlock.Spinner.DropDown.ActionBar</item>
        <item name="dropDownListViewStyle">@style/Widget.Sherlock.ListView.DropDown</item>
-       <item name="dropDownListViewStyle">@style/YourThemeDropDownListView</item>
+    <!-- <item name="dropDownListViewStyle">@style/YourThemeDropDownListView</item>
        <item name="android:dropDownListViewStyle">@style/YourThemeDropDownListView</item>
        <item name="spinnerItemStyle"> @style/Custom.Widget.Sherlock.TextView.SpinnerItem</item>
-       <item name="android:spinnerItemStyle"> @style/Custom.Widget.Sherlock.TextView.SpinnerItem</item>
+       <item name="android:spinnerItemStyle"> @style/Custom.Widget.Sherlock.TextView.SpinnerItem</item> -->   
        <item name="popupMenuStyle">@style/MyPopupMenu</item>
        <item name="actionBarWidgetTheme">@style/MyStyle</item>
    <item name="android:actionDropDownStyle">@style/MyDropDownItem</item>

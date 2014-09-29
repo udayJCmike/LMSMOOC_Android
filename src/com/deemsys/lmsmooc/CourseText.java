@@ -94,11 +94,11 @@ public class CourseText extends SherlockFragmentActivity{
 	    	@Override
 	        protected void onPreExecute() {
 	            super.onPreExecute();
-//	            pDialog = new ProgressDialog(CourseText.this);
-//	            pDialog.setMessage("Please wait...");
-//	            pDialog.setIndeterminate(false);
-//	            pDialog.setCancelable(false);
-//	            pDialog.show();
+	            pDialog = new ProgressDialog(CourseText.this);
+	            pDialog.setMessage("Please wait...");
+	            pDialog.setIndeterminate(false);
+	            pDialog.setCancelable(false);
+	            pDialog.show();
 
 	        }
 
@@ -151,7 +151,7 @@ public class CourseText extends SherlockFragmentActivity{
 			 protected void onPostExecute(String file_url) {
 		    	   super.onPostExecute(file_url);
 		        System.out.println("in post execute");
-		    	   //pDialog.dismiss();
+		    	   pDialog.dismiss();
 		          if(JsonParser.jss.equals("empty"))
 		          {
 		       	   System.out.println("json null value");

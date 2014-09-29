@@ -3,7 +3,7 @@ package com.deemsys.lmsmooc;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
+
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -184,7 +184,7 @@ public class FreeCourses  extends Fragment {
 			  cDialog = new ProgressDialog(getActivity());
 	          cDialog.setMessage("Please wait...");
 	          cDialog.setIndeterminate(false);
-	          cDialog.setCancelable(true);
+	          cDialog.setCancelable(false);
 	          cDialog.show();
 		}
 			
@@ -497,7 +497,7 @@ public class FreeCourses  extends Fragment {
             pDialog = new ProgressDialog(getActivity());
             pDialog.setMessage("Please wait...");
             pDialog.setIndeterminate(false);
-            pDialog.setCancelable(true);
+            pDialog.setCancelable(false);
          //   pDialog.show();
 
         }

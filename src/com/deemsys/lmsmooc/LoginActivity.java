@@ -298,7 +298,7 @@ public class LoginActivity extends SherlockActivity  {
 	             
 	            
 	             params1.add(new BasicNameValuePair("id", "1"));
-	             params1.add(new BasicNameValuePair("student_id", student_id));
+	             params1.add(new BasicNameValuePair("student_id", Config.student_id));
 	    		JsonParser jLogin = new JsonParser();
 	             System.out.println(usname.getText().toString());
 	             System.out.println( paswd.getText().toString());

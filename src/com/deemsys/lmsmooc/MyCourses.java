@@ -176,7 +176,7 @@ public class MyCourses  extends Fragment {
 			  cDialog = new ProgressDialog(getActivity());
 	          cDialog.setMessage("Please wait...");
 	          cDialog.setIndeterminate(false);
-	          cDialog.setCancelable(true);
+	          cDialog.setCancelable(false);
 	          cDialog.show();
 		}
 			
@@ -509,7 +509,7 @@ public class MyCourses  extends Fragment {
             pDialog = new ProgressDialog(getActivity());
             pDialog.setMessage("Please wait...");
             pDialog.setIndeterminate(false);
-            pDialog.setCancelable(true);
+            pDialog.setCancelable(false);
             pDialog.show();
 
         }

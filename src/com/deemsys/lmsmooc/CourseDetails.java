@@ -58,6 +58,7 @@ public class CourseDetails extends SherlockFragmentActivity{
 	     ab.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3399FF")));
 		ViewPager mViewPager = (ViewPager) findViewById(R.id.viewPager); 
 		  mViewPager.setBackgroundColor(Color.WHITE);
+		  mViewPager.setOffscreenPageLimit(3);
         mViewPager.setAdapter(new CourseDetailPageAdapter(getSupportFragmentManager()));
         PagerTabStrip pagerTabStrip = (PagerTabStrip)findViewById(R.id.pagerTabStrip);
         pagerTabStrip.setDrawFullUnderline(true);

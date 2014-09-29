@@ -32,7 +32,7 @@ public class MainActivity extends FragmentActivity  {
 		@Override
 		public void onPageSelected(int arg0) {
 			// TODO Auto-generated method stub
-			System.out.println("page selected"+arg0);
+		
 			
 		}
 		
@@ -48,8 +48,8 @@ public class MainActivity extends FragmentActivity  {
 			
 		}
 	});
-     int item= pager.getCurrentItem();
-     System.out.println("item number:::"+item);
+   
+   
 
     }
    

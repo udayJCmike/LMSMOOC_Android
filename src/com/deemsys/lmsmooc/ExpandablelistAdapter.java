@@ -72,6 +72,11 @@ public class ExpandablelistAdapter extends BaseExpandableListAdapter {
         {
         	lecturetype.setBackgroundResource(R.drawable.video);
         }
+        else   if(lecttype.equalsIgnoreCase("no lecture found"))
+        {
+        	  txtListChild.setText("No lecture found");
+        	lecturetype.setBackgroundResource(R.drawable.click);
+        }
         return convertView;
     }
  

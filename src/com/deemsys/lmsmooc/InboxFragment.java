@@ -18,7 +18,7 @@ import com.deemsys.lmsmooc.ConnectionDetector;
 import com.deemsys.lmsmooc.JsonParser;
 import com.deemsys.lmsmooc.LoginActivity;
 import com.deemsys.lmsmooc.InboxArrayAdapter;
-import com.deemsys.lmsmooc.ProfileActivity;
+
 import com.deemsys.lmsmooc.NewMainActivity;
 
 import android.support.v4.app.Fragment;
@@ -128,11 +128,7 @@ public class InboxFragment extends Fragment {
 
 				
 				
-				
-				 System.out.println(" oncreate value of InboxArrayAdapter.data.size():::"+InboxArrayAdapter.data.size());
-				 System.out.println("oncreate  value of allinbox.size():::"+allinbox.size());
-				
-				
+			
 
 				
 				 ActionBar ab = getActivity().getActionBar();
@@ -176,7 +172,7 @@ public class InboxFragment extends Fragment {
 		          cDialog.show();
 		          
 				
-		          System.out.println("pre execute");
+		       
 		     
 			}
 				
@@ -267,11 +263,9 @@ public class InboxFragment extends Fragment {
 				
 				@Override
 				protected void onPostExecute(String file_url) {
-					  System.out.println("post execute");
+					 
 					 super.onPostExecute(file_url);
 					
-					 System.out.println("value of InboxArrayAdapter.data.size():::"+InboxArrayAdapter.data.size());
-					 System.out.println("value of allinbox.size():::"+allinbox.size());
 				
 					 
 					 a=0;int b = 0; 
@@ -295,7 +289,7 @@ public class InboxFragment extends Fragment {
 							@Override
 							public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 									long arg3) {
-								System.out.println("in item click"+arg2);
+								
 								 sender = allinbox.get(arg2).getsendername(); 
 								 receiver = allinbox.get(arg2).getreceivername(); 
 								date = allinbox.get(arg2).getsentdate(); 
@@ -306,12 +300,7 @@ public class InboxFragment extends Fragment {
 
 								
 						        
-						         System.out.println("Position passed from dashboard activity:::"+sender);
-						         System.out.println("Position passed from dashboard activity:::"+receiver);
-						         System.out.println("Position passed from dashboard activity:::"+date);
-						         System.out.println("Position passed from dashboard activity:::"+msg);
-						         System.out.println("Position passed from dashboard activity:::"+inbid);
-
+						      
 						         
 								 Intent i= new Intent(InboxFragment.this.getActivity(),InboxDetails.class);
 								 
@@ -340,21 +329,19 @@ public class InboxFragment extends Fragment {
 				{
 					// TODO Auto-generated method stub
 					read=allinbox.get(arg2).getreadstatus();
-					System.out.println("read value at index:" + read);
+				
 				
 					if(read.equalsIgnoreCase("0"))
 					{
 						a++;
-						System.out.println("zero loop");
+					
 					}
 					else if (read.equalsIgnoreCase("1"))
 					{
 						b++;
-						System.out.println("one loop");
+					
 					}
-					System.out.println("read messages count:"+b);
-					System.out.println("unread messages count:"+a);
-					System.out.println("total messages count:"+allinbox.size());
+				
 					 ActionBar ab = getActivity().getActionBar();
 					 ab.setTitle(Html.fromHtml("<font color=\"white\">" +"Inbox" + "("+ String.valueOf(a)+"/"+allinbox.size() +")"+ "</font>"));
 					
@@ -382,7 +369,7 @@ public class InboxFragment extends Fragment {
 	        	
 	        	
 	        }
-	       System.out.println("RESUME METHOD CALLED");
+	    
 		   
 	   
 	    }

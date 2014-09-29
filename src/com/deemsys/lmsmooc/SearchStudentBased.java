@@ -3,7 +3,7 @@ package com.deemsys.lmsmooc;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
+
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -33,7 +33,7 @@ import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.MenuItem.OnActionExpandListener;
-import com.deemsys.lmsmooc.MyFavoriteCourses.fetchpurnumber;
+
 
 import com.squareup.picasso.Picasso;
 
@@ -65,7 +65,7 @@ import android.view.ViewGroup;
 
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AbsListView;
+
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
@@ -77,7 +77,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 
-import android.widget.AbsListView.OnScrollListener;
+
 
 public class SearchStudentBased  extends SherlockActivity {
 	Bitmap bitmap;
@@ -322,6 +322,7 @@ else
 				  
 				  }
 
+			@SuppressWarnings("deprecation")
 			private void displayCourseList(String response){
 				 
 				//  JSONObject responseObj = null; 
@@ -693,7 +694,7 @@ else
     			
     			return null;
     		}
-		@SuppressWarnings("deprecation")
+		
 		@Override
 		 protected void onPostExecute(String file_url) {
 	    	   super.onPostExecute(file_url);
@@ -732,29 +733,29 @@ else
 
  }
     
-    private class LoadImage extends AsyncTask<String, String, String> {
-	    @Override
-	        protected void onPreExecute() {
-	            super.onPreExecute();
-
-	    }
-	       protected String doInBackground(String... args) {
-	         try {
-	        	 System.out.println("test");
-	        
-	               bitmap = BitmapFactory.decodeStream((InputStream)new URL(args[0]).getContent());
-	        } catch (Exception e) {
-	              e.printStackTrace();
-	        }
-	      return null;
-	       }
-	       protected void onPostExecute(String image) {
-	         if(image != null){
-	        	
-	         }
-	        
-	       }
-	   }
+//    private class LoadImage extends AsyncTask<String, String, String> {
+//	    @Override
+//	        protected void onPreExecute() {
+//	            super.onPreExecute();
+//
+//	    }
+//	       protected String doInBackground(String... args) {
+//	         try {
+//	        	 System.out.println("test");
+//	        
+//	               bitmap = BitmapFactory.decodeStream((InputStream)new URL(args[0]).getContent());
+//	        } catch (Exception e) {
+//	              e.printStackTrace();
+//	        }
+//	      return null;
+//	       }
+//	       protected void onPostExecute(String image) {
+//	         if(image != null){
+//	        	
+//	         }
+//	        
+//	       }
+//	   }
     @Override
 	 public void onBackPressed() 
  {

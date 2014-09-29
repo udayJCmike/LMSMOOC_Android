@@ -147,7 +147,8 @@ public class AllCourses  extends Fragment {
         	   @Override
         	   public void onScrollStateChanged(AbsListView view, int scrollState) {}
         	 
-        	   @Override
+        	   @SuppressWarnings("deprecation")
+			@Override
         	   public void onScroll(AbsListView view, int firstVisibleItem,int visibleItemCount, int totalItemCount) {
         	 
         	   int lastInScreen = firstVisibleItem + visibleItemCount;    
@@ -216,7 +217,7 @@ public class AllCourses  extends Fragment {
 			  cDialog = new ProgressDialog(getActivity());
 	          cDialog.setMessage("Please wait...");
 	          cDialog.setIndeterminate(false);
-	          cDialog.setCancelable(true);
+	          cDialog.setCancelable(false);
 	          cDialog.show();
 		}
 			
@@ -269,7 +270,7 @@ public class AllCourses  extends Fragment {
 					   
 					   {
 				    start++;
-				    System.out.println("countryListObj length"+countryListObj.length());
+				   
 		    		JSONObject c1 = user.getJSONObject(i);
 		    		JSONObject c2 = c1.getJSONObject(TAG_SRES);
 		    	    authorname = c2.getString(TAG_COURSE_AUTHOR);
@@ -301,11 +302,10 @@ System.out.println("cover image"+ c2.getString(TAG_course_cover_image));
 		           cnt.setaudiourl(audiourl);
 				    courselist.add(cnt);
 				 
-				    System.out.println("size fo country list"+courselist.size());
-				    System.out.println("value fo country list"+courselist);
+				
 				    dataAdapter.add(cnt);
-		        	 System.out.println("bitmap"+bitmap);
-		       System.out.println("i value"+i);
+		        	
+		      
 		       if(i==9)
 		       {
 					 
@@ -455,7 +455,7 @@ System.out.println("cover image"+ c2.getString(TAG_course_cover_image));
 //    	   aQuery = new AQuery(getActivity());
 //    	    aQuery.id(R.id.cover).image(country.getstringurl(),true,true);
     	    Picasso.with(getActivity()).load(country.getstringurl()).into(holder.cover);
-    	  
+    	    System.out.println("url string"+country.getstringurl());
 //    	   new DownloadTask((ImageView) convertView.findViewById(R.id.cover))
 //           .execute((String) country.getstringurl());
     	   if(country.getrating().equalsIgnoreCase("0"))

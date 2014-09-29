@@ -159,12 +159,29 @@ public class SyllabusFragment extends Fragment {
 	                                        childPosition).getlecttype());
 	        	   
 	           }
+	           else  if(listDataChild.get(listDataHeader.get(groupPosition)).get(
+                       childPosition).getlecttype().equalsIgnoreCase("no lecture found"))
+	           {
+	        	  
+	        	   
+	           }
 	                return false;
 	            }
 	        });
 			 return  v;
 }
-		
+		@Override
+		public void setUserVisibleHint(boolean isVisibleToUser) {
+		    super.setUserVisibleHint(isVisibleToUser);
+		    if (isVisibleToUser) 
+		    { 
+		    	
+		    }
+		    else
+		    { 
+		    	
+		    }
+		}		
 		class CategoryDetails extends AsyncTask<String,String,String>{
 			@Override
 		    protected void onPreExecute() {
@@ -262,14 +279,14 @@ public class SyllabusFragment extends Fragment {
 				    	
 				    	}catch (JSONException e) 
 				    	{
-				    		for(int j=0; j<100; j++)
-					    	{
-				    			  Child ch = new Child();
-				    			  ch.setName("");
-				    			  empty_ch_list= new ArrayList<Child>();
-				    		empty_ch_list.add(ch);
-				    		  listDataChild.put("",empty_ch_list );  
-					    	}
+//				    		for(int j=0; j<100; j++)
+//					    	{
+//				    			  Child ch = new Child();
+//				    			  ch.setName("");
+//				    			  empty_ch_list= new ArrayList<Child>();
+//				    		empty_ch_list.add(ch);
+//				    		  listDataChild.put("",empty_ch_list );  
+//					    	}
 				        e.printStackTrace();
 				    }
 				    cDialog.dismiss();

@@ -26,11 +26,10 @@ import org.json.JSONObject;
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuInflater;
+
 import com.actionbarsherlock.view.MenuItem;
-import com.deemsys.lmsmooc.InboxFragment.Details;
-import com.deemsys.lmsmooc.MyFavoriteCategoryCourses.fetchpurnumber;
-import com.google.gson.Gson;
+
+
 import com.squareup.picasso.Picasso;
 
 
@@ -91,13 +90,11 @@ public class AuthorCourses  extends SherlockFragmentActivity {
 		private static final String TAG_SRES= "serviceresponse";
 		private static final String TAG_COURSE_NAME= "course_name";
 		private static final String TAG_COURSE_AUTHOR= "course_author";
-		private static final String TAG_COURSE_SUBTITLE= "course_sub_title";
+		
 		private static final String TAG_COURSE_COST= "course_price";
 		private static final String TAG_COURSE_RATINGS= "user_ratings";
 		private static final String TAG_course_cover_image= "course_cover_image";
-		private static final String TAG_route_no= "route_no";
-		private static final String TAG_driver_status= "device_status";
-		private static final String TAG_status_date= "status_date";
+		
 		private static final String TAG_INSTRUCTOR_ID= "instructor_id";
 		private static final String TAG_COURSE_ID= "course_id";
 		private static final String TAG_SUCCESS = "success";
@@ -225,11 +222,11 @@ public class AuthorCourses  extends SherlockFragmentActivity {
 
 			private void displayCountryList(String response){
 				 
-				  JSONObject responseObj = null; 
+				  
 				 
 				  try {
 					  
-				   Gson gson = new Gson();
+				 
 				   JSONObject c = jArray.getJSONObject(TAG_SRES);
 			    	Log.i("tagconvertstr", "["+c+"]");
 			 

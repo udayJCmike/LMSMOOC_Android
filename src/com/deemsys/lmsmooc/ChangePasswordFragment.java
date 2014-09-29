@@ -274,7 +274,7 @@ public class ChangePasswordFragment extends Fragment {
 
     				alertDialog.setTitle("INFO!");
 
-    				alertDialog.setMessage("Profile updated successfully");
+    				alertDialog.setMessage("Password updated successfully");
 
     				alertDialog.setIcon(R.drawable.delete);
     				
@@ -282,7 +282,7 @@ public class ChangePasswordFragment extends Fragment {
 
     							public void onClick(final DialogInterface dialog,
     									final int which) {
-    								 final Intent intentSignUP=new Intent(getActivity(),ProfileActivity.class);
+    								 final Intent intentSignUP=new Intent(getActivity(),NewMainActivity.class);
     									startActivity(intentSignUP);
     							}
     						});

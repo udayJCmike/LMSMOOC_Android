@@ -27,7 +27,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.deemsys.lmsmooc.AllCoursesbrowse.fetchpurnumber;
+
 import com.squareup.picasso.Picasso;
 import android.support.v4.app.Fragment;
 import android.app.ProgressDialog;
@@ -49,7 +49,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
+
 import android.widget.AbsListView.OnScrollListener;
 
 public class PaidCoursesbrowse  extends Fragment {
@@ -183,7 +183,7 @@ public class PaidCoursesbrowse  extends Fragment {
 			  cDialog = new ProgressDialog(getActivity());
 	          cDialog.setMessage("Please wait...");
 	          cDialog.setIndeterminate(false);
-	          cDialog.setCancelable(true);
+	          cDialog.setCancelable(false);
 	          cDialog.show();
 		}
 			
@@ -493,7 +493,7 @@ public class PaidCoursesbrowse  extends Fragment {
             pDialog = new ProgressDialog(getActivity());
             pDialog.setMessage("Please wait...");
             pDialog.setIndeterminate(false);
-            pDialog.setCancelable(true);
+            pDialog.setCancelable(false);
           //  pDialog.show();
 
         }

@@ -21,6 +21,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.sax.RootElement;
 import android.text.Layout;
@@ -118,7 +120,7 @@ public class InboxArrayAdapter extends ArrayAdapter<Inbox> {
 
 	class UserHolder {
 	 	    TextView subject,date;
-	 	   ImageView importantstatus,importantstatus1;
+	 	   ImageView importantstatus;
 	   LinearLayout readstatus;
 	   RelativeLayout inbox;
 	
@@ -127,6 +129,7 @@ public class InboxArrayAdapter extends ArrayAdapter<Inbox> {
 	}
 	
 
+		@SuppressWarnings("deprecation")
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 		
@@ -134,7 +137,8 @@ public class InboxArrayAdapter extends ArrayAdapter<Inbox> {
 		    View row = convertView;  
 		    final UserHolder holder;
 		
-		    if (row== null) {
+		    if (row== null)
+		    {
 		    	
 	
 		    	LayoutInflater inflater = (LayoutInflater) context
@@ -149,14 +153,14 @@ public class InboxArrayAdapter extends ArrayAdapter<Inbox> {
 			
 			holder.importantstatus=(ImageView) row.findViewById(R.id.redbtn);
 			
-			holder.importantstatus1=(ImageView) row.findViewById(R.id.greenbtn);
+		//	holder.importantstatus1=(ImageView) row.findViewById(R.id.greenbtn);
 			holder.readstatus=(LinearLayout) row.findViewById(R.id.readstatus);
-			System.out.println("inbox all value::"+holder.subject);
-			System.out.println("inbox all value::"+holder.date);
-			System.out.println("inbox all value::"+holder.importantstatus);
+			
+			 
            
 			row.setTag(holder);
-		    } else {
+		    }
+		    else {
 			holder = (UserHolder) row.getTag();
 			
 		    }
@@ -167,7 +171,19 @@ public class InboxArrayAdapter extends ArrayAdapter<Inbox> {
 		    holder.subject.setText(user.getsubject());
 		    holder.date.setText(user.getsentdate());
 		    
-		    
+		    if(user.getreadstatus().equals("0"))
+		    {
+		    	
+		    	 row.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
+		    	
+           
+		    }
+		    else  if(user.getreadstatus().equals("1"))
+		    {
+		    	 row.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#808080")));
+		    	
+		     
+		    }
 		    
 		    
 		 
@@ -176,28 +192,14 @@ public class InboxArrayAdapter extends ArrayAdapter<Inbox> {
 		   
 		  
 		    
-		    if(user.getreadstatus().equals("0"))
-		    {
-		    	
-		    	
-		    	
-		   	holder.readstatus.setBackgroundColor(android.R.color.holo_red_dark);
-           
-		    }
-		    else  if(user.getreadstatus().equals("1"))
-		    {
-		    	
-		    	
-		       	holder.readstatus.setBackgroundColor(android.R.color.holo_blue_dark);
-		    }
+		   
 		    
 		    if(user.getimportantstatus().equals("0"))
 		    {
 		    	
 		    	
 	    
-		    	holder.importantstatus.setVisibility(View.VISIBLE);
-	        	holder.importantstatus1.setVisibility(View.GONE);
+		    	
 
 		    	holder.importantstatus.setBackgroundResource(R.drawable.unimportant);
 		    	  
@@ -214,9 +216,7 @@ public class InboxArrayAdapter extends ArrayAdapter<Inbox> {
 		    	
 		    
 
-		    	holder.importantstatus1.setVisibility(View.VISIBLE);
-	        	holder.importantstatus.setVisibility(View.GONE);
-		    	holder.importantstatus1.setBackgroundResource(R.drawable.important);
+		    	holder.importantstatus.setBackgroundResource(R.drawable.important);
 		    	  
 		    	
 		    	

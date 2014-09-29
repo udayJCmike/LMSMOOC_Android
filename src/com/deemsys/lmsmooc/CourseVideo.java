@@ -43,7 +43,9 @@ public class CourseVideo extends SherlockFragmentActivity{
 	@Override
 	    public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
-	        
+	        getActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3399FF")));
+	        getActionBar().setTitle(Html.fromHtml("<font color=\"white\">" + lect_name + "</font>"));
+	        getActionBar().hide();
 	        setContentView(R.layout.course_video);
 	        videoview=(VideoView)findViewById(R.id.videoview);
 	        Intent i = getIntent();
@@ -55,7 +57,7 @@ public class CourseVideo extends SherlockFragmentActivity{
 	   	 audio_url=i.getExtras().getString("audio_url","");
 	        course_content=(TextView)findViewById(R.id.course_text);
 	        cd = new ConnectionDetector(getApplicationContext());
-	        getActionBar().setTitle(Html.fromHtml("<font color=\"white\">" + lect_name + "</font>"));
+	       
 	    	isInternetPresent = cd.isConnectingToInternet();
 	    	if(isInternetPresent)
 			{
@@ -89,7 +91,7 @@ public class CourseVideo extends SherlockFragmentActivity{
 			
 		}
 		
-	        getActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3399FF")));
+	        
 	    	
 }
 	  class getCourse extends AsyncTask<String, String, String> {
