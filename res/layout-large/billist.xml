@@ -20,19 +20,19 @@
          
             android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/author"
-                style="@style/custom_large"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/author_name" />
+           <TextView
+        android:id="@+id/textView1"
+        style="@style/custom_large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/course_name" />
 
             <TextView
-                android:id="@+id/avat"
-                style="@style/custom_large"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/Avatar" />
+        android:id="@+id/textView1"
+        style="@style/custom_large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/promo_Video" />
 
             <View
                 android:layout_width="fill_parent"
@@ -62,20 +62,19 @@
             android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/textView2"
-                style="@style/custom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="70dp"
-                android:text="TextView" />
+        android:id="@+id/coursename"
+        android:layout_marginLeft="160dp"
+         style="@style/custom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
 
-            <ImageView
-                android:id="@+id/avatarimg"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginLeft="100dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/list_selector" />
+           <VideoView
+        android:id="@+id/videoView1"
+        android:layout_width="280dp"
+        android:layout_height="155dp"
+        android:layout_marginLeft="170dp"
+        android:layout_weight="0.46" />
 
             <TextView
                 android:id="@+id/authoredu"

@@ -188,7 +188,12 @@ public class SearchActivity  extends SherlockActivity {
         switch (item.getItemId()) {
 
         case android.R.id.home:
-             finish();
+        	 Intent i= new Intent(SearchActivity.this,BrowseCourse.class);
+			 
+		
+			 
+			 startActivity(i);
+            // finish();
              break;
 
         default:

@@ -24,6 +24,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.text.Html;
 import android.util.Log;
 import android.util.SparseBooleanArray;
@@ -66,8 +67,7 @@ public class Categoryunfavlist extends SherlockActivity {
 		      ab.setTitle(Html.fromHtml("<font color='#ffffff'>Categories</font>"));
 		      list2= (ListView) findViewById(R.id.listView);
 		      list2.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-				 unfavadapter=new UnFavoriteCategoryAdapter(Categoryunfavlist.this, (ArrayList<UnfavoriteCourses>) category);
-				 list2.setAdapter(unfavadapter);
+				
 		        ab.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3399FF")));
 			 cd = new ConnectionDetector(getApplicationContext());
 			 isInternetPresent = cd.isConnectingToInternet();
@@ -116,7 +116,8 @@ public class Categoryunfavlist extends SherlockActivity {
 			   
 					 super.onPostExecute(file_url);
 					
-					
+					 unfavadapter=new UnFavoriteCategoryAdapter(Categoryunfavlist.this, (ArrayList<UnfavoriteCourses>) category);
+					 list2.setAdapter(unfavadapter);
 //					 list2.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener(){
 //						 
 //
@@ -193,30 +194,73 @@ public class Categoryunfavlist extends SherlockActivity {
 
 		 }
 
-		   @Override
+		   @SuppressWarnings("deprecation")
+		@Override
 		    public boolean onOptionsItemSelected(com.actionbarsherlock.view.MenuItem item) {
 		        switch (item.getItemId()) {
 
 		        case R.id.done:
-		        	// String result = "";
+		        	
 
 		        	 
 		        	 String result = "";
 		     	   
-		     	    for (UnfavoriteCourses p : unfavadapter.getBox()) {
-		     	      if (p.selected){
+		     	    for (UnfavoriteCourses p : unfavadapter.getBox())
+		     	    {
+		     	      if (p.selected)
+		     	      {
 		     	        result += p.name+",";
 		     	       
 		     	      }
 		     	    }
 		     	   strArray= result.split("\\,");
-		     	  for (String selectedcourse : strArray) {
+		     	   System.out.println("result value::"+result);
+		     	   System.out.println("string array"+strArray);
+		     	  if(result.equalsIgnoreCase(""))
+	     		  {
+	     			 AlertDialog alertDialog = new AlertDialog.Builder(
+	      					Categoryunfavlist.this).create();
+
+	  				alertDialog.setTitle("INFO!");
+
+	  				alertDialog.setMessage("No category selected.");
+
+	  				alertDialog.setIcon(R.drawable.delete);
+	  				
+	  				alertDialog.setButton("OK",	new DialogInterface.OnClickListener() {
+
+	  							public void onClick(final DialogInterface dialog,
+	  									final int which) {
+	  								
+	  							}
+	  						});
+
+	  				
+	  				alertDialog.show();
+	     		  }
+	     		  else
+	     		  {
+		     	  for (String selectedcourse : strArray)
+		     	  {
+		     		 if(selectedcourse.length()==0)
+		     		 {
+		     			 
+		     		 }
+		     		 else
+		     		 {
 		     	     	 new addtomyfav().execute(selectedcourse);
+		     		 }
+		     		  
 		     	  }
-		     	
+		     	  
+	     		  }
+		     	return true;
 		        case android.R.id.home:
-		        	finish();
 		        
+		                finish();
+		              
+		             
+		        	
 		        default:
 		            return super.onOptionsItemSelected(item);
 		        }

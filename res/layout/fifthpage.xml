@@ -10,7 +10,7 @@
 <View
     android:layout_width="fill_parent"
     android:layout_height="289dp"
-    android:layout_weight="1.21"
+    android:layout_weight="0.74"
     android:background="@drawable/ban5" />
 
 <LinearLayout
@@ -35,7 +35,7 @@
 
 <View
     android:layout_width="fill_parent"
-    android:layout_height="20dp"
+    android:layout_height="10dp"
    />
     <Button
         android:id="@+id/register"

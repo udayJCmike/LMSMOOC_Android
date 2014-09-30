@@ -188,7 +188,10 @@ public class SearchStudentBased  extends SherlockActivity {
         switch (item.getItemId()) {
 
         case android.R.id.home:
-             finish();
+        	 Intent i= new Intent(SearchStudentBased.this,NewMainActivity.class);
+			 
+			
+			 startActivity(i);
              break;
 
         default:

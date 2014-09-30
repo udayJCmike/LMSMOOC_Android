@@ -127,6 +127,9 @@
         android:text="@string/unfollow" />
 
 </LinearLayout>
+ <View
+            android:layout_width="fill_parent"
+            android:layout_height="25dp" />
 </LinearLayout>
 </ScrollView>
 </LinearLayout>

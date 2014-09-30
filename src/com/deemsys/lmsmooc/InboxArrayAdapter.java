@@ -3,40 +3,30 @@ package com.deemsys.lmsmooc;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.security.auth.Subject;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.deemsys.lmsmooc.InboxFragment.Details;
+
 
 import android.annotation.SuppressLint;
-import android.app.ActionBar;
+
 import android.app.Activity;
-import android.app.AlertDialog;
+
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
+
+
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.os.AsyncTask;
-import android.sax.RootElement;
-import android.text.Layout;
-import android.util.Log;
+
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
+
 import android.view.View;
-import android.view.View.OnClickListener;
+
 import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.AdapterView;
+
 import android.widget.ArrayAdapter;
-import android.widget.Button;
+
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -61,18 +51,18 @@ public class InboxArrayAdapter extends ArrayAdapter<Inbox> {
 	
     private static final String TAG_INBOXARRAY = "Inbox";
 
-    private static final String TAG_SENDER_ID = "sender_id";
-	private static final String TAG_SRES= "serviceresponse";
-	private static final String TAG_INBOXID= "inbox_id";
-	private static final String TAG_SENDER_NAME= "sender_name";
-	private static final String TAG_RECEIVER_ID= "receiver_id";
-	private static final String TAG_RECEIVER_NAME= "receiver_name";
-	private static final String TAG_ROLE= "role";
-	private static final String TAG_SUBJECT= "subject";
-	private static final String TAG_MESSAGE= "message";
-	private static final String TAG_READ_STATUS= "read_status";
-	private static final String TAG_SENT_DATE= "sent_date";
-	private static final String TAG_IMPORTANT_STATUS= "important_status";
+//    private static final String TAG_SENDER_ID = "sender_id";
+//	private static final String TAG_SRES= "serviceresponse";
+//	private static final String TAG_INBOXID= "inbox_id";
+//	private static final String TAG_SENDER_NAME= "sender_name";
+//	private static final String TAG_RECEIVER_ID= "receiver_id";
+//	private static final String TAG_RECEIVER_NAME= "receiver_name";
+//	private static final String TAG_ROLE= "role";
+//	private static final String TAG_SUBJECT= "subject";
+//	private static final String TAG_MESSAGE= "message";
+//	private static final String TAG_READ_STATUS= "read_status";
+//	private static final String TAG_SENT_DATE= "sent_date";
+//	private static final String TAG_IMPORTANT_STATUS= "important_status";
 	String importantstatus;
 	TextView welcome;
 	static String inboxid ;
@@ -91,7 +81,7 @@ public class InboxArrayAdapter extends ArrayAdapter<Inbox> {
 
 	ListView list2;
 	TextView welcomeusername;
-	private  String inboxdetailsurl = "http://192.168.1.158:8888/LmsmoocAndroid/Services/Inbox.php?service=selectinbox";
+	//private  String inboxdetailsurl = "http://192.168.1.158:8888/LmsmoocAndroid/Services/Inbox.php?service=selectinbox";
 	
 	
 	
@@ -154,7 +144,7 @@ public class InboxArrayAdapter extends ArrayAdapter<Inbox> {
 			holder.importantstatus=(ImageView) row.findViewById(R.id.redbtn);
 			
 		//	holder.importantstatus1=(ImageView) row.findViewById(R.id.greenbtn);
-			holder.readstatus=(LinearLayout) row.findViewById(R.id.readstatus);
+		//	holder.readstatus=(LinearLayout) row.findViewById(R.id.readstatus);
 			
 			 
            

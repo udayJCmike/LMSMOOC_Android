@@ -43,6 +43,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 
@@ -97,6 +98,16 @@ public class StudentSignup extends Activity {
 		setContentView(R.layout.student_signup);
 		
 		LinearLayout layout = (LinearLayout) findViewById(R.id.layoutt);
+		ScrollView sv=(ScrollView) findViewById(R.id.scrollView1);
+		sv.setOnTouchListener(new OnTouchListener() {
+
+		    @Override
+		    public boolean onTouch(View v, MotionEvent event) {
+		        // TODO Auto-generated method stub
+		    	 hideKeyboard(v);
+	                return false;
+		    }
+		});
 		 ActionBar actions = getActionBar();
 	        actions.setTitle(Html.fromHtml("<font color='#ffffff'>Registration</font>"));
 	        actions.setDisplayHomeAsUpEnabled(true);
@@ -106,17 +117,17 @@ public class StudentSignup extends Activity {
 //      
         
 
-        layout.setOnTouchListener(new OnTouchListener()
-        {
-            @Override
-            public boolean onTouch(View view, MotionEvent ev)
-            {
-                hideKeyboard(view);
-                return false;
-            }
-
-			
-        });
+//        layout.setOnTouchListener(new OnTouchListener()
+//        {
+//            @Override
+//            public boolean onTouch(View view, MotionEvent ev)
+//            {
+//                hideKeyboard(view);
+//                return false;
+//            }
+//
+//			
+//        });
      fstname = (EditText)findViewById(R.id.e1);
      lstname = (EditText)findViewById(R.id.e2);
      username1 = (EditText)findViewById(R.id.e3);

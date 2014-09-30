@@ -29,7 +29,7 @@ import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.deemsys.lmsmooc.AuthorCourses.unfollow;
 import com.deemsys.lmsmooc.CategoryCourses.fetchpurnumber;
-import com.google.gson.Gson;
+
 import com.squareup.picasso.Picasso;
 
 
@@ -225,7 +225,7 @@ public class MyFavoriteCategoryCourses  extends SherlockFragmentActivity {
 				 
 				  try {
 					  
-				   Gson gson = new Gson();
+				  
 				   JSONObject c = jArray.getJSONObject(TAG_SRES);
 			    	Log.i("tagconvertstr", "["+c+"]");
 			 
@@ -553,8 +553,8 @@ public class MyFavoriteCategoryCourses  extends SherlockFragmentActivity {
   public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
-        case R.id.addmyfav:
-        	new unfollow().execute();
+        case R.id.removefav:
+        	new removecat().execute();
         	finish();
             return true;
         case android.R.id.home:
@@ -565,22 +565,8 @@ public class MyFavoriteCategoryCourses  extends SherlockFragmentActivity {
         }
         return false;
   }
-//    @Override
-//    public boolean onOptionsItemSelected(com.actionbarsherlock.view.MenuItem item) {
-//        switch (item.getItemId()) {
-//
-//        case android.R.id.home:
-//             finish();
-//             break;
-//
-//        default:
-//            return super.onOptionsItemSelected(item);
-//        }
-//        return false;
-//    }
-//    
-    
-  class unfollow extends AsyncTask<String, String, String> {
+  
+  class removecat extends AsyncTask<String, String, String> {
 	  	@Override
 	      protected void onPreExecute() {
 	          super.onPreExecute();

@@ -6,15 +6,16 @@
     android:layout_gravity="center"
     android:background="#ffffff"
     android:orientation="vertical" >
-  <ScrollView
-        android:id="@+id/scrollView1"
-        android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        >
+
+ <ScrollView
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:fillViewport="true" >
+
           <LinearLayout
-              android:layout_marginTop="40dp"
+           
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="fill_parent"
                 android:orientation="vertical" >
     <LinearLayout
         android:layout_width="wrap_content"
@@ -22,17 +23,18 @@
         android:orientation="vertical"
         android:paddingLeft="30dip"
         android:paddingRight="30dip"
-        android:paddingTop="10dip" >
+        android:paddingTop="30dip" >
 
         <EditText
             android:id="@+id/firstname"
             style="@style/custom"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/rounded_edittext"
             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
             android:drawableLeft="@drawable/username"
             android:ems="10"
+             android:drawablePadding="10dp"
             android:hint="@string/firstname"
             android:singleLine="true" >
 
@@ -46,8 +48,9 @@
         <EditText
             android:id="@+id/lastname"
             style="@style/custom"
+             android:drawablePadding="10dp"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/rounded_edittext"
             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
             android:drawableLeft="@drawable/username"
@@ -64,11 +67,12 @@
             android:id="@+id/username"
             style="@style/custom"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/rounded_edittext"
             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_@-."
             android:drawableLeft="@drawable/username"
             android:ems="10"
+             android:drawablePadding="10dp"
             android:hint="@string/username"
             android:singleLine="true" />
 
@@ -80,7 +84,8 @@
             android:id="@+id/email"
             style="@style/custom"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="wrap_content"
+             android:drawablePadding="10dp"
             android:background="@drawable/rounded_edittext"
             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_@-.,"
             android:drawableLeft="@drawable/email"
@@ -97,10 +102,11 @@
             android:id="@+id/password"
             style="@style/custom"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/rounded_edittext"
             android:drawableLeft="@drawable/password"
             android:ems="10"
+             android:drawablePadding="10dp"
             android:hint="@string/password"
             android:inputType="textPassword"
             android:singleLine="true" />
@@ -212,7 +218,7 @@
             <TextView
                 android:id="@+id/proftextgender"
                 android:layout_width="wrap_content"
-                android:layout_height="45dp"
+                android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true" />
 
@@ -318,6 +324,9 @@
             android:text="@string/savechanges"
             android:textColor="#ffffff" />
     </LinearLayout>
+     <View
+            android:layout_width="fill_parent"
+            android:layout_height="25dp" />
     </LinearLayout>
 </ScrollView>
 </LinearLayout>

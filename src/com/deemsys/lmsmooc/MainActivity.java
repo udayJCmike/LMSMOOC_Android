@@ -13,10 +13,13 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.text.Html;
 import android.widget.LinearLayout;
+import com.viewpagerindicator.CirclePageIndicator;
+import com.viewpagerindicator.PageIndicator;
 
 public class MainActivity extends FragmentActivity  {
 	 static ViewPager pager;
 	LinearLayout mDotsScrollbarHolder;
+	PageIndicator mIndicator;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +30,10 @@ public class MainActivity extends FragmentActivity  {
         actions.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3399FF")));
          pager = (ViewPager) findViewById(R.id.pager);
         pager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
-      pager.setOnPageChangeListener(new OnPageChangeListener() {
+        mIndicator = (CirclePageIndicator)findViewById(R.id.indicator);
+        mIndicator.setViewPager(pager);
+        
+        mIndicator.setOnPageChangeListener(new OnPageChangeListener() {
 		
 		@Override
 		public void onPageSelected(int arg0) {

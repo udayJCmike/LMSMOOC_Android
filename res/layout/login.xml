@@ -9,7 +9,7 @@
 
     <View
         android:layout_width="fill_parent"
-        android:layout_height="60dp" >
+        android:layout_height="30dp" >
 </View>
 
          <TextView
@@ -40,11 +40,13 @@
         android:id="@+id/uname"
         style="@style/custom"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+       
         android:layout_gravity="center_horizontal"
         android:background="@drawable/rounded_edittext"
         android:drawableLeft="@drawable/username"
         android:ems="10"
+         android:layout_height="wrap_content"
+          android:drawablePadding="10dp"
         android:hint="@string/username"
         android:singleLine="true" >
 
@@ -53,7 +55,7 @@
     </LinearLayout>
 <View
     android:layout_width="fill_parent"
-    android:layout_height="10dp" />
+    android:layout_height="5dp" />
 <LinearLayout
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
@@ -67,11 +69,12 @@
         android:id="@+id/pswd"
         style="@style/custom"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/rounded_edittext"
         android:drawableLeft="@drawable/password"
         android:ems="10"
+          android:drawablePadding="10dp"
         android:hint="@string/password"
         android:inputType="textPassword"
         android:singleLine="true" />
@@ -116,7 +119,7 @@
 </LinearLayout>
 <View
     android:layout_width="fill_parent"
-    android:layout_height="20dp" >
+    android:layout_height="10dp" >
 
 </View>
 

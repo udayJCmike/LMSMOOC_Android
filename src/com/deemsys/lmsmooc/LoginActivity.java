@@ -276,7 +276,7 @@ public class LoginActivity extends SherlockActivity  {
 				public void onClick(View arg0) {
 
 			
-				String url = "http://208.109.248.89:8085/OnlineCourse/Student/signup";
+				String url = "http://208.109.248.89:8087/OnlineCourse/Student/signup";
 				Intent i = new Intent(Intent.ACTION_VIEW);
 				i.setData(Uri.parse(url));
 				startActivity(i);

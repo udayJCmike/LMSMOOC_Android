@@ -186,6 +186,7 @@ public class CategorySelectionStudentBased extends SherlockActivity {
 				
 				
 			}
+		
 		   @Override
 			 public void onBackPressed() 
 		 {
@@ -197,7 +198,10 @@ public class CategorySelectionStudentBased extends SherlockActivity {
 		        switch (item.getItemId()) {
 
 		        case android.R.id.home:
-		             finish();
+		        	 Intent i= new Intent(CategorySelectionStudentBased.this,NewMainActivity.class);
+					 
+					
+					 startActivity(i);
 		             break;
 
 		        default:

@@ -27,11 +27,12 @@
             android:id="@+id/firstname"
             style="@style/custom"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/rounded_edittext"
             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
             android:drawableLeft="@drawable/username"
             android:ems="10"
+             android:drawablePadding="10dp"
             android:hint="@string/firstname"
             android:singleLine="true" >
 
@@ -45,8 +46,9 @@
         <EditText
             android:id="@+id/lastname"
             style="@style/custom"
+             android:drawablePadding="10dp"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/rounded_edittext"
             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
             android:drawableLeft="@drawable/username"
@@ -63,7 +65,8 @@
             android:id="@+id/username"
             style="@style/custom"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
+             android:drawablePadding="10dp"
             android:background="@drawable/rounded_edittext"
             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_@-."
             android:drawableLeft="@drawable/username"
@@ -78,8 +81,9 @@
         <EditText
             android:id="@+id/email"
             style="@style/custom"
+             android:drawablePadding="10dp"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/rounded_edittext"
             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_@-.,"
             android:drawableLeft="@drawable/email"
@@ -96,10 +100,11 @@
             android:id="@+id/password"
             style="@style/custom"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/rounded_edittext"
             android:drawableLeft="@drawable/password"
             android:ems="10"
+             android:drawablePadding="10dp"
             android:hint="@string/password"
             android:inputType="textPassword"
             android:singleLine="true" />
@@ -211,7 +216,7 @@
             <TextView
                 android:id="@+id/proftextgender"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true" />
 
@@ -314,6 +319,11 @@
             android:text="@string/savechanges"
             android:textColor="#ffffff" />
     </LinearLayout>
+     <View
+        android:layout_width="fill_parent"
+        android:layout_height="5dp" />
     </LinearLayout>
+     
+          
 </ScrollView>
 </LinearLayout>

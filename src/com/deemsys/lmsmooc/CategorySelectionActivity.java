@@ -190,7 +190,11 @@ public class CategorySelectionActivity extends SherlockActivity {
 		        switch (item.getItemId()) {
 
 		        case android.R.id.home:
-		             finish();
+		        	 Intent i= new Intent(CategorySelectionActivity.this,BrowseCourse.class);
+					 
+					
+					 startActivity(i);
+//		             finish();
 		             break;
 
 		        default:

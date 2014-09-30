@@ -5,7 +5,7 @@
      <menu>
    
    <item
-        android:id="@+id/unfollow"
+        android:id="@+id/removefav"
         android:orderInCategory="100"
         android:showAsAction="never"
 

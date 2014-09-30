@@ -89,8 +89,8 @@ public class BrowseCourse extends SherlockFragmentActivity {
 				startActivity(intentsearch);
 				return true;
 	        case android.R.id.home:
-	        	  finish();
-				
+	        	Intent intentfignUP=new Intent(this,MainActivity.class);
+				startActivity(intentfignUP);
 	       default:
 	        
 	        }

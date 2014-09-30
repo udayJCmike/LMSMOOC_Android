@@ -7,10 +7,12 @@
        android:weightSum="2"
     android:orientation="vertical" >
 
-<View
-    android:layout_width="fill_parent"
-    android:layout_height="23dp" />
 
+ <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        >
 <LinearLayout
     android:layout_width="fill_parent"
     android:orientation="vertical"
@@ -29,8 +31,9 @@
     <EditText
         android:id="@+id/e1"
         style="@style/custom"
+           android:drawablePadding="10dp"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center|center_vertical"
         android:background="@drawable/rounded_edittext"
         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
@@ -53,9 +56,10 @@
 
     <EditText
         android:id="@+id/e2"
+           android:drawablePadding="10dp"
         style="@style/custom"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/rounded_edittext"
         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
@@ -79,9 +83,10 @@
 
     <EditText
         android:id="@+id/e3"
+           android:drawablePadding="10dp"
         style="@style/custom"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/rounded_edittext"
         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_@-."
@@ -105,9 +110,10 @@
 
     <EditText
         android:id="@+id/e4"
+           android:drawablePadding="10dp"
         style="@style/custom"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/rounded_edittext"
         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_@-.,"
@@ -133,8 +139,9 @@
     <EditText
         android:id="@+id/e5"
         style="@style/custom"
+           android:drawablePadding="10dp"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/rounded_edittext"
         android:drawableLeft="@drawable/password"
@@ -160,8 +167,9 @@
     <EditText
         android:id="@+id/e6"
         style="@style/custom"
+           android:drawablePadding="10dp"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/rounded_edittext"
         android:drawableLeft="@drawable/password"
@@ -215,9 +223,13 @@
             android:background="@drawable/mycustom_button"
             android:text="@string/register"
             android:textColor="#ffffff" />
-
+<View
+        android:layout_width="fill_parent"
+        android:layout_height="20dp" />
     </LinearLayout>
 
    
 </LinearLayout>
+
+</ScrollView>
 </LinearLayout>

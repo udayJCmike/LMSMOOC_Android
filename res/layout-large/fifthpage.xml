@@ -11,7 +11,7 @@
     android:layout_width="fill_parent"
     android:layout_height="289dp"
     android:layout_weight="1.21"
-    android:background="@drawable/ban5" />
+    android:background="@drawable/bantab5" />
 
 <LinearLayout
     android:layout_width="match_parent"
