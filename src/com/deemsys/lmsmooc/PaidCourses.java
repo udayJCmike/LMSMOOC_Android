@@ -3,7 +3,7 @@ package com.deemsys.lmsmooc;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
+
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -27,7 +27,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.deemsys.lmsmooc.FreeCourses.fetchpurnumber;
+
 import com.squareup.picasso.Picasso;
 import android.support.v4.app.Fragment;
 import android.app.ProgressDialog;
@@ -49,7 +49,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
+
 import android.widget.AbsListView.OnScrollListener;
 
 public class PaidCourses  extends Fragment {
@@ -77,17 +77,15 @@ public class PaidCourses  extends Fragment {
 		private static final String TAG_SRES= "serviceresponse";
 		private static final String TAG_COURSE_NAME= "course_name";
 		private static final String TAG_COURSE_AUTHOR= "course_author";
-		private static final String TAG_COURSE_SUBTITLE= "course_sub_title";
+	//	private static final String TAG_COURSE_SUBTITLE= "course_sub_title";
 		private static final String TAG_COURSE_COST= "course_price";
 		private static final String TAG_COURSE_RATINGS= "user_ratings";
 		private static final String TAG_course_cover_image= "course_cover_image";
-		private static final String TAG_route_no= "route_no";
-		private static final String TAG_driver_status= "device_status";
-		private static final String TAG_status_date= "status_date";
+	
 		private static final String TAG_INSTRUCTOR_ID= "instructor_id";
 		private static final String TAG_COURSE_ID= "course_id";
 		private static final String TAG_Check_= "checkmycourse";
-		private static final String TAG_SUCCESS = "success";
+		
 		private static final String TAG_NUMBER_OF_ROWS = "number_of_rows";
 		 private static final String TAG_COURSE_PROMO_VIDEO= "course_promo_video";
 		 String course_id_topass,course_name_to_pass,course_descript_to_pass,course_enrolled,course_enrolled_passing,checkstatus;
@@ -189,7 +187,7 @@ public class PaidCourses  extends Fragment {
 		  final HttpParams params = httpclient.getParams();
 		  HttpResponse response;
 		  private String content =  null;
-		  private boolean error = false;
+		//  private boolean error = false;
 		@Override
 	    protected void onPreExecute() {
 			  cDialog = new ProgressDialog(getActivity());
@@ -213,7 +211,7 @@ public class PaidCourses  extends Fragment {
 
 			private void displayCourseList(String response){
 				 
-				  JSONObject responseObj = null; 
+				 // JSONObject responseObj = null; 
 				 
 				  try {
 					  
@@ -222,7 +220,7 @@ public class PaidCourses  extends Fragment {
 			    	Log.i("tagconvertstr", "["+c+"]");
 			 
 			    	Log.i("tagconvertstr1", "["+user+"]");
-				   responseObj = new JSONObject(response); 
+				 //  responseObj = new JSONObject(response); 
 				
 				   JSONArray countryListObj = c.getJSONArray(TAG_Course_ARRAY);
 				 
@@ -344,30 +342,20 @@ public class PaidCourses  extends Fragment {
 			    } catch (ClientProtocolException e) {
 			     Log.w("HTTP2:",e );
 			     content = e.getMessage();
-			     error = true;
+			     //error = true;
 			     cancel(true);
 			    } catch (IOException e) {
 			     Log.w("HTTP3:",e );
 			     content = e.getMessage();
-			     error = true;
+			    // error = true;
 			     cancel(true);
 			    }catch (Exception e) {
 			     Log.w("HTTP4:",e );
 			     content = e.getMessage();
-			     error = true;
+			  //   error = true;
 			     cancel(true);
 			    }
-//			    }catch(JSONException e)
-//			    {
-//			    	  e.printStackTrace();
-//			    }
-//			   
-//			        
-			    		
-//			    }catch(Exception e)
-//			    {
-//			    	  e.printStackTrace();
-//			    }
+
 			    return content;
 			}
 			
@@ -404,7 +392,7 @@ public class PaidCourses  extends Fragment {
     	   if (convertView == null) {
     	 
     	   LayoutInflater vi = (LayoutInflater)getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    	   convertView = vi.inflate(R.layout.paid_course_overview, null);
+    	   convertView = vi.inflate(R.layout.course_overview, null);
     	 
     	   holder = new ViewHolder();
     	   holder.code = (TextView) convertView.findViewById(R.id.coursename);
@@ -558,7 +546,7 @@ public class PaidCourses  extends Fragment {
     			
     			return null;
     		}
-		@SuppressWarnings("deprecation")
+	
 		@Override
 		 protected void onPostExecute(String file_url) {
 	    	   super.onPostExecute(file_url);
@@ -582,7 +570,7 @@ public class PaidCourses  extends Fragment {
 	    	   
 	    	//  String url="http://208.109.248.89:8085/OnlineCourse/Student/student_view_Course?course_id=50&authorid=1&pur=0&catcourse=&coursetype=";
 	    	   else{
-	    	   String url = Config.common_url+"/student_view_Course?course_id="+courseidurl+"&authorid="+instructoridurl+"&pur="+numofrows+"&catcourse=&coursetype=";
+	    	   String url = Config.common_url+"?course_id="+courseidurl+"&authorid="+instructoridurl+"&pur="+numofrows+"&catcourse=&coursetype=";
 				System.out.println("url value"+url);
 	    	   Intent ii = new Intent(Intent.ACTION_VIEW);
 				ii.setData(Uri.parse(url));
@@ -596,27 +584,15 @@ public class PaidCourses  extends Fragment {
 
  }
     
-    private class LoadImage extends AsyncTask<String, String, String> {
-	    @Override
-	        protected void onPreExecute() {
-	            super.onPreExecute();
-
-	    }
-	       protected String doInBackground(String... args) {
-	         try {
-	        	 System.out.println("test");
-	        
-	               bitmap = BitmapFactory.decodeStream((InputStream)new URL(args[0]).getContent());
-	        } catch (Exception e) {
-	              e.printStackTrace();
-	        }
-	      return null;
-	       }
-	       protected void onPostExecute(String image) {
-	         if(image != null){
-	        	
-	         }
-	        
-	       }
-	   }
+   
+    @Override
+    public void onPause(){
+        super.onPause();
+        if(pDialog!=null){
+            pDialog.dismiss();
+    }
+    if(cDialog!=null){
+        cDialog.dismiss();
+    }
+    }
 }

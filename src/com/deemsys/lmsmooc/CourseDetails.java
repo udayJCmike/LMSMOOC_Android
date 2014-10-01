@@ -46,7 +46,7 @@ public class CourseDetails extends SherlockFragmentActivity{
 		 course_enrolls=i.getExtras().getString("enroll_students","");
 		 audio_url=i.getExtras().getString("audio_url","");
 		 ratingsho=i.getExtras().getString("rating","");
-		 System.out.println("instructor id value"+instructorid);
+		 System.out.println("audio name id value"+audio_url);
 	     course_nam.setText(course_name);
 	     enrol.setText(course_enrolls);
 	     ratingshow= (ImageView) findViewById(R.id.ratingimage);
@@ -95,7 +95,9 @@ public class CourseDetails extends SherlockFragmentActivity{
 
       //  videouri= "rtsp://v3.cache8.c.youtube.com/CiILENy73wIaGQmXovF6e-Rf-BMYDSANFEgGUgZ2aWRlb3MM/0/0/0/video.3gp";
   videouri=LoginActivity.avatar_url+course_id+"/"+audio_url;
- System.out.println("video uri in course details"+videouri);
+  //String path = "android.resource://" + getPackageName() + "/" + R.raw.promo;
+ // view.setVideoURI(Uri.parse(path));
+ //System.out.println("video uri in course details"+videouri);
 
     	 try {
 	            // Start the MediaController

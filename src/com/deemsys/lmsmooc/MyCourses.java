@@ -95,7 +95,8 @@ public class MyCourses  extends Fragment {
 		 String rating_count;
 		private static final String TAG_NUMBER_OF_ROWS = "number_of_rows";
 	 String courseidurl,instructoridurl,pur_url,course_enrolled_passing;
-    @Override
+    @SuppressWarnings("deprecation")
+	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.allcourses, container, false);
         setHasOptionsMenu(true);
@@ -170,7 +171,7 @@ public class MyCourses  extends Fragment {
 		  final HttpParams params = httpclient.getParams();
 		  HttpResponse response;
 		  private String content =  null;
-		  private boolean error = false;
+		//  private boolean error = false;
 		@Override
 	    protected void onPreExecute() {
 			  cDialog = new ProgressDialog(getActivity());
@@ -193,6 +194,7 @@ public class MyCourses  extends Fragment {
 				  
 				  }
 
+			@SuppressWarnings("deprecation")
 			private void displayCourseList(String response){
 				 
 				
@@ -354,17 +356,17 @@ public class MyCourses  extends Fragment {
 			    } catch (ClientProtocolException e) {
 			     Log.w("HTTP2:",e );
 			     content = e.getMessage();
-			     error = true;
+			//     error = true;
 			     cancel(true);
 			    } catch (IOException e) {
 			     Log.w("HTTP3:",e );
 			     content = e.getMessage();
-			     error = true;
+			    // error = true;
 			     cancel(true);
 			    }catch (Exception e) {
 			     Log.w("HTTP4:",e );
 			     content = e.getMessage();
-			     error = true;
+			   //  error = true;
 			     cancel(true);
 			    }
 
@@ -525,14 +527,14 @@ public class MyCourses  extends Fragment {
              JsonParser jLogin = new JsonParser();
              
              JSONObject json = jLogin.makeHttpRequest(Config.ServerUrl+Config.purchasenumberselection,"POST", params1);
-             System.out.println("value for json::"+json);
+          //   System.out.println("value for json::"+json);
              if(json!=null)
              {
                  try
                  {
                 	 if(json != null)
                 	 {
-                	 System.out.println("json value::"+json);
+                	// System.out.println("json value::"+json);
                 	
                 	 JSONObject jUser = json.getJSONObject(TAG_SRESL);
                 	
@@ -562,7 +564,7 @@ public class MyCourses  extends Fragment {
 		@Override
 		 protected void onPostExecute(String file_url) {
 	    	   super.onPostExecute(file_url);
-	        System.out.println("in post execute");
+	       // System.out.println("in post execute");
 	    	   pDialog.dismiss();
 	    	 
 	    	   Intent i=new Intent(getActivity(),CourseDetails.class);
@@ -575,15 +577,7 @@ public class MyCourses  extends Fragment {
 	    	 i.putExtra("audio_url", audiourlpassing);
 				startActivity(i);
 	            
-	    	   
-//	    	//  String url="http://208.109.248.89:8085/OnlineCourse/Student/student_view_Course?course_id=50&authorid=1&pur=0&catcourse=&coursetype=";
-//	    	   String url = Config.common_url+"/student_view_Course?course_id="+courseidurl+"&authorid="+instructoridurl+"&pur="+numofrows+"&catcourse=&coursetype=";
-//				System.out.println("url value"+url);
-//	    	   Intent i = new Intent(Intent.ACTION_VIEW);
-//				i.setData(Uri.parse(url));
-//				getActivity().startActivity(i);
-//	         
-	     
+
 
 		
 		 }

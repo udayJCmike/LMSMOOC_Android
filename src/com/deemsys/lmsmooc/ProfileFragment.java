@@ -23,7 +23,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -40,6 +39,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -888,10 +888,21 @@ RadioButton subj,cours;
 	
 	 @Override
 		public void onActivityResult(int requestCode, int resultCode, Intent data) {
-		    
-	    	if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
-	            //Bitmap photo = (Bitmap) data.getData().getPath(); 
+		  super.onActivityResult(requestCode, resultCode, data); 
+	    	System.out.println("data value::"+data);
+			getActivity();
+			if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
 	          
+	    		 getActivity();
+				if(resultCode != Activity.RESULT_CANCELED)
+			       {
+			        if(data!=null&&!data.equals("Intent { (has extras) }"))
+			        {
+			        	
+						getActivity();
+						if (resultCode == Activity.RESULT_OK && data != null) 
+			            {  
+							try{
 	            Uri selectedImageUri = data.getData();
 	            imagepath = getPath(selectedImageUri);
 	            Bitmap bitmap=BitmapFactory.decodeFile(imagepath);
@@ -899,14 +910,24 @@ RadioButton subj,cours;
 	            browseimage.setText(imagepath);
 	            
 
-	            if(bitmap!=null){
+	            if(bitmap!=null)
+	            {
 	            	
 	            	
 	            	upload.setVisibility(View.VISIBLE);
 	            	
 	            	
 	            }
-	            
+							}catch(Exception e){
+//								Toast.makeText(getActivity(),
+//			                            "Exception" + e, 1000).show();
+							}     
+			            }else{
+			            	
+			            }
+			       
+			        }
+			       }
 	            
 	      
 		    	

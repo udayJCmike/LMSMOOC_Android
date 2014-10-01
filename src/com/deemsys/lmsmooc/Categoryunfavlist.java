@@ -19,20 +19,19 @@ import com.actionbarsherlock.view.Menu;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
+
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
+
 import android.text.Html;
 import android.util.Log;
-import android.util.SparseBooleanArray;
-import android.view.View;
+
 import android.view.Window;
-import android.widget.AdapterView;
+
 import android.widget.ListView;
-import android.widget.Toast;
+
 
 public class Categoryunfavlist extends SherlockActivity {
 	String category_name,success;
@@ -55,6 +54,7 @@ public class Categoryunfavlist extends SherlockActivity {
 		
 		private static final String TAG_Category_NAME= "category_name";
 		
+		@SuppressWarnings("deprecation")
 		@Override
 		protected void onCreate(Bundle savedInstanceState) {
 			super.onCreate(savedInstanceState);

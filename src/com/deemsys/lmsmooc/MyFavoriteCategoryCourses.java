@@ -528,7 +528,7 @@ public class MyFavoriteCategoryCourses  extends SherlockFragmentActivity {
 	    	   
 	    	//  String url="http://208.109.248.89:8085/OnlineCourse/Student/student_view_Course?course_id=50&authorid=1&pur=0&catcourse=&coursetype=";
 	    	   else{
-	    	   String url = Config.common_url+"/student_view_Course?course_id="+courseidurl+"&authorid="+instructoridurl+"&pur="+numofrows+"&catcourse=&coursetype=";
+	    	   String url = Config.common_url+"?course_id="+courseidurl+"&authorid="+instructoridurl+"&pur="+numofrows+"&catcourse=&coursetype=";
 				System.out.println("url value"+url);
 	    	   Intent ii = new Intent(Intent.ACTION_VIEW);
 				ii.setData(Uri.parse(url));

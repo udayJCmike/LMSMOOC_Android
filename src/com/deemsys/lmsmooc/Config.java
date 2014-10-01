@@ -59,7 +59,7 @@ public class Config
 	
 	
 	
-	static String uploadpicone="Uploadpicture.php";
+	static String uploadpicone="Uploadpicture.php?service=imageUpload";
 	static String uploadpictwo="Uploadpicture.php?service=imageinsert";
 	
 	
@@ -78,5 +78,6 @@ public class Config
 	static  String role;
 	static String enabled;	
 	static String common_url;
+	static String URL_COMMON;
 	static String browsecommon_url;
 }

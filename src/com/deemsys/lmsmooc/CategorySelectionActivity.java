@@ -46,6 +46,7 @@ public class CategorySelectionActivity extends SherlockActivity {
 		
 		private static final String TAG_Category_NAME= "category_name";
 		
+		@SuppressWarnings("deprecation")
 		@Override
 		protected void onCreate(Bundle savedInstanceState) {
 			super.onCreate(savedInstanceState);

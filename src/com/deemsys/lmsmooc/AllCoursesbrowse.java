@@ -589,7 +589,7 @@ alertDialog = new AlertDialog.Builder(
 	    	   pDialog.dismiss();
 	    	   
 	    	//  String url="http://208.109.248.89:8085/OnlineCourse/Student/student_view_Course?course_id=50&authorid=1&pur=0&catcourse=&coursetype=";
-	    	   String url = Config.browsecommon_url+"/student_view_Course?course_id="+courseidurl+"&authorid="+instructoridurl+"&pur="+numofrows+"&catcourse=&coursetype=";
+	    	   String url = Config.browsecommon_url+"?course_id="+courseidurl+"&authorid="+instructoridurl+"&pur="+numofrows+"&catcourse=&coursetype=";
 				System.out.println("url value"+url);
 	    	   Intent i = new Intent(Intent.ACTION_VIEW);
 				i.setData(Uri.parse(url));
@@ -613,7 +613,7 @@ alertDialog = new AlertDialog.Builder(
     		List<NameValuePair> params1 = new ArrayList<NameValuePair>();
              
             
-             params1.add(new BasicNameValuePair("id", "1"));
+             params1.add(new BasicNameValuePair("id", "3"));
            
     		JsonParser jLogin = new JsonParser();
             
@@ -655,5 +655,10 @@ alertDialog = new AlertDialog.Builder(
 	new fetchpurnumber().execute();
     	}
  }
-  
+    @Override
+    public void onPause(){
+        super.onPause();
+        if(pDialog!=null)
+            pDialog.dismiss();
+    }
 }

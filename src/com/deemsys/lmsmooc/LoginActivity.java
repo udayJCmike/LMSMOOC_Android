@@ -12,7 +12,7 @@ import org.json.JSONObject;
 import com.actionbarsherlock.app.SherlockActivity;
 
 import android.app.ActionBar;
-import android.app.Activity;
+
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -21,7 +21,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.Color;
-import android.graphics.Typeface;
+
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -97,14 +97,20 @@ public class LoginActivity extends SherlockActivity  {
 	        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 	        cd = new ConnectionDetector(getApplicationContext());
 	        usname= (EditText) findViewById(R.id.uname);
-	      
+	        isInternetPresent = cd.isConnectingToInternet();
 	        paswd = (EditText) findViewById(R.id.pswd);
 	        signin = (Button) findViewById(R.id.signin);
 	        back = (Button) findViewById(R.id.back);
 	        forgetpass = (TextView) findViewById(R.id.forgetpasword);
 	        ActionBar actions = getActionBar();
 	        actions.setTitle(Html.fromHtml("<font color='#ffffff'>Login</font>"));
-	    
+	        if(isInternetPresent)
+			{
+				
+				new geturl().execute();
+
+			
+			}
 	        actions.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3399FF")));
 	        layout.setOnTouchListener(new OnTouchListener()
  	        {
@@ -133,7 +139,7 @@ public class LoginActivity extends SherlockActivity  {
 				@SuppressWarnings("deprecation")
 				@Override
 				public void onClick(View arg0) {
-					isInternetPresent = cd.isConnectingToInternet();
+					
 				System.out.println("signin clciked");
 				 String username=usname.getText().toString();
         		 String password=paswd.getText().toString();
@@ -276,7 +282,7 @@ public class LoginActivity extends SherlockActivity  {
 				public void onClick(View arg0) {
 
 			
-				String url = "http://208.109.248.89:8087/OnlineCourse/Student/signup";
+				String url = Config.URL_COMMON+"Student/signup";
 				Intent i = new Intent(Intent.ACTION_VIEW);
 				i.setData(Uri.parse(url));
 				startActivity(i);
@@ -297,7 +303,7 @@ public class LoginActivity extends SherlockActivity  {
 	    		List<NameValuePair> params1 = new ArrayList<NameValuePair>();
 	             
 	            
-	             params1.add(new BasicNameValuePair("id", "1"));
+	             params1.add(new BasicNameValuePair("id", "3"));
 	             params1.add(new BasicNameValuePair("student_id", Config.student_id));
 	    		JsonParser jLogin = new JsonParser();
 	             System.out.println(usname.getText().toString());
@@ -314,7 +320,7 @@ public class LoginActivity extends SherlockActivity  {
 	                	
 	                	 JSONObject jUser = json.getJSONObject(TAG_SRESL);
 	                	 successL = jUser.getString(TAG_SUCCESS);
-	                	 avatar_url = jUser.getString(TAG_AVATAR_URL );
+	                
 	                	 Config.common_url=jUser.getString(TAG_AVATAR_URL);;
 	                	 System.out.println("avatar url in second async"+avatar_url);
 	                	 }
@@ -336,11 +342,122 @@ public class LoginActivity extends SherlockActivity  {
 	    	@Override
 			 protected void onPostExecute(String file_url) {
 		    	   super.onPostExecute(file_url);
-		    pDialog.dismiss();	
-		   calld();
+		    	   new urlfetch().execute();
+		   
 	    	}
 	 }
-
+	 class urlfetch extends AsyncTask<String, String, String> {
+	    	@Override
+	        protected void onPreExecute() {
+	            super.onPreExecute();
+	          
+	        }
+	    	@Override
+			protected String doInBackground(String... params)
+	    	{
+	    		List<NameValuePair> params1 = new ArrayList<NameValuePair>();
+	             
+	            
+	             params1.add(new BasicNameValuePair("id", "1"));
+	             params1.add(new BasicNameValuePair("student_id", Config.student_id));
+	    		JsonParser jLogin = new JsonParser();
+	             System.out.println(usname.getText().toString());
+	             System.out.println( paswd.getText().toString());
+	             JSONObject json = jLogin.makeHttpRequest(avatarurl,"POST", params1);
+          System.out.println("value for json::"+json);
+	             if(json!=null)
+	             {
+	                 try
+	                 {
+	                	 if(json != null)
+	                	 {
+	                	 System.out.println("json value::"+json);
+	                	
+	                	 JSONObject jUser = json.getJSONObject(TAG_SRESL);
+	                	 successL = jUser.getString(TAG_SUCCESS);
+	                	 avatar_url = jUser.getString(TAG_AVATAR_URL);
+	                	
+	                	
+	                	 }
+		                	
+		                }
+		                 
+		                 catch(JSONException e)
+		                 {
+		                	 e.printStackTrace();
+		                	 
+		                 }
+		              }
+		             else{
+		                	 
+		            	 successL ="No"; 
+			    			  }
+				return null; 
+	    	}
+	    	@Override
+			 protected void onPostExecute(String file_url) {
+		    	   super.onPostExecute(file_url);
+		    	 
+		   	
+		   calld();
+		   pDialog.dismiss();
+	    	}
+	 }
+	 class geturl extends AsyncTask<String, String, String> {
+	    	@Override
+	        protected void onPreExecute() {
+	            super.onPreExecute();
+	          
+	        }
+	    	@Override
+			protected String doInBackground(String... params)
+	    	{
+	    		List<NameValuePair> params1 = new ArrayList<NameValuePair>();
+	             
+	            
+	             params1.add(new BasicNameValuePair("id", "4"));
+	             params1.add(new BasicNameValuePair("student_id", Config.student_id));
+	    		JsonParser jLogin = new JsonParser();
+	             System.out.println(usname.getText().toString());
+	             System.out.println( paswd.getText().toString());
+	             JSONObject json = jLogin.makeHttpRequest(avatarurl,"POST", params1);
+             System.out.println("value for json::"+json);
+	             if(json!=null)
+	             {
+	                 try
+	                 {
+	                	 if(json != null)
+	                	 {
+	                	 System.out.println("json value::"+json);
+	                	
+	                	 JSONObject jUser = json.getJSONObject(TAG_SRESL);
+	                	 successL = jUser.getString(TAG_SUCCESS);
+	                	 Config.URL_COMMON = jUser.getString(TAG_AVATAR_URL);
+	                	
+	                	
+	                	 }
+		                	
+		                }
+		                 
+		                 catch(JSONException e)
+		                 {
+		                	 e.printStackTrace();
+		                	 
+		                 }
+		              }
+		             else{
+		                	 
+		            	 successL ="No"; 
+			    			  }
+				return null; 
+	    	}
+	    	@Override
+			 protected void onPostExecute(String file_url) {
+		    	   super.onPostExecute(file_url);
+		    	 
+		  
+	    	}
+	 }
 	 class AttemptLogin extends AsyncTask<String, String, String> {
 	    	@Override
 	        protected void onPreExecute() {

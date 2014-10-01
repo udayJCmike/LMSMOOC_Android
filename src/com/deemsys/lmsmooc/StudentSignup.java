@@ -16,6 +16,7 @@ import org.json.JSONObject;
 
 import com.deemsys.lmsmooc.JsonParser;
 
+
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -66,7 +67,7 @@ public class StudentSignup extends Activity {
     static  String rolestr;
     static  String enabledstr;
     static  String userid;
-
+    private static final String TAG_AVATAR_URL= "avatar_url";
    
 
     
@@ -75,7 +76,7 @@ public class StudentSignup extends Activity {
    
 	    
 	    
-	    
+	    private static final String TAG_SUCCESS = "success";
 	    private static final String TAG_SUCCESS1 = "success";
 //		private static final String TAG_USERNAME = "username";
 //		private static final String TAG_PASSWORD = "password";
@@ -89,7 +90,7 @@ public class StudentSignup extends Activity {
 		private static String selecturl1 =Config.ServerUrl+Config.studentSignup;
 		private static String selecturl2 = Config.ServerUrl+Config.studentSignup1;
 
-	    
+		String avatarurl=Config.ServerUrl+"Login.php?service=avatar";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -108,12 +109,22 @@ public class StudentSignup extends Activity {
 	                return false;
 		    }
 		});
+		
 		 ActionBar actions = getActionBar();
 	        actions.setTitle(Html.fromHtml("<font color='#ffffff'>Registration</font>"));
 	        actions.setDisplayHomeAsUpEnabled(true);
 	        actions.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3399FF")));
         ConnectionDetector cd = new ConnectionDetector(getApplicationContext());
         isInternetPresent= cd.isConnectingToInternet();
+        
+        
+        if(isInternetPresent)
+		{
+			
+			new geturl().execute();
+
+		
+		}
 //      
         
 
@@ -136,13 +147,10 @@ public class StudentSignup extends Activity {
      confirmpass = (EditText)findViewById(R.id.e6);
      check = (CheckBox)findViewById(R.id.checkBox1);
   
-     check.setMovementMethod(LinkMovementMethod.getInstance());
+    // check.setMovementMethod(LinkMovementMethod.getInstance());
      checktext= (TextView)findViewById(R.id.checktext);
 //     check.setText("");
-//     checktext.setText(Html.fromHtml("I have read and agree to the " +
-//             "<a href='id.web.freelancer.example.TCActivity://Kode'>TERMS AND CONDITIONS</a>"));
-     checktext.setClickable(true);
-     checktext.setMovementMethod(LinkMovementMethod.getInstance());
+  
 		
 		final	Button signbtn=(Button)findViewById(R.id.btn1);
 		
@@ -283,25 +291,7 @@ public class StudentSignup extends Activity {
 		    });
 		
 	
-//	btn3.setOnClickListener(new OnClickListener() {
-//		 
-//		@Override
-//		public void onClick(View v) {
-//
-//		    fstname.setText("");
-//		    lstname.setText("");
-//		    email1.setText("");
-//		    organistn.setText("");
-//		    mob.setText("");
-//		    add1.setText("");
-//		  
-//		    city1.setText("");
-//		    state1.setText("");
-//		 //  firstname="1";
-//		    
-//		}
-//	});
-	
+
 		((EditText)findViewById(R.id.e3)).setOnFocusChangeListener(new OnFocusChangeListener() {
 
 		    public void onFocusChange(View v, boolean hasFocus) {
@@ -1655,6 +1645,59 @@ protected void hideKeyboard(View view)
 @Override
 public void onBackPressed() 
 {
+}
+
+class geturl extends AsyncTask<String, String, String> {
+	@Override
+	 protected void onPostExecute(String file_url) {
+   	   super.onPostExecute(file_url);
+        String url=Config.URL_COMMON+"user_view_Termsofuses";
+        System.out.println("url value"+url);
+       checktext.setText(Html.fromHtml("<a href='"+ url +"'>"+"TERMS AND CONDITIONS</a>"));
+       // checktext.setClickable(true);
+        checktext.setMovementMethod(LinkMovementMethod.getInstance());
+    }
+	@Override
+	protected String doInBackground(String... params)
+	{
+		List<NameValuePair> params1 = new ArrayList<NameValuePair>();
+         
+        
+         params1.add(new BasicNameValuePair("id", "4"));
+         params1.add(new BasicNameValuePair("student_id", Config.student_id));
+		JsonParser jLogin = new JsonParser();
+        
+         JSONObject json = jLogin.makeHttpRequest(avatarurl,"POST", params1);
+     System.out.println("value for json::"+json);
+         if(json!=null)
+         {
+             try
+             {
+            	 if(json != null)
+            	 {
+            	 System.out.println("json value::"+json);
+            	
+            	 JSONObject jUser = json.getJSONObject(TAG_SRESL);
+            	 successL = jUser.getString(TAG_SUCCESS);
+            	 Config.URL_COMMON = jUser.getString(TAG_AVATAR_URL);
+            	
+            	
+            	 }
+                	
+                }
+                 
+                 catch(JSONException e)
+                 {
+                	 e.printStackTrace();
+                	 
+                 }
+              }
+             else{
+                	 
+            	 successL ="No"; 
+	    			  }
+		return null; 
+	}
 }
 }
           

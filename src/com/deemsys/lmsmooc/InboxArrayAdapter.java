@@ -49,7 +49,7 @@ public class InboxArrayAdapter extends ArrayAdapter<Inbox> {
 	
 	
 	
-    private static final String TAG_INBOXARRAY = "Inbox";
+  //  private static final String TAG_INBOXARRAY = "Inbox";
 
 //    private static final String TAG_SENDER_ID = "sender_id";
 //	private static final String TAG_SRES= "serviceresponse";
@@ -164,13 +164,13 @@ public class InboxArrayAdapter extends ArrayAdapter<Inbox> {
 		    if(user.getreadstatus().equals("0"))
 		    {
 		    	
-		    	 row.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
+		    	 row.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#8080808")));
 		    	
            
 		    }
 		    else  if(user.getreadstatus().equals("1"))
 		    {
-		    	 row.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#808080")));
+		    	 row.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
 		    	
 		     
 		    }

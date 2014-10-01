@@ -25,7 +25,7 @@ import org.json.JSONObject;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.deemsys.lmsmooc.AllCoursesbrowse.fetchpurnumber;
+
 
 
 import com.squareup.picasso.Picasso;
@@ -92,7 +92,7 @@ public class CategoryCourses  extends SherlockFragmentActivity {
 		private static final String TAG_COURSE_RATINGS= "user_ratings";
 		private static final String TAG_course_cover_image= "course_cover_image";
 		
-		private static final String TAG_Check_= "checkmycourse";
+//		private static final String TAG_Check_= "checkmycourse";
 		
 		private static final String TAG_INSTRUCTOR_ID= "instructor_id";
 		private static final String TAG_COURSE_ID= "course_id";
@@ -526,7 +526,7 @@ public class CategoryCourses  extends SherlockFragmentActivity {
 	    	   
 	    	//  String url="http://208.109.248.89:8085/OnlineCourse/Student/student_view_Course?course_id=50&authorid=1&pur=0&catcourse=&coursetype=";
 	    	   else{
-	    	   String url = Config.browsecommon_url+"/student_view_Course?course_id="+courseidurl+"&authorid="+instructoridurl+"&pur="+numofrows+"&catcourse=&coursetype=";
+	    	   String url = Config.browsecommon_url+"?course_id="+courseidurl+"&authorid="+instructoridurl+"&pur="+numofrows+"&catcourse=&coursetype=";
 				System.out.println("url value"+url);
 	    	   Intent ii = new Intent(Intent.ACTION_VIEW);
 				ii.setData(Uri.parse(url));
@@ -642,7 +642,7 @@ public class CategoryCourses  extends SherlockFragmentActivity {
   		List<NameValuePair> params1 = new ArrayList<NameValuePair>();
            
           
-           params1.add(new BasicNameValuePair("id", "1"));
+           params1.add(new BasicNameValuePair("id", "3"));
          
   		JsonParser jLogin = new JsonParser();
           

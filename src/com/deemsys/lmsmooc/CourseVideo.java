@@ -151,6 +151,7 @@ public class CourseVideo extends SherlockFragmentActivity{
 	    			return null;
 	    		}
 			
+			@SuppressWarnings("deprecation")
 			@Override
 			 protected void onPostExecute(String file_url) {
 		    	   super.onPostExecute(file_url);
@@ -222,7 +223,7 @@ public class CourseVideo extends SherlockFragmentActivity{
 		          else
 		          {
 		        	//  videouri=LoginActivity.avatar_url+"54"+"/"+audio_url;
-		        	  videouri=Config.common_url+CourseDetails.course_id+"/"+sect_id+"/"+lect_id+"/"+course_contents;
+		        	  videouri=LoginActivity.avatar_url+CourseDetails.course_id+"/"+sect_id+"/"+lect_id+"/"+course_contents;
 		        	  System.out.println("video uri in course details"+videouri);
 		        	  try {
 				            // Start the MediaController

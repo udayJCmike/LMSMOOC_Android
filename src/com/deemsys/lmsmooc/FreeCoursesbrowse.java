@@ -3,7 +3,7 @@ package com.deemsys.lmsmooc;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
+
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -27,7 +27,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.deemsys.lmsmooc.AllCoursesbrowse.fetchpurnumber;
 import com.squareup.picasso.Picasso;
 import android.support.v4.app.Fragment;
 import android.app.ProgressDialog;
@@ -49,7 +48,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
+
 import android.widget.AbsListView.OnScrollListener;
 
 public class FreeCoursesbrowse  extends Fragment {
@@ -76,7 +75,7 @@ public class FreeCoursesbrowse  extends Fragment {
 		private static final String TAG_SRES= "serviceresponse";
 		private static final String TAG_COURSE_NAME= "course_name";
 		private static final String TAG_COURSE_AUTHOR= "course_author";
-		private static final String TAG_COURSE_SUBTITLE= "course_sub_title";
+	//	private static final String TAG_COURSE_SUBTITLE= "course_sub_title";
 		private static final String TAG_COURSE_COST= "course_price";
 		private static final String TAG_COURSE_RATINGS= "user_ratings";
 		private static final String TAG_course_cover_image= "course_cover_image";
@@ -177,7 +176,7 @@ public class FreeCoursesbrowse  extends Fragment {
 		  final HttpParams params = httpclient.getParams();
 		  HttpResponse response;
 		  private String content =  null;
-		  private boolean error = false;
+	//	  private boolean error = false;
 		@Override
 	    protected void onPreExecute() {
 			  cDialog = new ProgressDialog(getActivity());
@@ -201,7 +200,7 @@ public class FreeCoursesbrowse  extends Fragment {
 
 			private void displayCourseList(String response){
 				 
-				  JSONObject responseObj = null; 
+				//  JSONObject responseObj = null; 
 				 
 				  try {
 					  
@@ -328,17 +327,17 @@ public class FreeCoursesbrowse  extends Fragment {
 			    } catch (ClientProtocolException e) {
 			     Log.w("HTTP2:",e );
 			     content = e.getMessage();
-			     error = true;
+			   //  error = true;
 			     cancel(true);
 			    } catch (IOException e) {
 			     Log.w("HTTP3:",e );
 			     content = e.getMessage();
-			     error = true;
+			  //   error = true;
 			     cancel(true);
 			    }catch (Exception e) {
 			     Log.w("HTTP4:",e );
 			     content = e.getMessage();
-			     error = true;
+			   //  error = true;
 			     cancel(true);
 			    }
 //			    }catch(JSONException e)
@@ -550,7 +549,7 @@ public class FreeCoursesbrowse  extends Fragment {
 	    	   pDialog.dismiss();
 	    	   
 	    	//  String url="http://208.109.248.89:8085/OnlineCourse/Student/student_view_Course?course_id=50&authorid=1&pur=0&catcourse=&coursetype=";
-	    	   String url = Config.browsecommon_url+"/student_view_Course?course_id="+courseidurl+"&authorid="+instructoridurl+"&pur="+numofrows+"&catcourse=&coursetype=";
+	    	   String url = Config.browsecommon_url+"?course_id="+courseidurl+"&authorid="+instructoridurl+"&pur="+numofrows+"&catcourse=&coursetype=";
 				System.out.println("url value"+url);
 	    	   Intent i = new Intent(Intent.ACTION_VIEW);
 				i.setData(Uri.parse(url));
@@ -563,29 +562,29 @@ public class FreeCoursesbrowse  extends Fragment {
 
  }
     
-    private class LoadImage extends AsyncTask<String, String, String> {
-	    @Override
-	        protected void onPreExecute() {
-	            super.onPreExecute();
-
-	    }
-	       protected String doInBackground(String... args) {
-	         try {
-	        	 System.out.println("test");
-	        
-	               bitmap = BitmapFactory.decodeStream((InputStream)new URL(args[0]).getContent());
-	        } catch (Exception e) {
-	              e.printStackTrace();
-	        }
-	      return null;
-	       }
-	       protected void onPostExecute(String image) {
-	         if(image != null){
-	        	
-	         }
-	        
-	       }
-	   }
+//    private class LoadImage extends AsyncTask<String, String, String> {
+//	    @Override
+//	        protected void onPreExecute() {
+//	            super.onPreExecute();
+//
+//	    }
+//	       protected String doInBackground(String... args) {
+//	         try {
+//	        	 System.out.println("test");
+//	        
+//	               bitmap = BitmapFactory.decodeStream((InputStream)new URL(args[0]).getContent());
+//	        } catch (Exception e) {
+//	              e.printStackTrace();
+//	        }
+//	      return null;
+//	       }
+//	       protected void onPostExecute(String image) {
+//	         if(image != null){
+//	        	
+//	         }
+//	        
+//	       }
+//	   }
     class Avatarfetch extends AsyncTask<String, String, String> {
     	@Override
         protected void onPreExecute() {
@@ -598,7 +597,7 @@ public class FreeCoursesbrowse  extends Fragment {
     		List<NameValuePair> params1 = new ArrayList<NameValuePair>();
              
             
-             params1.add(new BasicNameValuePair("id", "1"));
+             params1.add(new BasicNameValuePair("id", "3"));
            
     		JsonParser jLogin = new JsonParser();
             
@@ -640,4 +639,10 @@ public class FreeCoursesbrowse  extends Fragment {
 	new fetchpurnumber().execute();
     	}
  }
+    @Override
+    public void onPause(){
+        super.onPause();
+        if(pDialog!=null)
+            pDialog.dismiss();
+    }
 }

@@ -12,18 +12,17 @@ import org.json.JSONObject;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockActivity;
-import com.deemsys.lmsmooc.CourseVideo.getCourse;
+
 
 
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnBufferingUpdateListener;
 import android.media.MediaPlayer.OnCompletionListener;
-import android.media.MediaPlayer.OnPreparedListener;
-import android.net.Uri;
+
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.app.Activity;
+
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -31,16 +30,14 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.text.Html;
-import android.util.Log;
-import android.view.Menu;
+
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
+
 import android.view.View.OnTouchListener;
-import android.widget.Button;
-import android.widget.EditText;
+
 import android.widget.ImageButton;
-import android.widget.MediaController;
+
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -65,7 +62,8 @@ public class CourseAudio extends SherlockActivity implements OnTouchListener, On
 	JSONObject jArray;
 	 public ProgressDialog pDialog;
    public static int oneTimeOnly = 0;
-   @Override
+   @SuppressWarnings("deprecation")
+@Override
    protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.course_audio);
@@ -135,9 +133,9 @@ public class CourseAudio extends SherlockActivity implements OnTouchListener, On
    Toast.makeText(getApplicationContext(), "Playing sound", 
    Toast.LENGTH_SHORT).show();
    try {
-	   String datasource=Config.common_url+CourseDetails.course_id+"/"+sect_id+"/"+lect_id+"/"+course_contents;
+	   String datasource=LoginActivity.avatar_url+CourseDetails.course_id+"/"+sect_id+"/"+lect_id+"/"+course_contents;
 	   System.out.println("datasource value"+datasource);
-	mediaPlayer.setDataSource(Config.common_url+CourseDetails.course_id+"/"+sect_id+"/"+lect_id+"/"+course_contents);
+	mediaPlayer.setDataSource(LoginActivity.avatar_url+CourseDetails.course_id+"/"+sect_id+"/"+lect_id+"/"+course_contents);
 	//
 	mediaPlayer.prepare();
 } catch (IllegalArgumentException e) {
