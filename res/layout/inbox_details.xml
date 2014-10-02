@@ -120,20 +120,11 @@ android:layout_gravity="center"
      android:layout_width="match_parent"
      android:layout_height="wrap_content"
   
-     android:background="@drawable/green_button"
-    android:text="Remove important"
+     android:background="@drawable/orangebutton"
+  
           android:textColor="#ffffff"
      android:paddingLeft="15dp"
      android:paddingRight="15dp" />
-  <Button
-           android:id="@+id/redbtn"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-          android:text="Mark as important"
-          android:textColor="#ffffff"
-           android:background="@drawable/orangebutton"
-           android:paddingLeft="15dp"
-           android:paddingRight="15dp" />
  
 
 </RelativeLayout>

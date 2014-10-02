@@ -58,7 +58,7 @@ public class InboxDetails extends SherlockFragmentActivity   {
 	
 	
 	 TextView from,date,to,message;
-	 Button importantstatus,unimportantstatus,back;
+	 Button unimportantstatus,back;
 	
 	@Override
 	  public void onCreate(Bundle savedInstanceState) {
@@ -80,9 +80,9 @@ public class InboxDetails extends SherlockFragmentActivity   {
 			       to = (TextView)findViewById(R.id.toans);
 					message = (TextView)findViewById(R.id.msgans);
 					date = (TextView)findViewById(R.id.dateans);
-				unimportantstatus=(Button)findViewById(R.id.redbtn);
+				unimportantstatus=(Button)findViewById(R.id.greenbtn);
 					
-				importantstatus=(Button)findViewById(R.id.greenbtn);
+				//importantstatus=(Button)findViewById(R.id.redbtn);
 				//back=(Button)findViewById(R.id.back);
 					
 				from.setText(InboxFragment.sender);
@@ -90,30 +90,28 @@ public class InboxDetails extends SherlockFragmentActivity   {
 				message.setText(Html.fromHtml(InboxFragment.msg));
 				date.setText(InboxFragment.date);
 				
-
-			 if(InboxFragment.important.equals("0"))
+System.out.println("valu of status::"+InboxFragment.important);
+			 if(InboxFragment.important.equals("1"))
 			    {
 			    	
-			    	unimportantstatus.setVisibility(View.VISIBLE);
-		        	importantstatus.setVisibility(View.INVISIBLE);
 
 			    	unimportantstatus.setBackgroundColor(Color.parseColor("#F0AD4E"));
-			    	  
+			    	unimportantstatus.setText("Remove important");
+			  
 			    
 			    	
 			    }
 			    
 			    
-			    else if(InboxFragment.important.equals("1"))
+			    else if(InboxFragment.important.equals("0"))
 			    {
 			    	
 			    
 
-			    	importantstatus.setVisibility(View.VISIBLE);
-		        	unimportantstatus.setVisibility(View.INVISIBLE);
-			    	importantstatus.setBackgroundColor(Color.parseColor("#5CB85C"));
-			    	  
-			    	
+			  
+		        	unimportantstatus.setBackgroundColor(Color.parseColor("#5CB85C"));
+		          	unimportantstatus.setText("Mark as important");
+			   
 			    	
 
 			    }
@@ -121,28 +119,36 @@ public class InboxDetails extends SherlockFragmentActivity   {
 				unimportantstatus.setOnClickListener(new OnClickListener() {
 	    	        @Override
 	    	        public void onClick(final View v) {
-	    	        	importantstatus.setVisibility(View.VISIBLE);
-	    	        	unimportantstatus.setVisibility(View.INVISIBLE);
-	    	        	importantstatus.setBackgroundColor(Color.parseColor("#5CB85C"));
-	    	        	
-	    	        	System.out.println("updating value 1");
-	    	        	
-	    	        	
-
-	    	        	  System.out.println("id value:"+id);
-					       System.out.println("receiver value:"+receiver);
-					       System.out.println("role value:"+roles);
-	    	        	
-
-	    		        new UpdateOne().execute(); 
+	    	        	if(InboxFragment.important.equals("1"))
+	    			    {
+	    	        		 new UpdateZero().execute(); 
+	    			    	unimportantstatus.setBackgroundColor(Color.parseColor("#5CB85C"));
+	    		          	unimportantstatus.setText("Mark as important");
+	    			    	
+	    			    }
+	    			    
+	    			    
+	    			    else if(InboxFragment.important.equals("0"))
+	    			    {
+	    			    	
+	    			    
+	    			    	 new UpdateOne().execute(); 
+	    			  
 	    		        
-	    		        
+	    			    	unimportantstatus.setBackgroundColor(Color.parseColor("#F0AD4E"));
+	    			    	unimportantstatus.setText("Remove important");
+	    			  
+	    			    	
+
+	    			    }
+
+	    	        	
 	    	        	
 	    	        }
 	    	    });
 				
 				
-				importantstatus.setOnClickListener(new OnClickListener() {
+			/*	importantstatus.setOnClickListener(new OnClickListener() {
 	    	        @Override
 	    	        public void onClick(final View v) {
 	    	        	unimportantstatus.setVisibility(View.VISIBLE);
@@ -167,7 +173,7 @@ public class InboxDetails extends SherlockFragmentActivity   {
 	    	        }
 	    	    });
 			
-				
+			*/	
 				 if(InboxFragment.read.equalsIgnoreCase("0"))
 				    {
 					 
@@ -230,10 +236,6 @@ public class InboxDetails extends SherlockFragmentActivity   {
 
 				       
 
-		    	        	  System.out.println("id value:"+id);
-						       System.out.println("receiver value:"+receiver);
-						       System.out.println("role value:"+roles);
-		    	        	
 
 
 							 JsonParser jLogin1 = new JsonParser();

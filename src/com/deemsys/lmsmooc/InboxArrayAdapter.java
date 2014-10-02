@@ -164,7 +164,7 @@ public class InboxArrayAdapter extends ArrayAdapter<Inbox> {
 		    if(user.getreadstatus().equals("0"))
 		    {
 		    	
-		    	 row.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#8080808")));
+		    	 row.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#808080")));
 		    	
            
 		    }

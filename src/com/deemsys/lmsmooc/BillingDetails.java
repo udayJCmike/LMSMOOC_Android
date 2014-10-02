@@ -79,9 +79,14 @@ public class BillingDetails extends SherlockFragmentActivity   {
 				cou_name.setText(BillingFragment.course_name);
 				author.setText(BillingFragment.course_author);
 				pur_date.setText(BillingFragment.purchased_date);
-				promo.setText(BillingFragment.promocode);
-				
-				
+				if(BillingFragment.promocode.equalsIgnoreCase("1"))
+				{
+				promo.setText("Yes");
+				}
+				else
+				{
+					promo.setText("No");
+				}
 				reduc.setText(BillingFragment.reduction);
 				amou1.setText("$"+BillingFragment.amount_paid);
 				amou2.setText("$"+BillingFragment.amount_paid);

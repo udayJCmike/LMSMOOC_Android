@@ -6,6 +6,7 @@
     <TextView
         android:id="@+id/authornameans"
         android:layout_width="210dp"
+        style="@style/custom"      
         android:layout_height="wrap_content"
         android:layout_centerVertical="false"
         android:layout_marginLeft="170dp"
