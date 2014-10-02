@@ -261,6 +261,7 @@ public class InboxFragment extends Fragment {
 				
 				
 				
+				@SuppressWarnings("deprecation")
 				@Override
 				protected void onPostExecute(String file_url) {
 					 
@@ -278,7 +279,35 @@ public class InboxFragment extends Fragment {
 					 
 					 cDialog.dismiss();
 					
-					 
+					  if(allinbox.size() == 0)
+						 {
+							 	AlertDialog alertDialog = new AlertDialog.Builder(
+										getActivity()).create();
+
+								// Setting Dialog Title
+								alertDialog.setTitle("INFO!");
+
+								// Setting Dialog Message
+								alertDialog.setMessage("No messages available");
+
+								// Setting Icon to Dialog
+								alertDialog.setIcon(R.drawable.delete);
+								
+
+								// Setting OK Button
+								alertDialog.setButton("OK",	new DialogInterface.OnClickListener() {
+
+											public void onClick(final DialogInterface dialog,
+													final int which) {
+												// Write your code here to execute after dialog
+												// closed
+												
+											}
+										});
+
+								// Showing Alert Message
+								alertDialog.show();
+						 }
 					 list2.setAdapter(new InboxArrayAdapter(InboxFragment.this.getActivity(), allinbox,R.layout.inboxlist));
 					  
 					 

@@ -82,6 +82,9 @@ public class MyFavoriteCourses  extends Fragment {
 	 JSONArray user = null;
 	 static ListView listView ;
 	 String rating_count;
+	 
+	 String course_description;
+	 private static final String TAG_COURSE_DESCRIPTION= "course_description";
 	 String course_name,authorname,student_enrolled,ratingcouont,cost,course_id,instructorid,numofrows,course_cover_image,ifmycoursepresent,audiourl,audiourlpassing;
 	 private static final String TAG_SRESL= "serviceresponse";
 	    private static final String TAG_Course_ARRAY = "CourseList";
@@ -314,6 +317,7 @@ public class MyFavoriteCourses  extends Fragment {
 		        	cost= c2.getString(TAG_COURSE_COST);
 		        	 ifmycoursepresent= c2.getString(TAG_Check_);
 		        	ratingcouont=c2.getString(TAG_COURSE_RATINGS);
+		        	  course_description=c2.getString(TAG_COURSE_DESCRIPTION);
 		        	coursetotallist.add(authorname);
 		        	coursetotallist.add(course_name);
 		        	coursetotallist.add(ratingcouont);
@@ -331,6 +335,7 @@ public class MyFavoriteCourses  extends Fragment {
 					  cnt.setifmycourse(ifmycoursepresent);
 		           cnt.setstringurl(course_cover_image);
 		           cnt.setaudiourl(audiourl);
+		           cnt.setdescription(course_description);
 				    courselist.add(cnt);
 				 
 				    System.out.println("size fo country list"+courselist.size());

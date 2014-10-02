@@ -4,8 +4,8 @@ public class Config
 { 
 	
 	//http://208.109.248.89/mobile/android/Services/
-  //  static String ServerUrl ="http://208.109.248.89/mobile/android/Services/" ;
-	static String ServerUrl = "http://192.168.1.71:8080/LmsmoocAndroid/Services/";
+    static String ServerUrl ="http://208.109.248.89/mobile/android/Services/" ;
+	//static String ServerUrl = "http://192.168.1.71:8080/LmsmoocAndroid/Services/";
 	//static String ServerUrl = "http://169.254.164.230:8080/LmsmoocAndroid/Services/";
 	static String AvatarUrl = "http://208.109.248.89:8087/OnlineCourse/resources/images/users/";
 	static String allcourseurl="ViewCourses.php?service=viewallcourse";
@@ -59,7 +59,7 @@ public class Config
 	
 	
 	
-	static String uploadpicone="Uploadpicture.php?service=imageUpload";
+	static String uploadpicone="Uploadpicture.php";
 	static String uploadpictwo="Uploadpicture.php?service=imageinsert";
 	
 	

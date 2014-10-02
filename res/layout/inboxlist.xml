@@ -16,7 +16,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp" >
 
             <TextView
                 android:id="@+id/addrstext"
@@ -28,7 +30,7 @@
 <View
      android:id="@+id/vcc"
      android:layout_width="250dp"
-     android:layout_height="20dp"
+     android:layout_height="10dp"
     >
 
 </View>

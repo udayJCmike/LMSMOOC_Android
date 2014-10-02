@@ -21,6 +21,7 @@ import com.deemsys.lmsmooc.BillingArrayAdapter;
 
 
 import android.support.v4.app.Fragment;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -36,6 +37,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 
 
@@ -238,6 +240,7 @@ public class BillingFragment extends Fragment {
 				
 				
 				
+				@SuppressWarnings("deprecation")
 				@Override
 				protected void onPostExecute(String file_url) {
 					  System.out.println("post execute");
@@ -248,6 +251,35 @@ public class BillingFragment extends Fragment {
 			          System.out.println("pre execute");
 			          System.out.println("pre execute:"+allbilling);
 			          System.out.println("pre execute"+billinglist);
+			          if(allbilling.size() == 0)
+						 {
+							 	AlertDialog alertDialog = new AlertDialog.Builder(
+										getActivity()).create();
+
+								// Setting Dialog Title
+								alertDialog.setTitle("INFO!");
+
+								// Setting Dialog Message
+								alertDialog.setMessage("No courses available to pay bill");
+
+								// Setting Icon to Dialog
+								alertDialog.setIcon(R.drawable.delete);
+								
+
+								// Setting OK Button
+								alertDialog.setButton("OK",	new DialogInterface.OnClickListener() {
+
+											public void onClick(final DialogInterface dialog,
+													final int which) {
+												// Write your code here to execute after dialog
+												// closed
+												
+											}
+										});
+
+								// Showing Alert Message
+								alertDialog.show();
+						 }
 					 list2.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener(){
 						 
 

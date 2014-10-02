@@ -11,6 +11,9 @@ import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.text.Html;
 import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.TextView;
@@ -31,6 +34,7 @@ public class CourseDetails extends SherlockFragmentActivity{
     String videouri;
     String ratingsho;
     ImageView ratingshow;
+    ImageButton mPlayButton;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -38,6 +42,7 @@ public class CourseDetails extends SherlockFragmentActivity{
 		
 		course_nam=(TextView)findViewById(R.id.coursename);
 		enrol=(TextView)findViewById(R.id.enrollcourse);
+		 mPlayButton = (ImageButton) findViewById(R.id.play_button);
 		 Intent i = getIntent();
 		 course_id = i.getExtras().getString("courseid","");
 		 course_name = i.getExtras().getString("course_name","");
@@ -46,7 +51,7 @@ public class CourseDetails extends SherlockFragmentActivity{
 		 course_enrolls=i.getExtras().getString("enroll_students","");
 		 audio_url=i.getExtras().getString("audio_url","");
 		 ratingsho=i.getExtras().getString("rating","");
-		 System.out.println("audio name id value"+audio_url);
+		 System.out.println("audio name id value"+course_description);
 	     course_nam.setText(course_name);
 	     enrol.setText(course_enrolls);
 	     ratingshow= (ImageView) findViewById(R.id.ratingimage);
@@ -121,11 +126,20 @@ public class CourseDetails extends SherlockFragmentActivity{
 	            public void onPrepared(MediaPlayer mp) {
 	       
 	                System.out.println("in video start");
-	                videoview.start();
+	              //  videoview.start();
 	            }
 	        });
 
+	        mPlayButton.setOnClickListener(new OnClickListener() {
 
+	            @Override
+	            public void onClick(View v) {
+	            	videoview.start();
+	                    // hide button once playback starts
+	                    mPlayButton.setVisibility(View.GONE);
+	                }
+	           
+	        });
 
 	}
 	  @Override

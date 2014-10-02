@@ -115,6 +115,9 @@ public class SearchStudentBased  extends SherlockActivity {
 		 String course_id_topass,course_name_to_pass,course_descript_to_pass,course_enrolled,course_enrolled_passing,checkstatus;
 		private static final String TAG_NUMBER_OF_ROWS = "number_of_rows";
 	 String courseidurl,instructoridurl,pur_url;
+	 
+	 String course_description;
+	 private static final String TAG_COURSE_DESCRIPTION= "course_description";
    
 	 @Override
 	    protected void onCreate(Bundle savedInstanceState) {
@@ -312,7 +315,11 @@ else
 	//	  private boolean error = false;
 		@Override
 	    protected void onPreExecute() {
-
+			 cDialog = new ProgressDialog(SearchStudentBased.this);
+	          cDialog.setMessage("Please wait...");
+	          cDialog.setIndeterminate(false);
+	          cDialog.setCancelable(false);
+	          cDialog.show();
 		}
 			
 			@Override
@@ -321,7 +328,7 @@ else
 				 super.onPostExecute(file_url);
 				
 				    displayCourseList(content);
-				   // cDialog.dismiss();
+				    cDialog.dismiss();
 				  
 				  }
 
@@ -391,6 +398,7 @@ else
 			            audiourl=c2.getString(TAG_COURSE_PROMO_VIDEO);
 			            course_cover_image=c2.getString(TAG_course_cover_image);
 			        	cost= c2.getString(TAG_COURSE_COST);
+			        	course_description=c2.getString(TAG_COURSE_DESCRIPTION);
 			        	 ifmycoursepresent= c2.getString(TAG_Check_);
 			        	ratingcouont=c2.getString(TAG_COURSE_RATINGS);
 			        	coursetotallist.add(authorname);
@@ -398,6 +406,7 @@ else
 			        	coursetotallist.add(ratingcouont);
 			        	coursetotallist.add(ifmycoursepresent);
 			       	coursetotallist.add(audiourl);
+			       	
 			        	imagelist.add(course_cover_image);
 
 			        
@@ -407,6 +416,7 @@ else
 						  cnt.setins_id(instructorid);
 						  cnt.setcourseid(course_id);
 						  cnt.setrating(ratingcouont);
+						   cnt.setdescription(course_description);
 						  cnt.setifmycourse(ifmycoursepresent);
 			           cnt.setstringurl(course_cover_image);
 			           cnt.setaudiourl(audiourl);

@@ -86,6 +86,10 @@ public class AllCourses  extends Fragment {
 	 JSONArray user = null;
 	 static ListView listView ;
 	 String course_name,authorname,student_enrolled,ratingcouont,cost,course_id,instructorid,numofrows,course_cover_image,ifmycoursepresent,audiourl,audiourlpassing;
+	
+	 String course_description;
+	 private static final String TAG_COURSE_DESCRIPTION= "course_description";
+	 
 	 private static final String TAG_SRESL= "serviceresponse";
 	 private static final String TAG_COURSE_PROMO_VIDEO= "course_promo_video";
 	    private static final String TAG_Course_ARRAY = "CourseList";
@@ -218,7 +222,7 @@ public class AllCourses  extends Fragment {
 	          cDialog.setMessage("Please wait...");
 	          cDialog.setIndeterminate(false);
 	          cDialog.setCancelable(false);
-	          cDialog.show();
+	         // cDialog.show();
 		}
 			
 			@Override
@@ -278,7 +282,7 @@ public class AllCourses  extends Fragment {
 		    		course_id=c2.getString(TAG_COURSE_ID);
 		    		 ifmycoursepresent= c2.getString(TAG_Check_);
 		            course_name = c2.getString(TAG_COURSE_NAME);
-		          //  course_cover_image="http://208.109.248.89/lmsvideos/28/coverImage.jpg";
+		            course_description=c2.getString(TAG_COURSE_DESCRIPTION);
 		            course_cover_image=c2.getString(TAG_course_cover_image);
 		        	cost= c2.getString(TAG_COURSE_COST);
 		        	ratingcouont=c2.getString(TAG_COURSE_RATINGS);
@@ -300,6 +304,7 @@ System.out.println("cover image"+ c2.getString(TAG_course_cover_image));
 					  cnt.setifmycourse(ifmycoursepresent);
 		           cnt.setstringurl(course_cover_image);
 		           cnt.setaudiourl(audiourl);
+		           cnt.setdescription(course_description);
 				    courselist.add(cnt);
 				 
 				
@@ -605,6 +610,7 @@ System.out.println("cover image"+ c2.getString(TAG_course_cover_image));
 	    	   i.putExtra("rating",   rating_count);
 	    	   i.putExtra("audio_url", audiourlpassing);
 	    	   startActivity(i);
+	    	   System.out.println("course description value::"+course_descript_to_pass);
 	    	   }
 	    	 
 				

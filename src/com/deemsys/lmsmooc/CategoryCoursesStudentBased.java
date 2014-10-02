@@ -78,6 +78,8 @@ public class CategoryCoursesStudentBased  extends SherlockFragmentActivity {
 	 static ListView listView ;
 	 Bitmap bitmap;
 	 String rating_count;
+	 String course_description;
+	 private static final String TAG_COURSE_DESCRIPTION= "course_description";
 	 String course_name,authorname,student_enrolled,ratingcouont,cost,course_id,instructorid,numofrows,category_name,ifmycoursepresent,course_cover_image,audiourl,audiourlpassing;
 	 private static final String TAG_SRESL= "serviceresponse";
 	    private static final String TAG_Course_ARRAY = "CourseList";
@@ -195,7 +197,7 @@ public class CategoryCoursesStudentBased  extends SherlockFragmentActivity {
 	          cDialog.setMessage("Please wait...");
 	          cDialog.setIndeterminate(false);
 	          cDialog.setCancelable(false);
-	          cDialog.show();
+	          //cDialog.show();
 		}
 			
 			@Override
@@ -245,6 +247,7 @@ public class CategoryCoursesStudentBased  extends SherlockFragmentActivity {
 				    		course_id=c2.getString(TAG_COURSE_ID);
 				            course_name = c2.getString(TAG_COURSE_NAME);
 				            ifmycoursepresent= c2.getString(TAG_Check_);
+				            
 				            audiourl=c2.getString(TAG_COURSE_PROMO_VIDEO);
 				            course_cover_image=c2.getString(TAG_course_cover_image);
 				        	cost= c2.getString(TAG_COURSE_COST);
@@ -252,6 +255,7 @@ public class CategoryCoursesStudentBased  extends SherlockFragmentActivity {
 				        	coursetotallist.add(authorname);
 				        	coursetotallist.add(course_name);
 				        	coursetotallist.add(ratingcouont);
+				        	  course_description=c2.getString(TAG_COURSE_DESCRIPTION);
 				        	coursetotallist.add(audiourl);
 				        	coursetotallist.add(ifmycoursepresent);
 				        	imagelist.add(course_cover_image);
@@ -264,6 +268,7 @@ public class CategoryCoursesStudentBased  extends SherlockFragmentActivity {
 							  cnt.setcourseid(course_id);
 							  cnt.setrating(ratingcouont);
 				           cnt.setstringurl(course_cover_image);
+				           cnt.setdescription(course_description);
 				         cnt.setifmycourse(ifmycoursepresent);
 				           cnt.setaudiourl(audiourl);
 						    courselist.add(cnt);

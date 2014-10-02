@@ -45,12 +45,24 @@
      android:paddingRight="20dp"
     android:layout_height="wrap_content"
     android:orientation="horizontal" >
-
+<FrameLayout
+  android:id="@+id/video_frame"
+  android:layout_width="fill_parent"
+  android:layout_height="match_parent"
+  android:background="#000"
+  >
     <VideoView
         android:id="@+id/videoView1"
         android:layout_width="match_parent"
         android:layout_height="189dp" />
-
+     <ImageButton
+    android:id="@+id/play_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical|center_horizontal"
+    android:src="@drawable/video"
+    />
+</FrameLayout>
 </LinearLayout>
 
 <LinearLayout android:layout_width="wrap_content"

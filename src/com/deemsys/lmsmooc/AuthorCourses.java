@@ -84,6 +84,8 @@ public class AuthorCourses  extends SherlockFragmentActivity {
 	 static ListView listView ;
 	 Bitmap bitmap;
 	 String rating_count;
+	 String course_description;
+	 private static final String TAG_COURSE_DESCRIPTION= "course_description";
 	 String course_name,authorname,student_enrolled,ratingcouont,cost,course_id,instructorid,numofrows,category_name,course_cover_image,author_name,success,ifmycoursepresent,audiourl,audiourlpassing;
 	 private static final String TAG_SRESL= "serviceresponse";
 	    private static final String TAG_Course_ARRAY = "CourseList";
@@ -200,7 +202,7 @@ public class AuthorCourses  extends SherlockFragmentActivity {
 	          cDialog.setMessage("Please wait...");
 	          cDialog.setIndeterminate(false);
 	          cDialog.setCancelable(false);
-	          cDialog.show();
+	          //cDialog.show();
 		}
 			
 			@Override
@@ -252,6 +254,7 @@ public class AuthorCourses  extends SherlockFragmentActivity {
 				            ifmycoursepresent= c2.getString(TAG_Check_);
 				            audiourl=c2.getString(TAG_COURSE_PROMO_VIDEO);
 				            course_cover_image=c2.getString(TAG_course_cover_image);
+				            course_description=c2.getString(TAG_COURSE_DESCRIPTION);
 				        	cost= c2.getString(TAG_COURSE_COST);
 				        	ratingcouont=c2.getString(TAG_COURSE_RATINGS);
 				        	coursetotallist.add(authorname);
@@ -268,6 +271,7 @@ public class AuthorCourses  extends SherlockFragmentActivity {
 							  cnt.setcourseid(course_id);
 							  cnt.setrating(ratingcouont);
 							  cnt.setifmycourse(ifmycoursepresent);
+							  cnt.setdescription(course_description);
 				           cnt.setstringurl(course_cover_image);
 				           cnt.setaudiourl(audiourl);
 						    courselist.add(cnt);

@@ -82,6 +82,9 @@ public class MyFavoriteCategoryCourses  extends SherlockFragmentActivity {
 	 static ListView listView ;
 	 Bitmap bitmap;
 	 String rating_count;
+	 
+	 String course_description;
+	 private static final String TAG_COURSE_DESCRIPTION= "course_description";
 	 String course_name,authorname,student_enrolled,ratingcouont,cost,course_id,instructorid,numofrows,category_name,course_cover_image,ifmycoursepresent,audiourl,audiourlpassing;
 	 private static final String TAG_SRESL= "serviceresponse";
 	    private static final String TAG_Course_ARRAY = "CourseList";
@@ -199,7 +202,7 @@ public class MyFavoriteCategoryCourses  extends SherlockFragmentActivity {
 	          cDialog.setMessage("Please wait...");
 	          cDialog.setIndeterminate(false);
 	          cDialog.setCancelable(false);
-	          cDialog.show();
+	         // cDialog.show();
 		}
 			
 			@Override
@@ -252,6 +255,7 @@ public class MyFavoriteCategoryCourses  extends SherlockFragmentActivity {
 				            audiourl=c2.getString(TAG_COURSE_PROMO_VIDEO);
 				            course_cover_image=c2.getString(TAG_course_cover_image);
 				        	cost= c2.getString(TAG_COURSE_COST);
+				        	  course_description=c2.getString(TAG_COURSE_DESCRIPTION);
 				        	ratingcouont=c2.getString(TAG_COURSE_RATINGS);
 				        	coursetotallist.add(authorname);
 				        	coursetotallist.add(course_name);
@@ -267,6 +271,7 @@ public class MyFavoriteCategoryCourses  extends SherlockFragmentActivity {
 							  cnt.setins_id(instructorid);
 							  cnt.setcourseid(course_id);
 							  cnt.setrating(ratingcouont);
+							   cnt.setdescription(course_description);
 							  cnt.setifmycourse(ifmycoursepresent);
 				           cnt.setstringurl(course_cover_image);
 				           cnt.setaudiourl(audiourl);

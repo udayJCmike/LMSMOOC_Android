@@ -314,7 +314,11 @@ else
 	//	  private boolean error = false;
 		@Override
 	    protected void onPreExecute() {
-
+			 cDialog = new ProgressDialog(SearchActivity.this);
+	          cDialog.setMessage("Please wait...");
+	          cDialog.setIndeterminate(false);
+	          cDialog.setCancelable(false);
+	         cDialog.show();
 		}
 			
 			@Override
@@ -323,7 +327,7 @@ else
 				 super.onPostExecute(file_url);
 				
 				    displayCourseList(content);
-				   // cDialog.dismiss();
+				    cDialog.dismiss();
 				  
 				  }
 
