@@ -3,8 +3,8 @@
 
     <string name="app_name">LMSMOOC</string>
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Ready to go!!</string>
-    <string name="browsecourse">Explore Courses!!</string>
+    <string name="action_settings">Ready to start!</string>
+    <string name="browsecourse">Explore Courses!</string>
     <string name="forgetpass">Forgot Password</string>
      <string name="confirmpass">Confirm Password</string>
     <string name="signin">Login</string>
@@ -71,6 +71,7 @@
    <string name="browse">Browse Profile Picture</string>
   <string name="upload">Upload Image</string>
    <string name="signintext">Sign in with your username and password!!</string>
+    <string name="signuptext">Sign up with your Email id!!</string>
   
  <string name="inital_Time">0 min, 0 sec</string>
 </resources>

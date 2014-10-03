@@ -1268,53 +1268,57 @@ containing a value of this type.
         public static final int click=0x7f020082;
         public static final int counter_bg=0x7f020083;
         public static final int courses=0x7f020084;
-        public static final int custom_backbutton=0x7f020085;
-        public static final int customcheckboxx=0x7f020086;
-        public static final int delete=0x7f020087;
-        public static final int drawer=0x7f020088;
-        public static final int email=0x7f020089;
-        public static final int favorites=0x7f02008a;
-        public static final int five=0x7f02008b;
-        public static final int four=0x7f02008c;
-        public static final int green_button=0x7f02008d;
-        public static final int ic_launcher=0x7f02008e;
-        public static final int important=0x7f02008f;
-        public static final int inbox=0x7f020090;
-        public static final int list_item_bg_normal=0x7f020091;
-        public static final int list_item_bg_pressed=0x7f020092;
-        public static final int list_selector=0x7f020093;
-        public static final int logout=0x7f020094;
-        public static final int mycustom_button=0x7f020095;
-        public static final int name=0x7f020096;
-        public static final int nav_drawer=0x7f020097;
-        public static final int navlogo=0x7f020098;
-        public static final int one=0x7f020099;
-        public static final int options=0x7f02009a;
-        public static final int orangebutton=0x7f02009b;
-        public static final int password=0x7f02009c;
-        public static final int profile=0x7f02009d;
-        public static final int rbtn_selector=0x7f02009e;
-        public static final int rbtn_textcolor_selector=0x7f02009f;
-        public static final int rounded_edittext=0x7f0200a0;
-        public static final int searchimage=0x7f0200a1;
-        public static final int seekbarcolors=0x7f0200a2;
-        public static final int text=0x7f0200a3;
-        public static final int three=0x7f0200a4;
-        public static final int thumb=0x7f0200a5;
-        public static final int tick=0x7f0200a6;
-        public static final int two=0x7f0200a7;
-        public static final int unchecked=0x7f0200a8;
-        public static final int unimportant=0x7f0200a9;
-        public static final int username=0x7f0200aa;
-        public static final int video=0x7f0200ab;
-        public static final int vpi__tab_indicator=0x7f0200ac;
-        public static final int vpi__tab_selected_focused_holo=0x7f0200ad;
-        public static final int vpi__tab_selected_holo=0x7f0200ae;
-        public static final int vpi__tab_selected_pressed_holo=0x7f0200af;
-        public static final int vpi__tab_unselected_focused_holo=0x7f0200b0;
-        public static final int vpi__tab_unselected_holo=0x7f0200b1;
-        public static final int vpi__tab_unselected_pressed_holo=0x7f0200b2;
-        public static final int zero=0x7f0200b3;
+        public static final int cursor=0x7f020085;
+        public static final int custom_backbutton=0x7f020086;
+        public static final int customcheckboxx=0x7f020087;
+        public static final int delete=0x7f020088;
+        public static final int drawer=0x7f020089;
+        public static final int email=0x7f02008a;
+        public static final int emailm=0x7f02008b;
+        public static final int favorites=0x7f02008c;
+        public static final int five=0x7f02008d;
+        public static final int four=0x7f02008e;
+        public static final int green_button=0x7f02008f;
+        public static final int ic_launcher=0x7f020090;
+        public static final int important=0x7f020091;
+        public static final int inbox=0x7f020092;
+        public static final int list_item_bg_normal=0x7f020093;
+        public static final int list_item_bg_pressed=0x7f020094;
+        public static final int list_selector=0x7f020095;
+        public static final int logout=0x7f020096;
+        public static final int mycustom_button=0x7f020097;
+        public static final int name=0x7f020098;
+        public static final int nav_drawer=0x7f020099;
+        public static final int navlogo=0x7f02009a;
+        public static final int one=0x7f02009b;
+        public static final int options=0x7f02009c;
+        public static final int orangebutton=0x7f02009d;
+        public static final int password=0x7f02009e;
+        public static final int passwordm=0x7f02009f;
+        public static final int profile=0x7f0200a0;
+        public static final int rbtn_selector=0x7f0200a1;
+        public static final int rbtn_textcolor_selector=0x7f0200a2;
+        public static final int rounded_edittext=0x7f0200a3;
+        public static final int searchimagem=0x7f0200a4;
+        public static final int seekbarcolors=0x7f0200a5;
+        public static final int text=0x7f0200a6;
+        public static final int three=0x7f0200a7;
+        public static final int thumb=0x7f0200a8;
+        public static final int tick=0x7f0200a9;
+        public static final int two=0x7f0200aa;
+        public static final int unchecked=0x7f0200ab;
+        public static final int unimportant=0x7f0200ac;
+        public static final int username=0x7f0200ad;
+        public static final int usernamem=0x7f0200ae;
+        public static final int video=0x7f0200af;
+        public static final int vpi__tab_indicator=0x7f0200b0;
+        public static final int vpi__tab_selected_focused_holo=0x7f0200b1;
+        public static final int vpi__tab_selected_holo=0x7f0200b2;
+        public static final int vpi__tab_selected_pressed_holo=0x7f0200b3;
+        public static final int vpi__tab_unselected_focused_holo=0x7f0200b4;
+        public static final int vpi__tab_unselected_holo=0x7f0200b5;
+        public static final int vpi__tab_unselected_pressed_holo=0x7f0200b6;
+        public static final int zero=0x7f0200b7;
     }
     public static final class id {
         public static final int ImageButton1=0x7f040048;
@@ -1373,9 +1377,9 @@ containing a value of this type.
         public static final int abs__title=0x7f040021;
         public static final int abs__up=0x7f04000b;
         public static final int abtauth=0x7f040045;
-        public static final int action_settings=0x7f0400d5;
-        public static final int addmyfav=0x7f0400cf;
-        public static final int addrstext=0x7f0400a0;
+        public static final int action_settings=0x7f0400d9;
+        public static final int addmyfav=0x7f0400d3;
+        public static final int addrstext=0x7f0400a3;
         public static final int amountans=0x7f040063;
         public static final int amountans1=0x7f04006b;
         public static final int authed=0x7f040043;
@@ -1384,22 +1388,22 @@ containing a value of this type.
         public static final int authorname=0x7f04003c;
         public static final int authornameans=0x7f040056;
         public static final int avat=0x7f040041;
-        public static final int avatarimage=0x7f0400c2;
+        public static final int avatarimage=0x7f0400c5;
         public static final int avatarimg=0x7f040042;
-        public static final int back=0x7f0400ab;
+        public static final int back=0x7f0400ae;
         public static final int bottom=0x7f040013;
-        public static final int browse=0x7f0400bb;
-        public static final int browsecourse=0x7f0400d0;
-        public static final int browseimage=0x7f0400bd;
-        public static final int btn1=0x7f0400cb;
-        public static final int category=0x7f0400d2;
+        public static final int browse=0x7f0400be;
+        public static final int browsecourse=0x7f0400d4;
+        public static final int browseimage=0x7f0400c0;
+        public static final int btn1=0x7f0400cf;
+        public static final int category=0x7f0400d6;
         public static final int categoryname=0x7f040074;
         public static final int changepasslayout=0x7f040075;
-        public static final int check=0x7f0400ce;
-        public static final int checkBox1=0x7f0400a9;
-        public static final int checktext=0x7f0400ca;
+        public static final int check=0x7f0400d2;
+        public static final int checkBox1=0x7f0400ac;
+        public static final int checktext=0x7f0400ce;
         public static final int confirmpassword=0x7f040078;
-        public static final int content_frame=0x7f040096;
+        public static final int content_frame=0x7f040099;
         public static final int cost=0x7f04008d;
         public static final int costamt=0x7f04008c;
         public static final int course=0x7f040082;
@@ -1409,54 +1413,56 @@ containing a value of this type.
         public static final int cover=0x7f040087;
         public static final int dateans=0x7f040058;
         public static final int disableHome=0x7f040009;
-        public static final int done=0x7f0400d4;
-        public static final int drawer_layout=0x7f040090;
-        public static final int e1=0x7f0400c4;
-        public static final int e2=0x7f0400c5;
-        public static final int e3=0x7f0400c6;
-        public static final int e4=0x7f0400c7;
-        public static final int e5=0x7f0400c8;
-        public static final int e6=0x7f0400c9;
+        public static final int done=0x7f0400d8;
+        public static final int drawer_layout=0x7f040093;
+        public static final int e1=0x7f0400c7;
+        public static final int e2=0x7f0400c8;
+        public static final int e3=0x7f0400c9;
+        public static final int e4=0x7f0400ca;
+        public static final int e5=0x7f0400cb;
+        public static final int e6=0x7f0400cc;
         public static final int edit_query=0x7f04002c;
-        public static final int email=0x7f0400b0;
+        public static final int email=0x7f0400b3;
         public static final int enrollcourse=0x7f040083;
-        public static final int f=0x7f0400c1;
-        public static final int firs=0x7f0400bc;
-        public static final int firstname=0x7f0400ad;
+        public static final int f=0x7f0400c4;
+        public static final int firs=0x7f0400bf;
+        public static final int firstname=0x7f0400b0;
         public static final int firtlinear=0x7f04006c;
-        public static final int flag=0x7f0400a4;
-        public static final int forgetpasword=0x7f0400aa;
-        public static final int fromans=0x7f04009a;
+        public static final int flag=0x7f0400a7;
+        public static final int forgetpasword=0x7f0400ad;
+        public static final int fromans=0x7f04009d;
         public static final int fsdsf=0x7f04008b;
         public static final int getpassword=0x7f040079;
-        public static final int greenbtn=0x7f04009d;
+        public static final int greenbtn=0x7f0400a0;
         public static final int homeAsUp=0x7f040006;
-        public static final int icon=0x7f040093;
+        public static final int icon=0x7f040096;
         public static final int imageButton1=0x7f04007d;
         public static final int imageButton2=0x7f04007c;
         public static final int imageButton3=0x7f04007a;
         public static final int imageButton4=0x7f04007b;
         public static final int imageView1=0x7f04007f;
         public static final int indicator=0x7f040039;
-        public static final int label=0x7f0400cd;
-        public static final int lastname=0x7f0400ae;
-        public static final int layoutt=0x7f0400c3;
-        public static final int lblListHeader=0x7f0400a2;
-        public static final int lblListItem=0x7f0400a3;
-        public static final int left_drawer=0x7f040092;
-        public static final int linearLayout1=0x7f04009f;
+        public static final int label=0x7f0400d1;
+        public static final int lastname=0x7f0400b1;
+        public static final int layoutt=0x7f0400c6;
+        public static final int lblListHeader=0x7f0400a5;
+        public static final int lblListItem=0x7f0400a6;
+        public static final int left_drawer=0x7f040095;
+        public static final int linear2=0x7f040090;
+        public static final int linear3=0x7f04008e;
+        public static final int linearLayout1=0x7f0400a2;
         public static final int linearone=0x7f040085;
         public static final int list=0x7f040066;
         public static final int listMode=0x7f040002;
         public static final int listView=0x7f040073;
         public static final int listView1=0x7f04003a;
-        public static final int listview_drawer=0x7f040097;
+        public static final int listview_drawer=0x7f04009a;
         public static final int llinetwo=0x7f040088;
-        public static final int loginlayout=0x7f0400a6;
-        public static final int lvExp=0x7f0400cc;
-        public static final int menu_search=0x7f0400d3;
-        public static final int msgans=0x7f04009c;
-        public static final int navd=0x7f0400d1;
+        public static final int loginlayout=0x7f0400a9;
+        public static final int lvExp=0x7f0400d0;
+        public static final int menu_search=0x7f0400d7;
+        public static final int msgans=0x7f04009f;
+        public static final int navd=0x7f0400d5;
         public static final int newpassword=0x7f040077;
         public static final int none=0x7f040010;
         public static final int normal=0x7f040001;
@@ -1464,40 +1470,40 @@ containing a value of this type.
         public static final int oldpassword=0x7f040076;
         public static final int pager=0x7f040038;
         public static final int pagerTabStrip=0x7f040072;
-        public static final int password=0x7f0400b1;
+        public static final int password=0x7f0400b4;
         public static final int play_button=0x7f040081;
         public static final int priceans=0x7f040060;
-        public static final int proffrag=0x7f0400ac;
-        public static final int proftextgender=0x7f0400ba;
-        public static final int progressBar1=0x7f0400a5;
+        public static final int proffrag=0x7f0400af;
+        public static final int proftextgender=0x7f0400bd;
+        public static final int progressBar1=0x7f0400a8;
         public static final int promoans=0x7f040061;
         public static final int promoans1=0x7f040069;
-        public static final int pswd=0x7f0400a8;
+        public static final int pswd=0x7f0400ab;
         public static final int purdateans1=0x7f040068;
-        public static final int radioGroup1=0x7f0400b3;
-        public static final int radioGroup2=0x7f0400b7;
-        public static final int radiocourse=0x7f0400b5;
-        public static final int radiofemale=0x7f0400b9;
-        public static final int radiomale=0x7f0400b8;
-        public static final int radiosubject=0x7f0400b4;
+        public static final int radioGroup1=0x7f0400b6;
+        public static final int radioGroup2=0x7f0400ba;
+        public static final int radiocourse=0x7f0400b8;
+        public static final int radiofemale=0x7f0400bc;
+        public static final int radiomale=0x7f0400bb;
+        public static final int radiosubject=0x7f0400b7;
         public static final int rating=0x7f040089;
         public static final int ratingimage=0x7f040084;
-        public static final int redbtn=0x7f04009e;
+        public static final int redbtn=0x7f0400a1;
         public static final int reducans=0x7f040062;
         public static final int reductionans1=0x7f04006a;
-        public static final int register=0x7f040099;
-        public static final int removefav=0x7f0400d6;
-        public static final int savechagnes=0x7f0400c0;
+        public static final int register=0x7f04009c;
+        public static final int removefav=0x7f0400da;
+        public static final int savechagnes=0x7f0400c3;
         public static final int scrollView1=0x7f04003f;
         public static final int secondlinear=0x7f04006e;
         public static final int seekBar1=0x7f04007e;
-        public static final int selectgen=0x7f0400b6;
-        public static final int selecttopic=0x7f0400b2;
+        public static final int selectgen=0x7f0400b9;
+        public static final int selecttopic=0x7f0400b5;
         public static final int showCustom=0x7f040008;
         public static final int showHome=0x7f040005;
         public static final int showTitle=0x7f040007;
-        public static final int signin=0x7f040098;
-        public static final int subtitle=0x7f040095;
+        public static final int signin=0x7f04009b;
+        public static final int subtitle=0x7f040098;
         public static final int tabMode=0x7f040003;
         public static final int textView1=0x7f04003b;
         public static final int textView2=0x7f04003d;
@@ -1508,30 +1514,32 @@ containing a value of this type.
         public static final int textView7=0x7f04005d;
         public static final int textView8=0x7f04005e;
         public static final int textView9=0x7f04005f;
-        public static final int title=0x7f040094;
-        public static final int toans=0x7f04009b;
+        public static final int title=0x7f040097;
+        public static final int toans=0x7f04009e;
         public static final int top=0x7f040014;
         public static final int trdateans=0x7f040064;
         public static final int triangle=0x7f040011;
         public static final int tridans=0x7f040065;
-        public static final int uname=0x7f0400a7;
+        public static final int uname=0x7f0400aa;
         public static final int underline=0x7f040012;
-        public static final int unfollow=0x7f0400d7;
+        public static final int unfollow=0x7f0400db;
         public static final int unfolowfolow=0x7f040047;
-        public static final int upload=0x7f0400bf;
+        public static final int upload=0x7f0400c2;
         public static final int useLogo=0x7f040004;
-        public static final int username=0x7f0400af;
+        public static final int username=0x7f0400b2;
         public static final int vc=0x7f040086;
         public static final int vcc=0x7f04008a;
-        public static final int veh_reg_no=0x7f0400a1;
-        public static final int vi=0x7f0400be;
+        public static final int veh_reg_no=0x7f0400a4;
+        public static final int vi=0x7f0400c1;
         public static final int videoView1=0x7f040070;
         public static final int video_frame=0x7f040080;
-        public static final int videoview=0x7f04008f;
+        public static final int videoview=0x7f040092;
         public static final int view=0x7f04006d;
         public static final int viewPager=0x7f040071;
-        public static final int viewpager_container=0x7f040091;
-        public static final int webView1=0x7f04008e;
+        public static final int viewcall1=0x7f0400cd;
+        public static final int viewid2=0x7f04008f;
+        public static final int viewpager_container=0x7f040094;
+        public static final int webView1=0x7f040091;
         public static final int wrap_content=0x7f040000;
     }
     public static final class integer {
@@ -1689,7 +1697,7 @@ containing a value of this type.
         public static final int gender=0x7f090025;
         public static final int getpassword=0x7f090028;
         public static final int hello_world=0x7f09000e;
-        public static final int inital_Time=0x7f090039;
+        public static final int inital_Time=0x7f09003a;
         public static final int interstedin=0x7f090024;
         public static final int lastname=0x7f090020;
         public static final int newpass=0x7f09001e;
@@ -1706,13 +1714,14 @@ containing a value of this type.
         public static final int selecttopic=0x7f090019;
         public static final int signin=0x7f090013;
         public static final int signintext=0x7f090038;
+        public static final int signuptext=0x7f090039;
         public static final int terms=0x7f090016;
         public static final int unfollow=0x7f09002c;
         public static final int upload=0x7f090037;
         public static final int username=0x7f090021;
     }
     public static final class style {
-        public static final int ActionBar=0x7f0a0067;
+        public static final int ActionBar=0x7f0a0068;
         /** 
         Base application theme for API 11+. This theme completely replaces
         AppBaseTheme from res/values/styles.xml on API 11+ devices.
@@ -1729,13 +1738,13 @@ containing a value of this type.
         /**  Application theme. 
          */
         public static final int AppTheme=0x7f0a005e;
-        public static final int Custom_TextAppearance_Sherlock_Widget_TextView_SpinnerItem=0x7f0a006b;
-        public static final int Custom_Widget_Sherlock_TextView_SpinnerItem=0x7f0a006c;
-        public static final int MyCustomTheme=0x7f0a0064;
-        public static final int MyDropDownItem=0x7f0a0065;
-        public static final int MyFragment=0x7f0a006d;
-        public static final int MyPopupMenu=0x7f0a0066;
-        public static final int MyStyle=0x7f0a0069;
+        public static final int Custom_TextAppearance_Sherlock_Widget_TextView_SpinnerItem=0x7f0a006c;
+        public static final int Custom_Widget_Sherlock_TextView_SpinnerItem=0x7f0a006d;
+        public static final int MyCustomTheme=0x7f0a0065;
+        public static final int MyDropDownItem=0x7f0a0066;
+        public static final int MyFragment=0x7f0a006e;
+        public static final int MyPopupMenu=0x7f0a0067;
+        public static final int MyStyle=0x7f0a006a;
         public static final int Sherlock___TextAppearance_Small=0x7f0a0046;
         public static final int Sherlock___Theme=0x7f0a0051;
         public static final int Sherlock___Theme_DarkActionBar=0x7f0a0053;
@@ -1830,11 +1839,12 @@ containing a value of this type.
         public static final int Widget_Sherlock_Spinner_DropDown_ActionBar=0x7f0a0024;
         public static final int Widget_Sherlock_TextView_SpinnerItem=0x7f0a0032;
         public static final int Widget_TabPageIndicator=0x7f0a005a;
-        public static final int YourThemeDropDownListView=0x7f0a006a;
+        public static final int YourThemeDropDownListView=0x7f0a006b;
         public static final int custom=0x7f0a0061;
-        public static final int customTextAppearance_Sherlock_Widget_ActionBar_Title=0x7f0a0068;
+        public static final int customTextAppearance_Sherlock_Widget_ActionBar_Title=0x7f0a0069;
         public static final int custom_large=0x7f0a0062;
-        public static final int custom_medium=0x7f0a0063;
+        public static final int custom_large_cat=0x7f0a0063;
+        public static final int custom_medium=0x7f0a0064;
         public static final int custom_theme=0x7f0a005f;
     }
     public static final class styleable {
@@ -1844,8 +1854,8 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #CirclePageIndicator_android_background com.deemsys.lmsmooc:android_background}</code></td><td> View background </td></tr>
-           <tr><td><code>{@link #CirclePageIndicator_android_orientation com.deemsys.lmsmooc:android_orientation}</code></td><td> Orientation of the indicator.</td></tr>
+           <tr><td><code>{@link #CirclePageIndicator_android_background android:background}</code></td><td> View background </td></tr>
+           <tr><td><code>{@link #CirclePageIndicator_android_orientation android:orientation}</code></td><td> Orientation of the indicator.</td></tr>
            <tr><td><code>{@link #CirclePageIndicator_centered com.deemsys.lmsmooc:centered}</code></td><td> Whether or not the indicators should be centered.</td></tr>
            <tr><td><code>{@link #CirclePageIndicator_fillColor com.deemsys.lmsmooc:fillColor}</code></td><td> Color of the filled circle that represents the current page.</td></tr>
            <tr><td><code>{@link #CirclePageIndicator_pageColor com.deemsys.lmsmooc:pageColor}</code></td><td> Color of the filled circles that represents pages.</td></tr>
@@ -1873,16 +1883,18 @@ containing a value of this type.
           <p>
           @attr description
            View background 
-          <p>This corresponds to the global attribute          resource symbol {@link com.deemsys.lmsmooc.R.attr#android_background}.
-          @attr name android:android_background
+          <p>This corresponds to the global attribute
+          resource symbol {@link android.R.attr#background}.
+          @attr name android:background
         */
         public static final int CirclePageIndicator_android_background = 1;
         /**
           <p>
           @attr description
            Orientation of the indicator. 
-          <p>This corresponds to the global attribute          resource symbol {@link com.deemsys.lmsmooc.R.attr#android_orientation}.
-          @attr name android:android_orientation
+          <p>This corresponds to the global attribute
+          resource symbol {@link android.R.attr#orientation}.
+          @attr name android:orientation
         */
         public static final int CirclePageIndicator_android_orientation = 0;
         /**
@@ -1898,7 +1910,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:centered
+          @attr name com.deemsys.lmsmooc:centered
         */
         public static final int CirclePageIndicator_centered = 2;
         /**
@@ -1915,7 +1927,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:fillColor
+          @attr name com.deemsys.lmsmooc:fillColor
         */
         public static final int CirclePageIndicator_fillColor = 4;
         /**
@@ -1932,7 +1944,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:pageColor
+          @attr name com.deemsys.lmsmooc:pageColor
         */
         public static final int CirclePageIndicator_pageColor = 5;
         /**
@@ -1950,7 +1962,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:radius
+          @attr name com.deemsys.lmsmooc:radius
         */
         public static final int CirclePageIndicator_radius = 6;
         /**
@@ -1966,7 +1978,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:snap
+          @attr name com.deemsys.lmsmooc:snap
         */
         public static final int CirclePageIndicator_snap = 7;
         /**
@@ -1983,7 +1995,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:strokeColor
+          @attr name com.deemsys.lmsmooc:strokeColor
         */
         public static final int CirclePageIndicator_strokeColor = 8;
         /**
@@ -2001,7 +2013,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:strokeWidth
+          @attr name com.deemsys.lmsmooc:strokeWidth
         */
         public static final int CirclePageIndicator_strokeWidth = 3;
         /** Attributes that can be used with a LinePageIndicator.
@@ -2010,7 +2022,7 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #LinePageIndicator_android_background com.deemsys.lmsmooc:android_background}</code></td><td> View background </td></tr>
+           <tr><td><code>{@link #LinePageIndicator_android_background android:background}</code></td><td> View background </td></tr>
            <tr><td><code>{@link #LinePageIndicator_centered com.deemsys.lmsmooc:centered}</code></td><td> Whether or not the indicators should be centered.</td></tr>
            <tr><td><code>{@link #LinePageIndicator_gapWidth com.deemsys.lmsmooc:gapWidth}</code></td><td> Width of the gap between each indicator line.</td></tr>
            <tr><td><code>{@link #LinePageIndicator_lineWidth com.deemsys.lmsmooc:lineWidth}</code></td><td> Width of each indicator line.</td></tr>
@@ -2034,8 +2046,9 @@ containing a value of this type.
           <p>
           @attr description
            View background 
-          <p>This corresponds to the global attribute          resource symbol {@link com.deemsys.lmsmooc.R.attr#android_background}.
-          @attr name android:android_background
+          <p>This corresponds to the global attribute
+          resource symbol {@link android.R.attr#background}.
+          @attr name android:background
         */
         public static final int LinePageIndicator_android_background = 0;
         /**
@@ -2051,7 +2064,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:centered
+          @attr name com.deemsys.lmsmooc:centered
         */
         public static final int LinePageIndicator_centered = 1;
         /**
@@ -2069,7 +2082,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:gapWidth
+          @attr name com.deemsys.lmsmooc:gapWidth
         */
         public static final int LinePageIndicator_gapWidth = 6;
         /**
@@ -2087,7 +2100,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:lineWidth
+          @attr name com.deemsys.lmsmooc:lineWidth
         */
         public static final int LinePageIndicator_lineWidth = 5;
         /**
@@ -2104,7 +2117,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:selectedColor
+          @attr name com.deemsys.lmsmooc:selectedColor
         */
         public static final int LinePageIndicator_selectedColor = 2;
         /**
@@ -2122,7 +2135,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:strokeWidth
+          @attr name com.deemsys.lmsmooc:strokeWidth
         */
         public static final int LinePageIndicator_strokeWidth = 3;
         /**
@@ -2139,7 +2152,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:unselectedColor
+          @attr name com.deemsys.lmsmooc:unselectedColor
         */
         public static final int LinePageIndicator_unselectedColor = 4;
         /**  Attributes used to style the Action Bar. 
@@ -2207,7 +2220,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
           <p>This is a private symbol.
-          @attr name android:background
+          @attr name com.deemsys.lmsmooc:background
         */
         public static final int SherlockActionBar_background = 2;
         /**
@@ -2221,7 +2234,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
           <p>This is a private symbol.
-          @attr name android:backgroundSplit
+          @attr name com.deemsys.lmsmooc:backgroundSplit
         */
         public static final int SherlockActionBar_backgroundSplit = 3;
         /**
@@ -2235,7 +2248,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
           <p>This is a private symbol.
-          @attr name android:backgroundStacked
+          @attr name com.deemsys.lmsmooc:backgroundStacked
         */
         public static final int SherlockActionBar_backgroundStacked = 12;
         /**
@@ -2247,7 +2260,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:customNavigationLayout
+          @attr name com.deemsys.lmsmooc:customNavigationLayout
         */
         public static final int SherlockActionBar_customNavigationLayout = 13;
         /**
@@ -2270,7 +2283,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <tr><td><code>disableHome</code></td><td>0x20</td><td></td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name android:displayOptions
+          @attr name com.deemsys.lmsmooc:displayOptions
         */
         public static final int SherlockActionBar_displayOptions = 7;
         /**
@@ -2282,7 +2295,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:divider
+          @attr name com.deemsys.lmsmooc:divider
         */
         public static final int SherlockActionBar_divider = 5;
         /**
@@ -2300,7 +2313,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:height
+          @attr name com.deemsys.lmsmooc:height
         */
         public static final int SherlockActionBar_height = 4;
         /**
@@ -2312,7 +2325,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:homeLayout
+          @attr name com.deemsys.lmsmooc:homeLayout
         */
         public static final int SherlockActionBar_homeLayout = 14;
         /**
@@ -2324,7 +2337,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:icon
+          @attr name com.deemsys.lmsmooc:icon
         */
         public static final int SherlockActionBar_icon = 10;
         /**
@@ -2336,7 +2349,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:indeterminateProgressStyle
+          @attr name com.deemsys.lmsmooc:indeterminateProgressStyle
         */
         public static final int SherlockActionBar_indeterminateProgressStyle = 16;
         /**
@@ -2355,7 +2368,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:itemPadding
+          @attr name com.deemsys.lmsmooc:itemPadding
         */
         public static final int SherlockActionBar_itemPadding = 18;
         /**
@@ -2367,7 +2380,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:logo
+          @attr name com.deemsys.lmsmooc:logo
         */
         public static final int SherlockActionBar_logo = 11;
         /**
@@ -2387,7 +2400,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <tr><td><code>tabMode</code></td><td>2</td><td> The action bar will use a series of horizontal tabs for navigation. </td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name android:navigationMode
+          @attr name com.deemsys.lmsmooc:navigationMode
         */
         public static final int SherlockActionBar_navigationMode = 6;
         /**
@@ -2405,7 +2418,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:progressBarPadding
+          @attr name com.deemsys.lmsmooc:progressBarPadding
         */
         public static final int SherlockActionBar_progressBarPadding = 17;
         /**
@@ -2417,7 +2430,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:progressBarStyle
+          @attr name com.deemsys.lmsmooc:progressBarStyle
         */
         public static final int SherlockActionBar_progressBarStyle = 15;
         /**
@@ -2433,7 +2446,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:subtitle
+          @attr name com.deemsys.lmsmooc:subtitle
         */
         public static final int SherlockActionBar_subtitle = 9;
         /**
@@ -2445,7 +2458,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:subtitleTextStyle
+          @attr name com.deemsys.lmsmooc:subtitleTextStyle
         */
         public static final int SherlockActionBar_subtitleTextStyle = 1;
         /**
@@ -2461,7 +2474,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:title
+          @attr name com.deemsys.lmsmooc:title
         */
         public static final int SherlockActionBar_title = 8;
         /**
@@ -2473,7 +2486,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:titleTextStyle
+          @attr name com.deemsys.lmsmooc:titleTextStyle
         */
         public static final int SherlockActionBar_titleTextStyle = 0;
         /** Attributes that can be used with a SherlockActionMenuItemView.
@@ -2482,7 +2495,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #SherlockActionMenuItemView_android_minWidth com.deemsys.lmsmooc:android_minWidth}</code></td><td></td></tr>
+           <tr><td><code>{@link #SherlockActionMenuItemView_android_minWidth android:minWidth}</code></td><td></td></tr>
            </table>
            @see #SherlockActionMenuItemView_android_minWidth
          */
@@ -2490,9 +2503,9 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
             0x0101013f
         };
         /**
-          <p>This symbol is the offset where the {@link com.deemsys.lmsmooc.R.attr#android_minWidth}
+          <p>This symbol is the offset where the {@link android.R.attr#minWidth}
           attribute's value can be found in the {@link #SherlockActionMenuItemView} array.
-          @attr name android:android_minWidth
+          @attr name android:minWidth
         */
         public static final int SherlockActionMenuItemView_android_minWidth = 0;
         /** Attributes that can be used with a SherlockActionMode.
@@ -2528,7 +2541,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
           <p>This is a private symbol.
-          @attr name android:background
+          @attr name com.deemsys.lmsmooc:background
         */
         public static final int SherlockActionMode_background = 2;
         /**
@@ -2542,7 +2555,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
           <p>This is a private symbol.
-          @attr name android:backgroundSplit
+          @attr name com.deemsys.lmsmooc:backgroundSplit
         */
         public static final int SherlockActionMode_backgroundSplit = 3;
         /**
@@ -2560,7 +2573,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:height
+          @attr name com.deemsys.lmsmooc:height
         */
         public static final int SherlockActionMode_height = 4;
         /**
@@ -2572,7 +2585,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:subtitleTextStyle
+          @attr name com.deemsys.lmsmooc:subtitleTextStyle
         */
         public static final int SherlockActionMode_subtitleTextStyle = 1;
         /**
@@ -2584,7 +2597,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:titleTextStyle
+          @attr name com.deemsys.lmsmooc:titleTextStyle
         */
         public static final int SherlockActionMode_titleTextStyle = 0;
         /** Attributes that can be used with a SherlockActivityChooserView.
@@ -2593,7 +2606,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #SherlockActivityChooserView_android_background com.deemsys.lmsmooc:android_background}</code></td><td></td></tr>
+           <tr><td><code>{@link #SherlockActivityChooserView_android_background android:background}</code></td><td></td></tr>
            <tr><td><code>{@link #SherlockActivityChooserView_expandActivityOverflowButtonDrawable com.deemsys.lmsmooc:expandActivityOverflowButtonDrawable}</code></td><td> The drawable to show in the button for expanding the activities overflow popup.</td></tr>
            <tr><td><code>{@link #SherlockActivityChooserView_initialActivityCount com.deemsys.lmsmooc:initialActivityCount}</code></td><td> The maximal number of items initially shown in the activity list.</td></tr>
            </table>
@@ -2605,9 +2618,9 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
             0x010100d4, 0x7f01005e, 0x7f01005f
         };
         /**
-          <p>This symbol is the offset where the {@link com.deemsys.lmsmooc.R.attr#android_background}
+          <p>This symbol is the offset where the {@link android.R.attr#background}
           attribute's value can be found in the {@link #SherlockActivityChooserView} array.
-          @attr name android:android_background
+          @attr name android:background
         */
         public static final int SherlockActivityChooserView_android_background = 0;
         /**
@@ -2624,7 +2637,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:expandActivityOverflowButtonDrawable
+          @attr name com.deemsys.lmsmooc:expandActivityOverflowButtonDrawable
         */
         public static final int SherlockActivityChooserView_expandActivityOverflowButtonDrawable = 2;
         /**
@@ -2640,7 +2653,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:initialActivityCount
+          @attr name com.deemsys.lmsmooc:initialActivityCount
         */
         public static final int SherlockActivityChooserView_initialActivityCount = 1;
         /**  Base attributes that are available to all groups. 
@@ -2649,12 +2662,12 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #SherlockMenuGroup_android_checkableBehavior com.deemsys.lmsmooc:android_checkableBehavior}</code></td><td> Whether the items are capable of displaying a check mark.</td></tr>
-           <tr><td><code>{@link #SherlockMenuGroup_android_enabled com.deemsys.lmsmooc:android_enabled}</code></td><td> Whether the items are enabled.</td></tr>
-           <tr><td><code>{@link #SherlockMenuGroup_android_id com.deemsys.lmsmooc:android_id}</code></td><td> The ID of the group.</td></tr>
-           <tr><td><code>{@link #SherlockMenuGroup_android_menuCategory com.deemsys.lmsmooc:android_menuCategory}</code></td><td> The category applied to all items within this group.</td></tr>
-           <tr><td><code>{@link #SherlockMenuGroup_android_orderInCategory com.deemsys.lmsmooc:android_orderInCategory}</code></td><td> The order within the category applied to all items within this group.</td></tr>
-           <tr><td><code>{@link #SherlockMenuGroup_android_visible com.deemsys.lmsmooc:android_visible}</code></td><td> Whether the items are shown/visible.</td></tr>
+           <tr><td><code>{@link #SherlockMenuGroup_android_checkableBehavior android:checkableBehavior}</code></td><td> Whether the items are capable of displaying a check mark.</td></tr>
+           <tr><td><code>{@link #SherlockMenuGroup_android_enabled android:enabled}</code></td><td> Whether the items are enabled.</td></tr>
+           <tr><td><code>{@link #SherlockMenuGroup_android_id android:id}</code></td><td> The ID of the group.</td></tr>
+           <tr><td><code>{@link #SherlockMenuGroup_android_menuCategory android:menuCategory}</code></td><td> The category applied to all items within this group.</td></tr>
+           <tr><td><code>{@link #SherlockMenuGroup_android_orderInCategory android:orderInCategory}</code></td><td> The order within the category applied to all items within this group.</td></tr>
+           <tr><td><code>{@link #SherlockMenuGroup_android_visible android:visible}</code></td><td> Whether the items are shown/visible.</td></tr>
            </table>
            @see #SherlockMenuGroup_android_checkableBehavior
            @see #SherlockMenuGroup_android_enabled
@@ -2671,24 +2684,27 @@ containing a value of this type.
           <p>
           @attr description
            Whether the items are capable of displaying a check mark. 
-          <p>This corresponds to the global attribute          resource symbol {@link com.deemsys.lmsmooc.R.attr#android_checkableBehavior}.
-          @attr name android:android_checkableBehavior
+          <p>This corresponds to the global attribute
+          resource symbol {@link android.R.attr#checkableBehavior}.
+          @attr name android:checkableBehavior
         */
         public static final int SherlockMenuGroup_android_checkableBehavior = 5;
         /**
           <p>
           @attr description
            Whether the items are enabled. 
-          <p>This corresponds to the global attribute          resource symbol {@link com.deemsys.lmsmooc.R.attr#android_enabled}.
-          @attr name android:android_enabled
+          <p>This corresponds to the global attribute
+          resource symbol {@link android.R.attr#enabled}.
+          @attr name android:enabled
         */
         public static final int SherlockMenuGroup_android_enabled = 0;
         /**
           <p>
           @attr description
            The ID of the group. 
-          <p>This corresponds to the global attribute          resource symbol {@link com.deemsys.lmsmooc.R.attr#android_id}.
-          @attr name android:android_id
+          <p>This corresponds to the global attribute
+          resource symbol {@link android.R.attr#id}.
+          @attr name android:id
         */
         public static final int SherlockMenuGroup_android_id = 1;
         /**
@@ -2696,8 +2712,9 @@ containing a value of this type.
           @attr description
            The category applied to all items within this group.
              (This will be or'ed with the orderInCategory attribute.) 
-          <p>This corresponds to the global attribute          resource symbol {@link com.deemsys.lmsmooc.R.attr#android_menuCategory}.
-          @attr name android:android_menuCategory
+          <p>This corresponds to the global attribute
+          resource symbol {@link android.R.attr#menuCategory}.
+          @attr name android:menuCategory
         */
         public static final int SherlockMenuGroup_android_menuCategory = 3;
         /**
@@ -2705,16 +2722,18 @@ containing a value of this type.
           @attr description
            The order within the category applied to all items within this group.
              (This will be or'ed with the category attribute.) 
-          <p>This corresponds to the global attribute          resource symbol {@link com.deemsys.lmsmooc.R.attr#android_orderInCategory}.
-          @attr name android:android_orderInCategory
+          <p>This corresponds to the global attribute
+          resource symbol {@link android.R.attr#orderInCategory}.
+          @attr name android:orderInCategory
         */
         public static final int SherlockMenuGroup_android_orderInCategory = 4;
         /**
           <p>
           @attr description
            Whether the items are shown/visible. 
-          <p>This corresponds to the global attribute          resource symbol {@link com.deemsys.lmsmooc.R.attr#android_visible}.
-          @attr name android:android_visible
+          <p>This corresponds to the global attribute
+          resource symbol {@link android.R.attr#visible}.
+          @attr name android:visible
         */
         public static final int SherlockMenuGroup_android_visible = 2;
         /**  Base attributes that are available to all Item objects. 
@@ -2723,26 +2742,26 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #SherlockMenuItem_android_actionLayout com.deemsys.lmsmooc:android_actionLayout}</code></td><td> An optional layout to be used as an action view.</td></tr>
-           <tr><td><code>{@link #SherlockMenuItem_android_actionProviderClass com.deemsys.lmsmooc:android_actionProviderClass}</code></td><td> The name of an optional ActionProvider class to instantiate an action view
+           <tr><td><code>{@link #SherlockMenuItem_android_actionLayout android:actionLayout}</code></td><td> An optional layout to be used as an action view.</td></tr>
+           <tr><td><code>{@link #SherlockMenuItem_android_actionProviderClass android:actionProviderClass}</code></td><td> The name of an optional ActionProvider class to instantiate an action view
              and perform operations such as default action for that menu item.</td></tr>
-           <tr><td><code>{@link #SherlockMenuItem_android_actionViewClass com.deemsys.lmsmooc:android_actionViewClass}</code></td><td> The name of an optional View class to instantiate and use as an
+           <tr><td><code>{@link #SherlockMenuItem_android_actionViewClass android:actionViewClass}</code></td><td> The name of an optional View class to instantiate and use as an
              action view.</td></tr>
-           <tr><td><code>{@link #SherlockMenuItem_android_alphabeticShortcut com.deemsys.lmsmooc:android_alphabeticShortcut}</code></td><td> The alphabetic shortcut key.</td></tr>
-           <tr><td><code>{@link #SherlockMenuItem_android_checkable com.deemsys.lmsmooc:android_checkable}</code></td><td> Whether the item is capable of displaying a check mark.</td></tr>
-           <tr><td><code>{@link #SherlockMenuItem_android_checked com.deemsys.lmsmooc:android_checked}</code></td><td> Whether the item is checked.</td></tr>
-           <tr><td><code>{@link #SherlockMenuItem_android_enabled com.deemsys.lmsmooc:android_enabled}</code></td><td> Whether the item is enabled.</td></tr>
-           <tr><td><code>{@link #SherlockMenuItem_android_icon com.deemsys.lmsmooc:android_icon}</code></td><td> The icon associated with this item.</td></tr>
-           <tr><td><code>{@link #SherlockMenuItem_android_id com.deemsys.lmsmooc:android_id}</code></td><td> The ID of the item.</td></tr>
-           <tr><td><code>{@link #SherlockMenuItem_android_menuCategory com.deemsys.lmsmooc:android_menuCategory}</code></td><td> The category applied to the item.</td></tr>
-           <tr><td><code>{@link #SherlockMenuItem_android_numericShortcut com.deemsys.lmsmooc:android_numericShortcut}</code></td><td> The numeric shortcut key.</td></tr>
-           <tr><td><code>{@link #SherlockMenuItem_android_onClick com.deemsys.lmsmooc:android_onClick}</code></td><td> Name of a method on the Context used to inflate the menu that will be
+           <tr><td><code>{@link #SherlockMenuItem_android_alphabeticShortcut android:alphabeticShortcut}</code></td><td> The alphabetic shortcut key.</td></tr>
+           <tr><td><code>{@link #SherlockMenuItem_android_checkable android:checkable}</code></td><td> Whether the item is capable of displaying a check mark.</td></tr>
+           <tr><td><code>{@link #SherlockMenuItem_android_checked android:checked}</code></td><td> Whether the item is checked.</td></tr>
+           <tr><td><code>{@link #SherlockMenuItem_android_enabled android:enabled}</code></td><td> Whether the item is enabled.</td></tr>
+           <tr><td><code>{@link #SherlockMenuItem_android_icon android:icon}</code></td><td> The icon associated with this item.</td></tr>
+           <tr><td><code>{@link #SherlockMenuItem_android_id android:id}</code></td><td> The ID of the item.</td></tr>
+           <tr><td><code>{@link #SherlockMenuItem_android_menuCategory android:menuCategory}</code></td><td> The category applied to the item.</td></tr>
+           <tr><td><code>{@link #SherlockMenuItem_android_numericShortcut android:numericShortcut}</code></td><td> The numeric shortcut key.</td></tr>
+           <tr><td><code>{@link #SherlockMenuItem_android_onClick android:onClick}</code></td><td> Name of a method on the Context used to inflate the menu that will be
              called when the item is clicked.</td></tr>
-           <tr><td><code>{@link #SherlockMenuItem_android_orderInCategory com.deemsys.lmsmooc:android_orderInCategory}</code></td><td> The order within the category applied to the item.</td></tr>
-           <tr><td><code>{@link #SherlockMenuItem_android_showAsAction com.deemsys.lmsmooc:android_showAsAction}</code></td><td> How this item should display in the Action Bar, if present.</td></tr>
-           <tr><td><code>{@link #SherlockMenuItem_android_title com.deemsys.lmsmooc:android_title}</code></td><td> The title associated with the item.</td></tr>
-           <tr><td><code>{@link #SherlockMenuItem_android_titleCondensed com.deemsys.lmsmooc:android_titleCondensed}</code></td><td> The condensed title associated with the item.</td></tr>
-           <tr><td><code>{@link #SherlockMenuItem_android_visible com.deemsys.lmsmooc:android_visible}</code></td><td> Whether the item is shown/visible.</td></tr>
+           <tr><td><code>{@link #SherlockMenuItem_android_orderInCategory android:orderInCategory}</code></td><td> The order within the category applied to the item.</td></tr>
+           <tr><td><code>{@link #SherlockMenuItem_android_showAsAction android:showAsAction}</code></td><td> How this item should display in the Action Bar, if present.</td></tr>
+           <tr><td><code>{@link #SherlockMenuItem_android_title android:title}</code></td><td> The title associated with the item.</td></tr>
+           <tr><td><code>{@link #SherlockMenuItem_android_titleCondensed android:titleCondensed}</code></td><td> The condensed title associated with the item.</td></tr>
+           <tr><td><code>{@link #SherlockMenuItem_android_visible android:visible}</code></td><td> Whether the item is shown/visible.</td></tr>
            </table>
            @see #SherlockMenuItem_android_actionLayout
            @see #SherlockMenuItem_android_actionProviderClass
@@ -2775,8 +2794,9 @@ containing a value of this type.
            An optional layout to be used as an action view.
              See {@link android.view.MenuItem#setActionView(android.view.View)}
              for more info. 
-          <p>This corresponds to the global attribute          resource symbol {@link com.deemsys.lmsmooc.R.attr#android_actionLayout}.
-          @attr name android:android_actionLayout
+          <p>This corresponds to the global attribute
+          resource symbol {@link android.R.attr#actionLayout}.
+          @attr name android:actionLayout
         */
         public static final int SherlockMenuItem_android_actionLayout = 14;
         /**
@@ -2786,8 +2806,9 @@ containing a value of this type.
              and perform operations such as default action for that menu item.
              See {@link android.view.MenuItem#setActionProvider(android.view.ActionProvider)}
              for more info. 
-          <p>This corresponds to the global attribute          resource symbol {@link com.deemsys.lmsmooc.R.attr#android_actionProviderClass}.
-          @attr name android:android_actionProviderClass
+          <p>This corresponds to the global attribute
+          resource symbol {@link android.R.attr#actionProviderClass}.
+          @attr name android:actionProviderClass
         */
         public static final int SherlockMenuItem_android_actionProviderClass = 16;
         /**
@@ -2796,8 +2817,9 @@ containing a value of this type.
            The name of an optional View class to instantiate and use as an
              action view. See {@link android.view.MenuItem#setActionView(android.view.View)}
              for more info. 
-          <p>This corresponds to the global attribute          resource symbol {@link com.deemsys.lmsmooc.R.attr#android_actionViewClass}.
-          @attr name android:android_actionViewClass
+          <p>This corresponds to the global attribute
+          resource symbol {@link android.R.attr#actionViewClass}.
+          @attr name android:actionViewClass
         */
         public static final int SherlockMenuItem_android_actionViewClass = 15;
         /**
@@ -2805,16 +2827,18 @@ containing a value of this type.
           @attr description
            The alphabetic shortcut key.  This is the shortcut when using a keyboard
              with alphabetic keys. 
-          <p>This corresponds to the global attribute          resource symbol {@link com.deemsys.lmsmooc.R.attr#android_alphabeticShortcut}.
-          @attr name android:android_alphabeticShortcut
+          <p>This corresponds to the global attribute
+          resource symbol {@link android.R.attr#alphabeticShortcut}.
+          @attr name android:alphabeticShortcut
         */
         public static final int SherlockMenuItem_android_alphabeticShortcut = 9;
         /**
           <p>
           @attr description
            Whether the item is capable of displaying a check mark. 
-          <p>This corresponds to the global attribute          resource symbol {@link com.deemsys.lmsmooc.R.attr#android_checkable}.
-          @attr name android:android_checkable
+          <p>This corresponds to the global attribute
+          resource symbol {@link android.R.attr#checkable}.
+          @attr name android:checkable
         */
         public static final int SherlockMenuItem_android_checkable = 11;
         /**
@@ -2822,16 +2846,18 @@ containing a value of this type.
           @attr description
            Whether the item is checked.  Note that you must first have enabled checking with
              the checkable attribute or else the check mark will not appear. 
-          <p>This corresponds to the global attribute          resource symbol {@link com.deemsys.lmsmooc.R.attr#android_checked}.
-          @attr name android:android_checked
+          <p>This corresponds to the global attribute
+          resource symbol {@link android.R.attr#checked}.
+          @attr name android:checked
         */
         public static final int SherlockMenuItem_android_checked = 3;
         /**
           <p>
           @attr description
            Whether the item is enabled. 
-          <p>This corresponds to the global attribute          resource symbol {@link com.deemsys.lmsmooc.R.attr#android_enabled}.
-          @attr name android:android_enabled
+          <p>This corresponds to the global attribute
+          resource symbol {@link android.R.attr#enabled}.
+          @attr name android:enabled
         */
         public static final int SherlockMenuItem_android_enabled = 1;
         /**
@@ -2839,16 +2865,18 @@ containing a value of this type.
           @attr description
            The icon associated with this item.  This icon will not always be shown, so
              the title should be sufficient in describing this item. 
-          <p>This corresponds to the global attribute          resource symbol {@link com.deemsys.lmsmooc.R.attr#android_icon}.
-          @attr name android:android_icon
+          <p>This corresponds to the global attribute
+          resource symbol {@link android.R.attr#icon}.
+          @attr name android:icon
         */
         public static final int SherlockMenuItem_android_icon = 0;
         /**
           <p>
           @attr description
            The ID of the item. 
-          <p>This corresponds to the global attribute          resource symbol {@link com.deemsys.lmsmooc.R.attr#android_id}.
-          @attr name android:android_id
+          <p>This corresponds to the global attribute
+          resource symbol {@link android.R.attr#id}.
+          @attr name android:id
         */
         public static final int SherlockMenuItem_android_id = 2;
         /**
@@ -2856,8 +2884,9 @@ containing a value of this type.
           @attr description
            The category applied to the item.
              (This will be or'ed with the orderInCategory attribute.) 
-          <p>This corresponds to the global attribute          resource symbol {@link com.deemsys.lmsmooc.R.attr#android_menuCategory}.
-          @attr name android:android_menuCategory
+          <p>This corresponds to the global attribute
+          resource symbol {@link android.R.attr#menuCategory}.
+          @attr name android:menuCategory
         */
         public static final int SherlockMenuItem_android_menuCategory = 5;
         /**
@@ -2865,8 +2894,9 @@ containing a value of this type.
           @attr description
            The numeric shortcut key.  This is the shortcut when using a numeric (e.g., 12-key)
              keyboard. 
-          <p>This corresponds to the global attribute          resource symbol {@link com.deemsys.lmsmooc.R.attr#android_numericShortcut}.
-          @attr name android:android_numericShortcut
+          <p>This corresponds to the global attribute
+          resource symbol {@link android.R.attr#numericShortcut}.
+          @attr name android:numericShortcut
         */
         public static final int SherlockMenuItem_android_numericShortcut = 10;
         /**
@@ -2874,8 +2904,9 @@ containing a value of this type.
           @attr description
            Name of a method on the Context used to inflate the menu that will be
              called when the item is clicked. 
-          <p>This corresponds to the global attribute          resource symbol {@link com.deemsys.lmsmooc.R.attr#android_onClick}.
-          @attr name android:android_onClick
+          <p>This corresponds to the global attribute
+          resource symbol {@link android.R.attr#onClick}.
+          @attr name android:onClick
         */
         public static final int SherlockMenuItem_android_onClick = 12;
         /**
@@ -2883,24 +2914,27 @@ containing a value of this type.
           @attr description
            The order within the category applied to the item.
              (This will be or'ed with the category attribute.) 
-          <p>This corresponds to the global attribute          resource symbol {@link com.deemsys.lmsmooc.R.attr#android_orderInCategory}.
-          @attr name android:android_orderInCategory
+          <p>This corresponds to the global attribute
+          resource symbol {@link android.R.attr#orderInCategory}.
+          @attr name android:orderInCategory
         */
         public static final int SherlockMenuItem_android_orderInCategory = 6;
         /**
           <p>
           @attr description
            How this item should display in the Action Bar, if present. 
-          <p>This corresponds to the global attribute          resource symbol {@link com.deemsys.lmsmooc.R.attr#android_showAsAction}.
-          @attr name android:android_showAsAction
+          <p>This corresponds to the global attribute
+          resource symbol {@link android.R.attr#showAsAction}.
+          @attr name android:showAsAction
         */
         public static final int SherlockMenuItem_android_showAsAction = 13;
         /**
           <p>
           @attr description
            The title associated with the item. 
-          <p>This corresponds to the global attribute          resource symbol {@link com.deemsys.lmsmooc.R.attr#android_title}.
-          @attr name android:android_title
+          <p>This corresponds to the global attribute
+          resource symbol {@link android.R.attr#title}.
+          @attr name android:title
         */
         public static final int SherlockMenuItem_android_title = 7;
         /**
@@ -2908,16 +2942,18 @@ containing a value of this type.
           @attr description
            The condensed title associated with the item.  This is used in situations where the
              normal title may be too long to be displayed. 
-          <p>This corresponds to the global attribute          resource symbol {@link com.deemsys.lmsmooc.R.attr#android_titleCondensed}.
-          @attr name android:android_titleCondensed
+          <p>This corresponds to the global attribute
+          resource symbol {@link android.R.attr#titleCondensed}.
+          @attr name android:titleCondensed
         */
         public static final int SherlockMenuItem_android_titleCondensed = 8;
         /**
           <p>
           @attr description
            Whether the item is shown/visible. 
-          <p>This corresponds to the global attribute          resource symbol {@link com.deemsys.lmsmooc.R.attr#android_visible}.
-          @attr name android:android_visible
+          <p>This corresponds to the global attribute
+          resource symbol {@link android.R.attr#visible}.
+          @attr name android:visible
         */
         public static final int SherlockMenuItem_android_visible = 4;
         /** Attributes that can be used with a SherlockMenuView.
@@ -2959,7 +2995,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
           <p>This is a private symbol.
-          @attr name android:headerBackground
+          @attr name com.deemsys.lmsmooc:headerBackground
         */
         public static final int SherlockMenuView_headerBackground = 3;
         /**
@@ -2971,7 +3007,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:horizontalDivider
+          @attr name com.deemsys.lmsmooc:horizontalDivider
         */
         public static final int SherlockMenuView_horizontalDivider = 1;
         /**
@@ -2985,7 +3021,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
           <p>This is a private symbol.
-          @attr name android:itemBackground
+          @attr name com.deemsys.lmsmooc:itemBackground
         */
         public static final int SherlockMenuView_itemBackground = 4;
         /**
@@ -3001,7 +3037,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:itemIconDisabledAlpha
+          @attr name com.deemsys.lmsmooc:itemIconDisabledAlpha
         */
         public static final int SherlockMenuView_itemIconDisabledAlpha = 6;
         /**
@@ -3013,7 +3049,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:itemTextAppearance
+          @attr name com.deemsys.lmsmooc:itemTextAppearance
         */
         public static final int SherlockMenuView_itemTextAppearance = 0;
         /**
@@ -3029,7 +3065,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:preserveIconSpacing
+          @attr name com.deemsys.lmsmooc:preserveIconSpacing
         */
         public static final int SherlockMenuView_preserveIconSpacing = 7;
         /**
@@ -3041,7 +3077,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:verticalDivider
+          @attr name com.deemsys.lmsmooc:verticalDivider
         */
         public static final int SherlockMenuView_verticalDivider = 2;
         /**
@@ -3053,7 +3089,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:windowAnimationStyle
+          @attr name com.deemsys.lmsmooc:windowAnimationStyle
         */
         public static final int SherlockMenuView_windowAnimationStyle = 5;
         /** Attributes that can be used with a SherlockSearchView.
@@ -3062,9 +3098,9 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #SherlockSearchView_android_imeOptions com.deemsys.lmsmooc:android_imeOptions}</code></td><td> The IME options to set on the query text field.</td></tr>
-           <tr><td><code>{@link #SherlockSearchView_android_inputType com.deemsys.lmsmooc:android_inputType}</code></td><td> The input type to set on the query text field.</td></tr>
-           <tr><td><code>{@link #SherlockSearchView_android_maxWidth com.deemsys.lmsmooc:android_maxWidth}</code></td><td> An optional maximum width of the SearchView.</td></tr>
+           <tr><td><code>{@link #SherlockSearchView_android_imeOptions android:imeOptions}</code></td><td> The IME options to set on the query text field.</td></tr>
+           <tr><td><code>{@link #SherlockSearchView_android_inputType android:inputType}</code></td><td> The input type to set on the query text field.</td></tr>
+           <tr><td><code>{@link #SherlockSearchView_android_maxWidth android:maxWidth}</code></td><td> An optional maximum width of the SearchView.</td></tr>
            <tr><td><code>{@link #SherlockSearchView_iconifiedByDefault com.deemsys.lmsmooc:iconifiedByDefault}</code></td><td> The default state of the SearchView.</td></tr>
            <tr><td><code>{@link #SherlockSearchView_queryHint com.deemsys.lmsmooc:queryHint}</code></td><td> An optional query hint string to be displayed in the empty query field.</td></tr>
            </table>
@@ -3082,24 +3118,27 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>
           @attr description
            The IME options to set on the query text field. 
-          <p>This corresponds to the global attribute          resource symbol {@link com.deemsys.lmsmooc.R.attr#android_imeOptions}.
-          @attr name android:android_imeOptions
+          <p>This corresponds to the global attribute
+          resource symbol {@link android.R.attr#imeOptions}.
+          @attr name android:imeOptions
         */
         public static final int SherlockSearchView_android_imeOptions = 2;
         /**
           <p>
           @attr description
            The input type to set on the query text field. 
-          <p>This corresponds to the global attribute          resource symbol {@link com.deemsys.lmsmooc.R.attr#android_inputType}.
-          @attr name android:android_inputType
+          <p>This corresponds to the global attribute
+          resource symbol {@link android.R.attr#inputType}.
+          @attr name android:inputType
         */
         public static final int SherlockSearchView_android_inputType = 1;
         /**
           <p>
           @attr description
            An optional maximum width of the SearchView. 
-          <p>This corresponds to the global attribute          resource symbol {@link com.deemsys.lmsmooc.R.attr#android_maxWidth}.
-          @attr name android:android_maxWidth
+          <p>This corresponds to the global attribute
+          resource symbol {@link android.R.attr#maxWidth}.
+          @attr name android:maxWidth
         */
         public static final int SherlockSearchView_android_maxWidth = 0;
         /**
@@ -3116,7 +3155,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:iconifiedByDefault
+          @attr name com.deemsys.lmsmooc:iconifiedByDefault
         */
         public static final int SherlockSearchView_iconifiedByDefault = 3;
         /**
@@ -3132,7 +3171,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:queryHint
+          @attr name com.deemsys.lmsmooc:queryHint
         */
         public static final int SherlockSearchView_queryHint = 4;
         /** Attributes that can be used with a SherlockSpinner.
@@ -3141,17 +3180,17 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #SherlockSpinner_android_dropDownHorizontalOffset com.deemsys.lmsmooc:android_dropDownHorizontalOffset}</code></td><td> Horizontal offset from the spinner widget for positioning the dropdown
+           <tr><td><code>{@link #SherlockSpinner_android_dropDownHorizontalOffset android:dropDownHorizontalOffset}</code></td><td> Horizontal offset from the spinner widget for positioning the dropdown
              in spinnerMode="dropdown".</td></tr>
-           <tr><td><code>{@link #SherlockSpinner_android_dropDownSelector com.deemsys.lmsmooc:android_dropDownSelector}</code></td><td> List selector to use for spinnerMode="dropdown" display.</td></tr>
-           <tr><td><code>{@link #SherlockSpinner_android_dropDownVerticalOffset com.deemsys.lmsmooc:android_dropDownVerticalOffset}</code></td><td> Vertical offset from the spinner widget for positioning the dropdown in
+           <tr><td><code>{@link #SherlockSpinner_android_dropDownSelector android:dropDownSelector}</code></td><td> List selector to use for spinnerMode="dropdown" display.</td></tr>
+           <tr><td><code>{@link #SherlockSpinner_android_dropDownVerticalOffset android:dropDownVerticalOffset}</code></td><td> Vertical offset from the spinner widget for positioning the dropdown in
              spinnerMode="dropdown".</td></tr>
-           <tr><td><code>{@link #SherlockSpinner_android_dropDownWidth com.deemsys.lmsmooc:android_dropDownWidth}</code></td><td> Width of the dropdown in spinnerMode="dropdown".</td></tr>
-           <tr><td><code>{@link #SherlockSpinner_android_gravity com.deemsys.lmsmooc:android_gravity}</code></td><td> Gravity setting for positioning the currently selected item.</td></tr>
-           <tr><td><code>{@link #SherlockSpinner_android_popupBackground com.deemsys.lmsmooc:android_popupBackground}</code></td><td> Background drawable to use for the dropdown in spinnerMode="dropdown".</td></tr>
-           <tr><td><code>{@link #SherlockSpinner_android_popupPromptView com.deemsys.lmsmooc:android_popupPromptView}</code></td><td> Reference to a layout to use for displaying a prompt in the dropdown for
+           <tr><td><code>{@link #SherlockSpinner_android_dropDownWidth android:dropDownWidth}</code></td><td> Width of the dropdown in spinnerMode="dropdown".</td></tr>
+           <tr><td><code>{@link #SherlockSpinner_android_gravity android:gravity}</code></td><td> Gravity setting for positioning the currently selected item.</td></tr>
+           <tr><td><code>{@link #SherlockSpinner_android_popupBackground android:popupBackground}</code></td><td> Background drawable to use for the dropdown in spinnerMode="dropdown".</td></tr>
+           <tr><td><code>{@link #SherlockSpinner_android_popupPromptView android:popupPromptView}</code></td><td> Reference to a layout to use for displaying a prompt in the dropdown for
              spinnerMode="dropdown".</td></tr>
-           <tr><td><code>{@link #SherlockSpinner_android_prompt com.deemsys.lmsmooc:android_prompt}</code></td><td> The prompt to display when the spinner's dialog is shown.</td></tr>
+           <tr><td><code>{@link #SherlockSpinner_android_prompt android:prompt}</code></td><td> The prompt to display when the spinner's dialog is shown.</td></tr>
            </table>
            @see #SherlockSpinner_android_dropDownHorizontalOffset
            @see #SherlockSpinner_android_dropDownSelector
@@ -3171,16 +3210,18 @@ containing a value of this type.
           @attr description
            Horizontal offset from the spinner widget for positioning the dropdown
              in spinnerMode="dropdown". 
-          <p>This corresponds to the global attribute          resource symbol {@link com.deemsys.lmsmooc.R.attr#android_dropDownHorizontalOffset}.
-          @attr name android:android_dropDownHorizontalOffset
+          <p>This corresponds to the global attribute
+          resource symbol {@link android.R.attr#dropDownHorizontalOffset}.
+          @attr name android:dropDownHorizontalOffset
         */
         public static final int SherlockSpinner_android_dropDownHorizontalOffset = 5;
         /**
           <p>
           @attr description
            List selector to use for spinnerMode="dropdown" display. 
-          <p>This corresponds to the global attribute          resource symbol {@link com.deemsys.lmsmooc.R.attr#android_dropDownSelector}.
-          @attr name android:android_dropDownSelector
+          <p>This corresponds to the global attribute
+          resource symbol {@link android.R.attr#dropDownSelector}.
+          @attr name android:dropDownSelector
         */
         public static final int SherlockSpinner_android_dropDownSelector = 1;
         /**
@@ -3188,32 +3229,36 @@ containing a value of this type.
           @attr description
            Vertical offset from the spinner widget for positioning the dropdown in
              spinnerMode="dropdown". 
-          <p>This corresponds to the global attribute          resource symbol {@link com.deemsys.lmsmooc.R.attr#android_dropDownVerticalOffset}.
-          @attr name android:android_dropDownVerticalOffset
+          <p>This corresponds to the global attribute
+          resource symbol {@link android.R.attr#dropDownVerticalOffset}.
+          @attr name android:dropDownVerticalOffset
         */
         public static final int SherlockSpinner_android_dropDownVerticalOffset = 6;
         /**
           <p>
           @attr description
            Width of the dropdown in spinnerMode="dropdown". 
-          <p>This corresponds to the global attribute          resource symbol {@link com.deemsys.lmsmooc.R.attr#android_dropDownWidth}.
-          @attr name android:android_dropDownWidth
+          <p>This corresponds to the global attribute
+          resource symbol {@link android.R.attr#dropDownWidth}.
+          @attr name android:dropDownWidth
         */
         public static final int SherlockSpinner_android_dropDownWidth = 4;
         /**
           <p>
           @attr description
            Gravity setting for positioning the currently selected item. 
-          <p>This corresponds to the global attribute          resource symbol {@link com.deemsys.lmsmooc.R.attr#android_gravity}.
-          @attr name android:android_gravity
+          <p>This corresponds to the global attribute
+          resource symbol {@link android.R.attr#gravity}.
+          @attr name android:gravity
         */
         public static final int SherlockSpinner_android_gravity = 0;
         /**
           <p>
           @attr description
            Background drawable to use for the dropdown in spinnerMode="dropdown". 
-          <p>This corresponds to the global attribute          resource symbol {@link com.deemsys.lmsmooc.R.attr#android_popupBackground}.
-          @attr name android:android_popupBackground
+          <p>This corresponds to the global attribute
+          resource symbol {@link android.R.attr#popupBackground}.
+          @attr name android:popupBackground
         */
         public static final int SherlockSpinner_android_popupBackground = 2;
         /**
@@ -3223,15 +3268,16 @@ containing a value of this type.
              spinnerMode="dropdown". This layout must contain a TextView with the id
              @android:id/text1 to be populated with the prompt text. 
           <p>This is a private symbol.
-          @attr name android:android_popupPromptView
+          @attr name android:popupPromptView
         */
         public static final int SherlockSpinner_android_popupPromptView = 7;
         /**
           <p>
           @attr description
            The prompt to display when the spinner's dialog is shown. 
-          <p>This corresponds to the global attribute          resource symbol {@link com.deemsys.lmsmooc.R.attr#android_prompt}.
-          @attr name android:android_prompt
+          <p>This corresponds to the global attribute
+          resource symbol {@link android.R.attr#prompt}.
+          @attr name android:prompt
         */
         public static final int SherlockSpinner_android_prompt = 3;
         /** Attributes that can be used with a SherlockTheme.
@@ -3408,7 +3454,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:actionBarDivider
+          @attr name com.deemsys.lmsmooc:actionBarDivider
         */
         public static final int SherlockTheme_actionBarDivider = 8;
         /**
@@ -3420,7 +3466,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:actionBarItemBackground
+          @attr name com.deemsys.lmsmooc:actionBarItemBackground
         */
         public static final int SherlockTheme_actionBarItemBackground = 9;
         /**
@@ -3447,7 +3493,7 @@ containing a value of this type.
 <tr><td><code>wrap_content</code></td><td>0</td><td></td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name android:actionBarSize
+          @attr name com.deemsys.lmsmooc:actionBarSize
         */
         public static final int SherlockTheme_actionBarSize = 7;
         /**
@@ -3462,7 +3508,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:actionBarSplitStyle
+          @attr name com.deemsys.lmsmooc:actionBarSplitStyle
         */
         public static final int SherlockTheme_actionBarSplitStyle = 5;
         /**
@@ -3474,7 +3520,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:actionBarStyle
+          @attr name com.deemsys.lmsmooc:actionBarStyle
         */
         public static final int SherlockTheme_actionBarStyle = 4;
         /**
@@ -3484,7 +3530,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name android:actionBarTabBarStyle
+          @attr name com.deemsys.lmsmooc:actionBarTabBarStyle
         */
         public static final int SherlockTheme_actionBarTabBarStyle = 1;
         /**
@@ -3496,7 +3542,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:actionBarTabStyle
+          @attr name com.deemsys.lmsmooc:actionBarTabStyle
         */
         public static final int SherlockTheme_actionBarTabStyle = 0;
         /**
@@ -3506,7 +3552,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name android:actionBarTabTextStyle
+          @attr name com.deemsys.lmsmooc:actionBarTabTextStyle
         */
         public static final int SherlockTheme_actionBarTabTextStyle = 2;
         /**
@@ -3524,7 +3570,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:actionBarWidgetTheme
+          @attr name com.deemsys.lmsmooc:actionBarWidgetTheme
         */
         public static final int SherlockTheme_actionBarWidgetTheme = 6;
         /**
@@ -3534,7 +3580,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name android:actionButtonStyle
+          @attr name com.deemsys.lmsmooc:actionButtonStyle
         */
         public static final int SherlockTheme_actionButtonStyle = 52;
         /**
@@ -3544,7 +3590,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name android:actionDropDownStyle
+          @attr name com.deemsys.lmsmooc:actionDropDownStyle
         */
         public static final int SherlockTheme_actionDropDownStyle = 51;
         /**
@@ -3557,7 +3603,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:actionMenuTextAppearance
+          @attr name com.deemsys.lmsmooc:actionMenuTextAppearance
         */
         public static final int SherlockTheme_actionMenuTextAppearance = 10;
         /**
@@ -3571,7 +3617,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
           <p>This is a private symbol.
-          @attr name android:actionMenuTextColor
+          @attr name com.deemsys.lmsmooc:actionMenuTextColor
         */
         public static final int SherlockTheme_actionMenuTextColor = 11;
         /**
@@ -3583,7 +3629,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:actionModeBackground
+          @attr name com.deemsys.lmsmooc:actionModeBackground
         */
         public static final int SherlockTheme_actionModeBackground = 14;
         /**
@@ -3593,7 +3639,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name android:actionModeCloseButtonStyle
+          @attr name com.deemsys.lmsmooc:actionModeCloseButtonStyle
         */
         public static final int SherlockTheme_actionModeCloseButtonStyle = 13;
         /**
@@ -3605,7 +3651,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:actionModeCloseDrawable
+          @attr name com.deemsys.lmsmooc:actionModeCloseDrawable
         */
         public static final int SherlockTheme_actionModeCloseDrawable = 16;
         /**
@@ -3617,7 +3663,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:actionModePopupWindowStyle
+          @attr name com.deemsys.lmsmooc:actionModePopupWindowStyle
         */
         public static final int SherlockTheme_actionModePopupWindowStyle = 18;
         /**
@@ -3629,7 +3675,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:actionModeShareDrawable
+          @attr name com.deemsys.lmsmooc:actionModeShareDrawable
         */
         public static final int SherlockTheme_actionModeShareDrawable = 17;
         /**
@@ -3641,7 +3687,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:actionModeSplitBackground
+          @attr name com.deemsys.lmsmooc:actionModeSplitBackground
         */
         public static final int SherlockTheme_actionModeSplitBackground = 15;
         /**
@@ -3651,7 +3697,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name android:actionModeStyle
+          @attr name com.deemsys.lmsmooc:actionModeStyle
         */
         public static final int SherlockTheme_actionModeStyle = 12;
         /**
@@ -3661,7 +3707,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name android:actionOverflowButtonStyle
+          @attr name com.deemsys.lmsmooc:actionOverflowButtonStyle
         */
         public static final int SherlockTheme_actionOverflowButtonStyle = 3;
         /**
@@ -3671,7 +3717,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name android:actionSpinnerItemStyle
+          @attr name com.deemsys.lmsmooc:actionSpinnerItemStyle
         */
         public static final int SherlockTheme_actionSpinnerItemStyle = 57;
         /**
@@ -3683,7 +3729,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:activatedBackgroundIndicator
+          @attr name com.deemsys.lmsmooc:activatedBackgroundIndicator
         */
         public static final int SherlockTheme_activatedBackgroundIndicator = 65;
         /**
@@ -3695,7 +3741,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:activityChooserViewStyle
+          @attr name com.deemsys.lmsmooc:activityChooserViewStyle
         */
         public static final int SherlockTheme_activityChooserViewStyle = 64;
         /**
@@ -3707,7 +3753,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:buttonStyleSmall
+          @attr name com.deemsys.lmsmooc:buttonStyleSmall
         */
         public static final int SherlockTheme_buttonStyleSmall = 19;
         /**
@@ -3719,7 +3765,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:dividerVertical
+          @attr name com.deemsys.lmsmooc:dividerVertical
         */
         public static final int SherlockTheme_dividerVertical = 50;
         /**
@@ -3729,7 +3775,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name android:dropDownHintAppearance
+          @attr name com.deemsys.lmsmooc:dropDownHintAppearance
         */
         public static final int SherlockTheme_dropDownHintAppearance = 66;
         /**
@@ -3739,7 +3785,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name android:dropDownListViewStyle
+          @attr name com.deemsys.lmsmooc:dropDownListViewStyle
         */
         public static final int SherlockTheme_dropDownListViewStyle = 54;
         /**
@@ -3755,7 +3801,7 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:dropdownListPreferredItemHeight
+          @attr name com.deemsys.lmsmooc:dropdownListPreferredItemHeight
         */
         public static final int SherlockTheme_dropdownListPreferredItemHeight = 56;
         /**
@@ -3765,7 +3811,7 @@ containing a value of this type.
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name android:homeAsUpIndicator
+          @attr name com.deemsys.lmsmooc:homeAsUpIndicator
         */
         public static final int SherlockTheme_homeAsUpIndicator = 53;
         /**
@@ -3775,7 +3821,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name android:listPopupWindowStyle
+          @attr name com.deemsys.lmsmooc:listPopupWindowStyle
         */
         public static final int SherlockTheme_listPopupWindowStyle = 63;
         /**
@@ -3793,7 +3839,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:listPreferredItemHeightSmall
+          @attr name com.deemsys.lmsmooc:listPreferredItemHeightSmall
         */
         public static final int SherlockTheme_listPreferredItemHeightSmall = 44;
         /**
@@ -3811,7 +3857,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:listPreferredItemPaddingLeft
+          @attr name com.deemsys.lmsmooc:listPreferredItemPaddingLeft
         */
         public static final int SherlockTheme_listPreferredItemPaddingLeft = 45;
         /**
@@ -3829,7 +3875,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:listPreferredItemPaddingRight
+          @attr name com.deemsys.lmsmooc:listPreferredItemPaddingRight
         */
         public static final int SherlockTheme_listPreferredItemPaddingRight = 46;
         /**
@@ -3839,7 +3885,7 @@ containing a value of this type.
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name android:popupMenuStyle
+          @attr name com.deemsys.lmsmooc:popupMenuStyle
         */
         public static final int SherlockTheme_popupMenuStyle = 55;
         /**
@@ -3851,7 +3897,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:searchAutoCompleteTextView
+          @attr name com.deemsys.lmsmooc:searchAutoCompleteTextView
         */
         public static final int SherlockTheme_searchAutoCompleteTextView = 30;
         /**
@@ -3863,7 +3909,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:searchDropdownBackground
+          @attr name com.deemsys.lmsmooc:searchDropdownBackground
         */
         public static final int SherlockTheme_searchDropdownBackground = 31;
         /**
@@ -3881,7 +3927,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:searchResultListItemHeight
+          @attr name com.deemsys.lmsmooc:searchResultListItemHeight
         */
         public static final int SherlockTheme_searchResultListItemHeight = 41;
         /**
@@ -3893,7 +3939,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:searchViewCloseIcon
+          @attr name com.deemsys.lmsmooc:searchViewCloseIcon
         */
         public static final int SherlockTheme_searchViewCloseIcon = 32;
         /**
@@ -3905,7 +3951,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:searchViewEditQuery
+          @attr name com.deemsys.lmsmooc:searchViewEditQuery
         */
         public static final int SherlockTheme_searchViewEditQuery = 36;
         /**
@@ -3917,7 +3963,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:searchViewEditQueryBackground
+          @attr name com.deemsys.lmsmooc:searchViewEditQueryBackground
         */
         public static final int SherlockTheme_searchViewEditQueryBackground = 37;
         /**
@@ -3929,7 +3975,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:searchViewGoIcon
+          @attr name com.deemsys.lmsmooc:searchViewGoIcon
         */
         public static final int SherlockTheme_searchViewGoIcon = 33;
         /**
@@ -3941,7 +3987,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:searchViewSearchIcon
+          @attr name com.deemsys.lmsmooc:searchViewSearchIcon
         */
         public static final int SherlockTheme_searchViewSearchIcon = 34;
         /**
@@ -3953,7 +3999,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:searchViewTextField
+          @attr name com.deemsys.lmsmooc:searchViewTextField
         */
         public static final int SherlockTheme_searchViewTextField = 38;
         /**
@@ -3965,7 +4011,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:searchViewTextFieldRight
+          @attr name com.deemsys.lmsmooc:searchViewTextFieldRight
         */
         public static final int SherlockTheme_searchViewTextFieldRight = 39;
         /**
@@ -3977,7 +4023,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:searchViewVoiceIcon
+          @attr name com.deemsys.lmsmooc:searchViewVoiceIcon
         */
         public static final int SherlockTheme_searchViewVoiceIcon = 35;
         /**
@@ -3989,7 +4035,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:selectableItemBackground
+          @attr name com.deemsys.lmsmooc:selectableItemBackground
         */
         public static final int SherlockTheme_selectableItemBackground = 20;
         /**
@@ -3999,7 +4045,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name android:spinnerDropDownItemStyle
+          @attr name com.deemsys.lmsmooc:spinnerDropDownItemStyle
         */
         public static final int SherlockTheme_spinnerDropDownItemStyle = 29;
         /**
@@ -4009,7 +4055,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name android:spinnerItemStyle
+          @attr name com.deemsys.lmsmooc:spinnerItemStyle
         */
         public static final int SherlockTheme_spinnerItemStyle = 28;
         /**
@@ -4021,7 +4067,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:textAppearanceLargePopupMenu
+          @attr name com.deemsys.lmsmooc:textAppearanceLargePopupMenu
         */
         public static final int SherlockTheme_textAppearanceLargePopupMenu = 22;
         /**
@@ -4033,7 +4079,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:textAppearanceListItemSmall
+          @attr name com.deemsys.lmsmooc:textAppearanceListItemSmall
         */
         public static final int SherlockTheme_textAppearanceListItemSmall = 47;
         /**
@@ -4045,7 +4091,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:textAppearanceSearchResultSubtitle
+          @attr name com.deemsys.lmsmooc:textAppearanceSearchResultSubtitle
         */
         public static final int SherlockTheme_textAppearanceSearchResultSubtitle = 43;
         /**
@@ -4057,7 +4103,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:textAppearanceSearchResultTitle
+          @attr name com.deemsys.lmsmooc:textAppearanceSearchResultTitle
         */
         public static final int SherlockTheme_textAppearanceSearchResultTitle = 42;
         /**
@@ -4069,7 +4115,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:textAppearanceSmall
+          @attr name com.deemsys.lmsmooc:textAppearanceSmall
         */
         public static final int SherlockTheme_textAppearanceSmall = 24;
         /**
@@ -4081,7 +4127,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:textAppearanceSmallPopupMenu
+          @attr name com.deemsys.lmsmooc:textAppearanceSmallPopupMenu
         */
         public static final int SherlockTheme_textAppearanceSmallPopupMenu = 23;
         /**
@@ -4096,7 +4142,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:textColorPrimary
+          @attr name com.deemsys.lmsmooc:textColorPrimary
         */
         public static final int SherlockTheme_textColorPrimary = 25;
         /**
@@ -4111,7 +4157,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:textColorPrimaryDisableOnly
+          @attr name com.deemsys.lmsmooc:textColorPrimaryDisableOnly
         */
         public static final int SherlockTheme_textColorPrimaryDisableOnly = 26;
         /**
@@ -4126,7 +4172,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:textColorPrimaryInverse
+          @attr name com.deemsys.lmsmooc:textColorPrimaryInverse
         */
         public static final int SherlockTheme_textColorPrimaryInverse = 27;
         /**
@@ -4140,7 +4186,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
           <p>This is a private symbol.
-          @attr name android:textColorSearchUrl
+          @attr name com.deemsys.lmsmooc:textColorSearchUrl
         */
         public static final int SherlockTheme_textColorSearchUrl = 40;
         /**
@@ -4154,7 +4200,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:windowActionBar
+          @attr name com.deemsys.lmsmooc:windowActionBar
         */
         public static final int SherlockTheme_windowActionBar = 59;
         /**
@@ -4168,7 +4214,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:windowActionBarOverlay
+          @attr name com.deemsys.lmsmooc:windowActionBarOverlay
         */
         public static final int SherlockTheme_windowActionBarOverlay = 60;
         /**
@@ -4182,7 +4228,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:windowActionModeOverlay
+          @attr name com.deemsys.lmsmooc:windowActionModeOverlay
         */
         public static final int SherlockTheme_windowActionModeOverlay = 61;
         /**
@@ -4195,7 +4241,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:windowContentOverlay
+          @attr name com.deemsys.lmsmooc:windowContentOverlay
         */
         public static final int SherlockTheme_windowContentOverlay = 21;
         /**
@@ -4211,7 +4257,7 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:windowMinWidthMajor
+          @attr name com.deemsys.lmsmooc:windowMinWidthMajor
         */
         public static final int SherlockTheme_windowMinWidthMajor = 48;
         /**
@@ -4227,7 +4273,7 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:windowMinWidthMinor
+          @attr name com.deemsys.lmsmooc:windowMinWidthMinor
         */
         public static final int SherlockTheme_windowMinWidthMinor = 49;
         /**
@@ -4241,7 +4287,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:windowNoTitle
+          @attr name com.deemsys.lmsmooc:windowNoTitle
         */
         public static final int SherlockTheme_windowNoTitle = 58;
         /**
@@ -4255,7 +4301,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:windowSplitActionBar
+          @attr name com.deemsys.lmsmooc:windowSplitActionBar
         */
         public static final int SherlockTheme_windowSplitActionBar = 62;
         /** Attributes that can be used with a SherlockView.
@@ -4264,7 +4310,7 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #SherlockView_android_focusable com.deemsys.lmsmooc:android_focusable}</code></td><td></td></tr>
+           <tr><td><code>{@link #SherlockView_android_focusable android:focusable}</code></td><td></td></tr>
            </table>
            @see #SherlockView_android_focusable
          */
@@ -4272,9 +4318,9 @@ containing a value of this type.
             0x010100da
         };
         /**
-          <p>This symbol is the offset where the {@link com.deemsys.lmsmooc.R.attr#android_focusable}
+          <p>This symbol is the offset where the {@link android.R.attr#focusable}
           attribute's value can be found in the {@link #SherlockView} array.
-          @attr name android:android_focusable
+          @attr name android:focusable
         */
         public static final int SherlockView_android_focusable = 0;
         /** Attributes that can be used with a TitlePageIndicator.
@@ -4283,9 +4329,9 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #TitlePageIndicator_android_background com.deemsys.lmsmooc:android_background}</code></td><td> View background </td></tr>
-           <tr><td><code>{@link #TitlePageIndicator_android_textColor com.deemsys.lmsmooc:android_textColor}</code></td><td> Color of regular titles.</td></tr>
-           <tr><td><code>{@link #TitlePageIndicator_android_textSize com.deemsys.lmsmooc:android_textSize}</code></td><td> Size of title text.</td></tr>
+           <tr><td><code>{@link #TitlePageIndicator_android_background android:background}</code></td><td> View background </td></tr>
+           <tr><td><code>{@link #TitlePageIndicator_android_textColor android:textColor}</code></td><td> Color of regular titles.</td></tr>
+           <tr><td><code>{@link #TitlePageIndicator_android_textSize android:textSize}</code></td><td> Size of title text.</td></tr>
            <tr><td><code>{@link #TitlePageIndicator_clipPadding com.deemsys.lmsmooc:clipPadding}</code></td><td> Screen edge padding.</td></tr>
            <tr><td><code>{@link #TitlePageIndicator_footerColor com.deemsys.lmsmooc:footerColor}</code></td><td> Color of the footer line and indicator.</td></tr>
            <tr><td><code>{@link #TitlePageIndicator_footerIndicatorHeight com.deemsys.lmsmooc:footerIndicatorHeight}</code></td><td> Height of the indicator above the footer line.</td></tr>
@@ -4325,24 +4371,27 @@ containing a value of this type.
           <p>
           @attr description
            View background 
-          <p>This corresponds to the global attribute          resource symbol {@link com.deemsys.lmsmooc.R.attr#android_background}.
-          @attr name android:android_background
+          <p>This corresponds to the global attribute
+          resource symbol {@link android.R.attr#background}.
+          @attr name android:background
         */
         public static final int TitlePageIndicator_android_background = 2;
         /**
           <p>
           @attr description
            Color of regular titles. 
-          <p>This corresponds to the global attribute          resource symbol {@link com.deemsys.lmsmooc.R.attr#android_textColor}.
-          @attr name android:android_textColor
+          <p>This corresponds to the global attribute
+          resource symbol {@link android.R.attr#textColor}.
+          @attr name android:textColor
         */
         public static final int TitlePageIndicator_android_textColor = 1;
         /**
           <p>
           @attr description
            Size of title text. 
-          <p>This corresponds to the global attribute          resource symbol {@link com.deemsys.lmsmooc.R.attr#android_textSize}.
-          @attr name android:android_textSize
+          <p>This corresponds to the global attribute
+          resource symbol {@link android.R.attr#textSize}.
+          @attr name android:textSize
         */
         public static final int TitlePageIndicator_android_textSize = 0;
         /**
@@ -4360,7 +4409,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:clipPadding
+          @attr name com.deemsys.lmsmooc:clipPadding
         */
         public static final int TitlePageIndicator_clipPadding = 4;
         /**
@@ -4377,7 +4426,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:footerColor
+          @attr name com.deemsys.lmsmooc:footerColor
         */
         public static final int TitlePageIndicator_footerColor = 5;
         /**
@@ -4395,7 +4444,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:footerIndicatorHeight
+          @attr name com.deemsys.lmsmooc:footerIndicatorHeight
         */
         public static final int TitlePageIndicator_footerIndicatorHeight = 8;
         /**
@@ -4415,7 +4464,7 @@ containing a value of this type.
 <tr><td><code>underline</code></td><td>2</td><td></td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name android:footerIndicatorStyle
+          @attr name com.deemsys.lmsmooc:footerIndicatorStyle
         */
         public static final int TitlePageIndicator_footerIndicatorStyle = 7;
         /**
@@ -4433,7 +4482,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:footerIndicatorUnderlinePadding
+          @attr name com.deemsys.lmsmooc:footerIndicatorUnderlinePadding
         */
         public static final int TitlePageIndicator_footerIndicatorUnderlinePadding = 9;
         /**
@@ -4451,7 +4500,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:footerLineHeight
+          @attr name com.deemsys.lmsmooc:footerLineHeight
         */
         public static final int TitlePageIndicator_footerLineHeight = 6;
         /**
@@ -4469,7 +4518,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:footerPadding
+          @attr name com.deemsys.lmsmooc:footerPadding
         */
         public static final int TitlePageIndicator_footerPadding = 10;
         /**
@@ -4488,7 +4537,7 @@ containing a value of this type.
 <tr><td><code>top</code></td><td>1</td><td></td></tr>
 </table>
           <p>This is a private symbol.
-          @attr name android:linePosition
+          @attr name com.deemsys.lmsmooc:linePosition
         */
         public static final int TitlePageIndicator_linePosition = 11;
         /**
@@ -4504,7 +4553,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:selectedBold
+          @attr name com.deemsys.lmsmooc:selectedBold
         */
         public static final int TitlePageIndicator_selectedBold = 12;
         /**
@@ -4521,7 +4570,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:selectedColor
+          @attr name com.deemsys.lmsmooc:selectedColor
         */
         public static final int TitlePageIndicator_selectedColor = 3;
         /**
@@ -4539,7 +4588,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:titlePadding
+          @attr name com.deemsys.lmsmooc:titlePadding
         */
         public static final int TitlePageIndicator_titlePadding = 13;
         /**
@@ -4557,7 +4606,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:topPadding
+          @attr name com.deemsys.lmsmooc:topPadding
         */
         public static final int TitlePageIndicator_topPadding = 14;
         /** Attributes that can be used with a UnderlinePageIndicator.
@@ -4566,7 +4615,7 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #UnderlinePageIndicator_android_background com.deemsys.lmsmooc:android_background}</code></td><td> View background </td></tr>
+           <tr><td><code>{@link #UnderlinePageIndicator_android_background android:background}</code></td><td> View background </td></tr>
            <tr><td><code>{@link #UnderlinePageIndicator_fadeDelay com.deemsys.lmsmooc:fadeDelay}</code></td><td> Length of the delay to fade the indicator.</td></tr>
            <tr><td><code>{@link #UnderlinePageIndicator_fadeLength com.deemsys.lmsmooc:fadeLength}</code></td><td> Length of the indicator fade to transparent.</td></tr>
            <tr><td><code>{@link #UnderlinePageIndicator_fades com.deemsys.lmsmooc:fades}</code></td><td> Whether or not the selected indicator fades.</td></tr>
@@ -4586,8 +4635,9 @@ containing a value of this type.
           <p>
           @attr description
            View background 
-          <p>This corresponds to the global attribute          resource symbol {@link com.deemsys.lmsmooc.R.attr#android_background}.
-          @attr name android:android_background
+          <p>This corresponds to the global attribute
+          resource symbol {@link android.R.attr#background}.
+          @attr name android:background
         */
         public static final int UnderlinePageIndicator_android_background = 0;
         /**
@@ -4603,7 +4653,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:fadeDelay
+          @attr name com.deemsys.lmsmooc:fadeDelay
         */
         public static final int UnderlinePageIndicator_fadeDelay = 3;
         /**
@@ -4619,7 +4669,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:fadeLength
+          @attr name com.deemsys.lmsmooc:fadeLength
         */
         public static final int UnderlinePageIndicator_fadeLength = 4;
         /**
@@ -4635,7 +4685,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:fades
+          @attr name com.deemsys.lmsmooc:fades
         */
         public static final int UnderlinePageIndicator_fades = 2;
         /**
@@ -4652,7 +4702,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
           <p>This is a private symbol.
-          @attr name android:selectedColor
+          @attr name com.deemsys.lmsmooc:selectedColor
         */
         public static final int UnderlinePageIndicator_selectedColor = 1;
         /** Attributes that can be used with a ViewPagerIndicator.
@@ -4688,7 +4738,7 @@ containing a value of this type.
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:vpiCirclePageIndicatorStyle
+          @attr name com.deemsys.lmsmooc:vpiCirclePageIndicatorStyle
         */
         public static final int ViewPagerIndicator_vpiCirclePageIndicatorStyle = 0;
         /**
@@ -4700,7 +4750,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:vpiIconPageIndicatorStyle
+          @attr name com.deemsys.lmsmooc:vpiIconPageIndicatorStyle
         */
         public static final int ViewPagerIndicator_vpiIconPageIndicatorStyle = 1;
         /**
@@ -4712,7 +4762,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:vpiLinePageIndicatorStyle
+          @attr name com.deemsys.lmsmooc:vpiLinePageIndicatorStyle
         */
         public static final int ViewPagerIndicator_vpiLinePageIndicatorStyle = 2;
         /**
@@ -4724,7 +4774,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:vpiTabPageIndicatorStyle
+          @attr name com.deemsys.lmsmooc:vpiTabPageIndicatorStyle
         */
         public static final int ViewPagerIndicator_vpiTabPageIndicatorStyle = 4;
         /**
@@ -4736,7 +4786,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:vpiTitlePageIndicatorStyle
+          @attr name com.deemsys.lmsmooc:vpiTitlePageIndicatorStyle
         */
         public static final int ViewPagerIndicator_vpiTitlePageIndicatorStyle = 3;
         /**
@@ -4748,7 +4798,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
-          @attr name android:vpiUnderlinePageIndicatorStyle
+          @attr name com.deemsys.lmsmooc:vpiUnderlinePageIndicatorStyle
         */
         public static final int ViewPagerIndicator_vpiUnderlinePageIndicatorStyle = 5;
     };

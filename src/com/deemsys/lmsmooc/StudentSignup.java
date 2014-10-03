@@ -36,6 +36,7 @@ import android.text.method.LinkMovementMethod;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.View.OnFocusChangeListener;
 import android.view.View.OnTouchListener;
 
@@ -109,10 +110,10 @@ public class StudentSignup extends Activity {
 	                return false;
 		    }
 		});
-		
+	
 		 ActionBar actions = getActionBar();
 	        actions.setTitle(Html.fromHtml("<font color='#ffffff'>Registration</font>"));
-	        actions.setDisplayHomeAsUpEnabled(true);
+	       // actions.setDisplayHomeAsUpEnabled(true);
 	        actions.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3399FF")));
         ConnectionDetector cd = new ConnectionDetector(getApplicationContext());
         isInternetPresent= cd.isConnectingToInternet();
@@ -153,7 +154,7 @@ public class StudentSignup extends Activity {
   
 		
 		final	Button signbtn=(Button)findViewById(R.id.btn1);
-		
+		final Button back=(Button)findViewById(R.id.back);
 		
 		fstname.addTextChangedListener(new TextWatcher() {
 
@@ -317,6 +318,17 @@ public class StudentSignup extends Activity {
 		      }
 		    }
 		 });
+		 back.setOnClickListener(new OnClickListener() {
+	     	   
+				
+				
+				@Override
+				public void onClick(View arg0) {
+					 Intent intentSignUP=new Intent(getApplicationContext(),MainActivity.class);
+						startActivity(intentSignUP);
+				}
+				});
+		
 	
 		   signbtn.setOnClickListener(new View.OnClickListener()
            {

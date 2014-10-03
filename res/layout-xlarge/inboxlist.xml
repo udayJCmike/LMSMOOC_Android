@@ -28,7 +28,7 @@
                 style="@style/custom"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 <View
-     android:id="@+id/vcc"
+     android:id="@+id/viewid2"
      android:layout_width="350dp"
      android:layout_height="50dp"
     >

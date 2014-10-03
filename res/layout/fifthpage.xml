@@ -27,24 +27,27 @@
         android:id="@+id/signin"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="match_parent"
-        android:textColor="#ffffff"
         android:layout_height="wrap_content"
-       
-         android:background="@drawable/mycustom_button"
-        android:text="@string/signin" />
+        android:background="@drawable/mycustom_button"
+        android:minHeight="40dp"
+        android:text="@string/signin"
+        android:textColor="#ffffff" />
 
 <View
     android:layout_width="fill_parent"
     android:layout_height="10dp"
    />
+
     <Button
         android:id="@+id/register"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="match_parent"
-         android:textColor="#ffffff"
-           android:background="@drawable/mycustom_button"
         android:layout_height="wrap_content"
-        android:text="@string/register" />
+        android:background="@drawable/mycustom_button"
+        android:minHeight="40dp"
+        android:text="@string/register"
+        android:textColor="#ffffff" />
+
     </LinearLayout>
 
 </LinearLayout>

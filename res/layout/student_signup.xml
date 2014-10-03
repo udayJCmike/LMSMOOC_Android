@@ -7,17 +7,16 @@
        android:weightSum="2"
     android:orientation="vertical" >
 
-
  <ScrollView
-        android:id="@+id/scrollView1"
-        android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        >
+     android:id="@+id/scrollView1"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content" >
+
 <LinearLayout
     android:layout_width="fill_parent"
-    android:orientation="vertical"
-       android:layout_weight="0.2"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_weight="0.2"
+    android:orientation="vertical" >
 
 <LinearLayout
     android:layout_width="fill_parent"
@@ -28,18 +27,44 @@
     android:paddingRight="20dp"
     android:paddingTop="15dp" >
 
+     <View
+         android:layout_width="fill_parent"
+         android:layout_height="2dp" >
+
+</View>
+
+         <TextView
+             android:id="@+id/textView2"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_gravity="center"
+             android:paddingLeft="15dp"
+             android:paddingRight="15dp"
+             android:text="@string/signuptext"
+             android:textColor="#000000"
+             android:textSize="20sp" />
+
+<View
+    android:layout_width="fill_parent"
+    android:layout_height="10dp" >
+
+</View>
+
     <EditText
         android:id="@+id/e1"
         style="@style/custom"
-           android:drawablePadding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center|center_vertical"
         android:background="@drawable/rounded_edittext"
+        android:cursorVisible="true"
         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-        android:drawableLeft="@drawable/username"
+        android:drawableLeft="@drawable/usernamem"
+        android:drawablePadding="10dp"
         android:ems="10"
-        android:hint="@string/firstname" />
+        android:focusable="true"
+        android:hint="@string/firstname"
+        android:textCursorDrawable="@drawable/cursor" />
 
 </LinearLayout>
 <View
@@ -56,15 +81,16 @@
 
     <EditText
         android:id="@+id/e2"
-           android:drawablePadding="10dp"
         style="@style/custom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/rounded_edittext"
         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-        android:drawableLeft="@drawable/username"
+        android:drawableLeft="@drawable/usernamem"
+        android:drawablePadding="10dp"
         android:ems="10"
+        android:focusable="true"
         android:hint="@string/lastname"
         android:padding="5dip" />
 
@@ -83,15 +109,16 @@
 
     <EditText
         android:id="@+id/e3"
-           android:drawablePadding="10dp"
         style="@style/custom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/rounded_edittext"
         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_@-."
-        android:drawableLeft="@drawable/username"
+        android:drawableLeft="@drawable/usernamem"
+        android:drawablePadding="10dp"
         android:ems="10"
+        android:focusable="true"
         android:hint="@string/username"
         android:padding="5dip" />
 
@@ -110,15 +137,16 @@
 
     <EditText
         android:id="@+id/e4"
-           android:drawablePadding="10dp"
         style="@style/custom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/rounded_edittext"
         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_@-.,"
-        android:drawableLeft="@drawable/email"
+        android:drawableLeft="@drawable/emailm"
+        android:drawablePadding="10dp"
         android:ems="10"
+        android:focusable="true"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
         android:padding="5dip" />
@@ -134,18 +162,20 @@
     android:layout_gravity="center_vertical|center_horizontal"
     android:orientation="vertical"
     android:paddingLeft="20dp"
+    android:focusable="true"
     android:paddingRight="20dp" >
 
     <EditText
         android:id="@+id/e5"
         style="@style/custom"
-           android:drawablePadding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/rounded_edittext"
-        android:drawableLeft="@drawable/password"
+        android:drawableLeft="@drawable/passwordm"
+        android:drawablePadding="10dp"
         android:ems="10"
+        android:focusable="true"
         android:hint="@string/password"
         android:padding="5dip"
         android:paddingLeft="20dp"
@@ -167,13 +197,14 @@
     <EditText
         android:id="@+id/e6"
         style="@style/custom"
-           android:drawablePadding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/rounded_edittext"
-        android:drawableLeft="@drawable/password"
+        android:drawableLeft="@drawable/passwordm"
+        android:drawablePadding="10dp"
         android:ems="10"
+        android:focusable="true"
         android:hint="@string/confirmpass"
         android:padding="5dip"
         android:password="true" />
@@ -187,26 +218,38 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center_vertical|center_horizontal"
     android:orientation="horizontal" >
+
  <CheckBox
      android:id="@+id/checkBox1"
      android:layout_width="wrap_content"
      android:layout_height="wrap_content"
-     android:textColor="#000000"
+     android:layout_gravity="left|center_vertical|start"
      android:layout_marginLeft="50dp"
-     android:text="@string/checkme" />
+     android:gravity="right|center_vertical"
+     android:text="@string/checkme"
+     android:textColor="#000000" />
+
 <View
-        android:layout_width="10dp"
-        android:layout_height="fill_parent" />
+    android:id="@+id/viewcall1"
+    android:layout_width="10dp"
+    android:layout_height="fill_parent"
+    android:layout_gravity="left" />
+
    <TextView
-            android:id="@+id/checktext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/terms"
-            android:clickable="true" />
+       android:id="@+id/checktext"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_gravity="left|center_vertical"
+       android:clickable="true"
+       android:gravity="left|center_vertical"
+       android:text="@string/terms"
+       android:textSize="12sp" />
+
    </LinearLayout>
+
 <View
-        android:layout_width="fill_parent"
-        android:layout_height="20dp" />
+    android:layout_width="fill_parent"
+    android:layout_height="10dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -215,17 +258,42 @@
         android:paddingLeft="30dp"
         android:paddingRight="30dp" >
 
-        <Button
-            android:id="@+id/btn1"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:orientation="vertical" >
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn1"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:background="@drawable/mycustom_button"
+            android:minHeight="40dp"
             android:text="@string/register"
             android:textColor="#ffffff" />
-<View
-        android:layout_width="fill_parent"
-        android:layout_height="20dp" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="10dp" />
+
+        <Button
+            android:id="@+id/back"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_backbutton"
+            android:minHeight="40dp"
+            android:minWidth="40dp"
+            android:text="@string/back"
+            android:textColor="#ffffff" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="20dp" />
+
     </LinearLayout>
 
    

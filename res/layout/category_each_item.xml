@@ -8,14 +8,14 @@
 
     <TextView
         android:id="@+id/categoryname"
-        style="@style/custom"
+        style="@style/custom_large_cat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|left"
         android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
         android:paddingTop="10dp"
         android:text="TextView"
-        android:textColor="#000000"
-      />
+        android:textColor="#000000" />
 
   </LinearLayout>

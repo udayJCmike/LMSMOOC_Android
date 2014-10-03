@@ -30,9 +30,9 @@
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_edittext"
             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-            android:drawableLeft="@drawable/username"
+            android:drawableLeft="@drawable/usernamem"
+            android:drawablePadding="10dp"
             android:ems="10"
-             android:drawablePadding="10dp"
             android:hint="@string/firstname"
             android:singleLine="true" >
 
@@ -46,12 +46,12 @@
         <EditText
             android:id="@+id/lastname"
             style="@style/custom"
-             android:drawablePadding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_edittext"
             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-            android:drawableLeft="@drawable/username"
+            android:drawableLeft="@drawable/usernamem"
+            android:drawablePadding="10dp"
             android:ems="10"
             android:hint="@string/lastname"
             android:inputType="textPersonName"
@@ -66,10 +66,10 @@
             style="@style/custom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-             android:drawablePadding="10dp"
             android:background="@drawable/rounded_edittext"
             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_@-."
-            android:drawableLeft="@drawable/username"
+            android:drawableLeft="@drawable/usernamem"
+            android:drawablePadding="10dp"
             android:ems="10"
             android:hint="@string/username"
             android:singleLine="true" />
@@ -81,12 +81,12 @@
         <EditText
             android:id="@+id/email"
             style="@style/custom"
-             android:drawablePadding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_edittext"
             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_@-.,"
-            android:drawableLeft="@drawable/email"
+            android:drawableLeft="@drawable/emailm"
+            android:drawablePadding="10dp"
             android:ems="10"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
@@ -102,9 +102,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_edittext"
-            android:drawableLeft="@drawable/password"
+            android:drawableLeft="@drawable/passwordm"
+            android:drawablePadding="10dp"
             android:ems="10"
-             android:drawablePadding="10dp"
             android:hint="@string/password"
             android:inputType="textPassword"
             android:singleLine="true" />
@@ -228,8 +228,10 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/mycustom_button"
+                android:minHeight="40dp"
                 android:text="@string/browse"
                 android:textColor="#ffffff" />
+
         </RelativeLayout>
     </LinearLayout>
 
@@ -276,15 +278,15 @@
       
          <Button
              android:id="@+id/upload"
-               android:background="@drawable/mycustom_button"
-                android:textColor="#ffffff"
              style="?android:attr/buttonStyleSmall"
-            
              android:layout_width="wrap_content"
-               android:paddingRight="20dp"
-                 android:paddingLeft="20dp"
              android:layout_height="wrap_content"
-             android:text="@string/upload" />
+             android:background="@drawable/mycustom_button"
+             android:minHeight="30dp"
+             android:paddingLeft="20dp"
+             android:paddingRight="20dp"
+             android:text="@string/upload"
+             android:textColor="#ffffff" />
        
      </LinearLayout> 
     </RelativeLayout>
@@ -316,8 +318,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/mycustom_button"
+            android:minHeight="40dp"
             android:text="@string/savechanges"
             android:textColor="#ffffff" />
+
     </LinearLayout>
      <View
         android:layout_width="fill_parent"
