@@ -29,13 +29,6 @@
                 android:text="Course Name" />
 
             <TextView
-                android:id="@+id/coursenameans1"
-                style="@style/custom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="fromans1" />
-
-            <TextView
                 android:id="@+id/textView2"
                 style="@style/custom"
                 android:layout_width="wrap_content"
@@ -55,6 +48,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Reduction" />
+            <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/custom"
+        android:text="Amount" />
         </LinearLayout>
 <View
     android:id="@+id/view"

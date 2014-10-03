@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+       android:background="#ffffff"
+    android:orientation="vertical"
+    android:weightSum="2"
+    android:padding="6dip" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp" >
+<LinearLayout
+        android:id="@+id/linearone"
+          android:layout_width="wrap_content"
+          android:layout_height="match_parent"
+          android:layout_alignParentLeft="true" 
+          android:paddingLeft="20dp"
+           android:orientation="vertical" >
+     <TextView
+            android:id="@+id/coursename"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="thendral"
+            style="@style/custom_large"
+             android:focusable="false"
+        android:clickable="false"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+     <View
+    
+     android:layout_width="fill_parent"
+     android:layout_height="40dp"
+  >
+
+</View>
+      <TextView
+            android:id="@+id/author"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+         
+            android:text="thendral"
+          style="@style/custom_medium"
+             android:focusable="false"
+        android:clickable="false"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+     
+      </LinearLayout>
+
+ <View
+     android:id="@+id/vc"
+     android:layout_width="200dp"
+     android:layout_height="fill_parent"
+     android:layout_toRightOf="@id/linearone" >
+
+</View>
+       <LinearLayout
+           android:layout_width="wrap_content"
+           android:layout_height="match_parent"
+           android:layout_toRightOf="@id/vc"
+           android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/cover"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="false"
+            android:focusable="false"
+            android:scaleType="fitXY"
+            android:src="@drawable/ban3" />
+
+</LinearLayout>
+        
+       
+    </RelativeLayout>
+<View
+    
+     android:layout_width="fill_parent"
+     android:layout_height="25dp"
+  >
+
+</View>
+ <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_weight="1"
+        android:layout_height="wrap_content" >
+<LinearLayout
+        android:id="@+id/llinetwo"
+          android:layout_width="wrap_content"
+          android:layout_height="match_parent"
+          android:layout_alignParentLeft="true" 
+          android:paddingLeft="20dp"
+           android:orientation="vertical" >
+         <TextView
+            android:id="@+id/rating"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:text="Rating"
+            style="@style/custom"
+         
+             android:focusable="false"
+        android:clickable="false"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+     <ImageView
+         android:id="@+id/ratingimage"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+          
+         android:src="@drawable/zero" />
+</LinearLayout>
+<View
+     android:id="@+id/vcc"
+     android:layout_width="200dp"
+     android:layout_height="fill_parent"
+     android:layout_toRightOf="@id/llinetwo" >
+
+</View>
+<LinearLayout
+    android:id="@+id/fsdsf"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    
+    android:layout_toRightOf="@id/vcc"
+    android:orientation="vertical"
+    android:paddingLeft="20dp" >
+
+         <TextView
+            android:id="@+id/costamt"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:text="Price"
+            style="@style/custom"
+             android:focusable="false"
+        android:clickable="false"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+     <TextView
+         android:id="@+id/cost"
+         style="@style/custom"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         
+         android:clickable="false"
+         android:focusable="false"
+         android:text="TextView" />
+    </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

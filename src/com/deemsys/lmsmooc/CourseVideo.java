@@ -32,7 +32,7 @@ public class CourseVideo extends SherlockFragmentActivity{
 	 private static final String TAG_CONTENT = "video";
 	  String videouri,audio_url;
 	String lect_id,lect_name,lect_type,sect_id,sect_name,course_contents,successL;
-	TextView course_content;
+
 	VideoView videoview;
 	Boolean isInternetPresent = false;
 	ConnectionDetector cd;
@@ -55,7 +55,7 @@ public class CourseVideo extends SherlockFragmentActivity{
 	        sect_id=i.getExtras().getString("section_id","");
 	        sect_name=i.getExtras().getString("section_name","");
 	   	 audio_url=i.getExtras().getString("audio_url","");
-	        course_content=(TextView)findViewById(R.id.course_text);
+	     //   course_content=(TextView)findViewById(R.id.course_text);
 	        cd = new ConnectionDetector(getApplicationContext());
 	       
 	    	isInternetPresent = cd.isConnectingToInternet();
