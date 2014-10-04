@@ -49,6 +49,12 @@
         <item name="android:textStyle">bold</item>
         
     </style>
+     <style name="custom_course_no" >
+        <item name="android:fontFamily">Calibri</item>
+        <item name="android:textColor">#999999</item>
+        <item name="android:textSize">18px</item>
+        
+    </style>
     
     
      <style name="MyCustomTheme" parent="Theme.Sherlock">

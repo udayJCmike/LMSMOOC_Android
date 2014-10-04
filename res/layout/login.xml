@@ -91,19 +91,24 @@
         android:gravity="center_horizontal"
         android:orientation="horizontal" >
 
+        <View
+            android:layout_width="0dp"
+            android:layout_height="fill_parent" />
+
 <CheckBox
     android:id="@+id/checkBox1"
+    style="@style/custom"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
     android:button="@drawable/customcheckboxx"
     android:clickable="true"
-      style="@style/custom"
-      
+    android:gravity="right|center_vertical|start"
     android:text="  Keep me signed in"
     android:textColor="#000000" />
+
 <View
-    android:layout_width="40dp"
+    android:layout_width="5dp"
     android:layout_height="fill_parent" >
 
 </View>

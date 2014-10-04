@@ -6,11 +6,13 @@
 
     <TextView
         android:id="@+id/label"
-        style="@style/custom"
+        style="@style/custom_large_cat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@+id/label"
-        >
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:text="@+id/label" >
+
     </TextView>
 
     <CheckBox
@@ -21,5 +23,12 @@
         android:layout_marginLeft="4px"
         android:layout_marginRight="10px" >
     </CheckBox>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="false"
+        android:layout_below="@id/check" />
 
 </RelativeLayout> 

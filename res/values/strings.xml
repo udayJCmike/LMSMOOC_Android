@@ -53,13 +53,13 @@
   <string name="getpassword">Get Password</string>
   <string name="category">Categories</string>
   <string name="author_name">Author Name</string>
-  <string name="no_of_courses">Number Of Courses</string>
+  <string name="no_of_courses">Courses</string>
   <string name="unfollow">Unfollow</string>
   <string name="removecategory">Remove Category</string>
   
   <string name="course_name">Course Name</string>
   <string name="promo_Video">Promo Video</string>
-   <string name="addtomyfavcat">Add To Favorite</string>
+   <string name="addtomyfavcat">Add Category</string>
   <string name="author_name">Author Name</string>
   <string name="Avatar">Avatar</string>
   <string name="author_edu">Education</string>

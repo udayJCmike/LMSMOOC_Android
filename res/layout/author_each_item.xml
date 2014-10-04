@@ -15,42 +15,40 @@
         android:layout_height="wrap_content"
          android:orientation="horizontal">
 
-             <TextView
-                 android:id="@+id/textView1"
-                 style="@style/custom"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:text="@string/author_name" />
-
     <TextView
         android:id="@+id/authorname"
-          style="@style/custom"
+        style="@style/custom_large"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="80dp"
+        android:paddingLeft="5dp"
         android:paddingTop="2dp"
         android:text=""
-        android:textColor="#000000"
-         />
+        android:textColor="#000000" />
 
     </LinearLayout>
-  <LinearLayout android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-         android:orientation="horizontal">
+
+  <LinearLayout
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      android:paddingLeft="2dp" >
+
+      <TextView
+          android:id="@+id/numberofcour"
+          style="@style/custom_course_no"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:paddingLeft="5dp"
+          android:paddingTop="2dp" />
+
     <TextView
-                 android:id="@+id/textView2"
-                 style="@style/custom"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:text="@string/no_of_courses" />
-    <TextView
-        android:id="@+id/numberofcour"
-          style="@style/custom"
+        android:id="@+id/textView2"
+        style="@style/custom_course_no"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-       android:paddingLeft="45dp"
         android:paddingTop="2dp"
-        android:text="" />
+        android:text="@string/no_of_courses" />
+
     </LinearLayout>
 
 </LinearLayout>

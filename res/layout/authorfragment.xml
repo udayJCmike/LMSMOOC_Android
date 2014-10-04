@@ -116,12 +116,18 @@
         android:id="@+id/unfolowfolow"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="match_parent"
-        android:textColor="#ffffff"
         android:layout_height="wrap_content"
         android:background="@drawable/mycustom_button"
-        android:text="@string/unfollow" />
+        android:minHeight="40dp"
+        android:text="@string/unfollow"
+        android:textColor="#ffffff" />
 
 </LinearLayout>
+
+<View
+    android:layout_width="fill_parent"
+    android:layout_height="20dp" />
+
 </LinearLayout>
 </ScrollView>
 </LinearLayout>
