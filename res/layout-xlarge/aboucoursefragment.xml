@@ -8,6 +8,7 @@
         android:id="@+id/aboutcourse_text"
         android:layout_width="wrap_content"
          style="@style/custom"
+           android:scrollbars = "vertical"
         android:layout_height="wrap_content"
         android:text="TextView" />
 

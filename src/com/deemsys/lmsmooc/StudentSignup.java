@@ -2,7 +2,6 @@ package com.deemsys.lmsmooc;
 
 
 
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -68,9 +67,10 @@ public class StudentSignup extends Activity {
     static  String rolestr;
     static  String enabledstr;
     static  String userid;
+    String captializefirstname,captitalizelastname;
     private static final String TAG_AVATAR_URL= "avatar_url";
    
-
+Button back;
     
 	  final Context context=this;
 	    JSONObject jsonE;
@@ -110,10 +110,10 @@ public class StudentSignup extends Activity {
 	                return false;
 		    }
 		});
-	
+		
 		 ActionBar actions = getActionBar();
 	        actions.setTitle(Html.fromHtml("<font color='#ffffff'>Registration</font>"));
-	       // actions.setDisplayHomeAsUpEnabled(true);
+	      //  actions.setDisplayHomeAsUpEnabled(true);
 	        actions.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3399FF")));
         ConnectionDetector cd = new ConnectionDetector(getApplicationContext());
         isInternetPresent= cd.isConnectingToInternet();
@@ -154,8 +154,18 @@ public class StudentSignup extends Activity {
   
 		
 		final	Button signbtn=(Button)findViewById(R.id.btn1);
-		final Button back=(Button)findViewById(R.id.back);
 		
+		back=(Button)findViewById(R.id.back);
+		 back.setOnClickListener(new OnClickListener() {
+	     	   
+				
+				
+				@Override
+				public void onClick(View arg0) {
+					 Intent intentSignUP=new Intent(getApplicationContext(),MainActivity.class);
+						startActivity(intentSignUP);
+				}
+				});
 		fstname.addTextChangedListener(new TextWatcher() {
 
 		    public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -318,17 +328,6 @@ public class StudentSignup extends Activity {
 		      }
 		    }
 		 });
-		 back.setOnClickListener(new OnClickListener() {
-	     	   
-				
-				
-				@Override
-				public void onClick(View arg0) {
-					 Intent intentSignUP=new Intent(getApplicationContext(),MainActivity.class);
-						startActivity(intentSignUP);
-				}
-				});
-		
 	
 		   signbtn.setOnClickListener(new View.OnClickListener()
            {
@@ -369,16 +368,16 @@ public class StudentSignup extends Activity {
 						    	
 								   {
 									   
-									    if (firstname.length()>3 &&firstname.length()<=15&&isValidName(firstname)) {
+									    if (firstname.length()>=3 &&firstname.length()<=15&&isValidName(firstname)) {
 									    	{
-											    if (lastname.length()>3&&lastname.length()<=15&& isValidName(lastname)) {
+											    if (lastname.length()>=3&&lastname.length()<=15&& isValidName(lastname)) {
 											    	{
 													    if (username.length()>=6&&username.length()<=25&&isValidOther(username)) {
 													    	{
 													    		 if (email.length()>=10&&email.length()<=40&&isValidEmail(email)) {
 																    	  
 																	    {
-																		    if (password.length()>=8&&password.length()<=25&&isValidOther(password)) {
+																		    if (password.length()>=8&&password.length()<=25&&passwordCheck(password)) {
 																		    	  
 																			    {
 																			    	   
@@ -746,6 +745,16 @@ public class StudentSignup extends Activity {
 						Matcher matcher = pattern.matcher(number);
 						return matcher.matches();
 					}
+				private boolean passwordCheck(String other) {
+					// TODO Auto-generated method stub
+					
+					
+					String pass_patter = "((?=.*\\d)(?=.*[a-zA-Z])(?=.*[@#$%]).{8,25})";
+
+						Pattern pattern = Pattern.compile(pass_patter);
+						Matcher matcher = pattern.matcher(other);
+						return matcher.matches();
+					}
 				private boolean isValidOther(String other) {
 					// TODO Auto-generated method stub
 					
@@ -774,17 +783,17 @@ public class StudentSignup extends Activity {
            }
 	
 	
-	
-	 @Override
-	 public boolean onOptionsItemSelected(MenuItem item) {
-	     switch (item.getItemId()) {
-	         case android.R.id.home:
-	        	 
-	        	 Intent intentSignUP=new Intent(getApplicationContext(),MainActivity.class);
-	        		startActivity(intentSignUP);
-	      }
-	     return true;
-	 }
+//	
+//	 @Override
+//	 public boolean onOptionsItemSelected(MenuItem item) {
+//	     switch (item.getItemId()) {
+//	         case android.R.id.home:
+//	        	 
+//	        	 Intent intentSignUP=new Intent(getApplicationContext(),MainActivity.class);
+//	        		startActivity(intentSignUP);
+//	      }
+//	     return true;
+//	 }
 	 class SelectUsername1 extends AsyncTask<String,String,String>{
 
 		 private ProgressDialog userDialog;
@@ -1513,10 +1522,26 @@ class Login extends AsyncTask<String,String,String>{
 		protected String doInBackground(String... params) {
 		 
 			List<NameValuePair> paramsE = new ArrayList<NameValuePair>();
-		
-			 paramsE.add(new BasicNameValuePair("firstname",StudentSignup.firstname));
+			captializefirstname=StudentSignup.firstname;
+			final StringBuilder result = new StringBuilder(captializefirstname.length());
+			String[] words = captializefirstname.split("\\s");
+			for(int i=0,l=words.length;i<l;++i) {
+			  if(i>0) result.append(" ");      
+			  result.append(Character.toUpperCase(words[i].charAt(0))).append(words[i].substring(1));
 
-          paramsE.add(new BasicNameValuePair("lastname", StudentSignup.lastname));
+			}
+			captitalizelastname=StudentSignup.lastname;
+			final StringBuilder caplast = new StringBuilder(captitalizelastname.length());
+			String[] wordssplit = captitalizelastname.split("\\s");
+			for(int i=0,l=wordssplit.length;i<l;++i) {
+			  if(i>0) caplast.append(" ");      
+			  caplast.append(Character.toUpperCase(wordssplit[i].charAt(0))).append(wordssplit[i].substring(1));
+
+			}
+		
+			 paramsE.add(new BasicNameValuePair("firstname",result.toString()));
+
+          paramsE.add(new BasicNameValuePair("lastname", caplast.toString()));
 
           paramsE.add(new BasicNameValuePair("username", StudentSignup.username));
 
@@ -1613,7 +1638,7 @@ class Login extends AsyncTask<String,String,String>{
 				alertDialog.setTitle("INFO!");
 
 				// Setting Dialog Message
-				alertDialog.setMessage("Message sent successfully.");
+				alertDialog.setMessage("Registration successfull.");
 
 				// Setting Icon to Dialog
 				alertDialog.setIcon(R.drawable.tick);
@@ -1654,10 +1679,7 @@ protected void hideKeyboard(View view)
     InputMethodManager in = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
     in.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 }
-@Override
-public void onBackPressed() 
-{
-}
+
 
 class geturl extends AsyncTask<String, String, String> {
 	@Override
@@ -1710,6 +1732,11 @@ class geturl extends AsyncTask<String, String, String> {
 	    			  }
 		return null; 
 	}
+}
+@Override
+public void onBackPressed() {
+
+
 }
 }
           

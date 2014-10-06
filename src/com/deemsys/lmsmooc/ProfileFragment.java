@@ -55,6 +55,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.ScrollView;
 
 import android.widget.TextView;
 import android.widget.Toast;
@@ -93,7 +94,7 @@ public class ProfileFragment extends Fragment {
 	  
 String urlServer =  Config.ServerUrl+Config.uploadpictwo;
 
-	
+String captializefirstname,captitalizelastname;
 	EditText firstnameedit,lastnameedit,usernameedit,emailedit,avataredit,passwordedit;
 	Boolean isInternetPresent = false;
 	 ConnectionDetector cd;
@@ -128,6 +129,16 @@ RadioButton subj,cours;
  
         View rootView = inflater.inflate(R.layout.profilefrag, container, false);
         LinearLayout layout = (LinearLayout)rootView.findViewById(R.id.proffrag);
+        ScrollView sv=(ScrollView)rootView.findViewById(R.id.scrollView1);
+		sv.setOnTouchListener(new OnTouchListener() {
+
+		    @Override
+		    public boolean onTouch(View v, MotionEvent event) {
+		        // TODO Auto-generated method stub
+		    	 hideKeyboard(v);
+	                return false;
+		    }
+		});
         pDialog = new ProgressDialog(getActivity());
         updateurl=Config.ServerUrl+"UpdateProfile.php?service=updateprof";
         avatarurl=Config.AvatarUrl+LoginActivity.avatar;
@@ -439,16 +450,16 @@ RadioButton subj,cours;
 			    	
 					   {
 						   
-						    if (firstname.length()>3 &&firstname.length()<=15&&isValidName(firstname)) {
+						    if (firstname.length()>=3 &&firstname.length()<=15&&isValidName(firstname)) {
 						    	{
-								    if (lastname.length()>3&&lastname.length()<=15&& isValidName(lastname)) {
+								    if (lastname.length()>=3&&lastname.length()<=15&& isValidName(lastname)) {
 								    	{
 										    if (username.length()>=6&&username.length()<=25&&isValidOther(username)) {
 										    	{
 										    		 if (email.length()>=10&&email.length()<=40&&isValidEmail(email)) {
 													    	  
 														    {
-															    if (password.length()>=8&&password.length()<=25&&isValidOther(password))
+															    if (password.length()>=8&&password.length()<=25&&passwordCheck(password))
 															    {
 															    	 if(!subj.isChecked()&&cours.isChecked()||subj.isChecked()&&!cours.isChecked())
 															    	 
@@ -803,6 +814,16 @@ RadioButton subj,cours;
 
 					Pattern pattern = Pattern.compile(PHONE_REGEX);
 					Matcher matcher = pattern.matcher(number);
+					return matcher.matches();
+				}
+			private boolean passwordCheck(String other) {
+				// TODO Auto-generated method stub
+				
+				
+					String pass_patter = "((?=.*\\d)(?=.*[a-zA-Z])(?=.*[@#$%]).{8,25})";
+
+					Pattern pattern = Pattern.compile(pass_patter);
+					Matcher matcher = pattern.matcher(other);
 					return matcher.matches();
 				}
 			private boolean isValidOther(String other) {
@@ -1544,11 +1565,26 @@ RadioButton subj,cours;
 	    	{
 	    		List<NameValuePair> params1 = new ArrayList<NameValuePair>();
 	             
+	    		captializefirstname=firstnameedit.getText().toString();
+				final StringBuilder result = new StringBuilder(captializefirstname.length());
+				String[] words = captializefirstname.split("\\s");
+				for(int i=0,l=words.length;i<l;++i) {
+				  if(i>0) result.append(" ");      
+				  result.append(Character.toUpperCase(words[i].charAt(0))).append(words[i].substring(1));
+
+				}
+				captitalizelastname=lastnameedit.getText().toString();
+				final StringBuilder caplast = new StringBuilder(captitalizelastname.length());
+				String[] wordssplit = captitalizelastname.split("\\s");
+				for(int i=0,l=wordssplit.length;i<l;++i) {
+				  if(i>0) caplast.append(" ");      
+				  caplast.append(Character.toUpperCase(wordssplit[i].charAt(0))).append(wordssplit[i].substring(1));
+
+				}
 	           
-	             
 	             params1.add(new BasicNameValuePair("oldusername", Config.username));
-	             params1.add(new BasicNameValuePair("firstname", firstnameedit.getText().toString().toUpperCase().trim()));
-	             params1.add(new BasicNameValuePair("lastname", lastnameedit.getText().toString().toUpperCase().trim()));
+	             params1.add(new BasicNameValuePair("firstname",result.toString()));
+	             params1.add(new BasicNameValuePair("lastname",caplast.toString()));
 	             params1.add(new BasicNameValuePair("email", emailedit.getText().toString()));
 	    		
 	             params1.add(new BasicNameValuePair("username", usernameedit.getText().toString()));
@@ -1556,8 +1592,8 @@ RadioButton subj,cours;
 	             params1.add(new BasicNameValuePair("interested_in",interestedin));
 	             params1.add(new BasicNameValuePair("gender", genderstring));
 	             params1.add(new BasicNameValuePair("avatar", selectedimage));
-	             Config.firstname=firstnameedit.getText().toString();
-	             Config.lastname=lastnameedit.getText().toString();
+	             Config.firstname=result.toString();
+	             Config.lastname=caplast.toString();
 	             Config.username=usernameedit.getText().toString();
 	             Config.email=emailedit.getText().toString();
 	             Config.password=passwordedit.getText().toString();
@@ -1617,7 +1653,7 @@ RadioButton subj,cours;
 
 	    				alertDialog.setMessage("Profile updated successfully");
 
-	    				alertDialog.setIcon(R.drawable.delete);
+	    				alertDialog.setIcon(R.drawable.tick);
 	    				
 	    				alertDialog.setButton("OK",	new DialogInterface.OnClickListener() {
 

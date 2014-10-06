@@ -3,6 +3,7 @@ package com.deemsys.lmsmooc;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Html;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ public class AboutCourseFragment  extends Fragment
 	        setHasOptionsMenu(true);
 	        aboutcourse=(TextView)v.findViewById(R.id.aboutcourse_text);
 	        aboutcourse.setText(Html.fromHtml(CourseDetails.course_description));
+	        aboutcourse.setMovementMethod(new ScrollingMovementMethod());
 			return v;
 	        
 	 }

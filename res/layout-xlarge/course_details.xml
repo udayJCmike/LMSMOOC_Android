@@ -9,62 +9,49 @@
      android:paddingLeft="20dp"
         android:layout_height="wrap_content" android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/textView1"
-        style="@style/custom_large"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/course_name" />
+   
 
     <TextView
         android:id="@+id/coursename"
-        android:layout_marginLeft="160dp"
-         style="@style/custom"
+        android:paddingLeft="20dp"
+         style="@style/custom_large_cat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="" />
 
 </LinearLayout>
-
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-     android:paddingLeft="20dp"
-    android:orientation="horizontal" >
-
-    <TextView
-        android:id="@+id/textView1"
-        style="@style/custom_large"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/promo_Video" />
-    </LinearLayout>
 <LinearLayout
     android:layout_width="wrap_content"
     android:paddingLeft="20dp"
      android:paddingRight="20dp"
     android:layout_height="wrap_content"
     android:orientation="horizontal" >
+
 <FrameLayout
-  android:id="@+id/video_frame"
-  android:layout_width="fill_parent"
-  android:layout_height="match_parent"
-  android:background="#000"
-  >
+    android:id="@+id/video_frame"
+    android:layout_width="800dp"
+    android:layout_height="250dp"
+    android:layout_gravity="center_vertical|center"
+    android:background="#000" >
+
     <VideoView
         android:id="@+id/videoView1"
-        android:layout_width="match_parent"
-        android:layout_height="259dp" />
+        android:layout_width="800dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center" />
+
      <ImageButton
     android:id="@+id/play_button"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center_vertical|center_horizontal"
-    android:src="@drawable/video"
+    android:src="@drawable/audio"
     />
 </FrameLayout>
 </LinearLayout>
-
+<View
+            android:layout_width="fill_parent"
+            android:layout_height="25dp" />
 <LinearLayout android:layout_width="wrap_content"
      android:paddingLeft="20dp"
         android:layout_height="wrap_content" android:orientation="horizontal">
@@ -107,6 +94,9 @@
         android:src="@drawable/zero" />
 
 </LinearLayout>
+<View
+            android:layout_width="fill_parent"
+            android:layout_height="25dp" />
 <LinearLayout android:layout_width="wrap_content"
         android:layout_height="wrap_content" android:orientation="horizontal">
   <android.support.v4.view.ViewPager
@@ -117,7 +107,7 @@
         <android.support.v4.view.PagerTabStrip
             android:id="@+id/pagerTabStrip"
             android:layout_width="fill_parent"
-            android:layout_height="30dp"
+            android:layout_height="60dp"
              android:textColor="#000000" 
             android:layout_gravity="top" >
         </android.support.v4.view.PagerTabStrip>

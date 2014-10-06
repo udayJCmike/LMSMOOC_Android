@@ -106,7 +106,8 @@ public class MyFavoriteCourses  extends Fragment {
 		private static final String TAG_COURSE_PROMO_VIDEO= "course_promo_video";
 	 String courseidurl,instructoridurl,pur_url,checkstatus;
 	 String course_id_topass,course_name_to_pass,course_descript_to_pass,course_enrolled,course_enrolled_passing;
-    @Override
+    @SuppressWarnings("deprecation")
+	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.allcourses, container, false);
         setHasOptionsMenu(true);
@@ -274,7 +275,7 @@ public class MyFavoriteCourses  extends Fragment {
 								alertDialog.setTitle("INFO!");
 
 								// Setting Dialog Message
-								alertDialog.setMessage("No favorite courses selected.");
+								alertDialog.setMessage("No data found.");
 
 								// Setting Icon to Dialog
 								alertDialog.setIcon(R.drawable.delete);

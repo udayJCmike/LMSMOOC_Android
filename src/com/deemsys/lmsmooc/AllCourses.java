@@ -640,4 +640,16 @@ System.out.println("cover image"+ c2.getString(TAG_course_cover_image));
         cDialog.dismiss();
     }
     } 
+    @Override
+	public void setUserVisibleHint(boolean isVisibleToUser) {
+	    super.setUserVisibleHint(isVisibleToUser);
+	    if (isVisibleToUser) 
+	    { 
+	    	
+	    }
+	    else
+	    { 
+	    	
+	    }
+	}		
 }

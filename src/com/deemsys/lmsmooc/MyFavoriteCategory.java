@@ -27,7 +27,7 @@ import android.content.Intent;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -53,7 +53,7 @@ public class MyFavoriteCategory extends SherlockFragment {
 
 	    private static final String TAG_SRESL= "serviceresponse";
 	    private static final String TAG_Category_ARRAY = "Category List";
-		private static final String TAG_SUCCESS = "success";
+		
 		private static final String TAG_Category_NAME= "category_name";
 		
 		@Override
@@ -100,6 +100,7 @@ public class MyFavoriteCategory extends SherlockFragment {
 		          cDialog.show();
 			}
 				
+				@SuppressWarnings("deprecation")
 				@Override
 				protected void onPostExecute(String file_url) {
 			   
@@ -113,7 +114,7 @@ public class MyFavoriteCategory extends SherlockFragment {
 							alertDialog.setTitle("INFO!");
 
 							// Setting Dialog Message
-							alertDialog.setMessage("No Favorite Categories available");
+							alertDialog.setMessage("No data found.");
 
 							// Setting Icon to Dialog
 							alertDialog.setIcon(R.drawable.delete);
@@ -208,6 +209,7 @@ public class MyFavoriteCategory extends SherlockFragment {
 				
 				
 			}
+		@SuppressWarnings("deprecation")
 		@Override
 		  public void onResume() {
 		      super.onResume();

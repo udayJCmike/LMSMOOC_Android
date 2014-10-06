@@ -1,6 +1,8 @@
 package com.deemsys.lmsmooc;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -35,6 +37,7 @@ public class CourseDetails extends SherlockFragmentActivity{
     String ratingsho;
     ImageView ratingshow;
     ImageButton mPlayButton;
+	@SuppressWarnings("deprecation")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -116,6 +119,8 @@ public class CourseDetails extends SherlockFragmentActivity{
 	           
 	 
 	        } catch (Exception e) {
+	        	
+ 			
 	            Log.e("Error", e.getMessage());
 	            e.printStackTrace();
 	        }

@@ -19,6 +19,25 @@
        android:layout_weight="0.2"
     android:layout_height="wrap_content">
 
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="40dp" >
+
+         <TextView
+             android:id="@+id/textView2"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_centerHorizontal="true"
+             android:layout_centerInParent="false"
+             android:text="@string/signuptext"
+             android:textColor="#000000"
+             android:textSize="30sp" />
+
+</RelativeLayout>
+<View
+        android:layout_width="fill_parent"
+        android:layout_height="30dp" />
 <LinearLayout
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
@@ -39,6 +58,8 @@
         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
         android:drawableLeft="@drawable/username"
         android:ems="10"
+         android:drawablePadding="10dp"
+            android:inputType="textCapWords"
         android:hint="@string/firstname" />
 
 </LinearLayout>
@@ -61,10 +82,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+         android:drawablePadding="10dp"
         android:background="@drawable/rounded_edittext"
         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
         android:drawableLeft="@drawable/username"
         android:ems="10"
+            android:inputType="textCapWords"
         android:hint="@string/lastname"
         android:padding="5dip" />
 
@@ -92,6 +115,7 @@
         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_@-."
         android:drawableLeft="@drawable/username"
         android:ems="10"
+         android:drawablePadding="10dp"
         android:hint="@string/username"
         android:padding="5dip" />
 
@@ -120,6 +144,7 @@
         android:drawableLeft="@drawable/email"
         android:ems="10"
         android:hint="@string/email"
+         android:drawablePadding="10dp"
         android:inputType="textEmailAddress"
         android:padding="5dip" />
 
@@ -149,6 +174,7 @@
         android:hint="@string/password"
         android:padding="5dip"
         android:paddingLeft="20dp"
+         android:drawablePadding="10dp"
         android:password="true" />
 
     </LinearLayout>
@@ -176,6 +202,7 @@
         android:ems="10"
         android:hint="@string/confirmpass"
         android:padding="5dip"
+         android:drawablePadding="10dp"
         android:password="true" />
 
     </LinearLayout>
@@ -219,14 +246,41 @@
         android:paddingLeft="30dp"
         android:paddingRight="30dp" >
 
-        <Button
-            android:id="@+id/btn1"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:orientation="vertical" >
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn1"
+           
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:background="@drawable/mycustom_button"
+            android:minHeight="60dp"
             android:text="@string/register"
             android:textColor="#ffffff" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="30dp" />
+
+        <Button
+            android:id="@+id/back"
+            
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_backbutton"
+            android:minHeight="60dp"
+            android:minWidth="60dp"
+            android:text="@string/back"
+            android:textColor="#ffffff" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="20dp" />
 
     </LinearLayout>
 

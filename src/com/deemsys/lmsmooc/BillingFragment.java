@@ -260,7 +260,7 @@ public class BillingFragment extends Fragment {
 								alertDialog.setTitle("INFO!");
 
 								// Setting Dialog Message
-								alertDialog.setMessage("No courses available to pay bill");
+								alertDialog.setMessage("No data found.");
 
 								// Setting Icon to Dialog
 								alertDialog.setIcon(R.drawable.delete);
@@ -326,6 +326,7 @@ public class BillingFragment extends Fragment {
 			} 
 				
 			}
+	@SuppressWarnings("deprecation")
 	@Override
     public void onResume() {
         super.onResume();
@@ -340,10 +341,28 @@ public class BillingFragment extends Fragment {
         
         else{
         	
-        	
+        	AlertDialog alertDialog = new AlertDialog.Builder(
+					getActivity()).create();
+
+			alertDialog.setTitle("INFO!");
+
+			alertDialog.setMessage("No network connection.");
+
+			alertDialog.setIcon(R.drawable.delete);
+			
+			alertDialog.setButton("OK",	new DialogInterface.OnClickListener() {
+
+						public void onClick(final DialogInterface dialog,
+								final int which) {
+							
+						}
+					});
+
+			
+			alertDialog.show();
         	
         }
-       System.out.println("RESUME METHOD CALLED");
+     
 	   
    
     }

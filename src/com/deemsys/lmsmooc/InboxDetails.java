@@ -66,7 +66,7 @@ public class InboxDetails extends SherlockFragmentActivity   {
 	      ActionBar ab = getSupportActionBar();
 	      ab.setDisplayHomeAsUpEnabled(true);
 	      getSupportActionBar().setHomeButtonEnabled(true);
-	      ab.setTitle(Html.fromHtml("<font color='#ffffff'>Inbox</font>"));
+	      ab.setTitle(Html.fromHtml("<font color='#ffffff'>Message</font>"));
 		    
 	        ab.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3399FF")));
 	      setContentView(R.layout.inbox_details);

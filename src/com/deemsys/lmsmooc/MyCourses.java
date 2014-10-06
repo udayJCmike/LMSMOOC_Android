@@ -223,7 +223,7 @@ public class MyCourses  extends Fragment {
 								alertDialog.setTitle("INFO!");
 
 								// Setting Dialog Message
-								alertDialog.setMessage("No courses enrolled");
+								alertDialog.setMessage("No data found.");
 
 								// Setting Icon to Dialog
 								alertDialog.setIcon(R.drawable.delete);

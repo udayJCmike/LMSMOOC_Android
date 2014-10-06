@@ -111,25 +111,39 @@ public class Categoryunfavlist extends SherlockActivity {
 		          cDialog.show();
 			}
 				
+				@SuppressWarnings("deprecation")
 				@Override
 				protected void onPostExecute(String file_url) {
 			   
 					 super.onPostExecute(file_url);
+					if(category.size()==0)
+					{
+						AlertDialog alertDialog = new AlertDialog.Builder(
+							Categoryunfavlist.this).create();
+
+						alertDialog.setTitle("INFO!");
+
+						
+						alertDialog.setMessage("No data found.");
+
+						
+						alertDialog.setIcon(R.drawable.delete);
+						
+
 					
+						alertDialog.setButton("OK",	new DialogInterface.OnClickListener() {
+
+									public void onClick(final DialogInterface dialog,
+											final int which) {
+									
+									}
+								});
+
+					
+						alertDialog.show();
+					}
 					 unfavadapter=new UnFavoriteCategoryAdapter(Categoryunfavlist.this, (ArrayList<UnfavoriteCourses>) category);
 					 list2.setAdapter(unfavadapter);
-//					 list2.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener(){
-//						 
-//
-//							@Override
-//							public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-//									long arg3) {
-//								
-//								
-//								
-//								
-//							}
-//					        });
 
 				
 			} 

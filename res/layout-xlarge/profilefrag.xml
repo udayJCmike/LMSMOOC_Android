@@ -6,22 +6,25 @@
     android:layout_gravity="center"
     android:background="#ffffff"
     android:orientation="vertical" >
-  <ScrollView
-        android:id="@+id/scrollView1"
-        android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        >
+
+ <ScrollView
+      android:id="@+id/scrollView1"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:fillViewport="true" >
+
           <LinearLayout
+           
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="fill_parent"
                 android:orientation="vertical" >
-    <LinearLayout
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingLeft="30dip"
         android:paddingRight="30dip"
-        android:paddingTop="50dip" >
+        android:paddingTop="40dp" >
 
         <EditText
             android:id="@+id/firstname"
@@ -32,6 +35,7 @@
             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
             android:drawableLeft="@drawable/username"
             android:ems="10"
+                android:inputType="textCapWords"
              android:drawablePadding="10dp"
             android:hint="@string/firstname"
             android:singleLine="true" >
@@ -41,11 +45,12 @@
 
         <View
             android:layout_width="fill_parent"
-            android:layout_height="50dp" />
+            android:layout_height="35dp" />
 
         <EditText
             android:id="@+id/lastname"
             style="@style/custom"
+                android:inputType="textCapWords"
              android:drawablePadding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -54,36 +59,36 @@
             android:drawableLeft="@drawable/username"
             android:ems="10"
             android:hint="@string/lastname"
-            android:inputType="textPersonName"
+            
             android:singleLine="true" />
 
         <View
             android:layout_width="fill_parent"
-            android:layout_height="50dp" />
+            android:layout_height="35dp" />
 
         <EditText
             android:id="@+id/username"
             style="@style/custom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-             android:drawablePadding="10dp"
             android:background="@drawable/rounded_edittext"
             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_@-."
             android:drawableLeft="@drawable/username"
             android:ems="10"
+             android:drawablePadding="10dp"
             android:hint="@string/username"
             android:singleLine="true" />
 
         <View
             android:layout_width="fill_parent"
-            android:layout_height="50dp" />
+            android:layout_height="35dp" />
 
         <EditText
             android:id="@+id/email"
             style="@style/custom"
-             android:drawablePadding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+             android:drawablePadding="10dp"
             android:background="@drawable/rounded_edittext"
             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_@-.,"
             android:drawableLeft="@drawable/email"
@@ -94,7 +99,7 @@
 
         <View
             android:layout_width="fill_parent"
-            android:layout_height="50dp" />
+            android:layout_height="35dp" />
 
         <EditText
             android:id="@+id/password"
@@ -111,18 +116,17 @@
 
         <View
             android:layout_width="fill_parent"
-            android:layout_height="50dp" />
+            android:layout_height="35dp" />
  <TextView
             android:id="@+id/selecttopic"
             style="@style/custom"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
            
             android:ems="10"
            android:text="@string/selecttopic"
          
             android:singleLine="true" />
- 
         <RadioGroup
         android:id="@+id/radioGroup1"
         android:layout_width="match_parent"
@@ -159,13 +163,13 @@
 
         <View
             android:layout_width="fill_parent"
-            android:layout_height="50dp" />
+            android:layout_height="35dp" />
 
         <TextView
             android:id="@+id/selectgen"
             style="@style/custom"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
            
             android:ems="10"
            android:text="@string/selectgen"
@@ -208,7 +212,7 @@
 
         <View
             android:layout_width="fill_parent"
-            android:layout_height="50dp" />
+            android:layout_height="35dp" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -236,63 +240,69 @@
 
     <View
         android:layout_width="fill_parent"
-        android:layout_height="40dp" />
+        android:layout_height="30dp" />
 
    <RelativeLayout
-      android:layout_width="fill_parent"
-      android:layout_height="50dp"
-      android:orientation="horizontal"
-      android:paddingLeft="10dp"
-      android:paddingRight="10dp" >
+       android:layout_width="fill_parent"
+       android:layout_height="50dp"
+       android:layout_gravity="clip_vertical"
+       android:gravity="center_vertical|center_horizontal"
+       android:orientation="horizontal"
+       android:paddingLeft="10dp"
+       android:paddingRight="10dp" >
 
-      <LinearLayout
-          android:id="@+id/firs"
-          android:layout_width="wrap_content"
-          android:layout_height="match_parent"
-          android:layout_alignParentLeft="true"
-          android:orientation="horizontal"
-          android:paddingLeft="60dp" >
+       <LinearLayout
+           android:id="@+id/firs"
+           android:layout_width="wrap_content"
+           android:layout_height="match_parent"
+           android:layout_alignParentLeft="true"
+           android:layout_centerInParent="true"
+           android:gravity="left"
+           android:orientation="vertical"
+           android:paddingLeft="30dp" >
 
-          <TextView
-              android:id="@+id/browseimage"
-              android:layout_width="209dp"
-              android:layout_height="wrap_content"
-              android:layout_weight="1.17"
-              android:maxLines="2" />
-      </LinearLayout>
-  <View
-           android:id="@+id/vi"
-        android:layout_width="200dp"
-         android:layout_toRightOf="@id/firs"
-        android:layout_height="fill_parent" >
+           <TextView
+               android:id="@+id/browseimage"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_weight="8.07"
+               android:maxLines="1"
+               android:paddingTop="10dp" />
 
-</View>
-  <LinearLayout
-      android:layout_width="wrap_content"
-      android:layout_height="match_parent"
-     
-      android:layout_toRightOf="@id/vi"
-      android:layout_weight="1"
-      android:orientation="horizontal" >
-      
-         <Button
-             android:id="@+id/upload"
+       </LinearLayout>
+<View
+    android:id="@+id/f"
+        android:layout_width="30dp"
+        android:layout_toRightOf="@id/firs"
+        android:layout_height="match_parent" />
+
+       <LinearLayout
+           android:id="@+id/linearLayout1"
+           android:layout_width="wrap_content"
+           android:layout_height="match_parent"
+           android:layout_alignParentRight="true"
+         android:paddingRight="20dp"
+          
+           android:orientation="vertical" >
+
+           <Button
+               android:id="@+id/upload"
+               style="?android:attr/buttonStyleSmall"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
                android:background="@drawable/mycustom_button"
-                android:textColor="#ffffff"
-             style="?android:attr/buttonStyleSmall"
-            
-             android:layout_width="wrap_content"
-               android:paddingRight="40dp"
-                 android:paddingLeft="40dp"
-             android:layout_height="wrap_content"
-             android:text="@string/upload" />
-       
-     </LinearLayout> 
-    </RelativeLayout>
+               android:paddingLeft="30dp"
+               android:paddingRight="30dp"
+               android:text="@string/upload"
+               android:textColor="#ffffff" />
+
+       </LinearLayout>
+
+   </RelativeLayout>
 
     <View
         android:layout_width="fill_parent"
-        android:layout_height="40dp" />
+        android:layout_height="30dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -321,10 +331,8 @@
             android:textColor="#ffffff" />
     </LinearLayout>
      <View
-        android:layout_width="fill_parent"
-        android:layout_height="5dp" />
+            android:layout_width="fill_parent"
+            android:layout_height="35dp" />
     </LinearLayout>
-     
-          
 </ScrollView>
 </LinearLayout>

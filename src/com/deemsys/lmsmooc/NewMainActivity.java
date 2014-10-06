@@ -173,7 +173,7 @@ public class NewMainActivity extends SherlockFragmentActivity {
 		mDrawerList.setSelection(position);
 		if(position==0)
 		{
-			setTitle(Html.fromHtml("<font color=\"white\">" + "LMSMOOC" + "</font>"));
+			setTitle(Html.fromHtml("<font color=\"white\">" + "Courses" + "</font>"));
 		}
 		else
 		{

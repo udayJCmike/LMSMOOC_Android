@@ -239,6 +239,25 @@ public class CourseVideo extends SherlockFragmentActivity{
 				        } catch (Exception e) {
 				            Log.e("Error", e.getMessage());
 				            e.printStackTrace();
+				            AlertDialog alertDialog = new AlertDialog.Builder(
+			     					CourseVideo.this).create();
+
+			 				alertDialog.setTitle("INFO!");
+
+			 				alertDialog.setMessage("Video cannot be played.");
+
+			 				alertDialog.setIcon(R.drawable.delete);
+			 				
+			 				alertDialog.setButton("OK",	new DialogInterface.OnClickListener() {
+
+			 							public void onClick(final DialogInterface dialog,
+			 									final int which) {
+			 								
+			 							}
+			 						});
+
+			 				
+			 				alertDialog.show();
 				        }
 				 
 				        videoview.requestFocus();

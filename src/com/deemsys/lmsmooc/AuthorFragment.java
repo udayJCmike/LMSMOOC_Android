@@ -12,11 +12,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,7 +52,8 @@ public class AuthorFragment  extends Fragment
 	Button followunfollow;
 	
 	String author_firstname,author_lastname,author_education,author_avatar_url,about_auhtor,followcheck,numofrows;
-	 @Override
+	 @SuppressWarnings("deprecation")
+	@Override
 	    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 	        View v = inflater.inflate(R.layout.authorfragment, container, false);
 	        setHasOptionsMenu(true);
@@ -58,12 +62,35 @@ public class AuthorFragment  extends Fragment
 	        education=(TextView)v.findViewById(R.id.authoredu);
 	        aboutauthor=(TextView)v.findViewById(R.id.aboutauthor);
 	        followunfollow=(Button)v.findViewById(R.id.unfolowfolow);
+	        aboutauthor.setMovementMethod(new ScrollingMovementMethod());
 	        avatarimg=(ImageView)v.findViewById(R.id.avatarimg);
 	        isInternetPresent = cd.isConnectingToInternet();
 	        if(isInternetPresent)
 			{
 	        new FetchAuthor().execute();
 			}
+	        else
+	        {
+	        	AlertDialog alertDialog = new AlertDialog.Builder(
+     					getActivity()).create();
+
+ 				alertDialog.setTitle("INFO!");
+
+ 				alertDialog.setMessage("No network connection.");
+
+ 				alertDialog.setIcon(R.drawable.delete);
+ 				
+ 				alertDialog.setButton("OK",	new DialogInterface.OnClickListener() {
+
+ 							public void onClick(final DialogInterface dialog,
+ 									final int which) {
+ 								
+ 							}
+ 						});
+
+ 				
+ 				alertDialog.show();
+	        }
 	        followunfollow.setOnClickListener(new OnClickListener() {
 		     	   
 			
@@ -82,6 +109,28 @@ public class AuthorFragment  extends Fragment
 					        followcheck="0";
 					        followunfollow.setText("Follow Author"); 
 					     }
+					 else
+					 {
+						 AlertDialog alertDialog = new AlertDialog.Builder(
+			     					getActivity()).create();
+
+			 				alertDialog.setTitle("INFO!");
+
+			 				alertDialog.setMessage("No network connection.");
+
+			 				alertDialog.setIcon(R.drawable.delete);
+			 				
+			 				alertDialog.setButton("OK",	new DialogInterface.OnClickListener() {
+
+			 							public void onClick(final DialogInterface dialog,
+			 									final int which) {
+			 								
+			 							}
+			 						});
+
+			 				
+			 				alertDialog.show();
+					 }
 				}
 	        }
 	        );

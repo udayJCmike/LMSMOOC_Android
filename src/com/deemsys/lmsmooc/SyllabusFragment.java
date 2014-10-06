@@ -11,11 +11,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+
 import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ExpandableListView.OnGroupClickListener;
 import android.widget.ExpandableListView.OnGroupCollapseListener;
 import android.widget.ExpandableListView.OnGroupExpandListener;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 
 
@@ -56,20 +59,47 @@ public class SyllabusFragment extends Fragment {
   
 	   
 		
+		@SuppressWarnings("deprecation")
 		@Override
 	    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 	        View v = inflater.inflate(R.layout.syllabusfragment, container, false);
 	        setHasOptionsMenu(true);
 	        expListView = (ExpandableListView)v.findViewById(R.id.lvExp);
-	        new CategoryDetails().execute(); 
+	        cd = new ConnectionDetector(getActivity());
+			 isInternetPresent = cd.isConnectingToInternet();
+	        if (isInternetPresent) {
+		        new CategoryDetails().execute(); 
+				 }
+		 else
+ 		{
+ 			AlertDialog alertDialog = new AlertDialog.Builder(
+ 				getActivity()).create();
+
+				alertDialog.setTitle("INFO!");
+
+				alertDialog.setMessage("No network connection.");
+
+				alertDialog.setIcon(R.drawable.delete);
+				
+				alertDialog.setButton("OK",	new DialogInterface.OnClickListener() {
+
+							public void onClick(final DialogInterface dialog,
+									final int which) {
+								
+							}
+						});
+
+				
+				alertDialog.show();
+ 			
+ 		}
+
 	        expListView.setOnGroupClickListener(new OnGroupClickListener() {
 	        	 
 	            @Override
 	            public boolean onGroupClick(ExpandableListView parent, View v,
 	                    int groupPosition, long id) {
-	                // Toast.makeText(getApplicationContext(),
-	                // "Group Clicked " + listDataHeader.get(groupPosition),
-	                // Toast.LENGTH_SHORT).show();
+	              
 	                return false;
 	            }
 	        });
@@ -79,9 +109,7 @@ public class SyllabusFragment extends Fragment {
 	 
 	            @Override
 	            public void onGroupExpand(int groupPosition) {
-//	                Toast.makeText(getActivity(),
-//	                        listDataHeader.get(groupPosition) + " Expanded",
-//	                        Toast.LENGTH_SHORT).show();
+
 	            }
 	        });
 	 
@@ -89,9 +117,7 @@ public class SyllabusFragment extends Fragment {
 	 
 	            @Override
 	            public void onGroupCollapse(int groupPosition) {
-//	                Toast.makeText(getActivity(),
-//	                        listDataHeader.get(groupPosition) + " Collapsed",
-//	                        Toast.LENGTH_SHORT).show();
+
 	 
 	            }
 	        });
@@ -192,6 +218,7 @@ public class SyllabusFragment extends Fragment {
 		        //  cDialog.show();
 			}
 				
+				@SuppressWarnings("deprecation")
 				@Override
 				protected void onPostExecute(String file_url) {
 			   
@@ -200,7 +227,29 @@ public class SyllabusFragment extends Fragment {
 				        listAdapter = new ExpandablelistAdapter(getActivity(), listDataHeader, listDataChild);
 				       
 				        expListView.setAdapter(listAdapter);
+				        if(listDataHeader.size()==0)
+				        {
+				     			AlertDialog alertDialog = new AlertDialog.Builder(
+				     					getActivity()).create();
 
+				 				alertDialog.setTitle("INFO!");
+
+				 				alertDialog.setMessage("No data found.");
+
+				 				alertDialog.setIcon(R.drawable.delete);
+				 				
+				 				alertDialog.setButton("OK",	new DialogInterface.OnClickListener() {
+
+				 							public void onClick(final DialogInterface dialog,
+				 									final int which) {
+				 								
+				 							}
+				 						});
+
+				 				
+				 				alertDialog.show();
+				     			
+				        }
 				
 			} 
 
@@ -239,7 +288,12 @@ public class SyllabusFragment extends Fragment {
 					    	     ch_list= new ArrayList<Child>();
 					    	    
 					    	        String value = obj.getString("ParentCategory"); 
-					    	        listDataHeader.add(value);
+					    	        for(int k=0;i<c.length();k++)
+					    	        {
+					    	        	value=k+" "+value;
+					    	        	   listDataHeader.add(value);
+					    	        }
+					    	     
 					    	       
 					    	        System.out.println("value of listdataheader"+listDataHeader);
 					    	        Log.d("Item name: ", value);

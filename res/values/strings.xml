@@ -39,7 +39,7 @@
         <item>@drawable/ic_launcher</item>
         <item>@drawable/ic_launcher</item>
     </array>
-     <string name="oldpass">Old password</string>
+     <string name="oldpass">Current password</string>
       <string name="newpass">New password</string>
   <string name="firstname">First Name</string>
   <string name="lastname">Last Name</string>

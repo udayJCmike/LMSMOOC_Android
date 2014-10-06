@@ -6,6 +6,8 @@ package com.deemsys.lmsmooc;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -84,6 +86,10 @@ public class ChangePasswordFragment extends Fragment {
             	{
             		if(oldpass.equalsIgnoreCase(Config.password))
             		{
+            			if(passwordCheck(newpass))
+            			{
+            				
+            		
             			if(newpass.equals(confirmpass))
             			{
             				if(isInternetPresent)
@@ -144,6 +150,30 @@ public class ChangePasswordFragment extends Fragment {
         	    			
         	    		}
             		}
+            		
+            		else
+            		{
+            			AlertDialog alertDialog = new AlertDialog.Builder(
+    							getActivity()).create();
+
+    					alertDialog.setTitle("INFO!");
+
+    					alertDialog.setMessage("Should contain 1 alphabet.Should contain 1 number.Should be 8 to 25 characters.Should contain 1 Special character." );
+
+    					alertDialog.setIcon(R.drawable.delete);
+    					
+    					alertDialog.setButton("OK",	new DialogInterface.OnClickListener() {
+
+    								public void onClick(final DialogInterface dialog,
+    										final int which) {
+    									
+    								}
+    							});
+
+    					
+    					alertDialog.show();
+            		}
+            		}
             		else
     	    		{
     	    			AlertDialog alertDialog = new AlertDialog.Builder(
@@ -199,7 +229,16 @@ public class ChangePasswordFragment extends Fragment {
         return rootView;
     }
 
+	private boolean passwordCheck(String other) {
+		// TODO Auto-generated method stub
+		
+		
+		String pass_patter = "((?=.*\\d)(?=.*[a-zA-Z])(?=.*[@#$%]).{8,25})";
 
+			Pattern pattern = Pattern.compile(pass_patter);
+			Matcher matcher = pattern.matcher(other);
+			return matcher.matches();
+		}
 	protected void hideKeyboard(View view)
 	 {
 	     InputMethodManager in = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);

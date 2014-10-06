@@ -1,231 +1,326 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-      android:background="#ffffff"
-    android:orientation="vertical" >
-    
-  <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="horizontal"
-        android:paddingLeft="10dp"
-       
-        android:paddingRight="10dp" >
+    android:background="#ffffff" >
 
-      <LinearLayout
-          android:layout_width="wrap_content"
-          android:layout_height="match_parent"
-          android:layout_alignParentLeft="true" 
-           android:layout_weight="1"
-           android:orientation="vertical" >
-   <TextView
-        android:id="@+id/textView1"
-         style="@style/custom"           android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-      
-        android:text="Course Name" />
-   <View
-    android:layout_width="fill_parent"
-    android:layout_height="20dp" >
-
-</View>
-   <TextView
-        android:id="@+id/textView2"
-         style="@style/custom"           android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-     
-       
-        android:text="Author Name" />
-   <View
-    android:layout_width="fill_parent"
-    android:layout_height="20dp" >
-
-</View>
-   <TextView
-        android:id="@+id/textView3"
-         style="@style/custom"           android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-      
-        android:text="Date of Purchase"
-        />
-   <View
-    android:layout_width="fill_parent"
-    android:layout_height="20dp" >
-
-</View>
-   <TextView
-         android:id="@+id/textView4"
-          style="@style/custom"           android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         
-     
-         android:text="Price of course" />
-   <View
-    android:layout_width="fill_parent"
-    android:layout_height="20dp" >
-
-</View>
-   <TextView
-         android:id="@+id/textView5"
-          style="@style/custom"           android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-        
-         android:text="Promocode" />
-   <View
-    android:layout_width="fill_parent"
-    android:layout_height="20dp" >
-
-</View>
-   <TextView
-         android:id="@+id/textView6"
-          style="@style/custom"           android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-       
-         android:text="Reduction" />
-   <View
-    android:layout_width="fill_parent"
-    android:layout_height="20dp" >
-
-</View>
-   <TextView
-         android:id="@+id/textView7"
-          style="@style/custom"           android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-       
-         android:text="Amount of paid" />
-   <View
-    android:layout_width="fill_parent"
-    android:layout_height="20dp" >
-
-</View>
-   <TextView
-         android:id="@+id/textView8"
-          style="@style/custom"           android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-     
-         android:text="Transaction Date" />
-   <View
-    android:layout_width="fill_parent"
-    android:layout_height="20dp" >
-
-</View>
-   <TextView
-         android:id="@+id/textView9"
-          style="@style/custom"           android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-      
-      
-         android:text="Transaction Id" />
-       
-      </LinearLayout>
-      <View
-    android:layout_width="fill_parent"
-    android:layout_height="20dp" >
-
-</View>
-  <LinearLayout
-          android:layout_width="wrap_content"
-          android:layout_height="match_parent"
-          android:layout_centerInParent="true" 
-           android:layout_weight="1"
-           android:orientation="vertical" >
-         
-      
-     <TextView
-        android:id="@+id/coursenameans"
-         style="@style/custom"           android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-    
-        android:text="fromans1" />
-     <View
-    android:layout_width="fill_parent"
-    android:layout_height="20dp" >
-
-</View>
-     <TextView
-        android:id="@+id/authornameans"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-         style="@style/custom" 
-        android:text="toans1" />
-     <View
-    android:layout_width="fill_parent"
-    android:layout_height="20dp" >
+        android:orientation="vertical" >
 
-</View>
-       <TextView
-        android:id="@+id/dateans"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/textView1"
+                style="@style/custom"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:text="Course Name" />
+
+            <View
+                android:id="@+id/View01"
+                android:layout_width="100dp"
+                android:layout_height="10dp" />
+
+            <TextView
+                android:id="@+id/coursenameans"
+                style="@style/custom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="2dp"
+                android:text="fromans1" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/View10"
+            android:layout_width="wrap_content"
+            android:layout_height="10dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/textView2"
+                style="@style/custom"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:text="Author Name" />
+
+            <View
+                android:id="@+id/View02"
+                android:layout_width="100dp"
+                android:layout_height="10dp" />
+
+            <TextView
+                android:id="@+id/authornameans"
+                style="@style/custom"
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="2dp"
+                android:text="toans1" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/View11"
+            android:layout_width="wrap_content"
+            android:layout_height="10dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/textView3"
+                style="@style/custom"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:text="Date of Purchase" />
+
+            <View
+                android:id="@+id/View03"
+                android:layout_width="100dp"
+                android:layout_height="10dp" />
+
+            <TextView
+                android:id="@+id/dateans"
+                style="@style/custom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="2dp"
+                android:text="dateans1" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/View12"
+            android:layout_width="wrap_content"
+            android:layout_height="10dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/textView4"
+                style="@style/custom"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:text="Price of course" />
+
+            <View
+                android:id="@+id/View04"
+                android:layout_width="100dp"
+                android:layout_height="10dp" />
+
+            <TextView
+                android:id="@+id/priceans"
+                style="@style/custom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="dateans1" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/View13"
+            android:layout_width="wrap_content"
+            android:layout_height="10dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/textView5"
+                style="@style/custom"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:text="Promocode" />
+
+            <View
+                android:id="@+id/View05"
+                android:layout_width="100dp"
+                android:layout_height="10dp" />
+
+            <TextView
+                android:id="@+id/promoans"
+                style="@style/custom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="dateans1" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/View14"
+            android:layout_width="wrap_content"
+            android:layout_height="10dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/textView6"
+                style="@style/custom"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:text="Reduction" />
+
+            <View
+                android:id="@+id/View09"
+                android:layout_width="100dp"
+                android:layout_height="10dp" />
+
+            <TextView
+                android:id="@+id/reducans"
+                style="@style/custom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="dateans1" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/View15"
+            android:layout_width="wrap_content"
+            android:layout_height="10dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/textView7"
+                style="@style/custom"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:text="Amount of paid" />
+
+            <View
+                android:id="@+id/View07"
+                android:layout_width="100dp"
+                android:layout_height="10dp" />
+
+            <TextView
+                android:id="@+id/amountans"
+                style="@style/custom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="dateans1" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/View17"
+            android:layout_width="wrap_content"
+            android:layout_height="10dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/textView8"
+                style="@style/custom"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:text="Transaction Date" />
+
+            <View
+                android:id="@+id/View08"
+                android:layout_width="100dp"
+                android:layout_height="10dp" />
+
+            <TextView
+                android:id="@+id/trdateans"
+                style="@style/custom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="dateans1" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/View16"
+            android:layout_width="wrap_content"
+            android:layout_height="10dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="2dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/textView9"
+                style="@style/custom"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Transaction Id" />
+
+            <View
+                android:id="@+id/View06"
+                android:layout_width="100dp"
+                android:layout_height="10dp" />
+
+            <TextView
+                android:id="@+id/tridans"
+                style="@style/custom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="dateans1" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="wrap_content"
+            android:layout_height="10dp" />
+
+    </LinearLayout>
+    
+   <!--  <Button
+        android:id="@+id/back"
          style="@style/custom"           android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-     
-        android:text="dateans1" />
-       <View
-    android:layout_width="fill_parent"
-    android:layout_height="20dp" >
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Back" /> -->
 
-</View>
-       <TextView
-           android:id="@+id/priceans"
-            style="@style/custom"           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-         
-           android:text="dateans1" />
-       <View
-    android:layout_width="fill_parent"
-    android:layout_height="20dp" >
-
-</View>
-       <TextView
-            android:id="@+id/promoans"
-             style="@style/custom"           android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-         
-            android:text="dateans1" />
-       <View
-    android:layout_width="fill_parent"
-    android:layout_height="20dp" >
-
-</View>
-       <TextView
-            android:id="@+id/reducans"
-             style="@style/custom"           android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-           
-            android:text="dateans1" />
-       <View
-    android:layout_width="fill_parent"
-    android:layout_height="20dp" >
-
-</View>
-       <TextView
-            android:id="@+id/amountans"
-             style="@style/custom"           android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-          
-            android:text="dateans1" />
-       <View
-    android:layout_width="fill_parent"
-    android:layout_height="20dp" >
-
-</View>
-       <TextView
-            android:id="@+id/trdateans"
-             style="@style/custom"           android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-         
-            android:text="dateans1" />
-       <View
-    android:layout_width="fill_parent"
-    android:layout_height="20dp" >
-
-</View>
-       <TextView
-            android:id="@+id/tridans"
-             style="@style/custom"           android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-         
-            android:text="dateans1" />
-         </LinearLayout>
-  </RelativeLayout>
-</LinearLayout>
+</RelativeLayout>

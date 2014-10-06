@@ -231,9 +231,9 @@ public class CourseAudio extends SherlockActivity implements OnTouchListener, On
 		if(v.getId() == R.id.seekBar1){
 			
 			if(mediaPlayer.isPlaying()){
-		    	SeekBar sb = (SeekBar)v;
-				int playPositionInMillisecconds = (mediaPlayer.getDuration() / 10) * sb.getProgress();
-				mediaPlayer.seekTo(playPositionInMillisecconds);
+//		    	SeekBar sb = (SeekBar)v;
+//				int playPositionInMillisecconds = (mediaPlayer.getDuration() / 10) * sb.getProgress();
+//				mediaPlayer.seekTo(playPositionInMillisecconds);
 			}
 		}
 		return false;
@@ -400,6 +400,8 @@ public class CourseAudio extends SherlockActivity implements OnTouchListener, On
        switch (item.getItemId()) {
 
        case android.R.id.home:
+    	   mediaPlayer.stop();
+    	   mediaPlayer.reset();
             finish();
             break;
 

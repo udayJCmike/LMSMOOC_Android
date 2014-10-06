@@ -20,6 +20,7 @@
              android:layout_gravity="center"
              android:paddingLeft="15dp"
              android:paddingRight="15dp"
+             android:textSize="25sp"
              android:text="@string/signintext" />
 
 <View
@@ -135,6 +136,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/mycustom_button"
+          android:minHeight="50dp"
         android:text="@string/signin"
         android:textColor="#ffffff" />
 
@@ -147,6 +149,7 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="match_parent"
          android:textColor="#ffffff"
+           android:minHeight="50dp"
            android:background="@drawable/custom_backbutton"
         android:layout_height="wrap_content"
         android:text="@string/back" />

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="match_parent" android:background="#ffffff"
     android:layout_height="match_parent"
     android:orientation="vertical" >
     <ScrollView
@@ -57,13 +57,13 @@
         android:layout_marginLeft="100dp"
        
         android:scaleType="fitXY"
-        android:src="@drawable/list_selector" />
+       />
 
 </LinearLayout>
 
 <LinearLayout
     android:layout_width="fill_parent"
-    android:layout_height="87dp"
+    android:layout_height="wrap_content"
        android:paddingLeft="20dp"
     android:orientation="horizontal" >
 
@@ -85,7 +85,7 @@
 
 <LinearLayout
     android:layout_width="fill_parent"
-    android:layout_height="67dp"
+    android:layout_height="wrap_content"
        android:paddingLeft="20dp"
     android:orientation="horizontal" >
 
@@ -101,6 +101,7 @@
          style="@style/custom"
         android:layout_width="wrap_content"
         android:layout_marginLeft="100dp"
+        android:scrollbars = "vertical"
         android:layout_height="wrap_content"
         android:text="" />
 </LinearLayout>

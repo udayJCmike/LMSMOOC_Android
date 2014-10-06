@@ -1,56 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="#ffffff"
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true" >
 
         <LinearLayout
             android:id="@+id/linearLayout1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:orientation="vertical"
             android:paddingBottom="10dp"
-            android:paddingTop="30dp" >
+            android:paddingTop="10dp" >
 
-            <TextView
-                android:id="@+id/addrstext"
-                android:layout_width="350dp"
-                android:layout_height="wrap_content"
-                android:text="636363636363636363sd63f6d3f636 36sd36f3a6s3d6f36sd3f6a3sdf63s6df36sd363636363636363636363636363636363636363636363333333333333333333333333333333333333333333333333333333333333333333333333333333333"
-                style="@style/custom"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
-<View
-     android:id="@+id/viewid2"
-     android:layout_width="350dp"
-     android:layout_height="50dp"
-    >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
 
-</View>
-            <TextView
-                android:id="@+id/veh_reg_no"
-                android:layout_width="350dp"
-                android:layout_height="wrap_content"
-                android:text=""
-                  style="@style/custom"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/addrstext"
+                        style="@style/custom"
+                        android:layout_width="500dp"
+                        android:layout_height="wrap_content"
+                        android:text="636363636363636363sd63f6d3f636 36sd36f3a6s3d6f36sd3f6a3sdf63s6df36sd363636363636363636363636363636363636363636363333333333333333333333333333333333333333333333333333333333333333333333333333333333"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <View
+                        android:id="@+id/viewid2"
+                        android:layout_width="450dp"
+                        android:layout_height="10dp" />
+
+                    <TextView
+                        android:id="@+id/veh_reg_no"
+                        style="@style/custom"
+                        android:layout_width="500dp"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="190dp"
+                    android:layout_height="match_parent" />
+
+                <ImageView
+                    android:id="@+id/redbtn"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_horizontal" />
+
+                <View
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="16dp" />
+
         </LinearLayout>
-
-        <ImageView
-            android:id="@+id/redbtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-         
-          />
 
     </RelativeLayout>
 

@@ -32,7 +32,7 @@ public class BrowseCourse extends SherlockFragmentActivity {
 	        ActionBar ab = getSupportActionBar();
 		      ab.setDisplayHomeAsUpEnabled(true);
 		      getSupportActionBar().setHomeButtonEnabled(true);
-		      ab.setTitle(Html.fromHtml("<font color='#ffffff'>Browse Course</font>"));
+		      ab.setTitle(Html.fromHtml("<font color='#ffffff'>Courses</font>"));
 		      PagerTabStrip pagerTabStrip = (PagerTabStrip) findViewById(R.id.pagerTabStrip);
 		        pagerTabStrip.setDrawFullUnderline(true);
 		        pagerTabStrip.setTabIndicatorColor(Color.parseColor("#3399FF"));

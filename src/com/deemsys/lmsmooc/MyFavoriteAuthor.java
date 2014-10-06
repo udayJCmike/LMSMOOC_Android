@@ -10,27 +10,20 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.deemsys.lmsmooc.InboxFragment.Details;
-
-
-
-import android.app.ActionBar;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
+
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.Html;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
+
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -76,6 +69,7 @@ public class MyFavoriteAuthor extends Fragment {
 		          cDialog.show();
 			}
 				
+				@SuppressWarnings("deprecation")
 				@Override
 				protected void onPostExecute(String file_url) {
 			   
@@ -89,7 +83,7 @@ public class MyFavoriteAuthor extends Fragment {
 							alertDialog.setTitle("INFO!");
 
 							// Setting Dialog Message
-							alertDialog.setMessage("No Favorite authors available");
+							alertDialog.setMessage("No data found.");
 
 							// Setting Icon to Dialog
 							alertDialog.setIcon(R.drawable.delete);
@@ -186,6 +180,7 @@ public class MyFavoriteAuthor extends Fragment {
 				
 				
 			}
+		@SuppressWarnings("deprecation")
 		@Override
 		  public void onResume() {
 		      super.onResume();
