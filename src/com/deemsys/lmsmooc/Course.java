@@ -19,7 +19,7 @@ public class Course {
  String course_description;
  String students_enrolled;
  String ifmycourse;
- 
+ String promocheck;
  String audiourl;
 //  
 // public Course(String authorname, String course_name,String costw, String course_id2, String instructorid, Bitmap bitmap) {
@@ -164,5 +164,10 @@ public String getCode() {
 		 public String getaudiourl() {
 			  return audiourl;
 			 }
-			
+ public String getpromocheck() {
+return promocheck;
+ }
+public void setpromocheck(String promocheck) {
+this.promocheck = promocheck;
+ }			
 }

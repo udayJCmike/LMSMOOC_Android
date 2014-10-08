@@ -9,14 +9,15 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="89dp" >
+        android:layout_height="90dp" >
+
 <LinearLayout
-        android:id="@+id/linearone"
-          android:layout_width="wrap_content"
-          android:layout_height="match_parent"
-          android:layout_alignParentLeft="true" 
-          android:paddingLeft="20dp"
-           android:orientation="vertical" >
+    android:id="@+id/linearone"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_alignParentLeft="true"
+    android:orientation="vertical"
+    android:paddingLeft="0dp" >
 
      <TextView
          android:id="@+id/coursename"
@@ -30,10 +31,8 @@
          android:textSize="20dp" />
 
      <View
-    
-     android:layout_width="fill_parent"
-     android:layout_height="10dp"
-  >
+         android:layout_width="fill_parent"
+         android:layout_height="5dp" >
 
 </View>
       <TextView
@@ -46,6 +45,17 @@
              android:focusable="false"
         android:clickable="false"
             android:textAppearance="?android:attr/textAppearanceMedium" />
+
+      <View
+          android:layout_width="fill_parent"
+          android:layout_height="5dp" />
+
+      <ImageView
+          android:id="@+id/promoimage"
+          android:layout_width="130dp"
+          android:layout_height="18dp"
+          android:scaleType="fitXY"
+          android:src="@drawable/promocode" />
      
       </LinearLayout>
 
@@ -75,13 +85,6 @@
         
        
     </RelativeLayout>
-<View
-    
-     android:layout_width="fill_parent"
-     android:layout_height="5dp"
-  >
-
-</View>
  <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_weight="1"

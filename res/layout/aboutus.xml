@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#ffffff"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+           android:orientation="vertical"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo" />
+
+    </LinearLayout>
+
+<View
+    android:layout_width="fill_parent"
+    android:layout_height="4dp" >
+
+</View>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/aboutty" />
+
+    </LinearLayout>
+
+<View
+    android:layout_width="fill_parent"
+    android:layout_height="24dp" >
+
+</View>
+
+ <RelativeLayout
+     android:layout_width="match_parent"
+     android:layout_height="68dp"
+     android:layout_gravity="center_horizontal" >
+
+    <LinearLayout
+        android:id="@+id/lin1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="false"
+        android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView3"
+          style="@style/custom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/versionstring" />
+    <TextView
+        android:id="@+id/textView2"
+          style="@style/custom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/buildstring" />
+       </LinearLayout>
+
+    <LinearLayout
+         android:id="@+id/lin2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/lin1" >
+
+    <View
+        android:layout_width="20dp"
+        android:layout_height="match_parent" >
+
+</View>
+
+    </LinearLayout>
+   
+      <LinearLayout
+          android:id="@+id/lin3"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentLeft="false"
+          android:layout_toRightOf="@id/lin2"
+          android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView3"
+          style="@style/custom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/versionno" />
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+          style="@style/custom"
+        android:text="@string/buildno" />
+       </LinearLayout>
+    </RelativeLayout>
+<View
+        android:layout_width="fill_parent"
+        android:layout_height="20dp" >
+
+</View>
+
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:orientation="vertical" >
+
+     <TextView
+         android:id="@+id/textView4"
+         android:layout_width="wrap_content"
+           style="@style/custom"
+         android:layout_height="wrap_content"
+         android:text="@string/designdevelop" />
+
+     <TextView
+         android:id="@+id/textView5"
+           style="@style/custom"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="@string/deems" />
+
+ </LinearLayout>
+
+</LinearLayout>

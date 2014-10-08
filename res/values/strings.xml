@@ -10,6 +10,7 @@
     <string name="signin">Login</string>
     <string name="register">Signup</string>
      <string name="back">Back</string>
+        <string name="aboutty">Tagline in grey color</string>
        <string name="terms"><a href='http://www.redbus.in/mob/mTerms.aspx' >Terms of Service</a></string>
     <string name="checkme">I agree to the</string>
         <string name="Ratings">Ratings</string>
@@ -17,6 +18,7 @@
                  <string name="selectgen">Select Gender</string>
                     <string name="selectmale">Male</string>
                        <string name="selectfemale">Female</string>
+                      
     <string-array name="nav_drawer_items">
         
         <item >Profile</item>
@@ -74,4 +76,12 @@
     <string name="signuptext">Sign up with your Email id!!</string>
   
  <string name="inital_Time">0 min, 0 sec</string>
+ 
+ 
+  <string name="versionstring">Version No :</string>
+    <string name="buildstring">Build No :</string>
+    <string name="versionno">1.0</string>
+    <string name="buildno">1.0.1</string>
+    <string name="designdevelop">Designed and Developed by</string>
+    <string name="deems">Deemsys Inc.</string>
 </resources>

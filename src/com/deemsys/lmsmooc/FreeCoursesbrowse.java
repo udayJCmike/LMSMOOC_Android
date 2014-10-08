@@ -69,7 +69,11 @@ public class FreeCoursesbrowse  extends Fragment {
 	 View loadMoreView;
 	 JSONArray user = null;
 	 static ListView listView ;
-	 String course_name,authorname,student_enrolled,ratingcouont,cost,course_id,instructorid,numofrows,course_cover_image;
+	 String promocheck;
+	 private static final String Promo_Check= "promocheck";
+	 String course_description;
+	 private static final String TAG_COURSE_DESCRIPTION= "course_description";
+	 String course_name,authorname,student_enrolled,ratingcouont,cost,course_id,instructorid,numofrows,course_cover_image,ifmycoursepresent;
 	 private static final String TAG_SRESL= "serviceresponse";
 	    private static final String TAG_Course_ARRAY = "CourseList";
 		private static final String TAG_SRES= "serviceresponse";
@@ -234,9 +238,10 @@ public class FreeCoursesbrowse  extends Fragment {
 		    		instructorid=c2.getString(TAG_INSTRUCTOR_ID);
 		    		course_id=c2.getString(TAG_COURSE_ID);
 		            course_name = c2.getString(TAG_COURSE_NAME);
-		        
+		            promocheck=c2.getString(Promo_Check);
 		          //  course_cover_image="http://208.109.248.89/lmsvideos/28/coverImage.jpg";
 		            course_cover_image=c2.getString(TAG_course_cover_image);
+		            course_description=c2.getString(TAG_COURSE_DESCRIPTION);
 		        	cost= c2.getString(TAG_COURSE_COST);
 		        	ratingcouont=c2.getString(TAG_COURSE_RATINGS);
 		        	coursetotallist.add(authorname);
@@ -246,14 +251,15 @@ public class FreeCoursesbrowse  extends Fragment {
 		        	imagelist.add(course_cover_image);
 
 
-		        	 Course cnt = new Course(authorname,course_name,cost,course_id,instructorid,course_cover_image,ratingcouont);
-		        	 cnt.setName(authorname);
+		        	 Course cnt = new Course(authorname,course_name,cost,course_id,instructorid,course_cover_image,ratingcouont,ifmycoursepresent,promocheck);
+			        	 cnt.setName(authorname);
 		        	 cnt.setCode(course_name);
 					  cnt.setins_id(instructorid);
 					  cnt.setcourseid(course_id);
 					  cnt.setrating(ratingcouont);
 		           cnt.setstringurl(course_cover_image);
-		        
+		           cnt.setpromocheck(promocheck);
+		           cnt.setifmycourse(ifmycoursepresent);
 				    courselist.add(cnt);
 				 
 				    System.out.println("size fo country list"+courselist.size());
@@ -370,6 +376,7 @@ public class FreeCoursesbrowse  extends Fragment {
     	   TextView code;
     	   TextView name;
     	   ImageView cover;
+    	   ImageView promoimage;
     	   TextView cost;
     	   ImageView ratingshow;
     	  }
@@ -395,6 +402,8 @@ public class FreeCoursesbrowse  extends Fragment {
     	   holder.cost = (TextView) convertView.findViewById(R.id.cost);
        holder.cover = (ImageView) convertView.findViewById(R.id.cover);
       holder.ratingshow= (ImageView) convertView.findViewById(R.id.ratingimage);
+      holder.promoimage= (ImageView) convertView.findViewById(R.id.promoimage);
+
     	   convertView.setTag(holder);
     	 
     	   } else {
@@ -412,6 +421,15 @@ public class FreeCoursesbrowse  extends Fragment {
     	  
 //    	   new DownloadTask((ImageView) convertView.findViewById(R.id.cover))
 //           .execute((String) country.getstringurl());
+    	    if(country.getpromocheck().equalsIgnoreCase("1"))
+    	    {
+    	    	holder.promoimage.setImageResource(R.drawable.promocode);  
+    	    }
+    	    else
+    	    {
+    	    	holder.promoimage.setImageResource(R.drawable.click);  
+    	    }
+
     	   if(country.getrating().equalsIgnoreCase("0"))
     	   {
     		   holder.ratingshow.setImageResource(R.drawable.zero);  

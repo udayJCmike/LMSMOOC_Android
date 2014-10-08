@@ -5,8 +5,6 @@ package com.deemsys.lmsmooc;
  
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
- 
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.Fragment;
 import android.content.Intent;
@@ -41,6 +39,7 @@ public class NewMainActivity extends SherlockFragmentActivity {
     Fragment fragment7 = new MyFavoriteCategory();
     Fragment fragment8 = new MyFavoriteAuthor();
     Fragment fragment9 = new BillingFragment();
+    Fragment fragment10 = new AboutUs();
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
  static String sampletestvale="8";
@@ -56,13 +55,13 @@ public class NewMainActivity extends SherlockFragmentActivity {
     	
         getActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3399FF")));
       
-        title = new String[] {Config.firstname , "Profile","Change Password","Inbox","My Courses","My Favorites","My Categories","My Authors","Billing","Logout"};
+        title = new String[] {Config.firstname , "Profile","Change Password","Inbox","My Courses","My Favorites","My Categories","My Authors","Billing","About Us","Logout"};
  
        
         subtitle = new String[] { "Subtitle Fragment 1", "Subtitle Fragment 2" };
  
       
-        icon = new int[] { R.drawable.click, R.drawable.profile,R.drawable.changepassword,R.drawable.inbox,R.drawable.courses,R.drawable.favorites,R.drawable.category,R.drawable.author,R.drawable.billing,R.drawable.logout,R.drawable.ic_launcher };
+        icon = new int[] { R.drawable.click, R.drawable.profile,R.drawable.changepassword,R.drawable.inbox,R.drawable.courses,R.drawable.favorites,R.drawable.category,R.drawable.author,R.drawable.billing,R.drawable.abouth,R.drawable.logout,R.drawable.ic_launcher };
  
        
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -162,6 +161,9 @@ public class NewMainActivity extends SherlockFragmentActivity {
             break;
         case 8:
             ft.replace(R.id.content_frame, fragment9);
+            break;
+        case 9:
+            ft.replace(R.id.content_frame, fragment10);
             break;
         default:
         	 Intent intentSignUP=new Intent(getApplicationContext(),LoginActivity.class);

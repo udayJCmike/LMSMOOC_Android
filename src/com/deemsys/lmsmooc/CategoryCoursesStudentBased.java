@@ -78,6 +78,9 @@ public class CategoryCoursesStudentBased  extends SherlockFragmentActivity {
 	 static ListView listView ;
 	 Bitmap bitmap;
 	 String rating_count;
+	 String promocheck;
+	 private static final String Promo_Check= "promocheck";
+
 	 String course_description;
 	 private static final String TAG_COURSE_DESCRIPTION= "course_description";
 	 String course_name,authorname,student_enrolled,ratingcouont,cost,course_id,instructorid,numofrows,category_name,ifmycoursepresent,course_cover_image,audiourl,audiourlpassing;
@@ -247,7 +250,8 @@ public class CategoryCoursesStudentBased  extends SherlockFragmentActivity {
 				    		course_id=c2.getString(TAG_COURSE_ID);
 				            course_name = c2.getString(TAG_COURSE_NAME);
 				            ifmycoursepresent= c2.getString(TAG_Check_);
-				            
+				            promocheck=c2.getString(Promo_Check);
+
 				            audiourl=c2.getString(TAG_COURSE_PROMO_VIDEO);
 				            course_cover_image=c2.getString(TAG_course_cover_image);
 				        	cost= c2.getString(TAG_COURSE_COST);
@@ -261,9 +265,11 @@ public class CategoryCoursesStudentBased  extends SherlockFragmentActivity {
 				        	imagelist.add(course_cover_image);
 
 				        
-				        	 Course cnt = new Course(authorname,course_name,cost,course_id,instructorid,course_cover_image,ratingcouont,ifmycoursepresent,audiourl);
+				        	 Course cnt = new Course(authorname,course_name,cost,course_id,instructorid,course_cover_image,ratingcouont,ifmycoursepresent,audiourl,promocheck);
 				        	 cnt.setName(authorname);
 				        	 cnt.setCode(course_name);
+				       	  cnt.setpromocheck(promocheck);
+
 							  cnt.setins_id(instructorid);
 							  cnt.setcourseid(course_id);
 							  cnt.setrating(ratingcouont);
@@ -375,6 +381,7 @@ public class CategoryCoursesStudentBased  extends SherlockFragmentActivity {
     	   TextView name;
     	   
     	   TextView cost;
+    	   ImageView promoimage;
     	   ImageView cover;
     	   ImageView ratingshow;
     	  }
@@ -399,6 +406,8 @@ public class CategoryCoursesStudentBased  extends SherlockFragmentActivity {
        	   holder.name = (TextView) convertView.findViewById(R.id.author);
        	   holder.cost = (TextView) convertView.findViewById(R.id.cost);
           holder.cover = (ImageView) convertView.findViewById(R.id.cover);
+        
+
          holder.ratingshow= (ImageView) convertView.findViewById(R.id.ratingimage);
        	   convertView.setTag(holder);
        	 
@@ -411,12 +420,21 @@ public class CategoryCoursesStudentBased  extends SherlockFragmentActivity {
        	   holder.name.setText(country.getName());
        	   holder.cost.setText("$ "+country.getRegion());
        	   holder.cover.setImageBitmap(country.getBitmap());
+       	 holder.promoimage= (ImageView) convertView.findViewById(R.id.promoimage);
+
 //       	   aQuery = new AQuery(getActivity());
 //       	    aQuery.id(R.id.cover).image(country.getstringurl(),true,true);
        	    Picasso.with(CategoryCoursesStudentBased.this).load(country.getstringurl()).into(holder.cover);
        	  
-//       	   new DownloadTask((ImageView) convertView.findViewById(R.id.cover))
-//              .execute((String) country.getstringurl());
+       	 if(country.getpromocheck().equalsIgnoreCase("1"))
+ 	    {
+ 	    	holder.promoimage.setImageResource(R.drawable.promocode);  
+ 	    }
+ 	    else
+ 	    {
+ 	    	holder.promoimage.setImageResource(R.drawable.click);  
+ 	    }
+
        	   if(country.getrating().equalsIgnoreCase("0"))
        	   {
        		   holder.ratingshow.setImageResource(R.drawable.zero);  

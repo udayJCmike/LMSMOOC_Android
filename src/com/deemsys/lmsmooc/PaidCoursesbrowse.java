@@ -27,7 +27,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
 import com.squareup.picasso.Picasso;
 import android.support.v4.app.Fragment;
 import android.app.ProgressDialog;
@@ -70,7 +69,11 @@ public class PaidCoursesbrowse  extends Fragment {
 	 View loadMoreView;
 	 JSONArray user = null;
 	 static ListView listView ;
-	 String course_name,authorname,student_enrolled,ratingcouont,cost,course_id,instructorid,numofrows,course_cover_image;
+	 String promocheck;
+	 private static final String Promo_Check= "promocheck";
+	 String course_description;
+	 private static final String TAG_COURSE_DESCRIPTION= "course_description";
+	 String course_name,authorname,student_enrolled,ratingcouont,cost,course_id,instructorid,numofrows,course_cover_image,ifmycoursepresent;
 	 private static final String TAG_SRESL= "serviceresponse";
 	    private static final String TAG_Course_ARRAY = "CourseList";
 		private static final String TAG_SRES= "serviceresponse";
@@ -177,7 +180,7 @@ public class PaidCoursesbrowse  extends Fragment {
 		  final HttpParams params = httpclient.getParams();
 		  HttpResponse response;
 		  private String content =  null;
-		 // private boolean error = false;
+	//	  private boolean error = false;
 		@Override
 	    protected void onPreExecute() {
 			  cDialog = new ProgressDialog(getActivity());
@@ -235,9 +238,10 @@ public class PaidCoursesbrowse  extends Fragment {
 		    		instructorid=c2.getString(TAG_INSTRUCTOR_ID);
 		    		course_id=c2.getString(TAG_COURSE_ID);
 		            course_name = c2.getString(TAG_COURSE_NAME);
-		        
+		            promocheck=c2.getString(Promo_Check);
 		          //  course_cover_image="http://208.109.248.89/lmsvideos/28/coverImage.jpg";
 		            course_cover_image=c2.getString(TAG_course_cover_image);
+		            course_description=c2.getString(TAG_COURSE_DESCRIPTION);
 		        	cost= c2.getString(TAG_COURSE_COST);
 		        	ratingcouont=c2.getString(TAG_COURSE_RATINGS);
 		        	coursetotallist.add(authorname);
@@ -247,14 +251,15 @@ public class PaidCoursesbrowse  extends Fragment {
 		        	imagelist.add(course_cover_image);
 
 
-		        	 Course cnt = new Course(authorname,course_name,cost,course_id,instructorid,course_cover_image,ratingcouont);
-		        	 cnt.setName(authorname);
+		        	 Course cnt = new Course(authorname,course_name,cost,course_id,instructorid,course_cover_image,ratingcouont,ifmycoursepresent,promocheck);
+			        	 cnt.setName(authorname);
 		        	 cnt.setCode(course_name);
 					  cnt.setins_id(instructorid);
 					  cnt.setcourseid(course_id);
 					  cnt.setrating(ratingcouont);
 		           cnt.setstringurl(course_cover_image);
-		        
+		           cnt.setpromocheck(promocheck);
+		           cnt.setifmycourse(ifmycoursepresent);
 				    courselist.add(cnt);
 				 
 				    System.out.println("size fo country list"+courselist.size());
@@ -333,12 +338,12 @@ public class PaidCoursesbrowse  extends Fragment {
 			    } catch (IOException e) {
 			     Log.w("HTTP3:",e );
 			     content = e.getMessage();
-			   //  error = true;
+			  //   error = true;
 			     cancel(true);
 			    }catch (Exception e) {
 			     Log.w("HTTP4:",e );
 			     content = e.getMessage();
-			  //   error = true;
+			   //  error = true;
 			     cancel(true);
 			    }
 //			    }catch(JSONException e)
@@ -371,6 +376,7 @@ public class PaidCoursesbrowse  extends Fragment {
     	   TextView code;
     	   TextView name;
     	   ImageView cover;
+    	   ImageView promoimage;
     	   TextView cost;
     	   ImageView ratingshow;
     	  }
@@ -396,6 +402,8 @@ public class PaidCoursesbrowse  extends Fragment {
     	   holder.cost = (TextView) convertView.findViewById(R.id.cost);
        holder.cover = (ImageView) convertView.findViewById(R.id.cover);
       holder.ratingshow= (ImageView) convertView.findViewById(R.id.ratingimage);
+      holder.promoimage= (ImageView) convertView.findViewById(R.id.promoimage);
+
     	   convertView.setTag(holder);
     	 
     	   } else {
@@ -413,6 +421,15 @@ public class PaidCoursesbrowse  extends Fragment {
     	  
 //    	   new DownloadTask((ImageView) convertView.findViewById(R.id.cover))
 //           .execute((String) country.getstringurl());
+    	    if(country.getpromocheck().equalsIgnoreCase("1"))
+    	    {
+    	    	holder.promoimage.setImageResource(R.drawable.promocode);  
+    	    }
+    	    else
+    	    {
+    	    	holder.promoimage.setImageResource(R.drawable.click);  
+    	    }
+
     	   if(country.getrating().equalsIgnoreCase("0"))
     	   {
     		   holder.ratingshow.setImageResource(R.drawable.zero);  
@@ -563,7 +580,29 @@ public class PaidCoursesbrowse  extends Fragment {
 
  }
     
-    
+//    private class LoadImage extends AsyncTask<String, String, String> {
+//	    @Override
+//	        protected void onPreExecute() {
+//	            super.onPreExecute();
+//
+//	    }
+//	       protected String doInBackground(String... args) {
+//	         try {
+//	        	 System.out.println("test");
+//	        
+//	               bitmap = BitmapFactory.decodeStream((InputStream)new URL(args[0]).getContent());
+//	        } catch (Exception e) {
+//	              e.printStackTrace();
+//	        }
+//	      return null;
+//	       }
+//	       protected void onPostExecute(String image) {
+//	         if(image != null){
+//	        	
+//	         }
+//	        
+//	       }
+//	   }
     class Avatarfetch extends AsyncTask<String, String, String> {
     	@Override
         protected void onPreExecute() {

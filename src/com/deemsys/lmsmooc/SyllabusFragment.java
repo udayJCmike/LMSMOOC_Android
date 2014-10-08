@@ -275,7 +275,7 @@ public class SyllabusFragment extends Fragment {
 				    {
 				    	if(jArray != null){
 				    	
-				    	
+				    	int k=1;
 				    	 JSONArray c = jArray.getJSONArray("JsonOutput");
 					    	Log.i("jarray values", "["+c+"]");
 					
@@ -288,18 +288,15 @@ public class SyllabusFragment extends Fragment {
 					    	     ch_list= new ArrayList<Child>();
 					    	    
 					    	        String value = obj.getString("ParentCategory"); 
-					    	        for(int k=0;i<c.length();k++)
-					    	        {
-					    	        	value=k+" "+value;
-					    	        	   listDataHeader.add(value);
-					    	        }
-					    	     
+					    	        value=Integer.toString(k)+"."+value;
+					    	        listDataHeader.add(value);
+					    	        k++;
 					    	       
 					    	        System.out.println("value of listdataheader"+listDataHeader);
 					    	        Log.d("Item name: ", value);
 					    	        String id = obj.getString("ChildCategory"); 
 					    	        Log.d("child name: ", id);
-					    	      
+					    	     // int childcounty=0;
 					    	        JSONArray jsonarray = new JSONArray(id);
 					    	        for(int j=0; j<jsonarray.length(); j++)
 							    	{

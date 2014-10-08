@@ -9,7 +9,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="135dp" >
+        android:layout_height="165dp" >
 <LinearLayout
         android:id="@+id/linearone"
           android:layout_width="wrap_content"
@@ -41,6 +41,21 @@
              android:focusable="false"
         android:clickable="false"
             android:textAppearance="?android:attr/textAppearanceMedium" />
+
+      <View
+          android:layout_width="fill_parent"
+          android:layout_height="15dp" />
+
+      <ImageView
+          android:id="@+id/promoimage"
+          android:layout_width="130dp"
+          android:layout_height="27dp"
+          android:scaleType="fitXY"
+          android:src="@drawable/promocode" />
+
+<View
+    android:layout_width="fill_parent"
+    android:layout_height="15dp" />
      
       </LinearLayout>
 

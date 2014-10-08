@@ -45,6 +45,7 @@ public class ExpandablelistAdapter extends BaseExpandableListAdapter {
     public View getChildView(int groupPosition, final int childPosition,
             boolean isLastChild, View convertView, ViewGroup parent) {
     	 Child child = (Child) getChild(groupPosition, childPosition);
+    	 System.out.println("child position:::"+childPosition);
    
         String lecttype = child.getlecttype().toString();    // Text before the first dot
         if (convertView == null) {
@@ -58,7 +59,7 @@ public class ExpandablelistAdapter extends BaseExpandableListAdapter {
         ImageView lecturetype = (ImageView) convertView
                 .findViewById(R.id.flag);
  
-        txtListChild.setText(child.getName().toString());
+        txtListChild.setText(Integer.toString(childPosition+1)+"."+child.getName().toString());
         System.out.println("value of array part2"+lecttype);
         if(lecttype.equalsIgnoreCase("Text"))
         {

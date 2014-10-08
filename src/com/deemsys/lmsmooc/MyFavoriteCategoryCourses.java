@@ -82,7 +82,9 @@ public class MyFavoriteCategoryCourses  extends SherlockFragmentActivity {
 	 static ListView listView ;
 	 Bitmap bitmap;
 	 String rating_count;
-	 
+	 String promocheck;
+	 private static final String Promo_Check= "promocheck";
+
 	 String course_description;
 	 private static final String TAG_COURSE_DESCRIPTION= "course_description";
 	 String course_name,authorname,student_enrolled,ratingcouont,cost,course_id,instructorid,numofrows,category_name,course_cover_image,ifmycoursepresent,audiourl,audiourlpassing;
@@ -255,6 +257,8 @@ public class MyFavoriteCategoryCourses  extends SherlockFragmentActivity {
 				            audiourl=c2.getString(TAG_COURSE_PROMO_VIDEO);
 				            course_cover_image=c2.getString(TAG_course_cover_image);
 				        	cost= c2.getString(TAG_COURSE_COST);
+				        	promocheck=c2.getString(Promo_Check);
+
 				        	  course_description=c2.getString(TAG_COURSE_DESCRIPTION);
 				        	ratingcouont=c2.getString(TAG_COURSE_RATINGS);
 				        	coursetotallist.add(authorname);
@@ -265,11 +269,13 @@ public class MyFavoriteCategoryCourses  extends SherlockFragmentActivity {
 				        	imagelist.add(course_cover_image);
 
 
-				        	 Course cnt = new Course(authorname,course_name,cost,course_id,instructorid,course_cover_image,ratingcouont,ifmycoursepresent,audiourl);
+				        	 Course cnt = new Course(authorname,course_name,cost,course_id,instructorid,course_cover_image,ratingcouont,ifmycoursepresent,audiourl,promocheck);
 				        	 cnt.setName(authorname);
 				        	 cnt.setCode(course_name);
 							  cnt.setins_id(instructorid);
 							  cnt.setcourseid(course_id);
+							  cnt.setpromocheck(promocheck);
+
 							  cnt.setrating(ratingcouont);
 							   cnt.setdescription(course_description);
 							  cnt.setifmycourse(ifmycoursepresent);
@@ -381,6 +387,7 @@ public class MyFavoriteCategoryCourses  extends SherlockFragmentActivity {
     	   TextView cost;
     	   ImageView cover;
     	   ImageView ratingshow;
+    	   ImageView promoimage;
     	  }
     	 
     	  public void add(Course country){
@@ -403,6 +410,8 @@ public class MyFavoriteCategoryCourses  extends SherlockFragmentActivity {
        	   holder.name = (TextView) convertView.findViewById(R.id.author);
        	   holder.cost = (TextView) convertView.findViewById(R.id.cost);
            holder.cover = (ImageView) convertView.findViewById(R.id.cover);
+           holder.promoimage= (ImageView) convertView.findViewById(R.id.promoimage);
+
            holder.ratingshow= (ImageView) convertView.findViewById(R.id.ratingimage);
        	   convertView.setTag(holder);
        	 
@@ -421,6 +430,17 @@ public class MyFavoriteCategoryCourses  extends SherlockFragmentActivity {
        	  
 //       	   new DownloadTask((ImageView) convertView.findViewById(R.id.cover))
 //              .execute((String) country.getstringurl());
+       	    
+       	    
+       	 if(country.getpromocheck().equalsIgnoreCase("1"))
+ 	    {
+ 	    	holder.promoimage.setImageResource(R.drawable.promocode);  
+ 	    }
+ 	    else
+ 	    {
+ 	    	holder.promoimage.setImageResource(R.drawable.click);  
+ 	    }
+
        	   if(country.getrating().equalsIgnoreCase("0"))
        	   {
        		   holder.ratingshow.setImageResource(R.drawable.zero);  

@@ -89,7 +89,8 @@ public class AllCourses  extends Fragment {
 	
 	 String course_description;
 	 private static final String TAG_COURSE_DESCRIPTION= "course_description";
-	 
+	 String promocheck;
+	 private static final String Promo_Check= "promocheck";
 	 private static final String TAG_SRESL= "serviceresponse";
 	 private static final String TAG_COURSE_PROMO_VIDEO= "course_promo_video";
 	    private static final String TAG_Course_ARRAY = "CourseList";
@@ -285,6 +286,7 @@ public class AllCourses  extends Fragment {
 		            course_description=c2.getString(TAG_COURSE_DESCRIPTION);
 		            course_cover_image=c2.getString(TAG_course_cover_image);
 		        	cost= c2.getString(TAG_COURSE_COST);
+		        	promocheck=c2.getString(Promo_Check);
 		        	ratingcouont=c2.getString(TAG_COURSE_RATINGS);
 		        	audiourl=c2.getString(TAG_COURSE_PROMO_VIDEO);
 		        	coursetotallist.add(authorname);
@@ -295,7 +297,7 @@ public class AllCourses  extends Fragment {
 		        	imagelist.add(course_cover_image);
 System.out.println("cover image"+ c2.getString(TAG_course_cover_image));
 		        
-		        	 Course cnt = new Course(authorname,course_name,cost,course_id,instructorid,course_cover_image,ratingcouont,ifmycoursepresent,audiourl);
+		        	 Course cnt = new Course(authorname,course_name,cost,course_id,instructorid,course_cover_image,ratingcouont,ifmycoursepresent,audiourl,promocheck);
 		        	 cnt.setName(authorname);
 		        	 cnt.setCode(course_name);
 					  cnt.setins_id(instructorid);
@@ -305,6 +307,7 @@ System.out.println("cover image"+ c2.getString(TAG_course_cover_image));
 		           cnt.setstringurl(course_cover_image);
 		           cnt.setaudiourl(audiourl);
 		           cnt.setdescription(course_description);
+		           cnt.setpromocheck(promocheck);
 				    courselist.add(cnt);
 				 
 				
@@ -423,6 +426,7 @@ System.out.println("cover image"+ c2.getString(TAG_course_cover_image));
     	   ImageView cover;
     	   TextView cost;
     	   ImageView ratingshow;
+    	   ImageView promoimage;
     	  }
     	 
     	  public void add(Course country){
@@ -446,6 +450,7 @@ System.out.println("cover image"+ c2.getString(TAG_course_cover_image));
     	   holder.cost = (TextView) convertView.findViewById(R.id.cost);
        holder.cover = (ImageView) convertView.findViewById(R.id.cover);
       holder.ratingshow= (ImageView) convertView.findViewById(R.id.ratingimage);
+      holder.promoimage= (ImageView) convertView.findViewById(R.id.promoimage);
     	   convertView.setTag(holder);
     	 
     	   } else {
@@ -457,12 +462,18 @@ System.out.println("cover image"+ c2.getString(TAG_course_cover_image));
     	   holder.name.setText(country.getName());
     	   holder.cost.setText("$ "+country.getRegion());
     	   holder.cover.setImageBitmap(country.getBitmap());
-//    	   aQuery = new AQuery(getActivity());
-//    	    aQuery.id(R.id.cover).image(country.getstringurl(),true,true);
+
     	    Picasso.with(getActivity()).load(country.getstringurl()).into(holder.cover);
-    	    System.out.println("url string"+country.getstringurl());
-//    	   new DownloadTask((ImageView) convertView.findViewById(R.id.cover))
-//           .execute((String) country.getstringurl());
+    	  
+    	    System.out.println("getpromocheck string"+country.getpromocheck());
+    	    if(country.getpromocheck().equalsIgnoreCase("1"))
+    	    {
+    	    	holder.promoimage.setImageResource(R.drawable.promocode);  
+    	    }
+    	    else
+    	    {
+    	    	holder.promoimage.setImageResource(R.drawable.click);  
+    	    }
     	   if(country.getrating().equalsIgnoreCase("0"))
     	   {
     		   holder.ratingshow.setImageResource(R.drawable.zero);  
@@ -514,7 +525,7 @@ System.out.println("cover image"+ c2.getString(TAG_course_cover_image));
 
         @Override
         protected void onPostExecute(Boolean result) {
-            // TODO Auto-generated method stub
+            
             super.onPostExecute(result);
             v.setImageBitmap(bm);
             cDialog.dismiss();

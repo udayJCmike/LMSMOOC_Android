@@ -84,7 +84,10 @@ public class AllCoursesbrowse  extends Fragment {
 	 View loadMoreView;
 	 JSONArray user = null;
 	 static ListView listView ;
-		
+	 String promocheck;
+	 private static final String Promo_Check= "promocheck";
+	 String course_description;
+	 private static final String TAG_COURSE_DESCRIPTION= "course_description";
 	 String course_name,authorname,student_enrolled,ratingcouont,cost,course_id,instructorid,numofrows,course_cover_image,ifmycoursepresent;
 	 private static final String TAG_SRESL= "serviceresponse";
 	    private static final String TAG_Course_ARRAY = "CourseList";
@@ -277,9 +280,10 @@ alertDialog = new AlertDialog.Builder(
 		    	    authorname = c2.getString(TAG_COURSE_AUTHOR);
 		    		instructorid=c2.getString(TAG_INSTRUCTOR_ID);
 		    		course_id=c2.getString(TAG_COURSE_ID);
-		    	
+		    		  course_description=c2.getString(TAG_COURSE_DESCRIPTION);
 		            course_name = c2.getString(TAG_COURSE_NAME);
-		          //  course_cover_image="http://208.109.248.89/lmsvideos/28/coverImage.jpg";
+		            promocheck=c2.getString(Promo_Check);
+
 		            course_cover_image=c2.getString(TAG_course_cover_image);
 		        	cost= c2.getString(TAG_COURSE_COST);
 		        	ratingcouont=c2.getString(TAG_COURSE_RATINGS);
@@ -290,19 +294,24 @@ alertDialog = new AlertDialog.Builder(
 		        	imagelist.add(course_cover_image);
 
 
-		        	 Course cnt = new Course(authorname,course_name,cost,course_id,instructorid,course_cover_image,ratingcouont);
+		        	 Course cnt = new Course(authorname,course_name,cost,course_id,instructorid,course_cover_image,ratingcouont,ifmycoursepresent,promocheck);
 		        	 cnt.setName(authorname);
 		        	 cnt.setCode(course_name);
+		       	  cnt.setpromocheck(promocheck);
+
 					  cnt.setins_id(instructorid);
 					  cnt.setcourseid(course_id);
 					  cnt.setrating(ratingcouont);
-					
 		           cnt.setstringurl(course_cover_image);
+		           cnt.setdescription(course_description);
+		         cnt.setifmycourse(ifmycoursepresent);
+		       
 				    courselist.add(cnt);
 				 
-				 
-				    System.out.println("success string value"+successstring);
+				    System.out.println("size fo country list"+courselist.size());
+				    System.out.println("value fo country list"+courselist);
 				    dataAdapter.add(cnt);
+		        	 System.out.println("bitmap"+bitmap);
 		        	
 		       }
 					  
@@ -412,6 +421,8 @@ alertDialog = new AlertDialog.Builder(
     	   ImageView cover;
     	   TextView cost;
     	   ImageView ratingshow;
+    	   ImageView promoimage;
+
     	  }
     	 
     	  public void add(Course country){
@@ -435,6 +446,8 @@ alertDialog = new AlertDialog.Builder(
     	   holder.cost = (TextView) convertView.findViewById(R.id.cost);
        holder.cover = (ImageView) convertView.findViewById(R.id.cover);
       holder.ratingshow= (ImageView) convertView.findViewById(R.id.ratingimage);
+      holder.promoimage= (ImageView) convertView.findViewById(R.id.promoimage);
+
     	   convertView.setTag(holder);
     	 
     	   } else {
@@ -452,6 +465,16 @@ alertDialog = new AlertDialog.Builder(
     	  
 //    	   new DownloadTask((ImageView) convertView.findViewById(R.id.cover))
 //           .execute((String) country.getstringurl());
+    	    
+    	    if(country.getpromocheck().equalsIgnoreCase("1"))
+    	    {
+    	    	holder.promoimage.setImageResource(R.drawable.promocode);  
+    	    }
+    	    else
+    	    {
+    	    	holder.promoimage.setImageResource(R.drawable.click);  
+    	    }
+
     	   if(country.getrating().equalsIgnoreCase("0"))
     	   {
     		   holder.ratingshow.setImageResource(R.drawable.zero);  

@@ -27,7 +27,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
 import com.squareup.picasso.Picasso;
 import android.support.v4.app.Fragment;
 import android.app.ProgressDialog;
@@ -66,6 +65,9 @@ public class PaidCourses  extends Fragment {
 	 MyCustomAdapter dataAdapter = null;
 	 int start = 0;
 	 int limit = 10;
+	 String promocheck;
+	 private static final String Promo_Check= "promocheck";
+
 	 boolean loadingMore = false;
 	 View loadMoreView;
 	 JSONArray user = null;
@@ -251,6 +253,8 @@ public class PaidCourses  extends Fragment {
 			            audiourl=c2.getString(TAG_COURSE_PROMO_VIDEO);
 			            course_cover_image=c2.getString(TAG_course_cover_image);
 			        	cost= c2.getString(TAG_COURSE_COST);
+			        	promocheck=c2.getString(Promo_Check);
+
 			            course_description=c2.getString(TAG_COURSE_DESCRIPTION);
 			        	 ifmycoursepresent= c2.getString(TAG_Check_);
 			        	ratingcouont=c2.getString(TAG_COURSE_RATINGS);
@@ -262,8 +266,9 @@ public class PaidCourses  extends Fragment {
 			        	imagelist.add(course_cover_image);
 
 
-			        	 Course cnt = new Course(authorname,course_name,cost,course_id,instructorid,course_cover_image,ratingcouont,ifmycoursepresent,audiourl);
-			        	 cnt.setName(authorname);
+			        	 Course cnt = new Course(authorname,course_name,cost,course_id,instructorid,course_cover_image,ratingcouont,ifmycoursepresent,audiourl,promocheck);
+			        	  cnt.setpromocheck(promocheck);
+ cnt.setName(authorname);
 			        	 cnt.setCode(course_name);
 						  cnt.setins_id(instructorid);
 						  cnt.setcourseid(course_id);
@@ -365,95 +370,103 @@ public class PaidCourses  extends Fragment {
 			
     }
     private class MyCustomAdapter extends ArrayAdapter<Course> {
-    	 
-    	  private ArrayList<Course> countryList;
-    	 
-    	  public MyCustomAdapter(Context context, int textViewResourceId, 
-    	    ArrayList<Course> countryList) {
-    	   super(context, textViewResourceId, countryList);
-    	   this.countryList = new ArrayList<Course>();
-    	   this.countryList.addAll(countryList);
-    	  }
-    	 
-    	  private class ViewHolder {
-    	   TextView code;
-    	   TextView name;
-    	   ImageView cover;
-    	   TextView cost;
-    	   ImageView ratingshow;
-    	  }
-    	 
-    	  public void add(Course country){
-    	
-    	   this.countryList.add(country);
-    	  }
-    	 
-    	  @Override
-    	  public View getView(int position, View convertView, ViewGroup parent) {
-    	 
-    	   ViewHolder holder = null;
-    	   Log.v("ConvertView", String.valueOf(position));
-    	   if (convertView == null) {
-    	 
-    	   LayoutInflater vi = (LayoutInflater)getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    	   convertView = vi.inflate(R.layout.course_overview, null);
-    	 
-    	   holder = new ViewHolder();
-    	   holder.code = (TextView) convertView.findViewById(R.id.coursename);
-    	   holder.name = (TextView) convertView.findViewById(R.id.author);
-    	   holder.cost = (TextView) convertView.findViewById(R.id.cost);
-       holder.cover = (ImageView) convertView.findViewById(R.id.cover);
-      holder.ratingshow= (ImageView) convertView.findViewById(R.id.ratingimage);
-    	   convertView.setTag(holder);
-    	 
-    	   } else {
-    	    holder = (ViewHolder) convertView.getTag();
-    	   }
-    	 
-    	   Course country = this.countryList.get(position);
-    	   holder.code.setText(country.getCode());
-    	   holder.name.setText(country.getName());
-    	   holder.cost.setText("$ "+country.getRegion());
-    	   holder.cover.setImageBitmap(country.getBitmap());
-//    	   aQuery = new AQuery(getActivity());
-//    	    aQuery.id(R.id.cover).image(country.getstringurl(),true,true);
-    	    Picasso.with(getActivity()).load(country.getstringurl()).into(holder.cover);
-    	  
-//    	   new DownloadTask((ImageView) convertView.findViewById(R.id.cover))
-//           .execute((String) country.getstringurl());
-    	   if(country.getrating().equalsIgnoreCase("0"))
-    	   {
-    		   holder.ratingshow.setImageResource(R.drawable.zero);  
-    	   }
-    	   else  if(country.getrating().equalsIgnoreCase("1"))
-    	   {
-    		   holder.ratingshow.setImageResource(R.drawable.one);  
-    	   }
-    	   else  if(country.getrating().equalsIgnoreCase("2"))
-    	   {
-    		   holder.ratingshow.setImageResource(R.drawable.two);  
-    	   }
-    	   else  if(country.getrating().equalsIgnoreCase("3"))
-    	   {
-    		   holder.ratingshow.setImageResource(R.drawable.three);  
-    	   }
-    	   else  if(country.getrating().equalsIgnoreCase("4"))
-    	   {
-    		   holder.ratingshow.setImageResource(R.drawable.four);  
-    	   }
-    	   else  if(country.getrating().equalsIgnoreCase("5"))
-    	   {
-    		   holder.ratingshow.setImageResource(R.drawable.five);  
-    	   }
-    	   else 
-    	   {
-    		   holder.ratingshow.setImageResource(R.drawable.zero);  
-    	   }
-    	   return convertView;
-    	 
-    	  }
-    	 
-    }
+   	 
+  	  private ArrayList<Course> countryList;
+  	 
+  	  public MyCustomAdapter(Context context, int textViewResourceId, 
+  	    ArrayList<Course> countryList) {
+  	   super(context, textViewResourceId, countryList);
+  	   this.countryList = new ArrayList<Course>();
+  	   this.countryList.addAll(countryList);
+  	  }
+  	 
+  	  private class ViewHolder {
+  	   TextView code;
+  	   TextView name;
+  	   ImageView cover;
+  	   TextView cost;
+  	   ImageView ratingshow;
+  	   ImageView promoimage;
+  	  }
+  	 
+  	  public void add(Course country){
+  	
+  	   this.countryList.add(country);
+  	  }
+  	 
+  	  @Override
+  	  public View getView(int position, View convertView, ViewGroup parent) {
+  	 
+  	   ViewHolder holder = null;
+  	   Log.v("ConvertView", String.valueOf(position));
+  	   if (convertView == null) {
+  	 
+  	   LayoutInflater vi = (LayoutInflater)getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+  	   convertView = vi.inflate(R.layout.course_overview, null);
+  	 
+  	   holder = new ViewHolder();
+  	   holder.code = (TextView) convertView.findViewById(R.id.coursename);
+  	   holder.name = (TextView) convertView.findViewById(R.id.author);
+  	   holder.cost = (TextView) convertView.findViewById(R.id.cost);
+     holder.cover = (ImageView) convertView.findViewById(R.id.cover);
+    holder.ratingshow= (ImageView) convertView.findViewById(R.id.ratingimage);
+    holder.promoimage= (ImageView) convertView.findViewById(R.id.promoimage);
+  	   convertView.setTag(holder);
+  	 
+  	   } else {
+  	    holder = (ViewHolder) convertView.getTag();
+  	   }
+  	 
+  	   Course country = this.countryList.get(position);
+  	   holder.code.setText(country.getCode());
+  	   holder.name.setText(country.getName());
+  	   holder.cost.setText("$ "+country.getRegion());
+  	   holder.cover.setImageBitmap(country.getBitmap());
+
+  	    Picasso.with(getActivity()).load(country.getstringurl()).into(holder.cover);
+  	  
+  	    System.out.println("getpromocheck string"+country.getpromocheck());
+  	    if(country.getpromocheck().equalsIgnoreCase("1"))
+  	    {
+  	    	holder.promoimage.setImageResource(R.drawable.promocode);  
+  	    }
+  	    else
+  	    {
+  	    	holder.promoimage.setImageResource(R.drawable.click);  
+  	    }
+  	   if(country.getrating().equalsIgnoreCase("0"))
+  	   {
+  		   holder.ratingshow.setImageResource(R.drawable.zero);  
+  	   }
+  	   else  if(country.getrating().equalsIgnoreCase("1"))
+  	   {
+  		   holder.ratingshow.setImageResource(R.drawable.one);  
+  	   }
+  	   else  if(country.getrating().equalsIgnoreCase("2"))
+  	   {
+  		   holder.ratingshow.setImageResource(R.drawable.two);  
+  	   }
+  	   else  if(country.getrating().equalsIgnoreCase("3"))
+  	   {
+  		   holder.ratingshow.setImageResource(R.drawable.three);  
+  	   }
+  	   else  if(country.getrating().equalsIgnoreCase("4"))
+  	   {
+  		   holder.ratingshow.setImageResource(R.drawable.four);  
+  	   }
+  	   else  if(country.getrating().equalsIgnoreCase("5"))
+  	   {
+  		   holder.ratingshow.setImageResource(R.drawable.five);  
+  	   }
+  	   else 
+  	   {
+  		   holder.ratingshow.setImageResource(R.drawable.zero);  
+  	   }
+  	   return convertView;
+  	 
+  	  }
+  	 
+  }
     public class DownloadTask extends AsyncTask<String, Void, Boolean> {
         ImageView v;
         String url;

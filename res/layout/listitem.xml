@@ -10,14 +10,13 @@
 
     <TextView
         android:id="@+id/lblListItem"
+        style="@style/custom"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:paddingBottom="5dp"
-        style="@style/custom"
-        android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
         android:paddingTop="5dp"
-        android:textSize="17dip" />
+        android:textSize="15sp" />
 
       <ImageView
           android:id="@+id/flag"

@@ -100,6 +100,8 @@ public class SearchActivity  extends SherlockActivity {
 	 View loadMoreView;
 	 JSONArray user = null;
 	 static ListView listView ;
+	 String promocheck;
+	 private static final String Promo_Check= "promocheck";
 	 String course_name,authorname,student_enrolled,ratingcouont,cost,course_id,instructorid,numofrows,course_cover_image,ifmycoursepresent,audiourl,audiourlpassing;
 	 private static final String TAG_SRESL= "serviceresponse";
 	    private static final String TAG_Course_ARRAY = "CourseList";
@@ -402,17 +404,19 @@ else
 			        	coursetotallist.add(authorname);
 			        	coursetotallist.add(course_name);
 			        	coursetotallist.add(ratingcouont);
-			        	//coursetotallist.add(ifmycoursepresent);
+			        	   promocheck=c2.getString(Promo_Check);
 			       	coursetotallist.add(audiourl);
 			        	imagelist.add(course_cover_image);
 
 			        	ifmycoursepresent="a";
-			        	 Course cnt = new Course(authorname,course_name,cost,course_id,instructorid,course_cover_image,ratingcouont,ifmycoursepresent,audiourl);
+			        	 Course cnt = new Course(authorname,course_name,cost,course_id,instructorid,course_cover_image,ratingcouont,ifmycoursepresent,audiourl,promocheck);
 			        	 cnt.setName(authorname);
 			        	 cnt.setCode(course_name);
 						  cnt.setins_id(instructorid);
 						  cnt.setcourseid(course_id);
 						  cnt.setrating(ratingcouont);
+						  cnt.setpromocheck(promocheck);
+
 						//  cnt.setifmycourse(ifmycoursepresent);
 			           cnt.setstringurl(course_cover_image);
 			           cnt.setaudiourl(audiourl);
@@ -533,6 +537,8 @@ else
     	   ImageView cover;
     	   TextView cost;
     	   ImageView ratingshow;
+    	   ImageView promoimage;
+
     	  }
     	 
     	  public void add(Course country){
@@ -556,6 +562,8 @@ else
     	   holder.cost = (TextView) convertView.findViewById(R.id.cost);
        holder.cover = (ImageView) convertView.findViewById(R.id.cover);
       holder.ratingshow= (ImageView) convertView.findViewById(R.id.ratingimage);
+      holder.promoimage= (ImageView) convertView.findViewById(R.id.promoimage);
+
     	   convertView.setTag(holder);
     	 
     	   } else {
@@ -573,6 +581,16 @@ else
     	  
 //    	   new DownloadTask((ImageView) convertView.findViewById(R.id.cover))
 //           .execute((String) country.getstringurl());
+    	    
+    	    if(country.getpromocheck().equalsIgnoreCase("1"))
+    	    {
+    	    	holder.promoimage.setImageResource(R.drawable.promocode);  
+    	    }
+    	    else
+    	    {
+    	    	holder.promoimage.setImageResource(R.drawable.click);  
+    	    }
+
     	   if(country.getrating().equalsIgnoreCase("0"))
     	   {
     		   holder.ratingshow.setImageResource(R.drawable.zero);  
