@@ -23,6 +23,7 @@ import android.widget.VideoView;
 import android.media.MediaPlayer.OnPreparedListener;
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.view.Menu;
 
 public class CourseDetails extends SherlockFragmentActivity{
 	TextView course_nam,enrol;
@@ -37,6 +38,7 @@ public class CourseDetails extends SherlockFragmentActivity{
     String ratingsho;
     ImageView ratingshow;
     ImageButton mPlayButton;
+    String numberofrows;
 	@SuppressWarnings("deprecation")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +56,7 @@ public class CourseDetails extends SherlockFragmentActivity{
 		 course_enrolls=i.getExtras().getString("enroll_students","");
 		 audio_url=i.getExtras().getString("audio_url","");
 		 ratingsho=i.getExtras().getString("rating","");
+		 numberofrows=i.getExtras().getString("numofrows","");
 		 System.out.println("audio name id value"+course_description);
 	     course_nam.setText(course_name);
 	     enrol.setText(course_enrolls);
@@ -155,7 +158,17 @@ public class CourseDetails extends SherlockFragmentActivity{
 	  @Override
 	    public boolean onOptionsItemSelected(com.actionbarsherlock.view.MenuItem item) {
 	        switch (item.getItemId()) {
-
+	        case R.id.share:
+	        	Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND); 
+	            sharingIntent.setType("text/plain");
+	            sharingIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+	            String url =  Config.URL_COMMON+"User_view_Course?kfkgd="+course_id;
+				
+	 
+	            sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, course_name);
+	            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, url);
+	        startActivity(Intent.createChooser(sharingIntent, "Share via"));
+	        break;
 	        case android.R.id.home:
 	        	videoview.stopPlayback();
 	        	videoview.cancelLongPress();
@@ -168,5 +181,11 @@ public class CourseDetails extends SherlockFragmentActivity{
 	        }
 	        return false;
 	    }
-		
+	  @Override
+	    public boolean onCreateOptionsMenu(Menu menu) {
+	      
+			
+	        getSupportMenuInflater().inflate(R.menu.share, menu);
+			return true;
+	   }	
 }

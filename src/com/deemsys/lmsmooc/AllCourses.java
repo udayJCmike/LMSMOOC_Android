@@ -620,6 +620,7 @@ System.out.println("cover image"+ c2.getString(TAG_course_cover_image));
 	    	   i.putExtra("enroll_students",   course_enrolled_passing);
 	    	   i.putExtra("rating",   rating_count);
 	    	   i.putExtra("audio_url", audiourlpassing);
+	    	   i.putExtra("numofrows", numofrows);
 	    	   startActivity(i);
 	    	   System.out.println("course description value::"+course_descript_to_pass);
 	    	   }

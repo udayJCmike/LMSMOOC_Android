@@ -28,7 +28,7 @@
          android:focusable="false"
          android:text="thendral"
          android:textAppearance="?android:attr/textAppearanceMedium"
-         android:textSize="20dp" />
+         />
 
      <View
          android:layout_width="fill_parent"

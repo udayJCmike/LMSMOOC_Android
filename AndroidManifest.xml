@@ -20,7 +20,7 @@
         android:label="@string/app_name"
         android:theme="@style/MyCustomTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name=".SplashActivity"
             android:screenOrientation="portrait"
             android:label="@string/app_name" >
             <intent-filter>
@@ -29,7 +29,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
+        <activity android:name=".MainActivity"
+             android:screenOrientation="portrait"
+              />
         <activity android:name=".BrowseCourse"
              android:screenOrientation="portrait"
               />
