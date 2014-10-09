@@ -44,7 +44,17 @@
              <activity android:name=".sample"
               android:screenOrientation="portrait" />
              <activity android:name=".NewMainActivity"
-              android:screenOrientation="portrait" />
+              android:screenOrientation="portrait">
+              
+              <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="oauth" android:host="t4jsample"/>
+            </intent-filter>
+              
+              
+          </activity>
              <activity android:name=".CategorySelectionActivity"
               android:screenOrientation="portrait" />
              <activity android:name=".CategoryCourses"

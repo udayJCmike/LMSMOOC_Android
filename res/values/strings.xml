@@ -10,6 +10,7 @@
     <string name="signin">Login</string>
     <string name="register">Signup</string>
      <string name="back">Back</string>
+           <string name="foll">Follow</string>
         <string name="aboutty">Tagline in grey color</string>
        <string name="terms"><a href='http://www.redbus.in/mob/mTerms.aspx' >Terms of Service</a></string>
     <string name="checkme">I agree to the</string>

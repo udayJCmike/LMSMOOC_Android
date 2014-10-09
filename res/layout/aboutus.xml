@@ -104,11 +104,6 @@
         android:text="@string/buildno" />
        </LinearLayout>
     </RelativeLayout>
-<View
-        android:layout_width="fill_parent"
-        android:layout_height="20dp" >
-
-</View>
 
  <LinearLayout
      android:layout_width="match_parent"
@@ -130,5 +125,25 @@
          android:text="@string/deems" />
 
  </LinearLayout>
+ <View
+    android:layout_width="fill_parent"
+    android:layout_height="24dp" >
 
+</View>
+<LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:orientation="vertical" >
+
+    
+
+     <Button
+         android:id="@+id/follo"
+           style="@style/custom"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:background="@drawable/tweet"
+         />
+
+ </LinearLayout>
 </LinearLayout>

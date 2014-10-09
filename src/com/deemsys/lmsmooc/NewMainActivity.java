@@ -8,6 +8,8 @@ import com.actionbarsherlock.view.MenuItem;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.Fragment;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -22,7 +24,6 @@ import android.text.Html;
  
 public class NewMainActivity extends SherlockFragmentActivity {
  
-    // Declare Variables
     DrawerLayout mDrawerLayout;
     ListView mDrawerList;
     ActionBarDrawerToggle mDrawerToggle;
@@ -61,7 +62,7 @@ public class NewMainActivity extends SherlockFragmentActivity {
         subtitle = new String[] { "Subtitle Fragment 1", "Subtitle Fragment 2" };
  
       
-        icon = new int[] { R.drawable.click, R.drawable.profile,R.drawable.changepassword,R.drawable.inbox,R.drawable.courses,R.drawable.favorites,R.drawable.category,R.drawable.author,R.drawable.billing,R.drawable.abouth,R.drawable.logout,R.drawable.ic_launcher };
+        icon = new int[] { R.drawable.click, R.drawable.profile,R.drawable.changepassword,R.drawable.inbox,R.drawable.courses,R.drawable.favorites,R.drawable.category,R.drawable.author,R.drawable.billing,R.drawable.aboutm,R.drawable.logout,R.drawable.ic_launcher };
  
        
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -166,6 +167,7 @@ public class NewMainActivity extends SherlockFragmentActivity {
             ft.replace(R.id.content_frame, fragment10);
             break;
         default:
+        	
         	 Intent intentSignUP=new Intent(getApplicationContext(),LoginActivity.class);
 				startActivity(intentSignUP);
             break;
