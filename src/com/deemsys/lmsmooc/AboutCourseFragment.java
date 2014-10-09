@@ -9,17 +9,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class AboutCourseFragment  extends Fragment
-{
+public class AboutCourseFragment extends Fragment {
 	TextView aboutcourse;
-	 @Override
-	    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-	        View v = inflater.inflate(R.layout.aboucoursefragment, container, false);
-	        setHasOptionsMenu(true);
-	        aboutcourse=(TextView)v.findViewById(R.id.aboutcourse_text);
-	        aboutcourse.setText(Html.fromHtml(CourseDetails.course_description));
-	        aboutcourse.setMovementMethod(new ScrollingMovementMethod());
-			return v;
-	        
-	 }
+
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		View v = inflater
+				.inflate(R.layout.aboucoursefragment, container, false);
+		setHasOptionsMenu(true);
+		aboutcourse = (TextView) v.findViewById(R.id.aboutcourse_text);
+		aboutcourse.setText(Html.fromHtml(CourseDetails.course_description));
+		aboutcourse.setMovementMethod(new ScrollingMovementMethod());
+		return v;
+
+	}
 }

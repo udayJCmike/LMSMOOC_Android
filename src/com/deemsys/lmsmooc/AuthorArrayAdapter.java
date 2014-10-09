@@ -1,7 +1,5 @@
 package com.deemsys.lmsmooc;
 
-
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,60 +17,51 @@ public class AuthorArrayAdapter extends ArrayAdapter<Author> {
 	int layoutResourceId;
 	public static ArrayList<Author> data = new ArrayList<Author>();
 
-	
- 
-	public AuthorArrayAdapter(Activity context, List<Author> vehicleall, int layoutResourceId) {
+	public AuthorArrayAdapter(Activity context, List<Author> vehicleall,
+			int layoutResourceId) {
 		super(context, R.layout.author_each_item, vehicleall);
 		this.layoutResourceId = layoutResourceId;
 		this.context = context;
-		System.out.println("vehicle all value::"+vehicleall);
+
 		data = (ArrayList<Author>) vehicleall;
 
 	}
-	
+
 	class UserHolder {
-	    TextView authname;
-	    TextView number;
-	   
-	   
-	
+		TextView authname;
+		TextView number;
+
 	}
 
-		@Override
-		public View getView(int position, View convertView, ViewGroup parent) {
-		
-			
-		    View row = convertView;  
-		    UserHolder holder = null;
-		
-		    if (row== null) {
-		    	
-	
-		    	LayoutInflater inflater = (LayoutInflater) context
-						.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			
-		  	row = inflater.inflate(R.layout.author_each_item,parent, false);
-		    	
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent) {
+
+		View row = convertView;
+		UserHolder holder = null;
+
+		if (row == null) {
+
+			LayoutInflater inflater = (LayoutInflater) context
+					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+			row = inflater.inflate(R.layout.author_each_item, parent, false);
+
 			holder = new UserHolder();
 			holder.authname = (TextView) row.findViewById(R.id.authorname);
 			holder.number = (TextView) row.findViewById(R.id.numberofcour);
-			
-			row.setTag(holder);
-		    } else {
-			holder = (UserHolder) row.getTag();
-		    }
-		    System.out.println("vlaue of list::"+data);
-		    user = data.get(position);
-		  
-		   
-		 
-		    holder.authname.setText(user.getauthname());
-		    holder.number.setText(user.getauthcoursecount());
-		   
-		   
-		
-		    return row; 
 
+			row.setTag(holder);
+		} else {
+			holder = (UserHolder) row.getTag();
 		}
+
+		user = data.get(position);
+
+		holder.authname.setText(user.getauthname());
+		holder.number.setText(user.getauthcoursecount());
+
+		return row;
+
+	}
 
 }

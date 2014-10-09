@@ -1,27 +1,27 @@
 package com.deemsys.lmsmooc;
 
 public class UnfavoriteCourses {
-	 String name;
-	   boolean selected;
+	String name;
+	boolean selected;
 
-	  public UnfavoriteCourses(String name,Boolean box) {
-	    this.name = name;
-	    selected = box;
-	  }
+	public UnfavoriteCourses(String name, Boolean box) {
+		this.name = name;
+		selected = box;
+	}
 
-	  public String getName() {
-	    return name;
-	  }
+	public String getName() {
+		return name;
+	}
 
-	  public void setName(String name) {
-	    this.name = name;
-	  }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-	  public boolean isSelected() {
-	    return selected;
-	  }
+	public boolean isSelected() {
+		return selected;
+	}
 
-	  public void setSelected(boolean selected) {
-	    this.selected = selected;
-	  }
+	public void setSelected(boolean selected) {
+		this.selected = selected;
+	}
 }

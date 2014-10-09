@@ -1,9 +1,5 @@
 package com.deemsys.lmsmooc;
 
-
-
-
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -13,8 +9,6 @@ import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-
 
 import android.app.AlertDialog;
 
@@ -37,170 +31,168 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 public class ChangePasswordFragment extends Fragment {
-	 private static final String TAG_SUCCESS = "success";
-	
-	 private static final String TAG_SRESL= "serviceresponse";
-	 public ProgressDialog pDialog;
-	EditText oldpasswordedit,newpasswordedt,confirmpasswordedit;
+	private static final String TAG_SUCCESS = "success";
+
+	private static final String TAG_SRESL = "serviceresponse";
+	public ProgressDialog pDialog;
+	EditText oldpasswordedit, newpasswordedt, confirmpasswordedit;
 	Boolean isInternetPresent = false;
-	 ConnectionDetector cd;
-	String oldpass,newpass,confirmpass,successL;
+	ConnectionDetector cd;
+	String oldpass, newpass, confirmpass, successL;
 	Button getpassword;
 	public static String updateurl;
-	public ChangePasswordFragment(){}
-	
+
+	public ChangePasswordFragment() {
+	}
+
 	@Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
- 
-        View rootView = inflater.inflate(R.layout.changepasswordfrag, container, false);
-        LinearLayout layout = (LinearLayout)rootView.findViewById(R.id.changepasslayout);
-        pDialog = new ProgressDialog(getActivity());
-        cd = new ConnectionDetector(getActivity());
-        updateurl=Config.ServerUrl+"ChangePassword.php?service=changepass";
-        oldpasswordedit=(EditText)rootView.findViewById(R.id.oldpassword);
-        newpasswordedt=(EditText)rootView.findViewById(R.id.newpassword);
-        confirmpasswordedit=(EditText)rootView.findViewById(R.id.confirmpassword);
-        getpassword = (Button)rootView.findViewById(R.id.getpassword);
-        layout.setOnTouchListener(new OnTouchListener()
-        {
-            @Override
-            public boolean onTouch(View view, MotionEvent ev)
-            {
-                hideKeyboard(view);
-                return false;
-            }
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
 
-			
-        });
-        getpassword.setOnClickListener(new OnClickListener() {
-
-            @SuppressWarnings("deprecation")
+		View rootView = inflater.inflate(R.layout.changepasswordfrag,
+				container, false);
+		LinearLayout layout = (LinearLayout) rootView
+				.findViewById(R.id.changepasslayout);
+		pDialog = new ProgressDialog(getActivity());
+		cd = new ConnectionDetector(getActivity());
+		updateurl = Config.ServerUrl + "ChangePassword.php?service=changepass";
+		oldpasswordedit = (EditText) rootView.findViewById(R.id.oldpassword);
+		newpasswordedt = (EditText) rootView.findViewById(R.id.newpassword);
+		confirmpasswordedit = (EditText) rootView
+				.findViewById(R.id.confirmpassword);
+		getpassword = (Button) rootView.findViewById(R.id.getpassword);
+		layout.setOnTouchListener(new OnTouchListener() {
 			@Override
-            public void onClick(View v) {
-            	isInternetPresent = cd.isConnectingToInternet();
-            	oldpass=oldpasswordedit.getText().toString();
-            	newpass=newpasswordedt.getText().toString();
-            	confirmpass=confirmpasswordedit.getText().toString();
-            	if(!oldpass.equalsIgnoreCase("")&&!newpass.equalsIgnoreCase("")&&!confirmpass.equalsIgnoreCase(""))
-            	{
-            		if(oldpass.equalsIgnoreCase(Config.password))
-            		{
-            			if(passwordCheck(newpass))
-            			{
-            				
-            		
-            			if(newpass.equals(confirmpass))
-            			{
-            				if(isInternetPresent)
-                			{
-                				
-            					Config.password=newpass;
-                				System.out.println("inside attempt changepass");
-                				new UpdateProf().execute();
+			public boolean onTouch(View view, MotionEvent ev) {
+				hideKeyboard(view);
+				return false;
+			}
 
-                			
-                			}
-            				else
-            	    		{
-            	    			AlertDialog alertDialog = new AlertDialog.Builder(
-            							getActivity()).create();
+		});
+		getpassword.setOnClickListener(new OnClickListener() {
 
-            					alertDialog.setTitle("INFO!");
+			@SuppressWarnings("deprecation")
+			@Override
+			public void onClick(View v) {
+				isInternetPresent = cd.isConnectingToInternet();
+				oldpass = oldpasswordedit.getText().toString();
+				newpass = newpasswordedt.getText().toString();
+				confirmpass = confirmpasswordedit.getText().toString();
+				if (!oldpass.equalsIgnoreCase("")
+						&& !newpass.equalsIgnoreCase("")
+						&& !confirmpass.equalsIgnoreCase("")) {
+					if (oldpass.equalsIgnoreCase(Config.password)) {
+						if (passwordCheck(newpass)) {
 
-            					alertDialog.setMessage("No network connection.");
+							if (newpass.equals(confirmpass)) {
+								if (isInternetPresent) {
 
-            					alertDialog.setIcon(R.drawable.delete);
-            					
-            					alertDialog.setButton("OK",	new DialogInterface.OnClickListener() {
+									Config.password = newpass;
+									System.out
+											.println("inside attempt changepass");
+									new UpdateProf().execute();
 
-            								public void onClick(final DialogInterface dialog,
-            										final int which) {
-            									
-            								}
-            							});
+								} else {
+									AlertDialog alertDialog = new AlertDialog.Builder(
+											getActivity()).create();
 
-            					
-            					alertDialog.show();
-            	    			
-            	    		}
-            				
-            			}
-            			else
-        	    		{
-        	    			AlertDialog alertDialog = new AlertDialog.Builder(
-        							getActivity()).create();
+									alertDialog.setTitle("INFO!");
 
-        					alertDialog.setTitle("INFO!");
+									alertDialog
+											.setMessage("No network connection.");
 
-        					alertDialog.setMessage("New password mismatch with confirm password.");
+									alertDialog.setIcon(R.drawable.delete);
 
-        					alertDialog.setIcon(R.drawable.delete);
-        					
-        					alertDialog.setButton("OK",	new DialogInterface.OnClickListener() {
+									alertDialog
+											.setButton(
+													"OK",
+													new DialogInterface.OnClickListener() {
 
-        								public void onClick(final DialogInterface dialog,
-        										final int which) {
-        									
-        								}
-        							});
+														public void onClick(
+																final DialogInterface dialog,
+																final int which) {
 
-        					
-        					alertDialog.show();
-        	    			
-        	    		}
-            		}
-            		
-            		else
-            		{
-            			AlertDialog alertDialog = new AlertDialog.Builder(
-    							getActivity()).create();
+														}
+													});
 
-    					alertDialog.setTitle("INFO!");
+									alertDialog.show();
 
-    					alertDialog.setMessage("Should contain 1 alphabet.Should contain 1 number.Should be 8 to 25 characters.Should contain 1 Special character." );
+								}
 
-    					alertDialog.setIcon(R.drawable.delete);
-    					
-    					alertDialog.setButton("OK",	new DialogInterface.OnClickListener() {
+							} else {
+								AlertDialog alertDialog = new AlertDialog.Builder(
+										getActivity()).create();
 
-    								public void onClick(final DialogInterface dialog,
-    										final int which) {
-    									
-    								}
-    							});
+								alertDialog.setTitle("INFO!");
 
-    					
-    					alertDialog.show();
-            		}
-            		}
-            		else
-    	    		{
-    	    			AlertDialog alertDialog = new AlertDialog.Builder(
-    							getActivity()).create();
+								alertDialog
+										.setMessage("New password mismatch with confirm password.");
 
-    					alertDialog.setTitle("INFO!");
+								alertDialog.setIcon(R.drawable.delete);
 
-    					alertDialog.setMessage("Old password is wrong.");
+								alertDialog.setButton("OK",
+										new DialogInterface.OnClickListener() {
 
-    					alertDialog.setIcon(R.drawable.delete);
-    					
-    					alertDialog.setButton("OK",	new DialogInterface.OnClickListener() {
+											public void onClick(
+													final DialogInterface dialog,
+													final int which) {
 
-    								public void onClick(final DialogInterface dialog,
-    										final int which) {
-    									
-    								}
-    							});
+											}
+										});
 
-    					
-    					alertDialog.show();
-    	    			
-    	    		}
-            	}
-            	else
-	    		{
-	    			AlertDialog alertDialog = new AlertDialog.Builder(
+								alertDialog.show();
+
+							}
+						}
+
+						else {
+							AlertDialog alertDialog = new AlertDialog.Builder(
+									getActivity()).create();
+
+							alertDialog.setTitle("INFO!");
+
+							alertDialog
+									.setMessage("Should contain 1 alphabet.Should contain 1 number.Should be 8 to 25 characters.Should contain 1 Special character.");
+
+							alertDialog.setIcon(R.drawable.delete);
+
+							alertDialog.setButton("OK",
+									new DialogInterface.OnClickListener() {
+
+										public void onClick(
+												final DialogInterface dialog,
+												final int which) {
+
+										}
+									});
+
+							alertDialog.show();
+						}
+					} else {
+						AlertDialog alertDialog = new AlertDialog.Builder(
+								getActivity()).create();
+
+						alertDialog.setTitle("INFO!");
+
+						alertDialog.setMessage("Old password is wrong.");
+
+						alertDialog.setIcon(R.drawable.delete);
+
+						alertDialog.setButton("OK",
+								new DialogInterface.OnClickListener() {
+
+									public void onClick(
+											final DialogInterface dialog,
+											final int which) {
+
+									}
+								});
+
+						alertDialog.show();
+
+					}
+				} else {
+					AlertDialog alertDialog = new AlertDialog.Builder(
 							getActivity()).create();
 
 					alertDialog.setTitle("INFO!");
@@ -208,152 +200,150 @@ public class ChangePasswordFragment extends Fragment {
 					alertDialog.setMessage("Enter all fields.");
 
 					alertDialog.setIcon(R.drawable.delete);
-					
-					alertDialog.setButton("OK",	new DialogInterface.OnClickListener() {
 
-								public void onClick(final DialogInterface dialog,
+					alertDialog.setButton("OK",
+							new DialogInterface.OnClickListener() {
+
+								public void onClick(
+										final DialogInterface dialog,
 										final int which) {
-									
+
 								}
 							});
 
-					
 					alertDialog.show();
-	    			
-	    		}
-            	
-            	
-    		
-            }
-        });
-        return rootView;
-    }
+
+				}
+
+			}
+		});
+		return rootView;
+	}
 
 	private boolean passwordCheck(String other) {
 		// TODO Auto-generated method stub
-		
-		
+
 		String pass_patter = "((?=.*\\d)(?=.*[a-zA-Z])(?=.*[@#$%]).{8,25})";
 
-			Pattern pattern = Pattern.compile(pass_patter);
-			Matcher matcher = pattern.matcher(other);
-			return matcher.matches();
-		}
-	protected void hideKeyboard(View view)
-	 {
-	     InputMethodManager in = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-	     in.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-	 }
+		Pattern pattern = Pattern.compile(pass_patter);
+		Matcher matcher = pattern.matcher(other);
+		return matcher.matches();
+	}
+
+	protected void hideKeyboard(View view) {
+		InputMethodManager in = (InputMethodManager) getActivity()
+				.getSystemService(Context.INPUT_METHOD_SERVICE);
+		in.hideSoftInputFromWindow(view.getWindowToken(),
+				InputMethodManager.HIDE_NOT_ALWAYS);
+	}
+
 	class UpdateProf extends AsyncTask<String, String, String> {
-    	@Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            pDialog = new ProgressDialog(getActivity());
-            pDialog.setMessage("Please wait...");
-            pDialog.setIndeterminate(false);
-            pDialog.setCancelable(false);
-            pDialog.show();
-
-        }
-    	@Override
-		protected String doInBackground(String... params)
-    	{
-    		List<NameValuePair> params1 = new ArrayList<NameValuePair>();
-             
-            
-             //params1.add(new BasicNameValuePair("id", "1"));
-             System.out.println("");
-             params1.add(new BasicNameValuePair("username", Config.username));
-            // params1.add(new BasicNameValuePair("oldpassword", oldpasswordedit.getText().toString()));
-             params1.add(new BasicNameValuePair("newpassword", newpasswordedt.getText().toString()));
-           //  params1.add(new BasicNameValuePair("email", confirmpasswordedit.getText().toString()));
-    		Config.password=newpasswordedt.getText().toString();
-            
-    		JsonParser jLogin = new JsonParser();
-           
-             JSONObject json = jLogin.makeHttpRequest(updateurl,"POST", params1);
-         System.out.println("value for json::"+json);
-             if(json!=null)
-             {
-                 try
-                 {
-                	 if(json != null)
-                	 {
-                	 System.out.println("json value::"+json);
-                	
-                	 JSONObject jUser = json.getJSONObject(TAG_SRESL);
-                	 successL = jUser.getString(TAG_SUCCESS);
-                	 System.out.println("successL value"+successL);
-                	// avatar = jUser.getString(TAG_AVATAR_URL );
-                
-                	 }
-	                	
-	                }
-	                 
-	                 catch(JSONException e)
-	                 {
-	                	 e.printStackTrace();
-	                	 
-	                 }
-	          }
-	             else{
-	                	 
-	            	 successL ="No"; 
-		    			  }
-			return null; 
-    	}
-    	@SuppressWarnings("deprecation")
 		@Override
-		 protected void onPostExecute(String file_url) {
-	    	   super.onPostExecute(file_url);
-	    	   if(successL.equalsIgnoreCase("Yes"))
-	    	   {
-	    		   AlertDialog alertDialog = new AlertDialog.Builder(
-    						getActivity()).create();
+		protected void onPreExecute() {
+			super.onPreExecute();
+			pDialog = new ProgressDialog(getActivity());
+			pDialog.setMessage("Please wait...");
+			pDialog.setIndeterminate(false);
+			pDialog.setCancelable(false);
+			pDialog.show();
 
-    				alertDialog.setTitle("INFO!");
+		}
 
-    				alertDialog.setMessage("Password updated successfully");
+		@Override
+		protected String doInBackground(String... params) {
+			List<NameValuePair> params1 = new ArrayList<NameValuePair>();
 
-    				alertDialog.setIcon(R.drawable.delete);
-    				
-    				alertDialog.setButton("OK",	new DialogInterface.OnClickListener() {
+			// params1.add(new BasicNameValuePair("id", "1"));
+			System.out.println("");
+			params1.add(new BasicNameValuePair("username", Config.username));
+			// params1.add(new BasicNameValuePair("oldpassword",
+			// oldpasswordedit.getText().toString()));
+			params1.add(new BasicNameValuePair("newpassword", newpasswordedt
+					.getText().toString()));
+			// params1.add(new BasicNameValuePair("email",
+			// confirmpasswordedit.getText().toString()));
+			Config.password = newpasswordedt.getText().toString();
 
-    							public void onClick(final DialogInterface dialog,
-    									final int which) {
-    								 final Intent intentSignUP=new Intent(getActivity(),NewMainActivity.class);
-    									startActivity(intentSignUP);
-    							}
-    						});
+			JsonParser jLogin = new JsonParser();
 
-    				
-    				alertDialog.show();
-        			
-	    	   }
-	    	   else
-	    	   {
-	    		   AlertDialog alertDialog = new AlertDialog.Builder(
-    						getActivity()).create();
+			JSONObject json = jLogin
+					.makeHttpRequest(updateurl, "POST", params1);
+			System.out.println("value for json::" + json);
+			if (json != null) {
+				try {
+					if (json != null) {
+						System.out.println("json value::" + json);
 
-    				alertDialog.setTitle("INFO!");
+						JSONObject jUser = json.getJSONObject(TAG_SRESL);
+						successL = jUser.getString(TAG_SUCCESS);
+						System.out.println("successL value" + successL);
+						// avatar = jUser.getString(TAG_AVATAR_URL );
 
-    				alertDialog.setMessage("Profile not updated successfully");
+					}
 
-    				alertDialog.setIcon(R.drawable.delete);
-    				
-    				alertDialog.setButton("OK",	new DialogInterface.OnClickListener() {
+				}
 
-    							public void onClick(final DialogInterface dialog,
-    									final int which) {
-    								
-    							}
-    						});
+				catch (JSONException e) {
+					e.printStackTrace();
 
-    				
-    				alertDialog.show();
-	    	   }
-	    pDialog.dismiss();	
+				}
+			} else {
 
-    	}
- }
+				successL = "No";
+			}
+			return null;
+		}
+
+		@SuppressWarnings("deprecation")
+		@Override
+		protected void onPostExecute(String file_url) {
+			super.onPostExecute(file_url);
+			if (successL.equalsIgnoreCase("Yes")) {
+				AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
+						.create();
+
+				alertDialog.setTitle("INFO!");
+
+				alertDialog.setMessage("Password updated successfully");
+
+				alertDialog.setIcon(R.drawable.delete);
+
+				alertDialog.setButton("OK",
+						new DialogInterface.OnClickListener() {
+
+							public void onClick(final DialogInterface dialog,
+									final int which) {
+								final Intent intentSignUP = new Intent(
+										getActivity(), NewMainActivity.class);
+								startActivity(intentSignUP);
+							}
+						});
+
+				alertDialog.show();
+
+			} else {
+				AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
+						.create();
+
+				alertDialog.setTitle("INFO!");
+
+				alertDialog.setMessage("Profile not updated successfully");
+
+				alertDialog.setIcon(R.drawable.delete);
+
+				alertDialog.setButton("OK",
+						new DialogInterface.OnClickListener() {
+
+							public void onClick(final DialogInterface dialog,
+									final int which) {
+
+							}
+						});
+
+				alertDialog.show();
+			}
+			pDialog.dismiss();
+
+		}
+	}
 }

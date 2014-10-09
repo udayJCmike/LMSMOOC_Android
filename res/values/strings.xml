@@ -6,32 +6,33 @@
     <string name="action_settings">Ready to start!</string>
     <string name="browsecourse">Explore Courses!</string>
     <string name="forgetpass">Forgot Password</string>
-     <string name="confirmpass">Confirm Password</string>
+    <string name="confirmpass">Confirm Password</string>
     <string name="signin">Login</string>
     <string name="register">Signup</string>
-     <string name="back">Back</string>
-           <string name="foll">Follow</string>
-        <string name="aboutty">Tagline in grey color</string>
-       <string name="terms"><a href='http://www.redbus.in/mob/mTerms.aspx' >Terms of Service</a></string>
+    <string name="back">Back</string>
+    <string name="foll">Follow</string>
+    <string name="aboutty">Tagline in grey color</string>
+    <string name="terms"><a href="http://www.redbus.in/mob/mTerms.aspx">Terms of Service</a></string>
     <string name="checkme">I agree to the</string>
-        <string name="Ratings">Ratings</string>
-             <string name="selecttopic">Select your interested topics</string>
-                 <string name="selectgen">Select Gender</string>
-                    <string name="selectmale">Male</string>
-                       <string name="selectfemale">Female</string>
-                      
+    <string name="Ratings">Ratings</string>
+    <string name="selecttopic">Select your interested topics</string>
+    <string name="selectgen">Select Gender</string>
+    <string name="selectmale">Male</string>
+    <string name="selectfemale">Female</string>
+    <string name="app_id">570716663057438</string>
+
     <string-array name="nav_drawer_items">
-        
-        <item >Profile</item>
-        <item >Inbox</item>
-        <item >My Courses</item>
-        <item >My Favorites</item>
-        <item >My Categories</item>
-        <item >My Authors</item>
-        <item >Billing</item>
-         <item >Logout</item>
+        <item>Profile</item>
+        <item>Inbox</item>
+        <item>My Courses</item>
+        <item>My Favorites</item>
+        <item>My Categories</item>
+        <item>My Authors</item>
+        <item>Billing</item>
+        <item>Logout</item>
     </string-array>
-  <array name="nav_drawer_icons">
+
+    <array name="nav_drawer_icons">
         <item>@drawable/ic_launcher</item>
         <item>@drawable/ic_launcher</item>
         <item>@drawable/ic_launcher</item>
@@ -42,47 +43,44 @@
         <item>@drawable/ic_launcher</item>
         <item>@drawable/ic_launcher</item>
     </array>
-     <string name="oldpass">Current password</string>
-      <string name="newpass">New password</string>
-  <string name="firstname">First Name</string>
-  <string name="lastname">Last Name</string>
-  <string name="username">Username</string>
-  <string name="email">Email ID</string>
-  <string name="password">Password</string>
-  <string name="interstedin">Interested in</string>
-  <string name="gender">Select Gender</string>
-  <string name="avatar">Select Avatar</string>
-  <string name="savechanges">Save Changes</string>
-  <string name="getpassword">Get Password</string>
-  <string name="category">Categories</string>
-  <string name="author_name">Author Name</string>
-  <string name="no_of_courses">Courses</string>
-  <string name="unfollow">Unfollow</string>
-  <string name="removecategory">Remove Category</string>
-  
-  <string name="course_name">Course Name</string>
-  <string name="promo_Video">Promo Video</string>
-   <string name="addtomyfavcat">Add Category</string>
-  <string name="author_name">Author Name</string>
-  <string name="Avatar">Avatar</string>
-  <string name="author_edu">Education</string>
-   <string name="aboutauth">About Me</string>
-  <string name="follow">Follow Author</string>
-  <string name="unfollow">Unfollow Author</string>
-  <string name="enroll">Students Enrolled</string>
-  
-   <string name="browse">Browse Profile Picture</string>
-  <string name="upload">Upload Image</string>
-   <string name="signintext">Sign in with your username and password!!</string>
+
+    <string name="oldpass">Current password</string>
+    <string name="newpass">New password</string>
+    <string name="firstname">First Name</string>
+    <string name="lastname">Last Name</string>
+    <string name="username">Username</string>
+    <string name="email">Email ID</string>
+    <string name="password">Password</string>
+    <string name="interstedin">Interested in</string>
+    <string name="gender">Select Gender</string>
+    <string name="avatar">Select Avatar</string>
+    <string name="savechanges">Save Changes</string>
+    <string name="getpassword">Get Password</string>
+    <string name="category">Categories</string>
+    <string name="author_name">Author Name</string>
+    <string name="no_of_courses">Courses</string>
+    <string name="unfollow">Unfollow</string>
+    <string name="removecategory">Remove Category</string>
+    <string name="course_name">Course Name</string>
+    <string name="promo_Video">Promo Video</string>
+    <string name="addtomyfavcat">Add Category</string>
+    <string name="author_name">Author Name</string>
+    <string name="Avatar">Avatar</string>
+    <string name="author_edu">Education</string>
+    <string name="aboutauth">About Me</string>
+    <string name="follow">Follow Author</string>
+    <string name="unfollow">Unfollow Author</string>
+    <string name="enroll">Students Enrolled</string>
+    <string name="browse">Browse Profile Picture</string>
+    <string name="upload">Upload Image</string>
+    <string name="signintext">Sign in with your username and password!!</string>
     <string name="signuptext">Sign up with your Email id!!</string>
-  
- <string name="inital_Time">0 min, 0 sec</string>
- 
- 
-  <string name="versionstring">Version No :</string>
+    <string name="inital_Time">0 min, 0 sec</string>
+    <string name="versionstring">Version No :</string>
     <string name="buildstring">Build No :</string>
     <string name="versionno">1.0</string>
     <string name="buildno">1.0.1</string>
     <string name="designdevelop">Designed and Developed by</string>
     <string name="deems">Deemsys Inc.</string>
+
 </resources>

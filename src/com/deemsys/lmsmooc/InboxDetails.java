@@ -3,8 +3,6 @@ package com.deemsys.lmsmooc;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
@@ -16,7 +14,6 @@ import android.app.AlertDialog;
 import android.app.FragmentManager;
 
 import android.app.ProgressDialog;
-
 
 import android.content.DialogInterface;
 
@@ -30,7 +27,6 @@ import android.os.Bundle;
 
 import android.text.Html;
 
-
 import android.view.View;
 import android.view.View.OnClickListener;
 
@@ -38,9 +34,9 @@ import android.widget.Button;
 
 import android.widget.TextView;
 
-public class InboxDetails extends SherlockFragmentActivity   {
+public class InboxDetails extends SherlockFragmentActivity {
 	public ProgressDialog cDialog;
-	FragmentManager context=this.getFragmentManager();
+	FragmentManager context = this.getFragmentManager();
 
 	String senderstr;
 	String receiverstr;
@@ -53,448 +49,359 @@ public class InboxDetails extends SherlockFragmentActivity   {
 	JsonParser jsonParser = new JsonParser();
 	JSONObject jArray;
 	Inbox in;
-	String id,receiver,roles;
+	String id, receiver, roles;
 
-	
-	
-	 TextView from,date,to,message;
-	 Button unimportantstatus,back;
-	
+	TextView from, date, to, message;
+	Button unimportantstatus, back;
+
 	@Override
-	  public void onCreate(Bundle savedInstanceState) {
-	      super.onCreate(savedInstanceState);
-	      ActionBar ab = getSupportActionBar();
-	      ab.setDisplayHomeAsUpEnabled(true);
-	      getSupportActionBar().setHomeButtonEnabled(true);
-	      ab.setTitle(Html.fromHtml("<font color='#ffffff'>Message</font>"));
-		    
-	        ab.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3399FF")));
-	      setContentView(R.layout.inbox_details);
-	     
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		ActionBar ab = getSupportActionBar();
+		ab.setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setHomeButtonEnabled(true);
+		ab.setTitle(Html.fromHtml("<font color='#ffffff'>Message</font>"));
 
-			id=InboxFragment.inbid;
-			receiver=InboxFragment.receiverid;
-			roles=InboxFragment.role;
+		ab.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3399FF")));
+		setContentView(R.layout.inbox_details);
 
-				  from = (TextView)findViewById(R.id.fromans);
-			       to = (TextView)findViewById(R.id.toans);
-					message = (TextView)findViewById(R.id.msgans);
-					date = (TextView)findViewById(R.id.dateans);
-				unimportantstatus=(Button)findViewById(R.id.greenbtn);
-					
-				//importantstatus=(Button)findViewById(R.id.redbtn);
-				//back=(Button)findViewById(R.id.back);
-					
-				from.setText(InboxFragment.sender);
-				to.setText(InboxFragment.receiver);
-				message.setText(Html.fromHtml(InboxFragment.msg));
-				date.setText(InboxFragment.date);
-				
-System.out.println("valu of status::"+InboxFragment.important);
-			 if(InboxFragment.important.equals("1"))
-			    {
-			    	
+		id = InboxFragment.inbid;
+		receiver = InboxFragment.receiverid;
+		roles = InboxFragment.role;
 
-			    	unimportantstatus.setBackgroundColor(Color.parseColor("#F0AD4E"));
-			    	unimportantstatus.setText("Remove important");
-			  
-			    
-			    	
-			    }
-			    
-			    
-			    else if(InboxFragment.important.equals("0"))
-			    {
-			    	
-			    
+		from = (TextView) findViewById(R.id.fromans);
+		to = (TextView) findViewById(R.id.toans);
+		message = (TextView) findViewById(R.id.msgans);
+		date = (TextView) findViewById(R.id.dateans);
+		unimportantstatus = (Button) findViewById(R.id.greenbtn);
 
-			  
-		        	unimportantstatus.setBackgroundColor(Color.parseColor("#5CB85C"));
-		          	unimportantstatus.setText("Mark as important");
-			   
-			    	
+		// importantstatus=(Button)findViewById(R.id.redbtn);
+		// back=(Button)findViewById(R.id.back);
 
-			    }
-			   
-				unimportantstatus.setOnClickListener(new OnClickListener() {
-	    	        @Override
-	    	        public void onClick(final View v) {
-	    	        	if(InboxFragment.important.equals("1"))
-	    			    {
-	    	        		 new UpdateZero().execute(); 
-	    			    	unimportantstatus.setBackgroundColor(Color.parseColor("#5CB85C"));
-	    		          	unimportantstatus.setText("Mark as important");
-	    			    	
-	    			    }
-	    			    
-	    			    
-	    			    else if(InboxFragment.important.equals("0"))
-	    			    {
-	    			    	
-	    			    
-	    			    	 new UpdateOne().execute(); 
-	    			  
-	    		        
-	    			    	unimportantstatus.setBackgroundColor(Color.parseColor("#F0AD4E"));
-	    			    	unimportantstatus.setText("Remove important");
-	    			  
-	    			    	
+		from.setText(InboxFragment.sender);
+		to.setText(InboxFragment.receiver);
+		message.setText(Html.fromHtml(InboxFragment.msg));
+		date.setText(InboxFragment.date);
 
-	    			    }
+		System.out.println("valu of status::" + InboxFragment.important);
+		if (InboxFragment.important.equals("1")) {
 
-	    	        	
-	    	        	
-	    	        }
-	    	    });
-				
-				
-			/*	importantstatus.setOnClickListener(new OnClickListener() {
-	    	        @Override
-	    	        public void onClick(final View v) {
-	    	        	unimportantstatus.setVisibility(View.VISIBLE);
-	    	        	importantstatus.setVisibility(View.INVISIBLE);
-	    	        	
+			unimportantstatus.setBackgroundColor(Color.parseColor("#F0AD4E"));
+			unimportantstatus.setText("Remove important");
 
-	    	        	unimportantstatus.setBackgroundColor(Color.parseColor("#F0AD4E"));
-	    	        	
-	    	        	System.out.println("updating value 0");
-	    	        	
-	    	        	
-	    	        	
+		}
 
-	    	        	  System.out.println("id value:"+id);
-					       System.out.println("receiver value:"+receiver);
-					       System.out.println("role value:"+roles);
-	    	        	
+		else if (InboxFragment.important.equals("0")) {
 
-	    		        new UpdateZero().execute(); 
+			unimportantstatus.setBackgroundColor(Color.parseColor("#5CB85C"));
+			unimportantstatus.setText("Mark as important");
 
-	    	        	
-	    	        }
-	    	    });
-			
-			*/	
-				 if(InboxFragment.read.equalsIgnoreCase("0"))
-				    {
-					 
-		
-				    	
-	    	        	System.out.println("read update$%$^&^&&&**&((*&*(&*(");
-	    		        new ReadUpdateOne().execute(); 
-				    	
-				    }
-				    
-				
-				  
+		}
+
+		unimportantstatus.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(final View v) {
+				if (InboxFragment.important.equals("1")) {
+					new UpdateZero().execute();
+					unimportantstatus.setBackgroundColor(Color
+							.parseColor("#5CB85C"));
+					unimportantstatus.setText("Mark as important");
+
+				}
+
+				else if (InboxFragment.important.equals("0")) {
+
+					new UpdateOne().execute();
+
+					unimportantstatus.setBackgroundColor(Color
+							.parseColor("#F0AD4E"));
+					unimportantstatus.setText("Remove important");
+
+				}
+
+			}
+		});
+
+		/*
+		 * importantstatus.setOnClickListener(new OnClickListener() {
+		 * 
+		 * @Override public void onClick(final View v) {
+		 * unimportantstatus.setVisibility(View.VISIBLE);
+		 * importantstatus.setVisibility(View.INVISIBLE);
+		 * 
+		 * 
+		 * unimportantstatus.setBackgroundColor(Color.parseColor("#F0AD4E"));
+		 * 
+		 * System.out.println("updating value 0");
+		 * 
+		 * 
+		 * 
+		 * 
+		 * System.out.println("id value:"+id);
+		 * System.out.println("receiver value:"+receiver);
+		 * System.out.println("role value:"+roles);
+		 * 
+		 * 
+		 * new UpdateZero().execute();
+		 * 
+		 * 
+		 * } });
+		 */
+		if (InboxFragment.read.equalsIgnoreCase("0")) {
+
+			System.out.println("read update$%$^&^&&&**&((*&*(&*(");
+			new ReadUpdateOne().execute();
+
+		}
+
 	}
-				
-		
-	
-	
-	
+
 	@Override
-    public boolean onOptionsItemSelected(com.actionbarsherlock.view.MenuItem item) {
-        switch (item.getItemId()) {
+	public boolean onOptionsItemSelected(
+			com.actionbarsherlock.view.MenuItem item) {
+		switch (item.getItemId()) {
 
-        case android.R.id.home:
-             finish();
-             break;
+		case android.R.id.home:
+			finish();
+			break;
 
-        default:
-            return super.onOptionsItemSelected(item);
-        }
-        return false;
-    }
-	
-	
-	
-	
-				class UpdateOne extends AsyncTask<String,String,String>{
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+		return false;
+	}
 
-					
-					  
-					
-					
-					    JSONObject jsonE;
+	class UpdateOne extends AsyncTask<String, String, String> {
 
+		JSONObject jsonE;
 
-					@Override
-				  protected void onPreExecute() {
-				     
-				      
-				  } 
-					    
-					 @Override
-						protected String doInBackground(String... params) {
-						 
-							List<NameValuePair> paramsE = new ArrayList<NameValuePair>();
-						
-							 paramsE.add(new BasicNameValuePair("inbox_id",id));
+		@Override
+		protected void onPreExecute() {
 
-								 paramsE.add(new BasicNameValuePair("receiver_id",receiver));
-								 paramsE.add(new BasicNameValuePair("role",roles));
+		}
 
-				       
+		@Override
+		protected String doInBackground(String... params) {
 
+			List<NameValuePair> paramsE = new ArrayList<NameValuePair>();
 
+			paramsE.add(new BasicNameValuePair("inbox_id", id));
 
-							 JsonParser jLogin1 = new JsonParser();
-							 
-							 JSONObject json1 = jLogin1.makeHttpRequest(Config.ServerUrl+Config.importantstatusone,"POST", paramsE);
-							 System.out.println("url called");
-				     	 System.out.println("value for json::"+json1);
-				     	 
+			paramsE.add(new BasicNameValuePair("receiver_id", receiver));
+			paramsE.add(new BasicNameValuePair("role", roles));
 
-				     
+			JsonParser jLogin1 = new JsonParser();
 
-							return null;
-						
-				  				  }
-					 
-					 
-					@SuppressWarnings("deprecation")
-					@Override
-					 protected void onPostExecute(String file_url) {
-				 	   super.onPostExecute(file_url);
-				     System.out.println("in post execute");
-		           
-				 	  // pDialog.dismiss();
-				       if(JsonParser.jss.equals("empty"))
-				       {
-				    	   System.out.println("json null value");
-				    	AlertDialog alertDialog = new AlertDialog.Builder(
-								InboxDetails.this).create();
+			JSONObject json1 = jLogin1.makeHttpRequest(Config.ServerUrl
+					+ Config.importantstatusone, "POST", paramsE);
+			System.out.println("url called");
+			System.out.println("value for json::" + json1);
 
-						// Setting Dialog Title
-						alertDialog.setTitle("INFO!");
+			return null;
 
-						// Setting Dialog Message
-						alertDialog.setMessage("Error connecting database.");
+		}
 
-						// Setting Icon to Dialog
-						alertDialog.setIcon(R.drawable.delete);
-						
+		@SuppressWarnings("deprecation")
+		@Override
+		protected void onPostExecute(String file_url) {
+			super.onPostExecute(file_url);
+			System.out.println("in post execute");
 
-						// Setting OK Button
-						alertDialog.setButton("OK",	new DialogInterface.OnClickListener() {
+			// pDialog.dismiss();
+			if (JsonParser.jss.equals("empty")) {
+				System.out.println("json null value");
+				AlertDialog alertDialog = new AlertDialog.Builder(
+						InboxDetails.this).create();
 
-									public void onClick(final DialogInterface dialog,
-											final int which) {
-										// Write your code here to execute after dialog
-										// closed
-										
-									}
-								});
+				// Setting Dialog Title
+				alertDialog.setTitle("INFO!");
 
-						// Showing Alert Message
-						alertDialog.show();
-				  
-				       }
-				       
-				       
-				   
-				     
+				// Setting Dialog Message
+				alertDialog.setMessage("Error connecting database.");
 
+				// Setting Icon to Dialog
+				alertDialog.setIcon(R.drawable.delete);
 
-				}
-					}
-				
-				
-				class UpdateZero extends AsyncTask<String,String,String>{
+				// Setting OK Button
+				alertDialog.setButton("OK",
+						new DialogInterface.OnClickListener() {
 
-					
-					
-					  
-					    JSONObject jsonE;
+							public void onClick(final DialogInterface dialog,
+									final int which) {
+								// Write your code here to execute after dialog
+								// closed
 
+							}
+						});
 
-					@Override
-				  protected void onPreExecute() {
-//				      super.onPreExecute();
-//				      pDialog = new ProgressDialog(InboxDetails.this);
-//
-//				      pDialog.setMessage("Please wait...");
-//				      
-//				      pDialog.setIndeterminate(false);
-//				      pDialog.setCancelable(true);
-//				      pDialog.show();
-				      
-				  } 
-					    
-					 @Override
-						protected String doInBackground(String... params) {
-						 
-							List<NameValuePair> paramsE = new ArrayList<NameValuePair>();
-						
-							 paramsE.add(new BasicNameValuePair("inbox_id",id));
+				// Showing Alert Message
+				alertDialog.show();
 
-							
-							 paramsE.add(new BasicNameValuePair("receiver_id",receiver));
-							 paramsE.add(new BasicNameValuePair("role",roles));
+			}
 
-		    	        	  System.out.println("id value:"+id);
-						       System.out.println("receiver value:"+receiver);
-						       System.out.println("role value:"+roles);
-		    	        	
+		}
+	}
 
-							 JsonParser jLogin1 = new JsonParser();
-							 
-							 JSONObject json1 = jLogin1.makeHttpRequest(Config.ServerUrl+Config.importatntstatuszero,"POST", paramsE);
-				     	 System.out.println("value for json::"+json1);
-				     	 
+	class UpdateZero extends AsyncTask<String, String, String> {
 
-							return null;
-						
-				  				  }
-					 
-					 
-					@SuppressWarnings("deprecation")
-					@Override
-					 protected void onPostExecute(String file_url) {
-				 	   super.onPostExecute(file_url);
-				     System.out.println("in post execute");
-				  
-				       if(JsonParser.jss.equals("empty"))
-				       {
-				    	   System.out.println("json null value");
-				    	AlertDialog alertDialog = new AlertDialog.Builder(
-								InboxDetails.this).create();
+		JSONObject jsonE;
 
-						// Setting Dialog Title
-						alertDialog.setTitle("INFO!");
+		@Override
+		protected void onPreExecute() {
+			// super.onPreExecute();
+			// pDialog = new ProgressDialog(InboxDetails.this);
+			//
+			// pDialog.setMessage("Please wait...");
+			//
+			// pDialog.setIndeterminate(false);
+			// pDialog.setCancelable(true);
+			// pDialog.show();
 
-						// Setting Dialog Message
-						alertDialog.setMessage("Error connecting database.");
+		}
 
-						// Setting Icon to Dialog
-						alertDialog.setIcon(R.drawable.delete);
-						
+		@Override
+		protected String doInBackground(String... params) {
 
-						// Setting OK Button
-						alertDialog.setButton("OK",	new DialogInterface.OnClickListener() {
+			List<NameValuePair> paramsE = new ArrayList<NameValuePair>();
 
-									public void onClick(final DialogInterface dialog,
-											final int which) {
-										// Write your code here to execute after dialog
-										// closed
-										
-									}
-								});
+			paramsE.add(new BasicNameValuePair("inbox_id", id));
 
-						// Showing Alert Message
-						alertDialog.show();
-				  
-				       }
-//				     
-				     
+			paramsE.add(new BasicNameValuePair("receiver_id", receiver));
+			paramsE.add(new BasicNameValuePair("role", roles));
 
+			System.out.println("id value:" + id);
+			System.out.println("receiver value:" + receiver);
+			System.out.println("role value:" + roles);
 
-				}
-					}
-	       
-	        
-			
-				class ReadUpdateOne extends AsyncTask<String,String,String>{
+			JsonParser jLogin1 = new JsonParser();
 
-				
-					
-				 
-					    JSONObject jsonE;
+			JSONObject json1 = jLogin1.makeHttpRequest(Config.ServerUrl
+					+ Config.importatntstatuszero, "POST", paramsE);
+			System.out.println("value for json::" + json1);
 
+			return null;
 
-					@Override
-				  protected void onPreExecute() {
-				     
-				      
-				  } 
-					    
-					 @Override
-						protected String doInBackground(String... params) {
-						 
-							List<NameValuePair> paramsE = new ArrayList<NameValuePair>();
-						
-							 paramsE.add(new BasicNameValuePair("inbox_id",id));
+		}
 
-								
-								 paramsE.add(new BasicNameValuePair("receiver_id",receiver));
-								 paramsE.add(new BasicNameValuePair("role",roles));
+		@SuppressWarnings("deprecation")
+		@Override
+		protected void onPostExecute(String file_url) {
+			super.onPostExecute(file_url);
+			System.out.println("in post execute");
 
-				       
-							   System.out.println("subject:"+id);
-						       System.out.println("subject:"+roles);
-						       System.out.println("subject:"+receiver);
+			if (JsonParser.jss.equals("empty")) {
+				System.out.println("json null value");
+				AlertDialog alertDialog = new AlertDialog.Builder(
+						InboxDetails.this).create();
 
-							 JsonParser jLogin1 = new JsonParser();
-							 
-							 JSONObject json1 = jLogin1.makeHttpRequest(Config.ServerUrl+Config.inboxreadstatus,"POST", paramsE);
-							 System.out.println("url called");
-				     	 System.out.println("value for json::"+json1);
-				     	 
+				// Setting Dialog Title
+				alertDialog.setTitle("INFO!");
 
-				     
+				// Setting Dialog Message
+				alertDialog.setMessage("Error connecting database.");
 
-							return null;
-						
-				  				  }
-					 
-					 
-					@SuppressWarnings("deprecation")
-					@Override
-					 protected void onPostExecute(String file_url) {
-				 	   super.onPostExecute(file_url);
-				     System.out.println("in post execute");
-		           
-				     
+				// Setting Icon to Dialog
+				alertDialog.setIcon(R.drawable.delete);
 
-				     
-				 	  // pDialog.dismiss();
-				       if(JsonParser.jss.equals("empty"))
-				       {
-				    	   System.out.println("json null value");
-				    	AlertDialog alertDialog = new AlertDialog.Builder(
-								InboxDetails.this).create();
+				// Setting OK Button
+				alertDialog.setButton("OK",
+						new DialogInterface.OnClickListener() {
 
-						// Setting Dialog Title
-						alertDialog.setTitle("INFO!");
+							public void onClick(final DialogInterface dialog,
+									final int which) {
+								// Write your code here to execute after dialog
+								// closed
 
-						// Setting Dialog Message
-						alertDialog.setMessage("Error connecting database.");
+							}
+						});
 
-						// Setting Icon to Dialog
-						alertDialog.setIcon(R.drawable.delete);
-						
+				// Showing Alert Message
+				alertDialog.show();
 
-						// Setting OK Button
-						alertDialog.setButton("OK",	new DialogInterface.OnClickListener() {
+			}
+			//
 
-									public void onClick(final DialogInterface dialog,
-											final int which) {
-										// Write your code here to execute after dialog
-										// closed
-										
-									}
-								});
+		}
+	}
 
-						// Showing Alert Message
-						alertDialog.show();
-				  
-				       }
-				       
-				       
-				      
-				     
+	class ReadUpdateOne extends AsyncTask<String, String, String> {
 
+		JSONObject jsonE;
 
-				}
-					}
+		@Override
+		protected void onPreExecute() {
 
+		}
 
-				 @Override
-				 public void onBackPressed() 
-			  {
+		@Override
+		protected String doInBackground(String... params) {
 
-			  }
+			List<NameValuePair> paramsE = new ArrayList<NameValuePair>();
+
+			paramsE.add(new BasicNameValuePair("inbox_id", id));
+
+			paramsE.add(new BasicNameValuePair("receiver_id", receiver));
+			paramsE.add(new BasicNameValuePair("role", roles));
+
+			System.out.println("subject:" + id);
+			System.out.println("subject:" + roles);
+			System.out.println("subject:" + receiver);
+
+			JsonParser jLogin1 = new JsonParser();
+
+			JSONObject json1 = jLogin1.makeHttpRequest(Config.ServerUrl
+					+ Config.inboxreadstatus, "POST", paramsE);
+			System.out.println("url called");
+			System.out.println("value for json::" + json1);
+
+			return null;
+
+		}
+
+		@SuppressWarnings("deprecation")
+		@Override
+		protected void onPostExecute(String file_url) {
+			super.onPostExecute(file_url);
+			System.out.println("in post execute");
+
+			// pDialog.dismiss();
+			if (JsonParser.jss.equals("empty")) {
+				System.out.println("json null value");
+				AlertDialog alertDialog = new AlertDialog.Builder(
+						InboxDetails.this).create();
+
+				// Setting Dialog Title
+				alertDialog.setTitle("INFO!");
+
+				// Setting Dialog Message
+				alertDialog.setMessage("Error connecting database.");
+
+				// Setting Icon to Dialog
+				alertDialog.setIcon(R.drawable.delete);
+
+				// Setting OK Button
+				alertDialog.setButton("OK",
+						new DialogInterface.OnClickListener() {
+
+							public void onClick(final DialogInterface dialog,
+									final int which) {
+								// Write your code here to execute after dialog
+								// closed
+
+							}
+						});
+
+				// Showing Alert Message
+				alertDialog.show();
+
+			}
+
+		}
+	}
+
+	@Override
+	public void onBackPressed() {
+
+	}
 
 }
-
-

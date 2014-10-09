@@ -1,7 +1,5 @@
 package com.deemsys.lmsmooc;
 
-
-
 import java.util.ArrayList;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -19,7 +17,8 @@ public class UnFavoriteCategoryAdapter extends BaseAdapter {
 	LayoutInflater lInflater;
 	ArrayList<UnfavoriteCourses> objects;
 
-	UnFavoriteCategoryAdapter(Context context, ArrayList<UnfavoriteCourses> products) {
+	UnFavoriteCategoryAdapter(Context context,
+			ArrayList<UnfavoriteCourses> products) {
 		ctx = context;
 		objects = products;
 		lInflater = (LayoutInflater) ctx
@@ -51,7 +50,7 @@ public class UnFavoriteCategoryAdapter extends BaseAdapter {
 		UnfavoriteCourses p = getProduct(position);
 
 		((TextView) view.findViewById(R.id.label)).setText(p.name);
-		
+
 		CheckBox cbBuy = (CheckBox) view.findViewById(R.id.check);
 		cbBuy.setOnCheckedChangeListener(myCheckChangList);
 		cbBuy.setTag(position);

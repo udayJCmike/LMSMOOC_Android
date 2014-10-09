@@ -44,7 +44,7 @@
 
  <RelativeLayout
      android:layout_width="match_parent"
-     android:layout_height="100dp"
+     android:layout_height="90dp"
      android:layout_gravity="center_horizontal" >
 
     <LinearLayout
@@ -104,11 +104,6 @@
         android:text="@string/buildno" />
        </LinearLayout>
     </RelativeLayout>
-<View
-        android:layout_width="fill_parent"
-        android:layout_height="20dp" >
-
-</View>
 
  <LinearLayout
      android:layout_width="match_parent"

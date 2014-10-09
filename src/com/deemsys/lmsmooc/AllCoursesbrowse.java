@@ -1,15 +1,11 @@
 package com.deemsys.lmsmooc;
 
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-
-
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
@@ -27,661 +23,619 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import com.squareup.picasso.Picasso;
-
-
-
-
-
-
 import android.support.v4.app.Fragment;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-
-
 import android.util.Log;
-
 import android.view.LayoutInflater;
-
 import android.view.View;
-
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
-
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-
-
 import android.widget.AbsListView.OnScrollListener;
 
-public class AllCoursesbrowse  extends Fragment {
+public class AllCoursesbrowse extends Fragment {
 	Bitmap bitmap;
-	
-	public ProgressDialog cDialog,pDialog;
-	public static ArrayList<String> coursetotallist= new ArrayList<String>();
-	public static ArrayList<String> imagelist= new ArrayList<String>();
+
+	public ProgressDialog cDialog, pDialog;
+	public static ArrayList<String> coursetotallist = new ArrayList<String>();
+	public static ArrayList<String> imagelist = new ArrayList<String>();
 	ArrayList<Course> courselist;
 	Boolean isInternetPresent = false;
 	ConnectionDetector cd;
 	JsonParser jsonParser = new JsonParser();
 	JSONObject jArray;
-	 MyCustomAdapter dataAdapter = null;
-	 int start = 0;
-	 int limit = 10;
-	 boolean loadingMore = false;
-	 View loadMoreView;
-	 JSONArray user = null;
-	 static ListView listView ;
-	 String promocheck;
-	 private static final String Promo_Check= "promocheck";
-	 String course_description;
-	 private static final String TAG_COURSE_DESCRIPTION= "course_description";
-	 String course_name,authorname,student_enrolled,ratingcouont,cost,course_id,instructorid,numofrows,course_cover_image,ifmycoursepresent;
-	 private static final String TAG_SRESL= "serviceresponse";
-	    private static final String TAG_Course_ARRAY = "CourseList";
-		private static final String TAG_SRES= "serviceresponse";
-		private static final String TAG_COURSE_NAME= "course_name";
-		private static final String TAG_COURSE_AUTHOR= "course_author";
-		static String avatar_url,successL,avatarurl;
-		 private static final String TAG_AVATAR_URL= "avatar_url";
-		private static final String TAG_COURSE_COST= "course_price";
-		private static final String TAG_COURSE_RATINGS= "user_ratings";
-		private static final String TAG_course_cover_image= "course_cover_image";
-	
-		private static final String TAG_INSTRUCTOR_ID= "instructor_id";
-		private static final String TAG_COURSE_ID= "course_id";
-		private static final String TAG_SUCCESS = "success";
-		private static final String TAG_NUMBER_OF_ROWS = "number_of_rows";
-	 String courseidurl,instructoridurl,pur_url,successstring;
-	 AlertDialog alertDialog;
-	
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.allcourses, container, false);
-        setHasOptionsMenu(true);
-       
-         listView = (ListView)v.findViewById(R.id.listView1);
-         cd = new ConnectionDetector(getActivity());
-      	isInternetPresent = cd.isConnectingToInternet();
-      	 alertDialog = new AlertDialog.Builder(
-					getActivity()).create();
-      	  avatarurl=Config.ServerUrl+"Login.php?service=avatarbrowse";
-		loadMoreView = ((LayoutInflater)getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE))
-          .inflate(R.layout.loadmore, null, false);
-        listView.addFooterView(loadMoreView);
-        courselist = new ArrayList<Course>();
-        dataAdapter = new MyCustomAdapter(getActivity(),
-          R.layout.course_overview, courselist);
-        listView.setAdapter(dataAdapter);
-        listView.setTextFilterEnabled(true);
-        listView.setOnItemClickListener(new OnItemClickListener() {
-        	   public void onItemClick(AdapterView<?> parent, View view,
-        	     int position, long id) {
-        	   
-        	    Course country = (Course) parent.getItemAtPosition(position);
-        	    if(position<courselist.size())
-        	    {
-        	    courseidurl=country.getcourseid();
-        	    instructoridurl=country.getinsid();
-        	    new Avatarfetch().execute();
-//        	    Toast.makeText(getActivity(),
-//        	      country.getcourseid(), Toast.LENGTH_SHORT).show();
-        	    }
-        	   }
-        	  });
-        	 
-        	  listView.setOnScrollListener(new OnScrollListener(){
-        	 
-        	   @Override
-        	   public void onScrollStateChanged(AbsListView view, int scrollState) {}
-        	 
-        	   @SuppressWarnings("deprecation")
-			@Override
-        	   public void onScroll(AbsListView view, int firstVisibleItem,int visibleItemCount, int totalItemCount) {
-        	 
-        	   int lastInScreen = firstVisibleItem + visibleItemCount;    
-        	   if((lastInScreen == totalItemCount) && !(loadingMore)){     
-        	  
-        		 
-        		 
-        		   if(isInternetPresent)
-       			{
-        	    grabURL(Config.ServerUrl+Config.allcourseurl); 
-       			}
-        		   else
-           		{
-           			
-if(alertDialog.isShowing())
-{
-	alertDialog.dismiss();
-}
-alertDialog = new AlertDialog.Builder(
-		getActivity()).create();
-       				alertDialog.setTitle("INFO!");
+	MyCustomAdapter dataAdapter = null;
+	int start = 0;
+	int limit = 10;
+	boolean loadingMore = false;
+	View loadMoreView;
+	JSONArray user = null;
+	static ListView listView;
+	String promocheck;
+	private static final String Promo_Check = "promocheck";
+	String course_description;
+	private static final String TAG_COURSE_DESCRIPTION = "course_description";
+	String course_name, authorname, student_enrolled, ratingcouont, cost,
+			course_id, instructorid, numofrows, course_cover_image,
+			ifmycoursepresent;
+	private static final String TAG_SRESL = "serviceresponse";
+	private static final String TAG_Course_ARRAY = "CourseList";
+	private static final String TAG_SRES = "serviceresponse";
+	private static final String TAG_COURSE_NAME = "course_name";
+	private static final String TAG_COURSE_AUTHOR = "course_author";
+	static String avatar_url, successL, avatarurl;
+	private static final String TAG_AVATAR_URL = "avatar_url";
+	private static final String TAG_COURSE_COST = "course_price";
+	private static final String TAG_COURSE_RATINGS = "user_ratings";
+	private static final String TAG_course_cover_image = "course_cover_image";
+	private static final String TAG_INSTRUCTOR_ID = "instructor_id";
+	private static final String TAG_COURSE_ID = "course_id";
+	private static final String TAG_SUCCESS = "success";
+	private static final String TAG_NUMBER_OF_ROWS = "number_of_rows";
+	String courseidurl, instructoridurl, pur_url, successstring;
+	AlertDialog alertDialog;
 
-       				alertDialog.setMessage("No network connection.");
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		View v = inflater.inflate(R.layout.allcourses, container, false);
+		setHasOptionsMenu(true);
 
-       				alertDialog.setIcon(R.drawable.delete);
-       				
-       				alertDialog.setButton("OK",	new DialogInterface.OnClickListener() {
+		listView = (ListView) v.findViewById(R.id.listView1);
+		cd = new ConnectionDetector(getActivity());
+		isInternetPresent = cd.isConnectingToInternet();
+		alertDialog = new AlertDialog.Builder(getActivity()).create();
+		avatarurl = Config.ServerUrl + "Login.php?service=avatarbrowse";
+		loadMoreView = ((LayoutInflater) getActivity().getSystemService(
+				Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.loadmore,
+				null, false);
+		listView.addFooterView(loadMoreView);
+		courselist = new ArrayList<Course>();
+		dataAdapter = new MyCustomAdapter(getActivity(),
+				R.layout.course_overview, courselist);
+		listView.setAdapter(dataAdapter);
+		listView.setTextFilterEnabled(true);
+		listView.setOnItemClickListener(new OnItemClickListener() {
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
 
-       							public void onClick(final DialogInterface dialog,
-       									final int which) {
-       								
-       							}
-       						});
-
-       				
-       				alertDialog.show();
-           			
-           		}
-        	   }
-        	   }
-        	  });
-
-        return v;
-    }
-    public void grabURL(String url) {
-    	  Log.v("Android Spinner JSON Datdfga Activity", url);
-    	  new GrabURL().execute(url);
-    	 }
-    public static AllCourses newInstance(String text) {
-
-    	AllCourses f = new AllCourses();
-        Bundle b = new Bundle();
-        b.putString("msg", text);
-
-        f.setArguments(b);
-
-        return f;
-    
-    }
-    class GrabURL extends AsyncTask<String,Void,String>{
-    	private static final int REGISTRATION_TIMEOUT = 3 * 1000;
-		  private static final int WAIT_TIMEOUT = 30 * 1000;
-		  private final HttpClient httpclient = new DefaultHttpClient();
-		  final HttpParams params = httpclient.getParams();
-		  HttpResponse response;
-		  private String content =  null;
-		 
-		@Override
-	    protected void onPreExecute() {
-			  cDialog = new ProgressDialog(getActivity());
-	          cDialog.setMessage("Please wait...");
-	          cDialog.setIndeterminate(false);
-	          cDialog.setCancelable(false);
-	         // cDialog.show();
-		}
-			
-			@Override
-			protected void onPostExecute(String file_url) {
-		   
-				 super.onPostExecute(file_url);
-				
-				
-				  
-				    displayCourseList(content);
-				    cDialog.dismiss();
-				  
-				  }
-
-			private void displayCourseList(String response){
-				 
-				
-				 
-				  try {
-					  
-				
-				   JSONObject c = jArray.getJSONObject(TAG_SRES);
-				   JSONArray jarray=c.names();
-			 
-			    	Log.i("jarray values", "["+jarray+"]");
-			    	String arrayname="array";
-			    	
-			    	for(int i=0;i<jarray.length();i++){
-			    		arrayname=arrayname+Integer.toString(i);
-			    		arrayname=jarray.getString(i);
-			    	      Log.e("parenttag",arrayname);
-
-			    	   }
-				
-				
-				   JSONArray countryListObj = c.getJSONArray(TAG_Course_ARRAY);
-				 
-				   if(countryListObj.length() == 0)
-				   
-				   {
-			
-				    listView.removeFooterView(loadMoreView);
-				   }
-				   else 
-				   
-				   {
-				   
-					   for (int i=0; i<countryListObj.length(); i++)
-					   
-					   {
-				    start++;
-				    System.out.println("countryListObj length"+countryListObj.length());
-		    		JSONObject c1 = user.getJSONObject(i);
-		    		JSONObject c2 = c1.getJSONObject(TAG_SRES);
-		    	    authorname = c2.getString(TAG_COURSE_AUTHOR);
-		    		instructorid=c2.getString(TAG_INSTRUCTOR_ID);
-		    		course_id=c2.getString(TAG_COURSE_ID);
-		    		  course_description=c2.getString(TAG_COURSE_DESCRIPTION);
-		            course_name = c2.getString(TAG_COURSE_NAME);
-		            promocheck=c2.getString(Promo_Check);
-
-		            course_cover_image=c2.getString(TAG_course_cover_image);
-		        	cost= c2.getString(TAG_COURSE_COST);
-		        	ratingcouont=c2.getString(TAG_COURSE_RATINGS);
-		        	coursetotallist.add(authorname);
-		        	coursetotallist.add(course_name);
-		        	coursetotallist.add(ratingcouont);
-		        	successstring=c2.getString(TAG_SUCCESS);
-		        	imagelist.add(course_cover_image);
-
-
-		        	 Course cnt = new Course(authorname,course_name,cost,course_id,instructorid,course_cover_image,ratingcouont,ifmycoursepresent,promocheck);
-		        	 cnt.setName(authorname);
-		        	 cnt.setCode(course_name);
-		       	  cnt.setpromocheck(promocheck);
-
-					  cnt.setins_id(instructorid);
-					  cnt.setcourseid(course_id);
-					  cnt.setrating(ratingcouont);
-		           cnt.setstringurl(course_cover_image);
-		           cnt.setdescription(course_description);
-		         cnt.setifmycourse(ifmycoursepresent);
-		       
-				    courselist.add(cnt);
-				 
-				    System.out.println("size fo country list"+courselist.size());
-				    System.out.println("value fo country list"+courselist);
-				    dataAdapter.add(cnt);
-		        	 System.out.println("bitmap"+bitmap);
-		        	
-		       }
-					  
-					   dataAdapter.notifyDataSetChanged();
-					    loadingMore = false;
-		  
-					   
-					   
-				   
-				   }
-				 
-				  } catch (JSONException e) {
-				   e.printStackTrace();
-				  }
-				 
-				 }	
-			
-		
-
-			@Override
-			protected String doInBackground(String... urls) {
-				// TODO Auto-generated method stub
-					    String URL = null;
-			    loadingMore = true;
-			  
-			    try
-			    {
-			    	URL = urls[0];
-			    HttpConnectionParams.setConnectionTimeout(params, REGISTRATION_TIMEOUT);
-			    HttpConnectionParams.setSoTimeout(params, WAIT_TIMEOUT);
-			    ConnManagerParams.setTimeout(params, WAIT_TIMEOUT);
-			  
-			    HttpPost httpPost = new HttpPost(URL);
-			  
-			    //add name value pair for the country code
-			    List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
-			    nameValuePairs.add(new BasicNameValuePair("start",String.valueOf(start)));
-			    nameValuePairs.add(new BasicNameValuePair("limit",String.valueOf(limit)));
-			   // nameValuePairs.add(new BasicNameValuePair("student_id",Config.student_id));
-		    jArray = jsonParser.makeHttpRequest(Config.ServerUrl+Config.allcoursebrowseurl, "POST", nameValuePairs);
-			    JSONObject c = jArray.getJSONObject(TAG_SRES);
-//		    	Log.i("tagconvertstr", "["+c+"]");
-		    	user = c.getJSONArray(TAG_Course_ARRAY);
-//		    	Log.i("tagconvertstr1", "["+user+"]");
-
-			    
-			    httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs)); 
-			    response = httpclient.execute(httpPost);
-			  
-			     StatusLine statusLine = response.getStatusLine();
-			     if(statusLine.getStatusCode() == HttpStatus.SC_OK){
-			      ByteArrayOutputStream out = new ByteArrayOutputStream();
-		      response.getEntity().writeTo(out);
-			      out.close();
-			      content = out.toString();
-			     } else{
-			      //Closes the connection.
-			      Log.w("HTTP1:",statusLine.getReasonPhrase());
-			      response.getEntity().getContent().close();
-			      throw new IOException(statusLine.getReasonPhrase());
-			     }
-			    } catch (ClientProtocolException e) {
-			     Log.w("HTTP2:",e );
-			     content = e.getMessage();
-//			     error = true;
-			     cancel(true);
-			    } catch (IOException e) {
-			     Log.w("HTTP3:",e );
-			     content = e.getMessage();
-//			     error = true;
-			     cancel(true);
-			    }catch (Exception e) {
-			     Log.w("HTTP4:",e );
-			     content = e.getMessage();
-//			     error = true;
-			     cancel(true);
-			    }
-//			    }catch(JSONException e)
-//			    {
-//			    	  e.printStackTrace();
-//			    }
-//			   
-//			        
-			    		
-//			    }catch(Exception e)
-//			    {
-//			    	  e.printStackTrace();
-//			    }
-			    return content;
+				Course country = (Course) parent.getItemAtPosition(position);
+				if (position < courselist.size()) {
+					courseidurl = country.getcourseid();
+					instructoridurl = country.getinsid();
+					new Avatarfetch().execute();
+				}
 			}
-			
-    }
-    private class MyCustomAdapter extends ArrayAdapter<Course> {
-    	 
-    	  private ArrayList<Course> countryList;
-    	 
-    	  public MyCustomAdapter(Context context, int textViewResourceId, 
-    	    ArrayList<Course> countryList) {
-    	   super(context, textViewResourceId, countryList);
-    	   this.countryList = new ArrayList<Course>();
-    	   this.countryList.addAll(countryList);
-    	  }
-    	 
-    	  private class ViewHolder {
-    	   TextView code;
-    	   TextView name;
-    	   ImageView cover;
-    	   TextView cost;
-    	   ImageView ratingshow;
-    	   ImageView promoimage;
+		});
 
-    	  }
-    	 
-    	  public void add(Course country){
-    	
-    	   this.countryList.add(country);
-    	  }
-    	 
-    	  @Override
-    	  public View getView(int position, View convertView, ViewGroup parent) {
-    	 
-    	   ViewHolder holder = null;
-    	   Log.v("ConvertView", String.valueOf(position));
-    	   if (convertView == null) {
-    	 
-    	   LayoutInflater vi = (LayoutInflater)getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    	   convertView = vi.inflate(R.layout.course_overview, null);
-    	 
-    	   holder = new ViewHolder();
-    	   holder.code = (TextView) convertView.findViewById(R.id.coursename);
-    	   holder.name = (TextView) convertView.findViewById(R.id.author);
-    	   holder.cost = (TextView) convertView.findViewById(R.id.cost);
-       holder.cover = (ImageView) convertView.findViewById(R.id.cover);
-      holder.ratingshow= (ImageView) convertView.findViewById(R.id.ratingimage);
-      holder.promoimage= (ImageView) convertView.findViewById(R.id.promoimage);
+		listView.setOnScrollListener(new OnScrollListener() {
 
-    	   convertView.setTag(holder);
-    	 
-    	   } else {
-    	    holder = (ViewHolder) convertView.getTag();
-    	   }
-    	 
-    	   Course country = this.countryList.get(position);
-    	   holder.code.setText(country.getCode());
-    	   holder.name.setText(country.getName());
-    	   holder.cost.setText("$ "+country.getRegion());
-    	   holder.cover.setImageBitmap(country.getBitmap());
-//    	   aQuery = new AQuery(getActivity());
-//    	    aQuery.id(R.id.cover).image(country.getstringurl(),true,true);
-    	    Picasso.with(getActivity()).load(country.getstringurl()).into(holder.cover);
-    	  
-//    	   new DownloadTask((ImageView) convertView.findViewById(R.id.cover))
-//           .execute((String) country.getstringurl());
-    	    
-    	    if(country.getpromocheck().equalsIgnoreCase("1"))
-    	    {
-    	    	holder.promoimage.setImageResource(R.drawable.promocode);  
-    	    }
-    	    else
-    	    {
-    	    	holder.promoimage.setImageResource(R.drawable.click);  
-    	    }
+			@Override
+			public void onScrollStateChanged(AbsListView view, int scrollState) {
+			}
 
-    	   if(country.getrating().equalsIgnoreCase("0"))
-    	   {
-    		   holder.ratingshow.setImageResource(R.drawable.zero);  
-    	   }
-    	   else  if(country.getrating().equalsIgnoreCase("1"))
-    	   {
-    		   holder.ratingshow.setImageResource(R.drawable.one);  
-    	   }
-    	   else  if(country.getrating().equalsIgnoreCase("2"))
-    	   {
-    		   holder.ratingshow.setImageResource(R.drawable.two);  
-    	   }
-    	   else  if(country.getrating().equalsIgnoreCase("3"))
-    	   {
-    		   holder.ratingshow.setImageResource(R.drawable.three);  
-    	   }
-    	   else  if(country.getrating().equalsIgnoreCase("4"))
-    	   {
-    		   holder.ratingshow.setImageResource(R.drawable.four);  
-    	   }
-    	   else  if(country.getrating().equalsIgnoreCase("5"))
-    	   {
-    		   holder.ratingshow.setImageResource(R.drawable.five);  
-    	   }
-    	   else 
-    	   {
-    		   holder.ratingshow.setImageResource(R.drawable.zero);  
-    	   }
-    	   return convertView;
-    	 
-    	  }
-    	 
-    }
-    public class DownloadTask extends AsyncTask<String, Void, Boolean> {
-        ImageView v;
-        String url;
-        Bitmap bm;
+			@SuppressWarnings("deprecation")
+			@Override
+			public void onScroll(AbsListView view, int firstVisibleItem,
+					int visibleItemCount, int totalItemCount) {
 
-        public DownloadTask(ImageView v) {
-            this.v = v;
-        }
+				int lastInScreen = firstVisibleItem + visibleItemCount;
+				if ((lastInScreen == totalItemCount) && !(loadingMore)) {
 
-        @Override
-        protected Boolean doInBackground(String... params) {
-            url = params[0];
-            bm = loadBitmap(url);
-            return true;
-        }
+					if (isInternetPresent) {
+						grabURL(Config.ServerUrl + Config.allcourseurl);
+					} else {
 
-        @Override
-        protected void onPostExecute(Boolean result) {
-            // TODO Auto-generated method stub
-            super.onPostExecute(result);
-            v.setImageBitmap(bm);
-            cDialog.dismiss();
-        }
+						if (alertDialog.isShowing()) {
+							alertDialog.dismiss();
+						}
+						alertDialog = new AlertDialog.Builder(getActivity())
+								.create();
+						alertDialog.setTitle("INFO!");
 
-        public Bitmap loadBitmap(String url) {
-            try {
-                URL newurl = new URL(url);
-                Bitmap b = BitmapFactory.decodeStream(newurl.openConnection()
-                        .getInputStream());
-                return b;
-            } catch (MalformedURLException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-            return null;
-        }
-    }
-    class fetchpurnumber extends AsyncTask<String, String, String> {
-    	@Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            pDialog = new ProgressDialog(getActivity());
-            pDialog.setMessage("Please wait...");
-            pDialog.setIndeterminate(false);
-            pDialog.setCancelable(false);
-            pDialog.show();
+						alertDialog.setMessage("No network connection.");
 
-        }
+						alertDialog.setIcon(R.drawable.delete);
+
+						alertDialog.setButton("OK",
+								new DialogInterface.OnClickListener() {
+
+									public void onClick(
+											final DialogInterface dialog,
+											final int which) {
+
+									}
+								});
+
+						alertDialog.show();
+
+					}
+				}
+			}
+		});
+
+		return v;
+	}
+
+	public void grabURL(String url) {
+		Log.v("Android Spinner JSON Datdfga Activity", url);
+		new GrabURL().execute(url);
+	}
+
+	public static AllCourses newInstance(String text) {
+
+		AllCourses f = new AllCourses();
+		Bundle b = new Bundle();
+		b.putString("msg", text);
+
+		f.setArguments(b);
+
+		return f;
+
+	}
+
+	class GrabURL extends AsyncTask<String, Void, String> {
+		private static final int REGISTRATION_TIMEOUT = 3 * 1000;
+		private static final int WAIT_TIMEOUT = 30 * 1000;
+		private final HttpClient httpclient = new DefaultHttpClient();
+		final HttpParams params = httpclient.getParams();
+		HttpResponse response;
+		private String content = null;
+
+		@Override
+		protected void onPreExecute() {
+			cDialog = new ProgressDialog(getActivity());
+			cDialog.setMessage("Please wait...");
+			cDialog.setIndeterminate(false);
+			cDialog.setCancelable(false);
+			// cDialog.show();
+		}
+
+		@Override
+		protected void onPostExecute(String file_url) {
+
+			super.onPostExecute(file_url);
+
+			displayCourseList(content);
+			cDialog.dismiss();
+
+		}
+
+		private void displayCourseList(String response) {
+
+			try {
+
+				JSONObject c = jArray.getJSONObject(TAG_SRES);
+				JSONArray jarray = c.names();
+
+				Log.i("jarray values", "[" + jarray + "]");
+				String arrayname = "array";
+
+				for (int i = 0; i < jarray.length(); i++) {
+					arrayname = arrayname + Integer.toString(i);
+					arrayname = jarray.getString(i);
+					Log.e("parenttag", arrayname);
+
+				}
+
+				JSONArray countryListObj = c.getJSONArray(TAG_Course_ARRAY);
+
+				if (countryListObj.length() == 0)
+
+				{
+
+					listView.removeFooterView(loadMoreView);
+				} else
+
+				{
+
+					for (int i = 0; i < countryListObj.length(); i++)
+
+					{
+						start++;
+
+						JSONObject c1 = user.getJSONObject(i);
+						JSONObject c2 = c1.getJSONObject(TAG_SRES);
+						authorname = c2.getString(TAG_COURSE_AUTHOR);
+						instructorid = c2.getString(TAG_INSTRUCTOR_ID);
+						course_id = c2.getString(TAG_COURSE_ID);
+						course_description = c2
+								.getString(TAG_COURSE_DESCRIPTION);
+						course_name = c2.getString(TAG_COURSE_NAME);
+						promocheck = c2.getString(Promo_Check);
+
+						course_cover_image = c2
+								.getString(TAG_course_cover_image);
+						cost = c2.getString(TAG_COURSE_COST);
+						ratingcouont = c2.getString(TAG_COURSE_RATINGS);
+						coursetotallist.add(authorname);
+						coursetotallist.add(course_name);
+						coursetotallist.add(ratingcouont);
+						successstring = c2.getString(TAG_SUCCESS);
+						imagelist.add(course_cover_image);
+
+						Course cnt = new Course(authorname, course_name, cost,
+								course_id, instructorid, course_cover_image,
+								ratingcouont, ifmycoursepresent, promocheck);
+						cnt.setName(authorname);
+						cnt.setCode(course_name);
+						cnt.setpromocheck(promocheck);
+
+						cnt.setins_id(instructorid);
+						cnt.setcourseid(course_id);
+						cnt.setrating(ratingcouont);
+						cnt.setstringurl(course_cover_image);
+						cnt.setdescription(course_description);
+						cnt.setifmycourse(ifmycoursepresent);
+
+						courselist.add(cnt);
+
+						dataAdapter.add(cnt);
+
+					}
+
+					dataAdapter.notifyDataSetChanged();
+					loadingMore = false;
+
+				}
+
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+
+		}
+
+		@Override
+		protected String doInBackground(String... urls) {
+			// TODO Auto-generated method stub
+			String URL = null;
+			loadingMore = true;
+
+			try {
+				URL = urls[0];
+				HttpConnectionParams.setConnectionTimeout(params,
+						REGISTRATION_TIMEOUT);
+				HttpConnectionParams.setSoTimeout(params, WAIT_TIMEOUT);
+				ConnManagerParams.setTimeout(params, WAIT_TIMEOUT);
+
+				HttpPost httpPost = new HttpPost(URL);
+
+				// add name value pair for the country code
+				List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(
+						2);
+				nameValuePairs.add(new BasicNameValuePair("start", String
+						.valueOf(start)));
+				nameValuePairs.add(new BasicNameValuePair("limit", String
+						.valueOf(limit)));
+				// nameValuePairs.add(new
+				// BasicNameValuePair("student_id",Config.student_id));
+				jArray = jsonParser.makeHttpRequest(Config.ServerUrl
+						+ Config.allcoursebrowseurl, "POST", nameValuePairs);
+				JSONObject c = jArray.getJSONObject(TAG_SRES);
+				// Log.i("tagconvertstr", "["+c+"]");
+				user = c.getJSONArray(TAG_Course_ARRAY);
+				// Log.i("tagconvertstr1", "["+user+"]");
+
+				httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+				response = httpclient.execute(httpPost);
+
+				StatusLine statusLine = response.getStatusLine();
+				if (statusLine.getStatusCode() == HttpStatus.SC_OK) {
+					ByteArrayOutputStream out = new ByteArrayOutputStream();
+					response.getEntity().writeTo(out);
+					out.close();
+					content = out.toString();
+				} else {
+					// Closes the connection.
+					Log.w("HTTP1:", statusLine.getReasonPhrase());
+					response.getEntity().getContent().close();
+					throw new IOException(statusLine.getReasonPhrase());
+				}
+			} catch (ClientProtocolException e) {
+				Log.w("HTTP2:", e);
+				content = e.getMessage();
+				// error = true;
+				cancel(true);
+			} catch (IOException e) {
+				Log.w("HTTP3:", e);
+				content = e.getMessage();
+				// error = true;
+				cancel(true);
+			} catch (Exception e) {
+				Log.w("HTTP4:", e);
+				content = e.getMessage();
+				// error = true;
+				cancel(true);
+			}
+			// }catch(JSONException e)
+			// {
+			// e.printStackTrace();
+			// }
+			//
+			//
+
+			// }catch(Exception e)
+			// {
+			// e.printStackTrace();
+			// }
+			return content;
+		}
+
+	}
+
+	private class MyCustomAdapter extends ArrayAdapter<Course> {
+
+		private ArrayList<Course> countryList;
+
+		public MyCustomAdapter(Context context, int textViewResourceId,
+				ArrayList<Course> countryList) {
+			super(context, textViewResourceId, countryList);
+			this.countryList = new ArrayList<Course>();
+			this.countryList.addAll(countryList);
+		}
+
+		private class ViewHolder {
+			TextView code;
+			TextView name;
+			ImageView cover;
+			TextView cost;
+			ImageView ratingshow;
+			ImageView promoimage;
+
+		}
+
+		public void add(Course country) {
+
+			this.countryList.add(country);
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+
+			ViewHolder holder = null;
+			Log.v("ConvertView", String.valueOf(position));
+			if (convertView == null) {
+
+				LayoutInflater vi = (LayoutInflater) getActivity()
+						.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+				convertView = vi.inflate(R.layout.course_overview, null);
+
+				holder = new ViewHolder();
+				holder.code = (TextView) convertView
+						.findViewById(R.id.coursename);
+				holder.name = (TextView) convertView.findViewById(R.id.author);
+				holder.cost = (TextView) convertView.findViewById(R.id.cost);
+				holder.cover = (ImageView) convertView.findViewById(R.id.cover);
+				holder.ratingshow = (ImageView) convertView
+						.findViewById(R.id.ratingimage);
+				holder.promoimage = (ImageView) convertView
+						.findViewById(R.id.promoimage);
+
+				convertView.setTag(holder);
+
+			} else {
+				holder = (ViewHolder) convertView.getTag();
+			}
+
+			Course country = this.countryList.get(position);
+			holder.code.setText(country.getCode());
+			holder.name.setText(country.getName());
+			holder.cost.setText("$ " + country.getRegion());
+			holder.cover.setImageBitmap(country.getBitmap());
+			// aQuery = new AQuery(getActivity());
+			// aQuery.id(R.id.cover).image(country.getstringurl(),true,true);
+			Picasso.with(getActivity()).load(country.getstringurl())
+					.into(holder.cover);
+
+			// new DownloadTask((ImageView)
+			// convertView.findViewById(R.id.cover))
+			// .execute((String) country.getstringurl());
+
+			if (country.getpromocheck().equalsIgnoreCase("1")) {
+				holder.promoimage.setImageResource(R.drawable.promocode);
+			} else {
+				holder.promoimage.setImageResource(R.drawable.click);
+			}
+
+			if (country.getrating().equalsIgnoreCase("0")) {
+				holder.ratingshow.setImageResource(R.drawable.zero);
+			} else if (country.getrating().equalsIgnoreCase("1")) {
+				holder.ratingshow.setImageResource(R.drawable.one);
+			} else if (country.getrating().equalsIgnoreCase("2")) {
+				holder.ratingshow.setImageResource(R.drawable.two);
+			} else if (country.getrating().equalsIgnoreCase("3")) {
+				holder.ratingshow.setImageResource(R.drawable.three);
+			} else if (country.getrating().equalsIgnoreCase("4")) {
+				holder.ratingshow.setImageResource(R.drawable.four);
+			} else if (country.getrating().equalsIgnoreCase("5")) {
+				holder.ratingshow.setImageResource(R.drawable.five);
+			} else {
+				holder.ratingshow.setImageResource(R.drawable.zero);
+			}
+			return convertView;
+
+		}
+
+	}
+
+	public class DownloadTask extends AsyncTask<String, Void, Boolean> {
+		ImageView v;
+		String url;
+		Bitmap bm;
+
+		public DownloadTask(ImageView v) {
+			this.v = v;
+		}
+
+		@Override
+		protected Boolean doInBackground(String... params) {
+			url = params[0];
+			bm = loadBitmap(url);
+			return true;
+		}
+
+		@Override
+		protected void onPostExecute(Boolean result) {
+			// TODO Auto-generated method stub
+			super.onPostExecute(result);
+			v.setImageBitmap(bm);
+			cDialog.dismiss();
+		}
+
+		public Bitmap loadBitmap(String url) {
+			try {
+				URL newurl = new URL(url);
+				Bitmap b = BitmapFactory.decodeStream(newurl.openConnection()
+						.getInputStream());
+				return b;
+			} catch (MalformedURLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return null;
+		}
+	}
+
+	class fetchpurnumber extends AsyncTask<String, String, String> {
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			pDialog = new ProgressDialog(getActivity());
+			pDialog.setMessage("Please wait...");
+			pDialog.setIndeterminate(false);
+			pDialog.setCancelable(false);
+			pDialog.show();
+
+		}
 
 		@Override
 		protected String doInBackground(String... params) {
-			
-			 List<NameValuePair> params1 = new ArrayList<NameValuePair>();
-             
-             params1.add(new BasicNameValuePair("course_id", courseidurl));
-            
 
-             JsonParser jLogin = new JsonParser();
-             
-             JSONObject json = jLogin.makeHttpRequest(Config.ServerUrl+Config.purchasenumberselection,"POST", params1);
-             System.out.println("value for json::"+json);
-             if(json!=null)
-             {
-                 try
-                 {
-                	 if(json != null)
-                	 {
-                	 System.out.println("json value::"+json);
-                	
-                	 JSONObject jUser = json.getJSONObject(TAG_SRESL);
-                	
-                	 numofrows=  jUser.getString(TAG_NUMBER_OF_ROWS);
-                	 System.out.println("number of rows value:::"+numofrows);
-                	 
-                	
-                	 }
-                	
-                }
-                 
-                 catch(JSONException e)
-                 {
-                	 e.printStackTrace();
-                	 
-                 }
-              }
-             else{
-                	 
-             }
-                	
-                 
-    			
-    			return null;
-    		}
-		
+			List<NameValuePair> params1 = new ArrayList<NameValuePair>();
+
+			params1.add(new BasicNameValuePair("course_id", courseidurl));
+
+			JsonParser jLogin = new JsonParser();
+
+			JSONObject json = jLogin.makeHttpRequest(Config.ServerUrl
+					+ Config.purchasenumberselection, "POST", params1);
+
+			if (json != null) {
+				try {
+					if (json != null) {
+
+						JSONObject jUser = json.getJSONObject(TAG_SRESL);
+
+						numofrows = jUser.getString(TAG_NUMBER_OF_ROWS);
+
+					}
+
+				}
+
+				catch (JSONException e) {
+					e.printStackTrace();
+
+				}
+			} else {
+
+			}
+
+			return null;
+		}
+
 		@Override
-		 protected void onPostExecute(String file_url) {
-	    	   super.onPostExecute(file_url);
-	        System.out.println("in post execute");
-	    	   pDialog.dismiss();
-	    	   
-	    	//  String url="http://208.109.248.89:8085/OnlineCourse/Student/student_view_Course?course_id=50&authorid=1&pur=0&catcourse=&coursetype=";
-	    	   String url = Config.browsecommon_url+"?course_id="+courseidurl+"&authorid="+instructoridurl+"&pur="+numofrows+"&catcourse=&coursetype=";
-				System.out.println("url value"+url);
-	    	   Intent i = new Intent(Intent.ACTION_VIEW);
-				i.setData(Uri.parse(url));
-				getActivity().startActivity(i);
-	         
-	     
+		protected void onPostExecute(String file_url) {
+			super.onPostExecute(file_url);
 
-		
-		 }
+			pDialog.dismiss();
 
- }
-    class Avatarfetch extends AsyncTask<String, String, String> {
-    	@Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-          
-        }
-    	@Override
-		protected String doInBackground(String... params)
-    	{
-    		List<NameValuePair> params1 = new ArrayList<NameValuePair>();
-             
-            
-             params1.add(new BasicNameValuePair("id", "3"));
-           
-    		JsonParser jLogin = new JsonParser();
-            
-             JSONObject json = jLogin.makeHttpRequest(avatarurl,"POST", params1);
-            System.out.println("value for json::"+json);
-             if(json!=null)
-             {
-                 try
-                 {
-                	 if(json != null)
-                	 {
-                	 System.out.println("json value::"+json);
-                	
-                	 JSONObject jUser = json.getJSONObject(TAG_SRESL);
-                	 successL = jUser.getString(TAG_SUCCESS);
-                	 avatar_url = jUser.getString(TAG_AVATAR_URL);
-                	 Config.browsecommon_url=jUser.getString(TAG_AVATAR_URL);;
-                	 System.out.println("avatar url in second async"+avatar_url);
-                	 }
-	                	
-	                }
-	                 
-	                 catch(JSONException e)
-	                 {
-	                	 e.printStackTrace();
-	                	 
-	                 }
-	              }
-	             else{
-	                	 
-	            	 successL ="No"; 
-		    			  }
-			return null; 
-    	}
-    	@Override
-		 protected void onPostExecute(String file_url) {
-	    	   super.onPostExecute(file_url);
-	  //  pDialog.dismiss();	
-	new fetchpurnumber().execute();
-    	}
- }
-    @Override
-    public void onPause(){
-        super.onPause();
-        if(pDialog!=null)
-            pDialog.dismiss();
-    }
+			// String
+			// url="http://208.109.248.89:8085/OnlineCourse/Student/student_view_Course?course_id=50&authorid=1&pur=0&catcourse=&coursetype=";
+			String url = Config.browsecommon_url + "?course_id=" + courseidurl
+					+ "&authorid=" + instructoridurl + "&pur=" + numofrows
+					+ "&catcourse=&coursetype=";
+
+			Intent i = new Intent(Intent.ACTION_VIEW);
+			i.setData(Uri.parse(url));
+			getActivity().startActivity(i);
+
+		}
+
+	}
+
+	class Avatarfetch extends AsyncTask<String, String, String> {
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+
+		}
+
+		@Override
+		protected String doInBackground(String... params) {
+			List<NameValuePair> params1 = new ArrayList<NameValuePair>();
+
+			params1.add(new BasicNameValuePair("id", "3"));
+
+			JsonParser jLogin = new JsonParser();
+
+			JSONObject json = jLogin
+					.makeHttpRequest(avatarurl, "POST", params1);
+
+			if (json != null) {
+				try {
+					if (json != null) {
+
+						JSONObject jUser = json.getJSONObject(TAG_SRESL);
+						successL = jUser.getString(TAG_SUCCESS);
+						avatar_url = jUser.getString(TAG_AVATAR_URL);
+						Config.browsecommon_url = jUser
+								.getString(TAG_AVATAR_URL);
+						;
+
+					}
+
+				}
+
+				catch (JSONException e) {
+					e.printStackTrace();
+
+				}
+			} else {
+
+				successL = "No";
+			}
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(String file_url) {
+			super.onPostExecute(file_url);
+
+			new fetchpurnumber().execute();
+		}
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+		if (pDialog != null)
+			pDialog.dismiss();
+	}
 }
