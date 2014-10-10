@@ -7,6 +7,7 @@ import twitter4j.auth.AccessToken;
 import twitter4j.auth.RequestToken;
 import twitter4j.conf.Configuration;
 import twitter4j.conf.ConfigurationBuilder;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -32,8 +33,12 @@ public class AboutTweet extends Activity {
      * */
 	
 	static int forcheck=0;
-    static String TWITTER_CONSUMER_KEY = "q4WCEk15E9NUPlaEN5OQNdE3c";
-    static String TWITTER_CONSUMER_SECRET = "dkyZBFE4KOArbvbveRxJ6YRJR2YlfQBUWlnhKAKlYzD2u7tz27";
+    static String TWITTER_CONSUMER_KEY = "QUTuthO7NA5W5jXw81Gesbw8J";
+    static String TWITTER_CONSUMER_SECRET = "6sTYOKaTj6Q6OYQcGaGONIWxHuPyCtcByX4adJGz1U2Mf5jIPq";
+// 
+    
+//    static String TWITTER_CONSUMER_KEY = "q4WCEk15E9NUPlaEN5OQNdE3c";
+//    static String TWITTER_CONSUMER_SECRET = "dkyZBFE4KOArbvbveRxJ6YRJR2YlfQBUWlnhKAKlYzD2u7tz27";
  
     // Preference Constants
     static String PREFERENCE_NAME = "twitter_oauth";
@@ -81,6 +86,8 @@ public class AboutTweet extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tweetaboutus);
+        ActionBar actions = getActionBar();
+		actions.hide();
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
          
         cd = new ConnectionDetector(getApplicationContext());
@@ -111,12 +118,12 @@ public class AboutTweet extends Activity {
         // Shared Preferences
         mSharedPreferences = getApplicationContext().getSharedPreferences(
                 "MyPref", 0);
- 
+        System.out.println("for check value in tweet"+forcheck);
         if(forcheck==0)
         {
         	loginToTwitter();
         }
-        System.out.println("for check value"+forcheck);
+      
         
         btnLoginTwitter.setOnClickListener(new View.OnClickListener() {
  
@@ -229,7 +236,7 @@ public class AboutTweet extends Activity {
 						                 
 						                AccessToken accessToken = new AccessToken(access_token, access_token_secret);
 						                Twitter twitter = new TwitterFactory(builder.build()).getInstance(accessToken);
-						                String screenName="imansvijay";
+						                String screenName="Learnterest";
 						                System.out.println("in create friendship");
 						                     	        twitter.createFriendship(screenName); 
 						                     	       Intent intentSignUP = new Intent(getApplicationContext(),
@@ -336,7 +343,7 @@ public class AboutTweet extends Activity {
 	                 
 	                AccessToken accessToken = new AccessToken(access_token, access_token_secret);
 	                Twitter twitter = new TwitterFactory(builder.build()).getInstance(accessToken);
-	                String screenName="imansvijay";
+	                String screenName="Learnterest";
 	               
 	                     	        twitter.createFriendship(screenName); 
 	               

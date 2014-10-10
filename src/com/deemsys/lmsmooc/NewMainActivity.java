@@ -5,6 +5,7 @@ import com.actionbarsherlock.view.MenuItem;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.Fragment;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -165,7 +166,9 @@ public class NewMainActivity extends SherlockFragmentActivity {
 			ft.replace(R.id.content_frame, fragment10);
 			break;
 		default:
-
+            AboutTweet.forcheck=0;
+            SharedPreferences settings = getApplicationContext().getSharedPreferences("MyPref", getApplicationContext().MODE_PRIVATE);
+            settings.edit().clear().commit();
 			Intent intentSignUP = new Intent(getApplicationContext(),
 					LoginActivity.class);
 			startActivity(intentSignUP);
