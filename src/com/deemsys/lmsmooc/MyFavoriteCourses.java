@@ -2,12 +2,10 @@ package com.deemsys.lmsmooc;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
@@ -24,38 +22,28 @@ import org.apache.http.params.HttpParams;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import com.squareup.picasso.Picasso;
-
 import android.support.v4.app.Fragment;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-
-import android.util.Log;
-
 import android.view.LayoutInflater;
-
 import android.view.View;
-
 import android.view.ViewGroup;
-
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
-
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 public class MyFavoriteCourses extends Fragment {
 	Bitmap bitmap;
@@ -89,17 +77,17 @@ public class MyFavoriteCourses extends Fragment {
 	private static final String TAG_SRES = "serviceresponse";
 	private static final String TAG_COURSE_NAME = "course_name";
 	private static final String TAG_COURSE_AUTHOR = "course_author";
-	private static final String TAG_COURSE_SUBTITLE = "course_sub_title";
+	
 	private static final String TAG_COURSE_COST = "course_price";
 	private static final String TAG_COURSE_RATINGS = "user_ratings";
 	private static final String TAG_course_cover_image = "course_cover_image";
-	private static final String TAG_route_no = "route_no";
-	private static final String TAG_driver_status = "device_status";
+	
+	
 	private static final String TAG_Check_ = "checkmycourse";
-	private static final String TAG_status_date = "status_date";
+	
 	private static final String TAG_INSTRUCTOR_ID = "instructor_id";
 	private static final String TAG_COURSE_ID = "course_id";
-	private static final String TAG_SUCCESS = "success";
+	
 	private static final String TAG_NUMBER_OF_ROWS = "number_of_rows";
 	private static final String TAG_COURSE_PROMO_VIDEO = "course_promo_video";
 	String courseidurl, instructoridurl, pur_url, checkstatus;
@@ -215,7 +203,7 @@ public class MyFavoriteCourses extends Fragment {
 	}
 
 	public void grabURL(String url) {
-		Log.v("Android Spinner JSON Data Activity", url);
+	
 		new GrabURL().execute(url);
 	}
 
@@ -226,7 +214,7 @@ public class MyFavoriteCourses extends Fragment {
 		final HttpParams params = httpclient.getParams();
 		HttpResponse response;
 		private String content = null;
-		private boolean error = false;
+		
 
 		@Override
 		protected void onPreExecute() {
@@ -247,17 +235,16 @@ public class MyFavoriteCourses extends Fragment {
 
 		}
 
+		@SuppressWarnings("deprecation")
 		private void displayCourseList(String response) {
 
-			JSONObject responseObj = null;
+			
 
 			try {
 
 				JSONObject c = jArray.getJSONObject(TAG_SRES);
-				Log.i("tagconvertstr", "[" + c + "]");
-
-				Log.i("tagconvertstr1", "[" + user + "]");
-				responseObj = new JSONObject(response);
+				
+				
 
 				JSONArray countryListObj = c.getJSONArray(TAG_Course_ARRAY);
 
@@ -396,9 +383,9 @@ public class MyFavoriteCourses extends Fragment {
 				jArray = jsonParser.makeHttpRequest(Config.ServerUrl
 						+ Config.myfavoritecourseurl, "POST", nameValuePairs);
 				JSONObject c = jArray.getJSONObject(TAG_SRES);
-				Log.i("tagconvertstr", "[" + c + "]");
+				
 				user = c.getJSONArray(TAG_Course_ARRAY);
-				Log.i("tagconvertstr1", "[" + user + "]");
+				
 
 				httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 				response = httpclient.execute(httpPost);
@@ -411,24 +398,24 @@ public class MyFavoriteCourses extends Fragment {
 					content = out.toString();
 				} else {
 					// Closes the connection.
-					Log.w("HTTP1:", statusLine.getReasonPhrase());
+					
 					response.getEntity().getContent().close();
 					throw new IOException(statusLine.getReasonPhrase());
 				}
 			} catch (ClientProtocolException e) {
-				Log.w("HTTP2:", e);
+				
 				content = e.getMessage();
-				error = true;
+				
 				cancel(true);
 			} catch (IOException e) {
-				Log.w("HTTP3:", e);
+				
 				content = e.getMessage();
-				error = true;
+				
 				cancel(true);
 			} catch (Exception e) {
-				Log.w("HTTP4:", e);
+				
 				content = e.getMessage();
-				error = true;
+				
 				cancel(true);
 			}
 
@@ -466,7 +453,7 @@ public class MyFavoriteCourses extends Fragment {
 		public View getView(int position, View convertView, ViewGroup parent) {
 
 			ViewHolder holder = null;
-			Log.v("ConvertView", String.valueOf(position));
+			
 			if (convertView == null) {
 
 				LayoutInflater vi = (LayoutInflater) getActivity()

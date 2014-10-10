@@ -43,11 +43,7 @@ public class Firstpage extends Fragment {
 		super.onCreateOptionsMenu(menu, inflater);
 		menu.clear();
 		inflater.inflate(R.menu.main, menu);
-		// int positionOfMenuItem = 0;
-		// MenuItem item = menu.getItem(positionOfMenuItem);
-		// SpannableString s = new SpannableString("My red MenuItem");
-		// s.setSpan(new ForegroundColorSpan(Color.RED), 0, s.length(), 0);
-		// item.setTitle(s);
+		
 	}
 
 	@Override
@@ -55,8 +51,8 @@ public class Firstpage extends Fragment {
 		// Take appropriate action for each action item click
 		switch (item.getItemId()) {
 		case R.id.action_settings:
-			// search action
-			System.out.println("settings clicked");
+		
+		
 			MainActivity.pager.setCurrentItem(5, true);
 			Fifthpage.newInstance("Fifth, Instance 1");
 			return true;

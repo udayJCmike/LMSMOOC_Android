@@ -2,27 +2,21 @@ package com.deemsys.lmsmooc;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -109,11 +103,11 @@ public class MyFavoriteAuthor extends Fragment {
 				@Override
 				public void onItemClick(AdapterView<?> arg0, View arg1,
 						int arg2, long arg3) {
-					System.out.println("in item click" + arg2);
+					
 					String item = auhtor.get(arg2).getauthid();
 					String author = auhtor.get(arg2).getauthname();
 					Intent i = new Intent(getActivity(), AuthorCourses.class);
-					System.out.println("item value" + item);
+					
 					i.putExtra("author_name", item);
 					i.putExtra("author", author);
 
@@ -137,18 +131,18 @@ public class MyFavoriteAuthor extends Fragment {
 			jArray = jsonParser.makeHttpRequest(Config.ServerUrl
 					+ Config.myfavoriteauthorurl, "POST", params1);
 
-			Log.i("tagconvertstr", "[" + jArray + "]");
+			
 
 			try {
 				if (jArray != null) {
 
 					JSONObject c = jArray.getJSONObject(TAG_SRESL);
-					Log.i("tagconvertstr", "[" + c + "]");
+					
 					user = c.getJSONArray(TAG_Author_ARRAY);
-					Log.i("tagconvertstr1", "[" + user + "]");
+					
 
 					for (int i = 0; i < user.length(); i++) {
-						System.out.println("forloop1");
+						
 						JSONObject c1 = user.getJSONObject(i);
 						JSONObject c2 = c1.getJSONObject(TAG_SRESL);
 						author_name = c2.getString(TAG_author_NAME);
@@ -162,7 +156,7 @@ public class MyFavoriteAuthor extends Fragment {
 						auth.setauthid(author_id);
 						auhtor.add(auth);
 
-						System.out.println("size of aray list" + auhtor);
+						
 
 					}
 

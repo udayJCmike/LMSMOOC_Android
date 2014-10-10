@@ -91,13 +91,13 @@
           android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textViefw3"
           style="@style/custom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/versionno" />
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textVifew2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
           style="@style/custom"

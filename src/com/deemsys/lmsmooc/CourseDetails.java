@@ -1,8 +1,7 @@
 package com.deemsys.lmsmooc;
 
-import android.app.AlertDialog;
+
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -12,7 +11,6 @@ import android.os.Bundle;
 import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.text.Html;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
@@ -40,7 +38,7 @@ public class CourseDetails extends SherlockFragmentActivity {
 	ImageButton mPlayButton;
 	String numberofrows;
 
-	@SuppressWarnings("deprecation")
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -58,7 +56,7 @@ public class CourseDetails extends SherlockFragmentActivity {
 		audio_url = i.getExtras().getString("audio_url", "");
 		ratingsho = i.getExtras().getString("rating", "");
 		numberofrows = i.getExtras().getString("numofrows", "");
-		System.out.println("audio name id value" + course_description);
+		
 		course_nam.setText(course_name);
 		enrol.setText(course_enrolls);
 		ratingshow = (ImageView) findViewById(R.id.ratingimage);
@@ -107,14 +105,14 @@ public class CourseDetails extends SherlockFragmentActivity {
 			MediaController mediacontroller = new MediaController(
 					CourseDetails.this);
 			mediacontroller.setAnchorView(videoview);
-			System.out.println("in video onclick");
+			
 			Uri video = Uri.parse(videouri);
 			videoview.setMediaController(mediacontroller);
 			videoview.setVideoURI(video);
 
 		} catch (Exception e) {
 
-			Log.e("Error", e.getMessage());
+			
 			e.printStackTrace();
 		}
 
@@ -123,8 +121,7 @@ public class CourseDetails extends SherlockFragmentActivity {
 
 			public void onPrepared(MediaPlayer mp) {
 
-				System.out.println("in video start");
-				// videoview.start();
+				
 			}
 		});
 
@@ -133,7 +130,7 @@ public class CourseDetails extends SherlockFragmentActivity {
 			@Override
 			public void onClick(View v) {
 				videoview.start();
-				// hide button once playback starts
+				
 				mPlayButton.setVisibility(View.GONE);
 			}
 

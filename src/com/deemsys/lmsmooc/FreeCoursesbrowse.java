@@ -2,12 +2,10 @@ package com.deemsys.lmsmooc;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
@@ -24,7 +22,6 @@ import org.apache.http.params.HttpParams;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import com.squareup.picasso.Picasso;
 import android.support.v4.app.Fragment;
 import android.app.ProgressDialog;
@@ -35,7 +32,6 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -123,7 +119,7 @@ public class FreeCoursesbrowse extends Fragment {
 	public void loaddatas() {
 
 		courselist = new ArrayList<Course>();
-		System.out.println("courselist size::" + courselist.size());
+		
 		dataAdapter = new MyCustomAdapter(getActivity(),
 				R.layout.course_overview, courselist);
 		listView.setAdapter(dataAdapter);
@@ -131,7 +127,7 @@ public class FreeCoursesbrowse extends Fragment {
 		listView.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				System.out.println("position value in loaddatas" + position);
+			
 				if (position < courselist.size()) {
 					Course country = (Course) parent
 							.getItemAtPosition(position);
@@ -158,7 +154,7 @@ public class FreeCoursesbrowse extends Fragment {
 				int lastInScreen = firstVisibleItem + visibleItemCount;
 				if ((lastInScreen == totalItemCount) && !(loadingMore)) {
 
-					System.out.println(Config.ServerUrl + Config.paidcourseurl);
+					
 					grabURL(Config.ServerUrl + Config.paidcourseurl);
 				}
 			}
@@ -166,7 +162,7 @@ public class FreeCoursesbrowse extends Fragment {
 	}
 
 	public void grabURL(String url) {
-		Log.v("Android Spinner JSON Data Activity", url);
+	
 		new GrabURL().execute(url);
 	}
 
@@ -217,10 +213,7 @@ public class FreeCoursesbrowse extends Fragment {
 			try {
 
 				JSONObject c = jArray.getJSONObject(TAG_SRES);
-				Log.i("tagconvertstr", "[" + c + "]");
-
-				Log.i("tagconvertstr1", "[" + user + "]");
-				// responseObj = new JSONObject(response);
+				
 
 				JSONArray countryListObj = c.getJSONArray(TAG_Course_ARRAY);
 
@@ -237,8 +230,7 @@ public class FreeCoursesbrowse extends Fragment {
 
 					{
 						start++;
-						System.out.println("countryListObj length"
-								+ countryListObj.length());
+						
 						JSONObject c1 = user.getJSONObject(i);
 						JSONObject c2 = c1.getJSONObject(TAG_SRES);
 						authorname = c2.getString(TAG_COURSE_AUTHOR);
@@ -272,16 +264,9 @@ public class FreeCoursesbrowse extends Fragment {
 						cnt.setifmycourse(ifmycoursepresent);
 						courselist.add(cnt);
 
-						System.out.println("size fo country list"
-								+ courselist.size());
-						System.out
-								.println("value fo country list" + courselist);
+					
 						dataAdapter.add(cnt);
-						System.out.println("bitmap" + bitmap);
-						System.out.println("i value" + i);
-						if (i == 9) {
-
-						}
+						
 					}
 
 					dataAdapter.notifyDataSetChanged();
@@ -320,9 +305,9 @@ public class FreeCoursesbrowse extends Fragment {
 				jArray = jsonParser.makeHttpRequest(Config.ServerUrl
 						+ Config.freecoursbrowseeurl, "POST", nameValuePairs);
 				JSONObject c = jArray.getJSONObject(TAG_SRES);
-				Log.i("tagconvertstr", "[" + c + "]");
+				
 				user = c.getJSONArray(TAG_Course_ARRAY);
-				Log.i("tagconvertstr1", "[" + user + "]");
+			
 
 				httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 				response = httpclient.execute(httpPost);
@@ -334,38 +319,27 @@ public class FreeCoursesbrowse extends Fragment {
 					out.close();
 					content = out.toString();
 				} else {
-					// Closes the connection.
-					Log.w("HTTP1:", statusLine.getReasonPhrase());
+					
 					response.getEntity().getContent().close();
 					throw new IOException(statusLine.getReasonPhrase());
 				}
 			} catch (ClientProtocolException e) {
-				Log.w("HTTP2:", e);
+				
 				content = e.getMessage();
 				// error = true;
 				cancel(true);
 			} catch (IOException e) {
-				Log.w("HTTP3:", e);
+				
 				content = e.getMessage();
 				// error = true;
 				cancel(true);
 			} catch (Exception e) {
-				Log.w("HTTP4:", e);
+				
 				content = e.getMessage();
 				// error = true;
 				cancel(true);
 			}
-			// }catch(JSONException e)
-			// {
-			// e.printStackTrace();
-			// }
-			//
-			//
-
-			// }catch(Exception e)
-			// {
-			// e.printStackTrace();
-			// }
+			
 			return content;
 		}
 
@@ -400,7 +374,7 @@ public class FreeCoursesbrowse extends Fragment {
 		public View getView(int position, View convertView, ViewGroup parent) {
 
 			ViewHolder holder = null;
-			Log.v("ConvertView", String.valueOf(position));
+		
 			if (convertView == null) {
 
 				LayoutInflater vi = (LayoutInflater) getActivity()
@@ -528,18 +502,16 @@ public class FreeCoursesbrowse extends Fragment {
 
 			JSONObject json = jLogin.makeHttpRequest(Config.ServerUrl
 					+ Config.purchasenumberselection, "POST", params1);
-			System.out.println("value for json::" + json);
+			
 			if (json != null) {
 				try {
 					if (json != null) {
-						System.out.println("json value::" + json);
+						
 
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 
 						numofrows = jUser.getString(TAG_NUMBER_OF_ROWS);
-						System.out.println("number of rows value:::"
-								+ numofrows);
-
+						
 					}
 
 				}
@@ -558,7 +530,7 @@ public class FreeCoursesbrowse extends Fragment {
 		@Override
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
-			System.out.println("in post execute");
+		
 			pDialog.dismiss();
 
 			// String
@@ -566,7 +538,7 @@ public class FreeCoursesbrowse extends Fragment {
 			String url = Config.browsecommon_url + "?course_id=" + courseidurl
 					+ "&authorid=" + instructoridurl + "&pur=" + numofrows
 					+ "&catcourse=&coursetype=";
-			System.out.println("url value" + url);
+			
 			Intent i = new Intent(Intent.ACTION_VIEW);
 			i.setData(Uri.parse(url));
 			getActivity().startActivity(i);
@@ -575,30 +547,7 @@ public class FreeCoursesbrowse extends Fragment {
 
 	}
 
-	// private class LoadImage extends AsyncTask<String, String, String> {
-	// @Override
-	// protected void onPreExecute() {
-	// super.onPreExecute();
-	//
-	// }
-	// protected String doInBackground(String... args) {
-	// try {
-	// System.out.println("test");
-	//
-	// bitmap = BitmapFactory.decodeStream((InputStream)new
-	// URL(args[0]).getContent());
-	// } catch (Exception e) {
-	// e.printStackTrace();
-	// }
-	// return null;
-	// }
-	// protected void onPostExecute(String image) {
-	// if(image != null){
-	//
-	// }
-	//
-	// }
-	// }
+	
 	class Avatarfetch extends AsyncTask<String, String, String> {
 		@Override
 		protected void onPreExecute() {
@@ -616,11 +565,11 @@ public class FreeCoursesbrowse extends Fragment {
 
 			JSONObject json = jLogin
 					.makeHttpRequest(avatarurl, "POST", params1);
-			System.out.println("value for json::" + json);
+			
 			if (json != null) {
 				try {
 					if (json != null) {
-						System.out.println("json value::" + json);
+						
 
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 						successL = jUser.getString(TAG_SUCCESS);
@@ -628,8 +577,7 @@ public class FreeCoursesbrowse extends Fragment {
 						Config.browsecommon_url = jUser
 								.getString(TAG_AVATAR_URL);
 						;
-						System.out.println("avatar url in second async"
-								+ avatar_url);
+						
 					}
 
 				}

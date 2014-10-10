@@ -4,15 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import org.apache.http.NameValuePair;
-
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import com.deemsys.lmsmooc.JsonParser;
-
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -28,19 +24,15 @@ import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
 import android.text.method.LinkMovementMethod;
-
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnFocusChangeListener;
 import android.view.View.OnTouchListener;
-
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -91,7 +83,7 @@ public class StudentSignup extends Activity {
 
 		setContentView(R.layout.student_signup);
 
-		LinearLayout layout = (LinearLayout) findViewById(R.id.layoutt);
+//		/LinearLayout layout = (LinearLayout) findViewById(R.id.layoutt);
 		ScrollView sv = (ScrollView) findViewById(R.id.scrollView1);
 		sv.setOnTouchListener(new OnTouchListener() {
 
@@ -186,8 +178,8 @@ public class StudentSignup extends Activity {
 
 			public void onTextChanged(CharSequence s, int start, int before,
 					int count) {
-				CharSequence ss = s;
-				String mStr = lstname.getText().toString();
+//				CharSequence ss = s;
+//				String mStr = lstname.getText().toString();
 				String str = s.toString();
 				if (str.length() > 0 && str.startsWith(" ")) {
 
@@ -304,7 +296,7 @@ public class StudentSignup extends Activity {
 						 */
 						if (!hasFocus) {
 							// validateInput(v);
-							System.out.println("username value:" + username1);
+						
 							new SelectUsername1().execute();
 						}
 					}
@@ -336,22 +328,20 @@ public class StudentSignup extends Activity {
 				if (isInternetPresent) {
 
 					firstname = fstname.getText().toString();
-					System.out.println("first name value::" + firstname);
+				
 					lastname = lstname.getText().toString();
-					System.out.println("last name value::" + lastname);
+				
 					email = emailid.getText().toString();
-					System.out.println("email  value::" + email);
+					
 
 					username = username1.getText().toString();
-					System.out.println("username value::" + username);
+				
 
 					password = pass.getText().toString();
-					System.out.println("password value::" + password);
+					
 
 					confirmpassword = confirmpass.getText().toString();
-					System.out.println("confirmpassword value::"
-							+ confirmpassword);
-
+					
 					if (fstname.length() > 0 && lstname.length() > 0
 							&& emailid.length() > 0 && username1.length() > 0
 							&& pass.length() > 0 && confirmpass.length() > 0) {
@@ -834,15 +824,15 @@ public class StudentSignup extends Activity {
 				return matcher.matches();
 			}
 
-			private boolean isValidNumber(String number) {
-				// TODO Auto-generated method stub
-
-				String PHONE_REGEX = "\\([1-9]{1}[0-9]{2}\\) [0-9]{3}\\-[0-9]{4}$";
-
-				Pattern pattern = Pattern.compile(PHONE_REGEX);
-				Matcher matcher = pattern.matcher(number);
-				return matcher.matches();
-			}
+//			private boolean isValidNumber(String number) {
+//				// TODO Auto-generated method stub
+//
+//				String PHONE_REGEX = "\\([1-9]{1}[0-9]{2}\\) [0-9]{3}\\-[0-9]{4}$";
+//
+//				Pattern pattern = Pattern.compile(PHONE_REGEX);
+//				Matcher matcher = pattern.matcher(number);
+//				return matcher.matches();
+//			}
 
 			private boolean passwordCheck(String other) {
 				// TODO Auto-generated method stub
@@ -864,15 +854,15 @@ public class StudentSignup extends Activity {
 				return matcher.matches();
 			}
 
-			private boolean isValidOther1(String names) {
-				// TODO Auto-generated method stub
-
-				String EMAIL_PATTERN = "[a-zA-Z]+[a-zA-Z ]*$";
-
-				Pattern pattern = Pattern.compile(EMAIL_PATTERN);
-				Matcher matcher = pattern.matcher(names);
-				return matcher.matches();
-			}
+//			private boolean isValidOther1(String names) {
+//				// TODO Auto-generated method stub
+//
+//				String EMAIL_PATTERN = "[a-zA-Z]+[a-zA-Z ]*$";
+//
+//				Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+//				Matcher matcher = pattern.matcher(names);
+//				return matcher.matches();
+//			}
 
 		});
 
@@ -894,7 +884,7 @@ public class StudentSignup extends Activity {
 
 		private ProgressDialog userDialog;
 
-		// System.out.println("");
+		
 
 		@Override
 		protected void onPreExecute() {
@@ -919,24 +909,20 @@ public class StudentSignup extends Activity {
 			params1.add(new BasicNameValuePair("username", usernames));
 
 			JsonParser jLogin = new JsonParser();
-			System.out.println("passing value:" + usernames);
-			System.out.println(username1.getText().toString());
+		
 			JSONObject json = jLogin.makeHttpRequest(selecturl1, "POST",
 					params1);
-			System.out.println("value for json::" + json);
-			// successL="No";
+			
 			if (json != null) {
 				try {
 					if (json != null) {
-						System.out.println("call");
-						System.out.println("json value::" + json);
+						
 
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 
 						successL = jUser.getString(TAG_SUCCESS1);
 
-						System.out.println("success value: " + successL);
-						System.out.println("juser value" + jUser);
+						
 
 					}
 
@@ -948,8 +934,7 @@ public class StudentSignup extends Activity {
 				}
 			} else {
 
-				// successL ="No";
-				System.out.println("we are in select");
+				
 			}
 
 			return null;
@@ -960,9 +945,9 @@ public class StudentSignup extends Activity {
 		@Override
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
-			System.out.println("in post execute");
+			
 
-			System.out.println("vijay successL:" + successL);
+			
 			if (successL.equalsIgnoreCase("No")) {
 				userDialog.dismiss();
 			}
@@ -1042,7 +1027,7 @@ public class StudentSignup extends Activity {
 
 			// pDialog.dismiss();
 			if (JsonParser.jss.equals("empty")) {
-				System.out.println("json null value");
+			
 				AlertDialog alertDialog = new AlertDialog.Builder(
 						StudentSignup.this).create();
 
@@ -1101,22 +1086,20 @@ public class StudentSignup extends Activity {
 			params1.add(new BasicNameValuePair("email", emails));
 
 			JsonParser jLogin = new JsonParser();
-			System.out.println(emailid.getText().toString());
+			
 			JSONObject json = jLogin.makeHttpRequest(selecturl2, "POST",
 					params1);
-			System.out.println("value for json::" + json);
-			// successL="No";
+			
 			if (json != null) {
 				try {
 					if (json != null) {
-						System.out.println("json value::" + json);
+						
 
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 
 						successL = jUser.getString(TAG_SUCCESS1);
 
-						System.out.println("success value" + successL);
-						System.out.println("juser value" + jUser);
+						
 
 					}
 
@@ -1128,8 +1111,7 @@ public class StudentSignup extends Activity {
 				}
 			} else {
 
-				// successL ="No";
-				System.out.println("we are in select");
+				
 			}
 
 			return null;
@@ -1140,7 +1122,7 @@ public class StudentSignup extends Activity {
 		@Override
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
-			System.out.println("in post execute");
+			
 
 			if (successL.equalsIgnoreCase("No")) {
 				emailDialog.dismiss();
@@ -1213,7 +1195,7 @@ public class StudentSignup extends Activity {
 
 			// pDialog.dismiss();
 			if (JsonParser.jss.equals("empty")) {
-				System.out.println("json null value");
+				
 				AlertDialog alertDialog = new AlertDialog.Builder(
 						StudentSignup.this).create();
 
@@ -1268,22 +1250,21 @@ public class StudentSignup extends Activity {
 					StudentSignup.username));
 
 			JsonParser jLogin = new JsonParser();
-			System.out.println(username1.getText().toString());
+			
 			JSONObject json = jLogin.makeHttpRequest(selecturl1, "POST",
 					params1);
-			System.out.println("value for json::" + json);
+			
 			successL = "No";
 			if (json != null) {
 				try {
 					if (json != null) {
-						System.out.println("json value::" + json);
+						
 
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 
 						successL = jUser.getString(TAG_SUCCESS1);
 
-						System.out.println("success value" + successL);
-						System.out.println("juser value" + jUser);
+						
 
 					}
 
@@ -1296,7 +1277,7 @@ public class StudentSignup extends Activity {
 			} else {
 
 				successL = "No";
-				System.out.println("we are in select");
+				
 			}
 
 			return null;
@@ -1307,7 +1288,7 @@ public class StudentSignup extends Activity {
 		@Override
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
-			System.out.println("in post execute");
+		
 
 			if (successL.equalsIgnoreCase("No")) {
 
@@ -1354,7 +1335,7 @@ public class StudentSignup extends Activity {
 
 			// pDialog.dismiss();
 			if (JsonParser.jss.equals("empty")) {
-				System.out.println("json null value");
+				
 				AlertDialog alertDialog = new AlertDialog.Builder(
 						StudentSignup.this).create();
 
@@ -1410,7 +1391,7 @@ public class StudentSignup extends Activity {
 			params1.add(new BasicNameValuePair("email", StudentSignup.email));
 
 			JsonParser jLogin = new JsonParser();
-			System.out.println(emailid.getText().toString());
+			
 			JSONObject json = jLogin.makeHttpRequest(selecturl2, "POST",
 					params1);
 			System.out.println("value for json::" + json);
@@ -1418,14 +1399,13 @@ public class StudentSignup extends Activity {
 			if (json != null) {
 				try {
 					if (json != null) {
-						System.out.println("json value::" + json);
+						
 
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 
 						successL = jUser.getString(TAG_SUCCESS1);
 
-						System.out.println("success value" + successL);
-						System.out.println("juser value" + jUser);
+						
 
 					}
 
@@ -1438,7 +1418,7 @@ public class StudentSignup extends Activity {
 			} else {
 
 				successL = "No";
-				System.out.println("we are in select");
+				
 			}
 
 			return null;
@@ -1449,7 +1429,7 @@ public class StudentSignup extends Activity {
 		@Override
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
-			System.out.println("in post execute");
+		
 
 			if (successL.equalsIgnoreCase("No")) {
 				// emailDialog.dismiss();
@@ -1491,7 +1471,7 @@ public class StudentSignup extends Activity {
 
 			// pDialog.dismiss();
 			if (JsonParser.jss.equals("empty")) {
-				System.out.println("json null value");
+				
 				AlertDialog alertDialog = new AlertDialog.Builder(
 						StudentSignup.this).create();
 
@@ -1616,15 +1596,7 @@ public class StudentSignup extends Activity {
 			paramsE2.add(new BasicNameValuePair("password",
 					StudentSignup.password));
 
-			//
-			// paramsE.add(new
-			// BasicNameValuePair("address1",ContactUs.address1));
-			//
-			// paramsE.add(new BasicNameValuePair("address2", address2));
-
-			// paramsE.add(new BasicNameValuePair("city",ContactUs.city));
-			//
-			// paramsE.add(new BasicNameValuePair("state", ContactUs.state));
+		
 
 			JsonParser jLogin2 = new JsonParser();
 
@@ -1639,11 +1611,10 @@ public class StudentSignup extends Activity {
 		@Override
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
-			System.out.println("in post execute");
-			// new SendEmailAsyncTask().execute();
+			
 			pDialog.dismiss();
 			if (JsonParser.jss.equals("empty")) {
-				System.out.println("json null value");
+			
 				AlertDialog alertDialog = new AlertDialog.Builder(
 						StudentSignup.this).create();
 
@@ -1725,10 +1696,10 @@ public class StudentSignup extends Activity {
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
 			String url = Config.URL_COMMON + "user_view_Termsofuses";
-			System.out.println("url value" + url);
+			
 			checktext.setText(Html.fromHtml("<a href='" + url + "'>"
 					+ "TERMS AND CONDITIONS</a>"));
-			// checktext.setClickable(true);
+		
 			checktext.setMovementMethod(LinkMovementMethod.getInstance());
 		}
 
@@ -1746,7 +1717,7 @@ public class StudentSignup extends Activity {
 			if (json != null) {
 				try {
 					if (json != null) {
-						System.out.println("json value::" + json);
+					
 
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 						successL = jUser.getString(TAG_SUCCESS);

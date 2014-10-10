@@ -4,7 +4,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
@@ -21,44 +20,31 @@ import org.apache.http.params.HttpParams;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
-import com.deemsys.lmsmooc.AuthorCourses.unfollow;
-import com.deemsys.lmsmooc.CategoryCourses.fetchpurnumber;
-
 import com.squareup.picasso.Picasso;
-
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-
 import android.text.Html;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-
 import android.view.View;
-
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AbsListView.OnScrollListener;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -94,13 +80,10 @@ public class MyFavoriteCategoryCourses extends SherlockFragmentActivity {
 	private static final String TAG_SRES = "serviceresponse";
 	private static final String TAG_COURSE_NAME = "course_name";
 	private static final String TAG_COURSE_AUTHOR = "course_author";
-	private static final String TAG_COURSE_SUBTITLE = "course_sub_title";
 	private static final String TAG_COURSE_COST = "course_price";
 	private static final String TAG_COURSE_RATINGS = "user_ratings";
 	private static final String TAG_course_cover_image = "course_cover_image";
 	private static final String TAG_Check_ = "checkmycourse";
-	private static final String TAG_driver_status = "device_status";
-	private static final String TAG_status_date = "status_date";
 	private static final String TAG_INSTRUCTOR_ID = "instructor_id";
 	private static final String TAG_COURSE_ID = "course_id";
 	private static final String TAG_SUCCESS = "success";
@@ -149,7 +132,7 @@ public class MyFavoriteCategoryCourses extends SherlockFragmentActivity {
 					course_name_to_pass = country.getCode();
 					course_enrolled_passing = country.getstudentsenrolled();
 					checkstatus = country.getifmycourse();
-					System.out.println("status check" + checkstatus);
+					
 					courseidurl = country.getcourseid();
 					instructoridurl = country.getinsid();
 					rating_count = country.getrating();
@@ -172,8 +155,7 @@ public class MyFavoriteCategoryCourses extends SherlockFragmentActivity {
 				int lastInScreen = firstVisibleItem + visibleItemCount;
 				if ((lastInScreen == totalItemCount) && !(loadingMore)) {
 
-					System.out.println(Config.ServerUrl
-							+ Config.categoryselectionurl);
+					
 					grabURL(Config.ServerUrl + Config.categoryselectionurl);
 				}
 			}
@@ -182,7 +164,7 @@ public class MyFavoriteCategoryCourses extends SherlockFragmentActivity {
 	}
 
 	public void grabURL(String url) {
-		Log.v("Android Spinner JSON Data Activity", url);
+		
 		new GrabURL().execute(url);
 	}
 
@@ -235,15 +217,13 @@ public class MyFavoriteCategoryCourses extends SherlockFragmentActivity {
 
 		private void displayCountryList(String response) {
 
-			JSONObject responseObj = null;
+			
 
 			try {
 
 				JSONObject c = jArray.getJSONObject(TAG_SRES);
-				Log.i("tagconvertstr", "[" + c + "]");
-
-				Log.i("tagconvertstr1", "[" + user + "]");
-				responseObj = new JSONObject(response);
+				
+			
 
 				JSONArray countryListObj = c.getJSONArray(TAG_Course_ARRAY);
 
@@ -253,8 +233,7 @@ public class MyFavoriteCategoryCourses extends SherlockFragmentActivity {
 				} else {
 					for (int i = 0; i < countryListObj.length(); i++) {
 						start++;
-						System.out.println("countryListObj length"
-								+ countryListObj.length());
+						
 						JSONObject c1 = user.getJSONObject(i);
 						JSONObject c2 = c1.getJSONObject(TAG_SRES);
 						authorname = c2.getString(TAG_COURSE_AUTHOR);
@@ -295,16 +274,9 @@ public class MyFavoriteCategoryCourses extends SherlockFragmentActivity {
 						cnt.setaudiourl(audiourl);
 						courselist.add(cnt);
 
-						System.out.println("size fo country list"
-								+ courselist.size());
-						System.out
-								.println("value fo country list" + courselist);
+						
 						dataAdapter.add(cnt);
-						System.out.println("bitmap" + bitmap);
-						System.out.println("i value" + i);
-						if (i == 9) {
-
-						}
+						
 					}
 
 					dataAdapter.notifyDataSetChanged();
@@ -347,9 +319,9 @@ public class MyFavoriteCategoryCourses extends SherlockFragmentActivity {
 				jArray = jsonParser.makeHttpRequest(Config.ServerUrl
 						+ Config.categoryselectionurl, "POST", nameValuePairs);
 				JSONObject c = jArray.getJSONObject(TAG_SRES);
-				Log.i("tagconvertstr", "[" + c + "]");
+				
 				user = c.getJSONArray(TAG_Course_ARRAY);
-				Log.i("tagconvertstr1", "[" + user + "]");
+				
 
 				httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 				response = httpclient.execute(httpPost);
@@ -362,22 +334,22 @@ public class MyFavoriteCategoryCourses extends SherlockFragmentActivity {
 					content = out.toString();
 				} else {
 					// Closes the connection.
-					Log.w("HTTP1:", statusLine.getReasonPhrase());
+					
 					response.getEntity().getContent().close();
 					throw new IOException(statusLine.getReasonPhrase());
 				}
 			} catch (ClientProtocolException e) {
-				Log.w("HTTP2:", e);
+				
 				content = e.getMessage();
 				error = true;
 				cancel(true);
 			} catch (IOException e) {
-				Log.w("HTTP3:", e);
+				
 				content = e.getMessage();
 				error = true;
 				cancel(true);
 			} catch (Exception e) {
-				Log.w("HTTP4:", e);
+				
 				content = e.getMessage();
 				error = true;
 				cancel(true);
@@ -417,7 +389,7 @@ public class MyFavoriteCategoryCourses extends SherlockFragmentActivity {
 		public View getView(int position, View convertView, ViewGroup parent) {
 
 			ViewHolder holder = null;
-			Log.v("ConvertView", String.valueOf(position));
+			
 			if (convertView == null) {
 
 				LayoutInflater vi = (LayoutInflater) getApplicationContext()
@@ -505,17 +477,16 @@ public class MyFavoriteCategoryCourses extends SherlockFragmentActivity {
 
 			JSONObject json = jLogin.makeHttpRequest(Config.ServerUrl
 					+ Config.purchasenumberselection, "POST", params1);
-			System.out.println("value for json::" + json);
+		
 			if (json != null) {
 				try {
 					if (json != null) {
-						System.out.println("json value::" + json);
+						
 
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 
 						numofrows = jUser.getString(TAG_NUMBER_OF_ROWS);
-						System.out.println("number of rows value:::"
-								+ numofrows);
+						
 
 					}
 
@@ -535,7 +506,7 @@ public class MyFavoriteCategoryCourses extends SherlockFragmentActivity {
 		@Override
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
-			System.out.println("in post execute");
+			
 			pDialog.dismiss();
 			if (checkstatus.equalsIgnoreCase("1")) {
 				Intent i = new Intent(getApplicationContext(),
@@ -556,7 +527,7 @@ public class MyFavoriteCategoryCourses extends SherlockFragmentActivity {
 				String url = Config.common_url + "?course_id=" + courseidurl
 						+ "&authorid=" + instructoridurl + "&pur=" + numofrows
 						+ "&catcourse=&coursetype=";
-				System.out.println("url value" + url);
+				
 				Intent ii = new Intent(Intent.ACTION_VIEW);
 				ii.setData(Uri.parse(url));
 				ii.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -617,17 +588,16 @@ public class MyFavoriteCategoryCourses extends SherlockFragmentActivity {
 
 			JSONObject json = jLogin.makeHttpRequest(Config.ServerUrl
 					+ Config.removefrommycategoryurl, "POST", params1);
-			System.out.println("value for json::" + json);
+			
 			if (json != null) {
 				try {
 					if (json != null) {
-						System.out.println("json value::" + json);
+						
 
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 
 						numofrows = jUser.getString(TAG_SUCCESS);
-						System.out.println("number of rows value:::"
-								+ numofrows);
+						
 
 					}
 
@@ -647,7 +617,7 @@ public class MyFavoriteCategoryCourses extends SherlockFragmentActivity {
 		@Override
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
-			System.out.println("in post execute");
+			
 			// pDialog.dismiss();
 
 		}

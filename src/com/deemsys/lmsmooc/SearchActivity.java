@@ -2,13 +2,11 @@ package com.deemsys.lmsmooc;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
@@ -25,20 +23,16 @@ import org.apache.http.params.HttpParams;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.MenuItem.OnActionExpandListener;
-
 import com.squareup.picasso.Picasso;
-
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -47,26 +41,17 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-
 import android.text.Html;
-import android.util.Log;
-
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
-
 import android.view.View;
-
 import android.view.ViewGroup;
-
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
-
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
-
 import android.widget.EditText;
-
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -148,7 +133,7 @@ public class SearchActivity extends SherlockActivity {
 					course_name_to_pass = country.getCode();
 					course_enrolled_passing = country.getstudentsenrolled();
 					checkstatus = country.getifmycourse();
-					System.out.println("status check" + checkstatus);
+			
 					courseidurl = country.getcourseid();
 					instructoridurl = country.getinsid();
 					new Avatarfetch().execute();
@@ -179,7 +164,7 @@ public class SearchActivity extends SherlockActivity {
 	}
 
 	public void grabURL(String url) {
-		Log.v("Android Spinner JSON Data Activity", url);
+		
 		new GrabURL().execute(url);
 	}
 
@@ -219,11 +204,10 @@ public class SearchActivity extends SherlockActivity {
 								|| event.getAction() == KeyEvent.ACTION_DOWN
 								&& event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
 
-							System.out.println("on text changed");
+						
 							keyword = editsearch.getText().toString()
 									.toLowerCase(Locale.getDefault());
-							System.out.println("size of courselist:::"
-									+ courselist.size());
+						
 
 							InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
@@ -330,9 +314,7 @@ public class SearchActivity extends SherlockActivity {
 				courselist.clear();
 
 				JSONObject c = jArray.getJSONObject(TAG_SRES);
-				Log.i("tagconvertstr", "[" + c + "]");
-
-				Log.i("tagconvertstr1", "[" + user + "]");
+				
 				// responseObj = new JSONObject(response);
 
 				JSONArray countryListObj = c.getJSONArray(TAG_Course_ARRAY);
@@ -378,8 +360,7 @@ public class SearchActivity extends SherlockActivity {
 
 					{
 						start++;
-						System.out.println("countryListObj length"
-								+ countryListObj.length());
+						
 						JSONObject c1 = user.getJSONObject(i);
 						JSONObject c2 = c1.getJSONObject(TAG_SRES);
 						authorname = c2.getString(TAG_COURSE_AUTHOR);
@@ -416,11 +397,7 @@ public class SearchActivity extends SherlockActivity {
 						cnt.setaudiourl(audiourl);
 						courselist.add(cnt);
 
-						System.out.println("size fo country list"
-								+ courselist.size());
-						System.out
-								.println("value fo country list" + courselist);
-
+					
 						dataAdapter = new MyCustomAdapter(SearchActivity.this,
 								R.layout.course_overview, courselist);
 						listView.setAdapter(dataAdapter);
@@ -462,9 +439,9 @@ public class SearchActivity extends SherlockActivity {
 				jArray = jsonParser.makeHttpRequest(Config.ServerUrl
 						+ Config.searchselecturlbrowse, "POST", nameValuePairs);
 				JSONObject c = jArray.getJSONObject(TAG_SRES);
-				Log.i("tagconvertstr", "[" + c + "]");
+				
 				user = c.getJSONArray(TAG_Course_ARRAY);
-				Log.i("tagconvertstr1", "[" + user + "]");
+				
 
 				httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 				response = httpclient.execute(httpPost);
@@ -477,22 +454,22 @@ public class SearchActivity extends SherlockActivity {
 					content = out.toString();
 				} else {
 					// Closes the connection.
-					Log.w("HTTP1:", statusLine.getReasonPhrase());
+					
 					response.getEntity().getContent().close();
 					throw new IOException(statusLine.getReasonPhrase());
 				}
 			} catch (ClientProtocolException e) {
-				Log.w("HTTP2:", e);
+				
 				content = e.getMessage();
 				// error = true;
 				cancel(true);
 			} catch (IOException e) {
-				Log.w("HTTP3:", e);
+				
 				content = e.getMessage();
 				// error = true;
 				cancel(true);
 			} catch (Exception e) {
-				Log.w("HTTP4:", e);
+				
 				content = e.getMessage();
 				// error = true;
 				cancel(true);
@@ -543,7 +520,7 @@ public class SearchActivity extends SherlockActivity {
 		public View getView(int position, View convertView, ViewGroup parent) {
 
 			ViewHolder holder = null;
-			Log.v("ConvertView", String.valueOf(position));
+			
 			if (convertView == null) {
 
 				LayoutInflater vi = (LayoutInflater) getApplicationContext()
@@ -672,17 +649,16 @@ public class SearchActivity extends SherlockActivity {
 
 			JSONObject json = jLogin.makeHttpRequest(Config.ServerUrl
 					+ Config.purchasenumberselection, "POST", params1);
-			System.out.println("value for json::" + json);
+		
 			if (json != null) {
 				try {
 					if (json != null) {
-						System.out.println("json value::" + json);
+					
 
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 
 						numofrows = jUser.getString(TAG_NUMBER_OF_ROWS);
-						System.out.println("number of rows value:::"
-								+ numofrows);
+						
 
 					}
 
@@ -720,7 +696,7 @@ public class SearchActivity extends SherlockActivity {
 				String url = Config.browsecommon_url + "?course_id="
 						+ courseidurl + "&authorid=" + instructoridurl
 						+ "&pur=" + numofrows + "&catcourse=&coursetype=";
-				System.out.println("url value" + url);
+			
 				Intent ii = new Intent(Intent.ACTION_VIEW);
 				ii.setData(Uri.parse(url));
 				ii.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -777,11 +753,11 @@ public class SearchActivity extends SherlockActivity {
 
 			JSONObject json = jLogin
 					.makeHttpRequest(avatarurl, "POST", params1);
-			System.out.println("value for json::" + json);
+			
 			if (json != null) {
 				try {
 					if (json != null) {
-						System.out.println("json value::" + json);
+						
 
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 						successL = jUser.getString(TAG_SUCCESS);
@@ -789,8 +765,7 @@ public class SearchActivity extends SherlockActivity {
 						Config.browsecommon_url = jUser
 								.getString(TAG_AVATAR_URL);
 						;
-						System.out.println("avatar url in second async"
-								+ avatar_url);
+					
 					}
 
 				}

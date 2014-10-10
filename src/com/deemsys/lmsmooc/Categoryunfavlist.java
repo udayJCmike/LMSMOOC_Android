@@ -2,31 +2,23 @@ package com.deemsys.lmsmooc;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
-
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
-
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
-
 import android.text.Html;
-import android.util.Log;
-
 import android.view.Window;
-
 import android.widget.ListView;
 
 public class Categoryunfavlist extends SherlockActivity {
@@ -150,18 +142,18 @@ public class Categoryunfavlist extends SherlockActivity {
 			jArray = jsonParser.makeHttpRequest(Config.ServerUrl
 					+ Config.unfavoritecategoryurl, "POST", params1);
 
-			Log.i("tagconvertstr", "[" + jArray + "]");
+			
 
 			try {
 				if (jArray != null) {
 
 					JSONObject c = jArray.getJSONObject(TAG_SRESL);
-					Log.i("tagconvertstr", "[" + c + "]");
+					
 					user = c.getJSONArray(TAG_Category_ARRAY);
-					Log.i("tagconvertstr1", "[" + user + "]");
+					
 
 					for (int i = 0; i < user.length(); i++) {
-						System.out.println("forloop1");
+						
 						JSONObject c1 = user.getJSONObject(i);
 						JSONObject c2 = c1.getJSONObject(TAG_SRESL);
 						category_name = c2.getString(TAG_Category_NAME);
@@ -172,8 +164,7 @@ public class Categoryunfavlist extends SherlockActivity {
 
 						category.add(cnt);
 
-						System.out.println("size of aray list"
-								+ category.size());
+					
 
 					}
 
@@ -210,8 +201,7 @@ public class Categoryunfavlist extends SherlockActivity {
 				}
 			}
 			strArray = result.split("\\,");
-			System.out.println("result value::" + result);
-			System.out.println("string array" + strArray);
+			
 			if (result.equalsIgnoreCase("")) {
 				AlertDialog alertDialog = new AlertDialog.Builder(
 						Categoryunfavlist.this).create();
@@ -277,9 +267,9 @@ public class Categoryunfavlist extends SherlockActivity {
 		protected String doInBackground(String... params) {
 
 			String favcourse = params[0];
-			System.out.println("favorite courses::::" + favcourse);
+			
 			List<NameValuePair> params1 = new ArrayList<NameValuePair>();
-			System.out.println("str value" + str);
+			
 			params1.add(new BasicNameValuePair("category_name", favcourse));
 			params1.add(new BasicNameValuePair("student_id", Config.student_id));
 
@@ -287,16 +277,15 @@ public class Categoryunfavlist extends SherlockActivity {
 
 			JSONObject json = jLogin.makeHttpRequest(Config.ServerUrl
 					+ Config.addtomyfavoritecategoryurl, "POST", params1);
-			System.out.println("value for json::" + json);
+			
 			if (json != null) {
 				try {
 					if (json != null) {
-						System.out.println("json value::" + json);
-
+						
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 
 						success = jUser.getString(TAG_SUCCESS);
-						System.out.println("number of rows value:::" + success);
+						
 
 					}
 
@@ -316,7 +305,7 @@ public class Categoryunfavlist extends SherlockActivity {
 		@Override
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
-			System.out.println("in post execute");
+		
 
 			finish();
 

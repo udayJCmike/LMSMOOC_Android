@@ -88,8 +88,7 @@ public class ChangePasswordFragment extends Fragment {
 								if (isInternetPresent) {
 
 									Config.password = newpass;
-									System.out
-											.println("inside attempt changepass");
+									
 									new UpdateProf().execute();
 
 								} else {
@@ -253,31 +252,28 @@ public class ChangePasswordFragment extends Fragment {
 		protected String doInBackground(String... params) {
 			List<NameValuePair> params1 = new ArrayList<NameValuePair>();
 
-			// params1.add(new BasicNameValuePair("id", "1"));
-			System.out.println("");
+			
+			
 			params1.add(new BasicNameValuePair("username", Config.username));
-			// params1.add(new BasicNameValuePair("oldpassword",
-			// oldpasswordedit.getText().toString()));
+			
 			params1.add(new BasicNameValuePair("newpassword", newpasswordedt
 					.getText().toString()));
-			// params1.add(new BasicNameValuePair("email",
-			// confirmpasswordedit.getText().toString()));
+			
 			Config.password = newpasswordedt.getText().toString();
 
 			JsonParser jLogin = new JsonParser();
 
 			JSONObject json = jLogin
 					.makeHttpRequest(updateurl, "POST", params1);
-			System.out.println("value for json::" + json);
+			
 			if (json != null) {
 				try {
 					if (json != null) {
-						System.out.println("json value::" + json);
+					
 
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 						successL = jUser.getString(TAG_SUCCESS);
-						System.out.println("successL value" + successL);
-						// avatar = jUser.getString(TAG_AVATAR_URL );
+						
 
 					}
 

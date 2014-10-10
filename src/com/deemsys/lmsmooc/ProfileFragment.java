@@ -3,8 +3,6 @@ package com.deemsys.lmsmooc;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-
-import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -12,18 +10,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -33,12 +28,9 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
-
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -162,9 +154,9 @@ public class ProfileFragment extends Fragment {
 		femaley = (RadioButton) rootView.findViewById(R.id.radiofemale);
 
 		genderstring = Config.gender;
-		System.out.println("gender strinfg value::" + genderstring);
+	
 		interestedin = Config.interested_in;
-		System.out.println("intert strinfg value::" + interestedin);
+		
 		savechanges = (Button) rootView.findViewById(R.id.savechagnes);
 		browse = (Button) rootView.findViewById(R.id.browse);
 		upload = (Button) rootView.findViewById(R.id.upload);
@@ -247,8 +239,8 @@ public class ProfileFragment extends Fragment {
 
 			public void onTextChanged(CharSequence s, int start, int before,
 					int count) {
-				CharSequence ss = s;
-				String mStr = lastnameedit.getText().toString();
+				//CharSequence ss = s;
+//				String mStr = lastnameedit.getText().toString();
 				String str = s.toString();
 				if (str.length() > 0 && str.startsWith(" ")) {
 
@@ -876,15 +868,15 @@ public class ProfileFragment extends Fragment {
 				return matcher.matches();
 			}
 
-			private boolean isValidNumber(String number) {
-				// TODO Auto-generated method stub
-
-				String PHONE_REGEX = "\\([1-9]{1}[0-9]{2}\\) [0-9]{3}\\-[0-9]{4}$";
-
-				Pattern pattern = Pattern.compile(PHONE_REGEX);
-				Matcher matcher = pattern.matcher(number);
-				return matcher.matches();
-			}
+//			private boolean isValidNumber(String number) {
+//				// TODO Auto-generated method stub
+//
+//				String PHONE_REGEX = "\\([1-9]{1}[0-9]{2}\\) [0-9]{3}\\-[0-9]{4}$";
+//
+//				Pattern pattern = Pattern.compile(PHONE_REGEX);
+//				Matcher matcher = pattern.matcher(number);
+//				return matcher.matches();
+//			}
 
 			private boolean passwordCheck(String other) {
 				// TODO Auto-generated method stub
@@ -906,14 +898,14 @@ public class ProfileFragment extends Fragment {
 				return matcher.matches();
 			}
 
-			private boolean isValidOther1(String names) {
-
-				String EMAIL_PATTERN = "[a-zA-Z0-9]+[a-zA-Z0-9@_.,-/\n ]*$";
-
-				Pattern pattern = Pattern.compile(EMAIL_PATTERN);
-				Matcher matcher = pattern.matcher(names);
-				return matcher.matches();
-			}
+//			private boolean isValidOther1(String names) {
+//
+//				String EMAIL_PATTERN = "[a-zA-Z0-9]+[a-zA-Z0-9@_.,-/\n ]*$";
+//
+//				Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+//				Matcher matcher = pattern.matcher(names);
+//				return matcher.matches();
+//			}
 
 		});
 
@@ -967,7 +959,7 @@ public class ProfileFragment extends Fragment {
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
-		System.out.println("data value::" + data);
+		
 		getActivity();
 		if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
 
@@ -1026,10 +1018,10 @@ public class ProfileFragment extends Fragment {
 		byte[] buffer;
 		int maxBufferSize = 1 * 1024 * 1024;
 		File sourceFile = new File(sourceFileUri);
-		System.out.println("We are in upload file");
+		
 		if (!sourceFile.isFile()) {
 
-			Log.e("uploadFile", "Source File not exist :" + imagepath);
+			
 
 			// runOnUiThread(new Runnable() {
 			// public void run() {
@@ -1091,11 +1083,9 @@ public class ProfileFragment extends Fragment {
 
 				// Responses from the server (code and message)
 				serverResponseCode = conn.getResponseCode();
-				String serverResponseMessage = conn.getResponseMessage();
+//				String serverResponseMessage = conn.getResponseMessage();
 
-				Log.i("uploadFile", "HTTP Response is : "
-						+ serverResponseMessage + ": " + serverResponseCode);
-
+				
 				if (serverResponseCode == 200) {
 
 					// runOnUiThread(new Runnable() {
@@ -1128,7 +1118,7 @@ public class ProfileFragment extends Fragment {
 				// }
 				// });
 
-				Log.e("Upload file to server", "error: " + ex.getMessage(), ex);
+				
 			} catch (Exception e) {
 
 				// dialog.dismiss();
@@ -1149,439 +1139,7 @@ public class ProfileFragment extends Fragment {
 				InputMethodManager.HIDE_NOT_ALWAYS);
 	}
 
-	private class DownloadImageTask extends AsyncTask<String, Void, String> {
-		@Override
-		protected void onPreExecute() {
-			super.onPreExecute();
-
-			pDialog.setMessage("Please wait...");
-			pDialog.setIndeterminate(false);
-			pDialog.setCancelable(false);
-			pDialog.show();
-
-		}
-
-		@Override
-		protected String doInBackground(String... urls) {
-			String urldisplay = urls[0];
-			Bitmap mIcon11 = null;
-			try {
-				InputStream in = new java.net.URL(urldisplay).openStream();
-				mIcon11 = BitmapFactory.decodeStream(in);
-				imagelist.add(mIcon11);
-			} catch (Exception e) {
-				Log.e("Error", e.getMessage());
-				e.printStackTrace();
-			}
-			return null;
-		}
-
-		@Override
-		protected void onPostExecute(String file_url) {
-
-			// imagelist.add(result);
-			System.out.println("number of images::" + imagelist.size());
-			System.out.println(imagelist);
-			// image.setImageBitmap(result);
-			if (count == 14 && imagelist.size() == 14) {
-				pDialog.dismiss();
-				LayoutInflater li = LayoutInflater.from(getActivity());
-				final View promptsView = li.inflate(R.layout.avatar_selection,
-						null);
-				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-						getActivity());
-
-				alertDialogBuilder.setView(promptsView);
-				buttt = (ImageButton) promptsView
-						.findViewById(R.id.ImageButton1);
-				buttt.setImageBitmap(imagelist.get(0));
-				but2 = (ImageButton) promptsView
-						.findViewById(R.id.ImageButton2);
-				but2.setImageBitmap(imagelist.get(1));
-				but3 = (ImageButton) promptsView
-						.findViewById(R.id.ImageButton3);
-				but3.setImageBitmap(imagelist.get(2));
-				but4 = (ImageButton) promptsView
-						.findViewById(R.id.ImageButton4);
-				but4.setImageBitmap(imagelist.get(3));
-				but5 = (ImageButton) promptsView
-						.findViewById(R.id.ImageButton5);
-				but5.setImageBitmap(imagelist.get(4));
-				but6 = (ImageButton) promptsView
-						.findViewById(R.id.ImageButton6);
-				but6.setImageBitmap(imagelist.get(5));
-				but7 = (ImageButton) promptsView
-						.findViewById(R.id.ImageButton7);
-				but7.setImageBitmap(imagelist.get(6));
-				but8 = (ImageButton) promptsView
-						.findViewById(R.id.ImageButton8);
-				but8.setImageBitmap(imagelist.get(7));
-				but9 = (ImageButton) promptsView
-						.findViewById(R.id.ImageButton9);
-				but9.setImageBitmap(imagelist.get(8));
-				but10 = (ImageButton) promptsView
-						.findViewById(R.id.ImageButton10);
-				but10.setImageBitmap(imagelist.get(9));
-				but11 = (ImageButton) promptsView
-						.findViewById(R.id.ImageButton11);
-				but11.setImageBitmap(imagelist.get(10));
-				but12 = (ImageButton) promptsView
-						.findViewById(R.id.ImageButton12);
-				but12.setImageBitmap(imagelist.get(11));
-				but13 = (ImageButton) promptsView
-						.findViewById(R.id.ImageButton13);
-				but13.setImageBitmap(imagelist.get(12));
-				but14 = (ImageButton) promptsView
-						.findViewById(R.id.ImageButton14);
-				but14.setImageBitmap(imagelist.get(13));
-
-				buttt.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						image.setVisibility(View.VISIBLE);
-						image.setImageBitmap(imagelist.get(0));
-
-						selectedimage = "/resources/images/users/g1.png";
-					}
-				});
-				but2.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						image.setVisibility(View.VISIBLE);
-						image.setImageBitmap(imagelist.get(1));
-						selectedimage = "/resources/images/users/g2.png";
-					}
-				});
-				but3.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						image.setVisibility(View.VISIBLE);
-						image.setImageBitmap(imagelist.get(2));
-						selectedimage = "/resources/images/users/g3.png";
-					}
-				});
-				but4.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						image.setVisibility(View.VISIBLE);
-						image.setImageBitmap(imagelist.get(3));
-						selectedimage = "/resources/images/users/g4.png";
-					}
-				});
-				but5.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						image.setVisibility(View.VISIBLE);
-						image.setImageBitmap(imagelist.get(4));
-						selectedimage = "/resources/images/users/g5.png";
-					}
-				});
-				but6.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						image.setVisibility(View.VISIBLE);
-						image.setImageBitmap(imagelist.get(5));
-						selectedimage = "/resources/images/users/g6.png";
-					}
-				});
-				but7.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						image.setVisibility(View.VISIBLE);
-						image.setImageBitmap(imagelist.get(6));
-						selectedimage = "/resources/images/users/g7.png";
-					}
-				});
-				but8.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						image.setVisibility(View.VISIBLE);
-						image.setImageBitmap(imagelist.get(7));
-						selectedimage = "/resources/images/users/g8.png";
-					}
-				});
-				but9.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						image.setVisibility(View.VISIBLE);
-						image.setImageBitmap(imagelist.get(8));
-						selectedimage = "/resources/images/users/g9.png";
-					}
-				});
-				but10.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						image.setVisibility(View.VISIBLE);
-						image.setImageBitmap(imagelist.get(9));
-						selectedimage = "/resources/images/users/g10.png";
-					}
-				});
-				but11.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						image.setVisibility(View.VISIBLE);
-						image.setImageBitmap(imagelist.get(10));
-						selectedimage = "/resources/images/users/g11.png";
-					}
-				});
-				but12.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						image.setVisibility(View.VISIBLE);
-						image.setImageBitmap(imagelist.get(11));
-						selectedimage = "/resources/images/users/g12.png";
-					}
-				});
-				but13.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						image.setVisibility(View.VISIBLE);
-						image.setImageBitmap(imagelist.get(12));
-						selectedimage = "/resources/images/users/g13.png";
-					}
-				});
-				but14.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						image.setVisibility(View.VISIBLE);
-						image.setImageBitmap(imagelist.get(13));
-						selectedimage = "/resources/images/users/g14.png";
-					}
-				});
-				alertDialogBuilder
-						.setCancelable(false)
-						.setPositiveButton("OK",
-								new DialogInterface.OnClickListener() {
-									public void onClick(DialogInterface dialog,
-											int id) {
-
-									}
-								})
-						.setNegativeButton("Cancel",
-								new DialogInterface.OnClickListener() {
-									public void onClick(DialogInterface dialog,
-											int id) {
-										dialog.cancel();
-									}
-								});
-
-				AlertDialog alertDialog = alertDialogBuilder.create();
-
-				// show it
-				alertDialog.show();
-			}
-
-			else if (count == 13 && imagelist.size() == 13) {
-				pDialog.dismiss();
-				LayoutInflater li = LayoutInflater.from(getActivity());
-				final View promptsView = li.inflate(R.layout.avatar_selection,
-						null);
-				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-						getActivity());
-
-				alertDialogBuilder.setView(promptsView);
-				buttt = (ImageButton) promptsView
-						.findViewById(R.id.ImageButton1);
-				buttt.setImageBitmap(imagelist.get(0));
-				but2 = (ImageButton) promptsView
-						.findViewById(R.id.ImageButton2);
-				but2.setImageBitmap(imagelist.get(1));
-				but3 = (ImageButton) promptsView
-						.findViewById(R.id.ImageButton3);
-				but3.setImageBitmap(imagelist.get(2));
-				but4 = (ImageButton) promptsView
-						.findViewById(R.id.ImageButton4);
-				but4.setImageBitmap(imagelist.get(3));
-				but5 = (ImageButton) promptsView
-						.findViewById(R.id.ImageButton5);
-				but5.setImageBitmap(imagelist.get(4));
-				but6 = (ImageButton) promptsView
-						.findViewById(R.id.ImageButton6);
-				but6.setImageBitmap(imagelist.get(5));
-				but7 = (ImageButton) promptsView
-						.findViewById(R.id.ImageButton7);
-				but7.setImageBitmap(imagelist.get(6));
-				but8 = (ImageButton) promptsView
-						.findViewById(R.id.ImageButton8);
-				but8.setImageBitmap(imagelist.get(7));
-				but9 = (ImageButton) promptsView
-						.findViewById(R.id.ImageButton9);
-				but9.setImageBitmap(imagelist.get(8));
-				but10 = (ImageButton) promptsView
-						.findViewById(R.id.ImageButton10);
-				but10.setImageBitmap(imagelist.get(9));
-				but11 = (ImageButton) promptsView
-						.findViewById(R.id.ImageButton11);
-				but11.setImageBitmap(imagelist.get(10));
-				but12 = (ImageButton) promptsView
-						.findViewById(R.id.ImageButton12);
-				but12.setImageBitmap(imagelist.get(11));
-				but13 = (ImageButton) promptsView
-						.findViewById(R.id.ImageButton13);
-				but13.setImageBitmap(imagelist.get(12));
-				but14 = (ImageButton) promptsView
-						.findViewById(R.id.ImageButton14);
-				// but14.setImageBitmap(imagelist.get(13));
-				but14.setVisibility(View.INVISIBLE);
-
-				buttt.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						image.setVisibility(View.VISIBLE);
-						image.setImageBitmap(imagelist.get(0));
-						selectedimage = "/resources/images/users/1.png";
-					}
-				});
-				but2.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						image.setVisibility(View.VISIBLE);
-						image.setImageBitmap(imagelist.get(1));
-						selectedimage = "/resources/images/users/2.png";
-					}
-				});
-				but3.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						image.setVisibility(View.VISIBLE);
-						image.setImageBitmap(imagelist.get(2));
-						selectedimage = "/resources/images/users/3.png";
-					}
-				});
-				but4.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						image.setVisibility(View.VISIBLE);
-						image.setImageBitmap(imagelist.get(3));
-						selectedimage = "/resources/images/users/4.png";
-					}
-				});
-				but5.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						image.setVisibility(View.VISIBLE);
-						image.setImageBitmap(imagelist.get(4));
-						selectedimage = "/resources/images/users/5.png";
-					}
-				});
-				but6.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						image.setVisibility(View.VISIBLE);
-						image.setImageBitmap(imagelist.get(5));
-						selectedimage = "/resources/images/users/6.png";
-					}
-				});
-				but7.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						image.setVisibility(View.VISIBLE);
-						image.setImageBitmap(imagelist.get(6));
-						selectedimage = "/resources/images/users/7.png";
-					}
-				});
-				but8.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						image.setVisibility(View.VISIBLE);
-						image.setImageBitmap(imagelist.get(7));
-						selectedimage = "/resources/images/users/8.png";
-					}
-				});
-				but9.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						image.setVisibility(View.VISIBLE);
-						image.setImageBitmap(imagelist.get(8));
-						selectedimage = "/resources/images/users/9.png";
-					}
-				});
-				but10.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						image.setVisibility(View.VISIBLE);
-						image.setImageBitmap(imagelist.get(9));
-						selectedimage = "/resources/images/users/10.png";
-					}
-				});
-				but11.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						image.setVisibility(View.VISIBLE);
-						image.setImageBitmap(imagelist.get(10));
-						selectedimage = "/resources/images/users/11.png";
-					}
-				});
-				but12.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						image.setVisibility(View.VISIBLE);
-						image.setImageBitmap(imagelist.get(11));
-						selectedimage = "/resources/images/users/12.png";
-					}
-				});
-				but13.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						image.setVisibility(View.VISIBLE);
-						image.setImageBitmap(imagelist.get(12));
-						selectedimage = "/resources/images/users/13.png";
-					}
-				});
-
-				alertDialogBuilder
-						.setCancelable(false)
-						.setPositiveButton("OK",
-								new DialogInterface.OnClickListener() {
-									public void onClick(DialogInterface dialog,
-											int id) {
-
-									}
-								})
-
-						.setNegativeButton("Cancel",
-								new DialogInterface.OnClickListener() {
-									public void onClick(DialogInterface dialog,
-											int id) {
-										dialog.cancel();
-									}
-								});
-
-				AlertDialog alertDialog = alertDialogBuilder.create();
-
-				// show it
-				alertDialog.show();
-			}
-		}
-
-	}
+	
 
 	class UpdateProf extends AsyncTask<String, String, String> {
 		@Override
@@ -1646,23 +1204,20 @@ public class ProfileFragment extends Fragment {
 
 			// Config.avatar="S"+Config.student_id+".jpg";
 
-			System.out.println("selected image value" + selectedimage);
+			
 			JsonParser jLogin = new JsonParser();
 
 			JSONObject json = jLogin
 					.makeHttpRequest(updateurl, "POST", params1);
-			System.out.println("value for json::" + json);
+			
 			if (json != null) {
 				try {
 					if (json != null) {
-						System.out.println("json value::" + json);
+						
 
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 						successL = jUser.getString(TAG_SUCCESS);
-						System.out.println("successL value" + successL);
-						// avatar = jUser.getString(TAG_AVATAR_URL );
-						System.out.println("avatar url in second async"
-								+ avatar);
+						
 					}
 
 				}
@@ -1736,35 +1291,35 @@ public class ProfileFragment extends Fragment {
 		}
 	}
 
-	private class LoadImage extends AsyncTask<String, String, Bitmap> {
-		@Override
-		protected void onPreExecute() {
-			super.onPreExecute();
-
-		}
-
-		protected Bitmap doInBackground(String... args) {
-			try {
-				bitmap = BitmapFactory.decodeStream((InputStream) new URL(
-						args[0]).getContent());
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			return bitmap;
-		}
-
-		protected void onPostExecute(Bitmap image) {
-			if (image != null) {
-				System.out.println("bitmap" + bitmap);
-				ProfileFragment.this.image.setImageBitmap(image);
-
-			} else {
-
-				// Toast.makeText(getActivity(),
-				// "Image Does Not exist or Network Error",
-				// Toast.LENGTH_SHORT).show();
-			}
-		}
-	}
+//	private class LoadImage extends AsyncTask<String, String, Bitmap> {
+//		@Override
+//		protected void onPreExecute() {
+//			super.onPreExecute();
+//
+//		}
+//
+//		protected Bitmap doInBackground(String... args) {
+//			try {
+//				bitmap = BitmapFactory.decodeStream((InputStream) new URL(
+//						args[0]).getContent());
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//			return bitmap;
+//		}
+//
+//		protected void onPostExecute(Bitmap image) {
+//			if (image != null) {
+//				
+//				ProfileFragment.this.image.setImageBitmap(image);
+//
+//			} else {
+//
+//				// Toast.makeText(getActivity(),
+//				// "Image Does Not exist or Network Error",
+//				// Toast.LENGTH_SHORT).show();
+//			}
+//		}
+//	}
 
 }

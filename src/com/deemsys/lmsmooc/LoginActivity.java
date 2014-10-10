@@ -2,16 +2,12 @@ package com.deemsys.lmsmooc;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import com.actionbarsherlock.app.SherlockActivity;
-
 import android.app.ActionBar;
-
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -20,7 +16,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.Color;
-
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -133,17 +128,14 @@ public class LoginActivity extends SherlockActivity {
 			@Override
 			public void onClick(View arg0) {
 
-				System.out.println("signin clciked");
+				
 				String username = usname.getText().toString();
 				String password = paswd.getText().toString();
 
 				if (!username.equals("") && !password.equals("")) {
 
 					if (isInternetPresent) {
-						System.out.println(username);
-						System.out.println(password);
-
-						System.out.println("inside attempt login");
+						
 						new AttemptLogin().execute();
 
 					} else {
@@ -271,23 +263,21 @@ public class LoginActivity extends SherlockActivity {
 			params1.add(new BasicNameValuePair("id", "3"));
 			params1.add(new BasicNameValuePair("student_id", Config.student_id));
 			JsonParser jLogin = new JsonParser();
-			System.out.println(usname.getText().toString());
-			System.out.println(paswd.getText().toString());
+			
 			JSONObject json = jLogin
 					.makeHttpRequest(avatarurl, "POST", params1);
-			System.out.println("value for json::" + json);
+			
 			if (json != null) {
 				try {
 					if (json != null) {
-						System.out.println("json value::" + json);
+						
 
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 						successL = jUser.getString(TAG_SUCCESS);
 
 						Config.common_url = jUser.getString(TAG_AVATAR_URL);
 						;
-						System.out.println("avatar url in second async"
-								+ avatar_url);
+						
 					}
 
 				}
@@ -325,15 +315,14 @@ public class LoginActivity extends SherlockActivity {
 			params1.add(new BasicNameValuePair("id", "1"));
 			params1.add(new BasicNameValuePair("student_id", Config.student_id));
 			JsonParser jLogin = new JsonParser();
-			System.out.println(usname.getText().toString());
-			System.out.println(paswd.getText().toString());
+			
 			JSONObject json = jLogin
 					.makeHttpRequest(avatarurl, "POST", params1);
-			System.out.println("value for json::" + json);
+			
 			if (json != null) {
 				try {
 					if (json != null) {
-						System.out.println("json value::" + json);
+						
 
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 						successL = jUser.getString(TAG_SUCCESS);
@@ -377,15 +366,14 @@ public class LoginActivity extends SherlockActivity {
 			params1.add(new BasicNameValuePair("id", "4"));
 			params1.add(new BasicNameValuePair("student_id", Config.student_id));
 			JsonParser jLogin = new JsonParser();
-			System.out.println(usname.getText().toString());
-			System.out.println(paswd.getText().toString());
+			
 			JSONObject json = jLogin
 					.makeHttpRequest(avatarurl, "POST", params1);
-			System.out.println("value for json::" + json);
+			
 			if (json != null) {
 				try {
 					if (json != null) {
-						System.out.println("json value::" + json);
+						
 
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 						successL = jUser.getString(TAG_SUCCESS);
@@ -436,14 +424,13 @@ public class LoginActivity extends SherlockActivity {
 					.toString()));
 
 			JsonParser jLogin = new JsonParser();
-			System.out.println(usname.getText().toString());
-			System.out.println(paswd.getText().toString());
+			
 			JSONObject json = jLogin.makeHttpRequest(loginurl, "POST", params1);
-			System.out.println("value for json::" + json);
+			
 			if (json != null) {
 				try {
 					if (json != null) {
-						System.out.println("json value::" + json);
+					
 
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 						successL = jUser.getString(TAG_SUCCESS);
@@ -461,10 +448,7 @@ public class LoginActivity extends SherlockActivity {
 						Config.role = jUser.getString(TAG_ROLE);
 						Config.enabled = jUser.getString(TAG_ENABLED);
 						Config.student_id = jUser.getString(TAG_STUDENT_ID);
-						System.out.println("username value:::" + username);
-						System.out.println("password value::" + password);
-						System.out.println("student id value"
-								+ Config.student_id);
+						
 
 					}
 
@@ -486,10 +470,10 @@ public class LoginActivity extends SherlockActivity {
 		@Override
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
-			System.out.println("in post execute");
+		
 			pDialog.dismiss();
 			if (JsonParser.jss.equals("empty")) {
-				System.out.println("json null value");
+			
 				AlertDialog alertDialog = new AlertDialog.Builder(
 						LoginActivity.this).create();
 
@@ -561,9 +545,9 @@ public class LoginActivity extends SherlockActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		System.out.println("Outsside shared pref");
+		
 		if (sharedpreferences.contains(UserName)) {
-			System.out.println("Inside shared pref");
+		
 			usname.setText(sharedpreferences.getString(UserName, ""));
 			check1.setChecked(true);
 		}
@@ -580,37 +564,20 @@ public class LoginActivity extends SherlockActivity {
 				InputMethodManager.HIDE_NOT_ALWAYS);
 	}
 
-	// @Override
-	// public boolean onOptionsItemSelected(MenuItem item) {
-	// switch (item.getItemId()) {
-	// case android.R.id.home:
-	// System.out.println("on back pressed");
-	// finish();
-	// return true;
-	// default:
-	// return super.onOptionsItemSelected(item);
-	// }
-	// }
+	
 	@Override
 	public void onBackPressed() {
 
-		// int count = getFragmentManager().getBackStackEntryCount();
-		// System.out.println("count value::::"+count);
-		// if (count == 0) {
-		// super.onBackPressed();
-		// //additional code
-		// } else {
-		// getFragmentManager().popBackStack();
-		// }
+		
 
 	}
 
 	private void calld() {
 		if (check1.isChecked() == true) {
 			String n = usname.getText().toString();
-			System.out.println("In run method::" + n);
+			
 			String u = paswd.getText().toString();
-			System.out.println("In run method::" + u);
+			
 			Editor editor = sharedpreferences.edit();
 			editor.putString(UserName, n);
 			editor.putString(Password, u);

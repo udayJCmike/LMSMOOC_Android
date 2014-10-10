@@ -46,7 +46,7 @@ public class Secondpage extends Fragment {
 		switch (item.getItemId()) {
 		case R.id.action_settings:
 			// search action
-			System.out.println("settings clicked");
+			
 			MainActivity.pager.setCurrentItem(5, true);
 			Fifthpage.newInstance("Fifth, Instance 1");
 			return true;

@@ -2,12 +2,10 @@ package com.deemsys.lmsmooc;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
@@ -24,30 +22,20 @@ import org.apache.http.params.HttpParams;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import com.squareup.picasso.Picasso;
-
 import android.support.v4.app.Fragment;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-
 import android.os.AsyncTask;
 import android.os.Bundle;
-
-import android.util.Log;
-
 import android.view.LayoutInflater;
-
 import android.view.View;
-
 import android.view.ViewGroup;
-
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
@@ -160,7 +148,7 @@ public class MyCourses extends Fragment {
 	}
 
 	public void grabURL(String url) {
-		Log.v("Android Spinner JSON Data Activity", url);
+	
 		new GrabURL().execute(url);
 	}
 
@@ -199,9 +187,7 @@ public class MyCourses extends Fragment {
 			try {
 
 				JSONObject c = jArray.getJSONObject(TAG_SRES);
-				Log.i("tagconvertstr", "[" + c + "]");
-
-				Log.i("tagconvertstr1", "[" + user + "]");
+				
 
 				JSONArray countryListObj = c.getJSONArray(TAG_Course_ARRAY);
 
@@ -320,10 +306,10 @@ public class MyCourses extends Fragment {
 
 				HttpPost httpPost = new HttpPost(URL);
 
-				// add name value pair for the country code
+				
 				List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(
 						2);
-				// System.out.println("start while posting"+start);
+				
 				nameValuePairs.add(new BasicNameValuePair("start", String
 						.valueOf(start)));
 				nameValuePairs.add(new BasicNameValuePair("limit", String
@@ -333,9 +319,9 @@ public class MyCourses extends Fragment {
 				jArray = jsonParser.makeHttpRequest(Config.ServerUrl
 						+ Config.mycourseurl, "POST", nameValuePairs);
 				JSONObject c = jArray.getJSONObject(TAG_SRES);
-				// Log.i("tagconvertstr", "["+c+"]");
+				
 				user = c.getJSONArray(TAG_Course_ARRAY);
-				// Log.i("tagconvertstr1", "["+user+"]");
+			
 
 				httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 				response = httpclient.execute(httpPost);
@@ -348,22 +334,22 @@ public class MyCourses extends Fragment {
 					content = out.toString();
 				} else {
 
-					Log.w("HTTP1:", statusLine.getReasonPhrase());
+					
 					response.getEntity().getContent().close();
 					throw new IOException(statusLine.getReasonPhrase());
 				}
 			} catch (ClientProtocolException e) {
-				Log.w("HTTP2:", e);
+				
 				content = e.getMessage();
 				// error = true;
 				cancel(true);
 			} catch (IOException e) {
-				Log.w("HTTP3:", e);
+				
 				content = e.getMessage();
 				// error = true;
 				cancel(true);
 			} catch (Exception e) {
-				Log.w("HTTP4:", e);
+				
 				content = e.getMessage();
 				// error = true;
 				cancel(true);
@@ -403,7 +389,7 @@ public class MyCourses extends Fragment {
 		public View getView(int position, View convertView, ViewGroup parent) {
 
 			ViewHolder holder = null;
-			Log.v("ConvertView", String.valueOf(position));
+			
 			if (convertView == null) {
 
 				LayoutInflater vi = (LayoutInflater) getActivity()
@@ -435,8 +421,7 @@ public class MyCourses extends Fragment {
 			Picasso.with(getActivity()).load(country.getstringurl())
 					.into(holder.cover);
 
-			System.out
-					.println("getpromocheck string" + country.getpromocheck());
+			
 			if (country.getpromocheck().equalsIgnoreCase("1")) {
 				holder.promoimage.setImageResource(R.drawable.promocode);
 			} else {
@@ -527,11 +512,11 @@ public class MyCourses extends Fragment {
 
 			JSONObject json = jLogin.makeHttpRequest(Config.ServerUrl
 					+ Config.purchasenumberselection, "POST", params1);
-			// System.out.println("value for json::"+json);
+			
 			if (json != null) {
 				try {
 					if (json != null) {
-						// System.out.println("json value::"+json);
+						
 
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 
@@ -555,7 +540,7 @@ public class MyCourses extends Fragment {
 		@Override
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
-			// System.out.println("in post execute");
+			
 			pDialog.dismiss();
 
 			Intent i = new Intent(getActivity(), CourseDetails.class);

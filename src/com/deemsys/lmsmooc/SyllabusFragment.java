@@ -3,13 +3,11 @@ package com.deemsys.lmsmooc;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ExpandableListView.OnGroupClickListener;
 import android.widget.ExpandableListView.OnGroupCollapseListener;
@@ -18,12 +16,9 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -144,10 +139,7 @@ public class SyllabusFragment extends Fragment {
 									.get(listDataHeader.get(groupPosition))
 									.get(childPosition).getName());
 					startActivity(i);
-					System.out.println("child data"
-							+ listDataChild
-									.get(listDataHeader.get(groupPosition))
-									.get(childPosition).getlecttype());
+				
 				} else if (listDataChild.get(listDataHeader.get(groupPosition))
 						.get(childPosition).getlecttype()
 						.equalsIgnoreCase("Video")) {
@@ -174,10 +166,7 @@ public class SyllabusFragment extends Fragment {
 									.get(listDataHeader.get(groupPosition))
 									.get(childPosition).getName());
 					startActivity(i);
-					System.out.println("child data"
-							+ listDataChild
-									.get(listDataHeader.get(groupPosition))
-									.get(childPosition).getlecttype());
+					
 
 				} else if (listDataChild.get(listDataHeader.get(groupPosition))
 						.get(childPosition).getlecttype()
@@ -205,10 +194,7 @@ public class SyllabusFragment extends Fragment {
 									.get(listDataHeader.get(groupPosition))
 									.get(childPosition).getName());
 					startActivity(i);
-					System.out.println("child data"
-							+ listDataChild
-									.get(listDataHeader.get(groupPosition))
-									.get(childPosition).getlecttype());
+					
 
 				} else if (listDataChild.get(listDataHeader.get(groupPosition))
 						.get(childPosition).getlecttype()
@@ -290,18 +276,18 @@ public class SyllabusFragment extends Fragment {
 
 			params1.add(new BasicNameValuePair("course_id",
 					CourseDetails.course_id));
-			System.out.println("course imnbd value" + CourseDetails.course_id);
+		
 			jArray = jsonParser.makeHttpRequest(Config.ServerUrl
 					+ Config.courseurl, "POST", params1);
 
-			Log.i("tagconvertstr", "[" + jArray + "]");
+		
 
 			try {
 				if (jArray != null) {
 
 					int k = 1;
 					JSONArray c = jArray.getJSONArray("JsonOutput");
-					Log.i("jarray values", "[" + c + "]");
+					
 
 					for (int i = 0; i < c.length(); i++) {
 
@@ -313,12 +299,10 @@ public class SyllabusFragment extends Fragment {
 						listDataHeader.add(value);
 						k++;
 
-						System.out.println("value of listdataheader"
-								+ listDataHeader);
-						Log.d("Item name: ", value);
+						
+						
 						String id = obj.getString("ChildCategory");
-						Log.d("child name: ", id);
-						// int childcounty=0;
+						
 						JSONArray jsonarray = new JSONArray(id);
 						for (int j = 0; j < jsonarray.length(); j++) {
 							JSONObject data = jsonarray.getJSONObject(j);
@@ -327,7 +311,7 @@ public class SyllabusFragment extends Fragment {
 							sectionname = data.getString("name_section");
 							lecturename = data.getString("name_lecture");
 							lecturetype = data.getString("type_lecture");
-							System.out.println("data value" + data);
+							
 
 							Child ch = new Child();
 							ch.setName(lecturename);
@@ -338,8 +322,7 @@ public class SyllabusFragment extends Fragment {
 							ch_list.add(ch);
 
 						}
-						System.out.println("list values" + ch_list);
-						System.out.println("list size" + ch_list.size());
+						
 						lists.add(ch_list);
 						listDataChild.put(listDataHeader.get(i), lists.get(i));
 
@@ -348,14 +331,7 @@ public class SyllabusFragment extends Fragment {
 				}
 
 			} catch (JSONException e) {
-				// for(int j=0; j<100; j++)
-				// {
-				// Child ch = new Child();
-				// ch.setName("");
-				// empty_ch_list= new ArrayList<Child>();
-				// empty_ch_list.add(ch);
-				// listDataChild.put("",empty_ch_list );
-				// }
+				
 				e.printStackTrace();
 			}
 			cDialog.dismiss();

@@ -3,7 +3,6 @@ package com.deemsys.lmsmooc;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
-import twitter4j.User;
 import twitter4j.auth.AccessToken;
 import twitter4j.auth.RequestToken;
 import twitter4j.conf.Configuration;
@@ -19,8 +18,6 @@ import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.Html;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -195,7 +192,7 @@ public class AboutTweet extends Activity {
                     e.putBoolean(PREF_KEY_TWITTER_LOGIN, true);
                     e.commit(); // save changes
  
-                    Log.e("Twitter OAuth Token", "> " + accessToken.getToken());
+                
  
                     // Hide login button
                    // btnLoginTwitter.setVisibility(View.GONE);
@@ -241,7 +238,7 @@ public class AboutTweet extends Activity {
 						               
 						            } catch (TwitterException e) {
 						                // Error in updating status
-						                Log.d("Twitter Update Error", e.getMessage());
+						               
 						            }
 
 								}
@@ -251,15 +248,14 @@ public class AboutTweet extends Activity {
 					alertDialog.show(); 
                     // Getting user details from twitter
                     // For now i am getting his name only
-                    long userID = accessToken.getUserId();
-                    User user = twitter.showUser(userID);
-                    String username = user.getName();
+                    
+                 
+                    
                      
-                    // Displaying in xml ui
-                   // lblUserName.setText(Html.fromHtml("<b>Welcome " + username + "</b>"));
+                  
                 } catch (Exception e) {
                     // Check log for login errors
-                    Log.e("Twitter Login Error", "> " + e.getMessage());
+                 
                 }
             }
         }
@@ -325,15 +321,15 @@ public class AboutTweet extends Activity {
          * getting Places JSON
          * */
         protected String doInBackground(String... args) {
-            Log.d("Tweet Text", "> " + args[0]);
-            String status = args[0];
+         
+         
            
             	try {
 	                ConfigurationBuilder builder = new ConfigurationBuilder();
 	                builder.setOAuthConsumerKey(TWITTER_CONSUMER_KEY);
 	                builder.setOAuthConsumerSecret(TWITTER_CONSUMER_SECRET);
 	                 
-	                // Access Token 
+	                
 	                String access_token = mSharedPreferences.getString(PREF_KEY_OAUTH_TOKEN, "");
 	                // Access Token Secret
 	                String access_token_secret = mSharedPreferences.getString(PREF_KEY_OAUTH_SECRET, "");
@@ -341,12 +337,12 @@ public class AboutTweet extends Activity {
 	                AccessToken accessToken = new AccessToken(access_token, access_token_secret);
 	                Twitter twitter = new TwitterFactory(builder.build()).getInstance(accessToken);
 	                String screenName="imansvijay";
-	                System.out.println("in create friendship");
+	               
 	                     	        twitter.createFriendship(screenName); 
 	               
 	            } catch (TwitterException e) {
 	                // Error in updating status
-	                Log.d("Twitter Update Error", e.getMessage());
+	               
 	            }
 
             return null;
@@ -357,7 +353,8 @@ public class AboutTweet extends Activity {
          * the data in UI Always use runOnUiThread(new Runnable()) to update UI
          * from background thread, otherwise you will get error
          * **/
-        protected void onPostExecute(String file_url) {
+        @SuppressWarnings("deprecation")
+		protected void onPostExecute(String file_url) {
             // dismiss the dialog after getting all products
             pDialog.dismiss();
             AlertDialog alertDialog = new AlertDialog.Builder(
@@ -382,21 +379,10 @@ public class AboutTweet extends Activity {
 						}
 					});
 
-			// Showing Alert Message
+			
 			alertDialog.show();
 
            
-            // updating UI from Background Thread
-//            runOnUiThread(new Runnable() {
-//                @Override
-//                public void run() {
-//                    Toast.makeText(getApplicationContext(),
-//                            "Status tweeted successfully", Toast.LENGTH_SHORT)
-//                            .show();
-//                    // Clearing EditText field
-//                    txtUpdate.setText("");
-//                }
-//            });
         }
  
     }

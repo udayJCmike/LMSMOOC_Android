@@ -2,12 +2,10 @@ package com.deemsys.lmsmooc;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -20,11 +18,8 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Html;
-import android.util.Log;
 import android.widget.MediaController;
-import android.widget.TextView;
 import android.widget.VideoView;
-
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 
 public class CourseVideo extends SherlockFragmentActivity {
@@ -67,7 +62,7 @@ public class CourseVideo extends SherlockFragmentActivity {
 		isInternetPresent = cd.isConnectingToInternet();
 		if (isInternetPresent) {
 
-			System.out.println("inside getting course");
+		
 			new getCourse().execute();
 
 		} else {
@@ -119,11 +114,11 @@ public class CourseVideo extends SherlockFragmentActivity {
 
 			JSONObject json = jLogin.makeHttpRequest(Config.ServerUrl
 					+ Config.coursecontentvideo, "POST", params1);
-			System.out.println("value for json::" + json);
+		
 			if (json != null) {
 				try {
 					if (json != null) {
-						System.out.println("json value::" + json);
+					
 
 						JSONObject jUser = json
 								.getJSONObject("serviceresponse");
@@ -150,10 +145,10 @@ public class CourseVideo extends SherlockFragmentActivity {
 		@Override
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
-			System.out.println("in post execute");
+		
 			pDialog.dismiss();
 			if (JsonParser.jss.equals("empty")) {
-				System.out.println("json null value");
+			
 				AlertDialog alertDialog = new AlertDialog.Builder(
 						getApplicationContext()).create();
 
@@ -216,19 +211,19 @@ public class CourseVideo extends SherlockFragmentActivity {
 				// videouri=LoginActivity.avatar_url+"54"+"/"+audio_url;
 				videouri = LoginActivity.avatar_url + CourseDetails.course_id
 						+ "/" + sect_id + "/" + lect_id + "/" + course_contents;
-				System.out.println("video uri in course details" + videouri);
+			
 				try {
 					// Start the MediaController
 					MediaController mediacontroller = new MediaController(
 							CourseVideo.this);
 					mediacontroller.setAnchorView(videoview);
-					System.out.println("in video onclick");
+				
 					Uri video = Uri.parse(videouri);
 					videoview.setMediaController(mediacontroller);
 					videoview.setVideoURI(video);
 
 				} catch (Exception e) {
-					Log.e("Error", e.getMessage());
+					
 					e.printStackTrace();
 					AlertDialog alertDialog = new AlertDialog.Builder(
 							CourseVideo.this).create();
@@ -257,7 +252,7 @@ public class CourseVideo extends SherlockFragmentActivity {
 
 					public void onPrepared(MediaPlayer mp) {
 						pDialog.dismiss();
-						System.out.println("in video start");
+					
 						videoview.start();
 					}
 				});

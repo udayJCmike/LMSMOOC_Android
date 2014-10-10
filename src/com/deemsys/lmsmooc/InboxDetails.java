@@ -83,7 +83,7 @@ public class InboxDetails extends SherlockFragmentActivity {
 		message.setText(Html.fromHtml(InboxFragment.msg));
 		date.setText(InboxFragment.date);
 
-		System.out.println("valu of status::" + InboxFragment.important);
+		
 		if (InboxFragment.important.equals("1")) {
 
 			unimportantstatus.setBackgroundColor(Color.parseColor("#F0AD4E"));
@@ -122,34 +122,10 @@ public class InboxDetails extends SherlockFragmentActivity {
 			}
 		});
 
-		/*
-		 * importantstatus.setOnClickListener(new OnClickListener() {
-		 * 
-		 * @Override public void onClick(final View v) {
-		 * unimportantstatus.setVisibility(View.VISIBLE);
-		 * importantstatus.setVisibility(View.INVISIBLE);
-		 * 
-		 * 
-		 * unimportantstatus.setBackgroundColor(Color.parseColor("#F0AD4E"));
-		 * 
-		 * System.out.println("updating value 0");
-		 * 
-		 * 
-		 * 
-		 * 
-		 * System.out.println("id value:"+id);
-		 * System.out.println("receiver value:"+receiver);
-		 * System.out.println("role value:"+roles);
-		 * 
-		 * 
-		 * new UpdateZero().execute();
-		 * 
-		 * 
-		 * } });
-		 */
+		
 		if (InboxFragment.read.equalsIgnoreCase("0")) {
 
-			System.out.println("read update$%$^&^&&&**&((*&*(&*(");
+		
 			new ReadUpdateOne().execute();
 
 		}
@@ -194,7 +170,7 @@ public class InboxDetails extends SherlockFragmentActivity {
 
 			JSONObject json1 = jLogin1.makeHttpRequest(Config.ServerUrl
 					+ Config.importantstatusone, "POST", paramsE);
-			System.out.println("url called");
+			
 			System.out.println("value for json::" + json1);
 
 			return null;
@@ -205,11 +181,11 @@ public class InboxDetails extends SherlockFragmentActivity {
 		@Override
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
-			System.out.println("in post execute");
+			
 
 			// pDialog.dismiss();
 			if (JsonParser.jss.equals("empty")) {
-				System.out.println("json null value");
+				
 				AlertDialog alertDialog = new AlertDialog.Builder(
 						InboxDetails.this).create();
 
@@ -248,14 +224,7 @@ public class InboxDetails extends SherlockFragmentActivity {
 
 		@Override
 		protected void onPreExecute() {
-			// super.onPreExecute();
-			// pDialog = new ProgressDialog(InboxDetails.this);
-			//
-			// pDialog.setMessage("Please wait...");
-			//
-			// pDialog.setIndeterminate(false);
-			// pDialog.setCancelable(true);
-			// pDialog.show();
+			
 
 		}
 
@@ -269,9 +238,7 @@ public class InboxDetails extends SherlockFragmentActivity {
 			paramsE.add(new BasicNameValuePair("receiver_id", receiver));
 			paramsE.add(new BasicNameValuePair("role", roles));
 
-			System.out.println("id value:" + id);
-			System.out.println("receiver value:" + receiver);
-			System.out.println("role value:" + roles);
+			
 
 			JsonParser jLogin1 = new JsonParser();
 
@@ -287,10 +254,10 @@ public class InboxDetails extends SherlockFragmentActivity {
 		@Override
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
-			System.out.println("in post execute");
+			
 
 			if (JsonParser.jss.equals("empty")) {
-				System.out.println("json null value");
+				
 				AlertDialog alertDialog = new AlertDialog.Builder(
 						InboxDetails.this).create();
 
@@ -343,15 +310,13 @@ public class InboxDetails extends SherlockFragmentActivity {
 			paramsE.add(new BasicNameValuePair("receiver_id", receiver));
 			paramsE.add(new BasicNameValuePair("role", roles));
 
-			System.out.println("subject:" + id);
-			System.out.println("subject:" + roles);
-			System.out.println("subject:" + receiver);
+			
 
 			JsonParser jLogin1 = new JsonParser();
 
 			JSONObject json1 = jLogin1.makeHttpRequest(Config.ServerUrl
 					+ Config.inboxreadstatus, "POST", paramsE);
-			System.out.println("url called");
+			
 			System.out.println("value for json::" + json1);
 
 			return null;
@@ -362,11 +327,11 @@ public class InboxDetails extends SherlockFragmentActivity {
 		@Override
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
-			System.out.println("in post execute");
+		
 
 			// pDialog.dismiss();
 			if (JsonParser.jss.equals("empty")) {
-				System.out.println("json null value");
+				
 				AlertDialog alertDialog = new AlertDialog.Builder(
 						InboxDetails.this).create();
 

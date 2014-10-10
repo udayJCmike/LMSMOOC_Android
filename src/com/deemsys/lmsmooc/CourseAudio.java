@@ -98,7 +98,7 @@ public class CourseAudio extends SherlockActivity implements OnTouchListener,
 		isInternetPresent = cd.isConnectingToInternet();
 		if (isInternetPresent) {
 
-			System.out.println("inside getting course");
+			
 			new getaudiourl().execute();
 
 		} else {
@@ -132,10 +132,10 @@ public class CourseAudio extends SherlockActivity implements OnTouchListener,
 		Toast.makeText(getApplicationContext(), "Playing sound",
 				Toast.LENGTH_SHORT).show();
 		try {
-			String datasource = LoginActivity.avatar_url
-					+ CourseDetails.course_id + "/" + sect_id + "/" + lect_id
-					+ "/" + course_contents;
-			System.out.println("datasource value" + datasource);
+//			String datasource = LoginActivity.avatar_url
+//					+ CourseDetails.course_id + "/" + sect_id + "/" + lect_id
+//					+ "/" + course_contents;
+		
 			mediaPlayer.setDataSource(LoginActivity.avatar_url
 					+ CourseDetails.course_id + "/" + sect_id + "/" + lect_id
 					+ "/" + course_contents);
@@ -281,11 +281,11 @@ public class CourseAudio extends SherlockActivity implements OnTouchListener,
 
 			JSONObject json = jLogin.makeHttpRequest(Config.ServerUrl
 					+ Config.coursecontentaudio, "POST", params1);
-			System.out.println("value for json::" + json);
+			
 			if (json != null) {
 				try {
 					if (json != null) {
-						System.out.println("json value::" + json);
+						
 
 						JSONObject jUser = json
 								.getJSONObject("serviceresponse");
@@ -312,10 +312,10 @@ public class CourseAudio extends SherlockActivity implements OnTouchListener,
 		@Override
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
-			System.out.println("in post execute");
+			
 			pDialog.dismiss();
 			if (JsonParser.jss.equals("empty")) {
-				System.out.println("json null value");
+				
 				AlertDialog alertDialog = new AlertDialog.Builder(
 						getApplicationContext()).create();
 
@@ -376,7 +376,7 @@ public class CourseAudio extends SherlockActivity implements OnTouchListener,
 				// pDialog.dismiss();
 			} else {
 				videouri = "http://users.skynet.be/fa046054/home/P22/track06.mp3";
-				System.out.println("video uri in course details" + videouri);
+			
 				playButton.setEnabled(true);
 
 			}

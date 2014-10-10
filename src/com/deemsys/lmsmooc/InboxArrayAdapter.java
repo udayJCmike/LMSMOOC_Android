@@ -40,21 +40,6 @@ public class InboxArrayAdapter extends ArrayAdapter<Inbox> {
 	JSONObject jArray;
 	public ArrayList<String> inboxlist = new ArrayList<String>();
 	public List<Inbox> allinbox = new ArrayList<Inbox>();
-
-	// private static final String TAG_INBOXARRAY = "Inbox";
-
-	// private static final String TAG_SENDER_ID = "sender_id";
-	// private static final String TAG_SRES= "serviceresponse";
-	// private static final String TAG_INBOXID= "inbox_id";
-	// private static final String TAG_SENDER_NAME= "sender_name";
-	// private static final String TAG_RECEIVER_ID= "receiver_id";
-	// private static final String TAG_RECEIVER_NAME= "receiver_name";
-	// private static final String TAG_ROLE= "role";
-	// private static final String TAG_SUBJECT= "subject";
-	// private static final String TAG_MESSAGE= "message";
-	// private static final String TAG_READ_STATUS= "read_status";
-	// private static final String TAG_SENT_DATE= "sent_date";
-	// private static final String TAG_IMPORTANT_STATUS= "important_status";
 	String importantstatus;
 	TextView welcome;
 	static String inboxid;
@@ -66,16 +51,10 @@ public class InboxArrayAdapter extends ArrayAdapter<Inbox> {
 	String message;
 	String readstatus;
 	static String sentdate;
-
 	String senderid;
-
 	ListView lstvw;
-
 	ListView list2;
 	TextView welcomeusername;
-	// private String inboxdetailsurl =
-	// "http://192.168.1.158:8888/LmsmoocAndroid/Services/Inbox.php?service=selectinbox";
-
 	Inbox user;
 	int layoutResourceId;
 	public static ArrayList<Inbox> data = new ArrayList<Inbox>();
@@ -86,7 +65,6 @@ public class InboxArrayAdapter extends ArrayAdapter<Inbox> {
 
 		this.layoutResourceId = layoutResourceId;
 		this.context = context;
-		System.out.println("inbox all value::" + allinbox);
 		data = (ArrayList<Inbox>) allinbox;
 
 	}
@@ -105,7 +83,7 @@ public class InboxArrayAdapter extends ArrayAdapter<Inbox> {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 
-		System.out.println("in::userholder");
+		
 		View row = convertView;
 		final UserHolder holder;
 
@@ -124,10 +102,6 @@ public class InboxArrayAdapter extends ArrayAdapter<Inbox> {
 
 			holder.importantstatus = (ImageView) row.findViewById(R.id.redbtn);
 
-			// holder.importantstatus1=(ImageView)
-			// row.findViewById(R.id.greenbtn);
-			// holder.readstatus=(LinearLayout)
-			// row.findViewById(R.id.readstatus);
 
 			row.setTag(holder);
 		} else {

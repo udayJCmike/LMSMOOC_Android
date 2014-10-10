@@ -3,20 +3,16 @@ package com.deemsys.lmsmooc;
 import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import com.deemsys.lmsmooc.ConnectionDetector;
 import com.deemsys.lmsmooc.JsonParser;
 import com.deemsys.lmsmooc.LoginActivity;
 import com.deemsys.lmsmooc.InboxArrayAdapter;
-
 import com.deemsys.lmsmooc.NewMainActivity;
-
 import android.support.v4.app.Fragment;
 import android.app.ActionBar;
 import android.app.AlertDialog;
@@ -26,7 +22,6 @@ import android.os.Bundle;
 import android.sax.RootElement;
 import android.support.v4.app.FragmentActivity;
 import android.text.Html;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -146,12 +141,12 @@ public class InboxFragment extends Fragment {
 
 			params1.add(new BasicNameValuePair("student_id", Config.student_id));
 
-			System.out.println("stu id: " + Config.student_id);
+		
 
 			jArray = jsonParser.makeHttpRequest(Config.ServerUrl
 					+ Config.inboxdetailsurl, "POST", params1);
 
-			Log.i("JARRAY Value : ", "[" + jArray + "]");
+			
 
 			try {
 				if (jArray != null) {
@@ -159,10 +154,10 @@ public class InboxFragment extends Fragment {
 					JSONObject c = jArray.getJSONObject(TAG_SRES);
 					user = c.getJSONArray(TAG_INBOXARRAY);
 
-					Log.i("C come User ARRAY: ", "[" + user + "]");
+					
 
 					for (int i = 0; i < user.length(); i++) {
-						System.out.println("forloop1");
+						
 						JSONObject c1 = user.getJSONObject(i);
 						JSONObject c2 = c1.getJSONObject(TAG_SRES);
 

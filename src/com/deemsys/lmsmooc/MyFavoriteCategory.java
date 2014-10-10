@@ -2,33 +2,24 @@ package com.deemsys.lmsmooc;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
-
 import com.actionbarsherlock.app.SherlockFragment;
-
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-
 import android.os.AsyncTask;
 import android.os.Bundle;
-
-import android.util.Log;
 import android.view.LayoutInflater;
-
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -135,7 +126,7 @@ public class MyFavoriteCategory extends SherlockFragment {
 				@Override
 				public void onItemClick(AdapterView<?> arg0, View arg1,
 						int arg2, long arg3) {
-					System.out.println("in item click" + arg2);
+					
 					String item = category.get(arg2).getcategory();
 
 					Intent i = new Intent(getActivity(),
@@ -159,23 +150,22 @@ public class MyFavoriteCategory extends SherlockFragment {
 			List<NameValuePair> params1 = new ArrayList<NameValuePair>();
 
 			params1.add(new BasicNameValuePair("student_id", Config.student_id));
-			System.out.println("student_id in favorite post::"
-					+ Config.student_id);
+			
 			jArray = jsonParser.makeHttpRequest(Config.ServerUrl
 					+ Config.myfavoritecategoryurl, "POST", params1);
 
-			Log.i("tagconvertstr", "[" + jArray + "]");
+			
 
 			try {
 				if (jArray != null) {
 
 					JSONObject c = jArray.getJSONObject(TAG_SRESL);
-					Log.i("tagconvertstr", "[" + c + "]");
+					
 					user = c.getJSONArray(TAG_Category_ARRAY);
-					Log.i("tagconvertstr1", "[" + user + "]");
+					
 
 					for (int i = 0; i < user.length(); i++) {
-						System.out.println("forloop1");
+						
 						JSONObject c1 = user.getJSONObject(i);
 						JSONObject c2 = c1.getJSONObject(TAG_SRESL);
 						category_name = c2.getString(TAG_Category_NAME);
@@ -185,7 +175,7 @@ public class MyFavoriteCategory extends SherlockFragment {
 
 						category.add(cnt);
 
-						System.out.println("size of aray list" + category);
+						
 
 					}
 

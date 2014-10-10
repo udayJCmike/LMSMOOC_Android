@@ -22,30 +22,10 @@ public class Course {
 	String promocheck;
 	String audiourl;
 
-	//
-	// public Course(String authorname, String course_name,String costw, String
-	// course_id2, String instructorid, Bitmap bitmap) {
-	// // TODO Auto-generated constructor stub
-	// course_id=course_id2;
-	// instructor_id=instructorid;
-	// course=course_name;
-	// name=authorname;
-	// cost=costw;
-	// bit=bitmap;
-	// }
-	// public Course(String authorname, String course_name,String costw, String
-	// course_id2, String instructorid) {
-	// // TODO Auto-generated constructor stub
-	// course_id=course_id2;
-	// instructor_id=instructorid;
-	// course=course_name;
-	// name=authorname;
-	// cost=costw;
-	//
-	// }
+
 	public Course(String authorname, String course_name, String costw,
 			String course_id2, String instructorid, String bitmap, String rat) {
-		// TODO Auto-generated constructor stub
+		
 		course_id = course_id2;
 		instructor_id = instructorid;
 		course = course_name;
@@ -59,7 +39,7 @@ public class Course {
 	public Course(String authorname, String course_name, String costw,
 			String course_id2, String instructorid, String bitmap, String rat,
 			String ifmycour, String audiorl) {
-		// TODO Auto-generated constructor stub
+	
 		course_id = course_id2;
 		instructor_id = instructorid;
 		course = course_name;
@@ -75,7 +55,7 @@ public class Course {
 	public Course(String authorname, String course_name, String costw,
 			String course_id2, String instructorid, String bitmap, String rat,
 			String coures_desp, String ifmycour, String audio) {
-		// TODO Auto-generated constructor stub
+	
 		course_id = course_id2;
 		instructor_id = instructorid;
 		course = course_name;

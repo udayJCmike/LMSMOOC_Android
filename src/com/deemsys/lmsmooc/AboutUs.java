@@ -1,25 +1,11 @@
 package com.deemsys.lmsmooc;
 
-import twitter4j.Twitter;
-import twitter4j.TwitterException;
-import twitter4j.TwitterFactory;
-import twitter4j.User;
-import twitter4j.auth.AccessToken;
-import twitter4j.auth.RequestToken;
-import twitter4j.conf.Configuration;
-import twitter4j.conf.ConfigurationBuilder;
-import android.support.v4.app.Fragment;
-import android.text.Html;
 
+import android.support.v4.app.Fragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,8 +28,7 @@ public class AboutUs extends Fragment {
 	static final String URL_TWITTER_OAUTH_VERIFIER = "oauth_verifier";
 	static final String URL_TWITTER_OAUTH_TOKEN = "oauth_token";
 	Button follow;
-	private static Twitter twitter;
-	private static RequestToken requestToken = null;
+
 	private static SharedPreferences mSharedPreferences;
 	private ConnectionDetector cd;
 

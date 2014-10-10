@@ -5,8 +5,6 @@ import com.actionbarsherlock.view.MenuItem;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.Fragment;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;

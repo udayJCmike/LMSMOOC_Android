@@ -2,7 +2,6 @@ package com.deemsys.lmsmooc;
 
 import java.util.HashMap;
 import java.util.List;
-
 import android.content.Context;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
@@ -24,22 +23,19 @@ public class ExpandablelistAdapter extends BaseExpandableListAdapter {
 		this._context = context;
 		this._listDataHeader = listDataHeader;
 		this._listDataChild = listChildData;
-		System.out.println("list data child value" + _listDataChild.size());
+		
 	}
 
 	@Override
 	public Object getChild(int groupPosition, int childPosititon) {
-		System.out.println("list data child value"
-				+ this._listDataChild.get(
-						this._listDataHeader.get(groupPosition)).get(
-						childPosititon));
+		
 		return this._listDataChild.get(this._listDataHeader.get(groupPosition))
 				.get(childPosititon);
 	}
 
 	@Override
 	public long getChildId(int groupPosition, int childPosition) {
-		System.out.println("child position" + childPosition);
+	
 		return childPosition;
 	}
 
@@ -47,10 +43,9 @@ public class ExpandablelistAdapter extends BaseExpandableListAdapter {
 	public View getChildView(int groupPosition, final int childPosition,
 			boolean isLastChild, View convertView, ViewGroup parent) {
 		Child child = (Child) getChild(groupPosition, childPosition);
-		System.out.println("child position:::" + childPosition);
+	
 
-		String lecttype = child.getlecttype().toString(); // Text before the
-															// first dot
+		String lecttype = child.getlecttype().toString(); 
 		if (convertView == null) {
 			LayoutInflater infalInflater = (LayoutInflater) this._context
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -63,7 +58,7 @@ public class ExpandablelistAdapter extends BaseExpandableListAdapter {
 
 		txtListChild.setText(Integer.toString(childPosition + 1) + "."
 				+ child.getName().toString());
-		System.out.println("value of array part2" + lecttype);
+		
 		if (lecttype.equalsIgnoreCase("Text")) {
 			lecturetype.setBackgroundResource(R.drawable.text);
 		} else if (lecttype.equalsIgnoreCase("Audio")) {
@@ -84,7 +79,7 @@ public class ExpandablelistAdapter extends BaseExpandableListAdapter {
 		} else {
 			int childcount = this._listDataChild.get(
 					this._listDataHeader.get(groupPosition)).size();
-			System.out.println("chilc count value::" + childcount);
+			
 			if (childcount == 0) {
 				return 0;
 			} else {
