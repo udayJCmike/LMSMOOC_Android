@@ -102,10 +102,15 @@ public class BillingArrayAdapter extends ArrayAdapter<Billing> {
 		if (user.getpromocode().equals("0")) {
 			holder.promo.setText("No");
 
-		} else if (user.getpromocode().equals("1")) {
+		} else {
 			holder.promo.setText("Yes");
 		}
+		if (user.getreduction().equals(" ")||user.getreduction().equals("")) {
+			holder.reduc.setText("$" + "0");
 
+		} else {
+			holder.reduc.setText("$" + user.getreduction());
+		}
 		return row;
 
 	}

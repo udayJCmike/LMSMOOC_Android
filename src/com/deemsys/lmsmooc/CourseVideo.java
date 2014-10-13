@@ -69,7 +69,7 @@ public class CourseVideo extends SherlockFragmentActivity {
 			AlertDialog alertDialog = new AlertDialog.Builder(CourseVideo.this)
 					.create();
 
-			alertDialog.setTitle("INFO!");
+			alertDialog.setTitle("Sorry User");
 
 			alertDialog.setMessage("No network connection.");
 
@@ -153,7 +153,7 @@ public class CourseVideo extends SherlockFragmentActivity {
 						getApplicationContext()).create();
 
 				// Setting Dialog Title
-				alertDialog.setTitle("INFO!");
+				alertDialog.setTitle("Sorry User");
 
 				// Setting Dialog Message
 				alertDialog.setMessage("Server not connected.");
@@ -182,7 +182,7 @@ public class CourseVideo extends SherlockFragmentActivity {
 						getApplicationContext()).create();
 
 				// Setting Dialog Title
-				alertDialog.setTitle("INFO!");
+				alertDialog.setTitle("Sorry User");
 
 				// Setting Dialog Message
 				alertDialog.setMessage("Invalid username or password.");
@@ -228,7 +228,7 @@ public class CourseVideo extends SherlockFragmentActivity {
 					AlertDialog alertDialog = new AlertDialog.Builder(
 							CourseVideo.this).create();
 
-					alertDialog.setTitle("INFO!");
+					alertDialog.setTitle("Sorry User");
 
 					alertDialog.setMessage("Video cannot be played.");
 

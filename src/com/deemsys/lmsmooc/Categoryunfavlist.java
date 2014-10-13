@@ -65,7 +65,7 @@ public class Categoryunfavlist extends SherlockActivity {
 			AlertDialog alertDialog = new AlertDialog.Builder(
 					Categoryunfavlist.this).create();
 
-			alertDialog.setTitle("INFO!");
+			alertDialog.setTitle("Sorry User");
 
 			alertDialog.setMessage("No network connection.");
 
@@ -104,7 +104,7 @@ public class Categoryunfavlist extends SherlockActivity {
 				AlertDialog alertDialog = new AlertDialog.Builder(
 						Categoryunfavlist.this).create();
 
-				alertDialog.setTitle("INFO!");
+				alertDialog.setTitle("Sorry User");
 
 				alertDialog.setMessage("No data found.");
 
@@ -206,7 +206,7 @@ public class Categoryunfavlist extends SherlockActivity {
 				AlertDialog alertDialog = new AlertDialog.Builder(
 						Categoryunfavlist.this).create();
 
-				alertDialog.setTitle("INFO!");
+				alertDialog.setTitle("Sorry User");
 
 				alertDialog.setMessage("No category selected.");
 

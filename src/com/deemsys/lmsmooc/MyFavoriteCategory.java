@@ -96,7 +96,7 @@ public class MyFavoriteCategory extends SherlockFragment {
 						.create();
 
 				// Setting Dialog Title
-				alertDialog.setTitle("INFO!");
+				alertDialog.setTitle("Sorry User");
 
 				// Setting Dialog Message
 				alertDialog.setMessage("No data found.");
@@ -203,7 +203,7 @@ public class MyFavoriteCategory extends SherlockFragment {
 			AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
 					.create();
 
-			alertDialog.setTitle("INFO!");
+			alertDialog.setTitle("Sorry User");
 
 			alertDialog.setMessage("No network connection.");
 

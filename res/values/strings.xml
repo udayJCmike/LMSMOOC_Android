@@ -82,5 +82,14 @@
     <string name="buildno">1.0.1</string>
     <string name="designdevelop">Designed and Developed by</string>
     <string name="deems">Deemsys Inc.</string>
+    <string name="server_registering">server is registering!</string>
+    <string name="server_registered">server_registered</string>
+    <string name="server_register_error">server_register_error</string>
+    <string name="server_unregistered">server_unregistered</string>
+    <string name="server_unregister_error">server_unregister_error!</string>
+    <string name="gcm_unregistered">gcm_unregistered</string>
+    <string name="gcm_deleted">gcm_deleted</string>
+    <string name="gcm_error">gcm_error</string>
+    <string name="gcm_recoverable_error">gcm_recoverable_error</string>
 
 </resources>

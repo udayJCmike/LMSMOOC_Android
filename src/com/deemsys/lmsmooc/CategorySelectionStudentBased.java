@@ -65,7 +65,7 @@ public class CategorySelectionStudentBased extends SherlockActivity {
 			AlertDialog alertDialog = new AlertDialog.Builder(
 					CategorySelectionStudentBased.this).create();
 
-			alertDialog.setTitle("INFO!");
+			alertDialog.setTitle("Sorry User");
 
 			alertDialog.setMessage("No network connection.");
 

@@ -371,6 +371,7 @@ public class FreeCourses extends Fragment {
 			TextView cost;
 			ImageView ratingshow;
 			ImageView promoimage;
+			TextView enroll;
 		}
 
 		public void add(Course country) {
@@ -399,6 +400,7 @@ public class FreeCourses extends Fragment {
 						.findViewById(R.id.ratingimage);
 				holder.promoimage = (ImageView) convertView
 						.findViewById(R.id.promoimage);
+				holder.enroll = (TextView) convertView.findViewById(R.id.enroll);
 				convertView.setTag(holder);
 
 			} else {
@@ -414,7 +416,11 @@ public class FreeCourses extends Fragment {
 			Picasso.with(getActivity()).load(country.getstringurl())
 					.into(holder.cover);
 
-			
+			if (country.getifmycourse().equalsIgnoreCase("1")) {
+				holder.enroll.setVisibility(View.VISIBLE);
+			} else {
+				holder.enroll.setVisibility(View.INVISIBLE);
+			}
 			if (country.getpromocheck().equalsIgnoreCase("1")) {
 				holder.promoimage.setImageResource(R.drawable.promocode);
 			} else {

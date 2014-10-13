@@ -82,6 +82,9 @@ public class ChangePasswordFragment extends Fragment {
 						&& !newpass.equalsIgnoreCase("")
 						&& !confirmpass.equalsIgnoreCase("")) {
 					if (oldpass.equalsIgnoreCase(Config.password)) {
+						
+						if(!oldpass.equalsIgnoreCase(newpass))	{
+						
 						if (passwordCheck(newpass)) {
 
 							if (newpass.equals(confirmpass)) {
@@ -95,7 +98,7 @@ public class ChangePasswordFragment extends Fragment {
 									AlertDialog alertDialog = new AlertDialog.Builder(
 											getActivity()).create();
 
-									alertDialog.setTitle("INFO!");
+									alertDialog.setTitle("Sorry User");
 
 									alertDialog
 											.setMessage("No network connection.");
@@ -122,7 +125,7 @@ public class ChangePasswordFragment extends Fragment {
 								AlertDialog alertDialog = new AlertDialog.Builder(
 										getActivity()).create();
 
-								alertDialog.setTitle("INFO!");
+								alertDialog.setTitle("Sorry User");
 
 								alertDialog
 										.setMessage("New password mismatch with confirm password.");
@@ -143,15 +146,15 @@ public class ChangePasswordFragment extends Fragment {
 
 							}
 						}
-
+						 
 						else {
 							AlertDialog alertDialog = new AlertDialog.Builder(
 									getActivity()).create();
 
-							alertDialog.setTitle("INFO!");
+							alertDialog.setTitle("Sorry User");
 
 							alertDialog
-									.setMessage("Should contain 1 alphabet.Should contain 1 number.Should be 8 to 25 characters.Should contain 1 Special character.");
+									.setMessage("Length of password cannot be less then 6");
 
 							alertDialog.setIcon(R.drawable.delete);
 
@@ -167,11 +170,35 @@ public class ChangePasswordFragment extends Fragment {
 
 							alertDialog.show();
 						}
+					} 
+						else {
+							AlertDialog alertDialog = new AlertDialog.Builder(
+									getActivity()).create();
+
+							alertDialog.setTitle("Sorry User");
+
+							alertDialog.setMessage("New password is same as current password");
+
+							alertDialog.setIcon(R.drawable.delete);
+
+							alertDialog.setButton("OK",
+									new DialogInterface.OnClickListener() {
+
+										public void onClick(
+												final DialogInterface dialog,
+												final int which) {
+
+										}
+									});
+
+							alertDialog.show();
+
+						}
 					} else {
 						AlertDialog alertDialog = new AlertDialog.Builder(
 								getActivity()).create();
 
-						alertDialog.setTitle("INFO!");
+						alertDialog.setTitle("Sorry User");
 
 						alertDialog.setMessage("Old password is wrong.");
 
@@ -194,7 +221,7 @@ public class ChangePasswordFragment extends Fragment {
 					AlertDialog alertDialog = new AlertDialog.Builder(
 							getActivity()).create();
 
-					alertDialog.setTitle("INFO!");
+					alertDialog.setTitle("Sorry User");
 
 					alertDialog.setMessage("Enter all fields.");
 
@@ -298,7 +325,7 @@ public class ChangePasswordFragment extends Fragment {
 				AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
 						.create();
 
-				alertDialog.setTitle("INFO!");
+				alertDialog.setTitle("Success");
 
 				alertDialog.setMessage("Password updated successfully");
 
@@ -321,7 +348,7 @@ public class ChangePasswordFragment extends Fragment {
 				AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
 						.create();
 
-				alertDialog.setTitle("INFO!");
+				alertDialog.setTitle("Sorry User");
 
 				alertDialog.setMessage("Profile not updated successfully");
 

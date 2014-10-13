@@ -140,10 +140,9 @@ public class LoginActivity extends SherlockActivity {
 
 					} else {
 						AlertDialog alertDialog = new AlertDialog.Builder(
-								LoginActivity.this, R.style.MyFragment)
-								.create();
+								LoginActivity.this).create();
 
-						alertDialog.setTitle("INFO!");
+						alertDialog.setTitle("Sorry User");
 
 						alertDialog.setMessage("No network connection.");
 
@@ -164,9 +163,9 @@ public class LoginActivity extends SherlockActivity {
 					}
 				} else if (!password.equalsIgnoreCase("")) {
 					AlertDialog alertDialog = new AlertDialog.Builder(
-							LoginActivity.this, R.style.MyFragment).create();
+							LoginActivity.this).create();
 
-					alertDialog.setTitle("INFO!");
+					alertDialog.setTitle("Sorry User");
 
 					alertDialog.setMessage("Please enter username.");
 
@@ -187,9 +186,9 @@ public class LoginActivity extends SherlockActivity {
 
 				} else if (!username.equalsIgnoreCase("")) {
 					AlertDialog alertDialog = new AlertDialog.Builder(
-							LoginActivity.this, R.style.MyFragment).create();
+							LoginActivity.this).create();
 
-					alertDialog.setTitle("INFO!");
+					alertDialog.setTitle("Sorry User");
 
 					alertDialog.setMessage("Please enter password.");
 
@@ -213,7 +212,7 @@ public class LoginActivity extends SherlockActivity {
 					AlertDialog alertDialog = new AlertDialog.Builder(
 							LoginActivity.this).create();
 
-					alertDialog.setTitle("INFO!");
+					alertDialog.setTitle("Sorry User");
 
 					alertDialog.setMessage("Enter login credentials.");
 
@@ -478,7 +477,7 @@ public class LoginActivity extends SherlockActivity {
 						LoginActivity.this).create();
 
 				// Setting Dialog Title
-				alertDialog.setTitle("INFO!");
+				alertDialog.setTitle("Sorry User");
 
 				// Setting Dialog Message
 				alertDialog.setMessage("Server not connected.");
@@ -507,7 +506,7 @@ public class LoginActivity extends SherlockActivity {
 						LoginActivity.this).create();
 
 				// Setting Dialog Title
-				alertDialog.setTitle("INFO!");
+				alertDialog.setTitle("Sorry User");
 
 				// Setting Dialog Message
 				alertDialog.setMessage("Invalid username or password.");

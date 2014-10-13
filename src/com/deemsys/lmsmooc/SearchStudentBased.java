@@ -209,7 +209,7 @@ public class SearchStudentBased extends SherlockActivity {
 								AlertDialog alertDialog = new AlertDialog.Builder(
 										SearchStudentBased.this).create();
 
-								alertDialog.setTitle("INFO!");
+								alertDialog.setTitle("Sorry User");
 
 								alertDialog
 										.setMessage("No network connection.");
@@ -311,7 +311,7 @@ public class SearchStudentBased extends SherlockActivity {
 							SearchStudentBased.this).create();
 
 					// Setting Dialog Title
-					alertDialog.setTitle("INFO!");
+					alertDialog.setTitle("Sorry User");
 
 					// Setting Dialog Message
 					alertDialog.setMessage("No results found.");
@@ -500,6 +500,7 @@ public class SearchStudentBased extends SherlockActivity {
 			TextView name;
 			ImageView cover;
 			TextView cost;
+			TextView enroll;
 			ImageView ratingshow;
 			ImageView promoimage;
 
@@ -531,7 +532,7 @@ public class SearchStudentBased extends SherlockActivity {
 						.findViewById(R.id.ratingimage);
 				holder.promoimage = (ImageView) convertView
 						.findViewById(R.id.promoimage);
-
+				holder.enroll = (TextView) convertView.findViewById(R.id.enroll);
 				convertView.setTag(holder);
 
 			} else {
@@ -552,7 +553,11 @@ public class SearchStudentBased extends SherlockActivity {
 			} else {
 				holder.promoimage.setImageResource(R.drawable.click);
 			}
-
+			if (country.getifmycourse().equalsIgnoreCase("1")) {
+				holder.enroll.setVisibility(View.VISIBLE);
+			} else {
+				holder.enroll.setVisibility(View.INVISIBLE);
+			}
 			if (country.getrating().equalsIgnoreCase("0")) {
 				holder.ratingshow.setImageResource(R.drawable.zero);
 			} else if (country.getrating().equalsIgnoreCase("1")) {

@@ -64,7 +64,7 @@ public class SyllabusFragment extends Fragment {
 			AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
 					.create();
 
-			alertDialog.setTitle("INFO!");
+			alertDialog.setTitle("Sorry User");
 
 			alertDialog.setMessage("No network connection.");
 
@@ -241,7 +241,7 @@ public class SyllabusFragment extends Fragment {
 				AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
 						.create();
 
-				alertDialog.setTitle("INFO!");
+				alertDialog.setTitle("Sorry User");
 
 				alertDialog.setMessage("No data found.");
 

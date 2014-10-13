@@ -223,7 +223,7 @@ public class SearchActivity extends SherlockActivity {
 								AlertDialog alertDialog = new AlertDialog.Builder(
 										SearchActivity.this).create();
 
-								alertDialog.setTitle("INFO!");
+								alertDialog.setTitle("Sorry User");
 
 								alertDialog
 										.setMessage("No network connection.");
@@ -326,7 +326,7 @@ public class SearchActivity extends SherlockActivity {
 							SearchActivity.this).create();
 
 					// Setting Dialog Title
-					alertDialog.setTitle("INFO!");
+					alertDialog.setTitle("Sorry User");
 
 					// Setting Dialog Message
 					alertDialog.setMessage("No results found.");

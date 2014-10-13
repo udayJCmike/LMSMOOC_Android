@@ -34,8 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="0dp"
-                android:layout_marginTop="2dp"
-                android:text="fromans1" />
+                android:layout_marginTop="2dp" />
 
         </LinearLayout>
 
@@ -69,8 +68,7 @@
                 android:layout_width="210dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="0dp"
-                android:layout_marginTop="2dp"
-                android:text="toans1" />
+                android:layout_marginTop="2dp" />
 
         </LinearLayout>
 
@@ -104,46 +102,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="0dp"
-                android:layout_marginTop="2dp"
-                android:text="dateans1" />
+                android:layout_marginTop="2dp" />
 
         </LinearLayout>
 
         <View
             android:id="@+id/View12"
-            android:layout_width="wrap_content"
-            android:layout_height="10dp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
-
-            <TextView
-                android:id="@+id/textView4"
-                style="@style/custom"
-                android:layout_width="180dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="2dp"
-                android:text="Price of course" />
-
-            <View
-                android:id="@+id/View04"
-                android:layout_width="100dp"
-                android:layout_height="10dp" />
-
-            <TextView
-                android:id="@+id/priceans"
-                style="@style/custom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="dateans1" />
-
-        </LinearLayout>
-
-        <View
-            android:id="@+id/View13"
             android:layout_width="wrap_content"
             android:layout_height="10dp" />
 
@@ -170,8 +134,7 @@
                 android:id="@+id/promoans"
                 style="@style/custom"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="dateans1" />
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
@@ -203,8 +166,7 @@
                 android:id="@+id/reducans"
                 style="@style/custom"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="dateans1" />
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
@@ -225,7 +187,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="2dp"
-                android:text="Amount of paid" />
+                android:text="Course Amount" />
 
             <View
                 android:id="@+id/View07"
@@ -236,8 +198,7 @@
                 android:id="@+id/amountans"
                 style="@style/custom"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="dateans1" />
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
@@ -245,7 +206,36 @@
             android:id="@+id/View17"
             android:layout_width="wrap_content"
             android:layout_height="10dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
 
+            <TextView
+                android:id="@+id/textViewextra"
+                style="@style/custom"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:text="Paid Amount" />
+
+            <View
+                android:id="@+id/Viewsd07"
+                android:layout_width="30dp"
+                android:layout_height="10dp" />
+
+            <TextView
+                android:id="@+id/paidamountval"
+                style="@style/custom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+  <View
+            android:id="@+id/View17"
+            android:layout_width="wrap_content"
+            android:layout_height="10dp" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -269,8 +259,7 @@
                 android:id="@+id/trdateans"
                 style="@style/custom"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="dateans1" />
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
@@ -303,8 +292,7 @@
                 android:id="@+id/tridans"
                 style="@style/custom"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="dateans1" />
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 

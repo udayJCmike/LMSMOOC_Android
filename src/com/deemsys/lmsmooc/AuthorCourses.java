@@ -379,7 +379,7 @@ public class AuthorCourses extends SherlockFragmentActivity {
 			TextView code;
 			TextView name;
 			ImageView promoimage;
-
+			TextView enroll;
 			TextView cost;
 			ImageView cover;
 			ImageView ratingshow;
@@ -411,7 +411,7 @@ public class AuthorCourses extends SherlockFragmentActivity {
 						.findViewById(R.id.ratingimage);
 				holder.promoimage = (ImageView) convertView
 						.findViewById(R.id.promoimage);
-
+				holder.enroll = (TextView) convertView.findViewById(R.id.enroll);
 				convertView.setTag(holder);
 
 			} else {
@@ -433,6 +433,11 @@ public class AuthorCourses extends SherlockFragmentActivity {
 				holder.promoimage.setImageResource(R.drawable.click);
 			}
 
+			if (country.getifmycourse().equalsIgnoreCase("1")) {
+				holder.enroll.setVisibility(View.VISIBLE);
+			} else {
+				holder.enroll.setVisibility(View.INVISIBLE);
+			}
 			if (country.getrating().equalsIgnoreCase("0")) {
 				holder.ratingshow.setImageResource(R.drawable.zero);
 			} else if (country.getrating().equalsIgnoreCase("1")) {

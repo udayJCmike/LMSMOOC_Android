@@ -239,12 +239,12 @@ public class ProfileFragment extends Fragment {
 
 			public void onTextChanged(CharSequence s, int start, int before,
 					int count) {
-				//CharSequence ss = s;
-//				String mStr = lastnameedit.getText().toString();
+
 				String str = s.toString();
+
 				if (str.length() > 0 && str.startsWith(" ")) {
 
-					firstnameedit.setText("");
+					lastnameedit.setText("");
 
 				} else {
 
@@ -264,6 +264,7 @@ public class ProfileFragment extends Fragment {
 			}
 
 		});
+		
 		emailedit.addTextChangedListener(new TextWatcher() {
 
 			public void onTextChanged(CharSequence s, int start, int before,
@@ -409,11 +410,11 @@ public class ProfileFragment extends Fragment {
 
 					{
 
-						if (firstname.length() >= 3 && firstname.length() <= 15
+						if (firstname.length() >= 2 && firstname.length() <= 84
 								&& isValidName(firstname)) {
 							{
-								if (lastname.length() >= 3
-										&& lastname.length() <= 15
+								if (lastname.length() >= 2
+										&& lastname.length() <= 84
 										&& isValidName(lastname)) {
 									{
 										if (username.length() >= 6
@@ -421,11 +422,11 @@ public class ProfileFragment extends Fragment {
 												&& isValidOther(username)) {
 											{
 												if (email.length() >= 10
-														&& email.length() <= 40
+														&& email.length() <= 84
 														&& isValidEmail(email)) {
 
 													{
-														if (password.length() >= 8
+														if (password.length() >= 6
 																&& password
 																		.length() <= 25
 																&& passwordCheck(password)) {
@@ -459,13 +460,13 @@ public class ProfileFragment extends Fragment {
 																	// Dialog
 																	// Title
 																	alertDialog
-																			.setTitle("Failed");
+																			.setTitle("Sorry User");
 
 																	// Setting
 																	// Dialog
 																	// Message
 																	alertDialog
-																			.setMessage("Please select your gender.");
+																			.setMessage("Please select your gender");
 
 																	// Setting
 																	// Icon to
@@ -514,7 +515,7 @@ public class ProfileFragment extends Fragment {
 																// Setting
 																// Dialog Title
 																alertDialog
-																		.setTitle("Failed");
+																		.setTitle("Sorry User");
 
 																// Setting
 																// Dialog
@@ -570,12 +571,12 @@ public class ProfileFragment extends Fragment {
 															// Setting Dialog
 															// Title
 															alertDialog
-																	.setTitle("Invalid password");
+																	.setTitle("Sorry User");
 
 															// Setting Dialog
 															// Message
 															alertDialog
-																	.setMessage("Should contain 1 alphabet.Should contain 1 number.Should be 8 to 25 characters.Should contain 1 Special character.");
+																	.setMessage("Length of password cannot be less then 6");
 
 															// Setting Icon to
 															// Dialog
@@ -621,11 +622,11 @@ public class ProfileFragment extends Fragment {
 
 													// Setting Dialog Title
 													alertDialog
-															.setTitle("Invalid Email");
+															.setTitle("Sorry User");
 
 													// Setting Dialog Message
 													alertDialog
-															.setMessage("Should contain  alphabets.Should contain  numbers.Should be 10 to 40 characters.Should contain 1 Special character.");
+															.setMessage("Please enter valid email-id");
 
 													// Setting Icon to Dialog
 													alertDialog
@@ -669,11 +670,11 @@ public class ProfileFragment extends Fragment {
 
 											// Setting Dialog Title
 											alertDialog
-													.setTitle("Invalid username");
+													.setTitle("Sorry User");
 
 											// Setting Dialog Message
 											alertDialog
-													.setMessage("Should contain alphabets.Should contain numbers.Should be 6 to 25 characters.");
+													.setMessage("Please enter valid username");
 
 											// Setting Icon to Dialog
 											alertDialog
@@ -713,11 +714,11 @@ public class ProfileFragment extends Fragment {
 											.create();
 
 									// Setting Dialog Title
-									alertDialog.setTitle("Invalid lastname");
+									alertDialog.setTitle("Sorry User");
 
 									// Setting Dialog Message
 									alertDialog
-											.setMessage("Should contain only alphabets.Should be 3 to 15 characters.");
+											.setMessage("Please enter valid lastname");
 
 									// Setting Icon to Dialog
 									alertDialog.setIcon(R.drawable.delete);
@@ -753,11 +754,11 @@ public class ProfileFragment extends Fragment {
 									.create();
 
 							// Setting Dialog Title
-							alertDialog.setTitle("Invalid Firstname");
+							alertDialog.setTitle("Sorry User");
 
 							// Setting Dialog Message
 							alertDialog
-									.setMessage("Should contain only alphabets.Should be 3 to 15 characters.");
+									.setMessage("Please enter valid firstname");
 
 							// Setting Icon to Dialog
 							alertDialog.setIcon(R.drawable.delete);
@@ -789,7 +790,7 @@ public class ProfileFragment extends Fragment {
 							ProfileFragment.this.getActivity()).create();
 
 					// Setting Dialog Title
-					alertDialog.setTitle("INFO!");
+					alertDialog.setTitle("Sorry User");
 
 					// Setting Dialog Message
 					alertDialog.setMessage("Please enter all fields.");
@@ -826,7 +827,7 @@ public class ProfileFragment extends Fragment {
 					AlertDialog alertDialog = new AlertDialog.Builder(
 							getActivity()).create();
 
-					alertDialog.setTitle("INFO!");
+					alertDialog.setTitle("Sorry User");
 
 					alertDialog.setMessage("No network connection.");
 
@@ -1243,7 +1244,7 @@ public class ProfileFragment extends Fragment {
 				AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
 						.create();
 
-				alertDialog.setTitle("INFO!");
+				alertDialog.setTitle("Success");
 
 				alertDialog.setMessage("Profile updated successfully");
 
@@ -1267,7 +1268,7 @@ public class ProfileFragment extends Fragment {
 				AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
 						.create();
 
-				alertDialog.setTitle("INFO!");
+				alertDialog.setTitle("Sorry User");
 
 				alertDialog.setMessage("Profile not updated successfully");
 

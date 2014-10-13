@@ -29,6 +29,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.DialogInterface.OnClickListener;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -39,11 +40,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-
 
 public class MyFavoriteCourses extends Fragment {
 	Bitmap bitmap;
@@ -66,7 +67,7 @@ public class MyFavoriteCourses extends Fragment {
 	String rating_count;
 	String promocheck;
 	private static final String Promo_Check = "promocheck";
-
+	private static final String TAG_SUCCESS = "success";
 	String course_description;
 	private static final String TAG_COURSE_DESCRIPTION = "course_description";
 	String course_name, authorname, student_enrolled, ratingcouont, cost,
@@ -77,17 +78,16 @@ public class MyFavoriteCourses extends Fragment {
 	private static final String TAG_SRES = "serviceresponse";
 	private static final String TAG_COURSE_NAME = "course_name";
 	private static final String TAG_COURSE_AUTHOR = "course_author";
-	
+
 	private static final String TAG_COURSE_COST = "course_price";
 	private static final String TAG_COURSE_RATINGS = "user_ratings";
 	private static final String TAG_course_cover_image = "course_cover_image";
-	
-	
+
 	private static final String TAG_Check_ = "checkmycourse";
-	
+
 	private static final String TAG_INSTRUCTOR_ID = "instructor_id";
 	private static final String TAG_COURSE_ID = "course_id";
-	
+
 	private static final String TAG_NUMBER_OF_ROWS = "number_of_rows";
 	private static final String TAG_COURSE_PROMO_VIDEO = "course_promo_video";
 	String courseidurl, instructoridurl, pur_url, checkstatus;
@@ -110,7 +110,7 @@ public class MyFavoriteCourses extends Fragment {
 			AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
 					.create();
 
-			alertDialog.setTitle("INFO!");
+			alertDialog.setTitle("Sorry User");
 
 			alertDialog.setMessage("No network connection.");
 
@@ -152,6 +152,17 @@ public class MyFavoriteCourses extends Fragment {
 					new fetchpurnumber().execute();
 
 				}
+			}
+		});
+		listView.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+			@Override
+			public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+					int position, long arg3) {
+				System.out.println("postition value::" + position);
+				removeItemFromList(position);
+				System.out.println("in long click");
+				return true;
 			}
 		});
 		// getActivity();
@@ -203,8 +214,99 @@ public class MyFavoriteCourses extends Fragment {
 	}
 
 	public void grabURL(String url) {
-	
+
 		new GrabURL().execute(url);
+	}
+
+	protected void removeItemFromList(int position) {
+		final int deletePosition = position;
+
+		AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+
+		alert.setTitle("Delete");
+		alert.setMessage("Do you want delete this item?");
+		alert.setPositiveButton("YES", new OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TOD O Auto-generated method stub
+
+				// main code on after clicking yes
+				new removefromfav().execute();
+				courselist.remove(deletePosition);
+				dataAdapter.notifyDataSetChanged();
+				dataAdapter.notifyDataSetInvalidated();
+
+			}
+		});
+		alert.setNegativeButton("CANCEL", new OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				dialog.dismiss();
+			}
+		});
+
+		alert.show();
+
+	}
+
+	class removefromfav extends AsyncTask<String, String, String> {
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			// pDialog = new ProgressDialog(getApplicationContext());
+			// pDialog.setMessage("Please wait...");
+			// pDialog.setIndeterminate(false);
+			// pDialog.setCancelable(true);
+			// pDialog.show();
+
+		}
+
+		@Override
+		protected String doInBackground(String... params) {
+
+			List<NameValuePair> params1 = new ArrayList<NameValuePair>();
+
+			params1.add(new BasicNameValuePair("course_id", course_id));
+			params1.add(new BasicNameValuePair("course_name", course_name));
+			params1.add(new BasicNameValuePair("student_id", Config.student_id));
+
+			JsonParser jLogin = new JsonParser();
+
+			JSONObject json = jLogin.makeHttpRequest(Config.ServerUrl
+					+ Config.removefromfavcourseurl, "POST", params1);
+
+			if (json != null) {
+				try {
+					if (json != null) {
+
+						JSONObject jUser = json.getJSONObject(TAG_SRESL);
+
+						numofrows = jUser.getString(TAG_SUCCESS);
+
+					}
+
+				}
+
+				catch (JSONException e) {
+					e.printStackTrace();
+
+				}
+			} else {
+
+			}
+
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(String file_url) {
+			super.onPostExecute(file_url);
+
+			// pDialog.dismiss();
+
+		}
+
 	}
 
 	class GrabURL extends AsyncTask<String, Void, String> {
@@ -214,7 +316,6 @@ public class MyFavoriteCourses extends Fragment {
 		final HttpParams params = httpclient.getParams();
 		HttpResponse response;
 		private String content = null;
-		
 
 		@Override
 		protected void onPreExecute() {
@@ -238,13 +339,9 @@ public class MyFavoriteCourses extends Fragment {
 		@SuppressWarnings("deprecation")
 		private void displayCourseList(String response) {
 
-			
-
 			try {
 
 				JSONObject c = jArray.getJSONObject(TAG_SRES);
-				
-				
 
 				JSONArray countryListObj = c.getJSONArray(TAG_Course_ARRAY);
 
@@ -256,7 +353,7 @@ public class MyFavoriteCourses extends Fragment {
 								getActivity()).create();
 
 						// Setting Dialog Title
-						alertDialog.setTitle("INFO!");
+						alertDialog.setTitle("Sorry User");
 
 						// Setting Dialog Message
 						alertDialog.setMessage("No data found.");
@@ -383,9 +480,8 @@ public class MyFavoriteCourses extends Fragment {
 				jArray = jsonParser.makeHttpRequest(Config.ServerUrl
 						+ Config.myfavoritecourseurl, "POST", nameValuePairs);
 				JSONObject c = jArray.getJSONObject(TAG_SRES);
-				
+
 				user = c.getJSONArray(TAG_Course_ARRAY);
-				
 
 				httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 				response = httpclient.execute(httpPost);
@@ -398,24 +494,24 @@ public class MyFavoriteCourses extends Fragment {
 					content = out.toString();
 				} else {
 					// Closes the connection.
-					
+
 					response.getEntity().getContent().close();
 					throw new IOException(statusLine.getReasonPhrase());
 				}
 			} catch (ClientProtocolException e) {
-				
+
 				content = e.getMessage();
-				
+
 				cancel(true);
 			} catch (IOException e) {
-				
+
 				content = e.getMessage();
-				
+
 				cancel(true);
 			} catch (Exception e) {
-				
+
 				content = e.getMessage();
-				
+
 				cancel(true);
 			}
 
@@ -442,6 +538,7 @@ public class MyFavoriteCourses extends Fragment {
 			TextView cost;
 			ImageView ratingshow;
 			ImageView promoimage;
+			TextView enroll;
 		}
 
 		public void add(Course country) {
@@ -453,7 +550,7 @@ public class MyFavoriteCourses extends Fragment {
 		public View getView(int position, View convertView, ViewGroup parent) {
 
 			ViewHolder holder = null;
-			
+
 			if (convertView == null) {
 
 				LayoutInflater vi = (LayoutInflater) getActivity()
@@ -470,6 +567,8 @@ public class MyFavoriteCourses extends Fragment {
 						.findViewById(R.id.ratingimage);
 				holder.promoimage = (ImageView) convertView
 						.findViewById(R.id.promoimage);
+				holder.enroll = (TextView) convertView
+						.findViewById(R.id.enroll);
 				convertView.setTag(holder);
 
 			} else {
@@ -485,13 +584,18 @@ public class MyFavoriteCourses extends Fragment {
 			Picasso.with(getActivity()).load(country.getstringurl())
 					.into(holder.cover);
 
-			System.out
-					.println("getpromocheck string" + country.getpromocheck());
 			if (country.getpromocheck().equalsIgnoreCase("1")) {
 				holder.promoimage.setImageResource(R.drawable.promocode);
 			} else {
 				holder.promoimage.setImageResource(R.drawable.click);
 			}
+
+			if (country.getifmycourse().equalsIgnoreCase("1")) {
+				holder.enroll.setVisibility(View.VISIBLE);
+			} else {
+				holder.enroll.setVisibility(View.INVISIBLE);
+			}
+
 			if (country.getrating().equalsIgnoreCase("0")) {
 				holder.ratingshow.setImageResource(R.drawable.zero);
 			} else if (country.getrating().equalsIgnoreCase("1")) {

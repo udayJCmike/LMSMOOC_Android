@@ -145,7 +145,7 @@ public class AllCoursesbrowse extends Fragment {
 						}
 						alertDialog = new AlertDialog.Builder(getActivity())
 								.create();
-						alertDialog.setTitle("INFO!");
+						alertDialog.setTitle("Sorry User");
 
 						alertDialog.setMessage("No network connection.");
 

@@ -103,7 +103,7 @@ public class MyCourses extends Fragment {
 			AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
 					.create();
 
-			alertDialog.setTitle("INFO!");
+			alertDialog.setTitle("Sorry User");
 
 			alertDialog.setMessage("No network connection.");
 
@@ -199,7 +199,7 @@ public class MyCourses extends Fragment {
 								getActivity()).create();
 
 						// Setting Dialog Title
-						alertDialog.setTitle("INFO!");
+						alertDialog.setTitle("Sorry User");
 
 						// Setting Dialog Message
 						alertDialog.setMessage("No data found.");

@@ -366,7 +366,7 @@ public class CategoryCourses extends SherlockFragmentActivity {
 			TextView code;
 			TextView name;
 			ImageView promoimage;
-
+			TextView enroll;
 			TextView cost;
 			ImageView cover;
 			ImageView ratingshow;
@@ -396,6 +396,7 @@ public class CategoryCourses extends SherlockFragmentActivity {
 				holder.cover = (ImageView) convertView.findViewById(R.id.cover);
 				holder.ratingshow = (ImageView) convertView
 						.findViewById(R.id.ratingimage);
+				holder.enroll = (TextView) convertView.findViewById(R.id.enroll);
 				convertView.setTag(holder);
 
 			} else {
@@ -424,7 +425,11 @@ public class CategoryCourses extends SherlockFragmentActivity {
 			} else {
 				holder.promoimage.setImageResource(R.drawable.click);
 			}
-
+			if (country.getifmycourse().equalsIgnoreCase("1")) {
+				holder.enroll.setVisibility(View.VISIBLE);
+			} else {
+				holder.enroll.setVisibility(View.INVISIBLE);
+			}
 			if (country.getrating().equalsIgnoreCase("0")) {
 				holder.ratingshow.setImageResource(R.drawable.zero);
 			} else if (country.getrating().equalsIgnoreCase("1")) {

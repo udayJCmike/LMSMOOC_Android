@@ -38,8 +38,8 @@ public class BillingDetails extends SherlockFragmentActivity {
 	JsonParser jsonParser = new JsonParser();
 	JSONObject jArray;
 
-	TextView cou_name, author, pur_date, promo, reduc, amou1, amou2,
-			trans_date, trans_id;
+	TextView cou_name, author, pur_date, promo, reduc, amou2,
+			trans_date, trans_id, paidamtval;
 	Button back;
 
 	@Override
@@ -59,7 +59,8 @@ public class BillingDetails extends SherlockFragmentActivity {
 		author = (TextView) findViewById(R.id.authornameans);
 		pur_date = (TextView) findViewById(R.id.dateans);
 		promo = (TextView) findViewById(R.id.promoans);
-		amou1 = (TextView) findViewById(R.id.priceans);
+	//	amou1 = (TextView) findViewById(R.id.priceans);
+		paidamtval = (TextView) findViewById(R.id.paidamountval);
 
 		reduc = (TextView) findViewById(R.id.reducans);
 		amou2 = (TextView) findViewById(R.id.amountans);
@@ -69,16 +70,22 @@ public class BillingDetails extends SherlockFragmentActivity {
 		cou_name.setText(BillingFragment.course_name);
 		author.setText(BillingFragment.course_author);
 		pur_date.setText(BillingFragment.purchased_date);
-		if (BillingFragment.promocode.equalsIgnoreCase("1")) {
-			promo.setText("Yes");
-		} else {
-			promo.setText("No");
-		}
-		reduc.setText(BillingFragment.reduction);
-		amou1.setText("$" + BillingFragment.amount_paid);
+
+		promo.setText(BillingFragment.promocode);
+
+		//amou1.setText("$" + BillingFragment.amount_paid);
 		amou2.setText("$" + BillingFragment.amount_paid);
 		trans_date.setText(BillingFragment.transaction_date);
 		trans_id.setText(BillingFragment.transaction_id);
+		String amoun_red = BillingFragment.reduction;
+		if (amoun_red.equalsIgnoreCase("")) {
+			BillingFragment.reduction = "0";
+		}
+		reduc.setText("$" + BillingFragment.reduction);
+		int a = (Integer.parseInt(BillingFragment.amount_paid) - Integer
+				.parseInt(BillingFragment.reduction));
+		String paidam = "$";
+		paidamtval.setText(paidam + (String.valueOf(a)));
 
 	}
 

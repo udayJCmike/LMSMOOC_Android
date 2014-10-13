@@ -230,7 +230,7 @@ public class InboxFragment extends Fragment {
 						.create();
 
 				// Setting Dialog Title
-				alertDialog.setTitle("INFO!");
+				alertDialog.setTitle("Sorry User");
 
 				// Setting Dialog Message
 				alertDialog.setMessage("No data found.");
@@ -326,7 +326,7 @@ public class InboxFragment extends Fragment {
 			AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
 					.create();
 
-			alertDialog.setTitle("INFO!");
+			alertDialog.setTitle("Sorry User");
 
 			alertDialog.setMessage("No network connection.");
 

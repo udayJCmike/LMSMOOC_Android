@@ -190,7 +190,7 @@ public class InboxDetails extends SherlockFragmentActivity {
 						InboxDetails.this).create();
 
 				// Setting Dialog Title
-				alertDialog.setTitle("INFO!");
+				alertDialog.setTitle("Sorry User");
 
 				// Setting Dialog Message
 				alertDialog.setMessage("Error connecting database.");
@@ -262,7 +262,7 @@ public class InboxDetails extends SherlockFragmentActivity {
 						InboxDetails.this).create();
 
 				// Setting Dialog Title
-				alertDialog.setTitle("INFO!");
+				alertDialog.setTitle("Sorry User");
 
 				// Setting Dialog Message
 				alertDialog.setMessage("Error connecting database.");
@@ -336,7 +336,7 @@ public class InboxDetails extends SherlockFragmentActivity {
 						InboxDetails.this).create();
 
 				// Setting Dialog Title
-				alertDialog.setTitle("INFO!");
+				alertDialog.setTitle("Sorry User");
 
 				// Setting Dialog Message
 				alertDialog.setMessage("Error connecting database.");

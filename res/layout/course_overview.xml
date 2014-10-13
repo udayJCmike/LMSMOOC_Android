@@ -113,19 +113,29 @@
           
          android:src="@drawable/zero" />
 </LinearLayout>
-<View
-     android:id="@+id/vcc"
-     android:layout_width="50dp"
-     android:layout_height="fill_parent"
-     android:layout_toRightOf="@id/llinetwo" >
 
-</View>
+
+
+         <TextView
+            android:id="@+id/enroll"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="Enrolled"
+            style="@style/custom"
+            android:textColor="#4B9500"
+             android:focusable="false"
+        android:clickable="false"
+           android:layout_toRightOf="@id/llinetwo"
+        android:visibility="invisible"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+  
 <LinearLayout
     android:id="@+id/fsdsf"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     
-    android:layout_toRightOf="@id/vcc"
+    android:layout_toRightOf="@id/enroll"
     android:orientation="vertical"
     android:paddingLeft="20dp" >
 

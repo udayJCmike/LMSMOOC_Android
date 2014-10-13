@@ -212,7 +212,7 @@ public class AboutTweet extends Activity {
                     AlertDialog alertDialog = new AlertDialog.Builder(
 							AboutTweet.this, R.style.MyFragment).create();
 
-					alertDialog.setTitle("INFO!");
+					alertDialog.setTitle("Success");
 
 					alertDialog.setMessage("You successfully followed us.");
 
@@ -368,7 +368,7 @@ public class AboutTweet extends Activity {
 					AboutTweet.this).create();
 
 			// Setting Dialog Title
-			alertDialog.setTitle("INFO!");
+			alertDialog.setTitle("Success");
 
 			// Setting Dialog Message
 			alertDialog.setMessage("You successfully followed us.");

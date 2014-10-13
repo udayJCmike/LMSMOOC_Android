@@ -163,7 +163,7 @@ public class AllCourses extends Fragment {
 						AlertDialog alertDialog = new AlertDialog.Builder(
 								getActivity()).create();
 
-						alertDialog.setTitle("INFO!");
+						alertDialog.setTitle("Sorry User");
 
 						alertDialog.setMessage("No network connection.");
 
@@ -406,6 +406,7 @@ public class AllCourses extends Fragment {
 			TextView cost;
 			ImageView ratingshow;
 			ImageView promoimage;
+			TextView enroll;
 		}
 
 		public void add(Course country) {
@@ -432,6 +433,7 @@ public class AllCourses extends Fragment {
 				holder.cover = (ImageView) convertView.findViewById(R.id.cover);
 				holder.ratingshow = (ImageView) convertView
 						.findViewById(R.id.ratingimage);
+				holder.enroll = (TextView) convertView.findViewById(R.id.enroll);
 				holder.promoimage = (ImageView) convertView
 						.findViewById(R.id.promoimage);
 				convertView.setTag(holder);
@@ -448,6 +450,12 @@ public class AllCourses extends Fragment {
 
 			Picasso.with(getActivity()).load(country.getstringurl())
 					.into(holder.cover);
+			
+			if (country.getifmycourse().equalsIgnoreCase("1")) {
+				holder.enroll.setVisibility(View.VISIBLE);
+			} else {
+				holder.enroll.setVisibility(View.INVISIBLE);
+			}
 
 			if (country.getpromocheck().equalsIgnoreCase("1")) {
 				holder.promoimage.setImageResource(R.drawable.promocode);

@@ -366,7 +366,7 @@ public class CategoryCoursesStudentBased extends SherlockFragmentActivity {
 		private class ViewHolder {
 			TextView code;
 			TextView name;
-
+			TextView enroll;
 			TextView cost;
 			ImageView promoimage;
 			ImageView cover;
@@ -395,7 +395,7 @@ public class CategoryCoursesStudentBased extends SherlockFragmentActivity {
 				holder.name = (TextView) convertView.findViewById(R.id.author);
 				holder.cost = (TextView) convertView.findViewById(R.id.cost);
 				holder.cover = (ImageView) convertView.findViewById(R.id.cover);
-
+				holder.enroll = (TextView) convertView.findViewById(R.id.enroll);
 				holder.ratingshow = (ImageView) convertView
 						.findViewById(R.id.ratingimage);
 				convertView.setTag(holder);
@@ -416,7 +416,11 @@ public class CategoryCoursesStudentBased extends SherlockFragmentActivity {
 			// aQuery.id(R.id.cover).image(country.getstringurl(),true,true);
 			Picasso.with(CategoryCoursesStudentBased.this)
 					.load(country.getstringurl()).into(holder.cover);
-
+			if (country.getifmycourse().equalsIgnoreCase("1")) {
+				holder.enroll.setVisibility(View.VISIBLE);
+			} else {
+				holder.enroll.setVisibility(View.INVISIBLE);
+			}
 			if (country.getpromocheck().equalsIgnoreCase("1")) {
 				holder.promoimage.setImageResource(R.drawable.promocode);
 			} else {

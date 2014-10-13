@@ -105,7 +105,7 @@ public class CourseAudio extends SherlockActivity implements OnTouchListener,
 			AlertDialog alertDialog = new AlertDialog.Builder(CourseAudio.this)
 					.create();
 
-			alertDialog.setTitle("INFO!");
+			alertDialog.setTitle("Sorry User");
 
 			alertDialog.setMessage("No network connection.");
 
@@ -320,7 +320,7 @@ public class CourseAudio extends SherlockActivity implements OnTouchListener,
 						getApplicationContext()).create();
 
 				// Setting Dialog Title
-				alertDialog.setTitle("INFO!");
+				alertDialog.setTitle("Sorry User");
 
 				// Setting Dialog Message
 				alertDialog.setMessage("Server not connected.");
@@ -349,7 +349,7 @@ public class CourseAudio extends SherlockActivity implements OnTouchListener,
 						getApplicationContext()).create();
 
 				// Setting Dialog Title
-				alertDialog.setTitle("INFO!");
+				alertDialog.setTitle("Sorry User");
 
 				// Setting Dialog Message
 				alertDialog.setMessage("Invalid username or password.");
