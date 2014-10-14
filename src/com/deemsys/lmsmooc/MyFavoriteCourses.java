@@ -102,6 +102,7 @@ public class MyFavoriteCourses extends Fragment {
 		setHasOptionsMenu(true);
 
 		listView = (ListView) v.findViewById(R.id.listView1);
+		listView.setLongClickable(true);
 		cd = new ConnectionDetector(getActivity());
 		isInternetPresent = cd.isConnectingToInternet();
 		if (isInternetPresent) {
@@ -160,55 +161,17 @@ public class MyFavoriteCourses extends Fragment {
 			public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
 					int position, long arg3) {
 				System.out.println("postition value::" + position);
-				removeItemFromList(position);
-				System.out.println("in long click");
+
+				Course country = (Course) arg0.getItemAtPosition(position);
+				if (position < courselist.size()) {
+					courseidurl = country.getcourseid();
+					course_name_to_pass = country.getCode();
+					removeItemFromList(position, courseidurl,
+							course_name_to_pass);
+				}
 				return true;
 			}
 		});
-		// getActivity();
-		// loadMoreView =
-		// ((LayoutInflater)getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE))
-		// .inflate(R.layout.loadmore, null, false);
-		// listView.addFooterView(loadMoreView);
-		// courselist = new ArrayList<Course>();
-		// dataAdapter = new MyCustomAdapter(getActivity(),
-		// R.layout.course_overview, courselist);
-		// listView.setAdapter(dataAdapter);
-		// listView.setTextFilterEnabled(true);
-		// listView.setOnItemClickListener(new OnItemClickListener() {
-		// public void onItemClick(AdapterView<?> parent, View view,
-		// int position, long id) {
-		//
-		// Course country = (Course) parent.getItemAtPosition(position);
-		// if(position<courselist.size())
-		// {
-		// courseidurl=country.getcourseid();
-		// instructoridurl=country.getinsid();
-		// new fetchpurnumber().execute();
-		// Toast.makeText(getActivity(),
-		// country.getcourseid(), Toast.LENGTH_SHORT).show();
-		// }
-		// }
-		// });
-		//
-		// listView.setOnScrollListener(new OnScrollListener(){
-		//
-		// @Override
-		// public void onScrollStateChanged(AbsListView view, int scrollState)
-		// {}
-		//
-		// @Override
-		// public void onScroll(AbsListView view, int firstVisibleItem,int
-		// visibleItemCount, int totalItemCount) {
-		//
-		// int lastInScreen = firstVisibleItem + visibleItemCount;
-		// if((lastInScreen == totalItemCount) && !(loadingMore)){
-		//
-		// System.out.println(Config.ServerUrl+Config.myfavoritecourseurl);
-		// grabURL(Config.ServerUrl+Config.myfavoritecourseurl);
-		// }
-		// }
-		// });
 
 		return v;
 	}
@@ -218,9 +181,11 @@ public class MyFavoriteCourses extends Fragment {
 		new GrabURL().execute(url);
 	}
 
-	protected void removeItemFromList(int position) {
+	protected void removeItemFromList(int position, String courseid,
+			String coursename) {
 		final int deletePosition = position;
-
+		final String course_id_get = courseid;
+	
 		AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
 
 		alert.setTitle("Delete");
@@ -228,13 +193,13 @@ public class MyFavoriteCourses extends Fragment {
 		alert.setPositiveButton("YES", new OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-				// TOD O Auto-generated method stub
 
-				// main code on after clicking yes
-				new removefromfav().execute();
+				new removefromfav().execute(course_id_get);
 				courselist.remove(deletePosition);
-				dataAdapter.notifyDataSetChanged();
-				dataAdapter.notifyDataSetInvalidated();
+				// dataAdapter.remove(dataAdapter.getItem(deletePosition));
+				//dataAdapter.notifyDataSetChanged();
+				dataAdapter.removeElementAtPosition(deletePosition);
+				// dataAdapter.notifyDataSetInvalidated();
 
 			}
 		});
@@ -266,9 +231,9 @@ public class MyFavoriteCourses extends Fragment {
 		protected String doInBackground(String... params) {
 
 			List<NameValuePair> params1 = new ArrayList<NameValuePair>();
-
-			params1.add(new BasicNameValuePair("course_id", course_id));
-			params1.add(new BasicNameValuePair("course_name", course_name));
+			 String identifier = params[0];
+			params1.add(new BasicNameValuePair("course_id", identifier));
+		//	params1.add(new BasicNameValuePair("course_name", course_name));
 			params1.add(new BasicNameValuePair("student_id", Config.student_id));
 
 			JsonParser jLogin = new JsonParser();
@@ -379,7 +344,7 @@ public class MyFavoriteCourses extends Fragment {
 						alertDialog.show();
 					}
 
-					listView.removeFooterView(loadMoreView);
+					// listView.removeFooterView(loadMoreView);
 				} else
 
 				{
@@ -614,6 +579,10 @@ public class MyFavoriteCourses extends Fragment {
 			return convertView;
 
 		}
+		public void removeElementAtPosition(int position){
+		      this.countryList.remove(position);
+		      notifyDataSetChanged();
+		   }
 
 	}
 

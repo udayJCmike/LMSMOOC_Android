@@ -23,8 +23,11 @@ import org.json.JSONObject;
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.squareup.picasso.Picasso;
+
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -195,12 +198,35 @@ public class CategoryCoursesStudentBased extends SherlockFragmentActivity {
 			// cDialog.show();
 		}
 
+		@SuppressWarnings("deprecation")
 		@Override
 		protected void onPostExecute(String file_url) {
 
 			super.onPostExecute(file_url);
 
 			cDialog.dismiss();
+			if (user.length() == 0 && start == 0) {
+				AlertDialog alertDialog = new AlertDialog.Builder(
+						CategoryCoursesStudentBased.this).create();
+
+				alertDialog.setTitle("Sorry User");
+
+				alertDialog.setMessage("No data found.");
+
+				alertDialog.setIcon(R.drawable.delete);
+
+				alertDialog.setButton("OK",
+						new DialogInterface.OnClickListener() {
+
+							public void onClick(final DialogInterface dialog,
+									final int which) {
+
+							}
+						});
+
+				alertDialog.show();
+
+			}
 			Toast toast;
 			if (error) {
 				toast = Toast.makeText(CategoryCoursesStudentBased.this,

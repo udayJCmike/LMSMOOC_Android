@@ -24,8 +24,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import com.squareup.picasso.Picasso;
 import android.support.v4.app.Fragment;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -208,11 +210,33 @@ public class PaidCourses extends Fragment {
 			// cDialog.show();
 		}
 
+		@SuppressWarnings("deprecation")
 		@Override
 		protected void onPostExecute(String file_url) {
 
 			super.onPostExecute(file_url);
+			if (user.length() == 0 && start == 0) {
+				AlertDialog alertDialog = new AlertDialog.Builder(
+						getActivity()).create();
 
+				alertDialog.setTitle("Sorry User");
+
+				alertDialog.setMessage("No data found.");
+
+				alertDialog.setIcon(R.drawable.delete);
+
+				alertDialog.setButton("OK",
+						new DialogInterface.OnClickListener() {
+
+							public void onClick(final DialogInterface dialog,
+									final int which) {
+
+							}
+						});
+
+				alertDialog.show();
+
+			}
 			displayCourseList(content);
 			cDialog.dismiss();
 

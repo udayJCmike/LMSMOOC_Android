@@ -224,11 +224,33 @@ public class AllCourses extends Fragment {
 
 		}
 
+		@SuppressWarnings("deprecation")
 		@Override
 		protected void onPostExecute(String file_url) {
 
 			super.onPostExecute(file_url);
+			if (user.length() == 0 && start == 0) {
+				AlertDialog alertDialog = new AlertDialog.Builder(
+						getActivity()).create();
 
+				alertDialog.setTitle("Sorry User");
+
+				alertDialog.setMessage("No data found.");
+
+				alertDialog.setIcon(R.drawable.delete);
+
+				alertDialog.setButton("OK",
+						new DialogInterface.OnClickListener() {
+
+							public void onClick(final DialogInterface dialog,
+									final int which) {
+
+							}
+						});
+
+				alertDialog.show();
+
+			}
 			displayCourseList(content);
 			cDialog.dismiss();
 

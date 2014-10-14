@@ -23,8 +23,11 @@ import org.json.JSONObject;
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.squareup.picasso.Picasso;
+
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -196,12 +199,35 @@ public class CategoryCourses extends SherlockFragmentActivity {
 			// cDialog.show();
 		}
 
+		@SuppressWarnings("deprecation")
 		@Override
 		protected void onPostExecute(String file_url) {
 
 			super.onPostExecute(file_url);
 
 			cDialog.dismiss();
+			if (user.length() == 0 && start == 0) {
+				AlertDialog alertDialog = new AlertDialog.Builder(
+						CategoryCourses.this).create();
+
+				alertDialog.setTitle("Sorry User");
+
+				alertDialog.setMessage("No data found.");
+
+				alertDialog.setIcon(R.drawable.delete);
+
+				alertDialog.setButton("OK",
+						new DialogInterface.OnClickListener() {
+
+							public void onClick(final DialogInterface dialog,
+									final int which) {
+
+							}
+						});
+
+				alertDialog.show();
+
+			}
 			Toast toast;
 			if (error) {
 				toast = Toast.makeText(CategoryCourses.this, content,
@@ -425,11 +451,11 @@ public class CategoryCourses extends SherlockFragmentActivity {
 			} else {
 				holder.promoimage.setImageResource(R.drawable.click);
 			}
-			if (country.getifmycourse().equalsIgnoreCase("1")) {
-				holder.enroll.setVisibility(View.VISIBLE);
-			} else {
-				holder.enroll.setVisibility(View.INVISIBLE);
-			}
+//			if (country.getifmycourse().equalsIgnoreCase("1")) {
+//				holder.enroll.setVisibility(View.VISIBLE);
+//			} else {
+//				holder.enroll.setVisibility(View.INVISIBLE);
+//			}
 			if (country.getrating().equalsIgnoreCase("0")) {
 				holder.ratingshow.setImageResource(R.drawable.zero);
 			} else if (country.getrating().equalsIgnoreCase("1")) {
@@ -503,20 +529,20 @@ public class CategoryCourses extends SherlockFragmentActivity {
 			super.onPostExecute(file_url);
 			
 			pDialog.dismiss();
-			if (checkstatus.equalsIgnoreCase("1")) {
-				Intent i = new Intent(getApplicationContext(),
-						CourseDetails.class);
-				i.putExtra("courseid", course_id_topass);
-				i.putExtra("course_name", course_name_to_pass);
-				i.putExtra("course_description", course_descript_to_pass);
-				i.putExtra("instructor_id", instructoridurl);
-				i.putExtra("enroll_students", course_enrolled_passing);
-				i.putExtra("audio_url", audiourlpassing);
-				i.putExtra("rating", rating_count);
-				startActivity(i);
-			}
+//			if (checkstatus.equalsIgnoreCase("1")) {
+//				Intent i = new Intent(getApplicationContext(),
+//						CourseDetails.class);
+//				i.putExtra("courseid", course_id_topass);
+//				i.putExtra("course_name", course_name_to_pass);
+//				i.putExtra("course_description", course_descript_to_pass);
+//				i.putExtra("instructor_id", instructoridurl);
+//				i.putExtra("enroll_students", course_enrolled_passing);
+//				i.putExtra("audio_url", audiourlpassing);
+//				i.putExtra("rating", rating_count);
+//				startActivity(i);
+//			}
 
-				else {
+//				else {
 				String url = Config.browsecommon_url + "?course_id="
 						+ courseidurl + "&authorid=" + instructoridurl
 						+ "&pur=" + numofrows + "&catcourse=&coursetype=";
@@ -525,7 +551,7 @@ public class CategoryCourses extends SherlockFragmentActivity {
 				ii.setData(Uri.parse(url));
 				ii.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				getApplicationContext().startActivity(ii);
-			}
+//			}
 
 		}
 

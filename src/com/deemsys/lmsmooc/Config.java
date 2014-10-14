@@ -67,8 +67,9 @@ public class Config {
 	static final String TAG = "GCM Android Example";
 	static final String DISPLAY_REGISTRATION_MESSAGE_ACTION = "com.deemsys.lmsmooc.DISPLAY_REGISTRATION_MESSAGE";
 	static final String DISPLAY_MESSAGE_ACTION = "com.deemsys.lmsmooc.DISPLAY_MESSAGE";
-	static final String GOOGLE_SENDER_ID = "1024081752420";
-
+	static final String GOOGLE_SENDER_ID = "211554567248";
+//	211554567248
+//	1024081752420
 	static final boolean SECOND_SIMULATOR = true;
 	
 	static String student_id;

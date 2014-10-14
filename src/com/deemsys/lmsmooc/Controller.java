@@ -21,6 +21,7 @@ import org.json.JSONObject;
  
 import com.google.android.gcm.GCMRegistrar; 
  
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Application;
 import android.content.Context;
@@ -38,51 +39,45 @@ public class Controller extends Application{
     private  final Random random = new Random();
      
      
-     // Register this account with the server.
-    void register(final Context context,final String regId) {
+     
+    void register(final Context context,final String regId,String deviceimei) {
           
         Log.i(Config.TAG, "registering device (regId = " + regId + ")");
          
-        String serverUrl = Config.YOUR_SERVER_URL;
+        String serverUrl =Config.ServerUrl + "Login.php?service=insertofgcm";
         List<NameValuePair> params1 = new ArrayList<NameValuePair>();
-        Map<String, String> params = new HashMap<String, String>();
+  
         params1.add(new BasicNameValuePair("regId", regId));
-       // params.put("regId", regId);
-//        params.put("name", name);
-//        params.put("email", email);
+        params1.add(new BasicNameValuePair("imei", deviceimei));
+       
          
         long backoff = BACKOFF_MILLI_SECONDS + random.nextInt(1000);
-         
-        // Once GCM returns a registration id, we need to register on our server
-        // As the server might be down, we will retry it a couple
-        // times.
+      
         for (int i = 1; i <= MAX_ATTEMPTS; i++) {
              
             Log.d(Config.TAG, "Attempt #" + i + " to register");
              
             try {
-                //Send Broadcast to Show message on screen
-                displayMessageOnScreen(context, context.getString(
+               
+                displayMessageOnScreen(context, "sfsdf",context.getString(
                         R.string.server_registering, i, MAX_ATTEMPTS));
                  
-                // Post registration values to web server
-              //  post(serverUrl, params);
+             
                 JsonParser jLogin = new JsonParser();
     			
     			JSONObject json = jLogin
     					.makeHttpRequest(serverUrl, "POST", params1);
+    			System.out.println(json);
                 GCMRegistrar.setRegisteredOnServer(context, true);
                  
-                //Send Broadcast to Show message on screen
+               
                 String message = context.getString(R.string.server_registered);
-                displayMessageOnScreen(context, message);
+                displayMessageOnScreen(context," dsafsd",message);
                  
                 return;
             } catch (Exception e) {
                  
-                // Here we are simplifying and retrying on any error; in a real
-                // application, it should retry only on unrecoverable errors
-                // (like HTTP error code 503).
+               
                  
                 Log.e(Config.TAG, "Failed to register on attempt " + i + ":" + e);
                  
@@ -101,7 +96,7 @@ public class Controller extends Application{
                     return;
                 }
                  
-                // increase backoff exponentially
+               
                 backoff *= 2;
             }
         }
@@ -109,11 +104,11 @@ public class Controller extends Application{
         String message = context.getString(R.string.server_register_error,
                 MAX_ATTEMPTS);
          
-        //Send Broadcast to Show message on screen
-        displayMessageOnScreen(context, message);
+        
+        displayMessageOnScreen(context, "sdaf",message);
     }
  
-     // Unregister this account/device pair within the server.
+   
      void unregister(final Context context, final String regId) {
           
         Log.i(Config.TAG, "unregistering device (regId = " + regId + ")");
@@ -127,18 +122,13 @@ public class Controller extends Application{
             post(serverUrl, params);
             GCMRegistrar.setRegisteredOnServer(context, false);
             String message = context.getString(R.string.server_unregistered);
-            displayMessageOnScreen(context, message);
+            displayMessageOnScreen(context,"sdfas", message);
         } catch (IOException e) {
              
-            // At this point the device is unregistered from GCM, but still
-            // registered in the our server.
-            // We could try to unregister again, but it is not necessary:
-            // if the server tries to send a message to the device, it will get
-            // a "NotRegistered" error message and should unregister the device.
-             
+          
             String message = context.getString(R.string.server_unregister_error,
                     e.getMessage());
-            displayMessageOnScreen(context, message);
+            displayMessageOnScreen(context,"sadf", message);
         }
     }
  
@@ -158,7 +148,7 @@ public class Controller extends Application{
         StringBuilder bodyBuilder = new StringBuilder();
         Iterator<Entry<String, String>> iterator = params.entrySet().iterator();
          
-        // constructs the POST body using the parameters
+        
         while (iterator.hasNext()) {
             Entry<String, String> param = iterator.next();
             bodyBuilder.append(param.getKey()).append('=')
@@ -229,11 +219,11 @@ public class Controller extends Application{
     }
      
    // Notifies UI to display a message.
-   void displayMessageOnScreen(Context context, String message) {
+   void displayMessageOnScreen(Context context, String title,String message) {
           
         Intent intent = new Intent(Config.DISPLAY_MESSAGE_ACTION);
         intent.putExtra(Config.EXTRA_MESSAGE, message);
-         
+        intent.putExtra("name", "thendral");
  
  
         // Send Broadcast to Broadcast receiver with message
@@ -243,7 +233,8 @@ public class Controller extends Application{
      
      
    //Function to display simple Alert Dialog
-   public void showAlertDialog(Context context, String title, String message,
+   @SuppressWarnings("deprecation")
+public void showAlertDialog(Context context, String title, String message,
             Boolean status) {
         AlertDialog alertDialog = new AlertDialog.Builder(context).create();
  
@@ -270,7 +261,9 @@ public class Controller extends Application{
      
     private PowerManager.WakeLock wakeLock;
      
-    public  void acquireWakeLock(Context context) {
+    @SuppressWarnings("deprecation")
+	@SuppressLint("Wakelock")
+	public  void acquireWakeLock(Context context) {
         if (wakeLock != null) wakeLock.release();
  
         PowerManager pm = (PowerManager) 

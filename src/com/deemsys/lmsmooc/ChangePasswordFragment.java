@@ -85,7 +85,10 @@ public class ChangePasswordFragment extends Fragment {
 						
 						if(!oldpass.equalsIgnoreCase(newpass))	{
 						
-						if (passwordCheck(newpass)) {
+						if (passwordCheck(newpass)&&newpass.length() >= 6
+								&& newpass
+								.length() <= 25
+						) {
 
 							if (newpass.equals(confirmpass)) {
 								if (isInternetPresent) {
@@ -329,7 +332,7 @@ public class ChangePasswordFragment extends Fragment {
 
 				alertDialog.setMessage("Password updated successfully");
 
-				alertDialog.setIcon(R.drawable.delete);
+				alertDialog.setIcon(R.drawable.tick);
 
 				alertDialog.setButton("OK",
 						new DialogInterface.OnClickListener() {

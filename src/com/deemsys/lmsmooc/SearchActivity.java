@@ -678,21 +678,21 @@ public class SearchActivity extends SherlockActivity {
 		@Override
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
-			if (checkstatus.equalsIgnoreCase("1")) {
-				Intent i = new Intent(getApplicationContext(),
-						CourseDetails.class);
-				i.putExtra("courseid", course_id_topass);
-				i.putExtra("course_name", course_name_to_pass);
-				i.putExtra("course_description", course_descript_to_pass);
-				i.putExtra("instructor_id", instructoridurl);
-				i.putExtra("enroll_students", course_enrolled_passing);
-				i.putExtra("audio_url", audiourlpassing);
-				startActivity(i);
-			}
+//			if (checkstatus.equalsIgnoreCase("1")) {
+//				Intent i = new Intent(getApplicationContext(),
+//						CourseDetails.class);
+//				i.putExtra("courseid", course_id_topass);
+//				i.putExtra("course_name", course_name_to_pass);
+//				i.putExtra("course_description", course_descript_to_pass);
+//				i.putExtra("instructor_id", instructoridurl);
+//				i.putExtra("enroll_students", course_enrolled_passing);
+//				i.putExtra("audio_url", audiourlpassing);
+//				startActivity(i);
+//			}
 
 			// String
 			// url="http://208.109.248.89:8085/OnlineCourse/Student/student_view_Course?course_id=50&authorid=1&pur=0&catcourse=&coursetype=";
-			else {
+			//else {
 				String url = Config.browsecommon_url + "?course_id="
 						+ courseidurl + "&authorid=" + instructoridurl
 						+ "&pur=" + numofrows + "&catcourse=&coursetype=";
@@ -701,7 +701,7 @@ public class SearchActivity extends SherlockActivity {
 				ii.setData(Uri.parse(url));
 				ii.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				startActivity(ii);
-			}
+			//}
 
 		}
 
