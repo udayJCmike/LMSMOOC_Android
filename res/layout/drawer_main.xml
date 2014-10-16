@@ -1,22 +1,40 @@
-
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
- 
+    android:layout_height="match_parent"
+    android:background="#ffffff" >
+
     <FrameLayout
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
- 
-    <ListView
-        android:id="@+id/listview_drawer"
+
+    <LinearLayout
+        android:id="@+id/left_drawer"
         android:layout_width="240dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="#111"
-        android:choiceMode="singleChoice"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="0dp" />
- 
+        android:background="#ffffff"
+        android:orientation="vertical" >
+
+        <com.deemsys.lmsmooc.CustomImageView
+            android:id="@+id/ivwLogo"
+            android:layout_width="60dp"
+            android:layout_height="100dp"
+            android:layout_centerInParent="true"
+            android:contentDescription="img"
+            android:gravity="center"
+            android:scaleType="centerCrop"
+            android:src="@drawable/boyimage" />
+
+        <ListView
+            android:id="@+id/listview_drawer"
+            android:layout_width="240dp"
+            android:layout_height="match_parent"
+            android:background="#111"
+            android:choiceMode="singleChoice"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="0dp" />
+    </LinearLayout>
+
 </android.support.v4.widget.DrawerLayout>

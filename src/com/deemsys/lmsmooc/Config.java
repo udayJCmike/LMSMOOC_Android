@@ -52,6 +52,7 @@ public class Config {
 
 	static String studentSignup = "Studentsignup.php?service=selectloginusername";
 	static String studentSignup1 = "Studentsignup.php?service=selectloginemail";
+	static String studentSignupsendemail = "SendMail.php";
 	static String signup = "Studentsignup.php?service=signup";
 	static String logininsert = "Studentsignup.php?service=logininsert";
 
@@ -90,4 +91,5 @@ public class Config {
 	static String URL_COMMON;
 	static String browsecommon_url;
 	static String imei;
+	static String profileuserimage;
 }

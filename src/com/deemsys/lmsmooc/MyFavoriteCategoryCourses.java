@@ -25,7 +25,6 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.squareup.picasso.Picasso;
-
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -35,7 +34,6 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Html;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,7 +44,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.AbsListView.OnScrollListener;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -189,7 +186,7 @@ public class MyFavoriteCategoryCourses extends SherlockFragmentActivity {
 		final HttpParams params = httpclient.getParams();
 		HttpResponse response;
 		private String content = null;
-		private boolean error = false;
+		
 
 		@Override
 		protected void onPreExecute() {
@@ -207,7 +204,7 @@ public class MyFavoriteCategoryCourses extends SherlockFragmentActivity {
 			super.onPostExecute(file_url);
 
 			cDialog.dismiss();
-			System.out.println("start value::" + start);
+			
 			if (user.length() == 0 && start == 0) {
 				AlertDialog alertDialog = new AlertDialog.Builder(
 						MyFavoriteCategoryCourses.this).create();
@@ -356,17 +353,17 @@ public class MyFavoriteCategoryCourses extends SherlockFragmentActivity {
 			} catch (ClientProtocolException e) {
 
 				content = e.getMessage();
-				error = true;
+				
 				cancel(true);
 			} catch (IOException e) {
 
 				content = e.getMessage();
-				error = true;
+			
 				cancel(true);
 			} catch (Exception e) {
 
 				content = e.getMessage();
-				error = true;
+				
 				cancel(true);
 			}
 			return content;

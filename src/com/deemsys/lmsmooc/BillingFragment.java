@@ -190,7 +190,9 @@ public class BillingFragment extends Fragment {
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
-			cDialog.dismiss();
+			 if ((cDialog != null) && cDialog.isShowing()) { 
+				 cDialog.dismiss();
+			   }
 			return null;
 		}
 
@@ -303,5 +305,16 @@ public class BillingFragment extends Fragment {
 		}
 
 	}
+	@Override
+	public void onPause() {
+	    super.onPause();
 
+//	    if ((pDialog != null) && pDialog.isShowing())
+//	    	pDialog.dismiss();
+//	    pDialog = null;
+	
+	   if ((cDialog != null) && cDialog.isShowing())
+	    	cDialog.dismiss();
+	    cDialog = null;
+	}
 }

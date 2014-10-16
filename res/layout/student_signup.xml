@@ -53,7 +53,6 @@
     <EditText
         android:id="@+id/e1"
         style="@style/custom"
-            android:inputType="textCapWords"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center|center_vertical"
@@ -65,6 +64,8 @@
         android:ems="10"
         android:focusable="true"
         android:hint="@string/firstname"
+        android:inputType="textCapWords"
+        android:shadowColor="@color/abs__background_holo_light"
         android:textCursorDrawable="@drawable/cursor" />
 
 </LinearLayout>

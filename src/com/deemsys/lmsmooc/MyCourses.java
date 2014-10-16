@@ -176,8 +176,10 @@ public class MyCourses extends Fragment {
 			super.onPostExecute(file_url);
 
 			displayCourseList(content);
-
-			cDialog.dismiss();
+			 if ((cDialog != null) && cDialog.isShowing()) { 
+				 cDialog.dismiss();
+			   }
+			
 
 		}
 
@@ -548,7 +550,7 @@ public class MyCourses extends Fragment {
 			i.putExtra("course_name", course_name_to_pass);
 			i.putExtra("course_description", course_descript_to_pass);
 			i.putExtra("instructor_id", instructoridurl);
-			i.putExtra("enroll_students", course_enrolled_passing);
+			i.putExtra("enroll_studen ts", course_enrolled_passing);
 			i.putExtra("rating", rating_count);
 			i.putExtra("audio_url", audiourlpassing);
 			startActivity(i);
@@ -556,5 +558,16 @@ public class MyCourses extends Fragment {
 		}
 
 	}
+	@Override
+	public void onPause() {
+	    super.onPause();
 
+	    if ((pDialog != null) && pDialog.isShowing())
+	    	pDialog.dismiss();
+	    pDialog = null;
+	
+	   if ((cDialog != null) && cDialog.isShowing())
+	    	cDialog.dismiss();
+	    cDialog = null;
+	}
 }

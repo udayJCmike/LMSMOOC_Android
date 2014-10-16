@@ -54,9 +54,10 @@ public class StudentSignup extends Activity {
 	static String rolestr;
 	static String enabledstr;
 	static String userid;
+	String fullnamefirst, fullnamelast;
 	String captializefirstname, captitalizelastname;
 	private static final String TAG_AVATAR_URL = "avatar_url";
-
+	private ProgressDialog pDialog;
 	Button back;
 
 	final Context context = this;
@@ -83,7 +84,7 @@ public class StudentSignup extends Activity {
 
 		setContentView(R.layout.student_signup);
 
-//		/LinearLayout layout = (LinearLayout) findViewById(R.id.layoutt);
+		// /LinearLayout layout = (LinearLayout) findViewById(R.id.layoutt);
 		ScrollView sv = (ScrollView) findViewById(R.id.scrollView1);
 		sv.setOnTouchListener(new OnTouchListener() {
 
@@ -178,8 +179,8 @@ public class StudentSignup extends Activity {
 
 			public void onTextChanged(CharSequence s, int start, int before,
 					int count) {
-//				CharSequence ss = s;
-//				String mStr = lstname.getText().toString();
+				// CharSequence ss = s;
+				// String mStr = lstname.getText().toString();
 				String str = s.toString();
 				if (str.length() > 0 && str.startsWith(" ")) {
 
@@ -323,7 +324,7 @@ public class StudentSignup extends Activity {
 						 */
 						if (!hasFocus) {
 							// validateInput(v);
-						
+
 							new SelectUsername1().execute();
 						}
 					}
@@ -355,20 +356,17 @@ public class StudentSignup extends Activity {
 				if (isInternetPresent) {
 
 					firstname = fstname.getText().toString();
-				
+
 					lastname = lstname.getText().toString();
-				
+
 					email = emailid.getText().toString();
-					
 
 					username = username1.getText().toString();
-				
 
 					password = pass.getText().toString();
-					
 
 					confirmpassword = confirmpass.getText().toString();
-					
+
 					if (fstname.length() > 0 && lstname.length() > 0
 							&& emailid.length() > 0 && username1.length() > 0
 							&& pass.length() > 0 && confirmpass.length() > 0) {
@@ -689,8 +687,7 @@ public class StudentSignup extends Activity {
 												StudentSignup.this).create();
 
 										// Setting Dialog Title
-										alertDialog
-												.setTitle("Sorry User");
+										alertDialog.setTitle("Sorry User");
 
 										// Setting Dialog Message
 										alertDialog
@@ -851,15 +848,16 @@ public class StudentSignup extends Activity {
 				return matcher.matches();
 			}
 
-//			private boolean isValidNumber(String number) {
-//				// TODO Auto-generated method stub
-//
-//				String PHONE_REGEX = "\\([1-9]{1}[0-9]{2}\\) [0-9]{3}\\-[0-9]{4}$";
-//
-//				Pattern pattern = Pattern.compile(PHONE_REGEX);
-//				Matcher matcher = pattern.matcher(number);
-//				return matcher.matches();
-//			}
+			// private boolean isValidNumber(String number) {
+			// // TODO Auto-generated method stub
+			//
+			// String PHONE_REGEX =
+			// "\\([1-9]{1}[0-9]{2}\\) [0-9]{3}\\-[0-9]{4}$";
+			//
+			// Pattern pattern = Pattern.compile(PHONE_REGEX);
+			// Matcher matcher = pattern.matcher(number);
+			// return matcher.matches();
+			// }
 
 			private boolean passwordCheck(String other) {
 				// TODO Auto-generated method stub
@@ -881,15 +879,15 @@ public class StudentSignup extends Activity {
 				return matcher.matches();
 			}
 
-//			private boolean isValidOther1(String names) {
-//				// TODO Auto-generated method stub
-//
-//				String EMAIL_PATTERN = "[a-zA-Z]+[a-zA-Z ]*$";
-//
-//				Pattern pattern = Pattern.compile(EMAIL_PATTERN);
-//				Matcher matcher = pattern.matcher(names);
-//				return matcher.matches();
-//			}
+			// private boolean isValidOther1(String names) {
+			// // TODO Auto-generated method stub
+			//
+			// String EMAIL_PATTERN = "[a-zA-Z]+[a-zA-Z ]*$";
+			//
+			// Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+			// Matcher matcher = pattern.matcher(names);
+			// return matcher.matches();
+			// }
 
 		});
 
@@ -910,8 +908,6 @@ public class StudentSignup extends Activity {
 	class SelectUsername1 extends AsyncTask<String, String, String> {
 
 		private ProgressDialog userDialog;
-
-		
 
 		@Override
 		protected void onPreExecute() {
@@ -936,20 +932,17 @@ public class StudentSignup extends Activity {
 			params1.add(new BasicNameValuePair("username", usernames));
 
 			JsonParser jLogin = new JsonParser();
-		
+
 			JSONObject json = jLogin.makeHttpRequest(selecturl1, "POST",
 					params1);
-			
+
 			if (json != null) {
 				try {
 					if (json != null) {
-						
 
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 
 						successL = jUser.getString(TAG_SUCCESS1);
-
-						
 
 					}
 
@@ -961,7 +954,6 @@ public class StudentSignup extends Activity {
 				}
 			} else {
 
-				
 			}
 
 			return null;
@@ -972,9 +964,7 @@ public class StudentSignup extends Activity {
 		@Override
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
-			
 
-			
 			if (successL.equalsIgnoreCase("No")) {
 				userDialog.dismiss();
 			}
@@ -1054,7 +1044,7 @@ public class StudentSignup extends Activity {
 
 			// pDialog.dismiss();
 			if (JsonParser.jss.equals("empty")) {
-			
+
 				AlertDialog alertDialog = new AlertDialog.Builder(
 						StudentSignup.this).create();
 
@@ -1113,20 +1103,17 @@ public class StudentSignup extends Activity {
 			params1.add(new BasicNameValuePair("email", emails));
 
 			JsonParser jLogin = new JsonParser();
-			
+
 			JSONObject json = jLogin.makeHttpRequest(selecturl2, "POST",
 					params1);
-			
+
 			if (json != null) {
 				try {
 					if (json != null) {
-						
 
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 
 						successL = jUser.getString(TAG_SUCCESS1);
-
-						
 
 					}
 
@@ -1138,7 +1125,6 @@ public class StudentSignup extends Activity {
 				}
 			} else {
 
-				
 			}
 
 			return null;
@@ -1149,7 +1135,6 @@ public class StudentSignup extends Activity {
 		@Override
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
-			
 
 			if (successL.equalsIgnoreCase("No")) {
 				emailDialog.dismiss();
@@ -1222,7 +1207,7 @@ public class StudentSignup extends Activity {
 
 			// pDialog.dismiss();
 			if (JsonParser.jss.equals("empty")) {
-				
+
 				AlertDialog alertDialog = new AlertDialog.Builder(
 						StudentSignup.this).create();
 
@@ -1277,21 +1262,18 @@ public class StudentSignup extends Activity {
 					StudentSignup.username));
 
 			JsonParser jLogin = new JsonParser();
-			
+
 			JSONObject json = jLogin.makeHttpRequest(selecturl1, "POST",
 					params1);
-			
+
 			successL = "No";
 			if (json != null) {
 				try {
 					if (json != null) {
-						
 
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 
 						successL = jUser.getString(TAG_SUCCESS1);
-
-						
 
 					}
 
@@ -1304,7 +1286,7 @@ public class StudentSignup extends Activity {
 			} else {
 
 				successL = "No";
-				
+
 			}
 
 			return null;
@@ -1315,7 +1297,6 @@ public class StudentSignup extends Activity {
 		@Override
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
-		
 
 			if (successL.equalsIgnoreCase("No")) {
 
@@ -1362,7 +1343,7 @@ public class StudentSignup extends Activity {
 
 			// pDialog.dismiss();
 			if (JsonParser.jss.equals("empty")) {
-				
+
 				AlertDialog alertDialog = new AlertDialog.Builder(
 						StudentSignup.this).create();
 
@@ -1418,7 +1399,7 @@ public class StudentSignup extends Activity {
 			params1.add(new BasicNameValuePair("email", StudentSignup.email));
 
 			JsonParser jLogin = new JsonParser();
-			
+
 			JSONObject json = jLogin.makeHttpRequest(selecturl2, "POST",
 					params1);
 			System.out.println("value for json::" + json);
@@ -1426,13 +1407,10 @@ public class StudentSignup extends Activity {
 			if (json != null) {
 				try {
 					if (json != null) {
-						
 
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 
 						successL = jUser.getString(TAG_SUCCESS1);
-
-						
 
 					}
 
@@ -1445,7 +1423,7 @@ public class StudentSignup extends Activity {
 			} else {
 
 				successL = "No";
-				
+
 			}
 
 			return null;
@@ -1456,7 +1434,6 @@ public class StudentSignup extends Activity {
 		@Override
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
-		
 
 			if (successL.equalsIgnoreCase("No")) {
 				// emailDialog.dismiss();
@@ -1498,7 +1475,7 @@ public class StudentSignup extends Activity {
 
 			// pDialog.dismiss();
 			if (JsonParser.jss.equals("empty")) {
-				
+
 				AlertDialog alertDialog = new AlertDialog.Builder(
 						StudentSignup.this).create();
 
@@ -1532,7 +1509,7 @@ public class StudentSignup extends Activity {
 
 	class Login extends AsyncTask<String, String, String> {
 
-		private ProgressDialog pDialog;
+	
 
 		// public static final String urlE =
 		// "http://192.168.1.158:8888/gpsandroid/service/Contact.php?service=insert";
@@ -1585,7 +1562,8 @@ public class StudentSignup extends Activity {
 						.append(wordssplit[i].substring(1));
 
 			}
-
+			fullnamefirst = result.toString();
+			fullnamelast = caplast.toString();
 			paramsE.add(new BasicNameValuePair("firstname", result.toString()));
 
 			paramsE.add(new BasicNameValuePair("lastname", caplast.toString()));
@@ -1622,8 +1600,6 @@ public class StudentSignup extends Activity {
 
 			paramsE2.add(new BasicNameValuePair("password",
 					StudentSignup.password));
-
-		
 
 			JsonParser jLogin2 = new JsonParser();
 
@@ -1671,42 +1647,8 @@ public class StudentSignup extends Activity {
 
 			} else {
 
-				AlertDialog alertDialog = new AlertDialog.Builder(
-						StudentSignup.this).create();
-
-				// Setting Dialog Title
-				alertDialog.setTitle("Success");
-
-				// Setting Dialog Message
-				alertDialog.setMessage("Registration successfull.");
-
-				// Setting Icon to Dialog
-				alertDialog.setIcon(R.drawable.tick);
-
-				alertDialog.setCancelable(false);
-				// Setting OK Button
-				alertDialog.setButton("OK",
-						new DialogInterface.OnClickListener() {
-
-							public void onClick(final DialogInterface dialog,
-									final int which) {
-								// Write your code here to execute after dialog
-								// closed
-								fstname.setText("");
-								lstname.setText("");
-								emailid.setText("");
-								username1.setText("");
-								pass.setText("");
-								confirmpass.setText("");
-								check.setChecked(false);
-								pDialog.dismiss();
-
-							}
-						});
-
-				// Showing Alert Message
-				alertDialog.show();
-
+				new sendemailasync().execute();
+				
 			}
 
 		}
@@ -1723,10 +1665,10 @@ public class StudentSignup extends Activity {
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
 			String url = Config.URL_COMMON + "user_view_Termsofuses";
-			
+
 			checktext.setText(Html.fromHtml("<a href='" + url + "'>"
 					+ "TERMS AND CONDITIONS</a>"));
-		
+
 			checktext.setMovementMethod(LinkMovementMethod.getInstance());
 		}
 
@@ -1744,7 +1686,6 @@ public class StudentSignup extends Activity {
 			if (json != null) {
 				try {
 					if (json != null) {
-					
 
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 						successL = jUser.getString(TAG_SUCCESS);
@@ -1762,6 +1703,66 @@ public class StudentSignup extends Activity {
 
 				successL = "No";
 			}
+			return null;
+		}
+	}
+
+	class sendemailasync extends AsyncTask<String, String, String> {
+		@SuppressWarnings("deprecation")
+		@Override
+		protected void onPostExecute(String file_url) {
+			super.onPostExecute(file_url);
+			AlertDialog alertDialog = new AlertDialog.Builder(
+					StudentSignup.this).create();
+
+			// Setting Dialog Title
+			alertDialog.setTitle("Success");
+
+			// Setting Dialog Message
+			alertDialog.setMessage("Registration successfull.");
+
+			// Setting Icon to Dialog
+			alertDialog.setIcon(R.drawable.tick);
+
+			alertDialog.setCancelable(false);
+			// Setting OK Button
+			alertDialog.setButton("OK",
+					new DialogInterface.OnClickListener() {
+
+						public void onClick(final DialogInterface dialog,
+								final int which) {
+							// Write your code here to execute after dialog
+							// closed
+							fstname.setText("");
+							lstname.setText("");
+							emailid.setText("");
+							username1.setText("");
+							pass.setText("");
+							confirmpass.setText("");
+							check.setChecked(false);
+							pDialog.dismiss();
+
+						}
+					});
+
+			// Showing Alert Message
+			alertDialog.show();
+
+		}
+
+		@Override
+		protected String doInBackground(String... params) {
+			List<NameValuePair> params1 = new ArrayList<NameValuePair>();
+
+			params1.add(new BasicNameValuePair("firstname", fullnamefirst));
+			params1.add(new BasicNameValuePair("lastname", fullnamelast));
+			params1.add(new BasicNameValuePair("emailid",StudentSignup.email ));
+		    JsonParser jLogin = new JsonParser();
+
+			JSONObject json = jLogin
+					.makeHttpRequest(Config.ServerUrl+Config.studentSignupsendemail, "POST", params1);
+			System.out.println("value for json::" + json);
+			
 			return null;
 		}
 	}

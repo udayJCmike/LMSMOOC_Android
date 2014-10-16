@@ -23,6 +23,22 @@ public class BrowseCourse extends SherlockFragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.browsecourse);
+
+		Intent intent1 = new Intent();
+
+		intent1.setAction("com.sonyericsson.home.action.UPDATE_BADGE");
+		intent1.putExtra(
+				"com.sonyericsson.home.intent.extra.badge.ACTIVITY_NAME",
+				"com.deemsys.lmsmooc.SplashActivity");
+		intent1.putExtra(
+				"com.sonyericsson.home.intent.extra.badge.SHOW_MESSAGE", true);
+		intent1.putExtra(
+				"com.sonyericsson.home.intent.extra.badge.SHOW_MESSAGE", false);
+		intent1.putExtra(
+				"com.sonyericsson.home.intent.extra.badge.PACKAGE_NAME",
+				"com.deemsys.lmsmooc");
+
+		sendBroadcast(intent1);
 		cd = new ConnectionDetector(getApplicationContext());
 		netcheck = cd.isConnectingToInternet();
 		ActionBar ab = getSupportActionBar();
@@ -42,7 +58,7 @@ public class BrowseCourse extends SherlockFragmentActivity {
 	}
 
 	public boolean onCreateOptionsMenu(Menu menu) {
-		
+
 		getSupportMenuInflater().inflate(R.menu.chosecategory, menu);
 
 		return true;
@@ -50,10 +66,10 @@ public class BrowseCourse extends SherlockFragmentActivity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-	
+
 		switch (item.getItemId()) {
 		case R.id.category:
-			
+
 			Intent intentSignUP = new Intent(this,
 					CategorySelectionActivity.class);
 			startActivity(intentSignUP);

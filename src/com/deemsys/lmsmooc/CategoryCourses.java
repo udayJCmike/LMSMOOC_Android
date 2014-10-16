@@ -392,7 +392,7 @@ public class CategoryCourses extends SherlockFragmentActivity {
 			TextView code;
 			TextView name;
 			ImageView promoimage;
-			TextView enroll;
+			//TextView enroll;
 			TextView cost;
 			ImageView cover;
 			ImageView ratingshow;
@@ -422,7 +422,7 @@ public class CategoryCourses extends SherlockFragmentActivity {
 				holder.cover = (ImageView) convertView.findViewById(R.id.cover);
 				holder.ratingshow = (ImageView) convertView
 						.findViewById(R.id.ratingimage);
-				holder.enroll = (TextView) convertView.findViewById(R.id.enroll);
+			//	holder.enroll = (TextView) convertView.findViewById(R.id.enroll);
 				convertView.setTag(holder);
 
 			} else {

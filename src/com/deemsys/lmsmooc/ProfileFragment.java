@@ -154,9 +154,9 @@ public class ProfileFragment extends Fragment {
 		femaley = (RadioButton) rootView.findViewById(R.id.radiofemale);
 
 		genderstring = Config.gender;
-	
+
 		interestedin = Config.interested_in;
-		
+
 		savechanges = (Button) rootView.findViewById(R.id.savechagnes);
 		browse = (Button) rootView.findViewById(R.id.browse);
 		upload = (Button) rootView.findViewById(R.id.upload);
@@ -264,7 +264,7 @@ public class ProfileFragment extends Fragment {
 			}
 
 		});
-		
+
 		emailedit.addTextChangedListener(new TextWatcher() {
 
 			public void onTextChanged(CharSequence s, int start, int before,
@@ -404,8 +404,7 @@ public class ProfileFragment extends Fragment {
 
 				if (firstnameedit.length() > 0 && lastnameedit.length() > 0
 						&& emailedit.length() > 0 && usernameedit.length() > 0
-						&& passwordedit.length() > 0 && interestedin != "null"
-						&& genderstring != "null") {
+						&& interestedin != "null" && genderstring != "null") {
 					a = 1;
 
 					{
@@ -426,85 +425,25 @@ public class ProfileFragment extends Fragment {
 														&& isValidEmail(email)) {
 
 													{
-														if (password.length() >= 6
-																&& password
-																		.length() <= 25
-																&& passwordCheck(password)) {
-															if (!subj
+
+														if (!subj.isChecked()
+																&& cours.isChecked()
+																|| subj.isChecked()
+																&& !cours
+																		.isChecked())
+
+														{
+															if (!maley
 																	.isChecked()
-																	&& cours.isChecked()
-																	|| subj.isChecked()
-																	&& !cours
+																	&& femaley
+																			.isChecked()
+																	|| maley.isChecked()
+																	&& !femaley
 																			.isChecked())
 
 															{
-																if (!maley
-																		.isChecked()
-																		&& femaley
-																				.isChecked()
-																		|| maley.isChecked()
-																		&& !femaley
-																				.isChecked())
 
-																{
-
-																	a = 1;
-																} else {
-																	a = 0;
-																	AlertDialog alertDialog = new AlertDialog.Builder(
-																			ProfileFragment.this
-																					.getActivity())
-																			.create();
-
-																	// Setting
-																	// Dialog
-																	// Title
-																	alertDialog
-																			.setTitle("Sorry User");
-
-																	// Setting
-																	// Dialog
-																	// Message
-																	alertDialog
-																			.setMessage("Please select your gender");
-
-																	// Setting
-																	// Icon to
-																	// Dialog
-																	alertDialog
-																			.setIcon(R.drawable.delete);
-
-																	// Setting
-																	// OK Button
-																	alertDialog
-																			.setButton(
-																					"OK",
-																					new DialogInterface.OnClickListener() {
-
-																						public void onClick(
-																								final DialogInterface dialog,
-																								final int which) {
-																							// Write
-																							// your
-																							// code
-																							// here
-																							// to
-																							// execute
-																							// after
-																							// dialog
-																							// closed
-
-																						}
-																					});
-
-																	// Showing
-																	// Alert
-																	// Message
-																	alertDialog
-																			.show();
-
-																}
-
+																a = 1;
 															} else {
 																a = 0;
 																AlertDialog alertDialog = new AlertDialog.Builder(
@@ -513,7 +452,8 @@ public class ProfileFragment extends Fragment {
 																		.create();
 
 																// Setting
-																// Dialog Title
+																// Dialog
+																// Title
 																alertDialog
 																		.setTitle("Sorry User");
 
@@ -521,15 +461,16 @@ public class ProfileFragment extends Fragment {
 																// Dialog
 																// Message
 																alertDialog
-																		.setMessage("Please select your interested topic.");
+																		.setMessage("Please select your gender");
 
-																// Setting Icon
-																// to Dialog
+																// Setting
+																// Icon to
+																// Dialog
 																alertDialog
 																		.setIcon(R.drawable.delete);
 
-																// Setting OK
-																// Button
+																// Setting
+																// OK Button
 																alertDialog
 																		.setButton(
 																				"OK",
@@ -551,39 +492,39 @@ public class ProfileFragment extends Fragment {
 																					}
 																				});
 
-																// Showing Alert
+																// Showing
+																// Alert
 																// Message
 																alertDialog
 																		.show();
 
 															}
 
-														}
-
-														else {
-
+														} else {
 															a = 0;
 															AlertDialog alertDialog = new AlertDialog.Builder(
 																	ProfileFragment.this
 																			.getActivity())
 																	.create();
 
-															// Setting Dialog
-															// Title
+															// Setting
+															// Dialog Title
 															alertDialog
 																	.setTitle("Sorry User");
 
-															// Setting Dialog
+															// Setting
+															// Dialog
 															// Message
 															alertDialog
-																	.setMessage("Length of password cannot be less then 6");
+																	.setMessage("Please select your interested topic.");
 
-															// Setting Icon to
-															// Dialog
+															// Setting Icon
+															// to Dialog
 															alertDialog
 																	.setIcon(R.drawable.delete);
 
-															// Setting OK Button
+															// Setting OK
+															// Button
 															alertDialog
 																	.setButton(
 																			"OK",
@@ -610,6 +551,7 @@ public class ProfileFragment extends Fragment {
 															alertDialog.show();
 
 														}
+
 													}
 
 												} else {
@@ -669,8 +611,7 @@ public class ProfileFragment extends Fragment {
 													.create();
 
 											// Setting Dialog Title
-											alertDialog
-													.setTitle("Sorry User");
+											alertDialog.setTitle("Sorry User");
 
 											// Setting Dialog Message
 											alertDialog
@@ -869,26 +810,6 @@ public class ProfileFragment extends Fragment {
 				return matcher.matches();
 			}
 
-//			private boolean isValidNumber(String number) {
-//				// TODO Auto-generated method stub
-//
-//				String PHONE_REGEX = "\\([1-9]{1}[0-9]{2}\\) [0-9]{3}\\-[0-9]{4}$";
-//
-//				Pattern pattern = Pattern.compile(PHONE_REGEX);
-//				Matcher matcher = pattern.matcher(number);
-//				return matcher.matches();
-//			}
-
-			private boolean passwordCheck(String other) {
-				// TODO Auto-generated method stub
-
-				String pass_patter = "((?=.*\\d)(?=.*[a-zA-Z])(?=.*[@#$%]).{8,25})";
-
-				Pattern pattern = Pattern.compile(pass_patter);
-				Matcher matcher = pattern.matcher(other);
-				return matcher.matches();
-			}
-
 			private boolean isValidOther(String other) {
 				// TODO Auto-generated method stub
 
@@ -898,15 +819,6 @@ public class ProfileFragment extends Fragment {
 				Matcher matcher = pattern.matcher(other);
 				return matcher.matches();
 			}
-
-//			private boolean isValidOther1(String names) {
-//
-//				String EMAIL_PATTERN = "[a-zA-Z0-9]+[a-zA-Z0-9@_.,-/\n ]*$";
-//
-//				Pattern pattern = Pattern.compile(EMAIL_PATTERN);
-//				Matcher matcher = pattern.matcher(names);
-//				return matcher.matches();
-//			}
 
 		});
 
@@ -960,7 +872,7 @@ public class ProfileFragment extends Fragment {
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
-		
+
 		getActivity();
 		if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
 
@@ -1019,10 +931,8 @@ public class ProfileFragment extends Fragment {
 		byte[] buffer;
 		int maxBufferSize = 1 * 1024 * 1024;
 		File sourceFile = new File(sourceFileUri);
-		
-		if (!sourceFile.isFile()) {
 
-			
+		if (!sourceFile.isFile()) {
 
 			// runOnUiThread(new Runnable() {
 			// public void run() {
@@ -1084,9 +994,8 @@ public class ProfileFragment extends Fragment {
 
 				// Responses from the server (code and message)
 				serverResponseCode = conn.getResponseCode();
-//				String serverResponseMessage = conn.getResponseMessage();
+				// String serverResponseMessage = conn.getResponseMessage();
 
-				
 				if (serverResponseCode == 200) {
 
 					// runOnUiThread(new Runnable() {
@@ -1119,7 +1028,6 @@ public class ProfileFragment extends Fragment {
 				// }
 				// });
 
-				
 			} catch (Exception e) {
 
 				// dialog.dismiss();
@@ -1139,8 +1047,6 @@ public class ProfileFragment extends Fragment {
 		in.hideSoftInputFromWindow(view.getWindowToken(),
 				InputMethodManager.HIDE_NOT_ALWAYS);
 	}
-
-	
 
 	class UpdateProf extends AsyncTask<String, String, String> {
 		@Override
@@ -1205,20 +1111,18 @@ public class ProfileFragment extends Fragment {
 
 			// Config.avatar="S"+Config.student_id+".jpg";
 
-			
 			JsonParser jLogin = new JsonParser();
 
 			JSONObject json = jLogin
 					.makeHttpRequest(updateurl, "POST", params1);
-			
+
 			if (json != null) {
 				try {
 					if (json != null) {
-						
 
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 						successL = jUser.getString(TAG_SUCCESS);
-						
+
 					}
 
 				}
@@ -1292,35 +1196,35 @@ public class ProfileFragment extends Fragment {
 		}
 	}
 
-//	private class LoadImage extends AsyncTask<String, String, Bitmap> {
-//		@Override
-//		protected void onPreExecute() {
-//			super.onPreExecute();
-//
-//		}
-//
-//		protected Bitmap doInBackground(String... args) {
-//			try {
-//				bitmap = BitmapFactory.decodeStream((InputStream) new URL(
-//						args[0]).getContent());
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-//			return bitmap;
-//		}
-//
-//		protected void onPostExecute(Bitmap image) {
-//			if (image != null) {
-//				
-//				ProfileFragment.this.image.setImageBitmap(image);
-//
-//			} else {
-//
-//				// Toast.makeText(getActivity(),
-//				// "Image Does Not exist or Network Error",
-//				// Toast.LENGTH_SHORT).show();
-//			}
-//		}
-//	}
+	// private class LoadImage extends AsyncTask<String, String, Bitmap> {
+	// @Override
+	// protected void onPreExecute() {
+	// super.onPreExecute();
+	//
+	// }
+	//
+	// protected Bitmap doInBackground(String... args) {
+	// try {
+	// bitmap = BitmapFactory.decodeStream((InputStream) new URL(
+	// args[0]).getContent());
+	// } catch (Exception e) {
+	// e.printStackTrace();
+	// }
+	// return bitmap;
+	// }
+	//
+	// protected void onPostExecute(Bitmap image) {
+	// if (image != null) {
+	//
+	// ProfileFragment.this.image.setImageBitmap(image);
+	//
+	// } else {
+	//
+	// // Toast.makeText(getActivity(),
+	// // "Image Does Not exist or Network Error",
+	// // Toast.LENGTH_SHORT).show();
+	// }
+	// }
+	// }
 
 }

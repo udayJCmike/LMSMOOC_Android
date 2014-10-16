@@ -93,8 +93,7 @@ public class AuthorFragment extends Fragment {
 					new InsertFavorite().execute();
 					followcheck = "1";
 					followunfollow.setText("Unfollow Author");
-				} else if (isInternetPresent
-						&& followcheck.equalsIgnoreCase("1")) {
+				} else if (isInternetPresent&& followcheck.equalsIgnoreCase("1")) {
 					new UpdateFavorite().execute();
 					followcheck = "0";
 					followunfollow.setText("Follow Author");

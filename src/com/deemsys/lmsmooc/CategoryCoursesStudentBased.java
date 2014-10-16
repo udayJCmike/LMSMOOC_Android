@@ -105,6 +105,30 @@ public class CategoryCoursesStudentBased extends SherlockFragmentActivity {
 		Intent i = getIntent();
 		category_name = i.getExtras().getString("category_name", "");
 
+		Intent intent1 = new Intent();
+
+		intent1.setAction("com.sonyericsson.home.action.UPDATE_BADGE");
+		intent1.putExtra(
+				"com.sonyericsson.home.intent.extra.badge.ACTIVITY_NAME",
+				"com.deemsys.lmsmooc.SplashActivity");
+		intent1.putExtra(
+				"com.sonyericsson.home.intent.extra.badge.SHOW_MESSAGE", true);
+		intent1.putExtra(
+				"com.sonyericsson.home.intent.extra.badge.SHOW_MESSAGE", false);
+		intent1.putExtra(
+				"com.sonyericsson.home.intent.extra.badge.PACKAGE_NAME",
+				"com.deemsys.lmsmooc");
+
+		sendBroadcast(intent1);
+
+		Intent intent2 = new Intent("android.intent.action.BADGE_COUNT_UPDATE");
+		intent2.putExtra("badge_count", "");
+		intent2.putExtra("badge_count_package_name", getApplicationContext()
+				.getPackageName());
+		intent2.putExtra("badge_count_class_name",
+				"com.deemsys.lmsmooc.SplashActivity");
+		getApplicationContext().sendBroadcast(intent2);
+
 		ActionBar ab = getSupportActionBar();
 		ab.setDisplayHomeAsUpEnabled(true);
 		getSupportActionBar().setHomeButtonEnabled(true);
@@ -164,7 +188,7 @@ public class CategoryCoursesStudentBased extends SherlockFragmentActivity {
 	}
 
 	public void grabURL(String url) {
-		
+
 		new GrabURL().execute(url);
 	}
 
@@ -245,7 +269,6 @@ public class CategoryCoursesStudentBased extends SherlockFragmentActivity {
 			try {
 
 				JSONObject c = jArray.getJSONObject(TAG_SRES);
-				
 
 				JSONArray countryListObj = c.getJSONArray(TAG_Course_ARRAY);
 
@@ -255,7 +278,7 @@ public class CategoryCoursesStudentBased extends SherlockFragmentActivity {
 				} else {
 					for (int i = 0; i < countryListObj.length(); i++) {
 						start++;
-						
+
 						JSONObject c1 = user.getJSONObject(i);
 						JSONObject c2 = c1.getJSONObject(TAG_SRES);
 						authorname = c2.getString(TAG_COURSE_AUTHOR);
@@ -295,9 +318,8 @@ public class CategoryCoursesStudentBased extends SherlockFragmentActivity {
 						cnt.setaudiourl(audiourl);
 						courselist.add(cnt);
 
-						
 						dataAdapter.add(cnt);
-					
+
 					}
 
 					dataAdapter.notifyDataSetChanged();
@@ -340,9 +362,9 @@ public class CategoryCoursesStudentBased extends SherlockFragmentActivity {
 				jArray = jsonParser.makeHttpRequest(Config.ServerUrl
 						+ Config.categoryselectionurl, "POST", nameValuePairs);
 				JSONObject c = jArray.getJSONObject(TAG_SRES);
-			
+
 				user = c.getJSONArray(TAG_Course_ARRAY);
-			
+
 				httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 				response = httpclient.execute(httpPost);
 
@@ -353,22 +375,22 @@ public class CategoryCoursesStudentBased extends SherlockFragmentActivity {
 					out.close();
 					content = out.toString();
 				} else {
-					
+
 					response.getEntity().getContent().close();
 					throw new IOException(statusLine.getReasonPhrase());
 				}
 			} catch (ClientProtocolException e) {
-				
+
 				content = e.getMessage();
 				error = true;
 				cancel(true);
 			} catch (IOException e) {
-				
+
 				content = e.getMessage();
 				error = true;
 				cancel(true);
 			} catch (Exception e) {
-				
+
 				content = e.getMessage();
 				error = true;
 				cancel(true);
@@ -400,7 +422,7 @@ public class CategoryCoursesStudentBased extends SherlockFragmentActivity {
 		}
 
 		public void add(Course country) {
-			
+
 			this.countryList.add(country);
 		}
 
@@ -408,7 +430,7 @@ public class CategoryCoursesStudentBased extends SherlockFragmentActivity {
 		public View getView(int position, View convertView, ViewGroup parent) {
 
 			ViewHolder holder = null;
-			
+
 			if (convertView == null) {
 
 				LayoutInflater vi = (LayoutInflater) getApplicationContext()
@@ -421,7 +443,8 @@ public class CategoryCoursesStudentBased extends SherlockFragmentActivity {
 				holder.name = (TextView) convertView.findViewById(R.id.author);
 				holder.cost = (TextView) convertView.findViewById(R.id.cost);
 				holder.cover = (ImageView) convertView.findViewById(R.id.cover);
-				holder.enroll = (TextView) convertView.findViewById(R.id.enroll);
+				holder.enroll = (TextView) convertView
+						.findViewById(R.id.enroll);
 				holder.ratingshow = (ImageView) convertView
 						.findViewById(R.id.ratingimage);
 				convertView.setTag(holder);
@@ -497,16 +520,15 @@ public class CategoryCoursesStudentBased extends SherlockFragmentActivity {
 
 			JSONObject json = jLogin.makeHttpRequest(Config.ServerUrl
 					+ Config.purchasenumberselection, "POST", params1);
-		
+
 			if (json != null) {
 				try {
 					if (json != null) {
-						
 
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 
 						numofrows = jUser.getString(TAG_NUMBER_OF_ROWS);
-					
+
 					}
 
 				}
@@ -525,7 +547,7 @@ public class CategoryCoursesStudentBased extends SherlockFragmentActivity {
 		@Override
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
-			
+
 			pDialog.dismiss();
 			if (checkstatus.equalsIgnoreCase("1")) {
 				Intent i = new Intent(getApplicationContext(),
@@ -546,7 +568,7 @@ public class CategoryCoursesStudentBased extends SherlockFragmentActivity {
 				String url = Config.common_url + "?course_id=" + courseidurl
 						+ "&authorid=" + instructoridurl + "&pur=" + numofrows
 						+ "&catcourse=&coursetype=";
-			
+
 				Intent ii = new Intent(Intent.ACTION_VIEW);
 				ii.setData(Uri.parse(url));
 				ii.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -599,16 +621,14 @@ public class CategoryCoursesStudentBased extends SherlockFragmentActivity {
 
 			JSONObject json = jLogin.makeHttpRequest(Config.ServerUrl
 					+ Config.removefrommycategoryurl, "POST", params1);
-		
+
 			if (json != null) {
 				try {
 					if (json != null) {
-					
 
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 
 						numofrows = jUser.getString(TAG_SUCCESS);
-					
 
 					}
 
@@ -628,7 +648,6 @@ public class CategoryCoursesStudentBased extends SherlockFragmentActivity {
 		@Override
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
-		
 
 		}
 

@@ -1,6 +1,7 @@
 package com.deemsys.lmsmooc;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -30,6 +31,55 @@ public class MainActivity extends FragmentActivity {
 		actions.setTitle(Html.fromHtml("<font color='#ffffff'>LMS MOOC</font>"));
 		actions.setBackgroundDrawable(new ColorDrawable(Color
 				.parseColor("#3399FF")));
+		
+		  Intent intent1 = new Intent();
+			 
+			intent1.setAction("com.sonyericsson.home.action.UPDATE_BADGE");
+			intent1.putExtra("com.sonyericsson.home.intent.extra.badge.ACTIVITY_NAME", "com.deemsys.lmsmooc.SplashActivity");
+			intent1.putExtra("com.sonyericsson.home.intent.extra.badge.SHOW_MESSAGE", true);
+			 intent1.putExtra("com.sonyericsson.home.intent.extra.badge.SHOW_MESSAGE", false);
+			intent1.putExtra("com.sonyericsson.home.intent.extra.badge.PACKAGE_NAME", "com.deemsys.lmsmooc");
+			 
+		
+		  sendBroadcast(intent1);
+		
+		
+		  Intent intent2 = new Intent("android.intent.action.BADGE_COUNT_UPDATE");
+	        intent2.putExtra("badge_count","");
+	        intent2.putExtra("badge_count_package_name", getApplicationContext().getPackageName());
+	        intent2.putExtra("badge_count_class_name", "com.deemsys.lmsmooc.SplashActivity");
+	        getApplicationContext().sendBroadcast(intent2);
+		
+		
+		
+		
+//		PackageManager pm = getApplicationContext().getPackageManager();
+//		  String lastEnabled =GCMIntentService.getLastEnabled(getApplicationContext());
+//		  if (TextUtils.isEmpty(lastEnabled)) {
+//				lastEnabled = "com.deemsys.lmsmooc.SplashActivity";
+//			}
+//		  System.out.println("last enabled value in splash:::"+lastEnabled);
+//		  ComponentName componentName = new ComponentName("com.deemsys.lmsmooc",
+//					lastEnabled);
+//			pm.setComponentEnabledSetting(componentName,
+//					PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+//					PackageManager.DONT_KILL_APP);
+//        
+//			lastEnabled="com.deemsys.lmsmooc.SplashActivity";
+//			componentName = new ComponentName("com.deemsys.lmsmooc", lastEnabled);
+//			pm.setComponentEnabledSetting(componentName,
+//					PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+//					PackageManager.DONT_KILL_APP);
+//			GCMIntentService.setLastEnabled(lastEnabled,getApplicationContext());
+//		
+//		
+		
+		
+		
+		
+		
+		
+		
 		pager = (ViewPager) findViewById(R.id.pager);
 		pager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
 		pager.setPageTransformer(true, new ZoomOutPageTransformer());

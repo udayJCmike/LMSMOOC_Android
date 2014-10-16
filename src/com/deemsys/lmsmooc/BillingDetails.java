@@ -82,8 +82,8 @@ public class BillingDetails extends SherlockFragmentActivity {
 			BillingFragment.reduction = "0";
 		}
 		reduc.setText("$" + BillingFragment.reduction);
-		int a = (Integer.parseInt(BillingFragment.amount_paid) - Integer
-				.parseInt(BillingFragment.reduction));
+		Float a = (Float.parseFloat(BillingFragment.amount_paid) - Float
+				.parseFloat(BillingFragment.reduction));
 		String paidam = "$";
 		paidamtval.setText(paidam + (String.valueOf(a)));
 
