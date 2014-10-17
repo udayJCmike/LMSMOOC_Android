@@ -1,6 +1,5 @@
 package com.deemsys.lmsmooc;
 
-
 import android.support.v4.app.Fragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,9 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
-
-
 
 public class AboutUs extends Fragment {
 
@@ -57,100 +53,96 @@ public class AboutUs extends Fragment {
 			@Override
 			public void onClick(View arg0) {
 				Intent intent = new Intent(getActivity(), AboutTweet.class);
-		        startActivity(intent);
-				
+				startActivity(intent);
+
 			}
 		});
 
-//		if (!isTwitterLoggedInAlready()) {
-//			Uri uri = getActivity().getIntent().getData();
-//			if (uri != null && uri.toString().startsWith(TWITTER_CALLBACK_URL)) {
-//
-//				String verifier = uri
-//						.getQueryParameter(URL_TWITTER_OAUTH_VERIFIER);
-//				System.out.println("verifier value::" + verifier);
-//				try {
-//
-//					AccessToken accessToken = twitter.getOAuthAccessToken(
-//							requestToken, verifier);
-//
-//					Editor e = mSharedPreferences.edit();
-//
-//					System.out.println("access token value::"
-//							+ accessToken.getToken());
-//					e.putString(PREF_KEY_OAUTH_TOKEN, accessToken.getToken());
-//					e.putString(PREF_KEY_OAUTH_SECRET,
-//							accessToken.getTokenSecret());
-//
-//					e.putBoolean(PREF_KEY_TWITTER_LOGIN, true);
-//					e.commit();
-//					String access_token = mSharedPreferences.getString(
-//							PREF_KEY_OAUTH_TOKEN, "");
-//
-//					String access_token_secret = mSharedPreferences.getString(
-//							PREF_KEY_OAUTH_SECRET, "");
-//					// Log.e("Twitter OAuth Token", "> " +
-//					// accessToken.getToken());
-//					ConfigurationBuilder cb = new ConfigurationBuilder();
-//					cb.setDebugEnabled(true)
-//							.setOAuthConsumerKey(TWITTER_CONSUMER_KEY)
-//							.setOAuthConsumerSecret(TWITTER_CONSUMER_SECRET)
-//							.setOAuthAccessToken(
-//									mSharedPreferences.getString(
-//											PREF_KEY_OAUTH_TOKEN, ""))
-//							.setOAuthAccessTokenSecret(
-//									mSharedPreferences.getString(
-//											PREF_KEY_OAUTH_SECRET, ""));
-//					TwitterFactory tf = new TwitterFactory(cb.build());
-//					twitter = tf.getInstance();
-//
-//					try {
-//						String screenName = "imansvijay";
-//						System.out.println("in create friendship");
-//						twitter.createFriendship(screenName);
-//
-//					} catch (Exception e1) {
-//
-//						e1.printStackTrace();
-//					}
-//
-//				} catch (Exception e) {
-//					// Check log for login errors
-//					Log.e("Twitter Login Error", "> " + e.getMessage());
-//				}
-//			}
-//		} else {
-//			ConfigurationBuilder cb = new ConfigurationBuilder();
-//			cb.setDebugEnabled(true)
-//					.setOAuthConsumerKey(TWITTER_CONSUMER_KEY)
-//					.setOAuthConsumerSecret(TWITTER_CONSUMER_SECRET)
-//					.setOAuthAccessToken(
-//							mSharedPreferences.getString(PREF_KEY_OAUTH_TOKEN,
-//									""))
-//					.setOAuthAccessTokenSecret(
-//							mSharedPreferences.getString(PREF_KEY_OAUTH_SECRET,
-//									""));
-//			TwitterFactory tf = new TwitterFactory(cb.build());
-//			twitter = tf.getInstance();
-//
-//			try {
-//				String screenName = "imansvijay";
-//				System.out.println("in create friendship");
-//				twitter.createFriendship(screenName);
-//
-//			} catch (Exception e1) {
-//
-//				e1.printStackTrace();
-//			}
-//
-//		}
+		// if (!isTwitterLoggedInAlready()) {
+		// Uri uri = getActivity().getIntent().getData();
+		// if (uri != null && uri.toString().startsWith(TWITTER_CALLBACK_URL)) {
+		//
+		// String verifier = uri
+		// .getQueryParameter(URL_TWITTER_OAUTH_VERIFIER);
+		// System.out.println("verifier value::" + verifier);
+		// try {
+		//
+		// AccessToken accessToken = twitter.getOAuthAccessToken(
+		// requestToken, verifier);
+		//
+		// Editor e = mSharedPreferences.edit();
+		//
+		// System.out.println("access token value::"
+		// + accessToken.getToken());
+		// e.putString(PREF_KEY_OAUTH_TOKEN, accessToken.getToken());
+		// e.putString(PREF_KEY_OAUTH_SECRET,
+		// accessToken.getTokenSecret());
+		//
+		// e.putBoolean(PREF_KEY_TWITTER_LOGIN, true);
+		// e.commit();
+		// String access_token = mSharedPreferences.getString(
+		// PREF_KEY_OAUTH_TOKEN, "");
+		//
+		// String access_token_secret = mSharedPreferences.getString(
+		// PREF_KEY_OAUTH_SECRET, "");
+		// // Log.e("Twitter OAuth Token", "> " +
+		// // accessToken.getToken());
+		// ConfigurationBuilder cb = new ConfigurationBuilder();
+		// cb.setDebugEnabled(true)
+		// .setOAuthConsumerKey(TWITTER_CONSUMER_KEY)
+		// .setOAuthConsumerSecret(TWITTER_CONSUMER_SECRET)
+		// .setOAuthAccessToken(
+		// mSharedPreferences.getString(
+		// PREF_KEY_OAUTH_TOKEN, ""))
+		// .setOAuthAccessTokenSecret(
+		// mSharedPreferences.getString(
+		// PREF_KEY_OAUTH_SECRET, ""));
+		// TwitterFactory tf = new TwitterFactory(cb.build());
+		// twitter = tf.getInstance();
+		//
+		// try {
+		// String screenName = "imansvijay";
+		// System.out.println("in create friendship");
+		// twitter.createFriendship(screenName);
+		//
+		// } catch (Exception e1) {
+		//
+		// e1.printStackTrace();
+		// }
+		//
+		// } catch (Exception e) {
+		// // Check log for login errors
+		// Log.e("Twitter Login Error", "> " + e.getMessage());
+		// }
+		// }
+		// } else {
+		// ConfigurationBuilder cb = new ConfigurationBuilder();
+		// cb.setDebugEnabled(true)
+		// .setOAuthConsumerKey(TWITTER_CONSUMER_KEY)
+		// .setOAuthConsumerSecret(TWITTER_CONSUMER_SECRET)
+		// .setOAuthAccessToken(
+		// mSharedPreferences.getString(PREF_KEY_OAUTH_TOKEN,
+		// ""))
+		// .setOAuthAccessTokenSecret(
+		// mSharedPreferences.getString(PREF_KEY_OAUTH_SECRET,
+		// ""));
+		// TwitterFactory tf = new TwitterFactory(cb.build());
+		// twitter = tf.getInstance();
+		//
+		// try {
+		// String screenName = "imansvijay";
+		// System.out.println("in create friendship");
+		// twitter.createFriendship(screenName);
+		//
+		// } catch (Exception e1) {
+		//
+		// e1.printStackTrace();
+		// }
+		//
+		// }
 
 		return rootView;
 	}
-
-	
-
-	
 
 	public static boolean isTwitterLoggedInAlready() {
 		// return twitter login status from Shared Preferences

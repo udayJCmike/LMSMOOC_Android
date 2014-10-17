@@ -211,8 +211,8 @@ public class AllCoursesbrowse extends Fragment {
 
 			super.onPostExecute(file_url);
 			if (user.length() == 0 && start == 0) {
-				AlertDialog alertDialog = new AlertDialog.Builder(
-						getActivity()).create();
+				AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
+						.create();
 
 				alertDialog.setTitle("Sorry User");
 

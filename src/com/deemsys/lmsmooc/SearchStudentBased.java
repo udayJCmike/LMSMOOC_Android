@@ -135,7 +135,7 @@ public class SearchStudentBased extends SherlockActivity {
 					course_name_to_pass = country.getCode();
 					course_enrolled_passing = country.getstudentsenrolled();
 					checkstatus = country.getifmycourse();
-					
+
 					courseidurl = country.getcourseid();
 					instructoridurl = country.getinsid();
 					rating_count = country.getrating();
@@ -145,12 +145,10 @@ public class SearchStudentBased extends SherlockActivity {
 			}
 		});
 
-		
-
 	}
 
 	public void grabURL(String url) {
-	
+
 		new GrabURL().execute(url);
 	}
 
@@ -190,10 +188,8 @@ public class SearchStudentBased extends SherlockActivity {
 								|| event.getAction() == KeyEvent.ACTION_DOWN
 								&& event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
 
-							
 							keyword = editsearch.getText().toString()
 									.toLowerCase(Locale.getDefault());
-							
 
 							InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
@@ -300,7 +296,6 @@ public class SearchStudentBased extends SherlockActivity {
 				courselist.clear();
 
 				JSONObject c = jArray.getJSONObject(TAG_SRES);
-				
 
 				JSONArray countryListObj = c.getJSONArray(TAG_Course_ARRAY);
 
@@ -345,7 +340,7 @@ public class SearchStudentBased extends SherlockActivity {
 
 					{
 						start++;
-						
+
 						JSONObject c1 = user.getJSONObject(i);
 						JSONObject c2 = c1.getJSONObject(TAG_SRES);
 						authorname = c2.getString(TAG_COURSE_AUTHOR);
@@ -386,8 +381,6 @@ public class SearchStudentBased extends SherlockActivity {
 						cnt.setstringurl(course_cover_image);
 						cnt.setaudiourl(audiourl);
 						courselist.add(cnt);
-
-						
 
 						dataAdapter = new MyCustomAdapter(
 								SearchStudentBased.this,
@@ -433,9 +426,8 @@ public class SearchStudentBased extends SherlockActivity {
 				jArray = jsonParser.makeHttpRequest(Config.ServerUrl
 						+ Config.searchselecturl, "POST", nameValuePairs);
 				JSONObject c = jArray.getJSONObject(TAG_SRES);
-				
+
 				user = c.getJSONArray(TAG_Course_ARRAY);
-			
 
 				httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 				response = httpclient.execute(httpPost);
@@ -448,22 +440,22 @@ public class SearchStudentBased extends SherlockActivity {
 					content = out.toString();
 				} else {
 					// Closes the connection.
-					
+
 					response.getEntity().getContent().close();
 					throw new IOException(statusLine.getReasonPhrase());
 				}
 			} catch (ClientProtocolException e) {
-				
+
 				content = e.getMessage();
 				// error = true;
 				cancel(true);
 			} catch (IOException e) {
-				
+
 				content = e.getMessage();
 				// error = true;
 				cancel(true);
 			} catch (Exception e) {
-				
+
 				content = e.getMessage();
 				// error = true;
 				cancel(true);
@@ -515,7 +507,7 @@ public class SearchStudentBased extends SherlockActivity {
 		public View getView(int position, View convertView, ViewGroup parent) {
 
 			ViewHolder holder = null;
-			
+
 			if (convertView == null) {
 
 				LayoutInflater vi = (LayoutInflater) getApplicationContext()
@@ -532,7 +524,8 @@ public class SearchStudentBased extends SherlockActivity {
 						.findViewById(R.id.ratingimage);
 				holder.promoimage = (ImageView) convertView
 						.findViewById(R.id.promoimage);
-				holder.enroll = (TextView) convertView.findViewById(R.id.enroll);
+				holder.enroll = (TextView) convertView
+						.findViewById(R.id.enroll);
 				convertView.setTag(holder);
 
 			} else {
@@ -643,16 +636,15 @@ public class SearchStudentBased extends SherlockActivity {
 
 			JSONObject json = jLogin.makeHttpRequest(Config.ServerUrl
 					+ Config.purchasenumberselection, "POST", params1);
-		
+
 			if (json != null) {
 				try {
 					if (json != null) {
-					
 
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 
 						numofrows = jUser.getString(TAG_NUMBER_OF_ROWS);
-						
+
 					}
 
 				}
@@ -690,7 +682,7 @@ public class SearchStudentBased extends SherlockActivity {
 				String url = Config.common_url + "?course_id=" + courseidurl
 						+ "&authorid=" + instructoridurl + "&pur=" + numofrows
 						+ "&catcourse=&coursetype=";
-				
+
 				Intent ii = new Intent(Intent.ACTION_VIEW);
 				ii.setData(Uri.parse(url));
 				ii.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -701,7 +693,6 @@ public class SearchStudentBased extends SherlockActivity {
 
 	}
 
-	
 	@Override
 	public void onBackPressed() {
 

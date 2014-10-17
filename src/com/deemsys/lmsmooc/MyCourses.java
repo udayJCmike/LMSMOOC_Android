@@ -148,7 +148,7 @@ public class MyCourses extends Fragment {
 	}
 
 	public void grabURL(String url) {
-	
+
 		new GrabURL().execute(url);
 	}
 
@@ -176,10 +176,9 @@ public class MyCourses extends Fragment {
 			super.onPostExecute(file_url);
 
 			displayCourseList(content);
-			 if ((cDialog != null) && cDialog.isShowing()) { 
-				 cDialog.dismiss();
-			   }
-			
+			if ((cDialog != null) && cDialog.isShowing()) {
+				cDialog.dismiss();
+			}
 
 		}
 
@@ -189,7 +188,6 @@ public class MyCourses extends Fragment {
 			try {
 
 				JSONObject c = jArray.getJSONObject(TAG_SRES);
-				
 
 				JSONArray countryListObj = c.getJSONArray(TAG_Course_ARRAY);
 
@@ -308,10 +306,9 @@ public class MyCourses extends Fragment {
 
 				HttpPost httpPost = new HttpPost(URL);
 
-				
 				List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(
 						2);
-				
+
 				nameValuePairs.add(new BasicNameValuePair("start", String
 						.valueOf(start)));
 				nameValuePairs.add(new BasicNameValuePair("limit", String
@@ -321,9 +318,8 @@ public class MyCourses extends Fragment {
 				jArray = jsonParser.makeHttpRequest(Config.ServerUrl
 						+ Config.mycourseurl, "POST", nameValuePairs);
 				JSONObject c = jArray.getJSONObject(TAG_SRES);
-				
+
 				user = c.getJSONArray(TAG_Course_ARRAY);
-			
 
 				httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 				response = httpclient.execute(httpPost);
@@ -336,22 +332,21 @@ public class MyCourses extends Fragment {
 					content = out.toString();
 				} else {
 
-					
 					response.getEntity().getContent().close();
 					throw new IOException(statusLine.getReasonPhrase());
 				}
 			} catch (ClientProtocolException e) {
-				
+
 				content = e.getMessage();
 				// error = true;
 				cancel(true);
 			} catch (IOException e) {
-				
+
 				content = e.getMessage();
 				// error = true;
 				cancel(true);
 			} catch (Exception e) {
-				
+
 				content = e.getMessage();
 				// error = true;
 				cancel(true);
@@ -391,7 +386,7 @@ public class MyCourses extends Fragment {
 		public View getView(int position, View convertView, ViewGroup parent) {
 
 			ViewHolder holder = null;
-			
+
 			if (convertView == null) {
 
 				LayoutInflater vi = (LayoutInflater) getActivity()
@@ -423,7 +418,6 @@ public class MyCourses extends Fragment {
 			Picasso.with(getActivity()).load(country.getstringurl())
 					.into(holder.cover);
 
-			
 			if (country.getpromocheck().equalsIgnoreCase("1")) {
 				holder.promoimage.setImageResource(R.drawable.promocode);
 			} else {
@@ -514,11 +508,10 @@ public class MyCourses extends Fragment {
 
 			JSONObject json = jLogin.makeHttpRequest(Config.ServerUrl
 					+ Config.purchasenumberselection, "POST", params1);
-			
+
 			if (json != null) {
 				try {
 					if (json != null) {
-						
 
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 
@@ -542,7 +535,7 @@ public class MyCourses extends Fragment {
 		@Override
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
-			
+
 			pDialog.dismiss();
 
 			Intent i = new Intent(getActivity(), CourseDetails.class);
@@ -558,16 +551,17 @@ public class MyCourses extends Fragment {
 		}
 
 	}
+
 	@Override
 	public void onPause() {
-	    super.onPause();
+		super.onPause();
 
-	    if ((pDialog != null) && pDialog.isShowing())
-	    	pDialog.dismiss();
-	    pDialog = null;
-	
-	   if ((cDialog != null) && cDialog.isShowing())
-	    	cDialog.dismiss();
-	    cDialog = null;
+		if ((pDialog != null) && pDialog.isShowing())
+			pDialog.dismiss();
+		pDialog = null;
+
+		if ((cDialog != null) && cDialog.isShowing())
+			cDialog.dismiss();
+		cDialog = null;
 	}
 }

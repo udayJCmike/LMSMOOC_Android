@@ -100,23 +100,6 @@ android:fillViewport="true" >
         <View
             android:layout_width="fill_parent"
             android:layout_height="35dp" />
-
-        <EditText
-            android:id="@+id/password"
-            style="@style/custom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_edittext"
-            android:drawableLeft="@drawable/password"
-            android:ems="10"
-             android:drawablePadding="10dp"
-            android:hint="@string/password"
-            android:inputType="textPassword"
-            android:singleLine="true" />
-
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="35dp" />
  <TextView
             android:id="@+id/selecttopic"
             style="@style/custom"

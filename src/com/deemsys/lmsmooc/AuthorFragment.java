@@ -10,9 +10,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -44,7 +46,7 @@ public class AuthorFragment extends Fragment {
 	TextView authorname, education, aboutauthor;
 	ImageView avatarimg;
 	Button followunfollow;
-
+	public ProgressDialog pDialog;
 	String author_firstname, author_lastname, author_education,
 			author_avatar_url, about_auhtor, followcheck, numofrows;
 
@@ -92,10 +94,15 @@ public class AuthorFragment extends Fragment {
 				if (isInternetPresent && followcheck.equalsIgnoreCase("0")) {
 					new InsertFavorite().execute();
 					followcheck = "1";
+					followunfollow.setBackgroundColor(Color
+							.parseColor("#F0AD4E"));
 					followunfollow.setText("Unfollow Author");
-				} else if (isInternetPresent&& followcheck.equalsIgnoreCase("1")) {
+				} else if (isInternetPresent
+						&& followcheck.equalsIgnoreCase("1")) {
 					new UpdateFavorite().execute();
 					followcheck = "0";
+					followunfollow.setBackgroundColor(Color
+							.parseColor("#5CB85C"));
 					followunfollow.setText("Follow Author");
 				} else {
 					AlertDialog alertDialog = new AlertDialog.Builder(
@@ -128,6 +135,11 @@ public class AuthorFragment extends Fragment {
 	class FetchAuthor extends AsyncTask<String, String, String> {
 		@Override
 		protected void onPreExecute() {
+			pDialog = new ProgressDialog(getActivity());
+			pDialog.setMessage("Please wait...");
+			pDialog.setIndeterminate(false);
+			pDialog.setCancelable(false);
+			pDialog.show();
 
 		}
 
@@ -139,8 +151,11 @@ public class AuthorFragment extends Fragment {
 			education.setText(author_education);
 			aboutauthor.setText(about_auhtor);
 			if (followcheck.equalsIgnoreCase("0")) {
+
+				followunfollow.setBackgroundColor(Color.parseColor("#5CB85C"));
 				followunfollow.setText("Follow Author");
 			} else if (followcheck.equalsIgnoreCase("1")) {
+				followunfollow.setBackgroundColor(Color.parseColor("#F0AD4E"));
 				followunfollow.setText("Unfollow Author");
 			}
 			new LoadImage().execute(LoginActivity.avatar_url + "UserImages/"
@@ -178,6 +193,8 @@ public class AuthorFragment extends Fragment {
 						about_auhtor = c2.getString(TAG_Author_aboutme);
 						author_avatar_url = c2.getString(TAG_Author_avatar);
 						followcheck = c2.getString(TAG_follow_count);
+						System.out
+								.println("follow check value::" + followcheck);
 
 					}
 
@@ -323,6 +340,7 @@ public class AuthorFragment extends Fragment {
 			} else {
 
 			}
+			pDialog.dismiss();
 		}
 	}
 }

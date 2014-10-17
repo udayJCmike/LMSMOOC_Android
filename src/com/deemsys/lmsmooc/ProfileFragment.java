@@ -80,13 +80,12 @@ public class ProfileFragment extends Fragment {
 	String urlServer = Config.ServerUrl + Config.uploadpictwo;
 
 	String captializefirstname, captitalizelastname;
-	EditText firstnameedit, lastnameedit, usernameedit, emailedit, avataredit,
-			passwordedit;
+	EditText firstnameedit, lastnameedit, usernameedit, emailedit, avataredit;
 	Boolean isInternetPresent = false;
 	ConnectionDetector cd;
 	int genderspinpos, interestedinspin;
 	String firstname, lastname, username, email, interestedin, avatar, logins,
-			password, genderstring;
+			genderstring;
 	public static String updateurl, avatarurl;
 	int i, count;
 	String selectiongender, successL;
@@ -135,14 +134,14 @@ public class ProfileFragment extends Fragment {
 		lastnameedit = (EditText) rootView.findViewById(R.id.lastname);
 		emailedit = (EditText) rootView.findViewById(R.id.email);
 		usernameedit = (EditText) rootView.findViewById(R.id.username);
-		passwordedit = (EditText) rootView.findViewById(R.id.password);
+		// passwordedit = (EditText) rootView.findViewById(R.id.password);
 		genderselecthid = (TextView) rootView.findViewById(R.id.proftextgender);
 		genderselecthid.setVisibility(View.INVISIBLE);
 		firstnameedit.setText(Config.firstname);
 		lastnameedit.setText(Config.lastname);
 		usernameedit.setText(Config.username);
 		emailedit.setText(Config.email);
-		passwordedit.setText(Config.password);
+		// passwordedit.setText(Config.password);
 
 		radioGroup1 = (RadioGroup) rootView.findViewById(R.id.radioGroup1);
 		radioGroup2 = (RadioGroup) rootView.findViewById(R.id.radioGroup2);
@@ -321,34 +320,6 @@ public class ProfileFragment extends Fragment {
 
 		});
 
-		passwordedit.addTextChangedListener(new TextWatcher() {
-
-			public void onTextChanged(CharSequence s, int start, int before,
-					int count) {
-
-				String str = s.toString();
-				if (str.length() > 0 && str.startsWith(" ")) {
-
-					passwordedit.setText("");
-				} else {
-
-				}
-
-			}
-
-			@Override
-			public void afterTextChanged(Editable s) {
-
-			}
-
-			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count,
-					int after) {
-
-			}
-
-		});
-
 		if (genderstring.equalsIgnoreCase("Male")) {
 			genderstring = "male";
 			radioGroup2.check(R.id.radiomale);
@@ -384,7 +355,7 @@ public class ProfileFragment extends Fragment {
 				firstname = firstnameedit.getText().toString();
 				lastname = lastnameedit.getText().toString();
 				username = usernameedit.getText().toString();
-				password = passwordedit.getText().toString();
+
 				email = emailedit.getText().toString();
 
 				// if(imageuploaded==false){
@@ -1095,8 +1066,7 @@ public class ProfileFragment extends Fragment {
 
 			params1.add(new BasicNameValuePair("username", usernameedit
 					.getText().toString()));
-			params1.add(new BasicNameValuePair("password", passwordedit
-					.getText().toString()));
+
 			params1.add(new BasicNameValuePair("interested_in", interestedin));
 			params1.add(new BasicNameValuePair("gender", genderstring));
 			params1.add(new BasicNameValuePair("avatar", selectedimage));
@@ -1104,7 +1074,7 @@ public class ProfileFragment extends Fragment {
 			Config.lastname = caplast.toString();
 			Config.username = usernameedit.getText().toString();
 			Config.email = emailedit.getText().toString();
-			Config.password = passwordedit.getText().toString();
+
 			Config.interested_in = interestedin;
 			Config.gender = genderstring;
 			Config.avatar = selectedimage;

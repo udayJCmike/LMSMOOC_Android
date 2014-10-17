@@ -126,7 +126,7 @@ public class MyFavoriteCategory extends SherlockFragment {
 				@Override
 				public void onItemClick(AdapterView<?> arg0, View arg1,
 						int arg2, long arg3) {
-					
+
 					String item = category.get(arg2).getcategory();
 
 					Intent i = new Intent(getActivity(),
@@ -150,22 +150,19 @@ public class MyFavoriteCategory extends SherlockFragment {
 			List<NameValuePair> params1 = new ArrayList<NameValuePair>();
 
 			params1.add(new BasicNameValuePair("student_id", Config.student_id));
-			
+
 			jArray = jsonParser.makeHttpRequest(Config.ServerUrl
 					+ Config.myfavoritecategoryurl, "POST", params1);
-
-			
 
 			try {
 				if (jArray != null) {
 
 					JSONObject c = jArray.getJSONObject(TAG_SRESL);
-					
+
 					user = c.getJSONArray(TAG_Category_ARRAY);
-					
 
 					for (int i = 0; i < user.length(); i++) {
-						
+
 						JSONObject c1 = user.getJSONObject(i);
 						JSONObject c2 = c1.getJSONObject(TAG_SRESL);
 						category_name = c2.getString(TAG_Category_NAME);
@@ -174,8 +171,6 @@ public class MyFavoriteCategory extends SherlockFragment {
 						cnt.setcategory(category_name);
 
 						category.add(cnt);
-
-						
 
 					}
 

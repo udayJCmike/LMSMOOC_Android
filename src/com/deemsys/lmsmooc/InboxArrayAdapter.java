@@ -83,7 +83,6 @@ public class InboxArrayAdapter extends ArrayAdapter<Inbox> {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 
-		
 		View row = convertView;
 		final UserHolder holder;
 
@@ -101,7 +100,6 @@ public class InboxArrayAdapter extends ArrayAdapter<Inbox> {
 					.findViewById(R.id.abs__list_item);
 
 			holder.importantstatus = (ImageView) row.findViewById(R.id.redbtn);
-
 
 			row.setTag(holder);
 		} else {

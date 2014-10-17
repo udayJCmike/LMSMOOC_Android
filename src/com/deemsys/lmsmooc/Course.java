@@ -22,10 +22,9 @@ public class Course {
 	String promocheck;
 	String audiourl;
 
-
 	public Course(String authorname, String course_name, String costw,
 			String course_id2, String instructorid, String bitmap, String rat) {
-		
+
 		course_id = course_id2;
 		instructor_id = instructorid;
 		course = course_name;
@@ -39,7 +38,7 @@ public class Course {
 	public Course(String authorname, String course_name, String costw,
 			String course_id2, String instructorid, String bitmap, String rat,
 			String ifmycour, String audiorl) {
-	
+
 		course_id = course_id2;
 		instructor_id = instructorid;
 		course = course_name;
@@ -55,7 +54,7 @@ public class Course {
 	public Course(String authorname, String course_name, String costw,
 			String course_id2, String instructorid, String bitmap, String rat,
 			String coures_desp, String ifmycour, String audio) {
-	
+
 		course_id = course_id2;
 		instructor_id = instructorid;
 		course = course_name;

@@ -87,7 +87,6 @@ public class CategoryCourses extends SherlockFragmentActivity {
 	private static final String TAG_COURSE_RATINGS = "user_ratings";
 	private static final String TAG_course_cover_image = "course_cover_image";
 
-	
 	private static final String TAG_INSTRUCTOR_ID = "instructor_id";
 	private static final String TAG_COURSE_ID = "course_id";
 	private static final String TAG_SUCCESS = "success";
@@ -157,7 +156,7 @@ public class CategoryCourses extends SherlockFragmentActivity {
 				int lastInScreen = firstVisibleItem + visibleItemCount;
 				if ((lastInScreen == totalItemCount) && !(loadingMore)) {
 
-				grabURL(Config.ServerUrl + Config.categoryselectionurl);
+					grabURL(Config.ServerUrl + Config.categoryselectionurl);
 				}
 			}
 		});
@@ -165,7 +164,7 @@ public class CategoryCourses extends SherlockFragmentActivity {
 	}
 
 	public void grabURL(String url) {
-		
+
 		new GrabURL().execute(url);
 	}
 
@@ -246,7 +245,6 @@ public class CategoryCourses extends SherlockFragmentActivity {
 			try {
 
 				JSONObject c = jArray.getJSONObject(TAG_SRES);
-				
 
 				JSONArray countryListObj = c.getJSONArray(TAG_Course_ARRAY);
 
@@ -256,7 +254,7 @@ public class CategoryCourses extends SherlockFragmentActivity {
 				} else {
 					for (int i = 0; i < countryListObj.length(); i++) {
 						start++;
-						
+
 						JSONObject c1 = user.getJSONObject(i);
 						JSONObject c2 = c1.getJSONObject(TAG_SRES);
 						authorname = c2.getString(TAG_COURSE_AUTHOR);
@@ -295,8 +293,8 @@ public class CategoryCourses extends SherlockFragmentActivity {
 						cnt.setaudiourl(audiourl);
 						courselist.add(cnt);
 
-					dataAdapter.add(cnt);
-						
+						dataAdapter.add(cnt);
+
 					}
 
 					dataAdapter.notifyDataSetChanged();
@@ -338,9 +336,8 @@ public class CategoryCourses extends SherlockFragmentActivity {
 						+ Config.categoryselectionurlbrowse, "POST",
 						nameValuePairs);
 				JSONObject c = jArray.getJSONObject(TAG_SRES);
-				
+
 				user = c.getJSONArray(TAG_Course_ARRAY);
-				
 
 				httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 				response = httpclient.execute(httpPost);
@@ -352,22 +349,22 @@ public class CategoryCourses extends SherlockFragmentActivity {
 					out.close();
 					content = out.toString();
 				} else {
-					
+
 					response.getEntity().getContent().close();
 					throw new IOException(statusLine.getReasonPhrase());
 				}
 			} catch (ClientProtocolException e) {
-			
+
 				content = e.getMessage();
 				error = true;
 				cancel(true);
 			} catch (IOException e) {
-				
+
 				content = e.getMessage();
 				error = true;
 				cancel(true);
 			} catch (Exception e) {
-				
+
 				content = e.getMessage();
 				error = true;
 				cancel(true);
@@ -392,14 +389,14 @@ public class CategoryCourses extends SherlockFragmentActivity {
 			TextView code;
 			TextView name;
 			ImageView promoimage;
-			//TextView enroll;
+			// TextView enroll;
 			TextView cost;
 			ImageView cover;
 			ImageView ratingshow;
 		}
 
 		public void add(Course country) {
-			
+
 			this.countryList.add(country);
 		}
 
@@ -407,7 +404,7 @@ public class CategoryCourses extends SherlockFragmentActivity {
 		public View getView(int position, View convertView, ViewGroup parent) {
 
 			ViewHolder holder = null;
-	
+
 			if (convertView == null) {
 
 				LayoutInflater vi = (LayoutInflater) getApplicationContext()
@@ -422,7 +419,8 @@ public class CategoryCourses extends SherlockFragmentActivity {
 				holder.cover = (ImageView) convertView.findViewById(R.id.cover);
 				holder.ratingshow = (ImageView) convertView
 						.findViewById(R.id.ratingimage);
-			//	holder.enroll = (TextView) convertView.findViewById(R.id.enroll);
+				// holder.enroll = (TextView)
+				// convertView.findViewById(R.id.enroll);
 				convertView.setTag(holder);
 
 			} else {
@@ -451,11 +449,11 @@ public class CategoryCourses extends SherlockFragmentActivity {
 			} else {
 				holder.promoimage.setImageResource(R.drawable.click);
 			}
-//			if (country.getifmycourse().equalsIgnoreCase("1")) {
-//				holder.enroll.setVisibility(View.VISIBLE);
-//			} else {
-//				holder.enroll.setVisibility(View.INVISIBLE);
-//			}
+			// if (country.getifmycourse().equalsIgnoreCase("1")) {
+			// holder.enroll.setVisibility(View.VISIBLE);
+			// } else {
+			// holder.enroll.setVisibility(View.INVISIBLE);
+			// }
 			if (country.getrating().equalsIgnoreCase("0")) {
 				holder.ratingshow.setImageResource(R.drawable.zero);
 			} else if (country.getrating().equalsIgnoreCase("1")) {
@@ -500,15 +498,15 @@ public class CategoryCourses extends SherlockFragmentActivity {
 
 			JSONObject json = jLogin.makeHttpRequest(Config.ServerUrl
 					+ Config.purchasenumberselection, "POST", params1);
-		
+
 			if (json != null) {
 				try {
 					if (json != null) {
-					
+
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 
 						numofrows = jUser.getString(TAG_NUMBER_OF_ROWS);
-						
+
 					}
 
 				}
@@ -527,31 +525,31 @@ public class CategoryCourses extends SherlockFragmentActivity {
 		@Override
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
-			
-			pDialog.dismiss();
-//			if (checkstatus.equalsIgnoreCase("1")) {
-//				Intent i = new Intent(getApplicationContext(),
-//						CourseDetails.class);
-//				i.putExtra("courseid", course_id_topass);
-//				i.putExtra("course_name", course_name_to_pass);
-//				i.putExtra("course_description", course_descript_to_pass);
-//				i.putExtra("instructor_id", instructoridurl);
-//				i.putExtra("enroll_students", course_enrolled_passing);
-//				i.putExtra("audio_url", audiourlpassing);
-//				i.putExtra("rating", rating_count);
-//				startActivity(i);
-//			}
 
-//				else {
-				String url = Config.browsecommon_url + "?course_id="
-						+ courseidurl + "&authorid=" + instructoridurl
-						+ "&pur=" + numofrows + "&catcourse=&coursetype=";
-				
-				Intent ii = new Intent(Intent.ACTION_VIEW);
-				ii.setData(Uri.parse(url));
-				ii.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				getApplicationContext().startActivity(ii);
-//			}
+			pDialog.dismiss();
+			// if (checkstatus.equalsIgnoreCase("1")) {
+			// Intent i = new Intent(getApplicationContext(),
+			// CourseDetails.class);
+			// i.putExtra("courseid", course_id_topass);
+			// i.putExtra("course_name", course_name_to_pass);
+			// i.putExtra("course_description", course_descript_to_pass);
+			// i.putExtra("instructor_id", instructoridurl);
+			// i.putExtra("enroll_students", course_enrolled_passing);
+			// i.putExtra("audio_url", audiourlpassing);
+			// i.putExtra("rating", rating_count);
+			// startActivity(i);
+			// }
+
+			// else {
+			String url = Config.browsecommon_url + "?course_id=" + courseidurl
+					+ "&authorid=" + instructoridurl + "&pur=" + numofrows
+					+ "&catcourse=&coursetype=";
+
+			Intent ii = new Intent(Intent.ACTION_VIEW);
+			ii.setData(Uri.parse(url));
+			ii.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			getApplicationContext().startActivity(ii);
+			// }
 
 		}
 
@@ -596,15 +594,15 @@ public class CategoryCourses extends SherlockFragmentActivity {
 
 			JSONObject json = jLogin.makeHttpRequest(Config.ServerUrl
 					+ Config.removefrommycategoryurl, "POST", params1);
-			
+
 			if (json != null) {
 				try {
 					if (json != null) {
-						
+
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 
 						numofrows = jUser.getString(TAG_SUCCESS);
-						
+
 					}
 
 				}
@@ -623,7 +621,7 @@ public class CategoryCourses extends SherlockFragmentActivity {
 		@Override
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
-			
+
 			// pDialog.dismiss();
 
 		}
@@ -652,11 +650,10 @@ public class CategoryCourses extends SherlockFragmentActivity {
 
 			JSONObject json = jLogin
 					.makeHttpRequest(avatarurl, "POST", params1);
-		
+
 			if (json != null) {
 				try {
 					if (json != null) {
-						
 
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 						successL = jUser.getString(TAG_SUCCESS);
@@ -664,7 +661,7 @@ public class CategoryCourses extends SherlockFragmentActivity {
 						Config.browsecommon_url = jUser
 								.getString(TAG_AVATAR_URL);
 						;
-						
+
 					}
 
 				}

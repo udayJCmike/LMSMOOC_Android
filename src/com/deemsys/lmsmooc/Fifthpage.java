@@ -42,7 +42,6 @@ public class Fifthpage extends Fragment {
 			public void onClick(View arg0) {
 				Intent i = new Intent(getActivity(), StudentSignup.class);
 				startActivity(i);
-				
 
 			}
 
@@ -76,7 +75,7 @@ public class Fifthpage extends Fragment {
 		// Take appropriate action for each action item click
 		switch (item.getItemId()) {
 		case R.id.browsecourse:
-			
+
 			Intent i = new Intent(getActivity(), BrowseCourse.class);
 			startActivity(i);
 			return true;

@@ -126,7 +126,7 @@ public class PaidCourses extends Fragment {
 	public void loaddatas() {
 
 		courselist = new ArrayList<Course>();
-		
+
 		dataAdapter = new MyCustomAdapter(getActivity(),
 				R.layout.course_overview, courselist);
 		listView.setAdapter(dataAdapter);
@@ -134,7 +134,7 @@ public class PaidCourses extends Fragment {
 		listView.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				
+
 				if (position < courselist.size()) {
 					Course country = (Course) parent
 							.getItemAtPosition(position);
@@ -146,7 +146,7 @@ public class PaidCourses extends Fragment {
 					course_name_to_pass = country.getCode();
 					course_enrolled_passing = country.getstudentsenrolled();
 					checkstatus = country.getifmycourse();
-				
+
 					courseidurl = country.getcourseid();
 					rating_count = country.getrating();
 					instructoridurl = country.getinsid();
@@ -168,7 +168,6 @@ public class PaidCourses extends Fragment {
 				int lastInScreen = firstVisibleItem + visibleItemCount;
 				if ((lastInScreen == totalItemCount) && !(loadingMore)) {
 
-				
 					grabURL(Config.ServerUrl + Config.paidcourseurl);
 				}
 			}
@@ -176,7 +175,7 @@ public class PaidCourses extends Fragment {
 	}
 
 	public void grabURL(String url) {
-		
+
 		new GrabURL().execute(url);
 	}
 
@@ -216,8 +215,8 @@ public class PaidCourses extends Fragment {
 
 			super.onPostExecute(file_url);
 			if (user.length() == 0 && start == 0) {
-				AlertDialog alertDialog = new AlertDialog.Builder(
-						getActivity()).create();
+				AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
+						.create();
 
 				alertDialog.setTitle("Sorry User");
 
@@ -249,7 +248,6 @@ public class PaidCourses extends Fragment {
 			try {
 
 				JSONObject c = jArray.getJSONObject(TAG_SRES);
-				
 
 				JSONArray countryListObj = c.getJSONArray(TAG_Course_ARRAY);
 
@@ -266,7 +264,7 @@ public class PaidCourses extends Fragment {
 
 					{
 						start++;
-						
+
 						JSONObject c1 = user.getJSONObject(i);
 						JSONObject c2 = c1.getJSONObject(TAG_SRES);
 						ifmycoursepresent = c2.getString(TAG_Check_);
@@ -307,9 +305,8 @@ public class PaidCourses extends Fragment {
 						cnt.setdescription(course_description);
 						courselist.add(cnt);
 
-						
 						dataAdapter.add(cnt);
-						
+
 					}
 
 					dataAdapter.notifyDataSetChanged();
@@ -350,9 +347,9 @@ public class PaidCourses extends Fragment {
 				jArray = jsonParser.makeHttpRequest(Config.ServerUrl
 						+ Config.paidcourseurl, "POST", nameValuePairs);
 				JSONObject c = jArray.getJSONObject(TAG_SRES);
-				
+
 				user = c.getJSONArray(TAG_Course_ARRAY);
-				
+
 				httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 				response = httpclient.execute(httpPost);
 
@@ -364,22 +361,22 @@ public class PaidCourses extends Fragment {
 					content = out.toString();
 				} else {
 					// Closes the connection.
-					
+
 					response.getEntity().getContent().close();
 					throw new IOException(statusLine.getReasonPhrase());
 				}
 			} catch (ClientProtocolException e) {
-				
+
 				content = e.getMessage();
 				// error = true;
 				cancel(true);
 			} catch (IOException e) {
-				
+
 				content = e.getMessage();
 				// error = true;
 				cancel(true);
 			} catch (Exception e) {
-				
+
 				content = e.getMessage();
 				// error = true;
 				cancel(true);
@@ -420,7 +417,7 @@ public class PaidCourses extends Fragment {
 		public View getView(int position, View convertView, ViewGroup parent) {
 
 			ViewHolder holder = null;
-			
+
 			if (convertView == null) {
 
 				LayoutInflater vi = (LayoutInflater) getActivity()
@@ -437,7 +434,8 @@ public class PaidCourses extends Fragment {
 						.findViewById(R.id.ratingimage);
 				holder.promoimage = (ImageView) convertView
 						.findViewById(R.id.promoimage);
-				holder.enroll = (TextView) convertView.findViewById(R.id.enroll);
+				holder.enroll = (TextView) convertView
+						.findViewById(R.id.enroll);
 				convertView.setTag(holder);
 
 			} else {
@@ -449,7 +447,7 @@ public class PaidCourses extends Fragment {
 			holder.name.setText(country.getName());
 			holder.cost.setText("$ " + country.getRegion());
 			holder.cover.setImageBitmap(country.getBitmap());
-		
+
 			Picasso.with(getActivity()).load(country.getstringurl())
 					.into(holder.cover);
 
@@ -458,7 +456,7 @@ public class PaidCourses extends Fragment {
 			} else {
 				holder.enroll.setVisibility(View.INVISIBLE);
 			}
-		
+
 			if (country.getpromocheck().equalsIgnoreCase("1")) {
 				holder.promoimage.setImageResource(R.drawable.promocode);
 			} else {
@@ -549,16 +547,15 @@ public class PaidCourses extends Fragment {
 
 			JSONObject json = jLogin.makeHttpRequest(Config.ServerUrl
 					+ Config.purchasenumberselection, "POST", params1);
-		
+
 			if (json != null) {
 				try {
 					if (json != null) {
-						
 
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 
 						numofrows = jUser.getString(TAG_NUMBER_OF_ROWS);
-						
+
 					}
 
 				}
@@ -577,7 +574,7 @@ public class PaidCourses extends Fragment {
 		@Override
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
-			
+
 			pDialog.dismiss();
 
 			if (checkstatus.equalsIgnoreCase("1")) {
@@ -598,7 +595,7 @@ public class PaidCourses extends Fragment {
 				String url = Config.common_url + "?course_id=" + courseidurl
 						+ "&authorid=" + instructoridurl + "&pur=" + numofrows
 						+ "&catcourse=&coursetype=";
-			
+
 				Intent ii = new Intent(Intent.ACTION_VIEW);
 				ii.setData(Uri.parse(url));
 				ii.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

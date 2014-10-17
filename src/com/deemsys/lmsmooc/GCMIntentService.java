@@ -8,14 +8,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-
 import com.google.android.gcm.GCMBaseIntentService;
-
 
 public class GCMIntentService extends GCMBaseIntentService {
 	public static int i = 0;
 	public static int value = 0;
-	//private static final String TAG = "GCMIntentService";
+	// private static final String TAG = "GCMIntentService";
 	static Context con;
 	private Controller aController = null;
 

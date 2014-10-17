@@ -142,18 +142,15 @@ public class Categoryunfavlist extends SherlockActivity {
 			jArray = jsonParser.makeHttpRequest(Config.ServerUrl
 					+ Config.unfavoritecategoryurl, "POST", params1);
 
-			
-
 			try {
 				if (jArray != null) {
 
 					JSONObject c = jArray.getJSONObject(TAG_SRESL);
-					
+
 					user = c.getJSONArray(TAG_Category_ARRAY);
-					
 
 					for (int i = 0; i < user.length(); i++) {
-						
+
 						JSONObject c1 = user.getJSONObject(i);
 						JSONObject c2 = c1.getJSONObject(TAG_SRESL);
 						category_name = c2.getString(TAG_Category_NAME);
@@ -163,8 +160,6 @@ public class Categoryunfavlist extends SherlockActivity {
 						cnt.setName(category_name);
 
 						category.add(cnt);
-
-					
 
 					}
 
@@ -201,7 +196,7 @@ public class Categoryunfavlist extends SherlockActivity {
 				}
 			}
 			strArray = result.split("\\,");
-			
+
 			if (result.equalsIgnoreCase("")) {
 				AlertDialog alertDialog = new AlertDialog.Builder(
 						Categoryunfavlist.this).create();
@@ -267,9 +262,9 @@ public class Categoryunfavlist extends SherlockActivity {
 		protected String doInBackground(String... params) {
 
 			String favcourse = params[0];
-			
+
 			List<NameValuePair> params1 = new ArrayList<NameValuePair>();
-			
+
 			params1.add(new BasicNameValuePair("category_name", favcourse));
 			params1.add(new BasicNameValuePair("student_id", Config.student_id));
 
@@ -277,15 +272,14 @@ public class Categoryunfavlist extends SherlockActivity {
 
 			JSONObject json = jLogin.makeHttpRequest(Config.ServerUrl
 					+ Config.addtomyfavoritecategoryurl, "POST", params1);
-			
+
 			if (json != null) {
 				try {
 					if (json != null) {
-						
+
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 
 						success = jUser.getString(TAG_SUCCESS);
-						
 
 					}
 
@@ -305,7 +299,6 @@ public class Categoryunfavlist extends SherlockActivity {
 		@Override
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
-		
 
 			finish();
 

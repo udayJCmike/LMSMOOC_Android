@@ -2,7 +2,7 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff" >
+    android:background="#303030" >
 
     <FrameLayout
         android:id="@+id/content_frame"
@@ -14,24 +14,41 @@
         android:layout_width="240dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="#ffffff"
+        android:background="#303030"
         android:orientation="vertical" >
 
-        <com.deemsys.lmsmooc.CustomImageView
-            android:id="@+id/ivwLogo"
-            android:layout_width="60dp"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:layout_centerInParent="true"
-            android:contentDescription="img"
-            android:gravity="center"
-            android:scaleType="centerCrop"
-            android:src="@drawable/boyimage" />
+            android:background="#303030" >
+
+            <ImageView
+                android:id="@+id/ivwLogo"
+                android:layout_width="120dp"
+                android:scaleType="fitXY"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:background="#303030"
+                android:src="@drawable/defaultprofile" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/ivwLogo"
+                android:background="#303030"
+                android:gravity="center"
+                android:text=""
+                android:textSize="20sp" />
+        </RelativeLayout>
 
         <ListView
             android:id="@+id/listview_drawer"
             android:layout_width="240dp"
             android:layout_height="match_parent"
-            android:background="#111"
+            android:background="#303030"
             android:choiceMode="singleChoice"
             android:divider="@android:color/transparent"
             android:dividerHeight="0dp" />

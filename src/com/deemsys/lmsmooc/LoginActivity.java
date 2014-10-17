@@ -128,14 +128,13 @@ public class LoginActivity extends SherlockActivity {
 			@Override
 			public void onClick(View arg0) {
 
-				
 				String username = usname.getText().toString();
 				String password = paswd.getText().toString();
 
 				if (!username.equals("") && !password.equals("")) {
 
 					if (isInternetPresent) {
-						
+
 						new AttemptLogin().execute();
 
 					} else {
@@ -262,21 +261,20 @@ public class LoginActivity extends SherlockActivity {
 			params1.add(new BasicNameValuePair("id", "3"));
 			params1.add(new BasicNameValuePair("student_id", Config.student_id));
 			JsonParser jLogin = new JsonParser();
-			
+
 			JSONObject json = jLogin
 					.makeHttpRequest(avatarurl, "POST", params1);
-			
+
 			if (json != null) {
 				try {
 					if (json != null) {
-						
 
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 						successL = jUser.getString(TAG_SUCCESS);
 
 						Config.common_url = jUser.getString(TAG_AVATAR_URL);
 						;
-						
+
 					}
 
 				}
@@ -314,14 +312,13 @@ public class LoginActivity extends SherlockActivity {
 			params1.add(new BasicNameValuePair("id", "1"));
 			params1.add(new BasicNameValuePair("student_id", Config.student_id));
 			JsonParser jLogin = new JsonParser();
-			
+
 			JSONObject json = jLogin
 					.makeHttpRequest(avatarurl, "POST", params1);
-			
+
 			if (json != null) {
 				try {
 					if (json != null) {
-						
 
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 						successL = jUser.getString(TAG_SUCCESS);
@@ -365,14 +362,13 @@ public class LoginActivity extends SherlockActivity {
 			params1.add(new BasicNameValuePair("id", "4"));
 			params1.add(new BasicNameValuePair("student_id", Config.student_id));
 			JsonParser jLogin = new JsonParser();
-			
+
 			JSONObject json = jLogin
 					.makeHttpRequest(avatarurl, "POST", params1);
-			
+
 			if (json != null) {
 				try {
 					if (json != null) {
-						
 
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 						successL = jUser.getString(TAG_SUCCESS);
@@ -423,13 +419,12 @@ public class LoginActivity extends SherlockActivity {
 					.toString()));
 
 			JsonParser jLogin = new JsonParser();
-			
+
 			JSONObject json = jLogin.makeHttpRequest(loginurl, "POST", params1);
-			
+
 			if (json != null) {
 				try {
 					if (json != null) {
-					
 
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 						successL = jUser.getString(TAG_SUCCESS);
@@ -447,7 +442,6 @@ public class LoginActivity extends SherlockActivity {
 						Config.role = jUser.getString(TAG_ROLE);
 						Config.enabled = jUser.getString(TAG_ENABLED);
 						Config.student_id = jUser.getString(TAG_STUDENT_ID);
-						
 
 					}
 
@@ -469,10 +463,10 @@ public class LoginActivity extends SherlockActivity {
 		@Override
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
-		
+
 			pDialog.dismiss();
 			if (JsonParser.jss.equals("empty")) {
-			
+
 				AlertDialog alertDialog = new AlertDialog.Builder(
 						LoginActivity.this).create();
 
@@ -544,9 +538,9 @@ public class LoginActivity extends SherlockActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		
+
 		if (sharedpreferences.contains(UserName)) {
-		
+
 			usname.setText(sharedpreferences.getString(UserName, ""));
 			check1.setChecked(true);
 		}
@@ -563,20 +557,17 @@ public class LoginActivity extends SherlockActivity {
 				InputMethodManager.HIDE_NOT_ALWAYS);
 	}
 
-	
 	@Override
 	public void onBackPressed() {
-
-		
 
 	}
 
 	private void calld() {
 		if (check1.isChecked() == true) {
 			String n = usname.getText().toString();
-			
+
 			String u = paswd.getText().toString();
-			
+
 			Editor editor = sharedpreferences.edit();
 			editor.putString(UserName, n);
 			editor.putString(Password, u);

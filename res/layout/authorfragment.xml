@@ -118,7 +118,7 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/mycustom_button"
+       
         android:minHeight="40dp"
         android:text="@string/unfollow"
         android:textColor="#ffffff" />

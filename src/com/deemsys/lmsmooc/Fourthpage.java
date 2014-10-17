@@ -45,7 +45,7 @@ public class Fourthpage extends Fragment {
 		// Take appropriate action for each action item click
 		switch (item.getItemId()) {
 		case R.id.action_settings:
-			
+
 			MainActivity.pager.setCurrentItem(5, true);
 			Fifthpage.newInstance("Fifth, Instance 1");
 			return true;

@@ -29,5 +29,5 @@ public class StudentProfileFragment extends Fragment {
 		// new LoadImage().execute(ProfileActivity.avatar_whole_url);
 		return rootView;
 	}
-	
+
 }

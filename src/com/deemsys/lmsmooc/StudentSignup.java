@@ -1509,8 +1509,6 @@ public class StudentSignup extends Activity {
 
 	class Login extends AsyncTask<String, String, String> {
 
-	
-
 		// public static final String urlE =
 		// "http://192.168.1.158:8888/gpsandroid/service/Contact.php?service=insert";
 		// public static final String urlE =
@@ -1614,10 +1612,10 @@ public class StudentSignup extends Activity {
 		@Override
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
-			
+
 			pDialog.dismiss();
 			if (JsonParser.jss.equals("empty")) {
-			
+
 				AlertDialog alertDialog = new AlertDialog.Builder(
 						StudentSignup.this).create();
 
@@ -1648,7 +1646,7 @@ public class StudentSignup extends Activity {
 			} else {
 
 				new sendemailasync().execute();
-				
+
 			}
 
 		}
@@ -1726,24 +1724,23 @@ public class StudentSignup extends Activity {
 
 			alertDialog.setCancelable(false);
 			// Setting OK Button
-			alertDialog.setButton("OK",
-					new DialogInterface.OnClickListener() {
+			alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
 
-						public void onClick(final DialogInterface dialog,
-								final int which) {
-							// Write your code here to execute after dialog
-							// closed
-							fstname.setText("");
-							lstname.setText("");
-							emailid.setText("");
-							username1.setText("");
-							pass.setText("");
-							confirmpass.setText("");
-							check.setChecked(false);
-							pDialog.dismiss();
+				public void onClick(final DialogInterface dialog,
+						final int which) {
+					// Write your code here to execute after dialog
+					// closed
+					fstname.setText("");
+					lstname.setText("");
+					emailid.setText("");
+					username1.setText("");
+					pass.setText("");
+					confirmpass.setText("");
+					check.setChecked(false);
+					pDialog.dismiss();
 
-						}
-					});
+				}
+			});
 
 			// Showing Alert Message
 			alertDialog.show();
@@ -1756,13 +1753,13 @@ public class StudentSignup extends Activity {
 
 			params1.add(new BasicNameValuePair("firstname", fullnamefirst));
 			params1.add(new BasicNameValuePair("lastname", fullnamelast));
-			params1.add(new BasicNameValuePair("emailid",StudentSignup.email ));
-		    JsonParser jLogin = new JsonParser();
+			params1.add(new BasicNameValuePair("emailid", StudentSignup.email));
+			JsonParser jLogin = new JsonParser();
 
-			JSONObject json = jLogin
-					.makeHttpRequest(Config.ServerUrl+Config.studentSignupsendemail, "POST", params1);
+			JSONObject json = jLogin.makeHttpRequest(Config.ServerUrl
+					+ Config.studentSignupsendemail, "POST", params1);
 			System.out.println("value for json::" + json);
-			
+
 			return null;
 		}
 	}

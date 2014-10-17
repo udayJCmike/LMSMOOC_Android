@@ -4,8 +4,8 @@ public class Config {
 
 	// http://208.109.248.89/mobile/android/Services/
 	static String ServerUrl = "http://208.109.248.89/mobile/android/Services/";
-//	 static String ServerUrl =
-//	 "http://192.168.1.71:8080/LmsmoocAndroid/Services/";
+	// static String ServerUrl =
+	// "http://192.168.1.71:8080/LmsmoocAndroid/Services/";
 	// static String ServerUrl =
 	// "http://169.254.164.230:8080/LmsmoocAndroid/Services/";
 	static String AvatarUrl = "http://208.109.248.89:8087/OnlineCourse/resources/images/users/";
@@ -35,7 +35,7 @@ public class Config {
 
 	static String followauthorurl = "MyFavoriteAuthor.php?service=followauthor";
 	static String removefrommycategoryurl = "MyFavoriteCategory.php?service=removecategory";
-	
+
 	static String removefromfavcourseurl = "MyFavoriteCourse.php?service=removefavcourse";
 
 	static String coursedetailsurl = "CourseDetails.php?service=authordetails";
@@ -69,10 +69,10 @@ public class Config {
 	static final String DISPLAY_REGISTRATION_MESSAGE_ACTION = "com.deemsys.lmsmooc.DISPLAY_REGISTRATION_MESSAGE";
 	static final String DISPLAY_MESSAGE_ACTION = "com.deemsys.lmsmooc.DISPLAY_MESSAGE";
 	static final String GOOGLE_SENDER_ID = "211554567248";
-//	211554567248
-//	1024081752420
+	// 211554567248
+	// 1024081752420
 	static final boolean SECOND_SIMULATOR = true;
-	
+
 	static String student_id;
 	static String avatar_url;
 	static String username;

@@ -223,7 +223,7 @@
 
             <View
                 android:id="@+id/Viewsd07"
-                android:layout_width="30dp"
+                android:layout_width="50dp"
                 android:layout_height="10dp" />
 
             <TextView

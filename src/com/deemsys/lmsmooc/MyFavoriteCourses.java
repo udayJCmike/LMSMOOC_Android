@@ -185,7 +185,7 @@ public class MyFavoriteCourses extends Fragment {
 			String coursename) {
 		final int deletePosition = position;
 		final String course_id_get = courseid;
-	
+
 		AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
 
 		alert.setTitle("Delete");
@@ -197,7 +197,7 @@ public class MyFavoriteCourses extends Fragment {
 				new removefromfav().execute(course_id_get);
 				courselist.remove(deletePosition);
 				// dataAdapter.remove(dataAdapter.getItem(deletePosition));
-				//dataAdapter.notifyDataSetChanged();
+				// dataAdapter.notifyDataSetChanged();
 				dataAdapter.removeElementAtPosition(deletePosition);
 				// dataAdapter.notifyDataSetInvalidated();
 
@@ -231,9 +231,9 @@ public class MyFavoriteCourses extends Fragment {
 		protected String doInBackground(String... params) {
 
 			List<NameValuePair> params1 = new ArrayList<NameValuePair>();
-			 String identifier = params[0];
+			String identifier = params[0];
 			params1.add(new BasicNameValuePair("course_id", identifier));
-		//	params1.add(new BasicNameValuePair("course_name", course_name));
+			// params1.add(new BasicNameValuePair("course_name", course_name));
 			params1.add(new BasicNameValuePair("student_id", Config.student_id));
 
 			JsonParser jLogin = new JsonParser();
@@ -579,10 +579,11 @@ public class MyFavoriteCourses extends Fragment {
 			return convertView;
 
 		}
-		public void removeElementAtPosition(int position){
-		      this.countryList.remove(position);
-		      notifyDataSetChanged();
-		   }
+
+		public void removeElementAtPosition(int position) {
+			this.countryList.remove(position);
+			notifyDataSetChanged();
+		}
 
 	}
 

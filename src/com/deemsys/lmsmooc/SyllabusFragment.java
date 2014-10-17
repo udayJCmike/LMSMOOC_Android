@@ -139,7 +139,7 @@ public class SyllabusFragment extends Fragment {
 									.get(listDataHeader.get(groupPosition))
 									.get(childPosition).getName());
 					startActivity(i);
-				
+
 				} else if (listDataChild.get(listDataHeader.get(groupPosition))
 						.get(childPosition).getlecttype()
 						.equalsIgnoreCase("Video")) {
@@ -166,7 +166,6 @@ public class SyllabusFragment extends Fragment {
 									.get(listDataHeader.get(groupPosition))
 									.get(childPosition).getName());
 					startActivity(i);
-					
 
 				} else if (listDataChild.get(listDataHeader.get(groupPosition))
 						.get(childPosition).getlecttype()
@@ -194,7 +193,6 @@ public class SyllabusFragment extends Fragment {
 									.get(listDataHeader.get(groupPosition))
 									.get(childPosition).getName());
 					startActivity(i);
-					
 
 				} else if (listDataChild.get(listDataHeader.get(groupPosition))
 						.get(childPosition).getlecttype()
@@ -276,18 +274,15 @@ public class SyllabusFragment extends Fragment {
 
 			params1.add(new BasicNameValuePair("course_id",
 					CourseDetails.course_id));
-		
+
 			jArray = jsonParser.makeHttpRequest(Config.ServerUrl
 					+ Config.courseurl, "POST", params1);
-
-		
 
 			try {
 				if (jArray != null) {
 
 					int k = 1;
 					JSONArray c = jArray.getJSONArray("JsonOutput");
-					
 
 					for (int i = 0; i < c.length(); i++) {
 
@@ -299,10 +294,8 @@ public class SyllabusFragment extends Fragment {
 						listDataHeader.add(value);
 						k++;
 
-						
-						
 						String id = obj.getString("ChildCategory");
-						
+
 						JSONArray jsonarray = new JSONArray(id);
 						for (int j = 0; j < jsonarray.length(); j++) {
 							JSONObject data = jsonarray.getJSONObject(j);
@@ -311,7 +304,6 @@ public class SyllabusFragment extends Fragment {
 							sectionname = data.getString("name_section");
 							lecturename = data.getString("name_lecture");
 							lecturetype = data.getString("type_lecture");
-							
 
 							Child ch = new Child();
 							ch.setName(lecturename);
@@ -322,7 +314,7 @@ public class SyllabusFragment extends Fragment {
 							ch_list.add(ch);
 
 						}
-						
+
 						lists.add(ch_list);
 						listDataChild.put(listDataHeader.get(i), lists.get(i));
 
@@ -331,7 +323,7 @@ public class SyllabusFragment extends Fragment {
 				}
 
 			} catch (JSONException e) {
-				
+
 				e.printStackTrace();
 			}
 			cDialog.dismiss();

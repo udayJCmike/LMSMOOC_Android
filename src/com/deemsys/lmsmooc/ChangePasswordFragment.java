@@ -82,20 +82,45 @@ public class ChangePasswordFragment extends Fragment {
 						&& !newpass.equalsIgnoreCase("")
 						&& !confirmpass.equalsIgnoreCase("")) {
 					if (oldpass.equalsIgnoreCase(Config.password)) {
-						
-						if(!oldpass.equalsIgnoreCase(newpass))	{
-						
-						if (passwordCheck(newpass)&&newpass.length() >= 6
-								&& newpass
-								.length() <= 25
-						) {
 
-							if (newpass.equals(confirmpass)) {
-								if (isInternetPresent) {
+						if (!oldpass.equalsIgnoreCase(newpass)) {
 
-									Config.password = newpass;
-									
-									new UpdateProf().execute();
+							if (passwordCheck(newpass) && newpass.length() >= 6
+									&& newpass.length() <= 25) {
+
+								if (newpass.equals(confirmpass)) {
+									if (isInternetPresent) {
+
+										Config.password = newpass;
+
+										new UpdateProf().execute();
+
+									} else {
+										AlertDialog alertDialog = new AlertDialog.Builder(
+												getActivity()).create();
+
+										alertDialog.setTitle("Sorry User");
+
+										alertDialog
+												.setMessage("No network connection.");
+
+										alertDialog.setIcon(R.drawable.delete);
+
+										alertDialog
+												.setButton(
+														"OK",
+														new DialogInterface.OnClickListener() {
+
+															public void onClick(
+																	final DialogInterface dialog,
+																	final int which) {
+
+															}
+														});
+
+										alertDialog.show();
+
+									}
 
 								} else {
 									AlertDialog alertDialog = new AlertDialog.Builder(
@@ -104,7 +129,7 @@ public class ChangePasswordFragment extends Fragment {
 									alertDialog.setTitle("Sorry User");
 
 									alertDialog
-											.setMessage("No network connection.");
+											.setMessage("New password mismatch with confirm password.");
 
 									alertDialog.setIcon(R.drawable.delete);
 
@@ -123,15 +148,16 @@ public class ChangePasswordFragment extends Fragment {
 									alertDialog.show();
 
 								}
+							}
 
-							} else {
+							else {
 								AlertDialog alertDialog = new AlertDialog.Builder(
 										getActivity()).create();
 
 								alertDialog.setTitle("Sorry User");
 
 								alertDialog
-										.setMessage("New password mismatch with confirm password.");
+										.setMessage("Length of password cannot be less then 6");
 
 								alertDialog.setIcon(R.drawable.delete);
 
@@ -146,41 +172,15 @@ public class ChangePasswordFragment extends Fragment {
 										});
 
 								alertDialog.show();
-
 							}
-						}
-						 
-						else {
+						} else {
 							AlertDialog alertDialog = new AlertDialog.Builder(
 									getActivity()).create();
 
 							alertDialog.setTitle("Sorry User");
 
 							alertDialog
-									.setMessage("Length of password cannot be less then 6");
-
-							alertDialog.setIcon(R.drawable.delete);
-
-							alertDialog.setButton("OK",
-									new DialogInterface.OnClickListener() {
-
-										public void onClick(
-												final DialogInterface dialog,
-												final int which) {
-
-										}
-									});
-
-							alertDialog.show();
-						}
-					} 
-						else {
-							AlertDialog alertDialog = new AlertDialog.Builder(
-									getActivity()).create();
-
-							alertDialog.setTitle("Sorry User");
-
-							alertDialog.setMessage("New password is same as current password");
+									.setMessage("New password is same as current password");
 
 							alertDialog.setIcon(R.drawable.delete);
 
@@ -282,28 +282,24 @@ public class ChangePasswordFragment extends Fragment {
 		protected String doInBackground(String... params) {
 			List<NameValuePair> params1 = new ArrayList<NameValuePair>();
 
-			
-			
 			params1.add(new BasicNameValuePair("username", Config.username));
-			
+
 			params1.add(new BasicNameValuePair("newpassword", newpasswordedt
 					.getText().toString()));
-			
+
 			Config.password = newpasswordedt.getText().toString();
 
 			JsonParser jLogin = new JsonParser();
 
 			JSONObject json = jLogin
 					.makeHttpRequest(updateurl, "POST", params1);
-			
+
 			if (json != null) {
 				try {
 					if (json != null) {
-					
 
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 						successL = jUser.getString(TAG_SUCCESS);
-						
 
 					}
 

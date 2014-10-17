@@ -110,7 +110,6 @@ public class BillingFragment extends Fragment {
 
 		@Override
 		protected String doInBackground(String... args) {
-		
 
 			allbilling.clear();
 
@@ -123,18 +122,15 @@ public class BillingFragment extends Fragment {
 			jArray = jsonParser.makeHttpRequest(Config.ServerUrl
 					+ Config.billingdetailsurl, "POST", params1);
 
-		
-
 			try {
 				if (jArray != null) {
 
 					JSONObject c = jArray.getJSONObject(TAG_SRES);
-					
+
 					user = c.getJSONArray(TAG_BILLINGARRAY);
-					
 
 					for (int i = 0; i < user.length(); i++) {
-					
+
 						JSONObject c1 = user.getJSONObject(i);
 						JSONObject c2 = c1.getJSONObject(TAG_SRES);
 
@@ -190,46 +186,40 @@ public class BillingFragment extends Fragment {
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
-			 if ((cDialog != null) && cDialog.isShowing()) { 
-				 cDialog.dismiss();
-			   }
+			if ((cDialog != null) && cDialog.isShowing()) {
+				cDialog.dismiss();
+			}
 			return null;
 		}
 
 		@SuppressWarnings("deprecation")
 		@Override
 		protected void onPostExecute(String file_url) {
-		
+
 			super.onPostExecute(file_url);
 
 			list2.setAdapter(new BillingArrayAdapter(BillingFragment.this
 					.getActivity(), allbilling, R.layout.billinglist));
 
-		
 			if (allbilling.size() == 0) {
 				AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
 						.create();
 
-				
 				alertDialog.setTitle("Sorry User");
 
-				
 				alertDialog.setMessage("No data found.");
 
-				
 				alertDialog.setIcon(R.drawable.delete);
 
-				
 				alertDialog.setButton("OK",
 						new DialogInterface.OnClickListener() {
 
 							public void onClick(final DialogInterface dialog,
 									final int which) {
-								
+
 							}
 						});
 
-				
 				alertDialog.show();
 			}
 			list2.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
@@ -237,7 +227,7 @@ public class BillingFragment extends Fragment {
 				@Override
 				public void onItemClick(AdapterView<?> arg0, View arg1,
 						int arg2, long arg3) {
-				
+
 					course_name = allbilling.get(arg2).getcoursename();
 					course_author = allbilling.get(arg2).getcourseauthor();
 					purchased_date = allbilling.get(arg2).getpurchaseddate();
@@ -305,16 +295,17 @@ public class BillingFragment extends Fragment {
 		}
 
 	}
+
 	@Override
 	public void onPause() {
-	    super.onPause();
+		super.onPause();
 
-//	    if ((pDialog != null) && pDialog.isShowing())
-//	    	pDialog.dismiss();
-//	    pDialog = null;
-	
-	   if ((cDialog != null) && cDialog.isShowing())
-	    	cDialog.dismiss();
-	    cDialog = null;
+		// if ((pDialog != null) && pDialog.isShowing())
+		// pDialog.dismiss();
+		// pDialog = null;
+
+		if ((cDialog != null) && cDialog.isShowing())
+			cDialog.dismiss();
+		cDialog = null;
 	}
 }

@@ -11,7 +11,11 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
+import android.graphics.Path;
+import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -22,11 +26,13 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.text.Html;
 
 public class NewMainActivity extends SherlockFragmentActivity {
 
 	DrawerLayout mDrawerLayout;
+	TextView name;
 	ListView mDrawerList;
 	LinearLayout mDrawerLinear;
 	ActionBarDrawerToggle mDrawerToggle;
@@ -36,7 +42,7 @@ public class NewMainActivity extends SherlockFragmentActivity {
 	int[] icon;
 	Bitmap bitmap;
 	ImageView profimg;
-	CustomImageView  iconImage ;
+	CustomImageView iconImage;
 	Fragment fragment1 = new Fragmetns2();
 	Fragment fragment2 = new ProfileFragment();
 	Fragment fragment3 = new ChangePasswordFragment();
@@ -56,7 +62,8 @@ public class NewMainActivity extends SherlockFragmentActivity {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.drawer_main);
-
+		name = (TextView) findViewById(R.id.name);
+		name.setText(Config.firstname);
 		mTitle = mDrawerTitle = getTitle();
 		getActionBar().setTitle(
 				Html.fromHtml("<font color=\"white\">" + mDrawerTitle
@@ -87,13 +94,13 @@ public class NewMainActivity extends SherlockFragmentActivity {
 		getActionBar().setBackgroundDrawable(
 				new ColorDrawable(Color.parseColor("#3399FF")));
 
-		title = new String[] { Config.firstname, "Profile", "Change Password",
-				"Inbox", "My Courses", "My Favorites", "My Categories",
-				"My Authors", "Billing", "About Us", "Logout" };
+		title = new String[] { "Home", "Profile", "Change Password", "Inbox",
+				"My Courses", "My Favorites", "My Categories", "My Authors",
+				"Billing", "About Us", "Logout" };
 
 		subtitle = new String[] { "Subtitle Fragment 1", "Subtitle Fragment 2" };
 
-		icon = new int[] { R.drawable.click, R.drawable.profile,
+		icon = new int[] { R.drawable.home, R.drawable.profile,
 				R.drawable.changepassword, R.drawable.inbox,
 				R.drawable.courses, R.drawable.favorites, R.drawable.category,
 				R.drawable.author, R.drawable.billing, R.drawable.aboutm,
@@ -103,9 +110,9 @@ public class NewMainActivity extends SherlockFragmentActivity {
 		mDrawerLinear = (LinearLayout) findViewById(R.id.left_drawer);
 		mDrawerList = (ListView) findViewById(R.id.listview_drawer);
 
-		//profimg = (ImageView) findViewById(R.id.ivwLogo);
-		  iconImage = (CustomImageView )findViewById(R.id.ivwLogo);
-	
+		// profimg = (ImageView) findViewById(R.id.ivwLogo);
+		profimg = (ImageView) findViewById(R.id.ivwLogo);
+
 		mMenuAdapter = new MenuListAdapter(getApplicationContext(), title,
 				subtitle, icon);
 
@@ -271,12 +278,40 @@ public class NewMainActivity extends SherlockFragmentActivity {
 
 		protected void onPostExecute(Bitmap image) {
 			if (image != null) {
-				iconImage.setImageBitmap(image);
-			//	profimg.setImageBitmap(image);
+				// Bitmap newd=getRoundedShape(image);
+				// profimg.setImageBitmap(newd);
+				profimg.setImageBitmap(image);
 
 			} else {
 
 			}
 		}
+	}
+
+	public Bitmap getRoundedShape(Bitmap scaleBitmapImage) {
+		int targetWidth = 170;
+		int targetHeight = 140;
+		Bitmap targetBitmap = Bitmap.createBitmap(targetWidth, targetHeight,
+				Bitmap.Config.ARGB_8888);
+
+		Canvas canvas = new Canvas(targetBitmap);
+		Path path = new Path();
+		path.addCircle(((float) targetWidth - 1) / 2,
+				((float) targetHeight - 1) / 2,
+				(Math.min(((float) targetWidth), ((float) targetHeight)) / 2),
+				Path.Direction.CCW);
+
+		canvas.clipPath(path);
+
+		Matrix mat = new Matrix();
+		mat.postRotate(-90);
+		Bitmap bmpRotate = Bitmap.createBitmap(scaleBitmapImage, 0, 0,
+				scaleBitmapImage.getWidth(), scaleBitmapImage.getHeight(), mat,
+				true);
+		// Bitmap sourceBitmap = scaleBitmapImage;
+		canvas.drawBitmap(bmpRotate, new Rect(0, 0, bmpRotate.getWidth(),
+				bmpRotate.getHeight()), new Rect(0, 0, targetWidth,
+				targetHeight), null);
+		return targetBitmap;
 	}
 }

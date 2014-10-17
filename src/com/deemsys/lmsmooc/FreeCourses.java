@@ -127,7 +127,7 @@ public class FreeCourses extends Fragment {
 	public void loaddatas() {
 
 		courselist = new ArrayList<Course>();
-		
+
 		dataAdapter = new MyCustomAdapter(getActivity(),
 				R.layout.course_overview, courselist);
 		listView.setAdapter(dataAdapter);
@@ -135,7 +135,7 @@ public class FreeCourses extends Fragment {
 		listView.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				
+
 				if (position < courselist.size()) {
 					Course country = (Course) parent
 							.getItemAtPosition(position);
@@ -149,7 +149,7 @@ public class FreeCourses extends Fragment {
 					course_enrolled_passing = country.getstudentsenrolled();
 					checkstatus = country.getifmycourse();
 					rating_count = country.getrating();
-				
+
 					courseidurl = country.getcourseid();
 					instructoridurl = country.getinsid();
 					new fetchpurnumber().execute();
@@ -170,7 +170,6 @@ public class FreeCourses extends Fragment {
 				int lastInScreen = firstVisibleItem + visibleItemCount;
 				if ((lastInScreen == totalItemCount) && !(loadingMore)) {
 
-				
 					grabURL(Config.ServerUrl + Config.paidcourseurl);
 				}
 			}
@@ -178,7 +177,7 @@ public class FreeCourses extends Fragment {
 	}
 
 	public void grabURL(String url) {
-		
+
 		new GrabURL().execute(url);
 	}
 
@@ -206,8 +205,8 @@ public class FreeCourses extends Fragment {
 
 			super.onPostExecute(file_url);
 			if (user.length() == 0 && start == 0) {
-				AlertDialog alertDialog = new AlertDialog.Builder(
-						getActivity()).create();
+				AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
+						.create();
 
 				alertDialog.setTitle("Sorry User");
 
@@ -239,7 +238,7 @@ public class FreeCourses extends Fragment {
 			try {
 
 				JSONObject c = jArray.getJSONObject(TAG_SRES);
-				
+
 				JSONArray countryListObj = c.getJSONArray(TAG_Course_ARRAY);
 
 				if (countryListObj.length() == 0)
@@ -255,7 +254,7 @@ public class FreeCourses extends Fragment {
 
 					{
 						start++;
-						
+
 						JSONObject c1 = user.getJSONObject(i);
 						JSONObject c2 = c1.getJSONObject(TAG_SRES);
 						authorname = c2.getString(TAG_COURSE_AUTHOR);
@@ -295,9 +294,8 @@ public class FreeCourses extends Fragment {
 						cnt.setdescription(course_description);
 						courselist.add(cnt);
 
-						
 						dataAdapter.add(cnt);
-					
+
 					}
 
 					dataAdapter.notifyDataSetChanged();
@@ -338,9 +336,8 @@ public class FreeCourses extends Fragment {
 				jArray = jsonParser.makeHttpRequest(Config.ServerUrl
 						+ Config.freecourseurl, "POST", nameValuePairs);
 				JSONObject c = jArray.getJSONObject(TAG_SRES);
-				
+
 				user = c.getJSONArray(TAG_Course_ARRAY);
-				
 
 				httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 				response = httpclient.execute(httpPost);
@@ -352,12 +349,12 @@ public class FreeCourses extends Fragment {
 					out.close();
 					content = out.toString();
 				} else {
-					
+
 					response.getEntity().getContent().close();
 					throw new IOException(statusLine.getReasonPhrase());
 				}
 			} catch (ClientProtocolException e) {
-				
+
 				content = e.getMessage();
 				// error = true;
 				cancel(true);
@@ -366,12 +363,12 @@ public class FreeCourses extends Fragment {
 				// error = true;
 				cancel(true);
 			} catch (Exception e) {
-				
+
 				content = e.getMessage();
 				// error = true;
 				cancel(true);
 			}
-			
+
 			return content;
 		}
 
@@ -407,7 +404,7 @@ public class FreeCourses extends Fragment {
 		public View getView(int position, View convertView, ViewGroup parent) {
 
 			ViewHolder holder = null;
-			
+
 			if (convertView == null) {
 
 				LayoutInflater vi = (LayoutInflater) getActivity()
@@ -424,7 +421,8 @@ public class FreeCourses extends Fragment {
 						.findViewById(R.id.ratingimage);
 				holder.promoimage = (ImageView) convertView
 						.findViewById(R.id.promoimage);
-				holder.enroll = (TextView) convertView.findViewById(R.id.enroll);
+				holder.enroll = (TextView) convertView
+						.findViewById(R.id.enroll);
 				convertView.setTag(holder);
 
 			} else {
@@ -535,16 +533,14 @@ public class FreeCourses extends Fragment {
 
 			JSONObject json = jLogin.makeHttpRequest(Config.ServerUrl
 					+ Config.purchasenumberselection, "POST", params1);
-		
+
 			if (json != null) {
 				try {
 					if (json != null) {
-						
 
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 
 						numofrows = jUser.getString(TAG_NUMBER_OF_ROWS);
-						
 
 					}
 
@@ -564,7 +560,7 @@ public class FreeCourses extends Fragment {
 		@Override
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
-			
+
 			pDialog.dismiss();
 
 			if (checkstatus.equalsIgnoreCase("1")) {
@@ -585,7 +581,7 @@ public class FreeCourses extends Fragment {
 				String url = Config.common_url + "?course_id=" + courseidurl
 						+ "&authorid=" + instructoridurl + "&pur=" + numofrows
 						+ "&catcourse=&coursetype=";
-				
+
 				Intent ii = new Intent(Intent.ACTION_VIEW);
 				ii.setData(Uri.parse(url));
 				ii.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

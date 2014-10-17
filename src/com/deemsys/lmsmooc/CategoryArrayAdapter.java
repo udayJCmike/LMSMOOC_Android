@@ -22,7 +22,7 @@ public class CategoryArrayAdapter extends ArrayAdapter<Category> {
 		super(context, R.layout.category_each_item, vehicleall);
 		this.layoutResourceId = layoutResourceId;
 		this.context = context;
-		
+
 		data = (ArrayList<Category>) vehicleall;
 
 	}
@@ -52,7 +52,7 @@ public class CategoryArrayAdapter extends ArrayAdapter<Category> {
 		} else {
 			holder = (UserHolder) row.getTag();
 		}
-		
+
 		user = data.get(position);
 
 		holder.category.setText(user.getcategory());
@@ -63,13 +63,13 @@ public class CategoryArrayAdapter extends ArrayAdapter<Category> {
 
 	@Override
 	public void registerDataSetObserver(DataSetObserver arg0) {
-	
+
 		super.registerDataSetObserver(arg0);
 	}
 
 	@Override
 	public void unregisterDataSetObserver(DataSetObserver arg0) {
-		
+
 		super.unregisterDataSetObserver(arg0);
 	}
 }

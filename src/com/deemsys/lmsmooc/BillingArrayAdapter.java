@@ -105,7 +105,7 @@ public class BillingArrayAdapter extends ArrayAdapter<Billing> {
 		} else {
 			holder.promo.setText("Yes");
 		}
-		if (user.getreduction().equals(" ")||user.getreduction().equals("")) {
+		if (user.getreduction().equals(" ") || user.getreduction().equals("")) {
 			holder.reduc.setText("$" + "0");
 
 		} else {

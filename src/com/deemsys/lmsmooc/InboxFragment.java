@@ -141,12 +141,8 @@ public class InboxFragment extends Fragment {
 
 			params1.add(new BasicNameValuePair("student_id", Config.student_id));
 
-		
-
 			jArray = jsonParser.makeHttpRequest(Config.ServerUrl
 					+ Config.inboxdetailsurl, "POST", params1);
-
-			
 
 			try {
 				if (jArray != null) {
@@ -154,10 +150,8 @@ public class InboxFragment extends Fragment {
 					JSONObject c = jArray.getJSONObject(TAG_SRES);
 					user = c.getJSONArray(TAG_INBOXARRAY);
 
-					
-
 					for (int i = 0; i < user.length(); i++) {
-						
+
 						JSONObject c1 = user.getJSONObject(i);
 						JSONObject c2 = c1.getJSONObject(TAG_SRES);
 

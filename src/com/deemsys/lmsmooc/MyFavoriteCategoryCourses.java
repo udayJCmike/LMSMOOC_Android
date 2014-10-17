@@ -186,7 +186,6 @@ public class MyFavoriteCategoryCourses extends SherlockFragmentActivity {
 		final HttpParams params = httpclient.getParams();
 		HttpResponse response;
 		private String content = null;
-		
 
 		@Override
 		protected void onPreExecute() {
@@ -204,7 +203,7 @@ public class MyFavoriteCategoryCourses extends SherlockFragmentActivity {
 			super.onPostExecute(file_url);
 
 			cDialog.dismiss();
-			
+
 			if (user.length() == 0 && start == 0) {
 				AlertDialog alertDialog = new AlertDialog.Builder(
 						MyFavoriteCategoryCourses.this).create();
@@ -228,9 +227,9 @@ public class MyFavoriteCategoryCourses extends SherlockFragmentActivity {
 
 			}
 			//
-			
-				displayCountryList(content);
-			
+
+			displayCountryList(content);
+
 		}
 
 		private void displayCountryList(String response) {
@@ -353,17 +352,17 @@ public class MyFavoriteCategoryCourses extends SherlockFragmentActivity {
 			} catch (ClientProtocolException e) {
 
 				content = e.getMessage();
-				
+
 				cancel(true);
 			} catch (IOException e) {
 
 				content = e.getMessage();
-			
+
 				cancel(true);
 			} catch (Exception e) {
 
 				content = e.getMessage();
-				
+
 				cancel(true);
 			}
 			return content;

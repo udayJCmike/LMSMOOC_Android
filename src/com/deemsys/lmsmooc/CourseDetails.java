@@ -1,6 +1,5 @@
 package com.deemsys.lmsmooc;
 
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -38,7 +37,6 @@ public class CourseDetails extends SherlockFragmentActivity {
 	ImageButton mPlayButton;
 	String numberofrows;
 
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -56,7 +54,7 @@ public class CourseDetails extends SherlockFragmentActivity {
 		audio_url = i.getExtras().getString("audio_url", "");
 		ratingsho = i.getExtras().getString("rating", "");
 		numberofrows = i.getExtras().getString("numofrows", "");
-		
+
 		course_nam.setText(course_name);
 		enrol.setText(course_enrolls);
 		ratingshow = (ImageView) findViewById(R.id.ratingimage);
@@ -105,14 +103,13 @@ public class CourseDetails extends SherlockFragmentActivity {
 			MediaController mediacontroller = new MediaController(
 					CourseDetails.this);
 			mediacontroller.setAnchorView(videoview);
-			
+
 			Uri video = Uri.parse(videouri);
 			videoview.setMediaController(mediacontroller);
 			videoview.setVideoURI(video);
 
 		} catch (Exception e) {
 
-			
 			e.printStackTrace();
 		}
 
@@ -121,7 +118,6 @@ public class CourseDetails extends SherlockFragmentActivity {
 
 			public void onPrepared(MediaPlayer mp) {
 
-				
 			}
 		});
 
@@ -130,7 +126,7 @@ public class CourseDetails extends SherlockFragmentActivity {
 			@Override
 			public void onClick(View v) {
 				videoview.start();
-				
+
 				mPlayButton.setVisibility(View.GONE);
 			}
 

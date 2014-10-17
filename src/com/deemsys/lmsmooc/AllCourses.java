@@ -230,8 +230,8 @@ public class AllCourses extends Fragment {
 
 			super.onPostExecute(file_url);
 			if (user.length() == 0 && start == 0) {
-				AlertDialog alertDialog = new AlertDialog.Builder(
-						getActivity()).create();
+				AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
+						.create();
 
 				alertDialog.setTitle("Sorry User");
 
@@ -455,7 +455,8 @@ public class AllCourses extends Fragment {
 				holder.cover = (ImageView) convertView.findViewById(R.id.cover);
 				holder.ratingshow = (ImageView) convertView
 						.findViewById(R.id.ratingimage);
-				holder.enroll = (TextView) convertView.findViewById(R.id.enroll);
+				holder.enroll = (TextView) convertView
+						.findViewById(R.id.enroll);
 				holder.promoimage = (ImageView) convertView
 						.findViewById(R.id.promoimage);
 				convertView.setTag(holder);
@@ -472,7 +473,7 @@ public class AllCourses extends Fragment {
 
 			Picasso.with(getActivity()).load(country.getstringurl())
 					.into(holder.cover);
-			
+
 			if (country.getifmycourse().equalsIgnoreCase("1")) {
 				holder.enroll.setVisibility(View.VISIBLE);
 			} else {

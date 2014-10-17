@@ -58,7 +58,6 @@ public class CourseText extends SherlockFragmentActivity {
 		isInternetPresent = cd.isConnectingToInternet();
 		if (isInternetPresent) {
 
-			
 			new getCourse().execute();
 
 		} else {
@@ -113,11 +112,11 @@ public class CourseText extends SherlockFragmentActivity {
 
 			JSONObject json = jLogin.makeHttpRequest(Config.ServerUrl
 					+ Config.coursecontenttext, "POST", params1);
-		
+
 			if (json != null) {
 				try {
 					if (json != null) {
-						
+
 						JSONObject jUser = json
 								.getJSONObject("serviceresponse");
 						successL = jUser.getString(TAG_SUCCESS);
@@ -143,10 +142,10 @@ public class CourseText extends SherlockFragmentActivity {
 		@Override
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
-		
+
 			pDialog.dismiss();
 			if (JsonParser.jss.equals("empty")) {
-			
+
 				AlertDialog alertDialog = new AlertDialog.Builder(
 						getApplicationContext()).create();
 

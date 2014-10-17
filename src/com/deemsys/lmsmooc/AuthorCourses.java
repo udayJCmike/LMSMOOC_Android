@@ -411,7 +411,8 @@ public class AuthorCourses extends SherlockFragmentActivity {
 						.findViewById(R.id.ratingimage);
 				holder.promoimage = (ImageView) convertView
 						.findViewById(R.id.promoimage);
-				holder.enroll = (TextView) convertView.findViewById(R.id.enroll);
+				holder.enroll = (TextView) convertView
+						.findViewById(R.id.enroll);
 				convertView.setTag(holder);
 
 			} else {

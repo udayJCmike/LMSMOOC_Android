@@ -62,7 +62,6 @@ public class CourseVideo extends SherlockFragmentActivity {
 		isInternetPresent = cd.isConnectingToInternet();
 		if (isInternetPresent) {
 
-		
 			new getCourse().execute();
 
 		} else {
@@ -114,11 +113,10 @@ public class CourseVideo extends SherlockFragmentActivity {
 
 			JSONObject json = jLogin.makeHttpRequest(Config.ServerUrl
 					+ Config.coursecontentvideo, "POST", params1);
-		
+
 			if (json != null) {
 				try {
 					if (json != null) {
-					
 
 						JSONObject jUser = json
 								.getJSONObject("serviceresponse");
@@ -145,10 +143,10 @@ public class CourseVideo extends SherlockFragmentActivity {
 		@Override
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
-		
+
 			pDialog.dismiss();
 			if (JsonParser.jss.equals("empty")) {
-			
+
 				AlertDialog alertDialog = new AlertDialog.Builder(
 						getApplicationContext()).create();
 
@@ -211,19 +209,19 @@ public class CourseVideo extends SherlockFragmentActivity {
 				// videouri=LoginActivity.avatar_url+"54"+"/"+audio_url;
 				videouri = LoginActivity.avatar_url + CourseDetails.course_id
 						+ "/" + sect_id + "/" + lect_id + "/" + course_contents;
-			
+
 				try {
 					// Start the MediaController
 					MediaController mediacontroller = new MediaController(
 							CourseVideo.this);
 					mediacontroller.setAnchorView(videoview);
-				
+
 					Uri video = Uri.parse(videouri);
 					videoview.setMediaController(mediacontroller);
 					videoview.setVideoURI(video);
 
 				} catch (Exception e) {
-					
+
 					e.printStackTrace();
 					AlertDialog alertDialog = new AlertDialog.Builder(
 							CourseVideo.this).create();
@@ -252,7 +250,7 @@ public class CourseVideo extends SherlockFragmentActivity {
 
 					public void onPrepared(MediaPlayer mp) {
 						pDialog.dismiss();
-					
+
 						videoview.start();
 					}
 				});

@@ -121,7 +121,7 @@ public class PaidCoursesbrowse extends Fragment {
 	public void loaddatas() {
 
 		courselist = new ArrayList<Course>();
-		
+
 		dataAdapter = new MyCustomAdapter(getActivity(),
 				R.layout.course_overview, courselist);
 		listView.setAdapter(dataAdapter);
@@ -129,7 +129,7 @@ public class PaidCoursesbrowse extends Fragment {
 		listView.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				
+
 				if (position < courselist.size()) {
 					Course country = (Course) parent
 							.getItemAtPosition(position);
@@ -156,7 +156,6 @@ public class PaidCoursesbrowse extends Fragment {
 				int lastInScreen = firstVisibleItem + visibleItemCount;
 				if ((lastInScreen == totalItemCount) && !(loadingMore)) {
 
-					
 					grabURL(Config.ServerUrl + Config.paidcourseurl);
 				}
 			}
@@ -164,7 +163,7 @@ public class PaidCoursesbrowse extends Fragment {
 	}
 
 	public void grabURL(String url) {
-	
+
 		new GrabURL().execute(url);
 	}
 
@@ -204,8 +203,8 @@ public class PaidCoursesbrowse extends Fragment {
 
 			super.onPostExecute(file_url);
 			if (user.length() == 0 && start == 0) {
-				AlertDialog alertDialog = new AlertDialog.Builder(
-						getActivity()).create();
+				AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
+						.create();
 
 				alertDialog.setTitle("Sorry User");
 
@@ -237,7 +236,6 @@ public class PaidCoursesbrowse extends Fragment {
 			try {
 
 				JSONObject c = jArray.getJSONObject(TAG_SRES);
-				
 
 				JSONArray countryListObj = c.getJSONArray(TAG_Course_ARRAY);
 
@@ -254,7 +252,7 @@ public class PaidCoursesbrowse extends Fragment {
 
 					{
 						start++;
-						
+
 						JSONObject c1 = user.getJSONObject(i);
 						JSONObject c2 = c1.getJSONObject(TAG_SRES);
 						authorname = c2.getString(TAG_COURSE_AUTHOR);
@@ -288,9 +286,8 @@ public class PaidCoursesbrowse extends Fragment {
 						cnt.setifmycourse(ifmycoursepresent);
 						courselist.add(cnt);
 
-						
 						dataAdapter.add(cnt);
-						
+
 					}
 
 					dataAdapter.notifyDataSetChanged();
@@ -329,9 +326,8 @@ public class PaidCoursesbrowse extends Fragment {
 				jArray = jsonParser.makeHttpRequest(Config.ServerUrl
 						+ Config.paidcoursebrowseurl, "POST", nameValuePairs);
 				JSONObject c = jArray.getJSONObject(TAG_SRES);
-				
+
 				user = c.getJSONArray(TAG_Course_ARRAY);
-			
 
 				httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 				response = httpclient.execute(httpPost);
@@ -344,22 +340,22 @@ public class PaidCoursesbrowse extends Fragment {
 					content = out.toString();
 				} else {
 					// Closes the connection.
-					
+
 					response.getEntity().getContent().close();
 					throw new IOException(statusLine.getReasonPhrase());
 				}
 			} catch (ClientProtocolException e) {
-				
+
 				content = e.getMessage();
 				// error = true;
 				cancel(true);
 			} catch (IOException e) {
-			
+
 				content = e.getMessage();
 				// error = true;
 				cancel(true);
 			} catch (Exception e) {
-				
+
 				content = e.getMessage();
 				// error = true;
 				cancel(true);
@@ -409,7 +405,7 @@ public class PaidCoursesbrowse extends Fragment {
 		public View getView(int position, View convertView, ViewGroup parent) {
 
 			ViewHolder holder = null;
-			
+
 			if (convertView == null) {
 
 				LayoutInflater vi = (LayoutInflater) getActivity()
@@ -537,16 +533,14 @@ public class PaidCoursesbrowse extends Fragment {
 
 			JSONObject json = jLogin.makeHttpRequest(Config.ServerUrl
 					+ Config.purchasenumberselection, "POST", params1);
-			
+
 			if (json != null) {
 				try {
 					if (json != null) {
-						
 
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 
 						numofrows = jUser.getString(TAG_NUMBER_OF_ROWS);
-						
 
 					}
 
@@ -566,7 +560,7 @@ public class PaidCoursesbrowse extends Fragment {
 		@Override
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
-		
+
 			pDialog.dismiss();
 
 			// String
@@ -574,7 +568,7 @@ public class PaidCoursesbrowse extends Fragment {
 			String url = Config.browsecommon_url + "?course_id=" + courseidurl
 					+ "&authorid=" + instructoridurl + "&pur=" + numofrows
 					+ "&catcourse=&coursetype=";
-		
+
 			Intent i = new Intent(Intent.ACTION_VIEW);
 			i.setData(Uri.parse(url));
 			getActivity().startActivity(i);
@@ -583,7 +577,6 @@ public class PaidCoursesbrowse extends Fragment {
 
 	}
 
-	
 	class Avatarfetch extends AsyncTask<String, String, String> {
 		@Override
 		protected void onPreExecute() {
@@ -601,11 +594,10 @@ public class PaidCoursesbrowse extends Fragment {
 
 			JSONObject json = jLogin
 					.makeHttpRequest(avatarurl, "POST", params1);
-		
+
 			if (json != null) {
 				try {
 					if (json != null) {
-						
 
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 						successL = jUser.getString(TAG_SUCCESS);
@@ -613,7 +605,7 @@ public class PaidCoursesbrowse extends Fragment {
 						Config.browsecommon_url = jUser
 								.getString(TAG_AVATAR_URL);
 						;
-						
+
 					}
 
 				}

@@ -38,8 +38,8 @@ public class BillingDetails extends SherlockFragmentActivity {
 	JsonParser jsonParser = new JsonParser();
 	JSONObject jArray;
 
-	TextView cou_name, author, pur_date, promo, reduc, amou2,
-			trans_date, trans_id, paidamtval;
+	TextView cou_name, author, pur_date, promo, reduc, amou2, trans_date,
+			trans_id, paidamtval;
 	Button back;
 
 	@Override
@@ -59,7 +59,7 @@ public class BillingDetails extends SherlockFragmentActivity {
 		author = (TextView) findViewById(R.id.authornameans);
 		pur_date = (TextView) findViewById(R.id.dateans);
 		promo = (TextView) findViewById(R.id.promoans);
-	//	amou1 = (TextView) findViewById(R.id.priceans);
+		// amou1 = (TextView) findViewById(R.id.priceans);
 		paidamtval = (TextView) findViewById(R.id.paidamountval);
 
 		reduc = (TextView) findViewById(R.id.reducans);
@@ -72,8 +72,11 @@ public class BillingDetails extends SherlockFragmentActivity {
 		pur_date.setText(BillingFragment.purchased_date);
 
 		promo.setText(BillingFragment.promocode);
+		if (BillingFragment.promocode.equalsIgnoreCase("0")) {
+			promo.setText("");
+		}
 
-		//amou1.setText("$" + BillingFragment.amount_paid);
+		// amou1.setText("$" + BillingFragment.amount_paid);
 		amou2.setText("$" + BillingFragment.amount_paid);
 		trans_date.setText(BillingFragment.transaction_date);
 		trans_id.setText(BillingFragment.transaction_id);

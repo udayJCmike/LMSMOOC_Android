@@ -103,11 +103,11 @@ public class MyFavoriteAuthor extends Fragment {
 				@Override
 				public void onItemClick(AdapterView<?> arg0, View arg1,
 						int arg2, long arg3) {
-					
+
 					String item = auhtor.get(arg2).getauthid();
 					String author = auhtor.get(arg2).getauthname();
 					Intent i = new Intent(getActivity(), AuthorCourses.class);
-					
+
 					i.putExtra("author_name", item);
 					i.putExtra("author", author);
 
@@ -131,18 +131,15 @@ public class MyFavoriteAuthor extends Fragment {
 			jArray = jsonParser.makeHttpRequest(Config.ServerUrl
 					+ Config.myfavoriteauthorurl, "POST", params1);
 
-			
-
 			try {
 				if (jArray != null) {
 
 					JSONObject c = jArray.getJSONObject(TAG_SRESL);
-					
+
 					user = c.getJSONArray(TAG_Author_ARRAY);
-					
 
 					for (int i = 0; i < user.length(); i++) {
-						
+
 						JSONObject c1 = user.getJSONObject(i);
 						JSONObject c2 = c1.getJSONObject(TAG_SRESL);
 						author_name = c2.getString(TAG_author_NAME);
@@ -155,8 +152,6 @@ public class MyFavoriteAuthor extends Fragment {
 						auth.setauthcoursecount(numb_of_courses);
 						auth.setauthid(author_id);
 						auhtor.add(auth);
-
-						
 
 					}
 

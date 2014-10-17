@@ -23,19 +23,19 @@ public class ExpandablelistAdapter extends BaseExpandableListAdapter {
 		this._context = context;
 		this._listDataHeader = listDataHeader;
 		this._listDataChild = listChildData;
-		
+
 	}
 
 	@Override
 	public Object getChild(int groupPosition, int childPosititon) {
-		
+
 		return this._listDataChild.get(this._listDataHeader.get(groupPosition))
 				.get(childPosititon);
 	}
 
 	@Override
 	public long getChildId(int groupPosition, int childPosition) {
-	
+
 		return childPosition;
 	}
 
@@ -43,9 +43,8 @@ public class ExpandablelistAdapter extends BaseExpandableListAdapter {
 	public View getChildView(int groupPosition, final int childPosition,
 			boolean isLastChild, View convertView, ViewGroup parent) {
 		Child child = (Child) getChild(groupPosition, childPosition);
-	
 
-		String lecttype = child.getlecttype().toString(); 
+		String lecttype = child.getlecttype().toString();
 		if (convertView == null) {
 			LayoutInflater infalInflater = (LayoutInflater) this._context
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -58,7 +57,7 @@ public class ExpandablelistAdapter extends BaseExpandableListAdapter {
 
 		txtListChild.setText(Integer.toString(childPosition + 1) + "."
 				+ child.getName().toString());
-		
+
 		if (lecttype.equalsIgnoreCase("Text")) {
 			lecturetype.setBackgroundResource(R.drawable.text);
 		} else if (lecttype.equalsIgnoreCase("Audio")) {
@@ -79,7 +78,7 @@ public class ExpandablelistAdapter extends BaseExpandableListAdapter {
 		} else {
 			int childcount = this._listDataChild.get(
 					this._listDataHeader.get(groupPosition)).size();
-			
+
 			if (childcount == 0) {
 				return 0;
 			} else {

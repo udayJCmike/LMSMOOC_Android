@@ -18,4 +18,6 @@
     <corners android:radius="5dp" >
     </corners>
 
+    <solid android:color="#FFFFFF" />
+
 </shape>
