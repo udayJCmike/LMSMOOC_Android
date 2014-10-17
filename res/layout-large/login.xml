@@ -1,159 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/loginlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-   
-      android:background="#ffffff"
-      android:id="@+id/loginlayout" >
+    android:background="#ffffff"
+    android:orientation="vertical" >
 
     <View
         android:layout_width="fill_parent"
         android:layout_height="100dp" >
-</View>
+    </View>
 
-         <TextView
-             android:id="@+id/textView2"
-             style="@style/custom_large"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_gravity="center"
-             android:paddingLeft="15dp"
-             android:paddingRight="15dp"
-             android:textSize="25sp"
-             android:text="@string/signintext" />
-
-<View
-    android:layout_width="fill_parent"
-    android:layout_height="100dp" >
-
-</View>
-<LinearLayout
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center_vertical|center_horizontal"
-    android:orientation="vertical"
-    android:paddingLeft="20dp"
-    android:paddingRight="20dp"
-    android:paddingTop="15dp" >
-
-    <EditText
-        android:id="@+id/uname"
-        style="@style/custom"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textView2"
+        style="@style/custom_large"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:background="@drawable/rounded_edittext"
-        android:drawableLeft="@drawable/username"
-        android:ems="10"
-         android:drawablePadding="10dp"
-        android:hint="@string/username"
-        android:singleLine="true" >
+        android:layout_gravity="center"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:text="@string/signintext"
+        android:textSize="25sp" />
 
-        <requestFocus />
-    </EditText>
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="100dp" >
+    </View>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="15dp" >
+
+        <EditText
+            android:id="@+id/uname"
+            style="@style/custom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/rounded_edittext"
+            android:drawableLeft="@drawable/username"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:hint="@string/username"
+            android:singleLine="true"
+            android:textCursorDrawable="@null" >
+
+            <requestFocus />
+        </EditText>
     </LinearLayout>
-<View
-    android:layout_width="fill_parent"
-    android:layout_height="10dp" />
-<LinearLayout
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center_vertical|center_horizontal"
-    android:orientation="vertical"
-    android:paddingLeft="20dp"
-    android:paddingRight="20dp"
-    android:paddingTop="15dp" >
 
-    <EditText
-        android:id="@+id/pswd"
-        style="@style/custom"
-        android:layout_width="match_parent"
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="10dp" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_edittext"
-        android:drawableLeft="@drawable/password"
-        android:ems="10"
-         android:drawablePadding="10dp"
-        android:hint="@string/password"
-        android:inputType="textPassword"
-        android:singleLine="true" />
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="15dp" >
 
-</LinearLayout>
-<View
-    android:layout_width="fill_parent"
-    android:layout_height="60dp" >
+        <EditText
+            android:id="@+id/pswd"
+            style="@style/custom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_edittext"
+            android:drawableLeft="@drawable/password"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:singleLine="true"
+            android:textCursorDrawable="@null" />
+    </LinearLayout>
 
-</View>
-    <LinearLayout
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="60dp" >
+    </View>
+
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="horizontal" >
 
-<CheckBox
-    android:id="@+id/checkBox1"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center_horizontal"
-    android:button="@drawable/customcheckboxx"
-    android:clickable="true"
-      style="@style/custom"
-      
-    android:text="  Keep me signed in"
-    android:textColor="#000000" />
-<View
-    android:layout_width="80dp"
-    android:layout_height="fill_parent" >
+        <CheckBox
+            android:id="@+id/checkBox1"
+            style="@style/custom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:button="@drawable/customcheckboxx"
+            android:clickable="true"
+            android:text="  Keep me signed in"
+            android:textColor="#000000" />
 
-</View>
-<TextView
-    android:id="@+id/forgetpasword"
-    style="@style/custom"
-     android:textColor="#3399FF" 
-     android:layout_gravity="center"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/forgetpass" />
+        <View
+            android:layout_width="80dp"
+            android:layout_height="fill_parent" >
+        </View>
 
-</LinearLayout>
-<View
-    android:layout_width="fill_parent"
-    android:layout_height="90dp" >
-
-</View>
-
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-
-    android:orientation="vertical"
-    android:paddingLeft="30dp"
-    android:paddingRight="30dp" >
-
-    <Button
-        android:id="@+id/signin"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/mycustom_button"
-          android:minHeight="50dp"
-        android:text="@string/signin"
-        android:textColor="#ffffff" />
+        <TextView
+            android:id="@+id/forgetpasword"
+            style="@style/custom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/forgetpass"
+            android:textColor="#3399FF" />
+    </LinearLayout>
 
     <View
-    android:layout_width="fill_parent"
-    android:layout_height="20dp"
-   />
-    <Button
-        android:id="@+id/back"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="match_parent"
-         android:textColor="#ffffff"
-           android:minHeight="50dp"
-           android:background="@drawable/custom_backbutton"
-        android:layout_height="wrap_content"
-        android:text="@string/back" />
+        android:layout_width="fill_parent"
+        android:layout_height="90dp" >
+    </View>
 
-</LinearLayout>
- 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp" >
+
+        <Button
+            android:id="@+id/signin"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/mycustom_button"
+            android:minHeight="50dp"
+            android:text="@string/signin"
+            android:textColor="#ffffff" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="20dp" />
+
+        <Button
+            android:id="@+id/back"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_backbutton"
+            android:minHeight="50dp"
+            android:text="@string/back"
+            android:textColor="#ffffff" />
+    </LinearLayout>
+
 </LinearLayout>

@@ -47,6 +47,7 @@
         android:drawableLeft="@drawable/usernamem"
         android:drawablePadding="10dp"
         android:ems="10"
+        android:textCursorDrawable="@null"
         android:hint="@string/username"
         android:singleLine="true" >
 
@@ -75,6 +76,7 @@
         android:drawableLeft="@drawable/passwordm"
         android:drawablePadding="10dp"
         android:ems="10"
+        android:textCursorDrawable="@null"
         android:hint="@string/password"
         android:inputType="textPassword"
         android:singleLine="true" />
