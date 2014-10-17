@@ -4,11 +4,16 @@
     android:layout_height="match_parent"
       android:background="#ffffff"
     android:orientation="vertical" >
-    <View
-    android:layout_width="fill_parent"
-    android:layout_height="50dp" >
+   
+ <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent" >
 
-</View>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
   <RelativeLayout
       android:layout_width="fill_parent"
       android:layout_height="122dp"
@@ -29,21 +34,21 @@
        
          style="@style/custom"
      
-        android:text="FROM" />
+        android:text="From:" />
        <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
          style="@style/custom"
    
-        android:text="TO" />
+        android:text="To:" />
        <TextView
         android:id="@+id/textView4"
          style="@style/custom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
     
-        android:text="Date"
+        android:text="Date:"
         />
       </LinearLayout>
       
@@ -125,6 +130,12 @@ android:layout_gravity="center"
 
 
 </RelativeLayout>
+ <View
+        android:layout_width="fill_parent"
+        android:layout_height="16dp" >
 
-      
+</View>
+  </LinearLayout>
+  </ScrollView>  
+    
 </LinearLayout>

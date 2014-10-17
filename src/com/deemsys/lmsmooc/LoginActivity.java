@@ -37,7 +37,7 @@ public class LoginActivity extends SherlockActivity {
 	String successL;
 	TextView forgetpass;
 	Button signin, back;
-	public static String loginurl, avatarurl;
+	public static String loginurl, avatarurl,loginscounturl;
 	final Context context = this;
 	Boolean isInternetPresent = false;
 	ConnectionDetector cd;
@@ -86,6 +86,7 @@ public class LoginActivity extends SherlockActivity {
 		LinearLayout layout = (LinearLayout) findViewById(R.id.loginlayout);
 		loginurl = Config.ServerUrl + "Login.php?service=login";
 		avatarurl = Config.ServerUrl + "Login.php?service=avatar";
+		loginscounturl= Config.ServerUrl + "Login.php?service=logins";
 		check1 = (CheckBox) findViewById(R.id.checkBox1);
 		sharedpreferences = getSharedPreferences(MyPREFERENCES,
 				Context.MODE_PRIVATE);
@@ -343,11 +344,58 @@ public class LoginActivity extends SherlockActivity {
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
 
+			new loginsincrease().execute();
+			
+		}
+	}
+	class loginsincrease extends AsyncTask<String, String, String> {
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+
+		}
+
+		@Override
+		protected String doInBackground(String... params) {
+			List<NameValuePair> params1 = new ArrayList<NameValuePair>();
+
+			
+			params1.add(new BasicNameValuePair("student_id", Config.student_id));
+			JsonParser jLogin = new JsonParser();
+
+			JSONObject json = jLogin
+					.makeHttpRequest(loginscounturl, "POST", params1);
+
+			if (json != null) {
+				try {
+					if (json != null) {
+
+						JSONObject jUser = json.getJSONObject(TAG_SRESL);
+						successL = jUser.getString(TAG_SUCCESS);
+						
+
+					}
+
+				}
+
+				catch (JSONException e) {
+					e.printStackTrace();
+
+				}
+			} else {
+
+				successL = "No";
+			}
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(String file_url) {
+			super.onPostExecute(file_url);
 			calld();
 			pDialog.dismiss();
 		}
 	}
-
 	class geturl extends AsyncTask<String, String, String> {
 		@Override
 		protected void onPreExecute() {

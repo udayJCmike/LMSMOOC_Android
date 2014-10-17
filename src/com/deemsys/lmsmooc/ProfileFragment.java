@@ -134,6 +134,8 @@ public class ProfileFragment extends Fragment {
 		lastnameedit = (EditText) rootView.findViewById(R.id.lastname);
 		emailedit = (EditText) rootView.findViewById(R.id.email);
 		usernameedit = (EditText) rootView.findViewById(R.id.username);
+		usernameedit.setFocusable(false);
+		usernameedit.setClickable(true);
 		// passwordedit = (EditText) rootView.findViewById(R.id.password);
 		genderselecthid = (TextView) rootView.findViewById(R.id.proftextgender);
 		genderselecthid.setVisibility(View.INVISIBLE);
@@ -273,34 +275,6 @@ public class ProfileFragment extends Fragment {
 				if (str.length() > 0 && str.startsWith(" ")) {
 
 					emailedit.setText("");
-				} else {
-
-				}
-
-			}
-
-			@Override
-			public void afterTextChanged(Editable s) {
-
-			}
-
-			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count,
-					int after) {
-
-			}
-
-		});
-
-		usernameedit.addTextChangedListener(new TextWatcher() {
-
-			public void onTextChanged(CharSequence s, int start, int before,
-					int count) {
-
-				String str = s.toString();
-				if (str.length() > 0 && str.startsWith(" ")) {
-
-					usernameedit.setText("");
 				} else {
 
 				}
@@ -1120,7 +1094,7 @@ public class ProfileFragment extends Fragment {
 
 				alertDialog.setTitle("Success");
 
-				alertDialog.setMessage("Profile updated successfully");
+				alertDialog.setMessage("Profile update successfull");
 
 				alertDialog.setIcon(R.drawable.tick);
 
@@ -1144,7 +1118,7 @@ public class ProfileFragment extends Fragment {
 
 				alertDialog.setTitle("Sorry User");
 
-				alertDialog.setMessage("Profile not updated successfully");
+				alertDialog.setMessage("Profile not update successfull");
 
 				alertDialog.setIcon(R.drawable.delete);
 
