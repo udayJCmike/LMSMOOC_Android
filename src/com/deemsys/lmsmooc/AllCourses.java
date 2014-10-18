@@ -84,6 +84,7 @@ public class AllCourses extends Fragment {
 	String course_description;
 	private static final String TAG_COURSE_DESCRIPTION = "course_description";
 	String promocheck;
+	private static final String TAG_ENROLLED_STUDENT = "course_enrolled";
 	private static final String Promo_Check = "promocheck";
 	private static final String TAG_SRESL = "serviceresponse";
 	private static final String TAG_COURSE_PROMO_VIDEO = "course_promo_video";
@@ -139,6 +140,7 @@ public class AllCourses extends Fragment {
 					course_name_to_pass = country.getCode();
 					rating_count = country.getrating();
 					course_enrolled_passing = country.getstudentsenrolled();
+					System.out.println("passing course enroll"+course_enrolled_passing);
 					new fetchpurnumber().execute();
 				}
 			}
@@ -305,11 +307,13 @@ public class AllCourses extends Fragment {
 						promocheck = c2.getString(Promo_Check);
 						ratingcouont = c2.getString(TAG_COURSE_RATINGS);
 						audiourl = c2.getString(TAG_COURSE_PROMO_VIDEO);
+						course_enrolled=c2.getString(TAG_ENROLLED_STUDENT);
 						coursetotallist.add(authorname);
 						coursetotallist.add(course_name);
 						coursetotallist.add(ratingcouont);
 						coursetotallist.add(ifmycoursepresent);
 						coursetotallist.add(audiourl);
+						coursetotallist.add(course_enrolled);
 						imagelist.add(course_cover_image);
 
 						Course cnt = new Course(authorname, course_name, cost,
@@ -326,6 +330,7 @@ public class AllCourses extends Fragment {
 						cnt.setaudiourl(audiourl);
 						cnt.setdescription(course_description);
 						cnt.setpromocheck(promocheck);
+						cnt.setstudentsenrolled(course_enrolled);
 						courselist.add(cnt);
 
 						dataAdapter.add(cnt);

@@ -70,7 +70,7 @@ public class FreeCourses extends Fragment {
 	String rating_count;
 	String promocheck;
 	private static final String Promo_Check = "promocheck";
-
+	private static final String TAG_ENROLLED_STUDENT = "course_enrolled";
 	String course_description;
 	private static final String TAG_COURSE_DESCRIPTION = "course_description";
 	String course_name, authorname, student_enrolled, ratingcouont, cost,
@@ -272,11 +272,13 @@ public class FreeCourses extends Fragment {
 						cost = c2.getString(TAG_COURSE_COST);
 						ifmycoursepresent = c2.getString(TAG_Check_);
 						ratingcouont = c2.getString(TAG_COURSE_RATINGS);
+						course_enrolled = c2.getString(TAG_ENROLLED_STUDENT);
 						coursetotallist.add(authorname);
 						coursetotallist.add(course_name);
 						coursetotallist.add(ratingcouont);
 						coursetotallist.add(ifmycoursepresent);
 						coursetotallist.add(audiourl);
+						coursetotallist.add(course_enrolled);
 						imagelist.add(course_cover_image);
 
 						Course cnt = new Course(authorname, course_name, cost,
@@ -292,6 +294,7 @@ public class FreeCourses extends Fragment {
 						cnt.setifmycourse(ifmycoursepresent);
 						cnt.setstringurl(course_cover_image);
 						cnt.setaudiourl(audiourl);
+						cnt.setstudentsenrolled(course_enrolled);
 						cnt.setdescription(course_description);
 						courselist.add(cnt);
 

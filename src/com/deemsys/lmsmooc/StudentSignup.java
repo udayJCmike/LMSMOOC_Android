@@ -65,13 +65,8 @@ public class StudentSignup extends Activity {
 
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_SUCCESS1 = "success";
-	// private static final String TAG_USERNAME = "username";
-	// private static final String TAG_PASSWORD = "password";
-	// private static final String TAG_EMAIL = "email";
-	// private static final String TAG_ROLE = "role";
-	// private static final String TAG_ENABLED= "enabled";
+
 	private static final String TAG_SRESL = "serviceresponse";
-	// private static final String TAG_USERID= "user_id";
 
 	private static String selecturl1 = Config.ServerUrl + Config.studentSignup;
 	private static String selecturl2 = Config.ServerUrl + Config.studentSignup1;
@@ -110,19 +105,7 @@ public class StudentSignup extends Activity {
 			new geturl().execute();
 
 		}
-		//
 
-		// layout.setOnTouchListener(new OnTouchListener()
-		// {
-		// @Override
-		// public boolean onTouch(View view, MotionEvent ev)
-		// {
-		// hideKeyboard(view);
-		// return false;
-		// }
-		//
-		//
-		// });
 		fstname = (EditText) findViewById(R.id.e1);
 		lstname = (EditText) findViewById(R.id.e2);
 		username1 = (EditText) findViewById(R.id.e3);
@@ -314,39 +297,545 @@ public class StudentSignup extends Activity {
 
 		});
 
+		((EditText) findViewById(R.id.e1))
+				.setOnFocusChangeListener(new OnFocusChangeListener() {
+
+					@SuppressWarnings("deprecation")
+					public void onFocusChange(View v, boolean hasFocus) {
+
+						if (!hasFocus) {
+							firstname = fstname.getText().toString();
+
+							if (firstname.length() == 0) {
+
+								AlertDialog alertDialog = new AlertDialog.Builder(
+										StudentSignup.this).create();
+
+								alertDialog.setTitle("Sorry User");
+
+								alertDialog.setMessage("Enter firstname");
+
+								alertDialog.setIcon(R.drawable.delete);
+
+								alertDialog.setButton("OK",
+										new DialogInterface.OnClickListener() {
+
+											public void onClick(
+													final DialogInterface dialog,
+													final int which) {
+
+											}
+										});
+
+								alertDialog.show();
+							} else if (firstname.length() >= 2
+									&& firstname.length() <= 84) {
+								if (isValidName(firstname)) {
+
+								} else {
+									AlertDialog alertDialog = new AlertDialog.Builder(
+											StudentSignup.this).create();
+
+									alertDialog.setTitle("Sorry User");
+
+									alertDialog
+											.setMessage("Enter a valid firstname");
+
+									alertDialog.setIcon(R.drawable.delete);
+
+									alertDialog
+											.setButton(
+													"OK",
+													new DialogInterface.OnClickListener() {
+
+														public void onClick(
+																final DialogInterface dialog,
+																final int which) {
+															fstname.setText("");
+														}
+													});
+
+									alertDialog.show();
+								}
+
+							} else {
+								AlertDialog alertDialog = new AlertDialog.Builder(
+										StudentSignup.this).create();
+
+								alertDialog.setTitle("Sorry User");
+
+								alertDialog
+										.setMessage("Enter a valid firstname");
+
+								alertDialog.setIcon(R.drawable.delete);
+
+								alertDialog.setButton("OK",
+										new DialogInterface.OnClickListener() {
+
+											public void onClick(
+													final DialogInterface dialog,
+													final int which) {
+												fstname.setText("");
+											}
+										});
+
+								alertDialog.show();
+							}
+						}
+
+					}
+
+					private boolean isValidName(String firstname) {
+						String EMAIL_PATTERN = "[a-zA-Z]+[a-zA-Z ]*$";
+
+						Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+						Matcher matcher = pattern.matcher(firstname);
+						return matcher.matches();
+					}
+
+				});
+		((EditText) findViewById(R.id.e2))
+				.setOnFocusChangeListener(new OnFocusChangeListener() {
+
+					@SuppressWarnings("deprecation")
+					public void onFocusChange(View v, boolean hasFocus) {
+
+						if (!hasFocus) {
+							lastname = lstname.getText().toString();
+
+							if (lastname.length() == 0) {
+
+								AlertDialog alertDialog = new AlertDialog.Builder(
+										StudentSignup.this).create();
+
+								alertDialog.setTitle("Sorry User");
+
+								alertDialog.setMessage("Enter lastname");
+
+								alertDialog.setIcon(R.drawable.delete);
+
+								alertDialog.setButton("OK",
+										new DialogInterface.OnClickListener() {
+
+											public void onClick(
+													final DialogInterface dialog,
+													final int which) {
+												lstname.setText("");
+											}
+										});
+
+								alertDialog.show();
+							} else if (lastname.length() >= 2
+									&& lastname.length() <= 84) {
+								if (isValidName(lastname)) {
+
+								} else {
+									AlertDialog alertDialog = new AlertDialog.Builder(
+											StudentSignup.this).create();
+
+									alertDialog.setTitle("Sorry User");
+
+									alertDialog
+											.setMessage("Enter a valid lastname");
+
+									alertDialog.setIcon(R.drawable.delete);
+
+									alertDialog
+											.setButton(
+													"OK",
+													new DialogInterface.OnClickListener() {
+
+														public void onClick(
+																final DialogInterface dialog,
+																final int which) {
+															lstname.setText("");
+														}
+													});
+
+									alertDialog.show();
+								}
+
+							} else {
+								AlertDialog alertDialog = new AlertDialog.Builder(
+										StudentSignup.this).create();
+
+								alertDialog.setTitle("Sorry User");
+
+								alertDialog
+										.setMessage("Enter a valid lastname");
+
+								alertDialog.setIcon(R.drawable.delete);
+
+								alertDialog.setButton("OK",
+										new DialogInterface.OnClickListener() {
+
+											public void onClick(
+													final DialogInterface dialog,
+													final int which) {
+												lstname.setText("");
+											}
+										});
+
+								alertDialog.show();
+							}
+						}
+
+					}
+
+					private boolean isValidName(String firstname) {
+						String EMAIL_PATTERN = "[a-zA-Z]+[a-zA-Z ]*$";
+
+						Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+						Matcher matcher = pattern.matcher(firstname);
+						return matcher.matches();
+					}
+
+				});
 		((EditText) findViewById(R.id.e3))
 				.setOnFocusChangeListener(new OnFocusChangeListener() {
 
+					@SuppressWarnings("deprecation")
 					public void onFocusChange(View v, boolean hasFocus) {
-						/*
-						 * When focus is lost check that the text field has
-						 * valid values.
-						 */
-						if (!hasFocus) {
-							// validateInput(v);
 
-							new SelectUsername1().execute();
+						if (!hasFocus) {
+							username = username1.getText().toString();
+
+							if (username.length() == 0) {
+
+								AlertDialog alertDialog = new AlertDialog.Builder(
+										StudentSignup.this).create();
+
+								alertDialog.setTitle("Sorry User");
+
+								alertDialog.setMessage("Enter username");
+
+								alertDialog.setIcon(R.drawable.delete);
+
+								alertDialog.setButton("OK",
+										new DialogInterface.OnClickListener() {
+
+											public void onClick(
+													final DialogInterface dialog,
+													final int which) {
+												username1.setText("");
+											}
+										});
+
+								alertDialog.show();
+							} else if (username.length() >= 6
+									&& username.length() <= 25) {
+								if (isValidOther(username)) {
+									new SelectUsername1().execute();
+
+								} else {
+									AlertDialog alertDialog = new AlertDialog.Builder(
+											StudentSignup.this).create();
+
+									alertDialog.setTitle("Sorry User");
+
+									alertDialog
+											.setMessage("Enter a valid username");
+
+									alertDialog.setIcon(R.drawable.delete);
+
+									alertDialog
+											.setButton(
+													"OK",
+													new DialogInterface.OnClickListener() {
+
+														public void onClick(
+																final DialogInterface dialog,
+																final int which) {
+															username1
+																	.setText("");
+														}
+													});
+
+									alertDialog.show();
+								}
+
+							} else {
+								AlertDialog alertDialog = new AlertDialog.Builder(
+										StudentSignup.this).create();
+
+								alertDialog.setTitle("Sorry User");
+
+								alertDialog
+										.setMessage("Enter a valid username");
+
+								alertDialog.setIcon(R.drawable.delete);
+
+								alertDialog.setButton("OK",
+										new DialogInterface.OnClickListener() {
+
+											public void onClick(
+													final DialogInterface dialog,
+													final int which) {
+												username1.setText("");
+											}
+										});
+
+								alertDialog.show();
+							}
 						}
+
 					}
+
+					private boolean isValidOther(String username) {
+						String EMAIL_PATTERN = "[a-zA-Z0-9]+[a-zA-Z0-9@_.,-/\n ]*$";
+
+						Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+						Matcher matcher = pattern.matcher(username);
+						return matcher.matches();
+					}
+
 				});
+
 		((EditText) findViewById(R.id.e4))
 				.setOnFocusChangeListener(new OnFocusChangeListener() {
 
+					@SuppressWarnings("deprecation")
 					public void onFocusChange(View v, boolean hasFocus) {
-						/*
-						 * When focus is lost check that the text field has
-						 * valid values.
-						 */
+
 						if (!hasFocus) {
-							// validateInput(v);
-							new SelectEmail1().execute();
+							email = emailid.getText().toString();
+
+							if (email.length() == 0) {
+
+								AlertDialog alertDialog = new AlertDialog.Builder(
+										StudentSignup.this).create();
+
+								alertDialog.setTitle("Sorry User");
+
+								alertDialog.setMessage("Enter email");
+
+								alertDialog.setIcon(R.drawable.delete);
+
+								alertDialog.setButton("OK",
+										new DialogInterface.OnClickListener() {
+
+											public void onClick(
+													final DialogInterface dialog,
+													final int which) {
+												emailid.setText("");
+											}
+										});
+
+								alertDialog.show();
+							} else if (email.length() >= 10
+									&& email.length() <= 84) {
+								if (isValidEmail(email)) {
+									new SelectEmail1().execute();
+
+								} else {
+									AlertDialog alertDialog = new AlertDialog.Builder(
+											StudentSignup.this).create();
+
+									alertDialog.setTitle("Sorry User");
+
+									alertDialog
+											.setMessage("Enter a valid email");
+
+									alertDialog.setIcon(R.drawable.delete);
+
+									alertDialog
+											.setButton(
+													"OK",
+													new DialogInterface.OnClickListener() {
+
+														public void onClick(
+																final DialogInterface dialog,
+																final int which) {
+															emailid.setText("");
+														}
+													});
+
+									alertDialog.show();
+								}
+
+							} else {
+								AlertDialog alertDialog = new AlertDialog.Builder(
+										StudentSignup.this).create();
+
+								alertDialog.setTitle("Sorry User");
+
+								alertDialog
+										.setMessage("Enter a valid email");
+
+								alertDialog.setIcon(R.drawable.delete);
+
+								alertDialog.setButton("OK",
+										new DialogInterface.OnClickListener() {
+
+											public void onClick(
+													final DialogInterface dialog,
+													final int which) {
+												emailid.setText("");
+											}
+										});
+
+								alertDialog.show();
+							}
 						}
+
 					}
+
+					private boolean isValidEmail(String email) {
+
+						// TODO Auto-generated method stub
+
+						String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+								+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+
+						Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+						Matcher matcher = pattern.matcher(email);
+						return matcher.matches();
+
+					}
+
 				});
 
+		((EditText) findViewById(R.id.e5))
+				.setOnFocusChangeListener(new OnFocusChangeListener() {
+
+					@SuppressWarnings("deprecation")
+					public void onFocusChange(View v, boolean hasFocus) {
+
+						if (!hasFocus) {
+							password = pass.getText().toString();
+
+							if (password.length() == 0) {
+
+								AlertDialog alertDialog = new AlertDialog.Builder(
+										StudentSignup.this).create();
+
+								alertDialog.setTitle("Sorry User");
+
+								alertDialog.setMessage("Enter password");
+
+								alertDialog.setIcon(R.drawable.delete);
+
+								alertDialog.setButton("OK",
+										new DialogInterface.OnClickListener() {
+
+											public void onClick(
+													final DialogInterface dialog,
+													final int which) {
+												pass.setText("");
+											}
+										});
+
+								alertDialog.show();
+							} else if (password.length() >= 6
+									&& password.length() <= 25) {
+								if (passwordCheck(password)) {
+
+								} else {
+									AlertDialog alertDialog = new AlertDialog.Builder(
+											StudentSignup.this).create();
+
+									alertDialog.setTitle("Sorry User");
+
+									alertDialog
+											.setMessage("Enter a valid password");
+
+									alertDialog.setIcon(R.drawable.delete);
+
+									alertDialog
+											.setButton(
+													"OK",
+													new DialogInterface.OnClickListener() {
+
+														public void onClick(
+																final DialogInterface dialog,
+																final int which) {
+															pass.setText("");
+														}
+													});
+
+									alertDialog.show();
+								}
+
+							} else {
+								AlertDialog alertDialog = new AlertDialog.Builder(
+										StudentSignup.this).create();
+
+								alertDialog.setTitle("Sorry User");
+
+								alertDialog
+										.setMessage("Enter a valid password");
+
+								alertDialog.setIcon(R.drawable.delete);
+
+								alertDialog.setButton("OK",
+										new DialogInterface.OnClickListener() {
+
+											public void onClick(
+													final DialogInterface dialog,
+													final int which) {
+												pass.setText("");
+											}
+										});
+
+								alertDialog.show();
+							}
+						}
+
+					}
+
+					private boolean passwordCheck(String password) {
+						String pass_patter = "((?=.*\\d)(?=.*[a-zA-Z])(?=.*[@#$%]).{8,25})";
+
+						Pattern pattern = Pattern.compile(pass_patter);
+						Matcher matcher = pattern.matcher(password);
+						return matcher.matches();
+					}
+
+				});
+
+		((EditText) findViewById(R.id.e6))
+				.setOnFocusChangeListener(new OnFocusChangeListener() {
+
+					@SuppressWarnings("deprecation")
+					public void onFocusChange(View v, boolean hasFocus) {
+
+						if (!hasFocus) {
+							password = pass.getText().toString();
+							confirmpassword = confirmpass.getText().toString();
+
+							if (password.equals(confirmpassword)) {
+
+							} else {
+								AlertDialog alertDialog = new AlertDialog.Builder(
+										StudentSignup.this).create();
+
+								alertDialog.setTitle("Sorry User");
+
+								alertDialog
+										.setMessage("Password doesn't match");
+
+								alertDialog.setIcon(R.drawable.delete);
+
+								alertDialog.setButton("OK",
+										new DialogInterface.OnClickListener() {
+
+											public void onClick(
+													final DialogInterface dialog,
+													final int which) {
+												confirmpass.setText("");
+											}
+										});
+
+								alertDialog.show();
+							}
+						}
+
+					}
+
+				});
 		signbtn.setOnClickListener(new View.OnClickListener() {
 
-			int a;
+			
 
 			@SuppressWarnings("deprecation")
 			public void onClick(View view) {
@@ -370,7 +859,6 @@ public class StudentSignup extends Activity {
 					if (fstname.length() > 0 && lstname.length() > 0
 							&& emailid.length() > 0 && username1.length() > 0
 							&& pass.length() > 0 && confirmpass.length() > 0) {
-						a = 1;
 
 						{
 
@@ -406,39 +894,25 @@ public class StudentSignup extends Activity {
 																			if (check
 																					.isChecked()) {
 
-																				a = 1;
-
+																				new Login()
+																						.execute();
 																			}
 
 																			else {
 
-																				a = 0;
 																				AlertDialog alertDialog = new AlertDialog.Builder(
 																						StudentSignup.this)
 																						.create();
 
-																				// Setting
-																				// Dialog
-																				// Title
 																				alertDialog
 																						.setTitle("Sorry User");
 
-																				// Setting
-																				// Dialog
-																				// Message
 																				alertDialog
 																						.setMessage("Please agreee to the terms of services");
 
-																				// Setting
-																				// Icon
-																				// to
-																				// Dialog
 																				alertDialog
 																						.setIcon(R.drawable.delete);
 
-																				// Setting
-																				// OK
-																				// Button
 																				alertDialog
 																						.setButton(
 																								"OK",
@@ -447,22 +921,10 @@ public class StudentSignup extends Activity {
 																									public void onClick(
 																											final DialogInterface dialog,
 																											final int which) {
-																										// Write
-																										// your
-																										// code
-																										// here
-																										// to
-																										// execute
-																										// after
-																										// dialog
-																										// closed
 
 																									}
 																								});
 
-																				// Showing
-																				// Alert
-																				// Message
 																				alertDialog
 																						.show();
 
@@ -471,33 +933,20 @@ public class StudentSignup extends Activity {
 
 																	} else {
 
-																		a = 0;
+																		
 																		AlertDialog alertDialog = new AlertDialog.Builder(
 																				StudentSignup.this)
 																				.create();
 
-																		// Setting
-																		// Dialog
-																		// Title
 																		alertDialog
 																				.setTitle("Sorry User");
 
-																		// Setting
-																		// Dialog
-																		// Message
 																		alertDialog
 																				.setMessage("Password doesn't match");
 
-																		// Setting
-																		// Icon
-																		// to
-																		// Dialog
 																		alertDialog
 																				.setIcon(R.drawable.delete);
 
-																		// Setting
-																		// OK
-																		// Button
 																		alertDialog
 																				.setButton(
 																						"OK",
@@ -506,22 +955,10 @@ public class StudentSignup extends Activity {
 																							public void onClick(
 																									final DialogInterface dialog,
 																									final int which) {
-																								// Write
-																								// your
-																								// code
-																								// here
-																								// to
-																								// execute
-																								// after
-																								// dialog
-																								// closed
 
 																							}
 																						});
 
-																		// Showing
-																		// Alert
-																		// Message
 																		alertDialog
 																				.show();
 
@@ -532,29 +969,20 @@ public class StudentSignup extends Activity {
 
 															else {
 
-																a = 0;
+															
 																AlertDialog alertDialog = new AlertDialog.Builder(
 																		StudentSignup.this)
 																		.create();
 
-																// Setting
-																// Dialog Title
 																alertDialog
 																		.setTitle("Sorry User");
 
-																// Setting
-																// Dialog
-																// Message
 																alertDialog
-																		.setMessage("Length of password cannot be less then 6");
+																		.setMessage("Enter a valid passsword");
 
-																// Setting Icon
-																// to Dialog
 																alertDialog
 																		.setIcon(R.drawable.delete);
 
-																// Setting OK
-																// Button
 																alertDialog
 																		.setButton(
 																				"OK",
@@ -563,21 +991,10 @@ public class StudentSignup extends Activity {
 																					public void onClick(
 																							final DialogInterface dialog,
 																							final int which) {
-																						// Write
-																						// your
-																						// code
-																						// here
-																						// to
-																						// execute
-																						// after
-																						// dialog
-																						// closed
 
 																					}
 																				});
 
-																// Showing Alert
-																// Message
 																alertDialog
 																		.show();
 
@@ -586,26 +1003,20 @@ public class StudentSignup extends Activity {
 
 													} else {
 
-														a = 0;
+														
 														AlertDialog alertDialog = new AlertDialog.Builder(
 																StudentSignup.this)
 																.create();
 
-														// Setting Dialog Title
 														alertDialog
 																.setTitle("Sorry User");
 
-														// Setting Dialog
-														// Message
 														alertDialog
-																.setMessage("Please enter valid email-id");
+																.setMessage("Enter a valid email");
 
-														// Setting Icon to
-														// Dialog
 														alertDialog
 																.setIcon(R.drawable.delete);
 
-														// Setting OK Button
 														alertDialog
 																.setButton(
 																		"OK",
@@ -614,20 +1025,10 @@ public class StudentSignup extends Activity {
 																			public void onClick(
 																					final DialogInterface dialog,
 																					final int which) {
-																				// Write
-																				// your
-																				// code
-																				// here
-																				// to
-																				// execute
-																				// after
-																				// dialog
-																				// closed
 
 																			}
 																		});
 
-														// Showing Alert Message
 														alertDialog.show();
 
 													}
@@ -635,7 +1036,7 @@ public class StudentSignup extends Activity {
 
 											} else {
 
-												a = 0;
+												
 												AlertDialog alertDialog = new AlertDialog.Builder(
 														StudentSignup.this)
 														.create();
@@ -646,7 +1047,7 @@ public class StudentSignup extends Activity {
 
 												// Setting Dialog Message
 												alertDialog
-														.setMessage("Please enter valid username");
+														.setMessage("Enter a valid username");
 
 												// Setting Icon to Dialog
 												alertDialog
@@ -682,7 +1083,7 @@ public class StudentSignup extends Activity {
 
 									} else {
 
-										a = 0;
+										
 										AlertDialog alertDialog = new AlertDialog.Builder(
 												StudentSignup.this).create();
 
@@ -691,7 +1092,7 @@ public class StudentSignup extends Activity {
 
 										// Setting Dialog Message
 										alertDialog
-												.setMessage("Please enter valid lastname");
+												.setMessage("Enter a valid lastname");
 
 										// Setting Icon to Dialog
 										alertDialog.setIcon(R.drawable.delete);
@@ -722,7 +1123,7 @@ public class StudentSignup extends Activity {
 
 							} else {
 
-								a = 0;
+								
 								AlertDialog alertDialog = new AlertDialog.Builder(
 										StudentSignup.this).create();
 
@@ -731,7 +1132,7 @@ public class StudentSignup extends Activity {
 
 								// Setting Dialog Message
 								alertDialog
-										.setMessage("Please enter valid firstname");
+										.setMessage("Enter a valid firstname");
 
 								// Setting Icon to Dialog
 								alertDialog.setIcon(R.drawable.delete);
@@ -758,7 +1159,7 @@ public class StudentSignup extends Activity {
 
 					} else {
 
-						a = 0;
+						
 						AlertDialog alertDialog = new AlertDialog.Builder(
 								StudentSignup.this).create();
 
@@ -788,10 +1189,6 @@ public class StudentSignup extends Activity {
 						// Showing Alert Message
 						alertDialog.show();
 
-					}
-
-					if (a == 1) {
-						new SelectUsername().execute();
 					}
 
 				}
@@ -848,17 +1245,6 @@ public class StudentSignup extends Activity {
 				return matcher.matches();
 			}
 
-			// private boolean isValidNumber(String number) {
-			// // TODO Auto-generated method stub
-			//
-			// String PHONE_REGEX =
-			// "\\([1-9]{1}[0-9]{2}\\) [0-9]{3}\\-[0-9]{4}$";
-			//
-			// Pattern pattern = Pattern.compile(PHONE_REGEX);
-			// Matcher matcher = pattern.matcher(number);
-			// return matcher.matches();
-			// }
-
 			private boolean passwordCheck(String other) {
 				// TODO Auto-generated method stub
 
@@ -879,32 +1265,147 @@ public class StudentSignup extends Activity {
 				return matcher.matches();
 			}
 
-			// private boolean isValidOther1(String names) {
-			// // TODO Auto-generated method stub
-			//
-			// String EMAIL_PATTERN = "[a-zA-Z]+[a-zA-Z ]*$";
-			//
-			// Pattern pattern = Pattern.compile(EMAIL_PATTERN);
-			// Matcher matcher = pattern.matcher(names);
-			// return matcher.matches();
-			// }
-
 		});
+
+		// signbtn.setOnClickListener(new View.OnClickListener() {
+		//
+		// int a;
+		//
+		// @SuppressWarnings("deprecation")
+		// public void onClick(View view) {
+		//
+		// // ended.setEnabled(false);
+		// confirmpassword = confirmpass.getText().toString();
+		// if (isInternetPresent) {
+		//
+		// if (fstname.length() > 0 && lstname.length() > 0
+		// && emailid.length() > 0 && username1.length() > 0
+		// && pass.length() > 0 && confirmpass.length() > 0)
+		// {
+		//
+		// if (password.equals(confirmpassword))
+		// {
+		//
+		//
+		//
+		// if (check.isChecked())
+		// {
+		//
+		//
+		// new Login().execute();
+		//
+		//
+		// }
+		//
+		// else
+		// {
+		//
+		// a = 0;
+		// AlertDialog alertDialog = new AlertDialog.Builder(
+		// StudentSignup.this).create();
+		//
+		// alertDialog.setTitle("Sorry User");
+		//
+		// alertDialog
+		// .setMessage("Please agreee to the terms of services");
+		//
+		// alertDialog.setIcon(R.drawable.delete);
+		//
+		// alertDialog.setButton("OK",
+		// new DialogInterface.OnClickListener() {
+		//
+		// public void onClick(
+		// final DialogInterface dialog,
+		// final int which) {
+		//
+		// }
+		// });
+		//
+		// alertDialog.show();
+		//
+		// }
+		//
+		// } else {
+		// AlertDialog alertDialog = new AlertDialog.Builder(
+		// StudentSignup.this).create();
+		//
+		// alertDialog.setTitle("Sorry User");
+		//
+		// alertDialog.setMessage("Password doesn't match");
+		//
+		// alertDialog.setIcon(R.drawable.delete);
+		//
+		// alertDialog.setButton("OK",
+		// new DialogInterface.OnClickListener() {
+		//
+		// public void onClick(
+		// final DialogInterface dialog,
+		// final int which) {
+		// confirmpass.setText("");
+		// }
+		// });
+		//
+		// alertDialog.show();
+		// }
+		//
+		// } else {
+		//
+		// a = 0;
+		// AlertDialog alertDialog = new AlertDialog.Builder(
+		// StudentSignup.this).create();
+		//
+		// alertDialog.setTitle("Sorry User");
+		//
+		// alertDialog.setMessage("Please enter all fields");
+		//
+		// alertDialog.setIcon(R.drawable.delete);
+		//
+		// alertDialog.setButton("OK",
+		// new DialogInterface.OnClickListener() {
+		//
+		// public void onClick(
+		// final DialogInterface dialog,
+		// final int which) {
+		//
+		// }
+		// });
+		//
+		// alertDialog.show();
+		//
+		// }
+		//
+		// }
+		//
+		// else {
+		// AlertDialog alertDialog = new AlertDialog.Builder(
+		// StudentSignup.this).create();
+		//
+		// alertDialog.setTitle("Sorry User");
+		//
+		// alertDialog.setMessage("No network connection.");
+		//
+		// alertDialog.setIcon(R.drawable.delete);
+		//
+		// alertDialog.setButton("OK",
+		// new DialogInterface.OnClickListener() {
+		//
+		// public void onClick(
+		// final DialogInterface dialog,
+		// final int which) {
+		//
+		// }
+		// });
+		//
+		// alertDialog.show();
+		//
+		// }
+		//
+		// }
+		//
+		// });
 
 	}
 
-	//
-	// @Override
-	// public boolean onOptionsItemSelected(MenuItem item) {
-	// switch (item.getItemId()) {
-	// case android.R.id.home:
-	//
-	// Intent intentSignUP=new
-	// Intent(getApplicationContext(),MainActivity.class);
-	// startActivity(intentSignUP);
-	// }
-	// return true;
-	// }
 	class SelectUsername1 extends AsyncTask<String, String, String> {
 
 		private ProgressDialog userDialog;
@@ -968,44 +1469,6 @@ public class StudentSignup extends Activity {
 			if (successL.equalsIgnoreCase("No")) {
 				userDialog.dismiss();
 			}
-			// {
-			//
-			//
-			//
-			// userDialog.dismiss();
-			//
-			// AlertDialog alertDialog = new AlertDialog.Builder(
-			// StudentSignup.this).create();
-			//
-			// // Setting Dialog Title
-			// alertDialog.setTitle("INFO!");
-			//
-			// // Setting Dialog Message
-			// alertDialog.setMessage("username registered.");
-			//
-			// // Setting Icon to Dialog
-			// alertDialog.setIcon(R.drawable.tick);
-			//
-			// alertDialog.setCancelable(false);
-			// // Setting OK Button
-			// alertDialog.setButton("OK", new DialogInterface.OnClickListener()
-			// {
-			//
-			// public void onClick(final DialogInterface dialog,
-			// final int which) {
-			//
-			// // username1.setText("");
-			//
-			// }
-			// });
-			//
-			// // Showing Alert Message
-			// alertDialog.show();
-			//
-			//
-			//
-			//
-			// }
 
 			else {
 
@@ -1139,39 +1602,6 @@ public class StudentSignup extends Activity {
 			if (successL.equalsIgnoreCase("No")) {
 				emailDialog.dismiss();
 			}
-			// {
-			//
-			// //user name or email id alreadsdy exist
-			// emailDialog.dismiss();
-			// AlertDialog alertDialog = new AlertDialog.Builder(
-			// StudentSignup.this).create();
-			//
-			// // Setting Dialog Title
-			// alertDialog.setTitle("INFO!");
-			//
-			// // Setting Dialog Message
-			// alertDialog.setMessage("Email registered.");
-			//
-			// // Setting Icon to Dialog
-			// alertDialog.setIcon(R.drawable.tick);
-			//
-			// alertDialog.setCancelable(false);
-			// // Setting OK Button
-			// alertDialog.setButton("OK", new DialogInterface.OnClickListener()
-			// {
-			//
-			// public void onClick(final DialogInterface dialog,
-			// final int which) {
-			//
-			// // emailid.setText("");
-			//
-			// }
-			// });
-			//
-			//
-			// alertDialog.show();
-			//
-			// }
 
 			else {
 				// user name or email id alreadsdy exist
@@ -1243,14 +1673,7 @@ public class StudentSignup extends Activity {
 
 		@Override
 		protected void onPreExecute() {
-			// super.onPreExecute();
-			// userDialog = new ProgressDialog(StudentSignup.this);
-			//
-			// userDialog.setMessage("Please wait...");
-			//
-			// userDialog.setIndeterminate(false);
-			// userDialog.setCancelable(true);
-			// userDialog.show();
+
 		}
 
 		@Override
@@ -1381,14 +1804,7 @@ public class StudentSignup extends Activity {
 
 		@Override
 		protected void onPreExecute() {
-			// super.onPreExecute();
-			// emailDialog = new ProgressDialog(StudentSignup.this);
-			//
-			// emailDialog.setMessage("Please wait...");
-			//
-			// emailDialog.setIndeterminate(false);
-			// emailDialog.setCancelable(true);
-			// emailDialog.show();
+
 		}
 
 		@Override

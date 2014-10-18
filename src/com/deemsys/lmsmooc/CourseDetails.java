@@ -54,7 +54,7 @@ public class CourseDetails extends SherlockFragmentActivity {
 		audio_url = i.getExtras().getString("audio_url", "");
 		ratingsho = i.getExtras().getString("rating", "");
 		numberofrows = i.getExtras().getString("numofrows", "");
-
+System.out.println("gcfg"+course_enrolls);
 		course_nam.setText(course_name);
 		enrol.setText(course_enrolls);
 		ratingshow = (ImageView) findViewById(R.id.ratingimage);

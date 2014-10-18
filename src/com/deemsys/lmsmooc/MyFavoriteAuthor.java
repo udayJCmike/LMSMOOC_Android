@@ -148,6 +148,7 @@ public class MyFavoriteAuthor extends Fragment {
 
 						Author auth = new Author(author_name, numb_of_courses,
 								author_id);
+						System.out.println("number of coursersss:"+numb_of_courses);
 						auth.setauthname(author_name);
 						auth.setauthcoursecount(numb_of_courses);
 						auth.setauthid(author_id);

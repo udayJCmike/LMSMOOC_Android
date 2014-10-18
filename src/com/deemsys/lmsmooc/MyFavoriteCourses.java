@@ -66,6 +66,7 @@ public class MyFavoriteCourses extends Fragment {
 	JSONArray user = null;
 	static ListView listView;
 	String rating_count;
+	private static final String TAG_ENROLLED_STUDENT = "course_enrolled";
 	String promocheck;
 	private static final String Promo_Check = "promocheck";
 	private static final String TAG_SUCCESS = "success";
@@ -363,13 +364,14 @@ public class MyFavoriteCourses extends Fragment {
 						course_id = c2.getString(TAG_COURSE_ID);
 						course_name = c2.getString(TAG_COURSE_NAME);
 						audiourl = c2.getString(TAG_COURSE_PROMO_VIDEO);
+						course_enrolled = c2.getString(TAG_ENROLLED_STUDENT);
 						course_cover_image = c2
 								.getString(TAG_course_cover_image);
 						cost = c2.getString(TAG_COURSE_COST);
 						ifmycoursepresent = c2.getString(TAG_Check_);
 						ratingcouont = c2.getString(TAG_COURSE_RATINGS);
 						promocheck = c2.getString(Promo_Check);
-
+						coursetotallist.add(course_enrolled);
 						course_description = c2
 								.getString(TAG_COURSE_DESCRIPTION);
 						coursetotallist.add(authorname);
@@ -377,6 +379,7 @@ public class MyFavoriteCourses extends Fragment {
 						coursetotallist.add(ratingcouont);
 						coursetotallist.add(ifmycoursepresent);
 						coursetotallist.add(audiourl);
+						coursetotallist.add(course_enrolled);
 						imagelist.add(course_cover_image);
 
 						Course cnt = new Course(authorname, course_name, cost,
@@ -391,6 +394,7 @@ public class MyFavoriteCourses extends Fragment {
 						cnt.setifmycourse(ifmycoursepresent);
 						cnt.setstringurl(course_cover_image);
 						cnt.setaudiourl(audiourl);
+						cnt.setstudentsenrolled(course_enrolled);
 						cnt.setdescription(course_description);
 						cnt.setpromocheck(promocheck);
 

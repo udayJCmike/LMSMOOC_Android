@@ -75,7 +75,7 @@ public class AuthorCourses extends SherlockFragmentActivity {
 
 	String promocheck;
 	private static final String Promo_Check = "promocheck";
-
+	private static final String TAG_ENROLLED_STUDENT = "course_enrolled";
 	String course_description;
 	private static final String TAG_COURSE_DESCRIPTION = "course_description";
 	String course_name, authorname, student_enrolled, ratingcouont, cost,
@@ -249,7 +249,7 @@ public class AuthorCourses extends SherlockFragmentActivity {
 						course_cover_image = c2
 								.getString(TAG_course_cover_image);
 						promocheck = c2.getString(Promo_Check);
-
+						course_enrolled = c2.getString(TAG_ENROLLED_STUDENT);
 						course_description = c2
 								.getString(TAG_COURSE_DESCRIPTION);
 						cost = c2.getString(TAG_COURSE_COST);
@@ -258,6 +258,7 @@ public class AuthorCourses extends SherlockFragmentActivity {
 						coursetotallist.add(course_name);
 						coursetotallist.add(ratingcouont);
 						coursetotallist.add(audiourl);
+						coursetotallist.add(course_enrolled);
 						imagelist.add(course_cover_image);
 
 						Course cnt = new Course(authorname, course_name, cost,
@@ -276,6 +277,7 @@ public class AuthorCourses extends SherlockFragmentActivity {
 						cnt.setdescription(course_description);
 						cnt.setstringurl(course_cover_image);
 						cnt.setaudiourl(audiourl);
+						cnt.setstudentsenrolled(course_enrolled);
 						courselist.add(cnt);
 
 						dataAdapter.add(cnt);

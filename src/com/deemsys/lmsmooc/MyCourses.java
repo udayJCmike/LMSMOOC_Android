@@ -139,6 +139,7 @@ public class MyCourses extends Fragment {
 					course_name_to_pass = country.getCode();
 					rating_count = country.getrating();
 					course_enrolled_passing = country.getstudentsenrolled();
+					System.out.println("course enrolle count::"+course_enrolled_passing);
 					new fetchpurnumber().execute();
 
 				}
@@ -545,7 +546,7 @@ public class MyCourses extends Fragment {
 			i.putExtra("course_name", course_name_to_pass);
 			i.putExtra("course_description", course_descript_to_pass);
 			i.putExtra("instructor_id", instructoridurl);
-			i.putExtra("enroll_studen ts", course_enrolled_passing);
+			i.putExtra("enroll_students", course_enrolled_passing);
 			i.putExtra("rating", rating_count);
 			i.putExtra("audio_url", audiourlpassing);
 			startActivity(i);

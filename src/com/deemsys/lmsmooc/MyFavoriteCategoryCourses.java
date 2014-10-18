@@ -69,7 +69,7 @@ public class MyFavoriteCategoryCourses extends SherlockFragmentActivity {
 	String rating_count;
 	String promocheck;
 	private static final String Promo_Check = "promocheck";
-
+	private static final String TAG_ENROLLED_STUDENT = "course_enrolled";
 	String course_description;
 	private static final String TAG_COURSE_DESCRIPTION = "course_description";
 	String course_name, authorname, student_enrolled, ratingcouont, cost,
@@ -259,7 +259,7 @@ public class MyFavoriteCategoryCourses extends SherlockFragmentActivity {
 								.getString(TAG_course_cover_image);
 						cost = c2.getString(TAG_COURSE_COST);
 						promocheck = c2.getString(Promo_Check);
-
+						course_enrolled = c2.getString(TAG_ENROLLED_STUDENT);
 						course_description = c2
 								.getString(TAG_COURSE_DESCRIPTION);
 						ratingcouont = c2.getString(TAG_COURSE_RATINGS);
@@ -268,6 +268,7 @@ public class MyFavoriteCategoryCourses extends SherlockFragmentActivity {
 						coursetotallist.add(ratingcouont);
 						coursetotallist.add(audiourl);
 						coursetotallist.add(ifmycoursepresent);
+						coursetotallist.add(course_enrolled);
 						imagelist.add(course_cover_image);
 
 						Course cnt = new Course(authorname, course_name, cost,
@@ -279,11 +280,12 @@ public class MyFavoriteCategoryCourses extends SherlockFragmentActivity {
 						cnt.setins_id(instructorid);
 						cnt.setcourseid(course_id);
 						cnt.setpromocheck(promocheck);
-
+						cnt.setstudentsenrolled(course_enrolled);
 						cnt.setrating(ratingcouont);
 						cnt.setdescription(course_description);
 						cnt.setifmycourse(ifmycoursepresent);
 						cnt.setstringurl(course_cover_image);
+						cnt.setstudentsenrolled(course_enrolled);
 						cnt.setaudiourl(audiourl);
 						courselist.add(cnt);
 

@@ -78,7 +78,7 @@ public class SearchStudentBased extends SherlockActivity {
 	String rating_count;
 	String promocheck;
 	private static final String Promo_Check = "promocheck";
-
+	private static final String TAG_ENROLLED_STUDENT = "course_enrolled";
 	String course_name, authorname, student_enrolled, ratingcouont, cost,
 			course_id, instructorid, numofrows, course_cover_image,
 			ifmycoursepresent, audiourl, audiourlpassing;
@@ -351,7 +351,7 @@ public class SearchStudentBased extends SherlockActivity {
 						course_cover_image = c2
 								.getString(TAG_course_cover_image);
 						promocheck = c2.getString(Promo_Check);
-
+						course_enrolled = c2.getString(TAG_ENROLLED_STUDENT);
 						cost = c2.getString(TAG_COURSE_COST);
 						course_description = c2
 								.getString(TAG_COURSE_DESCRIPTION);
@@ -362,7 +362,7 @@ public class SearchStudentBased extends SherlockActivity {
 						coursetotallist.add(ratingcouont);
 						coursetotallist.add(ifmycoursepresent);
 						coursetotallist.add(audiourl);
-
+						coursetotallist.add(course_enrolled);
 						imagelist.add(course_cover_image);
 
 						Course cnt = new Course(authorname, course_name, cost,
@@ -380,6 +380,7 @@ public class SearchStudentBased extends SherlockActivity {
 						cnt.setifmycourse(ifmycoursepresent);
 						cnt.setstringurl(course_cover_image);
 						cnt.setaudiourl(audiourl);
+						cnt.setstudentsenrolled(course_enrolled);
 						courselist.add(cnt);
 
 						dataAdapter = new MyCustomAdapter(

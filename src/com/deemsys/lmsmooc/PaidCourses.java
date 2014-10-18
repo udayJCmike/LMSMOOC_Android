@@ -80,7 +80,7 @@ public class PaidCourses extends Fragment {
 	private static final String TAG_SRES = "serviceresponse";
 	private static final String TAG_COURSE_NAME = "course_name";
 	private static final String TAG_COURSE_AUTHOR = "course_author";
-	// private static final String TAG_COURSE_SUBTITLE= "course_sub_title";
+	private static final String TAG_ENROLLED_STUDENT = "course_enrolled";
 	private static final String TAG_COURSE_COST = "course_price";
 	private static final String TAG_COURSE_RATINGS = "user_ratings";
 	private static final String TAG_course_cover_image = "course_cover_image";
@@ -278,7 +278,7 @@ public class PaidCourses extends Fragment {
 								.getString(TAG_course_cover_image);
 						cost = c2.getString(TAG_COURSE_COST);
 						promocheck = c2.getString(Promo_Check);
-
+						course_enrolled = c2.getString(TAG_ENROLLED_STUDENT);
 						course_description = c2
 								.getString(TAG_COURSE_DESCRIPTION);
 						ifmycoursepresent = c2.getString(TAG_Check_);
@@ -288,6 +288,7 @@ public class PaidCourses extends Fragment {
 						coursetotallist.add(ratingcouont);
 						coursetotallist.add(ifmycoursepresent);
 						coursetotallist.add(audiourl);
+						coursetotallist.add(course_enrolled);
 						imagelist.add(course_cover_image);
 
 						Course cnt = new Course(authorname, course_name, cost,
@@ -304,6 +305,7 @@ public class PaidCourses extends Fragment {
 						cnt.setstringurl(course_cover_image);
 						cnt.setaudiourl(audiourl);
 						cnt.setdescription(course_description);
+						cnt.setstudentsenrolled(course_enrolled);
 						courselist.add(cnt);
 
 						dataAdapter.add(cnt);
