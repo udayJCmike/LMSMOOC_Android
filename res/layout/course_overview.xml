@@ -148,7 +148,7 @@
                 android:layout_height="wrap_content"
                 android:clickable="false"
                 android:focusable="false"
-                android:text="TextView" />
+                android:text="" />
         </LinearLayout>
     </RelativeLayout>
 

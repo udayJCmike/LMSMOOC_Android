@@ -32,6 +32,7 @@ import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -544,6 +545,7 @@ public class MyFavoriteCourses extends Fragment {
 			holder.code.setText(country.getCode());
 			holder.name.setText(country.getName());
 			holder.cost.setText("$ " + country.getRegion());
+			holder.cost.setTextColor(Color.parseColor("#4B9500"));
 			holder.cover.setImageBitmap(country.getBitmap());
 
 			Picasso.with(getActivity()).load(country.getstringurl())

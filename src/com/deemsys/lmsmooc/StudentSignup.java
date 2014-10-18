@@ -1738,7 +1738,9 @@ public class StudentSignup extends Activity {
 					confirmpass.setText("");
 					check.setChecked(false);
 					pDialog.dismiss();
-
+					Intent intentSignUP = new Intent(getApplicationContext(),
+							MainActivity.class);
+					startActivity(intentSignUP);
 				}
 			});
 

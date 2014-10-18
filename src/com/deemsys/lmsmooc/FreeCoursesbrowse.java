@@ -31,6 +31,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -422,6 +423,7 @@ public class FreeCoursesbrowse extends Fragment {
 			holder.code.setText(country.getCode());
 			holder.name.setText(country.getName());
 			holder.cost.setText("$ " + country.getRegion());
+			holder.cost.setTextColor(Color.parseColor("#4B9500"));
 			holder.cover.setImageBitmap(country.getBitmap());
 			// aQuery = new AQuery(getActivity());
 			// aQuery.id(R.id.cover).image(country.getstringurl(),true,true);

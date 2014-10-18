@@ -31,6 +31,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -447,6 +448,7 @@ public class PaidCourses extends Fragment {
 			holder.name.setText(country.getName());
 			holder.cost.setText("$ " + country.getRegion());
 			holder.cover.setImageBitmap(country.getBitmap());
+			holder.cost.setTextColor(Color.parseColor("#4B9500"));
 
 			Picasso.with(getActivity()).load(country.getstringurl())
 					.into(holder.cover);

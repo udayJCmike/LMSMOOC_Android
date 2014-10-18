@@ -431,6 +431,7 @@ public class CategoryCourses extends SherlockFragmentActivity {
 			holder.code.setText(country.getCode());
 			holder.name.setText(country.getName());
 			holder.cost.setText("$ " + country.getRegion());
+			holder.cost.setTextColor(Color.parseColor("#4B9500"));
 			holder.cover.setImageBitmap(country.getBitmap());
 			holder.promoimage = (ImageView) convertView
 					.findViewById(R.id.promoimage);

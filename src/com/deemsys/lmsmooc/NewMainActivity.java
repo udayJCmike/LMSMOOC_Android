@@ -42,7 +42,7 @@ public class NewMainActivity extends SherlockFragmentActivity {
 	int[] icon;
 	Bitmap bitmap;
 	ImageView profimg;
-	CustomImageView iconImage;
+	
 	Fragment fragment1 = new Fragmetns2();
 	Fragment fragment2 = new ProfileFragment();
 	Fragment fragment3 = new ChangePasswordFragment();
