@@ -39,6 +39,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.AsyncTask.Status;
 import android.os.Bundle;
 
 import android.util.Log;
@@ -61,7 +62,7 @@ import android.widget.AbsListView.OnScrollListener;
 
 public class AllCourses extends Fragment {
 	Bitmap bitmap;
-
+	private AsyncTask<String, Void, String> mTask;
 	public ProgressDialog cDialog, pDialog;
 	public static ArrayList<String> coursetotallist = new ArrayList<String>();
 	public static ArrayList<String> imagelist = new ArrayList<String>();
@@ -79,8 +80,9 @@ public class AllCourses extends Fragment {
 	static ListView listView;
 	String course_name, authorname, student_enrolled, ratingcouont, cost,
 			course_id, instructorid, numofrows, course_cover_image,
-			ifmycoursepresent, audiourl, audiourlpassing;
-
+			ifmycoursepresent, audiourl, audiourlpassing ;
+ String course_subtitle,course_subtitle_topass;
+private static final String TAG_COURSE_SUBTITLE = "course_sub_title";
 	String course_description;
 	private static final String TAG_COURSE_DESCRIPTION = "course_description";
 	String promocheck;
@@ -140,7 +142,9 @@ public class AllCourses extends Fragment {
 					course_name_to_pass = country.getCode();
 					rating_count = country.getrating();
 					course_enrolled_passing = country.getstudentsenrolled();
-					System.out.println("passing course enroll"+course_enrolled_passing);
+					course_subtitle_topass=country.getsubtitle();
+					System.out.println("passing course enroll"
+							+ course_enrolled_passing);
 					new fetchpurnumber().execute();
 				}
 			}
@@ -159,7 +163,7 @@ public class AllCourses extends Fragment {
 
 				int lastInScreen = firstVisibleItem + visibleItemCount;
 				if ((lastInScreen == totalItemCount) && !(loadingMore)) {
-
+					loadingMore=true;
 					if (isInternetPresent) {
 						grabURL(Config.ServerUrl + Config.allcourseurl);
 					} else {
@@ -195,7 +199,8 @@ public class AllCourses extends Fragment {
 
 	public void grabURL(String url) {
 
-		new GrabURL().execute(url);
+		System.out.println("calling async count");
+		mTask=new GrabURL().execute(url);
 	}
 
 	public static AllCourses newInstance(String text) {
@@ -272,7 +277,7 @@ public class AllCourses extends Fragment {
 				for (int i = 0; i < jarray.length(); i++) {
 					arrayname = arrayname + Integer.toString(i);
 					arrayname = jarray.getString(i);
-					Log.e("parenttag", arrayname);
+//					Log.e("parenttag", arrayname);
 
 				}
 
@@ -307,13 +312,16 @@ public class AllCourses extends Fragment {
 						promocheck = c2.getString(Promo_Check);
 						ratingcouont = c2.getString(TAG_COURSE_RATINGS);
 						audiourl = c2.getString(TAG_COURSE_PROMO_VIDEO);
-						course_enrolled=c2.getString(TAG_ENROLLED_STUDENT);
+						course_subtitle = c2.getString(TAG_COURSE_SUBTITLE);
+						coursetotallist.add(course_subtitle);
+						course_enrolled = c2.getString(TAG_ENROLLED_STUDENT);
 						coursetotallist.add(authorname);
 						coursetotallist.add(course_name);
 						coursetotallist.add(ratingcouont);
 						coursetotallist.add(ifmycoursepresent);
 						coursetotallist.add(audiourl);
 						coursetotallist.add(course_enrolled);
+						
 						imagelist.add(course_cover_image);
 
 						Course cnt = new Course(authorname, course_name, cost,
@@ -331,6 +339,7 @@ public class AllCourses extends Fragment {
 						cnt.setdescription(course_description);
 						cnt.setpromocheck(promocheck);
 						cnt.setstudentsenrolled(course_enrolled);
+						cnt.setsubtitle(course_subtitle);
 						courselist.add(cnt);
 
 						dataAdapter.add(cnt);
@@ -428,6 +437,7 @@ public class AllCourses extends Fragment {
 		}
 
 		private class ViewHolder {
+//		sd	TextView subs;
 			TextView code;
 			TextView name;
 			ImageView cover;
@@ -446,7 +456,7 @@ public class AllCourses extends Fragment {
 		public View getView(int position, View convertView, ViewGroup parent) {
 
 			ViewHolder holder = null;
-			Log.v("ConvertView", String.valueOf(position));
+			//Log.v("ConvertView", String.valueOf(position));
 			if (convertView == null) {
 
 				LayoutInflater vi = (LayoutInflater) getActivity()
@@ -463,6 +473,8 @@ public class AllCourses extends Fragment {
 						.findViewById(R.id.ratingimage);
 				holder.enroll = (TextView) convertView
 						.findViewById(R.id.enroll);
+//				holder.subs = (TextView) convertView
+//						.findViewById(R.id.coursesubtitle);
 				holder.promoimage = (ImageView) convertView
 						.findViewById(R.id.promoimage);
 				convertView.setTag(holder);
@@ -474,6 +486,7 @@ public class AllCourses extends Fragment {
 			Course country = this.countryList.get(position);
 			holder.code.setText(country.getCode());
 			holder.name.setText(country.getName());
+			//holder.subs.setText(country.getsubtitle());
 			holder.cost.setText("$ " + country.getRegion());
 			holder.cost.setTextColor(Color.parseColor("#4B9500"));
 			holder.cover.setImageBitmap(country.getBitmap());
@@ -617,6 +630,7 @@ public class AllCourses extends Fragment {
 				i.putExtra("rating", rating_count);
 				i.putExtra("audio_url", audiourlpassing);
 				i.putExtra("numofrows", numofrows);
+				i.putExtra("course_subtitle", course_subtitle_topass);
 				startActivity(i);
 
 			}
@@ -655,5 +669,14 @@ public class AllCourses extends Fragment {
 		} else {
 
 		}
+	}
+	@Override
+	public void onStop() {
+	    super.onStop();
+
+	    //check the state of the task
+	    System.out.println("in stop");
+	    if(mTask != null && mTask.getStatus() == Status.RUNNING)
+	    	mTask.cancel(true);
 	}
 }

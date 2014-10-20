@@ -21,6 +21,7 @@ public class Course {
 	String ifmycourse;
 	String promocheck;
 	String audiourl;
+	String subtitle;
 
 	public Course(String authorname, String course_name, String costw,
 			String course_id2, String instructorid, String bitmap, String rat) {
@@ -185,5 +186,13 @@ public class Course {
 
 	public void setpromocheck(String promocheck) {
 		this.promocheck = promocheck;
+	}
+
+	public String getsubtitle() {
+		return subtitle;
+	}
+
+	public void setsubtitle(String subs) {
+		this.subtitle = subs;
 	}
 }

@@ -1,6 +1,7 @@
 package com.deemsys.lmsmooc;
 
 import android.support.v4.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,7 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
+import android.widget.TextView;
+import android.view.View.OnClickListener;
 public class AboutUs extends Fragment {
 
 	String accesstokeny, accesstokensecret;
@@ -27,6 +29,7 @@ public class AboutUs extends Fragment {
 
 	private static SharedPreferences mSharedPreferences;
 	private ConnectionDetector cd;
+	TextView termsofuse,privacy,whylearnterst,emailcompose;
 
 	public AboutUs() {
 	}
@@ -46,6 +49,46 @@ public class AboutUs extends Fragment {
 			StrictMode.setThreadPolicy(policy);
 		}
 		follow = (Button) rootView.findViewById(R.id.follo);
+		termsofuse = (TextView) rootView.findViewById(R.id.termsofuse);
+		privacy = (TextView) rootView.findViewById(R.id.privacy);
+		whylearnterst= (TextView) rootView.findViewById(R.id.whylearnterst);
+		emailcompose= (TextView) rootView.findViewById(R.id.addrs6);
+		emailcompose.setOnClickListener(new OnClickListener() {
+
+	        @Override
+	        public void onClick(View v) {
+	        	sendEmail(getActivity(), new String[]{"lmssupport@deemsysinc.com"}, "Sending Email",
+	                    "", "");
+	        }
+	    });
+		termsofuse.setOnClickListener(new OnClickListener() {
+
+	        @Override
+	        public void onClick(View v) {
+	        	Intent intent = new Intent(getActivity(), WebViewActivity.class);
+	        	intent.putExtra("urlpassing", "http://208.109.248.89:8087/OnlineCourse/user_view_Termsofuses");
+			    startActivity(intent);
+	        }
+	    });
+		privacy.setOnClickListener(new OnClickListener() {
+
+	        @Override
+	        public void onClick(View v) {
+	        	Intent intent = new Intent(getActivity(), WebViewActivity.class);
+	        	intent.putExtra("urlpassing", "http://208.109.248.89:8087/OnlineCourse/user_view_PrivacyPolicy");
+			    startActivity(intent);
+	        }
+	    });
+		whylearnterst.setOnClickListener(new OnClickListener() {
+
+	        @Override
+	        public void onClick(View v) {
+	        	Intent intent = new Intent(getActivity(), WebViewActivity.class);
+	        	intent.putExtra("urlpassing", "http://208.109.248.89:8087/OnlineCourse/whylearnterest");
+			    startActivity(intent);
+	        }
+	    });
+		
 		mSharedPreferences = getActivity().getSharedPreferences("MyPref", 0);
 
 		follow.setOnClickListener(new View.OnClickListener() {
@@ -58,89 +101,7 @@ public class AboutUs extends Fragment {
 			}
 		});
 
-		// if (!isTwitterLoggedInAlready()) {
-		// Uri uri = getActivity().getIntent().getData();
-		// if (uri != null && uri.toString().startsWith(TWITTER_CALLBACK_URL)) {
-		//
-		// String verifier = uri
-		// .getQueryParameter(URL_TWITTER_OAUTH_VERIFIER);
-		// System.out.println("verifier value::" + verifier);
-		// try {
-		//
-		// AccessToken accessToken = twitter.getOAuthAccessToken(
-		// requestToken, verifier);
-		//
-		// Editor e = mSharedPreferences.edit();
-		//
-		// System.out.println("access token value::"
-		// + accessToken.getToken());
-		// e.putString(PREF_KEY_OAUTH_TOKEN, accessToken.getToken());
-		// e.putString(PREF_KEY_OAUTH_SECRET,
-		// accessToken.getTokenSecret());
-		//
-		// e.putBoolean(PREF_KEY_TWITTER_LOGIN, true);
-		// e.commit();
-		// String access_token = mSharedPreferences.getString(
-		// PREF_KEY_OAUTH_TOKEN, "");
-		//
-		// String access_token_secret = mSharedPreferences.getString(
-		// PREF_KEY_OAUTH_SECRET, "");
-		// // Log.e("Twitter OAuth Token", "> " +
-		// // accessToken.getToken());
-		// ConfigurationBuilder cb = new ConfigurationBuilder();
-		// cb.setDebugEnabled(true)
-		// .setOAuthConsumerKey(TWITTER_CONSUMER_KEY)
-		// .setOAuthConsumerSecret(TWITTER_CONSUMER_SECRET)
-		// .setOAuthAccessToken(
-		// mSharedPreferences.getString(
-		// PREF_KEY_OAUTH_TOKEN, ""))
-		// .setOAuthAccessTokenSecret(
-		// mSharedPreferences.getString(
-		// PREF_KEY_OAUTH_SECRET, ""));
-		// TwitterFactory tf = new TwitterFactory(cb.build());
-		// twitter = tf.getInstance();
-		//
-		// try {
-		// String screenName = "imansvijay";
-		// System.out.println("in create friendship");
-		// twitter.createFriendship(screenName);
-		//
-		// } catch (Exception e1) {
-		//
-		// e1.printStackTrace();
-		// }
-		//
-		// } catch (Exception e) {
-		// // Check log for login errors
-		// Log.e("Twitter Login Error", "> " + e.getMessage());
-		// }
-		// }
-		// } else {
-		// ConfigurationBuilder cb = new ConfigurationBuilder();
-		// cb.setDebugEnabled(true)
-		// .setOAuthConsumerKey(TWITTER_CONSUMER_KEY)
-		// .setOAuthConsumerSecret(TWITTER_CONSUMER_SECRET)
-		// .setOAuthAccessToken(
-		// mSharedPreferences.getString(PREF_KEY_OAUTH_TOKEN,
-		// ""))
-		// .setOAuthAccessTokenSecret(
-		// mSharedPreferences.getString(PREF_KEY_OAUTH_SECRET,
-		// ""));
-		// TwitterFactory tf = new TwitterFactory(cb.build());
-		// twitter = tf.getInstance();
-		//
-		// try {
-		// String screenName = "imansvijay";
-		// System.out.println("in create friendship");
-		// twitter.createFriendship(screenName);
-		//
-		// } catch (Exception e1) {
-		//
-		// e1.printStackTrace();
-		// }
-		//
-		// }
-
+		
 		return rootView;
 	}
 
@@ -154,5 +115,13 @@ public class AboutUs extends Fragment {
 		return mSharedPreferences.getBoolean(PREF_KEY_TWITTER_LOGIN, false);
 
 	}
-
+	public static void sendEmail(Context context, String[] recipientList,
+            String title, String subject, String body) {
+    Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);    
+    emailIntent.setType("plain/text");    
+    emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, recipientList);
+    emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, subject);   
+    emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, body);
+    context.startActivity(Intent.createChooser(emailIntent, title));
+}
 }

@@ -50,7 +50,8 @@ import android.widget.AbsListView.OnScrollListener;
 
 public class AllCoursesbrowse extends Fragment {
 	Bitmap bitmap;
-
+	String course_subtitle,course_subtitle_topass;
+	private static final String TAG_COURSE_SUBTITLE = "course_sub_title";
 	public ProgressDialog cDialog, pDialog;
 	public static ArrayList<String> coursetotallist = new ArrayList<String>();
 	public static ArrayList<String> imagelist = new ArrayList<String>();
@@ -65,6 +66,7 @@ public class AllCoursesbrowse extends Fragment {
 	boolean loadingMore = false;
 	View loadMoreView;
 	JSONArray user = null;
+	
 	static ListView listView;
 	String promocheck;
 	private static final String Promo_Check = "promocheck";
@@ -280,13 +282,14 @@ public class AllCoursesbrowse extends Fragment {
 								.getString(TAG_COURSE_DESCRIPTION);
 						course_name = c2.getString(TAG_COURSE_NAME);
 						promocheck = c2.getString(Promo_Check);
-
+						course_subtitle = c2.getString(TAG_COURSE_SUBTITLE);
 						course_cover_image = c2
 								.getString(TAG_course_cover_image);
 						cost = c2.getString(TAG_COURSE_COST);
 						ratingcouont = c2.getString(TAG_COURSE_RATINGS);
 						coursetotallist.add(authorname);
 						coursetotallist.add(course_name);
+						coursetotallist.add(course_subtitle);
 						coursetotallist.add(ratingcouont);
 						successstring = c2.getString(TAG_SUCCESS);
 						imagelist.add(course_cover_image);
@@ -304,7 +307,7 @@ public class AllCoursesbrowse extends Fragment {
 						cnt.setstringurl(course_cover_image);
 						cnt.setdescription(course_description);
 						cnt.setifmycourse(ifmycoursepresent);
-
+						cnt.setsubtitle(course_subtitle);
 						courselist.add(cnt);
 
 						dataAdapter.add(cnt);
@@ -418,7 +421,7 @@ public class AllCoursesbrowse extends Fragment {
 			TextView cost;
 			ImageView ratingshow;
 			ImageView promoimage;
-
+			//TextView subs;
 		}
 
 		public void add(Course country) {
@@ -447,7 +450,8 @@ public class AllCoursesbrowse extends Fragment {
 						.findViewById(R.id.ratingimage);
 				holder.promoimage = (ImageView) convertView
 						.findViewById(R.id.promoimage);
-
+//				holder.subs = (TextView) convertView
+//						.findViewById(R.id.coursesubtitle);
 				convertView.setTag(holder);
 
 			} else {
@@ -457,6 +461,7 @@ public class AllCoursesbrowse extends Fragment {
 			Course country = this.countryList.get(position);
 			holder.code.setText(country.getCode());
 			holder.name.setText(country.getName());
+			//holder.subs.setText(country.getsubtitle());
 			holder.cost.setText("$ " + country.getRegion());
 			holder.cost.setTextColor(Color.parseColor("#4B9500"));
 			holder.cover.setImageBitmap(country.getBitmap());

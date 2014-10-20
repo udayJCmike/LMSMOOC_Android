@@ -91,5 +91,29 @@
     <string name="gcm_deleted">gcm_deleted</string>
     <string name="gcm_error">gcm_error</string>
     <string name="gcm_recoverable_error">gcm_recoverable_error</string>
+    <string name="one">1.Use side menu icon at top or swipe right gesture to navigate between pages.</string>
+    <string name="two">2.Swipe left or right to navigate between all, free and paid courses.</string>
+    <string name="three">3.Click category at the top menu to get the list of category.</string>
+    <string name="four">4.Use search icon at the top menu to search for courses.</string>
+    <string name="five">5.To upload profile picture navigate to profile page, select picture and click upload. Press save changes to update your profile.</string>
+    <string name="six">6.Navigate to Inbox page and get the messages. Mark message as important or unimportant in Inbox detail page.</string>
+    <string name="seven">7.Update password in change password page.</string>
+    <string name="eight">8.Get the list of enrolled courses in course detail page. Tap a course and view course details and course lectures.</string>
+    <string name="nine">9.Use top button in course detail page to share your courses</string>
+    <string name="ten">10.Use top corner button to add courses to your favourites.</string>
+    <string name="eleven">11.Follow or unfollow author in about author page.</string>
+    <string name="twelve">12.View course description in about course page.</string>
+    <string name="thirteen">13.Click my favourites to get list of your favourite courses. Press and hold to remove courses from favourites list.</string>
+    <string name="fourteen">14.Click my billing to get your paid bill details.</string>
+    <string name="fifteen">15.Click About and follow us on twitter and like us on Facebook.</string>
+    <string name="termsofuse">Terms Of Use</string>
+    <string name="privacypolicy">Privacy Policy</string>
+    <string name="learnterest">Why Learnterest</string>
+    <string name="address1">Corporate Office</string>
+    <string name="address2">Deemsys Inc,</string>
+    <string name="address3">800, Cross Pointe Road,	Suite A,</string>
+    <string name="address4">Gahanna, OH 43230,U.S.A.</string>
+    <string name="address5">614-322-9928 </string>
+     <string name="address6">lmssupport@deemsysinc.com</string>
 
 </resources>

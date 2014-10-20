@@ -52,8 +52,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-    
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait" />
@@ -134,6 +132,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".BillingDetails"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".WebViewActivity"
             android:screenOrientation="portrait" />
 
         <receiver

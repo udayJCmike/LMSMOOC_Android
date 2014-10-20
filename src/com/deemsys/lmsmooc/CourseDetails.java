@@ -23,9 +23,9 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 
 public class CourseDetails extends SherlockFragmentActivity {
-	TextView course_nam, enrol;
+	TextView course_nam, enrol, coursesub;
 	static String course_id;
-	String course_name;
+	static String course_name;
 	String course_enrolls;
 	static String course_description, instructorid;
 	ProgressDialog pDialog;
@@ -36,6 +36,7 @@ public class CourseDetails extends SherlockFragmentActivity {
 	ImageView ratingshow;
 	ImageButton mPlayButton;
 	String numberofrows;
+	String course_subtitle;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,7 @@ public class CourseDetails extends SherlockFragmentActivity {
 		setContentView(R.layout.course_details);
 
 		course_nam = (TextView) findViewById(R.id.coursename);
+		coursesub = (TextView) findViewById(R.id.coursesubtitle);
 		enrol = (TextView) findViewById(R.id.enrollcourse);
 		mPlayButton = (ImageButton) findViewById(R.id.play_button);
 		Intent i = getIntent();
@@ -54,9 +56,11 @@ public class CourseDetails extends SherlockFragmentActivity {
 		audio_url = i.getExtras().getString("audio_url", "");
 		ratingsho = i.getExtras().getString("rating", "");
 		numberofrows = i.getExtras().getString("numofrows", "");
-System.out.println("gcfg"+course_enrolls);
+		course_subtitle = i.getExtras().getString("course_subtitle", "");
+		System.out.println("gcfg" + course_subtitle);
 		course_nam.setText(course_name);
 		enrol.setText(course_enrolls);
+		coursesub.setText(course_subtitle);
 		ratingshow = (ImageView) findViewById(R.id.ratingimage);
 		videoview = (VideoView) findViewById(R.id.videoView1);
 		ActionBar ab = getSupportActionBar();

@@ -66,6 +66,8 @@ public class FreeCoursesbrowse extends Fragment {
 	View loadMoreView;
 	JSONArray user = null;
 	static ListView listView;
+	String course_subtitle;
+	private static final String TAG_COURSE_SUBTITLE = "course_sub_title";
 	String promocheck;
 	private static final String Promo_Check = "promocheck";
 	String course_description;
@@ -267,11 +269,12 @@ public class FreeCoursesbrowse extends Fragment {
 						course_description = c2
 								.getString(TAG_COURSE_DESCRIPTION);
 						cost = c2.getString(TAG_COURSE_COST);
+						course_subtitle = c2.getString(TAG_COURSE_SUBTITLE);
 						ratingcouont = c2.getString(TAG_COURSE_RATINGS);
 						coursetotallist.add(authorname);
 						coursetotallist.add(course_name);
 						coursetotallist.add(ratingcouont);
-
+						coursetotallist.add(course_subtitle);
 						imagelist.add(course_cover_image);
 
 						Course cnt = new Course(authorname, course_name, cost,
@@ -285,6 +288,7 @@ public class FreeCoursesbrowse extends Fragment {
 						cnt.setstringurl(course_cover_image);
 						cnt.setpromocheck(promocheck);
 						cnt.setifmycourse(ifmycoursepresent);
+						cnt.setsubtitle(course_subtitle);
 						courselist.add(cnt);
 
 						dataAdapter.add(cnt);
@@ -384,6 +388,7 @@ public class FreeCoursesbrowse extends Fragment {
 			ImageView promoimage;
 			TextView cost;
 			ImageView ratingshow;
+			//TextView subs;
 		}
 
 		public void add(Course country) {
@@ -412,7 +417,8 @@ public class FreeCoursesbrowse extends Fragment {
 						.findViewById(R.id.ratingimage);
 				holder.promoimage = (ImageView) convertView
 						.findViewById(R.id.promoimage);
-
+//				holder.subs = (TextView) convertView
+//						.findViewById(R.id.coursesubtitle);
 				convertView.setTag(holder);
 
 			} else {
@@ -425,8 +431,7 @@ public class FreeCoursesbrowse extends Fragment {
 			holder.cost.setText("$ " + country.getRegion());
 			holder.cost.setTextColor(Color.parseColor("#4B9500"));
 			holder.cover.setImageBitmap(country.getBitmap());
-			// aQuery = new AQuery(getActivity());
-			// aQuery.id(R.id.cover).image(country.getstringurl(),true,true);
+		//	holder.subs.setText(country.getsubtitle());
 			Picasso.with(getActivity()).load(country.getstringurl())
 					.into(holder.cover);
 

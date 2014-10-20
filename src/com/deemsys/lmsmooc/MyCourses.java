@@ -58,6 +58,8 @@ public class MyCourses extends Fragment {
 	JSONObject jArray;
 	MyCustomAdapter dataAdapter = null;
 	int start = 0;
+	String course_subtitle,course_subtitle_topass;
+	private static final String TAG_COURSE_SUBTITLE = "course_sub_title";
 	int limit = 10;
 	boolean loadingMore = false;
 	View loadMoreView;
@@ -65,7 +67,6 @@ public class MyCourses extends Fragment {
 	static ListView listView;
 	String promocheck;
 	private static final String Promo_Check = "promocheck";
-
 	String course_id_topass, course_name_to_pass, course_descript_to_pass,
 			course_enrolled;
 	String course_name, authorname, student_enrolled, ratingcouont, cost,
@@ -138,6 +139,7 @@ public class MyCourses extends Fragment {
 					instructoridurl = country.getinsid();
 					course_name_to_pass = country.getCode();
 					rating_count = country.getrating();
+					course_subtitle_topass=country.getsubtitle();
 					course_enrolled_passing = country.getstudentsenrolled();
 					System.out.println("course enrolle count::"+course_enrolled_passing);
 					new fetchpurnumber().execute();
@@ -251,7 +253,7 @@ public class MyCourses extends Fragment {
 						ratingcouont = c2.getString(TAG_COURSE_RATINGS);
 						course_enrolled = c2.getString(TAG_ENROLLED_STUDENT);
 						promocheck = c2.getString(Promo_Check);
-
+						course_subtitle = c2.getString(TAG_COURSE_SUBTITLE);
 						audiourl = c2.getString(TAG_COURSE_PROMO_VIDEO);
 						coursetotallist.add(course_description);
 						coursetotallist.add(authorname);
@@ -259,6 +261,7 @@ public class MyCourses extends Fragment {
 						coursetotallist.add(ratingcouont);
 						coursetotallist.add(course_enrolled);
 						coursetotallist.add(audiourl);
+						coursetotallist.add(course_subtitle);
 						imagelist.add(course_cover_image);
 
 						Course cnt = new Course(authorname, course_name, cost,
@@ -276,6 +279,7 @@ public class MyCourses extends Fragment {
 						cnt.setstudentsenrolled(course_enrolled);
 						cnt.setstringurl(course_cover_image);
 						cnt.setaudiourl(audiourl);
+						cnt.setsubtitle(course_subtitle);
 						courselist.add(cnt);
 
 						dataAdapter.add(cnt);
@@ -371,6 +375,7 @@ public class MyCourses extends Fragment {
 		}
 
 		private class ViewHolder {
+			//TextView subs;
 			TextView code;
 			TextView name;
 			ImageView cover;
@@ -405,6 +410,8 @@ public class MyCourses extends Fragment {
 						.findViewById(R.id.ratingimage);
 				holder.promoimage = (ImageView) convertView
 						.findViewById(R.id.promoimage);
+//				holder.subs = (TextView) convertView
+//						.findViewById(R.id.coursesubtitle);
 				convertView.setTag(holder);
 
 			} else {
@@ -417,7 +424,7 @@ public class MyCourses extends Fragment {
 			holder.cost.setText("$ " + country.getRegion());
 			holder.cost.setTextColor(Color.parseColor("#4B9500"));
 			holder.cover.setImageBitmap(country.getBitmap());
-
+		//	holder.subs.setText(country.getsubtitle());
 			Picasso.with(getActivity()).load(country.getstringurl())
 					.into(holder.cover);
 
@@ -549,6 +556,7 @@ public class MyCourses extends Fragment {
 			i.putExtra("enroll_students", course_enrolled_passing);
 			i.putExtra("rating", rating_count);
 			i.putExtra("audio_url", audiourlpassing);
+			i.putExtra("course_subtitle", course_subtitle_topass);
 			startActivity(i);
 
 		}

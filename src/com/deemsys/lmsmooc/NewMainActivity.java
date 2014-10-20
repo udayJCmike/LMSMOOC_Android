@@ -42,7 +42,7 @@ public class NewMainActivity extends SherlockFragmentActivity {
 	int[] icon;
 	Bitmap bitmap;
 	ImageView profimg;
-	
+
 	Fragment fragment1 = new Fragmetns2();
 	Fragment fragment2 = new ProfileFragment();
 	Fragment fragment3 = new ChangePasswordFragment();
@@ -53,6 +53,7 @@ public class NewMainActivity extends SherlockFragmentActivity {
 	Fragment fragment8 = new MyFavoriteAuthor();
 	Fragment fragment9 = new BillingFragment();
 	Fragment fragment10 = new AboutUs();
+	Fragment fragment11 = new HelpFragment();
 	private CharSequence mDrawerTitle;
 	private CharSequence mTitle;
 	static String sampletestvale = "8";
@@ -96,14 +97,14 @@ public class NewMainActivity extends SherlockFragmentActivity {
 
 		title = new String[] { "Home", "Profile", "Change Password", "Inbox",
 				"My Courses", "My Favorites", "My Categories", "My Authors",
-				"Billing", "About Us", "Logout" };
+				"My Billing", "About Us","Help", "Logout" };
 
 		subtitle = new String[] { "Subtitle Fragment 1", "Subtitle Fragment 2" };
 
 		icon = new int[] { R.drawable.home, R.drawable.profile,
 				R.drawable.changepassword, R.drawable.inbox,
 				R.drawable.courses, R.drawable.favorites, R.drawable.category,
-				R.drawable.author, R.drawable.billing, R.drawable.aboutm,
+				R.drawable.author, R.drawable.billing, R.drawable.aboutm, R.drawable.aboutm,
 				R.drawable.logout, R.drawable.ic_launcher };
 
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -207,6 +208,9 @@ public class NewMainActivity extends SherlockFragmentActivity {
 			break;
 		case 9:
 			ft.replace(R.id.content_frame, fragment10);
+			break;
+		case 10:
+			ft.replace(R.id.content_frame, fragment11);
 			break;
 		default:
 			AboutTweet.forcheck = 0;

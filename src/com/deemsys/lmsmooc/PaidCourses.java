@@ -22,6 +22,8 @@ import org.apache.http.params.HttpParams;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import com.deemsys.lmsmooc.AllCourses.GrabURL;
 import com.squareup.picasso.Picasso;
 import android.support.v4.app.Fragment;
 import android.app.AlertDialog;
@@ -35,6 +37,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.AsyncTask.Status;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,7 +53,7 @@ import android.widget.AbsListView.OnScrollListener;
 
 public class PaidCourses extends Fragment {
 	Bitmap bitmap;
-
+	private AsyncTask<String, Void, String> mTask;
 	public ProgressDialog cDialog, pDialog;
 	public static ArrayList<String> coursetotallist = new ArrayList<String>();
 	public static ArrayList<String> imagelist = new ArrayList<String>();
@@ -64,7 +67,8 @@ public class PaidCourses extends Fragment {
 	int limit = 10;
 	String promocheck;
 	private static final String Promo_Check = "promocheck";
-
+	String course_subtitle,course_subtitle_topass;
+	private static final String TAG_COURSE_SUBTITLE = "course_sub_title";
 	boolean loadingMore = false;
 	View loadMoreView;
 	JSONArray user = null;
@@ -147,7 +151,7 @@ public class PaidCourses extends Fragment {
 					course_name_to_pass = country.getCode();
 					course_enrolled_passing = country.getstudentsenrolled();
 					checkstatus = country.getifmycourse();
-
+					course_subtitle_topass=country.getsubtitle();
 					courseidurl = country.getcourseid();
 					rating_count = country.getrating();
 					instructoridurl = country.getinsid();
@@ -177,7 +181,7 @@ public class PaidCourses extends Fragment {
 
 	public void grabURL(String url) {
 
-		new GrabURL().execute(url);
+		mTask=new GrabURL().execute(url);
 	}
 
 	public static PaidCourses newInstance(String text) {
@@ -279,6 +283,7 @@ public class PaidCourses extends Fragment {
 						cost = c2.getString(TAG_COURSE_COST);
 						promocheck = c2.getString(Promo_Check);
 						course_enrolled = c2.getString(TAG_ENROLLED_STUDENT);
+						course_subtitle = c2.getString(TAG_COURSE_SUBTITLE);
 						course_description = c2
 								.getString(TAG_COURSE_DESCRIPTION);
 						ifmycoursepresent = c2.getString(TAG_Check_);
@@ -288,6 +293,7 @@ public class PaidCourses extends Fragment {
 						coursetotallist.add(ratingcouont);
 						coursetotallist.add(ifmycoursepresent);
 						coursetotallist.add(audiourl);
+						coursetotallist.add(course_subtitle);
 						coursetotallist.add(course_enrolled);
 						imagelist.add(course_cover_image);
 
@@ -306,6 +312,7 @@ public class PaidCourses extends Fragment {
 						cnt.setaudiourl(audiourl);
 						cnt.setdescription(course_description);
 						cnt.setstudentsenrolled(course_enrolled);
+						cnt.setsubtitle(course_subtitle);
 						courselist.add(cnt);
 
 						dataAdapter.add(cnt);
@@ -402,6 +409,7 @@ public class PaidCourses extends Fragment {
 		}
 
 		private class ViewHolder {
+			//TextView subs;
 			TextView code;
 			TextView name;
 			ImageView cover;
@@ -439,6 +447,8 @@ public class PaidCourses extends Fragment {
 						.findViewById(R.id.promoimage);
 				holder.enroll = (TextView) convertView
 						.findViewById(R.id.enroll);
+//				holder.subs = (TextView) convertView
+//						.findViewById(R.id.coursesubtitle);
 				convertView.setTag(holder);
 
 			} else {
@@ -451,7 +461,7 @@ public class PaidCourses extends Fragment {
 			holder.cost.setText("$ " + country.getRegion());
 			holder.cover.setImageBitmap(country.getBitmap());
 			holder.cost.setTextColor(Color.parseColor("#4B9500"));
-
+			//holder.subs.setText(country.getsubtitle());
 			Picasso.with(getActivity()).load(country.getstringurl())
 					.into(holder.cover);
 
@@ -590,6 +600,7 @@ public class PaidCourses extends Fragment {
 				i.putExtra("enroll_students", course_enrolled_passing);
 				i.putExtra("audio_url", audiourlpassing);
 				i.putExtra("rating", rating_count);
+				i.putExtra("course_subtitle", course_subtitle_topass);
 				startActivity(i);
 			}
 
@@ -619,5 +630,14 @@ public class PaidCourses extends Fragment {
 		if (cDialog != null) {
 			cDialog.dismiss();
 		}
+	}
+	@Override
+	public void onStop() {
+	    super.onStop();
+
+	    //check the state of the task
+	    System.out.println("in stop");
+	    if(mTask != null && mTask.getStatus() == Status.RUNNING)
+	    	mTask.cancel(true);
 	}
 }

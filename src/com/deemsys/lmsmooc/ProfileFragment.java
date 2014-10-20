@@ -27,6 +27,8 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -582,8 +584,7 @@ public class ProfileFragment extends Fragment {
 
 								alertDialog.setTitle("Sorry User");
 
-								alertDialog
-										.setMessage("Enter a valid email");
+								alertDialog.setMessage("Enter a valid email");
 
 								alertDialog.setIcon(R.drawable.delete);
 
@@ -917,8 +918,7 @@ public class ProfileFragment extends Fragment {
 							alertDialog.setTitle("Sorry User");
 
 							// Setting Dialog Message
-							alertDialog
-									.setMessage("Enter a valid firstname");
+							alertDialog.setMessage("Enter a valid firstname");
 
 							// Setting Icon to Dialog
 							alertDialog.setIcon(R.drawable.delete);
@@ -1058,29 +1058,50 @@ public class ProfileFragment extends Fragment {
 
 		upload.setOnClickListener(new OnClickListener() {
 
+			@SuppressWarnings("deprecation")
 			@Override
 			public void onClick(View v) {
 
 				new Thread(new Runnable() {
 					public void run() {
-
+						imageuploaded = false;
 						uploadFile(imagepath);
 					}
 				}).start();
-
-				if (imageuploaded == false) {
-
-					selectedimage = "S" + Config.student_id + ".jpg";
-
-					Toast.makeText(getActivity(), "Image uploaded",
-							Toast.LENGTH_LONG).show();
-
-				} else {
-
-					Toast.makeText(getActivity(), "Image uploaded failed",
-							Toast.LENGTH_LONG).show();
-
-				}
+				System.out.println("value of imageuploaded" + imageuploaded);
+//				if (imageuploaded == true) {
+//
+//					selectedimage = "S" + Config.student_id + ".jpg";
+//
+//					Toast.makeText(getActivity(), "Image uploaded",
+//							Toast.LENGTH_LONG).show();
+//
+//				} else {
+//					AlertDialog alertDialog = new AlertDialog.Builder(
+//							getActivity()).create();
+//
+//					alertDialog.setTitle("Sorry User");
+//
+//					alertDialog.setMessage("Image size should less than 50kb");
+//
+//					alertDialog.setIcon(R.drawable.delete);
+//
+//					alertDialog.setButton("OK",
+//							new DialogInterface.OnClickListener() {
+//
+//								public void onClick(
+//										final DialogInterface dialog,
+//										final int which) {
+//
+//								}
+//							});
+//
+//					alertDialog.show();
+//
+//					Toast.makeText(getActivity(), "Image uploaded failed",
+//							Toast.LENGTH_LONG).show();
+//
+//				}
 			}
 
 		});
@@ -1137,6 +1158,7 @@ public class ProfileFragment extends Fragment {
 		return cursor.getString(column_index);
 	}
 
+	@SuppressWarnings("deprecation")
 	public int uploadFile(String sourceFileUri) {
 
 		String fileName = "S" + Config.student_id + ".jpg";
@@ -1193,68 +1215,93 @@ public class ProfileFragment extends Fragment {
 				bytesAvailable = fileInputStream.available();
 
 				bufferSize = Math.min(bytesAvailable, maxBufferSize);
-				buffer = new byte[bufferSize];
-
-				// read file and write it into form...
-				bytesRead = fileInputStream.read(buffer, 0, bufferSize);
-
-				while (bytesRead > 0) {
-
-					dos.write(buffer, 0, bufferSize);
-					bytesAvailable = fileInputStream.available();
-					bufferSize = Math.min(bytesAvailable, maxBufferSize);
+				System.out.println("bytes available:" + bytesAvailable);
+				System.out.println("max buffer size:" + maxBufferSize);
+				System.out.println("buffer size value::" + bufferSize);
+				int bufferconversion = (bufferSize / 1024);
+				System.out.println("buffer conversion value::"
+						+ bufferconversion);
+				if (bufferconversion < 50)
+				{
+					buffer = new byte[bufferSize];
+					imageuploaded = true;
+					// read file and write it into form...
 					bytesRead = fileInputStream.read(buffer, 0, bufferSize);
 
+					while (bytesRead > 0) 
+					{
+
+						dos.write(buffer, 0, bufferSize);
+						bytesAvailable = fileInputStream.available();
+						bufferSize = Math.min(bytesAvailable, maxBufferSize);
+						bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+
+					}
+
+					dos.writeBytes(lineEnd);
+					dos.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd);
+
+					serverResponseCode = conn.getResponseCode();
+
+					if (serverResponseCode == 200)
+					{
+						 getActivity().runOnUiThread(new Runnable() {
+	                         public void run() {
+	                        	 selectedimage = "S" + Config.student_id + ".jpg";
+
+	         					Toast.makeText(getActivity(), "Image uploaded",
+	         							Toast.LENGTH_LONG).show();
+
+	                             Toast.makeText(getActivity(), "File Upload Complete.", Toast.LENGTH_SHORT).show();
+	                         }
+	                     });   
+					}
+
+					fileInputStream.close();
+					dos.flush();
+					dos.close();
+
+				} else {
+					getActivity().runOnUiThread(new Runnable() {
+						  public void run() {
+							  imageuploaded = false;
+								AlertDialog alertDialog = new AlertDialog.Builder(
+										getActivity()).create();
+
+								alertDialog.setTitle("Sorry User");
+
+								alertDialog.setMessage("Image size should less than 50kb");
+
+								alertDialog.setIcon(R.drawable.delete);
+
+								alertDialog.setButton("OK",
+										new DialogInterface.OnClickListener() {
+
+											public void onClick(
+													final DialogInterface dialog,
+													final int which) {
+
+											}
+										});
+								alertDialog.show();
+								System.out.println("in else");
+							
+						  }
+						});
+					
+
 				}
-
-				// send multipart form data necesssary after file data...
-				dos.writeBytes(lineEnd);
-				dos.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd);
-
-				// Responses from the server (code and message)
-				serverResponseCode = conn.getResponseCode();
-				// String serverResponseMessage = conn.getResponseMessage();
-
-				if (serverResponseCode == 200) {
-
-					// runOnUiThread(new Runnable() {
-					// public void run() {
-					// String msg =
-					// "File Upload Completed.\n\n See uploaded file here : \n\n"
-					// +" F:/wamp/wamp/www/uploads";
-					// //messageText.setText(msg);
-					// Toast.makeText(MainActivity.this,
-					// "File Upload Complete.", Toast.LENGTH_SHORT).show();
-					// }
-					// });
-				}
-
-				// close the streams //
-				fileInputStream.close();
-				dos.flush();
-				dos.close();
 
 			} catch (MalformedURLException ex) {
 
-				// dialog.dismiss();
 				ex.printStackTrace();
-
-				// runOnUiThread(new Runnable() {
-				// public void run() {
-				// messageText.setText("MalformedURLException Exception : check script url.");
-				// Toast.makeText(MainActivity.this, "MalformedURLException",
-				// Toast.LENGTH_SHORT).show();
-				// }
-				// });
 
 			} catch (Exception e) {
 
-				// dialog.dismiss();
 				e.printStackTrace();
 
 			}
 
-			imageuploaded = true;
 			return serverResponseCode;
 
 		}

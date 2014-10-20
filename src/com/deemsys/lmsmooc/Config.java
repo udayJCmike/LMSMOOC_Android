@@ -4,8 +4,7 @@ public class Config {
 
 	// http://208.109.248.89/mobile/android/Services/
 	static String ServerUrl = "http://208.109.248.89/mobile/android/Services/";
-//	 static String ServerUrl =
-//	 "http://192.168.1.71:8080/LmsmoocAndroid/Services/";
+	// static String ServerUrl = "http://192.168.1.71:8080/LmsmoocAndroid/Services/";
 //	// static String ServerUrl =
 	// "http://169.254.164.230:8080/LmsmoocAndroid/Services/";
 	static String AvatarUrl = "http://208.109.248.89:8087/OnlineCourse/resources/images/users/";
@@ -24,6 +23,9 @@ public class Config {
 	static String myfavoriteauthorurl = "MyFavoriteAuthor.php?service=favoriteauthor";
 	static String myfavoriteauthorcourseurl = "MyFavoriteAuthor.php?service=viewyourauthorcourse";
 
+	
+	static String ifmyfavcourse = "CourseDetails.php?service=favoritecourse";
+	
 	static String billingdetailsurl = "Student_billing.php?service=selectbilling";
 	static String inboxdetailsurl = "Inbox.php?service=selectinbox";
 
@@ -37,7 +39,8 @@ public class Config {
 	static String removefrommycategoryurl = "MyFavoriteCategory.php?service=removecategory";
 
 	static String removefromfavcourseurl = "MyFavoriteCourse.php?service=removefavcourse";
-
+	static String addtofavorites = "CourseDetails.php?service=addfavcourse";
+	static String removefromfavorites = "CourseDetails.php?service=removefavcourse";
 	static String coursedetailsurl = "CourseDetails.php?service=authordetails";
 
 	static String sampleurl = "Sample.php?service=sample";

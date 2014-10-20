@@ -49,7 +49,7 @@ public class BillingDetails extends SherlockFragmentActivity {
 		ab.setDisplayHomeAsUpEnabled(true);
 		getSupportActionBar().setHomeButtonEnabled(true);
 
-		ab.setTitle(Html.fromHtml("<font color='#ffffff'>Billing</font>"));
+		ab.setTitle(Html.fromHtml("<font color='#ffffff'>Detail Billing</font>"));
 
 		ab.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3399FF")));
 

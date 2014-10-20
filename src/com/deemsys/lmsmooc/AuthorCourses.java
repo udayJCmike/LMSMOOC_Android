@@ -72,7 +72,8 @@ public class AuthorCourses extends SherlockFragmentActivity {
 	static ListView listView;
 	Bitmap bitmap;
 	String rating_count;
-
+	 String course_subtitle,course_subtitle_topass;
+	 private static final String TAG_COURSE_SUBTITLE = "course_sub_title";
 	String promocheck;
 	private static final String Promo_Check = "promocheck";
 	private static final String TAG_ENROLLED_STUDENT = "course_enrolled";
@@ -141,7 +142,7 @@ public class AuthorCourses extends SherlockFragmentActivity {
 					course_name_to_pass = country.getCode();
 					course_enrolled_passing = country.getstudentsenrolled();
 					checkstatus = country.getifmycourse();
-
+					course_subtitle_topass=country.getsubtitle();
 					courseidurl = country.getcourseid();
 					instructoridurl = country.getinsid();
 					rating_count = country.getrating();
@@ -258,6 +259,8 @@ public class AuthorCourses extends SherlockFragmentActivity {
 						coursetotallist.add(course_name);
 						coursetotallist.add(ratingcouont);
 						coursetotallist.add(audiourl);
+						course_subtitle = c2.getString(TAG_COURSE_SUBTITLE);
+						coursetotallist.add(course_subtitle);
 						coursetotallist.add(course_enrolled);
 						imagelist.add(course_cover_image);
 
@@ -278,6 +281,7 @@ public class AuthorCourses extends SherlockFragmentActivity {
 						cnt.setstringurl(course_cover_image);
 						cnt.setaudiourl(audiourl);
 						cnt.setstudentsenrolled(course_enrolled);
+						cnt.setsubtitle(course_subtitle);
 						courselist.add(cnt);
 
 						dataAdapter.add(cnt);
@@ -525,6 +529,7 @@ public class AuthorCourses extends SherlockFragmentActivity {
 				i.putExtra("enroll_students", course_enrolled_passing);
 				i.putExtra("audio_url", audiourlpassing);
 				i.putExtra("rating", rating_count);
+				i.putExtra("course_subtitle", course_subtitle_topass);
 				startActivity(i);
 			}
 

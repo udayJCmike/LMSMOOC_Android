@@ -62,6 +62,8 @@ public class CategoryCoursesStudentBased extends SherlockFragmentActivity {
 	MyCustomAdapter dataAdapter = null;
 	int start = 0;
 	int limit = 10;
+	String course_subtitle,course_subtitle_topass;
+	private static final String TAG_COURSE_SUBTITLE = "course_sub_title";
 	boolean loadingMore = false;
 	View loadMoreView;
 	JSONArray user = null;
@@ -161,6 +163,7 @@ public class CategoryCoursesStudentBased extends SherlockFragmentActivity {
 					course_enrolled_passing = country.getstudentsenrolled();
 					checkstatus = country.getifmycourse();
 					rating_count = country.getrating();
+					course_subtitle_topass=country.getsubtitle();
 					new fetchpurnumber().execute();
 
 				}
@@ -300,6 +303,8 @@ public class CategoryCoursesStudentBased extends SherlockFragmentActivity {
 						course_description = c2
 								.getString(TAG_COURSE_DESCRIPTION);
 						coursetotallist.add(audiourl);
+						course_subtitle = c2.getString(TAG_COURSE_SUBTITLE);
+						coursetotallist.add(course_subtitle);
 						coursetotallist.add(ifmycoursepresent);
 						coursetotallist.add(course_enrolled);
 						imagelist.add(course_cover_image);
@@ -319,6 +324,7 @@ public class CategoryCoursesStudentBased extends SherlockFragmentActivity {
 						cnt.setdescription(course_description);
 						cnt.setifmycourse(ifmycoursepresent);
 						cnt.setaudiourl(audiourl);
+						cnt.setsubtitle(course_subtitle);
 						courselist.add(cnt);
 
 						dataAdapter.add(cnt);
@@ -563,6 +569,7 @@ public class CategoryCoursesStudentBased extends SherlockFragmentActivity {
 				i.putExtra("enroll_students", course_enrolled_passing);
 				i.putExtra("audio_url", audiourlpassing);
 				i.putExtra("rating", rating_count);
+				i.putExtra("course_subtitle", course_subtitle_topass);
 				startActivity(i);
 			}
 

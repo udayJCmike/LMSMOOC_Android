@@ -393,7 +393,7 @@ public class LoginActivity extends SherlockActivity {
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
 			calld();
-			pDialog.dismiss();
+			
 		}
 	}
 	class geturl extends AsyncTask<String, String, String> {
@@ -512,7 +512,7 @@ public class LoginActivity extends SherlockActivity {
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
 
-			pDialog.dismiss();
+		
 			if (JsonParser.jss.equals("empty")) {
 
 				AlertDialog alertDialog = new AlertDialog.Builder(
@@ -628,7 +628,9 @@ public class LoginActivity extends SherlockActivity {
 		Intent intentSignUP = new Intent(getApplicationContext(),
 				NewMainActivity.class);
 		startActivity(intentSignUP);
-		finish();
+		pDialog.dismiss();
+
+
 	}
 
 }

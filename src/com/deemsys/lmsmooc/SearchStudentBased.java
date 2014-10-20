@@ -77,6 +77,8 @@ public class SearchStudentBased extends SherlockActivity {
 	static ListView listView;
 	String rating_count;
 	String promocheck;
+	String course_subtitle,course_subtitle_topass;
+	private static final String TAG_COURSE_SUBTITLE = "course_sub_title";
 	private static final String Promo_Check = "promocheck";
 	private static final String TAG_ENROLLED_STUDENT = "course_enrolled";
 	String course_name, authorname, student_enrolled, ratingcouont, cost,
@@ -135,7 +137,7 @@ public class SearchStudentBased extends SherlockActivity {
 					course_name_to_pass = country.getCode();
 					course_enrolled_passing = country.getstudentsenrolled();
 					checkstatus = country.getifmycourse();
-
+					course_subtitle_topass=country.getsubtitle();
 					courseidurl = country.getcourseid();
 					instructoridurl = country.getinsid();
 					rating_count = country.getrating();
@@ -356,6 +358,7 @@ public class SearchStudentBased extends SherlockActivity {
 						course_description = c2
 								.getString(TAG_COURSE_DESCRIPTION);
 						ifmycoursepresent = c2.getString(TAG_Check_);
+						course_subtitle = c2.getString(TAG_COURSE_SUBTITLE);
 						ratingcouont = c2.getString(TAG_COURSE_RATINGS);
 						coursetotallist.add(authorname);
 						coursetotallist.add(course_name);
@@ -363,6 +366,7 @@ public class SearchStudentBased extends SherlockActivity {
 						coursetotallist.add(ifmycoursepresent);
 						coursetotallist.add(audiourl);
 						coursetotallist.add(course_enrolled);
+						coursetotallist.add(course_subtitle);
 						imagelist.add(course_cover_image);
 
 						Course cnt = new Course(authorname, course_name, cost,
@@ -371,7 +375,7 @@ public class SearchStudentBased extends SherlockActivity {
 								promocheck);
 						cnt.setName(authorname);
 						cnt.setpromocheck(promocheck);
-
+						cnt.setsubtitle(course_subtitle);
 						cnt.setCode(course_name);
 						cnt.setins_id(instructorid);
 						cnt.setcourseid(course_id);
@@ -675,6 +679,7 @@ public class SearchStudentBased extends SherlockActivity {
 				i.putExtra("enroll_students", course_enrolled_passing);
 				i.putExtra("audio_url", audiourlpassing);
 				i.putExtra("rating", rating_count);
+				i.putExtra("course_subtitle", course_subtitle_topass);
 				startActivity(i);
 			}
 

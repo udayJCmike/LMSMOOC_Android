@@ -23,6 +23,8 @@ import org.apache.http.params.HttpParams;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import com.deemsys.lmsmooc.AllCourses.GrabURL;
 import com.squareup.picasso.Picasso;
 import android.support.v4.app.Fragment;
 import android.app.AlertDialog;
@@ -36,6 +38,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.AsyncTask.Status;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,8 +70,11 @@ public class FreeCourses extends Fragment {
 	View loadMoreView;
 	JSONArray user = null;
 	static ListView listView;
+	String course_subtitle, course_subtitle_topass;
+	private static final String TAG_COURSE_SUBTITLE = "course_sub_title";
 	String rating_count;
 	String promocheck;
+	private AsyncTask<String, Void, String> mTask;
 	private static final String Promo_Check = "promocheck";
 	private static final String TAG_ENROLLED_STUDENT = "course_enrolled";
 	String course_description;
@@ -150,7 +156,7 @@ public class FreeCourses extends Fragment {
 					course_enrolled_passing = country.getstudentsenrolled();
 					checkstatus = country.getifmycourse();
 					rating_count = country.getrating();
-
+					course_subtitle_topass = country.getsubtitle();
 					courseidurl = country.getcourseid();
 					instructoridurl = country.getinsid();
 					new fetchpurnumber().execute();
@@ -179,7 +185,7 @@ public class FreeCourses extends Fragment {
 
 	public void grabURL(String url) {
 
-		new GrabURL().execute(url);
+		mTask=new GrabURL().execute(url);
 	}
 
 	class GrabURL extends AsyncTask<String, Void, String> {
@@ -273,12 +279,14 @@ public class FreeCourses extends Fragment {
 						ifmycoursepresent = c2.getString(TAG_Check_);
 						ratingcouont = c2.getString(TAG_COURSE_RATINGS);
 						course_enrolled = c2.getString(TAG_ENROLLED_STUDENT);
+						course_subtitle = c2.getString(TAG_COURSE_SUBTITLE);
 						coursetotallist.add(authorname);
 						coursetotallist.add(course_name);
 						coursetotallist.add(ratingcouont);
 						coursetotallist.add(ifmycoursepresent);
 						coursetotallist.add(audiourl);
 						coursetotallist.add(course_enrolled);
+						coursetotallist.add(course_subtitle);
 						imagelist.add(course_cover_image);
 
 						Course cnt = new Course(authorname, course_name, cost,
@@ -296,6 +304,7 @@ public class FreeCourses extends Fragment {
 						cnt.setaudiourl(audiourl);
 						cnt.setstudentsenrolled(course_enrolled);
 						cnt.setdescription(course_description);
+						cnt.setsubtitle(course_subtitle);
 						courselist.add(cnt);
 
 						dataAdapter.add(cnt);
@@ -397,6 +406,7 @@ public class FreeCourses extends Fragment {
 			ImageView ratingshow;
 			ImageView promoimage;
 			TextView enroll;
+			// TextView subs;
 		}
 
 		public void add(Course country) {
@@ -427,6 +437,8 @@ public class FreeCourses extends Fragment {
 						.findViewById(R.id.promoimage);
 				holder.enroll = (TextView) convertView
 						.findViewById(R.id.enroll);
+				// holder.subs = (TextView) convertView
+				// .findViewById(R.id.coursesubtitle);
 				convertView.setTag(holder);
 
 			} else {
@@ -439,7 +451,7 @@ public class FreeCourses extends Fragment {
 			holder.cost.setText("$ " + country.getRegion());
 			holder.cost.setTextColor(Color.parseColor("#4B9500"));
 			holder.cover.setImageBitmap(country.getBitmap());
-
+			// holder.subs.setText(country.getsubtitle());
 			Picasso.with(getActivity()).load(country.getstringurl())
 					.into(holder.cover);
 
@@ -577,6 +589,7 @@ public class FreeCourses extends Fragment {
 				i.putExtra("enroll_students", course_enrolled_passing);
 				i.putExtra("audio_url", audiourlpassing);
 				i.putExtra("rating", rating_count);
+				i.putExtra("course_subtitle", course_subtitle_topass);
 				startActivity(i);
 			}
 
@@ -606,5 +619,14 @@ public class FreeCourses extends Fragment {
 		if (cDialog != null) {
 			cDialog.dismiss();
 		}
+	}
+	@Override
+	public void onStop() {
+	    super.onStop();
+
+	    //check the state of the task
+	    System.out.println("in stop");
+	    if(mTask != null && mTask.getStatus() == Status.RUNNING)
+	    	mTask.cancel(true);
 	}
 }
