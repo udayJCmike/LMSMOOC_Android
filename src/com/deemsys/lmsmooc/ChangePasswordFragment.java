@@ -18,6 +18,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.AsyncTask.Status;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -41,8 +42,9 @@ public class ChangePasswordFragment extends Fragment {
 	ConnectionDetector cd;
 	String oldpass, newpass, confirmpass, successL;
 	Button getpassword;
+	static AlertDialog alertDialog;
 	public static String updateurl;
-
+	View rootView ;
 	public ChangePasswordFragment() {
 	}
 
@@ -50,7 +52,7 @@ public class ChangePasswordFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		View rootView = inflater.inflate(R.layout.changepasswordfrag,
+		rootView= inflater.inflate(R.layout.changepasswordfrag,
 				container, false);
 		LinearLayout layout = (LinearLayout) rootView
 				.findViewById(R.id.changepasslayout);
@@ -62,6 +64,8 @@ public class ChangePasswordFragment extends Fragment {
 		confirmpasswordedit = (EditText) rootView
 				.findViewById(R.id.confirmpassword);
 		getpassword = (Button) rootView.findViewById(R.id.getpassword);
+		alertDialog = new AlertDialog.Builder(getActivity())
+		.create();
 		layout.setOnTouchListener(new OnTouchListener() {
 			@Override
 			public boolean onTouch(View view, MotionEvent ev) {
@@ -82,8 +86,7 @@ public class ChangePasswordFragment extends Fragment {
 
 					if (oldpass.length() == 0) {
 
-						AlertDialog alertDialog = new AlertDialog.Builder(
-								getActivity()).create();
+						
 
 						alertDialog.setTitle("Sorry User");
 
@@ -107,8 +110,7 @@ public class ChangePasswordFragment extends Fragment {
 						
 
 					} else {
-						AlertDialog alertDialog = new AlertDialog.Builder(
-								getActivity()).create();
+						 
 
 						alertDialog.setTitle("Sorry User");
 
@@ -148,8 +150,7 @@ public class ChangePasswordFragment extends Fragment {
 
 					if (newpass.length() == 0) {
 
-						AlertDialog alertDialog = new AlertDialog.Builder(
-								getActivity()).create();
+						 
 
 						alertDialog.setTitle("Sorry User");
 
@@ -181,8 +182,7 @@ public class ChangePasswordFragment extends Fragment {
 							}
 							else
 							{
-								AlertDialog alertDialog = new AlertDialog.Builder(
-										getActivity()).create();
+								
 
 								alertDialog.setTitle("Sorry User");
 
@@ -206,8 +206,7 @@ public class ChangePasswordFragment extends Fragment {
 						}
 						else
 						{
-							AlertDialog alertDialog = new AlertDialog.Builder(
-									getActivity()).create();
+							 
 
 							alertDialog.setTitle("Sorry User");
 
@@ -232,8 +231,7 @@ public class ChangePasswordFragment extends Fragment {
 						
 
 					} else {
-						AlertDialog alertDialog = new AlertDialog.Builder(
-								getActivity()).create();
+						 
 
 						alertDialog.setTitle("Sorry User");
 
@@ -273,8 +271,7 @@ public class ChangePasswordFragment extends Fragment {
 					if (newpass.equals(confirmpass)) {
 
 					} else {
-						AlertDialog alertDialog = new AlertDialog.Builder(
-								getActivity()).create();
+						 
 
 						alertDialog.setTitle("Sorry User");
 
@@ -329,8 +326,7 @@ public class ChangePasswordFragment extends Fragment {
 										new UpdateProf().execute();
 
 									} else {
-										AlertDialog alertDialog = new AlertDialog.Builder(
-												getActivity()).create();
+										
 
 										alertDialog.setTitle("Sorry User");
 
@@ -356,8 +352,7 @@ public class ChangePasswordFragment extends Fragment {
 									}
 
 								} else {
-									AlertDialog alertDialog = new AlertDialog.Builder(
-											getActivity()).create();
+									 
 
 									alertDialog.setTitle("Sorry User");
 
@@ -384,8 +379,7 @@ public class ChangePasswordFragment extends Fragment {
 							}
 
 							else {
-								AlertDialog alertDialog = new AlertDialog.Builder(
-										getActivity()).create();
+								
 
 								alertDialog.setTitle("Sorry User");
 
@@ -407,9 +401,7 @@ public class ChangePasswordFragment extends Fragment {
 								alertDialog.show();
 							}
 						} else {
-							AlertDialog alertDialog = new AlertDialog.Builder(
-									getActivity()).create();
-
+							
 							alertDialog.setTitle("Sorry User");
 
 							alertDialog
@@ -431,8 +423,7 @@ public class ChangePasswordFragment extends Fragment {
 
 						}
 					} else {
-						AlertDialog alertDialog = new AlertDialog.Builder(
-								getActivity()).create();
+						 
 
 						alertDialog.setTitle("Sorry User");
 
@@ -454,8 +445,7 @@ public class ChangePasswordFragment extends Fragment {
 
 					}
 				} else {
-					AlertDialog alertDialog = new AlertDialog.Builder(
-							getActivity()).create();
+					 
 
 					alertDialog.setTitle("Sorry User");
 
@@ -554,7 +544,7 @@ public class ChangePasswordFragment extends Fragment {
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
 			if (successL.equalsIgnoreCase("Yes")) {
-				AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
+				 alertDialog = new AlertDialog.Builder(getActivity())
 						.create();
 
 				alertDialog.setTitle("Success");
@@ -577,8 +567,7 @@ public class ChangePasswordFragment extends Fragment {
 				alertDialog.show();
 
 			} else {
-				AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
-						.create();
+				 
 
 				alertDialog.setTitle("Sorry User");
 
@@ -600,5 +589,12 @@ public class ChangePasswordFragment extends Fragment {
 			pDialog.dismiss();
 
 		}
+	}
+	@Override
+	public void onStop() {
+	    super.onStop();
+	    rootView.clearFocus();
+	//    confirmpasswordedit.requestFocus();
+	   
 	}
 }

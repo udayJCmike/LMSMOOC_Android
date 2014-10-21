@@ -4,7 +4,15 @@
     android:background="#ffffff"
     android:layout_height="match_parent"
     android:orientation="vertical" >
+ <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent" >
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
     <LinearLayout
         android:layout_width="match_parent"
            android:orientation="vertical"
@@ -20,7 +28,7 @@
 
 <View
     android:layout_width="fill_parent"
-    android:layout_height="4dp" >
+    android:layout_height="10dp" >
 
 </View>
     <LinearLayout
@@ -38,13 +46,13 @@
 
 <View
     android:layout_width="fill_parent"
-    android:layout_height="24dp" >
+    android:layout_height="10dp" >
 
 </View>
 
  <RelativeLayout
      android:layout_width="match_parent"
-     android:layout_height="90dp"
+     android:layout_height="wrap_content"
      android:layout_gravity="center_horizontal" >
 
     <LinearLayout
@@ -125,5 +133,114 @@
          android:text="@string/deems" />
 
  </LinearLayout>
+ <View
+    android:layout_width="fill_parent"
+    android:layout_height="10dp" >
 
+</View>
+<LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:orientation="vertical" >
+
+     <TextView
+         android:id="@+id/addrs1"
+         android:layout_width="wrap_content"
+           style="@style/custom_large"
+         android:layout_height="wrap_content"
+         android:text="@string/address1" />
+ <View
+    android:layout_width="fill_parent"
+    android:layout_height="10dp" >
+
+</View>
+     <TextView
+         android:id="@+id/addrs2"
+           style="@style/custom"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="@string/address2" />
+ <TextView
+         android:id="@+id/addrs3"
+         android:layout_width="wrap_content"
+           style="@style/custom"
+         android:layout_height="wrap_content"
+         android:text="@string/address3" />
+
+     <TextView
+         android:id="@+id/addrs4"
+           style="@style/custom"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="@string/address4" />
+      <TextView
+         android:id="@+id/addrs5"
+           style="@style/custom"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="@string/address5" />
+        <TextView
+         android:id="@+id/addrs6"
+           style="@style/custom"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="@string/address6" />
+     
+ </LinearLayout>
+<View
+    android:layout_width="fill_parent"
+    android:layout_height="10dp" >
+
+</View>
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+     <Button
+         android:id="@+id/follo"
+           style="@style/custom"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:background="@drawable/tweet"
+         />
+
+ </LinearLayout>
+<View
+    android:layout_width="fill_parent"
+    android:layout_height="10dp" >
+
+</View>
+<TextView
+    android:id="@+id/termsofuse"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/termsofuse" />
+<View
+    android:layout_width="fill_parent"
+    android:layout_height="10dp" >
+
+</View>
+<TextView
+    android:id="@+id/privacy"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/privacypolicy" />
+<View
+    android:layout_width="fill_parent"
+    android:layout_height="10dp" >
+
+</View>
+<TextView
+    android:id="@+id/whylearnterst"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/learnterest" />
+<View
+    android:layout_width="fill_parent"
+    android:layout_height="10dp" >
+
+</View>
+</LinearLayout>
+</ScrollView>
 </LinearLayout>

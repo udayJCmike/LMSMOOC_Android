@@ -39,9 +39,10 @@
                     android:hint="@string/firstname"
                     android:inputType="textCapWords"
                     android:singleLine="true"
+                    android:focusableInTouchMode="true"
                     android:textCursorDrawable="@null" >
 
-                    <requestFocus />
+                 
                 </EditText>
 
                 <View

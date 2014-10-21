@@ -66,6 +66,7 @@ public class NewMainActivity extends SherlockFragmentActivity {
 		name = (TextView) findViewById(R.id.name);
 		name.setText(Config.firstname);
 		mTitle = mDrawerTitle = getTitle();
+
 		getActionBar().setTitle(
 				Html.fromHtml("<font color=\"white\">" + mDrawerTitle
 						+ "</font>"));
@@ -84,7 +85,12 @@ public class NewMainActivity extends SherlockFragmentActivity {
 				"com.deemsys.lmsmooc");
 
 		sendBroadcast(intent1);
-
+		if (ChangePasswordFragment.alertDialog != null) {
+			if (ChangePasswordFragment.alertDialog.isShowing()) {
+				System.out.println("in new check for dialodg");
+				ChangePasswordFragment.alertDialog.hide();
+			}
+		}
 		Intent intent2 = new Intent("android.intent.action.BADGE_COUNT_UPDATE");
 		intent2.putExtra("badge_count", "");
 		intent2.putExtra("badge_count_package_name", getApplicationContext()
@@ -97,15 +103,15 @@ public class NewMainActivity extends SherlockFragmentActivity {
 
 		title = new String[] { "Home", "Profile", "Change Password", "Inbox",
 				"My Courses", "My Favorites", "My Categories", "My Authors",
-				"My Billing", "About Us","Help", "Logout" };
+				"My Billing", "About Us", "Help", "Logout" };
 
 		subtitle = new String[] { "Subtitle Fragment 1", "Subtitle Fragment 2" };
 
 		icon = new int[] { R.drawable.home, R.drawable.profile,
 				R.drawable.changepassword, R.drawable.inbox,
 				R.drawable.courses, R.drawable.favorites, R.drawable.category,
-				R.drawable.author, R.drawable.billing, R.drawable.aboutm, R.drawable.aboutm,
-				R.drawable.logout, R.drawable.ic_launcher };
+				R.drawable.author, R.drawable.billing, R.drawable.aboutm,
+				R.drawable.help, R.drawable.logout, R.drawable.ic_launcher };
 
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerLinear = (LinearLayout) findViewById(R.id.left_drawer);
@@ -183,6 +189,7 @@ public class NewMainActivity extends SherlockFragmentActivity {
 			ft.replace(R.id.content_frame, new Fragmetns2());
 			break;
 		case 1:
+
 			ft.replace(R.id.content_frame, fragment2);
 			break;
 		case 2:
@@ -317,5 +324,11 @@ public class NewMainActivity extends SherlockFragmentActivity {
 				bmpRotate.getHeight()), new Rect(0, 0, targetWidth,
 				targetHeight), null);
 		return targetBitmap;
+	}
+	@Override
+	public void onDestroy()
+	{
+		System.out.println("in destroy");
+	super.onDestroy();
 	}
 }

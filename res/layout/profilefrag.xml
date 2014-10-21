@@ -40,7 +40,7 @@
                     android:inputType="textCapWords"
                     android:singleLine="true" >
 
-                    <requestFocus />
+                
                 </EditText>
 
                 <View

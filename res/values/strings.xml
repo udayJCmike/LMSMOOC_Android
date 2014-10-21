@@ -114,6 +114,7 @@
     <string name="address3">800, Cross Pointe Road,	Suite A,</string>
     <string name="address4">Gahanna, OH 43230,U.S.A.</string>
     <string name="address5">614-322-9928 </string>
-     <string name="address6">lmssupport@deemsysinc.com</string>
+    <string name="address6">lmssupport@deemsysinc.com</string>
+    <string name="uselearnterest">How to use Learnterest</string>
 
 </resources>
