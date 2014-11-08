@@ -16,6 +16,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.AsyncTask.Status;
@@ -44,7 +46,10 @@ public class ChangePasswordFragment extends Fragment {
 	Button getpassword;
 	static AlertDialog alertDialog;
 	public static String updateurl;
-	View rootView ;
+	View rootView;
+	public static final String MyPREFERENCES = "MyPrefs0";
+	SharedPreferences sharedpreferences;
+
 	public ChangePasswordFragment() {
 	}
 
@@ -52,8 +57,8 @@ public class ChangePasswordFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		rootView= inflater.inflate(R.layout.changepasswordfrag,
-				container, false);
+		rootView = inflater.inflate(R.layout.changepasswordfrag, container,
+				false);
 		LinearLayout layout = (LinearLayout) rootView
 				.findViewById(R.id.changepasslayout);
 		pDialog = new ProgressDialog(getActivity());
@@ -63,9 +68,10 @@ public class ChangePasswordFragment extends Fragment {
 		newpasswordedt = (EditText) rootView.findViewById(R.id.newpassword);
 		confirmpasswordedit = (EditText) rootView
 				.findViewById(R.id.confirmpassword);
+		sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES,
+				Context.MODE_PRIVATE);
 		getpassword = (Button) rootView.findViewById(R.id.getpassword);
-		alertDialog = new AlertDialog.Builder(getActivity())
-		.create();
+		alertDialog = new AlertDialog.Builder(getActivity()).create();
 		layout.setOnTouchListener(new OnTouchListener() {
 			@Override
 			public boolean onTouch(View view, MotionEvent ev) {
@@ -74,120 +80,154 @@ public class ChangePasswordFragment extends Fragment {
 			}
 
 		});
-		
-		((EditText)rootView.findViewById(R.id.oldpassword))
-		.setOnFocusChangeListener(new OnFocusChangeListener() {
 
-			@SuppressWarnings("deprecation")
-			public void onFocusChange(View v, boolean hasFocus) {
+		((EditText) rootView.findViewById(R.id.oldpassword))
+				.setOnFocusChangeListener(new OnFocusChangeListener() {
 
-				if (!hasFocus) {
-					oldpass = oldpasswordedit.getText().toString();
+					@SuppressWarnings("deprecation")
+					public void onFocusChange(View v, boolean hasFocus) {
 
-					if (oldpass.length() == 0) {
+						if (!hasFocus) {
+							oldpass = oldpasswordedit.getText().toString();
 
-						
+							if (oldpass.length() == 0) {
 
-						alertDialog.setTitle("Sorry User");
+								alertDialog.setTitle("Sorry User");
 
-						alertDialog
-								.setMessage("Enter oldpassword");
+								alertDialog.setMessage("Enter oldpassword");
 
-						alertDialog.setIcon(R.drawable.delete);
+								alertDialog.setIcon(R.drawable.delete);
 
-						alertDialog.setButton("OK",
-								new DialogInterface.OnClickListener() {
+								alertDialog.setButton("OK",
+										new DialogInterface.OnClickListener() {
 
-									public void onClick(
-											final DialogInterface dialog,
-											final int which) {
+											public void onClick(
+													final DialogInterface dialog,
+													final int which) {
 
-									}
-								});
+											}
+										});
 
-						alertDialog.show();
-					} else if (oldpass.equalsIgnoreCase(Config.password)) {
-						
+								alertDialog.show();
+							} else if (oldpass
+									.equalsIgnoreCase(Config.password)) {
 
-					} else {
-						 
-
-						alertDialog.setTitle("Sorry User");
-
-						alertDialog
-								.setMessage("Enter a valid current password");
-
-						alertDialog.setIcon(R.drawable.delete);
-
-						alertDialog.setButton("OK",
-								new DialogInterface.OnClickListener() {
-
-									public void onClick(
-											final DialogInterface dialog,
-											final int which) {
-										oldpasswordedit.setText("");
-									}
-								});
-
-						alertDialog.show();
-					}
-				}
-
-			}
-
-			
-
-		});
-		
-		((EditText)rootView.findViewById(R.id.newpassword))
-		.setOnFocusChangeListener(new OnFocusChangeListener() {
-
-			@SuppressWarnings("deprecation")
-			public void onFocusChange(View v, boolean hasFocus) {
-
-				if (!hasFocus) {
-					newpass = newpasswordedt.getText().toString();
-
-					if (newpass.length() == 0) {
-
-						 
-
-						alertDialog.setTitle("Sorry User");
-
-						alertDialog
-								.setMessage("Enter new password");
-
-						alertDialog.setIcon(R.drawable.delete);
-
-						alertDialog.setButton("OK",
-								new DialogInterface.OnClickListener() {
-
-									public void onClick(
-											final DialogInterface dialog,
-											final int which) {
-
-									}
-								});
-
-						alertDialog.show();
-						//
-					} else if (!oldpass.equalsIgnoreCase(newpass))
-					{
-						if(newpass.length() >= 6
-								&& newpass.length() <= 25)
-						{
-							if(passwordCheck(newpass))
-							{
-								
-							}
-							else
-							{
-								
+							} else {
 
 								alertDialog.setTitle("Sorry User");
 
 								alertDialog
-										.setMessage("Enter a valid password");
+										.setMessage("Enter a valid current password");
+
+								alertDialog.setIcon(R.drawable.delete);
+
+								alertDialog.setButton("OK",
+										new DialogInterface.OnClickListener() {
+
+											public void onClick(
+													final DialogInterface dialog,
+													final int which) {
+												oldpasswordedit.setText("");
+											}
+										});
+
+								alertDialog.show();
+							}
+						}
+
+					}
+
+				});
+
+		((EditText) rootView.findViewById(R.id.newpassword))
+				.setOnFocusChangeListener(new OnFocusChangeListener() {
+
+					@SuppressWarnings("deprecation")
+					public void onFocusChange(View v, boolean hasFocus) {
+
+						if (!hasFocus) {
+							newpass = newpasswordedt.getText().toString();
+
+							if (newpass.length() == 0) {
+
+								alertDialog.setTitle("Sorry User");
+
+								alertDialog.setMessage("Enter new password");
+
+								alertDialog.setIcon(R.drawable.delete);
+
+								alertDialog.setButton("OK",
+										new DialogInterface.OnClickListener() {
+
+											public void onClick(
+													final DialogInterface dialog,
+													final int which) {
+
+											}
+										});
+
+								alertDialog.show();
+								//
+							} else if (!oldpass.equalsIgnoreCase(newpass)) {
+								if (newpass.length() >= 6
+										&& newpass.length() <= 25) {
+									if (passwordCheck(newpass)) {
+
+									} else {
+
+										alertDialog.setTitle("Sorry User");
+
+										alertDialog
+												.setMessage("Enter a valid password");
+
+										alertDialog.setIcon(R.drawable.delete);
+
+										alertDialog
+												.setButton(
+														"OK",
+														new DialogInterface.OnClickListener() {
+
+															public void onClick(
+																	final DialogInterface dialog,
+																	final int which) {
+																newpasswordedt
+																		.setText("");
+															}
+														});
+
+										alertDialog.show();
+									}
+								} else {
+
+									alertDialog.setTitle("Sorry User");
+
+									alertDialog
+											.setMessage("Enter a valid password");
+
+									alertDialog.setIcon(R.drawable.delete);
+
+									alertDialog
+											.setButton(
+													"OK",
+													new DialogInterface.OnClickListener() {
+
+														public void onClick(
+																final DialogInterface dialog,
+																final int which) {
+															newpasswordedt
+																	.setText("");
+														}
+													});
+
+									alertDialog.show();
+								}
+
+							} else {
+
+								alertDialog.setTitle("Sorry User");
+
+								alertDialog
+										.setMessage("New password is same as old password");
 
 								alertDialog.setIcon(R.drawable.delete);
 
@@ -204,99 +244,48 @@ public class ChangePasswordFragment extends Fragment {
 								alertDialog.show();
 							}
 						}
-						else
-						{
-							 
 
-							alertDialog.setTitle("Sorry User");
+					}
 
-							alertDialog
-									.setMessage("Enter a valid password");
+				});
+		((EditText) rootView.findViewById(R.id.confirmpassword))
+				.setOnFocusChangeListener(new OnFocusChangeListener() {
 
-							alertDialog.setIcon(R.drawable.delete);
+					@SuppressWarnings("deprecation")
+					public void onFocusChange(View v, boolean hasFocus) {
 
-							alertDialog.setButton("OK",
-									new DialogInterface.OnClickListener() {
+						if (!hasFocus) {
+							confirmpass = confirmpasswordedit.getText()
+									.toString();
 
-										public void onClick(
-												final DialogInterface dialog,
-												final int which) {
-											newpasswordedt.setText("");
-										}
-									});
+							if (newpass.equals(confirmpass)) {
 
-							alertDialog.show();
+							} else {
+
+								alertDialog.setTitle("Sorry User");
+
+								alertDialog
+										.setMessage("Password doesn't match");
+
+								alertDialog.setIcon(R.drawable.delete);
+
+								alertDialog.setButton("OK",
+										new DialogInterface.OnClickListener() {
+
+											public void onClick(
+													final DialogInterface dialog,
+													final int which) {
+												confirmpasswordedit.setText("");
+											}
+										});
+
+								alertDialog.show();
+							}
 						}
-						
-						
 
-					} else {
-						 
-
-						alertDialog.setTitle("Sorry User");
-
-						alertDialog
-								.setMessage("New password is same as old password");
-
-						alertDialog.setIcon(R.drawable.delete);
-
-						alertDialog.setButton("OK",
-								new DialogInterface.OnClickListener() {
-
-									public void onClick(
-											final DialogInterface dialog,
-											final int which) {
-										newpasswordedt.setText("");
-									}
-								});
-
-						alertDialog.show();
 					}
-				}
 
-			}
-
-			
-
-		});
-		((EditText)rootView.findViewById(R.id.confirmpassword))
-		.setOnFocusChangeListener(new OnFocusChangeListener() {
-
-			@SuppressWarnings("deprecation")
-			public void onFocusChange(View v, boolean hasFocus) {
-
-				if (!hasFocus) {
-					confirmpass = confirmpasswordedit.getText().toString();
-
-					if (newpass.equals(confirmpass)) {
-
-					} else {
-						 
-
-						alertDialog.setTitle("Sorry User");
-
-						alertDialog
-								.setMessage("Password doesn't match");
-
-						alertDialog.setIcon(R.drawable.delete);
-
-						alertDialog.setButton("OK",
-								new DialogInterface.OnClickListener() {
-
-									public void onClick(
-											final DialogInterface dialog,
-											final int which) {
-										confirmpasswordedit.setText("");
-									}
-								});
-
-						alertDialog.show();
-					}
-				}
-
-			}
-
-		});
+				});
 
 		getpassword.setOnClickListener(new OnClickListener() {
 
@@ -315,10 +304,9 @@ public class ChangePasswordFragment extends Fragment {
 						if (!oldpass.equalsIgnoreCase(newpass)) {
 
 							if (passwordCheck(newpass) && newpass.length() >= 6
-								&& newpass.length() <= 25) {
+									&& newpass.length() <= 25) {
 
-								if (newpass.equals(confirmpass)) 
-								{
+								if (newpass.equals(confirmpass)) {
 									if (isInternetPresent) {
 
 										Config.password = newpass;
@@ -326,7 +314,6 @@ public class ChangePasswordFragment extends Fragment {
 										new UpdateProf().execute();
 
 									} else {
-										
 
 										alertDialog.setTitle("Sorry User");
 
@@ -352,7 +339,6 @@ public class ChangePasswordFragment extends Fragment {
 									}
 
 								} else {
-									 
 
 									alertDialog.setTitle("Sorry User");
 
@@ -379,7 +365,6 @@ public class ChangePasswordFragment extends Fragment {
 							}
 
 							else {
-								
 
 								alertDialog.setTitle("Sorry User");
 
@@ -401,7 +386,7 @@ public class ChangePasswordFragment extends Fragment {
 								alertDialog.show();
 							}
 						} else {
-							
+
 							alertDialog.setTitle("Sorry User");
 
 							alertDialog
@@ -423,7 +408,6 @@ public class ChangePasswordFragment extends Fragment {
 
 						}
 					} else {
-						 
 
 						alertDialog.setTitle("Sorry User");
 
@@ -445,7 +429,6 @@ public class ChangePasswordFragment extends Fragment {
 
 					}
 				} else {
-					 
 
 					alertDialog.setTitle("Sorry User");
 
@@ -543,9 +526,14 @@ public class ChangePasswordFragment extends Fragment {
 		@Override
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
+			Editor editor = sharedpreferences.edit();
+
+			editor.putString("Password", newpasswordedt.getText().toString());
+
+			editor.commit();
+			
 			if (successL.equalsIgnoreCase("Yes")) {
-				 alertDialog = new AlertDialog.Builder(getActivity())
-						.create();
+				alertDialog = new AlertDialog.Builder(getActivity()).create();
 
 				alertDialog.setTitle("Success");
 
@@ -567,7 +555,6 @@ public class ChangePasswordFragment extends Fragment {
 				alertDialog.show();
 
 			} else {
-				 
 
 				alertDialog.setTitle("Sorry User");
 
@@ -590,11 +577,12 @@ public class ChangePasswordFragment extends Fragment {
 
 		}
 	}
+
 	@Override
 	public void onStop() {
-	    super.onStop();
-	    rootView.clearFocus();
-	//    confirmpasswordedit.requestFocus();
-	   
+		super.onStop();
+		rootView.clearFocus();
+		// confirmpasswordedit.requestFocus();
+
 	}
 }

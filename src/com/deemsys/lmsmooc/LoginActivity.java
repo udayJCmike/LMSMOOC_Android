@@ -37,7 +37,7 @@ public class LoginActivity extends SherlockActivity {
 	String successL;
 	TextView forgetpass;
 	Button signin, back;
-	public static String loginurl, avatarurl,loginscounturl;
+	public static String loginurl, avatarurl, loginscounturl;
 	final Context context = this;
 	Boolean isInternetPresent = false;
 	ConnectionDetector cd;
@@ -59,6 +59,7 @@ public class LoginActivity extends SherlockActivity {
 	private static final String TAG_GENCODE = "gencode";
 	private static final String TAG_AVATAR_URL = "avatar_url";
 	public static final String MyPREFERENCES = "MyPrefs0";
+	public static final String MyPREFERENCES1 = "MyPrefs1";
 	public static final String UserName = "unnameKey";
 	public static final String Password = "passKey";
 	static String username;
@@ -77,7 +78,7 @@ public class LoginActivity extends SherlockActivity {
 	static String logins;
 	String gencode;
 	CheckBox check1;
-	SharedPreferences sharedpreferences;
+	SharedPreferences sharedpreferences, sharedpreferences1;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -86,9 +87,11 @@ public class LoginActivity extends SherlockActivity {
 		LinearLayout layout = (LinearLayout) findViewById(R.id.loginlayout);
 		loginurl = Config.ServerUrl + "Login.php?service=login";
 		avatarurl = Config.ServerUrl + "Login.php?service=avatar";
-		loginscounturl= Config.ServerUrl + "Login.php?service=logins";
+		loginscounturl = Config.ServerUrl + "Login.php?service=logins";
 		check1 = (CheckBox) findViewById(R.id.checkBox1);
 		sharedpreferences = getSharedPreferences(MyPREFERENCES,
+				Context.MODE_PRIVATE);
+		sharedpreferences1 = getSharedPreferences(MyPREFERENCES1,
 				Context.MODE_PRIVATE);
 		cd = new ConnectionDetector(getApplicationContext());
 		usname = (EditText) findViewById(R.id.uname);
@@ -323,7 +326,7 @@ public class LoginActivity extends SherlockActivity {
 
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 						successL = jUser.getString(TAG_SUCCESS);
-						avatar_url = jUser.getString(TAG_AVATAR_URL);
+						Config.mainavatar_url = jUser.getString(TAG_AVATAR_URL);
 
 					}
 
@@ -345,9 +348,10 @@ public class LoginActivity extends SherlockActivity {
 			super.onPostExecute(file_url);
 
 			new loginsincrease().execute();
-			
+
 		}
 	}
+
 	class loginsincrease extends AsyncTask<String, String, String> {
 		@Override
 		protected void onPreExecute() {
@@ -359,12 +363,11 @@ public class LoginActivity extends SherlockActivity {
 		protected String doInBackground(String... params) {
 			List<NameValuePair> params1 = new ArrayList<NameValuePair>();
 
-			
 			params1.add(new BasicNameValuePair("student_id", Config.student_id));
 			JsonParser jLogin = new JsonParser();
 
-			JSONObject json = jLogin
-					.makeHttpRequest(loginscounturl, "POST", params1);
+			JSONObject json = jLogin.makeHttpRequest(loginscounturl, "POST",
+					params1);
 
 			if (json != null) {
 				try {
@@ -372,7 +375,6 @@ public class LoginActivity extends SherlockActivity {
 
 						JSONObject jUser = json.getJSONObject(TAG_SRESL);
 						successL = jUser.getString(TAG_SUCCESS);
-						
 
 					}
 
@@ -393,9 +395,10 @@ public class LoginActivity extends SherlockActivity {
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
 			calld();
-			
+
 		}
 	}
+
 	class geturl extends AsyncTask<String, String, String> {
 		@Override
 		protected void onPreExecute() {
@@ -512,7 +515,6 @@ public class LoginActivity extends SherlockActivity {
 		protected void onPostExecute(String file_url) {
 			super.onPostExecute(file_url);
 
-		
 			if (JsonParser.jss.equals("empty")) {
 
 				AlertDialog alertDialog = new AlertDialog.Builder(
@@ -586,15 +588,49 @@ public class LoginActivity extends SherlockActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-
+		System.out.println("sharedpreferences uname val"+sharedpreferences.getString(UserName, ""));
 		if (sharedpreferences.contains(UserName)) {
-
+			System.out.println("check wherther one pref has val");
+			System.out.println("if sharedpref0 is avail");
 			usname.setText(sharedpreferences.getString(UserName, ""));
 			check1.setChecked(true);
-		}
-		if (sharedpreferences.contains(Password)) {
-			paswd.setText(sharedpreferences.getString(Password, ""));
+			if (sharedpreferences.contains(Password)) {
+				paswd.setText(sharedpreferences.getString(Password, ""));
+				check1.setChecked(true);
+				Config.username = sharedpreferences.getString(UserName, "");
+				Config.password = sharedpreferences.getString(Password, "");
+				Config.firstname = sharedpreferences.getString("firstname", "");
+				Config.lastname = sharedpreferences.getString("lastname", "");
+				Config.email = sharedpreferences.getString("emailstudent", "");
+				Config.interested_in = sharedpreferences.getString(
+						"interested_instudent", "");
+				Config.gender = sharedpreferences.getString("gender", "");
+				Config.avatar = sharedpreferences.getString("avatar", "");
+				Config.logins = sharedpreferences.getString("logins", "");
+				Config.role = sharedpreferences.getString("role", "");
+				Config.enabled = sharedpreferences.getString("enabled", "");
+				Config.student_id = sharedpreferences.getString("student_id ",
+						"");
+				Config.common_url = sharedpreferences
+						.getString("commonurl", "");
+				Config.URL_COMMON = sharedpreferences.getString("url_common",
+						"");
+				Config.mainavatar_url = sharedpreferences.getString(
+						"avatar_urlmain", "");
+
+				Intent i = new Intent(this, NewMainActivity.class);
+				startActivity(i);
+			}
+		} 
+		System.out.println("sharedpreferences1 values"+sharedpreferences1);
+		if (sharedpreferences1.contains(UserName)) {
+			System.out.println("check wherther one pref has val");
+			usname.setText(sharedpreferences1.getString(UserName, ""));
 			check1.setChecked(true);
+			if (sharedpreferences1.contains(Password)) {
+				paswd.setText(sharedpreferences1.getString(Password, ""));
+				check1.setChecked(true);
+			}
 		}
 
 	}
@@ -617,9 +653,29 @@ public class LoginActivity extends SherlockActivity {
 			String u = paswd.getText().toString();
 
 			Editor editor = sharedpreferences.edit();
-			editor.putString(UserName, n);
-			editor.putString(Password, u);
+			 editor.putString(UserName, n);
+			 editor.putString(Password, u);
+			editor.putString("firstname", Config.firstname);
+			editor.putString("lastname", Config.lastname);
+			editor.putString("emailstudent", Config.email);
+			editor.putString("interested_instudent", Config.interested_in);
+			editor.putString("gender", Config.gender);
+			editor.putString("avatar", Config.avatar);
+			editor.putString("logins", Config.logins);
+			editor.putString("gencode", Config.gencode);
+			editor.putString("logins", Config.logins);
+			editor.putString("role", Config.role);
+			editor.putString("enabled", Config.enabled);
+			editor.putString("student_id ", Config.student_id);
+			editor.putString("commonurl", Config.common_url);
+			editor.putString("url_common", Config.URL_COMMON);
+			editor.putString("avatar_urlmain", Config.mainavatar_url);
+
 			editor.commit();
+			Editor editor1 = sharedpreferences1.edit();
+			editor1.putString(UserName, n);
+			editor1.putString(Password, u);
+			editor1.commit();
 		} else {
 			SharedPreferences settings = context.getSharedPreferences(
 					"MyPrefs0", Context.MODE_PRIVATE);
@@ -629,7 +685,6 @@ public class LoginActivity extends SherlockActivity {
 				NewMainActivity.class);
 		startActivity(intentSignUP);
 		pDialog.dismiss();
-
 
 	}
 

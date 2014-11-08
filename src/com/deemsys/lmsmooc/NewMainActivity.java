@@ -124,7 +124,7 @@ public class NewMainActivity extends SherlockFragmentActivity {
 				subtitle, icon);
 
 		mDrawerList.setAdapter(mMenuAdapter);
-		new LoadImage().execute(LoginActivity.avatar_url + "UserImages/"
+		new LoadImage().execute(Config.mainavatar_url + "UserImages/"
 				+ Config.avatar);
 		mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
@@ -222,9 +222,13 @@ public class NewMainActivity extends SherlockFragmentActivity {
 		default:
 			AboutTweet.forcheck = 0;
 			SharedPreferences settings = getApplicationContext()
-					.getSharedPreferences("MyPref",
+					.getSharedPreferences("MyPrefs0",
 							getApplicationContext().MODE_PRIVATE);
 			settings.edit().clear().commit();
+//			SharedPreferences settings1 = getApplicationContext()
+//					.getSharedPreferences("MyPrefs1",
+//							getApplicationContext().MODE_PRIVATE);
+//			settings1.edit().clear().commit();
 			Intent intentSignUP = new Intent(getApplicationContext(),
 					LoginActivity.class);
 			startActivity(intentSignUP);

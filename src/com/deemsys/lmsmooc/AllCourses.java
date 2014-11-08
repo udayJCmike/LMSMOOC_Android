@@ -374,11 +374,12 @@ private static final String TAG_COURSE_SUBTITLE = "course_sub_title";
 				ConnManagerParams.setTimeout(params, WAIT_TIMEOUT);
 
 				HttpPost httpPost = new HttpPost(URL);
-
+int starty=courselist.size();
+System.out.println("starty value::"+starty);
+System.out.println("start value::"+start);
 				List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(
 						2);
-				nameValuePairs.add(new BasicNameValuePair("start", String
-						.valueOf(start)));
+				nameValuePairs.add(new BasicNameValuePair("start",String.valueOf(start)));
 				nameValuePairs.add(new BasicNameValuePair("limit", String
 						.valueOf(limit)));
 				nameValuePairs.add(new BasicNameValuePair("student_id",

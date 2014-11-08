@@ -21,6 +21,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -68,7 +70,7 @@ public class ProfileFragment extends Fragment {
 	String imagepath;
 	String stu_id;
 	JSONObject jsonE;
-
+	SharedPreferences sharedpreferences;
 	boolean alphabet;
 	boolean numbers;
 	boolean spl_char;
@@ -96,7 +98,7 @@ public class ProfileFragment extends Fragment {
 	Button savechanges;
 	Button browse, upload;
 	TextView browseimage;
-
+	public static final String MyPREFERENCES = "MyPrefs0";
 	RadioButton maley, femaley;
 	RadioButton subj, cours;
 	TextView genderselecthid;
@@ -120,6 +122,8 @@ public class ProfileFragment extends Fragment {
 				.inflate(R.layout.profilefrag, container, false);
 		LinearLayout layout = (LinearLayout) rootView
 				.findViewById(R.id.proffrag);
+		sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES,
+				Context.MODE_PRIVATE);
 		ScrollView sv = (ScrollView) rootView.findViewById(R.id.scrollView1);
 		sv.setOnTouchListener(new OnTouchListener() {
 
@@ -1409,6 +1413,25 @@ public class ProfileFragment extends Fragment {
 			super.onPostExecute(file_url);
 
 			// new ImageData().execute();
+			Editor editor = sharedpreferences.edit();
+			
+			editor.putString("firstname", Config.firstname);
+			editor.putString("lastname", Config.lastname);
+			editor.putString("emailstudent", Config.email);
+			editor.putString("interested_instudent", Config.interested_in);
+			editor.putString("gender", Config.gender);
+			editor.putString("avatar", Config.avatar);
+			editor.putString("logins", Config.logins);
+			editor.putString("gencode", Config.gencode);
+			editor.putString("logins", Config.logins);
+			editor.putString("role", Config.role);
+			editor.putString("enabled", Config.enabled);
+			editor.putString("student_id ", Config.student_id);
+			editor.putString("commonurl", Config.common_url);
+			editor.putString("url_common", Config.URL_COMMON);
+			editor.putString("avatar_urlmain", Config.mainavatar_url);
+
+			editor.commit();
 			if (successL.equalsIgnoreCase("Yes")) {
 				AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
 						.create();
