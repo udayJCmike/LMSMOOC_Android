@@ -417,6 +417,8 @@ public class PaidCourses extends Fragment {
 			ImageView ratingshow;
 			ImageView promoimage;
 			TextView enroll;
+			TextView enrollcount;
+			
 		}
 
 		public void add(Course country) {
@@ -447,6 +449,8 @@ public class PaidCourses extends Fragment {
 						.findViewById(R.id.promoimage);
 				holder.enroll = (TextView) convertView
 						.findViewById(R.id.enroll);
+				holder.enrollcount = (TextView) convertView
+						.findViewById(R.id.enrollcourse);
 //				holder.subs = (TextView) convertView
 //						.findViewById(R.id.coursesubtitle);
 				convertView.setTag(holder);
@@ -462,6 +466,8 @@ public class PaidCourses extends Fragment {
 			holder.cover.setImageBitmap(country.getBitmap());
 			holder.cost.setTextColor(Color.parseColor("#4B9500"));
 			//holder.subs.setText(country.getsubtitle());
+			holder.enrollcount.setText(country.getstudentsenrolled()
+					+ " Students");
 			Picasso.with(getActivity()).load(country.getstringurl())
 					.into(holder.cover);
 

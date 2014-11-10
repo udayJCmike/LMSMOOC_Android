@@ -58,7 +58,7 @@ public class MyCourses extends Fragment {
 	JSONObject jArray;
 	MyCustomAdapter dataAdapter = null;
 	int start = 0;
-	String course_subtitle,course_subtitle_topass;
+	String course_subtitle, course_subtitle_topass;
 	private static final String TAG_COURSE_SUBTITLE = "course_sub_title";
 	int limit = 10;
 	boolean loadingMore = false;
@@ -139,9 +139,10 @@ public class MyCourses extends Fragment {
 					instructoridurl = country.getinsid();
 					course_name_to_pass = country.getCode();
 					rating_count = country.getrating();
-					course_subtitle_topass=country.getsubtitle();
+					course_subtitle_topass = country.getsubtitle();
 					course_enrolled_passing = country.getstudentsenrolled();
-					System.out.println("course enrolle count::"+course_enrolled_passing);
+					System.out.println("course enrolle count::"
+							+ course_enrolled_passing);
 					new fetchpurnumber().execute();
 
 				}
@@ -375,12 +376,13 @@ public class MyCourses extends Fragment {
 		}
 
 		private class ViewHolder {
-			//TextView subs;
+			// TextView subs;
 			TextView code;
 			TextView name;
 			ImageView cover;
 			TextView cost;
 			ImageView ratingshow;
+			TextView enrollcount;
 			ImageView promoimage;
 		}
 
@@ -410,8 +412,10 @@ public class MyCourses extends Fragment {
 						.findViewById(R.id.ratingimage);
 				holder.promoimage = (ImageView) convertView
 						.findViewById(R.id.promoimage);
-//				holder.subs = (TextView) convertView
-//						.findViewById(R.id.coursesubtitle);
+				holder.enrollcount = (TextView) convertView
+						.findViewById(R.id.enrollcourse);
+				// holder.subs = (TextView) convertView
+				// .findViewById(R.id.coursesubtitle);
 				convertView.setTag(holder);
 
 			} else {
@@ -424,7 +428,9 @@ public class MyCourses extends Fragment {
 			holder.cost.setText("$ " + country.getRegion());
 			holder.cost.setTextColor(Color.parseColor("#4B9500"));
 			holder.cover.setImageBitmap(country.getBitmap());
-		//	holder.subs.setText(country.getsubtitle());
+			holder.enrollcount.setText(country.getstudentsenrolled()
+					+ " Students");
+			// holder.subs.setText(country.getsubtitle());
 			Picasso.with(getActivity()).load(country.getstringurl())
 					.into(holder.cover);
 

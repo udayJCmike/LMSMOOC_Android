@@ -1,7 +1,9 @@
 package com.deemsys.lmsmooc;
 
 import android.app.ActionBar;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -21,7 +23,11 @@ public class MainActivity extends FragmentActivity {
 	static ViewPager pager;
 	LinearLayout mDotsScrollbarHolder;
 	PageIndicator mIndicator;
-
+	SharedPreferences sharedpreferences, sharedpreferences1;
+	public static final String MyPREFERENCES = "MyPrefs0";
+	public static final String MyPREFERENCES1 = "MyPrefs1";
+	public static final String UserName = "unnameKey";
+	public static final String Password = "passKey";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -31,7 +37,10 @@ public class MainActivity extends FragmentActivity {
 		actions.setTitle(Html.fromHtml("<font color='#ffffff'>LMS MOOC</font>"));
 		actions.setBackgroundDrawable(new ColorDrawable(Color
 				.parseColor("#3399FF")));
-
+		sharedpreferences = getSharedPreferences(MyPREFERENCES,
+				Context.MODE_PRIVATE);
+		sharedpreferences1 = getSharedPreferences(MyPREFERENCES1,
+				Context.MODE_PRIVATE);
 		Intent intent1 = new Intent();
 
 		intent1.setAction("com.sonyericsson.home.action.UPDATE_BADGE");
@@ -180,5 +189,44 @@ public class MainActivity extends FragmentActivity {
 		}
 
 	}
+	@Override
+	protected void onResume() {
+		super.onResume();
+		System.out.println("sharedpreferences uname val"+sharedpreferences.getString(UserName, ""));
+		if (sharedpreferences.contains(UserName)) {
+			System.out.println("check wherther one pref has val");
+			System.out.println("if sharedpref0 is avail");
+//			usname.setText(sharedpreferences.getString(UserName, ""));
+//			check1.setChecked(true);
+			if (sharedpreferences.contains(Password)) {
+//				paswd.setText(sharedpreferences.getString(Password, ""));
+//				check1.setChecked(true);
+				Config.username = sharedpreferences.getString(UserName, "");
+				Config.password = sharedpreferences.getString(Password, "");
+				Config.firstname = sharedpreferences.getString("firstname", "");
+				Config.lastname = sharedpreferences.getString("lastname", "");
+				Config.email = sharedpreferences.getString("emailstudent", "");
+				Config.interested_in = sharedpreferences.getString(
+						"interested_instudent", "");
+				Config.gender = sharedpreferences.getString("gender", "");
+				Config.avatar = sharedpreferences.getString("avatar", "");
+				Config.logins = sharedpreferences.getString("logins", "");
+				Config.role = sharedpreferences.getString("role", "");
+				Config.enabled = sharedpreferences.getString("enabled", "");
+				Config.student_id = sharedpreferences.getString("student_id ",
+						"");
+				Config.common_url = sharedpreferences
+						.getString("commonurl", "");
+				Config.URL_COMMON = sharedpreferences.getString("url_common",
+						"");
+				Config.mainavatar_url = sharedpreferences.getString(
+						"avatar_urlmain", "");
 
+				Intent i = new Intent(this, NewMainActivity.class);
+				startActivity(i);
+			}
+		} 
+	
+
+	}
 }

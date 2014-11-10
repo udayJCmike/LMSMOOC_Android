@@ -102,7 +102,7 @@ public class CategoryCoursesStudentBased extends SherlockFragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.category_courses);
+		setContentView(R.layout.allcourses);
 
 		Intent i = getIntent();
 		category_name = i.getExtras().getString("category_name", "");
@@ -427,6 +427,7 @@ public class CategoryCoursesStudentBased extends SherlockFragmentActivity {
 			TextView cost;
 			ImageView promoimage;
 			ImageView cover;
+			TextView enrollcount;
 			ImageView ratingshow;
 		}
 
@@ -456,6 +457,9 @@ public class CategoryCoursesStudentBased extends SherlockFragmentActivity {
 						.findViewById(R.id.enroll);
 				holder.ratingshow = (ImageView) convertView
 						.findViewById(R.id.ratingimage);
+				
+				holder.enrollcount = (TextView) convertView
+						.findViewById(R.id.enrollcourse);
 				convertView.setTag(holder);
 
 			} else {
@@ -464,6 +468,8 @@ public class CategoryCoursesStudentBased extends SherlockFragmentActivity {
 
 			Course country = this.countryList.get(position);
 			holder.code.setText(country.getCode());
+			holder.enrollcount.setText(country.getstudentsenrolled()
+					+ " Students");
 			holder.name.setText(country.getName());
 			holder.cost.setText("$ " + country.getRegion());
 			holder.cost.setTextColor(Color.parseColor("#4B9500"));

@@ -77,7 +77,7 @@ public class SearchStudentBased extends SherlockActivity {
 	static ListView listView;
 	String rating_count;
 	String promocheck;
-	String course_subtitle,course_subtitle_topass;
+	String course_subtitle, course_subtitle_topass;
 	private static final String TAG_COURSE_SUBTITLE = "course_sub_title";
 	private static final String Promo_Check = "promocheck";
 	private static final String TAG_ENROLLED_STUDENT = "course_enrolled";
@@ -107,7 +107,7 @@ public class SearchStudentBased extends SherlockActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.searchcourse);
+		setContentView(R.layout.allcourses);
 		listView = (ListView) findViewById(R.id.listView1);
 
 		ActionBar ab = getSupportActionBar();
@@ -137,7 +137,7 @@ public class SearchStudentBased extends SherlockActivity {
 					course_name_to_pass = country.getCode();
 					course_enrolled_passing = country.getstudentsenrolled();
 					checkstatus = country.getifmycourse();
-					course_subtitle_topass=country.getsubtitle();
+					course_subtitle_topass = country.getsubtitle();
 					courseidurl = country.getcourseid();
 					instructoridurl = country.getinsid();
 					rating_count = country.getrating();
@@ -500,7 +500,7 @@ public class SearchStudentBased extends SherlockActivity {
 			TextView enroll;
 			ImageView ratingshow;
 			ImageView promoimage;
-
+			TextView enrollcount;
 		}
 
 		public void add(Course country) {
@@ -531,6 +531,9 @@ public class SearchStudentBased extends SherlockActivity {
 						.findViewById(R.id.promoimage);
 				holder.enroll = (TextView) convertView
 						.findViewById(R.id.enroll);
+				holder.enrollcount = (TextView) convertView
+						.findViewById(R.id.enrollcourse);
+
 				convertView.setTag(holder);
 
 			} else {
@@ -538,11 +541,16 @@ public class SearchStudentBased extends SherlockActivity {
 			}
 
 			Course country = this.countryList.get(position);
+			holder.enrollcount.setText(country.getstudentsenrolled()
+					+ " Students");
 			holder.code.setText(country.getCode());
 			holder.name.setText(country.getName());
 			holder.cost.setText("$ " + country.getRegion());
 			holder.cost.setTextColor(Color.parseColor("#4B9500"));
 			holder.cover.setImageBitmap(country.getBitmap());
+
+			System.out.println("value of no of student enrolld::"
+					+ country.getstudentsenrolled());
 			// aQuery = new AQuery(getActivity());
 			// aQuery.id(R.id.cover).image(country.getstringurl(),true,true);
 			Picasso.with(getApplicationContext()).load(country.getstringurl())

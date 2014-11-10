@@ -8,7 +8,7 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="100dp"
-        android:paddingBottom="3dp"
+        android:paddingLeft="5dp"
         android:paddingTop="3dp" >
 
         <LinearLayout
@@ -40,7 +40,7 @@
 
             <TextView
                 android:id="@+id/coursename"
-                style="@style/custom"
+                style="@style/custom_large"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="false"
@@ -50,38 +50,34 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </LinearLayout>
 
-        <View
-            android:id="@+id/vc"
-            android:layout_width="fill_parent"
-            android:layout_height="5dp"
-            android:layout_below="@+id/lineartwo"
-            android:layout_toRightOf="@id/linearone" >
-        </View>
+<View
+    android:id="@+id/vc"
+    android:layout_width="fill_parent"
+    android:layout_height="10dp"
+    android:layout_below="@+id/lineartwo"
+    android:layout_toRightOf="@id/linearone" >
 
+        </View>
         <RelativeLayout
             android:id="@+id/relay1"
             android:layout_width="wrap_content"
-            android:layout_height="35dp"
+            android:layout_height="30dp"
             android:layout_below="@+id/vc"
             android:layout_centerHorizontal="false"
             android:layout_centerInParent="false"
             android:layout_centerVertical="false"
-            android:layout_toRightOf="@id/linearone"
-            android:paddingLeft="2dp"
-            android:paddingRight="1dp" >
+            android:layout_toRightOf="@id/linearone" >
 
             <TextView
                 android:id="@+id/author"
-                style="@style/custom_author_name"
+                style="@style/custom_medium"
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="false"
-                android:layout_centerVertical="true"
                 android:clickable="false"
                 android:focusable="false"
-                android:maxLines="2"
-                android:text="thendral sdfasdf asdfsd"
+                android:text="thendral"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <TextView
@@ -91,65 +87,61 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="false"
                 android:layout_alignParentTop="false"
-                android:layout_centerInParent="true"
-                android:layout_centerVertical="true"
+              
+                android:layout_toRightOf="@id/author"
                 android:clickable="false"
                 android:focusable="false"
                 android:text="Enrolled"
-                android:visibility="invisible"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="#FF7519" />
+                android:textColor="#4B9500" />
 
             <ImageView
                 android:id="@+id/promoimage"
-                android:layout_width="65dp"
+                android:layout_width="130dp"
                 android:layout_height="18dp"
                 android:layout_alignParentLeft="false"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="false"
-                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/enroll"
                 android:scaleType="fitXY"
                 android:src="@drawable/promocode" />
-        </RelativeLayout>
 
-        <RelativeLayout
+        </RelativeLayout>
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="false"
             android:layout_below="@+id/relay1"
-            android:layout_toRightOf="@id/linearone"
-            android:paddingLeft="2dp"
-            android:paddingRight="1dp" >
+            android:layout_toRightOf="@id/linearone" >
 
             <TextView
                 android:id="@+id/cost"
-                style="@style/custom_bold_things"
+                style="@style/custom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
                 android:clickable="false"
                 android:focusable="false"
                 android:text="$10" />
 
             <TextView
                 android:id="@+id/enrollcourse"
-                style="@style/custom_bold_things"
+                style="@style/custom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="false"
-                android:layout_centerInParent="true"
-                android:layout_centerVertical="true"
-                android:text="0 Students"
-               />
+                android:layout_centerInParent="false"
+                android:layout_toRightOf="@id/cost"
+                android:paddingLeft="5dp"
+                android:text="" />
 
             <ImageView
                 android:id="@+id/ratingimage"
-                android:layout_width="66dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:src="@drawable/zero" />
+
         </RelativeLayout>
     </RelativeLayout>
 

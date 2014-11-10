@@ -78,11 +78,12 @@ public class AllCourses extends Fragment {
 	View loadMoreView;
 	JSONArray user = null;
 	static ListView listView;
+
 	String course_name, authorname, student_enrolled, ratingcouont, cost,
 			course_id, instructorid, numofrows, course_cover_image,
-			ifmycoursepresent, audiourl, audiourlpassing ;
- String course_subtitle,course_subtitle_topass;
-private static final String TAG_COURSE_SUBTITLE = "course_sub_title";
+			ifmycoursepresent, audiourl, audiourlpassing;
+	String course_subtitle, course_subtitle_topass;
+	private static final String TAG_COURSE_SUBTITLE = "course_sub_title";
 	String course_description;
 	private static final String TAG_COURSE_DESCRIPTION = "course_description";
 	String promocheck;
@@ -142,7 +143,7 @@ private static final String TAG_COURSE_SUBTITLE = "course_sub_title";
 					course_name_to_pass = country.getCode();
 					rating_count = country.getrating();
 					course_enrolled_passing = country.getstudentsenrolled();
-					course_subtitle_topass=country.getsubtitle();
+					course_subtitle_topass = country.getsubtitle();
 					System.out.println("passing course enroll"
 							+ course_enrolled_passing);
 					new fetchpurnumber().execute();
@@ -163,7 +164,7 @@ private static final String TAG_COURSE_SUBTITLE = "course_sub_title";
 
 				int lastInScreen = firstVisibleItem + visibleItemCount;
 				if ((lastInScreen == totalItemCount) && !(loadingMore)) {
-					loadingMore=true;
+					loadingMore = true;
 					if (isInternetPresent) {
 						grabURL(Config.ServerUrl + Config.allcourseurl);
 					} else {
@@ -200,7 +201,7 @@ private static final String TAG_COURSE_SUBTITLE = "course_sub_title";
 	public void grabURL(String url) {
 
 		System.out.println("calling async count");
-		mTask=new GrabURL().execute(url);
+		mTask = new GrabURL().execute(url);
 	}
 
 	public static AllCourses newInstance(String text) {
@@ -277,7 +278,7 @@ private static final String TAG_COURSE_SUBTITLE = "course_sub_title";
 				for (int i = 0; i < jarray.length(); i++) {
 					arrayname = arrayname + Integer.toString(i);
 					arrayname = jarray.getString(i);
-//					Log.e("parenttag", arrayname);
+					// Log.e("parenttag", arrayname);
 
 				}
 
@@ -321,7 +322,7 @@ private static final String TAG_COURSE_SUBTITLE = "course_sub_title";
 						coursetotallist.add(ifmycoursepresent);
 						coursetotallist.add(audiourl);
 						coursetotallist.add(course_enrolled);
-						
+
 						imagelist.add(course_cover_image);
 
 						Course cnt = new Course(authorname, course_name, cost,
@@ -374,12 +375,13 @@ private static final String TAG_COURSE_SUBTITLE = "course_sub_title";
 				ConnManagerParams.setTimeout(params, WAIT_TIMEOUT);
 
 				HttpPost httpPost = new HttpPost(URL);
-int starty=courselist.size();
-System.out.println("starty value::"+starty);
-System.out.println("start value::"+start);
+				int starty = courselist.size();
+				System.out.println("starty value::" + starty);
+				System.out.println("start value::" + start);
 				List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(
 						2);
-				nameValuePairs.add(new BasicNameValuePair("start",String.valueOf(start)));
+				nameValuePairs.add(new BasicNameValuePair("start", String
+						.valueOf(start)));
 				nameValuePairs.add(new BasicNameValuePair("limit", String
 						.valueOf(limit)));
 				nameValuePairs.add(new BasicNameValuePair("student_id",
@@ -438,7 +440,7 @@ System.out.println("start value::"+start);
 		}
 
 		private class ViewHolder {
-//		sd	TextView subs;
+			// sd TextView subs;
 			TextView code;
 			TextView name;
 			ImageView cover;
@@ -446,6 +448,7 @@ System.out.println("start value::"+start);
 			ImageView ratingshow;
 			ImageView promoimage;
 			TextView enroll;
+			TextView enrollcount;
 		}
 
 		public void add(Course country) {
@@ -457,7 +460,7 @@ System.out.println("start value::"+start);
 		public View getView(int position, View convertView, ViewGroup parent) {
 
 			ViewHolder holder = null;
-			//Log.v("ConvertView", String.valueOf(position));
+			// Log.v("ConvertView", String.valueOf(position));
 			if (convertView == null) {
 
 				LayoutInflater vi = (LayoutInflater) getActivity()
@@ -474,8 +477,8 @@ System.out.println("start value::"+start);
 						.findViewById(R.id.ratingimage);
 				holder.enroll = (TextView) convertView
 						.findViewById(R.id.enroll);
-//				holder.subs = (TextView) convertView
-//						.findViewById(R.id.coursesubtitle);
+				holder.enrollcount = (TextView) convertView
+						.findViewById(R.id.enrollcourse);
 				holder.promoimage = (ImageView) convertView
 						.findViewById(R.id.promoimage);
 				convertView.setTag(holder);
@@ -487,8 +490,9 @@ System.out.println("start value::"+start);
 			Course country = this.countryList.get(position);
 			holder.code.setText(country.getCode());
 			holder.name.setText(country.getName());
-			//holder.subs.setText(country.getsubtitle());
-			holder.cost.setText("$ " + country.getRegion());
+			holder.enrollcount.setText(country.getstudentsenrolled()
+					+ " Students");
+			holder.cost.setText("$" + country.getRegion());
 			holder.cost.setTextColor(Color.parseColor("#4B9500"));
 			holder.cover.setImageBitmap(country.getBitmap());
 
@@ -671,13 +675,14 @@ System.out.println("start value::"+start);
 
 		}
 	}
+
 	@Override
 	public void onStop() {
-	    super.onStop();
+		super.onStop();
 
-	    //check the state of the task
-	    System.out.println("in stop");
-	    if(mTask != null && mTask.getStatus() == Status.RUNNING)
-	    	mTask.cancel(true);
+		// check the state of the task
+		System.out.println("in stop");
+		if (mTask != null && mTask.getStatus() == Status.RUNNING)
+			mTask.cancel(true);
 	}
 }

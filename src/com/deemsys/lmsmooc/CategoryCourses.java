@@ -73,6 +73,8 @@ public class CategoryCourses extends SherlockFragmentActivity {
 	private static final String TAG_AVATAR_URL = "avatar_url";
 	String rating_count;
 	String course_description;
+	private static final String TAG_ENROLLED_STUDENT = "course_enrolled";
+	String course_enrolled;
 	private static final String TAG_COURSE_DESCRIPTION = "course_description";
 	String course_name, authorname, student_enrolled, ratingcouont, cost,
 			course_id, instructorid, numofrows, category_name,
@@ -94,12 +96,12 @@ public class CategoryCourses extends SherlockFragmentActivity {
 	private static final String TAG_COURSE_PROMO_VIDEO = "course_promo_video";
 	String courseidurl, instructoridurl, pur_url;
 	String course_id_topass, course_name_to_pass, course_descript_to_pass,
-			course_enrolled, course_enrolled_passing, checkstatus;
+			course_enrolled_passing, checkstatus;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.category_courses);
+		setContentView(R.layout.allcourses);
 
 		Intent i = getIntent();
 		category_name = i.getExtras().getString("category_name", "");
@@ -269,6 +271,8 @@ public class CategoryCourses extends SherlockFragmentActivity {
 						cost = c2.getString(TAG_COURSE_COST);
 						promocheck = c2.getString(Promo_Check);
 						ratingcouont = c2.getString(TAG_COURSE_RATINGS);
+						course_enrolled = c2.getString(TAG_ENROLLED_STUDENT);
+						coursetotallist.add(course_enrolled);
 						coursetotallist.add(authorname);
 						coursetotallist.add(course_name);
 						coursetotallist.add(ratingcouont);
@@ -290,6 +294,7 @@ public class CategoryCourses extends SherlockFragmentActivity {
 						cnt.setstringurl(course_cover_image);
 						// cnt.setifmycourse(ifmycoursepresent);
 						cnt.setpromocheck(promocheck);
+						cnt.setstudentsenrolled(course_enrolled);
 						cnt.setaudiourl(audiourl);
 						courselist.add(cnt);
 
@@ -393,6 +398,7 @@ public class CategoryCourses extends SherlockFragmentActivity {
 			TextView cost;
 			ImageView cover;
 			ImageView ratingshow;
+			TextView enrollcount;
 		}
 
 		public void add(Course country) {
@@ -419,6 +425,8 @@ public class CategoryCourses extends SherlockFragmentActivity {
 				holder.cover = (ImageView) convertView.findViewById(R.id.cover);
 				holder.ratingshow = (ImageView) convertView
 						.findViewById(R.id.ratingimage);
+				holder.enrollcount = (TextView) convertView
+						.findViewById(R.id.enrollcourse);
 				// holder.enroll = (TextView)
 				// convertView.findViewById(R.id.enroll);
 				convertView.setTag(holder);
@@ -435,7 +443,8 @@ public class CategoryCourses extends SherlockFragmentActivity {
 			holder.cover.setImageBitmap(country.getBitmap());
 			holder.promoimage = (ImageView) convertView
 					.findViewById(R.id.promoimage);
-
+			holder.enrollcount.setText(country.getstudentsenrolled()
+					+ " Students");
 			// aQuery = new AQuery(getActivity());
 			// aQuery.id(R.id.cover).image(country.getstringurl(),true,true);
 			Picasso.with(CategoryCourses.this).load(country.getstringurl())

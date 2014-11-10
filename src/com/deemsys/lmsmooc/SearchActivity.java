@@ -79,6 +79,8 @@ public class SearchActivity extends SherlockActivity {
 	JSONArray user = null;
 	static ListView listView;
 	String promocheck;
+	private static final String TAG_ENROLLED_STUDENT = "course_enrolled";
+	
 	private static final String Promo_Check = "promocheck";
 	String course_name, authorname, student_enrolled, ratingcouont, cost,
 			course_id, instructorid, numofrows, course_cover_image,
@@ -103,7 +105,7 @@ public class SearchActivity extends SherlockActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.searchcourse);
+		setContentView(R.layout.allcourses);
 		listView = (ListView) findViewById(R.id.listView1);
 
 		ActionBar ab = getSupportActionBar();
@@ -371,6 +373,8 @@ public class SearchActivity extends SherlockActivity {
 						cost = c2.getString(TAG_COURSE_COST);
 						// ifmycoursepresent= c2.getString(TAG_Check_);
 						ratingcouont = c2.getString(TAG_COURSE_RATINGS);
+						course_enrolled = c2.getString(TAG_ENROLLED_STUDENT);
+						coursetotallist.add(course_enrolled);
 						coursetotallist.add(authorname);
 						coursetotallist.add(course_name);
 						coursetotallist.add(ratingcouont);
@@ -389,7 +393,7 @@ public class SearchActivity extends SherlockActivity {
 						cnt.setcourseid(course_id);
 						cnt.setrating(ratingcouont);
 						cnt.setpromocheck(promocheck);
-
+						cnt.setstudentsenrolled(course_enrolled);
 						// cnt.setifmycourse(ifmycoursepresent);
 						cnt.setstringurl(course_cover_image);
 						cnt.setaudiourl(audiourl);
@@ -504,6 +508,7 @@ public class SearchActivity extends SherlockActivity {
 			TextView cost;
 			ImageView ratingshow;
 			ImageView promoimage;
+			TextView enrollcount;
 
 		}
 
@@ -533,7 +538,8 @@ public class SearchActivity extends SherlockActivity {
 						.findViewById(R.id.ratingimage);
 				holder.promoimage = (ImageView) convertView
 						.findViewById(R.id.promoimage);
-
+				holder.enrollcount = (TextView) convertView
+						.findViewById(R.id.enrollcourse);
 				convertView.setTag(holder);
 
 			} else {
@@ -546,6 +552,9 @@ public class SearchActivity extends SherlockActivity {
 			holder.cost.setText("$ " + country.getRegion());
 			holder.cost.setTextColor(Color.parseColor("#4B9500"));
 			holder.cover.setImageBitmap(country.getBitmap());
+			holder.enrollcount.setTextColor(Color.parseColor("#999999"));
+			holder.enrollcount.setText(country.getstudentsenrolled()
+					+ " Students");
 			// aQuery = new AQuery(getActivity());
 			// aQuery.id(R.id.cover).image(country.getstringurl(),true,true);
 			Picasso.with(getApplicationContext()).load(country.getstringurl())

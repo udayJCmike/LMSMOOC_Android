@@ -50,7 +50,7 @@ import android.widget.AbsListView.OnScrollListener;
 
 public class AllCoursesbrowse extends Fragment {
 	Bitmap bitmap;
-	String course_subtitle,course_subtitle_topass;
+	String course_subtitle, course_subtitle_topass;
 	private static final String TAG_COURSE_SUBTITLE = "course_sub_title";
 	public ProgressDialog cDialog, pDialog;
 	public static ArrayList<String> coursetotallist = new ArrayList<String>();
@@ -66,7 +66,8 @@ public class AllCoursesbrowse extends Fragment {
 	boolean loadingMore = false;
 	View loadMoreView;
 	JSONArray user = null;
-	
+	private static final String TAG_ENROLLED_STUDENT = "course_enrolled";
+	String course_enrolled;
 	static ListView listView;
 	String promocheck;
 	private static final String Promo_Check = "promocheck";
@@ -287,6 +288,8 @@ public class AllCoursesbrowse extends Fragment {
 								.getString(TAG_course_cover_image);
 						cost = c2.getString(TAG_COURSE_COST);
 						ratingcouont = c2.getString(TAG_COURSE_RATINGS);
+						course_enrolled = c2.getString(TAG_ENROLLED_STUDENT);
+						coursetotallist.add(course_enrolled);
 						coursetotallist.add(authorname);
 						coursetotallist.add(course_name);
 						coursetotallist.add(course_subtitle);
@@ -300,7 +303,7 @@ public class AllCoursesbrowse extends Fragment {
 						cnt.setName(authorname);
 						cnt.setCode(course_name);
 						cnt.setpromocheck(promocheck);
-
+						cnt.setstudentsenrolled(course_enrolled);
 						cnt.setins_id(instructorid);
 						cnt.setcourseid(course_id);
 						cnt.setrating(ratingcouont);
@@ -421,7 +424,7 @@ public class AllCoursesbrowse extends Fragment {
 			TextView cost;
 			ImageView ratingshow;
 			ImageView promoimage;
-			//TextView subs;
+			TextView enrollcount;
 		}
 
 		public void add(Course country) {
@@ -450,8 +453,10 @@ public class AllCoursesbrowse extends Fragment {
 						.findViewById(R.id.ratingimage);
 				holder.promoimage = (ImageView) convertView
 						.findViewById(R.id.promoimage);
-//				holder.subs = (TextView) convertView
-//						.findViewById(R.id.coursesubtitle);
+				holder.enrollcount = (TextView) convertView
+						.findViewById(R.id.enrollcourse);
+				// holder.subs = (TextView) convertView
+				// .findViewById(R.id.coursesubtitle);
 				convertView.setTag(holder);
 
 			} else {
@@ -461,7 +466,9 @@ public class AllCoursesbrowse extends Fragment {
 			Course country = this.countryList.get(position);
 			holder.code.setText(country.getCode());
 			holder.name.setText(country.getName());
-			//holder.subs.setText(country.getsubtitle());
+			holder.enrollcount.setText(country.getstudentsenrolled()
+					+ " Students");
+			// holder.subs.setText(country.getsubtitle());
 			holder.cost.setText("$ " + country.getRegion());
 			holder.cost.setTextColor(Color.parseColor("#4B9500"));
 			holder.cover.setImageBitmap(country.getBitmap());

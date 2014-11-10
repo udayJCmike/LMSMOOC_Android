@@ -68,9 +68,9 @@ public class MyFavoriteCategoryCourses extends SherlockFragmentActivity {
 	Bitmap bitmap;
 	String rating_count;
 	String promocheck;
-	 String course_subtitle,course_subtitle_topass;
-	 private static final String TAG_COURSE_SUBTITLE = "course_sub_title";
-	
+	String course_subtitle, course_subtitle_topass;
+	private static final String TAG_COURSE_SUBTITLE = "course_sub_title";
+
 	private static final String Promo_Check = "promocheck";
 	private static final String TAG_ENROLLED_STUDENT = "course_enrolled";
 	String course_description;
@@ -99,7 +99,7 @@ public class MyFavoriteCategoryCourses extends SherlockFragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.category_courses);
+		setContentView(R.layout.allcourses);
 
 		Intent i = getIntent();
 		category_name = i.getExtras().getString("category_name", "");
@@ -135,7 +135,7 @@ public class MyFavoriteCategoryCourses extends SherlockFragmentActivity {
 					course_name_to_pass = country.getCode();
 					course_enrolled_passing = country.getstudentsenrolled();
 					checkstatus = country.getifmycourse();
-					course_subtitle_topass=country.getsubtitle();
+					course_subtitle_topass = country.getsubtitle();
 					courseidurl = country.getcourseid();
 					instructoridurl = country.getinsid();
 					rating_count = country.getrating();
@@ -397,7 +397,8 @@ public class MyFavoriteCategoryCourses extends SherlockFragmentActivity {
 			ImageView cover;
 			ImageView ratingshow;
 			ImageView promoimage;
-			//TextView subs;
+			TextView enrollcount;
+			// TextView subs;
 		}
 
 		public void add(Course country) {
@@ -428,8 +429,10 @@ public class MyFavoriteCategoryCourses extends SherlockFragmentActivity {
 						.findViewById(R.id.enroll);
 				holder.ratingshow = (ImageView) convertView
 						.findViewById(R.id.ratingimage);
-//				holder.subs = (TextView) convertView
-//						.findViewById(R.id.coursesubtitle);
+				// holder.subs = (TextView) convertView
+				// .findViewById(R.id.coursesubtitle);
+				holder.enrollcount = (TextView) convertView
+						.findViewById(R.id.enrollcourse);
 				convertView.setTag(holder);
 
 			} else {
@@ -437,7 +440,7 @@ public class MyFavoriteCategoryCourses extends SherlockFragmentActivity {
 			}
 
 			Course country = this.countryList.get(position);
-			//holder.subs.setText(country.getsubtitle());
+			// holder.subs.setText(country.getsubtitle());
 			holder.code.setText(country.getCode());
 			holder.name.setText(country.getName());
 			holder.cost.setText("$ " + country.getRegion());
@@ -447,6 +450,8 @@ public class MyFavoriteCategoryCourses extends SherlockFragmentActivity {
 			// aQuery.id(R.id.cover).image(country.getstringurl(),true,true);
 			Picasso.with(MyFavoriteCategoryCourses.this)
 					.load(country.getstringurl()).into(holder.cover);
+			holder.enrollcount.setText(country.getstudentsenrolled()
+					+ " Students");
 
 			// new DownloadTask((ImageView)
 			// convertView.findViewById(R.id.cover))

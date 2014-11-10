@@ -67,12 +67,12 @@ public class MyFavoriteCourses extends Fragment {
 	View loadMoreView;
 	JSONArray user = null;
 	static ListView listView;
-	String course_subtitle,course_subtitle_topass;
+	String course_subtitle, course_subtitle_topass;
 	private static final String TAG_COURSE_SUBTITLE = "course_sub_title";
 	String rating_count;
 	private static final String TAG_ENROLLED_STUDENT = "course_enrolled";
 	String promocheck;
-	
+
 	private static final String Promo_Check = "promocheck";
 	private static final String TAG_SUCCESS = "success";
 	String course_description;
@@ -112,8 +112,6 @@ public class MyFavoriteCourses extends Fragment {
 		listView.setLongClickable(true);
 		cd = new ConnectionDetector(getActivity());
 		isInternetPresent = cd.isConnectingToInternet();
-		
-		
 
 		return v;
 	}
@@ -241,13 +239,13 @@ public class MyFavoriteCourses extends Fragment {
 			dataAdapter = new MyCustomAdapter(getActivity(),
 					R.layout.course_overview, courselist);
 			listView.setAdapter(dataAdapter);
-			
-			
+
 			listView.setOnItemClickListener(new OnItemClickListener() {
 				public void onItemClick(AdapterView<?> parent, View view,
 						int position, long id) {
 
-					Course country = (Course) parent.getItemAtPosition(position);
+					Course country = (Course) parent
+							.getItemAtPosition(position);
 					if (position < courselist.size()) {
 						audiourlpassing = country.getaudiourl();
 						course_descript_to_pass = country.getdescription();
@@ -261,7 +259,7 @@ public class MyFavoriteCourses extends Fragment {
 						courseidurl = country.getcourseid();
 						instructoridurl = country.getinsid();
 						rating_count = country.getrating();
-						course_subtitle_topass=country.getsubtitle();
+						course_subtitle_topass = country.getsubtitle();
 						new fetchpurnumber().execute();
 
 					}
@@ -298,36 +296,37 @@ public class MyFavoriteCourses extends Fragment {
 				JSONObject c = jArray.getJSONObject(TAG_SRES);
 
 				JSONArray countryListObj = c.getJSONArray(TAG_Course_ARRAY);
-//				if (courselist.size() == 0 && start == 0&&countryListObj.length() == 0) {
-//					AlertDialog alertDialog = new AlertDialog.Builder(
-//							getActivity()).create();
-//
-//					// Setting Dialog Title
-//					alertDialog.setTitle("Sorry User");
-//
-//					// Setting Dialog Message
-//					alertDialog.setMessage("No data found.");
-//
-//					// Setting Icon to Dialog
-//					alertDialog.setIcon(R.drawable.delete);
-//
-//					// Setting OK Button
-//					alertDialog.setButton("OK",
-//							new DialogInterface.OnClickListener() {
-//
-//								public void onClick(
-//										final DialogInterface dialog,
-//										final int which) {
-//									// Write your code here to execute after
-//									// dialog
-//									// closed
-//
-//								}
-//							});
-//
-//					// Showing Alert Message
-//					alertDialog.show();
-//				}
+				// if (courselist.size() == 0 && start ==
+				// 0&&countryListObj.length() == 0) {
+				// AlertDialog alertDialog = new AlertDialog.Builder(
+				// getActivity()).create();
+				//
+				// // Setting Dialog Title
+				// alertDialog.setTitle("Sorry User");
+				//
+				// // Setting Dialog Message
+				// alertDialog.setMessage("No data found.");
+				//
+				// // Setting Icon to Dialog
+				// alertDialog.setIcon(R.drawable.delete);
+				//
+				// // Setting OK Button
+				// alertDialog.setButton("OK",
+				// new DialogInterface.OnClickListener() {
+				//
+				// public void onClick(
+				// final DialogInterface dialog,
+				// final int which) {
+				// // Write your code here to execute after
+				// // dialog
+				// // closed
+				//
+				// }
+				// });
+				//
+				// // Showing Alert Message
+				// alertDialog.show();
+				// }
 				if (countryListObj.length() == 0)
 
 				{
@@ -520,7 +519,7 @@ public class MyFavoriteCourses extends Fragment {
 		}
 
 		private class ViewHolder {
-			//TextView subs;
+			// TextView subs;
 			TextView code;
 			TextView name;
 			ImageView cover;
@@ -528,6 +527,7 @@ public class MyFavoriteCourses extends Fragment {
 			ImageView ratingshow;
 			ImageView promoimage;
 			TextView enroll;
+			TextView enrollcount;
 		}
 
 		public void add(Course country) {
@@ -558,8 +558,10 @@ public class MyFavoriteCourses extends Fragment {
 						.findViewById(R.id.promoimage);
 				holder.enroll = (TextView) convertView
 						.findViewById(R.id.enroll);
-//				holder.subs = (TextView) convertView
-//						.findViewById(R.id.coursesubtitle);
+				holder.enrollcount = (TextView) convertView
+						.findViewById(R.id.enrollcourse);
+				// holder.subs = (TextView) convertView
+				// .findViewById(R.id.coursesubtitle);
 				convertView.setTag(holder);
 
 			} else {
@@ -572,7 +574,9 @@ public class MyFavoriteCourses extends Fragment {
 			holder.cost.setText("$ " + country.getRegion());
 			holder.cost.setTextColor(Color.parseColor("#4B9500"));
 			holder.cover.setImageBitmap(country.getBitmap());
-		//	holder.subs.setText(country.getsubtitle());
+			// holder.subs.setText(country.getsubtitle());
+			holder.enrollcount.setText(country.getstudentsenrolled()
+					+ " Students");
 			Picasso.with(getActivity()).load(country.getstringurl())
 					.into(holder.cover);
 
@@ -739,6 +743,7 @@ public class MyFavoriteCourses extends Fragment {
 		}
 
 	}
+
 	@SuppressWarnings("deprecation")
 	@Override
 	public void onResume() {

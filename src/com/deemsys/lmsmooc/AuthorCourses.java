@@ -72,8 +72,8 @@ public class AuthorCourses extends SherlockFragmentActivity {
 	static ListView listView;
 	Bitmap bitmap;
 	String rating_count;
-	 String course_subtitle,course_subtitle_topass;
-	 private static final String TAG_COURSE_SUBTITLE = "course_sub_title";
+	String course_subtitle, course_subtitle_topass;
+	private static final String TAG_COURSE_SUBTITLE = "course_sub_title";
 	String promocheck;
 	private static final String Promo_Check = "promocheck";
 	private static final String TAG_ENROLLED_STUDENT = "course_enrolled";
@@ -106,7 +106,7 @@ public class AuthorCourses extends SherlockFragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.category_courses);
+		setContentView(R.layout.allcourses);
 
 		Intent i = getIntent();
 		category_name = i.getExtras().getString("author_name", "");
@@ -142,7 +142,7 @@ public class AuthorCourses extends SherlockFragmentActivity {
 					course_name_to_pass = country.getCode();
 					course_enrolled_passing = country.getstudentsenrolled();
 					checkstatus = country.getifmycourse();
-					course_subtitle_topass=country.getsubtitle();
+					course_subtitle_topass = country.getsubtitle();
 					courseidurl = country.getcourseid();
 					instructoridurl = country.getinsid();
 					rating_count = country.getrating();
@@ -389,6 +389,7 @@ public class AuthorCourses extends SherlockFragmentActivity {
 			TextView cost;
 			ImageView cover;
 			ImageView ratingshow;
+			TextView enrollcount;
 		}
 
 		public void add(Course country) {
@@ -419,6 +420,8 @@ public class AuthorCourses extends SherlockFragmentActivity {
 						.findViewById(R.id.promoimage);
 				holder.enroll = (TextView) convertView
 						.findViewById(R.id.enroll);
+				holder.enrollcount = (TextView) convertView
+						.findViewById(R.id.enrollcourse);
 				convertView.setTag(holder);
 
 			} else {
@@ -430,6 +433,8 @@ public class AuthorCourses extends SherlockFragmentActivity {
 			holder.name.setText(country.getName());
 			holder.cost.setText("$ " + country.getRegion());
 			holder.cost.setTextColor(Color.parseColor("#4B9500"));
+			holder.enrollcount.setText(country.getstudentsenrolled()
+					+ " Students");
 			holder.cover.setImageBitmap(country.getBitmap());
 			// aQuery = new AQuery(getActivity());
 			// aQuery.id(R.id.cover).image(country.getstringurl(),true,true);
